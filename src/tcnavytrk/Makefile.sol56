@@ -1,0 +1,33 @@
+SHELL=/bin/sh
+OBJS=	ngtrk.o avgddt.o bogread.o calcntr.o calddto.o \
+	calint.o chkcir.o chkfcir.o cirloc.o clltxy.o cxytll.o evaliso.o \
+	fldread.o isocnt.o isofnd.o isotrc.o isovzm.o numchk.o outgdat.o \
+	rcalhdst.o rcaltln.o selcyc.o sortem2.o trackem.o valinp.o \
+	chlen.o glclrd.o xieee.o verify.o \
+	mf.routines.o mf.track.o mf.grhilo.o \
+	mf.trackem.o mf.grhilo.mftrackem.o
+
+CF =		f90
+LD=             f90
+LDFLAGS =   
+LIBS =	
+CMD =   ngtrk.x
+FFLAGS = -fast -e 
+
+
+# Lines from here on down should not need to be changed.  They are the
+# actual rules which make uses to build a.out.
+#
+
+$(CMD):		$(OBJS)
+	$(LD) -o $(CMD) $(OBJS) $(LIBS) $(LDFLAGS)
+
+.f.o:; $(CF) $(FFLAGS) -c $*.f -o $@
+
+clean:
+	rm *.o $(CMD)
+	rm ngtrk
+
+install:
+	mv $(CMD) ../../../prc/tctrack
+

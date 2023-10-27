@@ -1,0 +1,82 @@
+    subroutine samlmu(x,n,xmom,nmom)
+       double precision, intent(in):: x(n)
+       integer, intent(in):: n
+       integer, intent(in):: nmom
+       double precision, intent(out):: xmom(nmom)
+    end subroutine samlmu
+
+    subroutine samlmr(x,n,xmom,nmom,a,b)
+       double precision, intent(in):: x(n)
+       integer, intent(in):: n
+       integer, intent(in):: nmom
+       double precision, intent(out):: xmom(nmom)
+       double precision, intent(in):: a
+       double precision, intent(in):: b
+    end subroutine samlmr
+
+    subroutine pelgam(xmom,para)
+       double precision, intent(in):: xmom(2)
+       double precision, intent(out):: para(2)
+    end subroutine pelgam
+
+    function cdfgam(x,para)
+       double precision, intent(in):: x
+       double precision, intent(in):: para(2)
+       double precision, intent(out)::cdfgam 
+    end function cdfgam
+    function cdfgev(x,para)
+       double precision, intent(in):: x
+       double precision, intent(in):: para(3)
+       double precision, intent(out)::cdfgev 
+    end function cdfgev
+    function cdfglo(x,para)
+       double precision, intent(in):: x
+       double precision, intent(in):: para(3)
+       double precision, intent(out)::cdfglo 
+    end function cdfglo
+    function cdfgno(x,para)
+       double precision, intent(in):: x
+       double precision, intent(in):: para(3)
+       double precision, intent(out)::cdfgno 
+    end function cdfgno
+    function cdfgpa(x,para)
+       double precision, intent(in):: x
+       double precision, intent(in):: para(3)
+       double precision, intent(out)::cdfgpa
+    end function cdfgpa
+    function cdfpe3(x,para)
+       double precision, intent(in):: x
+       double precision, intent(in):: para(3)
+       double precision, intent(out)::cdfpe3
+    end function cdfpe3
+    function cdfwak(x,para)
+       double precision, intent(in):: x
+       double precision, intent(in):: para(5)
+       double precision, intent(out)::cdfwak
+    end function cdfwak
+       
+    subroutine regtst(nsites,names,len,xmom,a,b,seed,nsim,nprob,prob,
+                      kprint,kout,rmom,d,vobs,vbar,vsd,h,z,para)
+       integer, intent(in):: nsites
+       integer, intent(in):: names(nsites)
+       integer, intent(in):: len(nsites)
+       double precision, intent(in):: xmom(5, nsites)
+       double precision, intent(in):: a
+       double precision, intent(in):: b
+       double precision, intent(in):: seed 
+       integer, intent(in):: nsim
+       integer, intent(in):: nprob
+       double precision, intent(in):: prob(nprob)
+       integer, intent(in):: kprint
+       integer, intent(in):: kout
+       double precision, intent(out):: rmom(5)
+       double precision, intent(out):: d(nsites)
+       double precision, intent(out):: vobs(3)
+       double precision, intent(out):: vbar(3)
+       double precision, intent(out):: vsd(3)
+       double precision, intent(out):: h(3)
+       double precision, intent(out):: z(5)
+       double precision, intent(out):: para(5,6)
+    end subroutine regtst
+       
+ 

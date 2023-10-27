@@ -1,0 +1,11 @@
+fiorino    7685   7668  0 08:43 ?        00:00:00 python /dat1/w21/prc/tcdat/w2-tc-ops-dat.py ops
+fiorino    8538   7685  0 08:44 ?        00:00:00 python /dat1/w21/prc/tcdat/w2.tc.dss.mdeck.py -y cur -C
+fiorino    8539   8538 65 08:44 ?        01:45:51 python /dat1/w21/prc/tcdat/w2.tc.dss.mdeck.py -y 2021 -C -C
+fiorino   47335  47268  0 10:45 ?        00:00:00 python /dat1/w21/prc/tcclimo/w2.tc.season.py cur n -p ops.climo.all
+fiorino   47363  47335  0 10:45 ?        00:00:01 python /dat1/w21/prc/tcclimo/w2.tc.season.py 2020 NHS -p ops.climo
+fiorino   58530  58438  0 11:05 ?        00:00:00 python /dat1/w21/prc/wxmap2/w2-nwp2.py ops6 gfs2
+fiorino   62223  58530  0 11:09 ?        00:00:00 python ./w2-tc-runTrks.py 2020090406 gfs2
+fiorino   62224  62223  0 11:09 ?        00:00:02 python /dat1/w21/prc/tctrk/w2.tc.tmtrkN.py 2020090406 gfs2
+fiorino   67376  62224  1 11:24 ?        00:00:01 python /dat1/w21/prc/tcdat/w2-tc-convert-tm-mftrkN-to-atcf-adeck.py tmtrkN -d 2020090406 -A -O1
+fiorino   67661  67376 17 11:25 ?        00:00:01 python /dat1/w21/prc/tcdat/w2.tc.dss.ad2.py tmtrkN -d 2020090406 -O1 -9
+fiorino   67734  47363  0 11:25 ?        00:00:00 python ./g.tc.bt.climo.ll.py -y 1987010100.1987090406 -b global -d /dat1/w21/plt/tc/ops/climo/2020.nhem -p tcstr

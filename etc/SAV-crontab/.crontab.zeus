@@ -1,0 +1,9 @@
+MAILTO=""
+#------------------------------------------------------
+# zeus crontab
+#------------------------------------------------------
+
+runcmd='/scratch1/portfolios/BMC/fim/fiorino/w21/run.cron.tcsh'
+w2pdir='/scratch1/portfolios/BMC/fim/fiorino/w21/prc'
+
+1,32 * * * * $runcmd "$w2pdir/tcdat/w2.tc.rsync.mirror.com.tracks.atcfunix.py" >> /scratch1/portfolios/BMC/fim/fiorino/tmp/log.w2.tracks.NCEP 2>&1

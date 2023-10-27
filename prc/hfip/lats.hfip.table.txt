@@ -1,0 +1,126 @@
+#---------------------------------------------------------------------------------------------------
+#  This LATS parmeter file for HFIP 20100125
+#  by Mike Fiorino, michael.fiorino@noaa.gov
+#---------------------------------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------------------------------
+#
+# A parameter file is divided into sections, indicated by '#!' comments. The sections may appear
+# in any order. The 'center' section is only required for GRIB output.
+#
+# #!variable
+#
+#   Variable table: defines variable-specific parameters
+#
+# #!vert
+#
+#   Vertical dimension type table: defines categories of vertical dimensions
+#
+# #!center
+#
+#   Center table: defines GRIB parameters which identify the originating process, center, and subcenter.
+#
+# #!qc
+#
+#   Quality control marks table: defines the values controlling the quality control routines.
+# 
+#---------------------------------------------------------------------------------------------------
+#!variable
+#
+# Variables
+#   (max number of entries = LATS_MAX_PARMS in lats.h)
+#
+# The format of each record is:
+#   name | id | title | units | datatype | surface | decimal_scale_factor | precision | comments_1 | comments_2
+#
+# name = variable name (no blanks)
+# id = GRIB parameter number (>127 => AMIP-2 specific)
+# title = long name (description)
+# units = variable units
+# datatype = 'float' or 'int'
+# level_type = level_type in vertical dimension table, or blank if values must be defined via lats_vert_dim
+# decimal_scale_factor = GRIB decimal scale factor, or -999 if no decimal scaling
+# precision = number of bits of precision if stored in GRIB,
+#             or -999 for level-dependent bit length (ignored if decimal_scale_factor is set)
+# comments_1 = comments, ignored by LATS
+# comments_2 = comments, ignored by LATS
+#
+
+hur      |  52 | Relative humidity                                             | %          | float |        |  0   | -999 | 1    | g1 |
+pr       |  61 | Total accumulated precip                                      | kg/(m^2)   | float | sfc    |  2   | -999 | 2,3  | g1 |
+prl      |  62 | Large-scale accumulated precip                                | kg/(m^2)   | float | sfc    |  2   | -999 | 2,3  | g1 |
+prr      |  59 | Total precipitation rate                                      | kg/(m^2*s) | float | sfc    | -999 |  14  | 2,3  | g1 |
+prc      |  63 | Convective precipitation rate                                 | kg/(m^2*s) | float | sfc    | -999 |  14  | 2    |    |
+prsn     |  64 | Snowfall rate (water equivalent)                              | kg/(m^2/s) | float | sfc    |  6   | -999 | 2    | g1 |
+prw      |  54 | Precipitable water                                            | kg/m^2     | float | sfc    |  1   | -999 | 2,6  | g1 |
+psl      |   2 | Mean sea-level pressure                                       | Pa         | float | msl    |  0   | -999 | 2,3  | g1 |
+ps       |   1 | Surface pressure                                              | Pa         | float | sfc    |  0   | -999 | 2,3  | g1 |
+ta       |  11 | Air Temperature                                               | K          | float |        |  1   | -999 | 1,3  | g1 |
+tad      |  17 | Dewpoint Air Temperature                                      | K          | float |        |  1   | -999 | 1,3  | g1 |
+tads     |  17 | Surface (2m) Dewpoint Air Temperature                         | K          | float | sfc2m  |  1   | -999 | 1,3  | g1 |
+tas      |  11 | Surface (2m) air temperature                                  | K          | float | sfc2m  |  1   | -999 | 2,6  | g1 |
+ts       |  11 | Surface temperature                                           | K          | float | sfc    |  1   | -999 | 2,6  | g1 |
+ts       |  80 | Surface skin temperature (coded as water temp for DTC, duhhh) | K          | float | sfc    |  1   | -999 | 2,6  | g1 |
+hurs     |  52 | Surface (2m) Relative humidity                                | %          | float | sfc2m  |  0   | -999 | 1    | g1 |
+ua       |  33 | Eastward wind                                                 | m/s        | float |        |  1   | -999 | 1,3,6| g1 |
+uas      |  33 | Surface (10m) eastward wind                                   | m/s        | float | sfc10m |  1   | -999 | 2,6  | g1 |
+va       |  34 | Northward wind                                                | m/s        | float |        |  1   | -999 | 1,3,6| g1 |
+vas      |  34 | Surface (10m) northward wind                                  | m/s        | float | sfc10m |  1   | -999 | 2,6  | g1 |
+zg       |   7 | Geopotential height                                           | m          | float |        |  0   | -999 | 1,6  | g1 |
+rss      | 111 | Net SW radiation (sfc)                                        | W/m^2      | float | sfc    | -999 |  14  | 2    |    |
+rls      | 112 | Net LW radiation (sfc)                                        | W/m^2      | float | sfc    | -999 |  14  | 2    |    |
+# for cgd6 where sometimes psl/uas/vas are available and sometimes not...
+uasm     |  33 | model Surface (10m) eastward wind from p=1000mb               | m/s        | float | sfc10m |  1   | -999 | 2,6  | g1 |
+vasm     |  34 | model Surface (10m) northward wind from p=1000mb              | m/s        | float | sfc10m |  1   | -999 | 2,6  | g1 |
+pslm     |   2 | model Mean sea-level pressure from z1000 and t1000            | Pa         | float | msl    |  0   | -999 | 2,3  | g1 |
+
+#---------------------------------------------------------------------------------------------------
+#!  vert
+# Vertical dimension types
+#   (max number of entries = LATS_MAX_VERT_TYPES in lats.h)
+#
+# The format of each record is:
+#   level_type | description | units | verticality | positive | default | GRIB_id | GRIB_p1 | GRIB_p2 | GRIB_p3
+#
+# level_type = level type
+# description = level description
+# units = units for this level type
+# verticality = 'single' (single surface) or 'multi' (variable can have multiple levels of this type)
+# positive = 'up' (increasing values point up) or 'down' (increasing values point down)
+# GRIB_id = GRIB level type indicator (PDS octet 10)
+# GRIB_p1 = GRIB PDS octet 11
+# GRIB_p2 = GRIB PDS octet 12
+# GRIB_p3 = combined GRIB octets 11, 12 - overrides values of GRIB_p1, GRIB_p2 if specified
+
+atm	 | Atmosphere (entire)	     |          | single |   up |  200 | 0 |  0 | 0 
+msl	 | Mean Sea Level 	     |		| single |   up	|  102 | 0 |  0 | 0
+plev	 | Pressure level	     | hPa	| multi  | down |  100 | 0 |  0 | 0
+sfc      | Earth surface             |          | single |   up |    1 | 0 |  0 | 0
+sfc10m	 | 10 meters above earth surface| m	| single |   up	|  105 | 0 |  0 | 10
+sfc2m	 | 2 meters above earth surface| m	| single |   up	|  105 | 0 |  0 | 2
+toa	 | Top of atmosphere	     |		| single |   up	|    8 | 0 |  0 | 0
+hybrid   | Hybrid Model level number |          | multi  |   up	|  109 | 0 |  0 | 0
+
+#---------------------------------------------------------------------------------------------------
+#!	Center
+# Modeling centers (GRIB only)
+#   (max number of entries = LATS_MAX_CENTERS in lats.h)
+#
+# The format of each record is:
+#   center | GRIB_id | GRIB_center | GRIB_subcenter
+#
+# center = mnemonic for the center
+# GRIB_id = GRIB generating process id (PDS octet 6)
+# GRIB_center = the id of center managing the data (for AMIP II this is PCMDI) - see GRIB Table 0
+# GRIB_subcenter = the id of the subcenter
+# 
+#
+#  Acronym           AMIP Group                                                    Location
+#  -------           ----------                                                    --------
+#
+
+ukmo      | 74  |   2 | 1
+esrl	  |  5  |  59 | 5
+ncep	  |  1  |   7 | 1
+ncar	  |  1  |   7 | 1
+

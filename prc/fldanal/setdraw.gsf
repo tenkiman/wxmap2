@@ -1,0 +1,13 @@
+function setdraw()
+#
+# set default global vars for plotting
+#
+# set bt sym to 75% of scaled
+#
+_btszscl=-0.35
+_btcol=2
+
+
+return
+
+

@@ -1,0 +1,162 @@
+function modtitle()
+
+ttau=_tau*1.0
+
+if(_t1top != '')
+   rc=toptitle(_t1top,_t2top,1.0,1,1)
+   return
+endif
+
+tres='2.5`3. `0 Fields'
+
+if(_res=10)
+  tres='`21.0`3.`0 Fields`0'
+endif
+
+if(_res=05)
+  tres='`20.5`3.`0 Fields`0'
+endif
+
+if(_res=025)
+  tres='`20.25`3.`0 Fields`0'
+endif
+
+
+if(_model=ocn & _t1top = 'sigwav')
+  _t1top='FNMOC WW3 '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+
+if(_model=era15)
+  'draw string 0.2 8.30 ECMWF ReAnalysis (ERA-15) 7901-9402 Climatology '_bdtg
+endif
+
+if(_model=gfs & _t1top = '')
+  tres='`21.0`3.`0 Fields`0'
+  'draw string 0.2 8.30 NCEP GFS (T382(N286)L64)  '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+if(_model=ngp & _t1top = '')
+  'draw string 0.2 8.30 NOGAPS (T239(N180)L30) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model=ocn & _t1top = '' & _pn !=10 )
+  'draw string 0.2 8.30 FNMOC WW3 '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model=ocn & _t1top = '' & _pn=10)
+  'draw string 0.2 8.30 FNMOC OCEAN '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model='ecm2' & _t1top = '')
+  tres='`21.0`3.`0 Fields`0'
+  'draw string 0.2 8.30 ECMWF IFS [T`bl`n1279(16km)L91]) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model='ecm4' | _model = 'ecm5' & _t1top = '')
+  tres='`20.25`3.`0 Fields`0'
+  'draw string 0.2 8.30 ECMWF HRES [T`bo`n1279(9km)L137]) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model='jgsm' & _t1top = '')
+  tres='`21.25`3.`0 Fields`0'
+  'draw string 0.2 8.30 JMA GSM [T`bl`n959(21km)L100]) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model='fv3e' & _t1top = '')
+  tres='`20.5`3.`0 Fields`0'
+  'draw string 0.2 8.30 ESRL FV3 GFS [N268L64]) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model='fv3g' & _t1top = '')
+  tres='`20.5`3.`0 Fields`0'
+  'draw string 0.2 8.30 ESRL FV3 GF-Phys [N268L64]) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model='ecmt' & _t1top = '')
+  tres='`20.5`3.`0 Fields`0'
+  'draw string 0.2 8.30 ECMWF HRES [T`bo`n1279(9kmL137]) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model='ecmn' & _t1top = '')
+  tres='`21.0`3.`0 Fields`0'
+  'draw string 0.2 8.30 ECMWF IFS (T1279(16km)L91) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model='ecmg' & _t1top = '')
+  'draw string 0.2 8.30 ECMWF IFS (T1279(16km)L91]) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+
+if(_model='cmc' & _t1top = '')
+  'draw string 0.2 8.30 CMC GEM (0.9x0.9(N100)L29) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model='cgd2' & _t1top = '')
+  'draw string 0.2 8.30 CMC GEM (0.2x0.2(N375)L91) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model=ukm & _t1top = '')
+  'draw string 0.2 8.30 UKMO (0.32x0.24(N384)L50) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+  'draw string 0.2 8.30 UKMO (0.32x0.24L50) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+
+if(_model=gsm & _t1top = '')
+  'draw string 0.2 8.30 JMA GSM (T213 L40) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+
+if(_model=ukm2 & _t1top = '')
+#  tres='`20.7`3.`0 Fields`0'
+#'draw string 0.2 8.30 UKMO (0.56x0.87(162)L50) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+#  'draw string 0.2 8.30 UKMO (0.32x0.24(N384L70) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+#  tres='`20.15`3.`0 Fields`0'
+#  'draw string 0.2 8.30 UKMO (0.23x0.16(N574L70) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+  tres='`20.125`3.`0 Fields`0'
+  'draw string 0.2 8.30 UKMO (0.14x0.09(L70) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model=gfs2 & _t1top = '')
+  tres='`20.5`3.`0 Fields`0'
+  tres='`20.25`3.`0 Fields`0'
+  'draw string 0.2 8.30 NCEP GFS (T1534(15km)L64)  '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model=fim8 & _t1top = '')
+  tres='`20.5`3.`0 Fields`0'
+  'draw string 0.2 8.30 ESRL FIM (G8(30km)L64)  '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model=fimx & _t1top = '')
+  tres='`20.5`3.`0 Fields`0'
+  'draw string 0.2 8.30 ESRL FIMX (G8(30km)L64)  '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model=qmorph & _t1top = '')
+  tres='`20.25`3.`0 Fields`0'
+  'draw string 0.2 8.30 CPC QMORPH Precip Analysis:  '_bdtg'  'tres' `3t`0 = '0' h'
+endif
+
+
+if(_model=ngp2 & _t1top = '')
+  tres='`21.0`3.`0 Fields`0'
+  'draw string 0.2 8.30 NOGAPS (T319(42km)L42) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model=ngpc & _t1top = '')
+  tres='`20.5`3.`0 Fields`0'
+  'draw string 0.2 8.30 NOGAPS (T319(42km)L42) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model=navg & _t1top = '')
+  tres='`20.5`3.`0 Fields`0'
+  'draw string 0.2 8.30 NAVGEM (T425(31km)L60) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+if(_model='cmc2' & _t1top = '')
+  tres='`21.0`3.`0 Fields`0'
+  'draw string 0.2 8.30 CMC GDPS (25kmL79) '_bdtg' run 'tres' `3t`0 = 'ttau' h'
+endif
+
+
+return

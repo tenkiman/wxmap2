@@ -1,0 +1,52 @@
+
+# *************** DEFAULT ENVIRONMENTAL VARIABLES
+
+setenv HOSTNAMESHORT `hostname|awk -F. '{ print toupper($1) }'`
+setenv HOSTOSLOWER `uname|awk '{ print tolower($1) }'`
+setenv HOSTOSUPPER `uname|awk '{ print toupper($1) }'`
+setenv W2CENTER 'ESRL'
+setenv CC cc
+#setenv EDITOR /bin/vi
+setenv EDITOR /data/amb/users/fiorino/w21/prc/util/emacs.nw.sh 
+
+setenv XAPPLRESDIR ~/app-defaults
+
+
+#
+# *********** ECMWF bufr
+# for upamon?
+#setenv BUFR_TABLES ~/era/tables/000250/
+#
+# for old tc2bfr.x and bufr_print.x
+#
+#setenv BUFR_TABLES ~/lib/ecmwf/bufrtables/
+# ---------- use rescent build
+########setenv BUFR_TABLES "$W2/lib/ecmwf/bufr_000350/bufrtables/"
+
+# *************** PYTHON
+setenv PYTHONSTARTUP ~/.pythonrc
+setenv PYTHONPATH "$W2/prc/lib/python"
+
+
+if($?MANPATH) then
+  setenv MANPATH  /opt/local/man:$MANPATH
+else
+  setenv MANPATH  /opt/local/man:/usr/share/man
+endif
+
+#
+#	GrADS environment
+#
+
+#
+# cvs
+#
+
+setenv CVS_RSH ssh
+
+#
+#	wgrib table
+#
+setenv GRIBTAB ~/lib/wgrib/wgrib.ecmwf.amip.table.txt
+
+

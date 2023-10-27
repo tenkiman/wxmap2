@@ -1,0 +1,37 @@
+			set up web dirs on Mike2
+				20210312
+
+# -- root of web that gets pushed to wxmap2.com 
+# -- w2-clean-hfip.py cleans up this dir
+#
+/data/hfip/fiorino/products/hfip/
+				  fiorino
+				  jtdiag -> /w21/web-config/jtdiag/
+				  jtdiagDAT -> /dat1/data/hfip/fiorino/products/hfip/jtdiagDAT/
+				  tcact -> /w21/web-config/tcact/
+				  tcactDAT -> /dat1/data/hfip/fiorino/products/hfip/tcactDAT/
+				  tcdiag -> /w21/web-config/tcdiag/
+				  tcdiagDAT -> /dat1/data/hfip/fiorino/products/hfip/tcdiagDAT/
+				  tcdiagDAT0
+				  tceps -> /w21/web-config/tceps/
+				  tcepsDAT -> /dat1/data/hfip/fiorino/products/hfip/tcepsDAT/
+				  tcgen -> /w21/web-config/tcgen/
+				  tcgenDAT -> /dat1/data/hfip/fiorino/products/hfip/tcgenDAT/
+				  tctrkveri -> /w21/web-config/tctrkveri/
+				  tctrkveriDAT
+
+# -- this is the persistent location of the products
+# -- the rsync to wxmap2.com in w2base.py also rsyncs to the 
+#
+/dat1/data/hfip/fiorino/products/hfip/
+
+ud for about 2 months or about 25GB/mo or 300GB/ye
+/dat1/data/hfip/fiorino/products/hfip.................................
+----------------------------------------------------------------------
+./jtdiagDAT                                        ::       11,992,716
+./tcactDAT                                         ::          769,260
+./tcdiagDAT                                        ::       13,391,816
+./tcepsDAT                                         ::        5,839,420
+./tcgenDAT                                         ::       24,255,432
+----------------------------------------------------------------------
+Total..................                            ::       56,248,644

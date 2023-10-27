@@ -1,0 +1,115 @@
+set verb=0
+
+umask 022
+
+limit coredumpsize 0
+limit stacksize 200000
+
+
+if ( $?prompt ) then      # if this is an interactive shell...
+set history=1000
+set savehist=1000
+set ignoreeof
+endif
+
+set osver=`uname -a | awk '{print $3}'`
+set chost=`uname -a | awk '{print $2}'`
+set osname=`uname -a | awk '{print $1}'`
+
+if ( $verb  ) then
+  echo "TTTTT: running .tcshrc on $chost which is a $osname machine"
+endif
+
+if ( $osname == Linux || $osname == SunOS || $osname == Darwin) then
+
+   if( $verb) then
+      echo "LLLLL: doing linux"
+   endif
+  source $HOME/.wxmaprc
+  source $HOME/.envrc
+if ( $?prompt ) then      # if this is an interactive shell...
+  source $HOME/.alias
+endif
+  source $HOME/.pathrc
+
+endif
+
+if ( $?prompt ) then      # if this is an interactive shell...
+fixprompt
+endif
+
+module load bbcp
+exit
+
+##
+# Your previous /Users/fiorino/.tcshrc file was backed up as /Users/fiorino/.tcshrc.macports-saved_2010-04-28_at_16:43:10
+##
+
+# MacPorts Installer addition on 2010-04-28_at_16:43:10: adding an appropriate PATH variable for use with MacPorts.
+setenv PATH /opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+
+# Setting PATH for EPD-6.0.4
+# The orginal version is saved in .cshrc.pysave
+set path=(/Library/Frameworks/Python.framework/Versions/Current/bin $path)
+
+##
+# Your previous /Users/fiorino/.tcshrc file was backed up as /Users/fiorino/.tcshrc.macports-saved_2010-04-28_at_16:47:34
+##
+
+# MacPorts Installer addition on 2010-04-28_at_16:47:34: adding an appropriate PATH variable for use with MacPorts.
+setenv PATH /opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+
+# Setting PATH for EPD-6.2-1
+# The orginal version is saved in .cshrc.pysave
+set path=(/Library/Frameworks/Python.framework/Versions/Current/bin $path)
+
+##
+# Your previous /Users/fiorino/.tcshrc file was backed up as /Users/fiorino/.tcshrc.macports-saved_2010-06-15_at_14:22:28
+##
+
+# MacPorts Installer addition on 2010-06-15_at_14:22:28: adding an appropriate PATH variable for use with MacPorts.
+setenv PATH /opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+
+##
+# Your previous /Users/fiorino/.tcshrc file was backed up as /Users/fiorino/.tcshrc.macports-saved_2010-06-15_at_20:43:17
+##
+
+# MacPorts Installer addition on 2010-06-15_at_20:43:17: adding an appropriate PATH variable for use with MacPorts.
+setenv PATH /opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+
+# Setting PATH for EPD-6.3-1
+# The orginal version is saved in .cshrc.pysave
+set path=(/Library/Frameworks/EPD64.framework/Versions/Current/bin $path)
+
+# Setting PATH for EPD-7.0-1
+# The orginal version is saved in .cshrc.pysave
+set path=(/Library/Frameworks/EPD64.framework/Versions/Current/bin $path)
+
+# Setting PATH for EPD-7.1-1
+# The orginal version is saved in .cshrc.pysave
+set path=(/Library/Frameworks/Python.framework/Versions/Current/bin $path)
+
+# Setting PATH for EPD-7.1-2
+# The orginal version is saved in .cshrc.pysave
+set path=(/Library/Frameworks/Python.framework/Versions/Current/bin $path)
+
+##
+# Your previous /Users/fiorino/.tcshrc file was backed up as /Users/fiorino/.tcshrc.macports-saved_2011-11-29_at_13:39:19
+##
+
+# MacPorts Installer addition on 2011-11-29_at_13:39:19: adding an appropriate PATH variable for use with MacPorts.
+setenv PATH /opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+
+# Setting PATH for EPD-7.1-2
+# The orginal version is saved in .cshrc.pysave
+set path=(/Library/Frameworks/EPD64.framework/Versions/Current/bin $path)

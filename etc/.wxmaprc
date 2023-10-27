@@ -1,0 +1,15 @@
+
+setenv W2_VERSION 21
+setenv W2 "/w$W2_VERSION"
+
+#setenv W2 /wxmap2
+#setenv W2_BDIR "$W2/trunk"
+#setenv W2_PERL_DIR "$W2_BDIR/prc/lib/perl"
+#setenv W2_PRC_DIR "$W2_BDIR/prc"
+
+#setenv WXMAP_BDIR /home/mfiorino/tenki/wxmap
+#setenv WXMAP_PERL_DIR "$WXMAP_BDIR/perl"
+#setenv WXMAP_PRC_WXMAP_DIR "$WXMAP_BDIR/prc/wxmap"
+#setenv WXMAP_PRC_TC_DIR "y$HOME/tenki/era/tc/prc"
+#setenv WXMAP_TC_CURRENT_SEASON "2007.shem"
+#setenv WXMAP_TC_SITREP_DIR "/dat/www/tc/sitrep"

@@ -1,0 +1,137 @@
+      subroutine maxth(dumu,dumv,dxc,dyc,rmxlim,tw)                           
+      parameter(nmx=8,imx=201,jmx=81,lgth=30,iimx=110)                         
+      dimension dumu(imx,jmx),dumv(imx,jmx),tw(imx,jmx)                       
+      dimension th(imx,jmx),tanmx(imx,jmx),tprof(7,7,lgth)                    
+     1      ,itpos(7,7),tmax(7,7),tanavg(iimx)                                  
+      common  /total/ ddel,dtha                                                
+      common  /coor/ xv,yv,xold,yold,xcorn,ycorn,factr,ix,iy                   
+      common /winds/ dmmm(imx,jmx,2),tang(imx,jmx),
+     $     del(imx,jmx),tha(imx,jmx)
+      common /scale/rmxavg,rfind                                              
+c                                                                               
+      pi=4.*atan(1.0)                                                         
+      pi180 = pi/180.                                                         
+      fact=cos(yold)                                                          
+      deltar=0.1                                                              
+      dxc=xold/pi180-xcorn                                                    
+      dyc=yold/pi180-ycorn                                                    
+      ixc=int(dxc)+1                                                          
+      iyc=int(dyc)+1                                                          
+      ist=ixc-3                                                               
+      jst=iyc-3                                                               
+      iend=ixc+3                                                              
+      jend=iyc+3                                                              
+      npts=7                                                                  
+      print*,'ist,iend',ist,jst,iend,jend                                     
+c                                                                               
+c  compute radial profile of azimuthal avg. tang. wind at each pt               
+c                                                                               
+        do 51 i=ist,iend                                                        
+        do 51 j=jst,jend                                                        
+         xcen=(del(i,j)-del(1,1))/pi180 +1.                                     
+         ycen=(tha(i,j)-tha(1,1))/pi180 +1.                                     
+         yyo=tha(i,j)                                                           
+           do 52 ir=1,lgth                                                      
+           rbd=float(ir)*0.2                                                    
+           call bound2(dumu,dumv,tanpu,rbd,xcen,ycen,yyo)                        
+           tprof(i-ist+1,j-jst+1,ir)=tanpu                                       
+52         continue                                                             
+51      continue                                                                
+         print *,' print 333 in maxth.. tprof(i,1,k),i=4,7'                     
+         print 333,((tprof(i,1,k),i=4,7),(tprof(i,2,k),i=4,7),                  
+     1    (tprof(i,3,k),i=4,7),(tprof(i,4,k),i=4,7),k=1,lgth)                   
+333      format(16f7.1)                                                         
+c                                                                               
+c  find the first relative maximum along each azimuthal direction               
+c  find the position of the largest relative maximum                            
+c                                                                               
+         hmax=0.                                                                
+         do 53 i=1,npts                                                         
+         do 53 j=1,npts                                                         
+          do 54 ir=2,lgth                                                       
+          if(tprof(i,j,ir).gt.tprof(i,j,ir-1).and.tprof(i,j,ir)                 
+     1     .gt.tprof(i,j,ir+1))then                                             
+            tmax(i,j)=tprof(i,j,ir)                                             
+             itpos(i,j)=100*(ist+i)+j+jst                                       
+        hmax=amax1(tmax(i,j),hmax)                                              
+        if(hmax.eq.tmax(i,j))ipos=itpos(i,j)                                    
+        if(hmax.eq.tmax(i,j)) rmxpos=float(ir)*0.2                              
+             goto53                                                             
+          endif                                                                 
+54       continue                                                               
+         tmax(i,j)=tprof(i,j,1)                                                 
+         itpos(i,j)=101                                                         
+         hmax=amax1(hmax,tmax(i,j))                                             
+        if(hmax.eq.tmax(i,j))ipos=itpos(i,j)                                    
+53       continue                                                               
+        print*,hmax,rmxpos,rmxpos/0.2                                           
+        print *,((tmax(i,j),i=1,npts),j=1,npts)                                 
+        print *,((itpos(i,j),i=1,npts),j=1,npts)                                
+c                                                                               
+c                                                                               
+c                                                                               
+c  use position of the largest relative maximum as the adjusted                 
+c  center location                                                              
+c                                                                               
+       ycn=float(mod(ipos,100))-1.                                              
+       xcn=float(ipos/100)-1.                                                   
+       ixc=int(xcn)+1                                                           
+       iyc=int(ycn)+1                                                           
+         xctest=(xcn+xcorn)*pi180                                               
+         yctest=(ycn+ycorn)*pi180                                               
+c                                                                               
+c  recompute the tangential wind component based on new center                  
+c                                                                               
+       fact=cos(tha(1,iyc))                                                     
+        print*,'in maxth',ycn,xcn,fact,xctest/pi180,yctest/pi180                
+        print*,ixc,iyc,del(ixc+1,iyc+1)/pi180,tha(ixc+1,iyc+1)/pi180            
+       do 334 j=1,jmx                                                           
+       do 334 i=1,imx                                                           
+        dx=(del(i,j)-xctest)*fact                                               
+        dy=(tha(i,j)-yctest)                                                    
+       if(dx.ne.0.)theta =atan2(dy,dx)                                          
+       if(dy.gt.0..and.dx.eq.0.)theta =90.*pi180                                
+       if(dy.lt.0..and.dx.eq.0.)theta =270.*pi180                               
+       tw(i,j)=-dumu(i,j)*sin(theta) +dumv(i,j)*cos(theta)                      
+         if(i.eq.ixc.and.j.eq.iyc)print*,i,j,dumu(i,j),dumv(i,j)                
+     1     ,theta,tw(i,j),dx,dy,'check everything'                              
+334    continue                                                                 
+c                                                                               
+cc       write(77,*)ixc,iyc                                                     
+cc      write(77,7700)((tw(i,j)/100.,i=ixc-5,ixc+5),j=iyc+5,iyc-5,-1)           
+         print *,ixc,iyc,' tw(i,j) follows, i=ixc+/-5,j = iyc+/-5'              
+        write(6,7700)((tw(i,j)/100.,i=ixc-5,ixc+5),j=iyc+5,iyc-5,-1)            
+ 7700   format(11f5.1)                                                          
+c                                                                               
+        iflag=0                                                                 
+        hmax=0.                                                                 
+        rmxavg=0.                                                               
+        do 50 ir=3,iimx                                                         
+         rxx=float(ir)*deltar                                                   
+         call calcr( rxx,rtan,xcn,ycn,yctest,dumu,dumv )                        
+         tanavg(ir)=rtan                                                        
+         if(tanavg(ir-2).lt.tanavg(ir-1).and.tanavg(ir).lt.tanavg(ir-1)         
+     1     .and.iflag.eq.0)then                                                 
+           hmax=tanavg(ir-1)                                                    
+           rmxavg=rxx-deltar                                                    
+           iflag=1                                                              
+         endif                                                                  
+50     continue                                                                 
+        print*,'found rmxavg ',rmxavg,hmax                                      
+        dxc=xcn                                                                 
+        dyc=ycn                                                                 
+        yold=xcn+xcorn                                                          
+700     format(10f6.1)                                                          
+         print 700,tanavg                                                       
+	    call findra( dxc,dyc,yctest,rmxavg,rfavg,tanavg)
+c                                                                               
+c       alim = .75                                                              
+        alim = .01                                                              
+        print*                                                                  
+        print*,'a factor to determine rmxlim: ',alim                            
+c                                                                               
+        rmxlim = alim*rmxavg + (1.-alim)*rfavg                                  
+c       rmxlim = rmxavg + rfavg                                                 
+        print*,'found rfavg ',rfavg,rmxavg,rmxlim,dxc,dyc                       
+        return                                                                  
+        end                                                                     

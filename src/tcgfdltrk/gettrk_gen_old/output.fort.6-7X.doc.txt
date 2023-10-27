@@ -1,0 +1,1099 @@
+20111019
+========
+
+**************************************************************************************************** tracker
+
+fort.64:
+
+BB, 01, 2010051712, 03, ECM2, 000, 109N,  878E,  24, 1001, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, 144,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,   -9999,   -9999,   -9999, Y, 10, DT, -999
+NA, 02, 2010051712, 03, ECM2, 000, 101N,  561E,  18, 1007, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, 134,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,   -9999,   -9999,   -9999, N, 10, DT, -999
+SI, 95, 2010051712, 03, ECM2, 000,   0 ,    0 ,   0,    0, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, ***,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,   -9999,   -9999,   -9999, U, 10, DT, -999
+SP, 97, 2010051712, 03, ECM2, 000,  75S, 1000E,  21, 1005, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, 111,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,   -9999,   -9999,   -9999, N, 10, DT, -999
+BB, 01, 2010051712, 03, ECM2, 006, 115N,  867E,  24, 1001, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, 120,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,      87,      98,     182, Y, 10, DT, -999
+
+fort.68:
+
+BB, 01B , 2010051712_F000_117N_0886E_01B, 2010051712, 03, ECM2, 000, 109N,  878E,  24, 1001, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, -99, 319,  32, ***, -9999, -9999,  166,  181,  149,  163, LAILA    
+NA, 02A , 2010051712_F000_094N_0573E_02A, 2010051712, 03, ECM2, 000, 101N,  561E,  18, 1007, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, -99, 113,  19, ***, -9999, -9999,  119,  132,  149,  164, BANDU    
+SP, 97P , 2010051712_F000_058S_1006E_97P, 2010051712, 03, ECM2, 000,  75S, 1000E,  21, 1005, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, -99, 116,  43, ***, -9999, -9999, -112, -122,  -96, -107, UNKNOWN  
+BB, 01B , 2010051712_F000_117N_0886E_01B, 2010051712, 03, ECM2, 006, 115N,  867E,  24, 1001, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, -99, 299,  54,   9,    10,    18,  179,  194,  156,  167, LAILA    
+NA, 02A , 2010051712_F000_094N_0573E_02A, 2010051712, 03, ECM2, 006, 101N,  561E,  17, 1008, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, -99, 206,   3,  11,   -47,    17,   99,  110,  126,  136, BANDU    
+
+
+**************************************************************************************************** tcgen
+
+fort.64:
+
+BB,  01B, 2010051712, 03, ECM2, 000, 109N,  878E,  24, 1001, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, 144,   0,   0, TCV
+NA,  02A, 2010051712, 03, ECM2, 000, 101N,  561E,  18, 1007, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, 134,   0,   0, TCV
+SI,  95S, 2010051712, 03, ECM2, 000,   0 ,    0 ,   0,    0, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, ***,   0,   0, TCV
+SP,  97P, 2010051712, 03, ECM2, 000,  75S, 1000E,  21, 1005, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, 111,   0,   0, TCV
+TG, 0005, 2010051712, 03, ECM2, 000,   0 ,    0 ,   0,    0, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, ***,   0,   0, FOF
+
+
+fort.68:
+
+BB, 01B , 2010051712_F000_117N_0886E_01B, 2010051712, 03, ECM2, 000, 109N,  878E,  24, 1001, XX,  34, NEQ, 0000, 0000, 0000, 0000, 1003,  119, -99, 319,  32, ***, -9999, -9999,  166,  181,  149,  163, LAILA    
+NA, 02A , 2010051712_F000_094N_0573E_02A, 2010051712, 03, ECM2, 000, 101N,  561E,  18, 1007, XX,  34, NEQ, 0000, 0000, 0000, 0000, 1003,  119, -99, 113,  19, ***, -9999, -9999,  119,  132,  149,  164, BANDU    
+SP, 97P , 2010051712_F000_058S_1006E_97P, 2010051712, 03, ECM2, 000,  75S, 1000E,  21, 1005, XX,  34, NEQ, 0000, 0000, 0000, 0000, 1006,  101, -99, 116,  43, ***, -9999, -9999, -112, -122,  -96, -107, UNKNOWN  
+BB, 01B , 2010051712_F000_117N_0886E_01B, 2010051712, 03, ECM2, 006, 115N,  867E,  24, 1001, XX,  34, NEQ, 0000, 0000, 0000, 0000, 1005,  154, -99, 299,  54,   9,    10,    18,  179,  194,  156,  167, LAILA    
+SP, 97P , 2010051712_F000_058S_1006E_97P, 2010051712, 03, ECM2, 006,  86S, 1006E,  18, 1007, XX,  34, NEQ, 0000, 0000, 0000, 0000, 1008,  115, -99, 142,  63,   6,   -18,    17, -107, -115,  -91,  -99, UNKNOWN  
+NA, 02A , 2010051712_F000_094N_0573E_02A, 2010051712, 03, ECM2, 006, 101N,  561E,  17, 1008, XX,  34, NEQ, 0000, 0000, 0000, 0000, 1008,  115, -99, 206,   3,  11,   -47,    17,   99,  110,  126,  136, BANDU    
+
+
+
+          write (64,81) basinid,storm(ist)%tcv_storm_id(1:2)
+     &        ,atcfymdh
+     &        ,adjustr(atcfname),output_fhr,intlat,clatns,intlon,clonew
+     &        ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &        ,int(xminmslp/100. + 0.5)
+     &        ,'XX,  64, NEQ'
+     &        ,vradius(3,1),vradius(3,2),vradius(3,3),vradius(3,4)
+     &        ,0,0,irmax,comma_filler,icps_vals(1),icps_vals(2)
+     &        ,icps_vals(3),wcore_flag,int(wcore_depth*10)
+
+   81 format (a2,', ',a2,', ',i10.10,', 03, ',a4,', ',i3.3,', ',i3,a1
+     &       ,', ',i4,a1,', ',i3,', ',i4,', ',a12,4(', ',i4.4)
+     &       ,2(', ',i4),', ',i3.3,a79,',       THERMO PARAMS'
+     &       ,3(', ',i7),', ',a1,', ',i2,', DT, -999')
+
+
+BB, 01, 2010051712, 03, ECM2, 000, 109N,  878E,  24, 1001, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, 144,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,   -9999,   -9999,   -9999, Y, 10, DT, -999
+
+BB, 01, 2010051712, 03, ECM2, 000, 109N,  878E,  24, 1001, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, 144,\
+                                               vmax  pmin                                                    rmax
+
+                                                                                                                               warm core flag Y,N,U
+   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,   -9999,   -9999,   -9999, Y, 10, DT, -999
+                                                                                                       cpsB*10 cpsVtl*10 cpsVtHi*10  contour interval in warm core *10 degC 
+                                                                                                                               
+
+
+sink fort.66
+
+              call output_atcf_sink (-999.0
+     &                  ,-999.0,inp,ist
+     &                  ,ifcsthour,0.0
+     &                  ,0.0,vradius,maxstorm,trkrinfo
+     &                  ,-99,-99,imeanzeta,igridzeta
+     &                  ,cps_vals,-999.0,-999.0,ioaxret)
+
+
+
+        write (68,87) basinid,storm(ist)%tcv_storm_id
+     &        ,gstm%gv_gen_date,gstm%gv_gen_fhr,gstm%gv_gen_lat
+     &        ,gstm%gv_gen_latns,gstm%gv_gen_lon
+     &        ,gstm%gv_gen_lonew,gstm%gv_gen_type
+     &        ,atcfymdh
+     &        ,adjustr(atcfname),ifcsthour,intlat,clatns,intlon,clonew
+     &        ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &        ,int(xminmslp/100. + 0.5)
+     &        ,'XX,  64, NEQ'
+     &        ,vradius(3,1),vradius(3,2),vradius(3,3),vradius(3,4)
+     &        ,iplastbar,irlastbar,-99,istmdir,istmspd
+     &        ,iparamb,ivtl,ivtu
+     &        ,imeanzeta(1),igridzeta(1),imeanzeta(2),igridzeta(2)
+     &        ,storm(ist)%tcv_storm_name
+
+   87 format (a2,', ',a4,', ',i10.10,'_F',i3.3,'_',i3.3,a1,'_',i4.4,a1
+     &       ,'_',a3,', ',i10.10,', 03, ',a4,', ',i3.3,', ',i3,a1
+     &       ,', ',i4,a1,', ',i3,', ',i4,', ',a12,4(', ',i4.4)
+     &       ,', ',2(i4,', '),4(i3,', '),2(i5,', '),4(i4,', '),a9)
+
+
+BB, 01B , 2010051712_F000_117N_0886E_01B, 2010051712, 03, ECM2, 000, 109N,  878E,  24, 1001, XX,  34, NEQ, 0000, 0000, 0000, 0000,    0,    0, -99, 319,  32, ***, -9999, -9999,  166,  181,  149,  163, LAILA    
+
+
+BB, 01B , 2010051712_F000_117N_0886E_01B, 2010051712, 03, ECM2, 000, 109N,  878E,  24, 1001, XX,  34, NEQ, 0000, 0000, 0000, 0000,\
+
+
+    0,    0, -99, 319,  32, ***, -9999, -9999,  166,  181,  149,  163, LAILA    
+roci   poci      dir   spd cpsB  cpsLo  cpsHi   mn85  mx85  mn70  mx70  name 
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------
+
+
+lrwxr-xr-x  1 fiorino  frdrapb      72 Mar 16 03:48 fort.64 -> /w21/dat/nwp2/w2flds/dat/ecm2/2010031000/tctrk/track.2010031000.ECM2.txt
+-rw-r--r--  1 fiorino  frdrapb    3132 Mar 16 03:52 fort.67
+-rw-r--r--  1 fiorino  frdrapb  218807 Mar 16 03:52 fort.68
+-rw-r--r--  1 fiorino  frdrapb  123050 Mar 16 03:52 fort.69
+
+-rw-r--r--  1 fiorino  frdrapb     375 Mar 11 02:03 fort.61  <--- not used in gettrk_main_gen.f
+-rw-r--r--  1 fiorino  frdrapb     385 Mar 11 02:03 fort.62  <--- not used in gettrk_main_gen.f
+-rw-r--r--  1 fiorino  frdrapb    9240 Mar 13 05:12 fort.63  <--- not used in gettrk_main_gen.f
+
+fort.64 -- atcf adeck
+====================================================================================================
+      subroutine output_atcfunix (outlon,outlat,inp,ist
+     &         ,ifcsthour,vmaxwind,xminmslp,vradius,maxstorm
+     &         ,trkrinfo,rmax,ioaxret)
+
+c     ABSTRACT: This subroutine  outputs a 1-line message for a given 
+c     storm at an input forecast hour in the new ATCF UNIX format.  
+c     Unlike the old atcf DOS format in which you waited until the 
+c     whole tracking was over to write the  output for all forecast 
+c     hours, with this atcfunix format, each time we are calling this
+c     subroutine, it is to only write out 1 record, which will be the
+c     fix info for a particular storm at a given time.  Also, even 
+c     though we have some data (GFS, NAM) at 6-hour intervals, Jim 
+c     Gross informed me that TPC does not need the positions at such
+c     frequency, and keeping the reporting at 12 hour intervals is fine.
+c
+c     While this new atcfunix format contains much more information than
+c     the old 1-line atcf dos message, for our purposes we will use the
+c     slots for mslp and wind radii.  An example set of output records
+c     will look like the following:
+c
+c     AL, 13, 2000092500, 03, GFSO, 036, 243N, 675W, 42, 995, XX,  34,
+c             NEQ,  242,  163,  124,  208
+c     AL, 13, 2000092500, 03, GFSO, 036, 243N, 675W, 42, 995, XX,  50,
+c             NEQ,  155,  000,  000,  000
+c     AL, 13, 2000092500, 03, GFSO, 036, 243N, 675W, 42, 995, XX,  64,
+c             NEQ,  000,  000,  000,  000
+c
+c     (NOTE: Each of the above lines beginning with "AL" is output as 
+c            a single line of text.)
+c
+c     Note that in this example, for this 36h forecast hour, there are 
+c     3 entries.  This is so that we can include the radii for the 
+c     3 different wind thresholds (34kt, 50kt and 64kt).  So the only
+c     thing different in each entry is the wind radii info;  all the
+c     other info is identical for each entry.
+c
+c     This message also contains the intensity estimates (in knots) 
+c     for every forecast hours  The  conversion for m/s to knots is 
+c     to multiply m/s by 1.9427 (3.281 ft/m, 1 naut mile/6080 ft, 
+c     3600s/h).
+c
+c     NOTE: The longitudes that are passed into this subroutine are
+c     given in 0 - 360, increasing eastward.  The format for the 
+c     atcfunix system requires that the  output be 0-180E or
+c     0-180W, so we must adjust the values, if needed.  Also, the
+c     values for southern latitudes must be positive (use 'N' and 
+c     'S' to distinguish Northern/Southern Hemispheres).
+c
+c     INPUT:
+c     outlon    longitude  fix position for this storm at this time 
+c               which is to be written out to the  output file
+c     outlat    latitude  fix position for this storm at this time 
+c               which is to be written out to the  output file
+c     inp       contains input date and model number information
+c     ist       the number storm that we're processing (can be 1-15)
+c     ifcsthr   the current forecast hour being output
+c     vmaxwind  the max surface wind for this storm at this fcst hour
+c     xminmslp  the min mslp for this storm at this fcst hour
+c     vradius   Contains the distance from the storm fix position to
+c               each of the various wind threshhold distances in each
+c               quadrant. (3,4) ==> (# of threshholds, # of quadrants)
+c     maxstorm  max # of storms that can be handled
+c     rmax      radius of max winds (n mi).... it was already converted
+c               from km to n mi in subroutine  get_max_wind
+c 
+c     OUTPUT:
+c     ioaxret   integer return code from this subroutine
+c     
+c     LOCAL:
+c     intlon    integer that holds the value of outlon*10
+c     intlat    integer that holds the value of outlat*10
+c     storm     An array of type tcvcard.  Use this for the storm ID
+c
+
+trkrinfo%type='tcgen'
+
+        write (64,91) basinid,storm(ist)%tcv_storm_id
+     &        ,atcfymdh
+     &        ,adjustr(atcfname),output_fhr,intlat,clatns,intlon,clonew
+     &        ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &        ,int(xminmslp/100. + 0.5)
+     &        ,'XX,  34, NEQ'
+     &        ,vradius(1,1),vradius(1,2),vradius(1,3),vradius(1,4)
+     &        ,0,0,irmax,0,0,stcvtype(ist)
+   91 format (a2,', ',a4,', ',i10.10,', 03, ',a4,', ',i3.3,', ',i3,a1
+     &       ,', ',i4,a1,', ',i3,', ',i4,', ',a12,4(', ',i4.4)
+     &       ,2(', ',i4),', ',i3.3,2(', ',i3),', ',a3)
+
+
+trkrinfo%type='tracker'
+
+        write (64,81) basinid,storm(ist)%tcv_storm_id(1:2)
+     &        ,atcfymdh
+     &        ,adjustr(atcfname),output_fhr,intlat,clatns,intlon,clonew
+     &        ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &        ,int(xminmslp/100. + 0.5)
+     &        ,'XX,  34, NEQ'
+     &        ,vradius(1,1),vradius(1,2),vradius(1,3),vradius(1,4)
+     &        ,0,0,irmax
+
+   81 format (a2,', ',a2,', ',i10.10,', 03, ',a4,', ',i3.3,', ',i3,a1
+     &       ,', ',i4,a1,', ',i3,', ',i4,', ',a12,4(', ',i4.4)
+     &       ,2(', ',i4),', ',i3.3)
+
+
+
+fort.65 -- gen tcvitals
+====================================================================================================
+
+
+      subroutine output_tcvitals (xlon,xlat,inp,ist,iovret)
+
+      write (65,21) stm = tcvcard
+      
+   21 format (a4,1x,a3,1x,a9,1x,i8.8,1x,i4.4,1x,i3,a1,1x,i4,a1,1x
+     &       ,i3,1x,i3,3(1x,i4),1x,i2,1x,i3,1x,4(i4,1x),a1)
+      
+        type tcvcard         ! Define a new type for a TC Vitals card
+          sequence
+          character*4   tcv_center      ! Hurricane Center Acronym
+          character*4   tcv_storm_id    ! Storm Identifier (03L, etc)
+          character*9   tcv_storm_name  ! Storm name
+          integer       tcv_ymd         ! Date of observation (yyyymmdd)
+          integer       tcv_hhmm        ! Time of observation (UTC)
+          integer       tcv_lat         ! Storm Lat (*10), always >0
+          character*1   tcv_latns       ! 'N' or 'S'
+          integer       tcv_lon         ! Storm Lon (*10), always >0
+          character*1   tcv_lonew       ! 'E' or 'W'
+          integer       tcv_stdir       ! Storm motion vector (in degr)
+          integer       tcv_stspd       ! Spd of storm movement (m/s*10)
+          integer       tcv_pcen        ! Min central pressure (mb)
+          integer       tcv_penv        ! val outrmost closed isobar(mb)
+          integer       tcv_penvrad     ! rad outrmost closed isobar(km)
+          integer       tcv_vmax        ! max sfc wind speed (m/s)
+          integer       tcv_vmaxrad     ! rad of max sfc wind spd (km)
+          integer       tcv_r15ne       ! NE rad of 15 m/s winds (km)
+          integer       tcv_r15se       ! SE rad of 15 m/s winds (km)
+          integer       tcv_r15sw       ! SW rad of 15 m/s winds (km)
+          integer       tcv_r15nw       ! NW rad of 15 m/s winds (km)
+          character*1   tcv_depth       ! Storm depth (S,M,D) X=missing
+
+
+fort.66 -- atcf gen adeck?  not called in gettrk_main_gen.f
+====================================================================================================
+
+
+      subroutine output_atcf_gen (outlon,outlat,inp,ist
+     &         ,ifcsthour,vmaxwind,xminmslp,vradius,maxstorm
+     &         ,trkrinfo,istmspd,istmdir,ioaxret)
+      write (66,87) basinid,adjustr(storm(ist)%tcv_storm_id)
+     &      ,gstm%gv_gen_date,gstm%gv_gen_fhr,gstm%gv_gen_lat
+     &      ,gstm%gv_gen_latns,gstm%gv_gen_lon
+     &      ,gstm%gv_gen_lonew,gstm%gv_gen_type
+     &      ,atcfymdh
+     &      ,adjustr(atcfname),ifcsthour,intlat,clatns,intlon,clonew
+     &      ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &      ,int(xminmslp/100. + 0.5)
+     &      ,'XX,  34, NEQ'
+     &      ,vradius(1,1),vradius(1,2),vradius(1,3),vradius(1,4)
+
+
+   87 format (a2,', ',a4,', ',i10.10,'_F',i3.3,'_',i3.3,a1,'_',i4.4,a1
+     &       ,'_',a3,', ',i10.10,', 03, ',a4,', ',i3.3,', ',i3,a1
+     &       ,', ',i4,a1,', ',i3,', ',i4,', ',a12,4(', ',i4.4))
+
+        type gencard     ! Define a new type for a genesis vitals card
+          sequence
+          integer       gv_gen_date    ! genesis date in yyyymmddhh
+          integer       gv_gen_fhr     ! genesis fcst hour (usually 0)
+          integer       gv_gen_lat     ! genesis lat (*10), always >0
+          character*1   gv_gen_latns   ! 'N' or 'S'
+          integer       gv_gen_lon     ! genesis lon (*10), always >0
+          character*1   gv_gen_lonew   ! 'W' or 'E'
+          character*3   gv_gen_type    ! 'FOF'; or TC Vitals ATCF ID
+          integer       gv_obs_ymd     ! Date of observation (yyyymmdd)
+          integer       gv_obs_hhmm    ! Time of observation (UTC)
+          integer       gv_obs_lat     ! Storm Lat (*10), always >0
+          character*1   gv_obs_latns   ! 'N' or 'S'
+          integer       gv_obs_lon     ! Storm Lon (*10), always >0
+          character*1   gv_obs_lonew   ! 'E' or 'W'
+          integer       gv_stdir       ! Storm motion vector (in degr)
+          integer       gv_stspd       ! Spd of storm movement (m/s*10)
+          integer       gv_pcen        ! Min central pressure (mb)
+          integer       gv_penv        ! val outrmost closed isobar(mb)
+          integer       gv_penvrad     ! rad outrmost closed isobar(km)
+          integer       gv_vmax        ! max sfc wind speed (m/s)
+          integer       gv_vmaxrad     ! rad of max sfc wind spd (km)
+          integer       gv_r15ne       ! NE rad of 15 m/s winds (km)
+          integer       gv_r15se       ! SE rad of 15 m/s winds (km)
+          integer       gv_r15sw       ! SW rad of 15 m/s winds (km)
+          integer       gv_r15nw       ! NW rad of 15 m/s winds (km)
+          character*1   gv_depth       ! Storm depth (S,M,D) X=missing
+        end type gencard
+
+
+fort.68 -- kitchen sink
+====================================================================================================
+
+
+
+...34, NEQ, 0000, 0000, 0000, 0000, 1011,   67, -99, ***, ***,  -1,    30,    10,  116,  132,   99,  116, GUILLERMO
+                                  , PLAS, RLAS, RMX, DIR, SPD,   B,   VTU,   VTL, Z8MN, Z8MX, Z7MN, Z7MX, name
+
+      subroutine output_atcf_sink (outlon,outlat,inp,ist
+     &         ,ifcsthour,vmaxwind,xminmslp,vradius,maxstorm
+     &         ,trkrinfo,istmspd,istmdir,imeanzeta,igridzeta
+     &         ,cps_vals,plastbar,rlastbar,ioaxret)
+c     ABSTRACT: This subroutine  outputs a 1-line message for a given 
+c     storm at an input forecast hour in a modified atcfunix format.  
+c     The "sink" in the subroutine name indicates that this output
+c     contains the whole kitchen sink of forecast storm info.
+c     The reason that it's called "modified" is that the format is 
+c     slightly different from the standard TPC-accepted atcfunix 
+c     format that they use for TCs.  Specifically, the first part that
+c     identifies the storm is different, and the part after the radii
+c     data is different.  Here's an example of the TPC standard 
+c     atcfunix format:
+c
+c     AL, 13, 2000092500, 03, GFSO, 036, 243N, 675W, 42, 995, XX,  34,
+c             NEQ,  242,  163,  124,  208
+c     AL, 13, 2000092500, 03, GFSO, 036, 243N, 675W, 42, 995, XX,  50,
+c             NEQ,  155,  000,  000,  000
+c     AL, 13, 2000092500, 03, GFSO, 036, 243N, 675W, 42, 995, XX,  64,
+c             NEQ,  000,  000,  000,  000
+c
+c     (NOTE: Each of the above lines beginning with "AL" is output as 
+c            a single line of text.... they're just broken up into 2 
+c            lines here for readability.)
+c
+c     Here's an example of the modified output format for the same 
+c     storm.  Note that the lat/lon identifier in the new storm id at
+c     the beginning of the record is different from that shown later
+c     in the record.  The reason is that the lat/lon identifier will
+c     indicate the lat/lon at which the storm was *first* found in
+c     the model.  The position may be either found within this run 
+c     of the  tracker, or that position may have been pulled from the
+c     tcvitals or gen_vitals record:
+c
+c     2000092500_F000_206N_0623W_13L, 2000092500, 03, GFSO, 036
+c       , 243N, 675W,  42, 995, XX,  34, NEQ,  242,  163,  124,  208
+c       , PLAS, RLAS, RMX, DIR, SPD,   B,   VTU,   VTL
+c       , Z8MN, Z8MX, Z7MN, Z7MX
+c
+c     As noted above, there is extra info at the end, after the 
+c     "34, NEQ,  242,  163,  124,  208" radii info.  Here is a key 
+c     to indicate what these items are:
+c
+c     PLAS:  Pressure (mb) of last closed isobar
+c     RLAS:  Radius of the last closed isobar in nm, 0 - 9999 nm.
+c     RMX:   Radius of max winds, 0 - 999 nm.
+c     DIR:   Direction of storm motion.
+c     SPD:   Speed of storm motion (m/s * 10).
+c     B:     Hart's CPS "Parameter B" thickness asymmetry value (m).
+c     VTU:   Hart's CPS thermal wind (Upper, 600-300) value.
+c     VTL:   Hart's CPS thermal wind (Lower, 900-600) value.
+c     Z8MN:  Mean value of 850 mb zeta surrounding storm.
+c     Z8MX:  Max value of 850 mb zeta near storm.
+c     Z7MN:  Mean value of 700 mb zeta surrounding storm.
+c     Z7MX:  Max value of 700 mb zeta near storm.
+c
+c     This message also contains the intensity estimates (in knots) 
+c     for every forecast hour.  The  conversion for m/s to knots is 
+c     to multiply m/s by 1.9427 (3.281 ft/m, 1 naut mile/6080 ft, 
+c     3600s/h).
+c
+c     NOTE: The longitudes that are passed into this subroutine are
+c     given in 0 - 360, increasing eastward.  The format for the 
+c     atcfunix system requires that the  output be 0-180E or
+c     0-180W, so we must adjust the values, if needed.  Also, the
+c     values for southern latitudes must be positive (use 'N' and 
+c     'S' to distinguish Northern/Southern Hemispheres).
+c
+c     INPUT:
+c     outlon    longitude  fix position for this storm at this time 
+c               which is to be written out to the  output file
+c     outlat    latitude  fix position for this storm at this time 
+c               which is to be written out to the  output file
+c     inp       contains input date and model number information
+c     ist       the number storm that we're processing (can be 1-15)
+c     ifcsthr   the current forecast hour being output
+c     vmaxwind  the max surface wind for this storm at this fcst hour
+c     xminmslp  the min mslp for this storm at this fcst hour
+c     vradius   Contains the distance from the storm fix position to
+c               each of the various wind threshhold distances in each
+c               quadrant. (3,4) ==> (# of threshholds, # of quadrants)
+c     maxstorm  max # of storms that can be handled
+c     istmspd   speed of storm translation
+c     istmdir   direction of storm motion
+c     cps_vals  Hart's cyclone phase space values: (1) is for parameter
+c               B (thickness asymmetry), (2) and (3) are for thermal
+c               wind values.
+c     imeanzeta array with values of mean 850 & 700 zeta
+c     igridzeta array with values of max (gridpoint) 850 & 700 zeta
+c     plastbar  pressure of last closed isobar (pa)
+c     rlastbar  radius of last closed isobar (nm)
+c 
+c     OUTPUT:
+c     ioaxret   integer return code from this subroutine
+c     
+c     LOCAL:
+c     intlon    integer that holds the value of outlon*10
+c     intlat    integer that holds the value of outlat*10
+c     storm     An array of type tcvcard.  Use this for the storm ID
+c
+
+
+      write (68,87) basinid,storm(ist)%tcv_storm_id
+     &      ,gstm%gv_gen_date,gstm%gv_gen_fhr,gstm%gv_gen_lat
+     &      ,gstm%gv_gen_latns,gstm%gv_gen_lon
+     &      ,gstm%gv_gen_lonew,gstm%gv_gen_type
+     &      ,atcfymdh
+     &      ,adjustr(atcfname),ifcsthour,intlat,clatns,intlon,clonew
+     &      ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &      ,int(xminmslp/100. + 0.5)
+     &      ,'XX,  34, NEQ'
+     &      ,vradius(1,1),vradius(1,2),vradius(1,3),vradius(1,4)
+     &      ,iplastbar,irlastbar,-99,istmdir,istmspd
+     &      ,iparamb,ivtl,ivtu
+     &      ,imeanzeta(1),igridzeta(1),imeanzeta(2),igridzeta(2)
+     &      ,storm(ist)%tcv_storm_name
+
+      if (vradius(2,1) > 0 .or. vradius(2,2) > 0 .or.
+     &    vradius(2,3) > 0 .or. vradius(2,4) > 0) then
+        write (68,87) basinid,storm(ist)%tcv_storm_id
+     &        ,gstm%gv_gen_date,gstm%gv_gen_fhr,gstm%gv_gen_lat
+     &        ,gstm%gv_gen_latns,gstm%gv_gen_lon
+     &        ,gstm%gv_gen_lonew,gstm%gv_gen_type
+     &        ,atcfymdh
+     &        ,adjustr(atcfname),ifcsthour,intlat,clatns,intlon,clonew
+     &        ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &        ,int(xminmslp/100. + 0.5)
+     &        ,'XX,  50, NEQ'
+     &        ,vradius(2,1),vradius(2,2),vradius(2,3),vradius(2,4)
+     &        ,iplastbar,irlastbar,-99,istmdir,istmspd
+     &        ,iparamb,ivtl,ivtu
+     &        ,imeanzeta(1),igridzeta(1),imeanzeta(2),igridzeta(2)
+     &        ,storm(ist)%tcv_storm_name
+      endif
+
+      if (vradius(3,1) > 0 .or. vradius(3,2) > 0 .or.
+     &    vradius(3,3) > 0 .or. vradius(3,4) > 0) then
+        write (68,87) basinid,storm(ist)%tcv_storm_id
+     &        ,gstm%gv_gen_date,gstm%gv_gen_fhr,gstm%gv_gen_lat
+     &        ,gstm%gv_gen_latns,gstm%gv_gen_lon
+     &        ,gstm%gv_gen_lonew,gstm%gv_gen_type
+     &        ,atcfymdh
+     &        ,adjustr(atcfname),ifcsthour,intlat,clatns,intlon,clonew
+     &        ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &        ,int(xminmslp/100. + 0.5)
+     &        ,'XX,  64, NEQ'
+     &        ,vradius(3,1),vradius(3,2),vradius(3,3),vradius(3,4)
+     &        ,iplastbar,irlastbar,-99,istmdir,istmspd
+     &        ,iparamb,ivtl,ivtu
+     &        ,imeanzeta(1),igridzeta(1),imeanzeta(2),igridzeta(2)
+     &        ,storm(ist)%tcv_storm_name
+      endif
+
+c   87 format (i10.10,'_',i3.3,a1,'_',i4.4,a1,'_',a3,', ',5i2.2
+c     &       ,', 03, ',a4,', ',i3.3,', ',i3,a1
+c     &       ,', ',i4,a1,', ',i3,', ',i4,', ',a12,4(', ',i4.4))
+
+   87 format (a2,', ',a4,', ',i10.10,'_F',i3.3,'_',i3.3,a1,'_',i4.4,a1
+     &       ,'_',a3,', ',i10.10,', 03, ',a4,', ',i3.3,', ',i3,a1
+     &       ,', ',i4,a1,', ',i3,', ',i4,', ',a12,4(', ',i4.4)
+     &       ,', ',2(i4,', '),4(i3,', '),2(i5,', '),4(i4,', '),a)
+
+c      write (68,87) gstm%gv_gen_date,gstm%gv_gen_lat
+c     &      ,gstm%gv_gen_latns,gstm%gv_gen_lon
+c     &      ,gstm%gv_gen_lonew,gstm%gv_gen_type
+c     &      ,inp%bcc,inp%byy,inp%bmm,inp%bdd,inp%bhh
+c     &      ,adjustr(atcfname),ifcsthour,intlat,clatns,intlon,clonew
+c     &      ,int((vmaxwind*conv_ms_knots) + 0.5)
+c     &      ,int(xminmslp/100.0 + 0.5)
+c     &      ,'XX,  34, NEQ'
+c     &      ,istmspd,istmdir,imeanzeta(1),igridzeta(1)
+c     &      ,imeanzeta(2),igridzeta(2)
+c
+c   87 format (i10.10,'_',i3.3,a1,'_',i4.4,a1,'_',a3,', ',5i2.2
+c     &       ,', 03, ',a4,', ',i3.3,', ',i3,a1
+c     &       ,', ',i4,a1,', ',i3,', ',i4,', ',a12,6(', ',i4))
+
+
+
+fort.69 -- 
+====================================================================================================
+
+
+      subroutine output_hfip (outlon,outlat,inp,ist
+     &          ,ifh,vmaxwind,xminmslp,vradius,rmax,ioaxret)
+
+      write (69,81) basinid,storm(ist)%tcv_storm_id(1:2)
+     &      ,atcfymdh
+     &      ,adjustr(atcfname),ileadtime,intlat,clatns,intlon,clonew
+     &      ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &      ,int(xminmslp/100.0 + 0.5)
+     &      ,'XX,  34, NEQ'
+     &      ,vradius(1,1),vradius(1,2),vradius(1,3),vradius(1,4),irmax
+
+      if (vradius(2,1) > 0 .or. vradius(2,2) > 0 .or.
+     &    vradius(2,3) > 0 .or. vradius(2,4) > 0) then
+        write (69,81) basinid,storm(ist)%tcv_storm_id(1:2)
+     &        ,atcfymdh
+     &        ,adjustr(atcfname),ileadtime,intlat,clatns,intlon,clonew
+     &        ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &        ,int(xminmslp/100.0 + 0.5)
+     &        ,'XX,  50, NEQ'
+     &        ,vradius(2,1),vradius(2,2),vradius(2,3),vradius(2,4),irmax
+      endif
+
+      if (vradius(3,1) > 0 .or. vradius(3,2) > 0 .or.
+     &    vradius(3,3) > 0 .or. vradius(3,4) > 0) then
+        write (69,81) basinid,storm(ist)%tcv_storm_id(1:2)
+     &        ,atcfymdh
+     &        ,adjustr(atcfname),ileadtime,intlat,clatns,intlon,clonew
+     &        ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &        ,int(xminmslp/100.0 + 0.5)
+     &        ,'XX,  64, NEQ'
+     &        ,vradius(3,1),vradius(3,2),vradius(3,3),vradius(3,4),irmax
+      endif
+
+   81 format (a2,', ',a2,', ',i10.10,', 03, ',a4,', ',i5.5,', ',i3,a1
+     &       ,', ',i4,a1,', ',i3,', ',i4,', ',a12,4(', ',i4.4)
+     &       ,',    0,    0, ',i3)
+c
+
+77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
+
+-rw-r--r--  1 fiorino  frdrapb  4128960 Mar 16 03:52 fort.72
+-rw-r--r--  1 fiorino  frdrapb  3734280 Mar 16 03:52 fort.73
+-rw-r--r--  1 fiorino  frdrapb   136620 Mar 16 03:52 fort.74
+-rw-r--r--  1 fiorino  frdrapb   987712 Mar 16 03:52 fort.76
+
+for.72 -----------
+====================================================================================================
+
+
+      subroutine output_wind_structure (outlon,outlat,xsfclon
+     &          ,xsfclat,inp,ist,ifcsthour,vmaxwind,xminmslp,er_wind
+     &          ,sr_wind,er_vr,sr_vr,er_vt,sr_vt,maxstorm,iofwret)
+
+c
+c     ABSTRACT: This subroutine  outputs a 1-line message for a given
+c     storm at an input forecast hour.  This message contains the
+c     values of the winds at specified distances along 45-degree
+c     radials in each storm quadrant.  These are  output
+c     twice -- First, for an earth-relative coordinate system, and
+c     second, for a storm-relative coordinate system.  For the
+c     earth-relative estimates, we will always have 4 radials: NE, SE,
+c     SW and NW (45,135,225,315).  For the storm-relative estimates,
+c     these radials will be computed at the same relative angles (i.e.,
+c     45,135,225,315), but with respect (positive clockwise) to the
+c     direction of storm motion.  For example, for a storm moving with
+c     a heading of 280, the wind structure is evaluated at these
+c     radials: 325 (front-right; 45 deg CW from heading), 55 (back-
+c     right; 135 deg CW from heading), 145 (back-left; 225 deg CW from
+c     heading), 235 (front-left; 315 deg CW from heading).
+c
+c     LOCAL:
+c       numdist   Number of discrete radii at which the winds will
+c                 be evaluated
+c
+c
+c     This format will mimic the current atcfunix format with the
+c     difference coming late in the record, where the various wind radii
+c     will be replaced with wind values at the 13 specified distances
+c     (10, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500 km)
+c
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             71, NEE, 1137, 1221,  854,  655, etc., ... out to 500 km
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             71, SEE,  947,  982,  474,  396, etc., ... out to 500 km
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             71, SWE,  645,  683,  328,  277, etc., ... out to 500 km
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             71, NWE,  725,  753,  619,  429, etc., ... out to 500 km
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             72, FRR, 1134, 1224,  852,  654, etc., ... out to 500 km
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             72, BRR,  944,  984,  472,  393, etc., ... out to 500 km
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             72, BLR,  649,  686,  321,  272, etc., ... out to 500 km
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             72, FLR,  729,  756,  613,  421, etc., ... out to 500 km
+c
+c     NOTE: Each of the above lines beginning with "AL" is output as
+c           a single line of text.
+c     NOTE: These winds are in m/s coming into this routine and will
+c           be converted to knots*10 for output (e.g., 1221 = 122.1 kts)
+c
+c     The "71" ID indicates earth-relative winds, the "72" ID indicates
+c     storm-relative winds.  Here are the other IDs that will be used:
+c       81: Tangential winds, earth-relative (m/s)
+c       82: Tangential winds, storm-relative (m/s)
+c       91: Radial winds, earth-relative (m/s)
+c       92: Radial winds, storm-relative (m/s)
+c
+c     Note that in this example, for this 36h forecast hour, there are
+c     8 entries.  This is so that we can include the wind values for
+c     the 4 different quadrants, for both the earth relative analyses
+c     (NEE, SEE, SWE, NWE) and the storm-relative analyses (FRR, BRR,
+c     BLR, FLR).
+c
+c     This message also contains the intensity estimates (in knots)
+c     for every forecast hours  The  conversion for m/s to knots is
+c     to multiply m/s by 1.9427 (3.281 ft/m, 1 naut mile/6080 ft,
+c     3600s/h).
+c
+c     NOTE: The longitudes that are passed into this subroutine are
+c     given in 0 - 360, increasing eastward.  The format for the
+c     atcfunix system requires that the  output be 0-180E or
+c     0-180W, so we must adjust the values, if needed.  Also, the
+c     values for southern latitudes must be positive (use 'N' and
+c     'S' to distinguish Northern/Southern Hemispheres).
+c
+c     INPUT:
+c     outlon    longitude  fix position for this storm at this time
+c               which is to be written out to the  output file
+c     outlat    latitude  fix position for this storm at this time
+c               which is to be written out to the  output file
+c     inp       contains input date and model number information
+c     ist       the number storm that we're processing (can be 1-15)
+c     ifcsthr   the current forecast hour being output
+c     vmaxwind  the max surface wind for this storm at this fcst hour
+c     xminmslp  the min mslp for this storm at this fcst hour
+c     er_wind   Quadrant winds in earth-relative framework
+c     sr_wind   Quadrant winds in storm-relative framework
+c     er_vr     Quadrant radial winds in earth-relative framework
+c     sr_vr     Quadrant radial winds in storm-relative framework
+c     er_vt     Quadrant tangential winds in earth-relative framework
+c     sr_vt     Quadrant tangential winds in storm-relative framework
+c
+c     OUTPUT:
+c     ioaxret   integer return code from this subroutine
+c
+c     LOCAL:
+c     intlon    integer that holds the value of outlon*10
+c     intlat    integer that holds the value of outlat*10
+c
+
+
+c     Total wind (converted to knots*10), earth relative....
+
+      do iq = 1,numquad
+          write (72,81) basinid,storm(ist)%tcv_storm_id(1:2)
+     &      ,atcfymdh
+     &      ,adjustr(atcfname),output_fhr,intlat,clatns,intlon,clonew
+     &      ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &      ,int(xminmslp/100.0 + 0.5)
+     &      ,', XX, 71, ',cquad(iq),'E'
+     &      ,(int((er_wind(iq,it)*conv_ms_knots*10)+0.5),it=1,numdist)
+     &      ,intlat100,clatns,intlon100,clonew
+      enddo
+
+c     Total wind (converted to knots*10), storm relative....
+
+      do iq = 1,numquad
+          write (72,81) basinid,storm(ist)%tcv_storm_id(1:2)
+     &      ,atcfymdh
+     &      ,adjustr(atcfname),output_fhr,intlat,clatns,intlon,clonew
+     &      ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &      ,int(xminmslp/100.0 + 0.5)
+     &      ,', XX, 72, ',crel(iq),'R'
+     &      ,(int((sr_wind(iq,it)*conv_ms_knots*10)+0.5),it=1,numdist)
+     &      ,intlat100,clatns,intlon100,clonew
+      enddo
+
+c     Tangential wind (m/s * 10), earth relative....
+
+      do iq = 1,numquad
+          write (72,81) basinid,storm(ist)%tcv_storm_id(1:2)
+     &      ,atcfymdh
+     &      ,adjustr(atcfname),output_fhr,intlat,clatns,intlon,clonew
+     &      ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &      ,int(xminmslp/100.0 + 0.5)
+     &      ,', XX, 81, ',cquad(iq),'E'
+     &      ,(int((er_vt(iq,it)*10)+0.5),it=1,numdist)
+     &      ,intlat100,clatns,intlon100,clonew
+      enddo
+
+c     Tangential wind (m/s * 10), storm relative....
+
+      do iq = 1,numquad
+          write (72,81) basinid,storm(ist)%tcv_storm_id(1:2)
+     &      ,atcfymdh
+     &      ,adjustr(atcfname),output_fhr,intlat,clatns,intlon,clonew
+     &      ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &      ,int(xminmslp/100.0 + 0.5)
+     &      ,', XX, 82, ',crel(iq),'R'
+     &      ,(int((sr_vt(iq,it)*10)+0.5),it=1,numdist)
+     &      ,intlat100,clatns,intlon100,clonew
+      enddo
+
+c     Radial wind (m/s * 10), earth relative....
+
+      do iq = 1,numquad
+          write (72,81) basinid,storm(ist)%tcv_storm_id(1:2)
+     &      ,atcfymdh
+     &      ,adjustr(atcfname),output_fhr,intlat,clatns,intlon,clonew
+     &      ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &      ,int(xminmslp/100.0 + 0.5)
+     &      ,', XX, 91, ',cquad(iq),'E'
+     &      ,(int((er_vr(iq,it)*10)+0.5),it=1,numdist)
+     &      ,intlat100,clatns,intlon100,clonew
+      enddo
+
+c     Radial wind (m/s * 10), storm relative....
+
+      do iq = 1,numquad
+          write (72,81) basinid,storm(ist)%tcv_storm_id(1:2)
+     &      ,atcfymdh
+     &      ,adjustr(atcfname),output_fhr,intlat,clatns,intlon,clonew
+     &      ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &      ,int(xminmslp/100.0 + 0.5)
+     &      ,', XX, 92, ',crel(iq),'R'
+     &      ,(int((sr_vr(iq,it)*10)+0.5),it=1,numdist)
+     &      ,intlat100,clatns,intlon100,clonew
+      enddo
+c
+   81 format (a2,', ',a2,', ',i10.10,', 03, ',a4,', ',i3.3,', ',i3,a1
+     &       ,', ',i4,a1,', ',i3,', ',i4,a10,a2,a1,14(', ',i4)
+     &       ,', ',i4,a1,', ',i5,a1)
+
+
+fort.73 --
+====================================================================================================
+
+
+
+      subroutine output_fract_wind (outlon,outlat,xsfclon,xsfclat
+     &          ,inp,ist,ifcsthour,vmaxwind,xminmslp,wfract_cov
+     &          ,wfract_type,pdf_ct_bin,pdf_ct_tot,maxstorm,iofwret)
+
+c
+c     ABSTRACT: This subroutine  outputs a 1-line message for a given
+c     storm at an input forecast hour.  This message contains the
+c     values for the fractional areal coverage of various wind
+c     thresholds.  In addition, this subroutine also writes out
+c     records to a file containing data on the PDF of wind magnitudes
+c     within r=350 km.
+c
+c     This format will mimic the current atcfunix format with the
+c     difference coming late in the record, where the various wind radii
+c     will be replaced with areal coverage thresholds.
+c
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             000, 100,  34, NEE,  981,  857,  629,  810
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             000, 100,  50, NEE,  874,  732,  319,  610
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             000, 100,  64, NEE,  454,  327,   99,  270
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             000, 100,  34, AAE,  721,  721,  721,  721
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             000, 100,  50, AAE,  465,  465,  465,  465
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             000, 100,  64, AAE,  298,  298,  298,  298
+c
+c     (NOTE: Each of the above lines beginning with "AL" is output as
+c            a single line of text.)
+c
+c     Note that in this example, for this 36h forecast hour, there are
+c     3 entries.  This is so that we can include the pctgs for the
+c     3 different wind thresholds (34kt, 50kt and 64kt).  So the only
+c     thing different in each entry is the wind pctg info;  all the
+c     other info is identical for each entry.
+c
+c     Listed after the "XX" in each record is the radius from which
+c     the coverage is valid (000 km in this case); Next is the radius
+c     at which the coverage stops (100 km in this case).  Next is the
+c     wind threshold (34, 50, 64).  Next is an identifier for which
+c     quadrant the coverage starts in (first 2 characters are NE, SE,
+c     SW, NW); the last character indicates if the coverages are
+c     computed in the quadrants as earth-relative ("E") or
+c     storm-motion relative ("R").  The ones listed there as "AAE"
+c     are for the full disc (i.e., 4-quadrant average), earth-relative.
+c     Next are the wind coverage percentages, listed as percentage * 10
+c     (e.g., 981 = 98.1%).
+c
+c     This message also contains the intensity estimates (in knots)
+c     for every forecast hours  The  conversion for m/s to knots is
+c     to multiply m/s by 1.9427 (3.281 ft/m, 1 naut mile/6080 ft,
+c     3600s/h).
+c
+c     NOTE: The longitudes that are passed into this subroutine are
+c     given in 0 - 360, increasing eastward.  The format for the
+c     atcfunix system requires that the  output be 0-180E or
+c     0-180W, so we must adjust the values, if needed.  Also, the
+c     values for southern latitudes must be positive (use 'N' and
+c     'S' to distinguish Northern/Southern Hemispheres).
+c
+c     INPUT:
+c     outlon    longitude  fix position for this storm at this time
+c               which is to be written out to the  output file
+c     outlat    latitude  fix position for this storm at this time
+c               which is to be written out to the  output file
+c     xsfclon   low-level longitude estimate for this storm & time,
+c               computed ideally from mean of mslp & low-level winds.
+c     xsfclat   low-level latitude estimate for this storm & time,
+c               computed ideally from mean of mslp & low-level winds.
+c     inp       contains input date and model number information
+c     ist       the number storm that we're processing (can be 1-15)
+c     ifcsthr   the current forecast hour being output
+c     vmaxwind  the max surface wind for this storm at this fcst hour
+c     xminmslp  the min mslp for this storm at this fcst hour
+c     wfract_cov percent areal coverage for various wind thresholds
+c     wfract_type 'earth' or 'storm' relative analysis
+c     pdf_ct_bin array for pdf of wind magnitudes within r=350 km
+c     pdf_ct_tot total count of pdf points for r < 350 km
+c
+c     OUTPUT:
+c     ioaxret   integer return code from this subroutine
+c
+c     LOCAL:
+c     intlon    integer that holds the value of outlon*10
+c     intlat    integer that holds the value of outlat*10
+c
+
+
+          write (73,81) basinid,storm(ist)%tcv_storm_id(1:2)
+     &      ,atcfymdh
+     &      ,adjustr(atcfname),output_fhr,intlat,clatns,intlon,clonew
+     &      ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &      ,int(xminmslp/100.0 + 0.5)
+     &      ,', XX, ',0,ib*100,windthresh(it),'NE',wt
+     &      ,int((1000.*wfract_cov(1,ib,it))+0.5)
+     &      ,int((1000.*wfract_cov(2,ib,it))+0.5)
+     &      ,int((1000.*wfract_cov(3,ib,it))+0.5)
+     &      ,int((1000.*wfract_cov(4,ib,it))+0.5)
+     &      ,intlat100,clatns,intlon100,clonew
+
+        enddo
+      enddo
+
+      do ib = 1,numbin
+        do it = 1,numthresh
+
+          write (73,81) basinid,storm(ist)%tcv_storm_id(1:2)
+     &      ,atcfymdh
+     &      ,adjustr(atcfname),output_fhr,intlat,clatns,intlon,clonew
+     &      ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &      ,int(xminmslp/100.0 + 0.5)
+     &      ,', XX, ',0,ib*100,windthresh(it),'AA',wt
+     &      ,int((1000.*wfract_cov(5,ib,it))+0.5)
+     &      ,int((1000.*wfract_cov(5,ib,it))+0.5)
+     &      ,int((1000.*wfract_cov(5,ib,it))+0.5)
+     &      ,int((1000.*wfract_cov(5,ib,it))+0.5)
+     &      ,intlat100,clatns,intlon100,clonew
+
+        enddo
+      enddo
+
+   81 format (a2,', ',a2,', ',i10.10,', 03, ',a4,', ',i3.3,', ',i3,a1
+     &       ,', ',i4,a1,', ',i3,', ',i4,', ',a6,i3.3,', ',i3.3,', '
+     &       ,i3,', ',a2,a1,4(', ',i4),', ',i4,a1,', ',i5,a1)
+
+
+fort.74 --  ike
+====================================================================================================
+
+      subroutine output_ike (outlon,outlat,xsfclon,xsfclat,inp,ist
+     &          ,ifcsthour,vmaxwind,xminmslp,ike,sdp,wdp,maxstorm
+     &          ,ioiret)
+c
+c     ABSTRACT: This subroutine  outputs a 1-line message for a given
+c     storm at an input forecast hour.  This message contains the values
+c     for the Integrated Kinetic Energy (IKE) and Storm Surge Damage
+c     Potential (SDP), based on Powell (BAMS, 2007).  At this time, we
+c     are only computing the IKE values for TS threshold (17.5 m/s) and
+c     above.  We are not yet computing wind damage potential (WDP)
+c     since, per Mark Powell (4/2008), he is currently re-formulating
+c     an algorithm for it.
+c
+c     LOCAL:
+c
+c     Arrays:
+c
+c     ike   Integrated kinetic energy:
+c           ike(1) = IKE_10m/s  (storm energy)
+c           ike(2) = IKE_18m/s  (IKE_ts, tropical storm)
+c           ike(3) = IKE_33m/s  (IKE_h,  hurricane)
+c           ike(4) = IKE_25_40 m/s  (Not currently computed)
+c           ike(5) = IKE_41_54 m/s  (Not currently computed)
+c           ike(6) = IKE_55 m/s     (Not currently computed)
+c
+c
+c     The format used will mimic the current atcfunix format with the
+c     difference coming late in the record, where the various wind radii
+c     will be replaced with WDP, SDP and IKE values:
+c
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N, 675W, 42, 995, XX,  91,
+c             IKE,  340,  560,  212,  174,   42,   93,   12,    0
+c
+c     Where the places are identified as follows:
+c
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N, 675W, 42, 995, XX,  91,
+c             IKE,  WDP,  SDP,  I10,  ITS,  IH ,I2540,I4154,  I55
+c
+c     (NOTE: Each of the above lines beginning with "AL" is output as
+c            a single line of text.)
+c
+c     Values for WDP and SDP are multiplied by 10 in this routine
+c     before being written out.
+c
+c     This message also contains the intensity estimates (in knots)
+c     for every forecast hour.  The  conversion for m/s to knots is
+c     to multiply m/s by 1.9427 (3.281 ft/m, 1 naut mile/6080 ft,
+c     3600s/h).
+c
+c     NOTE: The longitudes that are passed into this subroutine are
+c     given in 0 - 360, increasing eastward.  The format for the
+c     atcfunix system requires that the  output be 0-180E or
+c     0-180W, so we must adjust the values, if needed.  Also, the
+c     values for southern latitudes must be positive (use 'N' and
+c     'S' to distinguish Northern/Southern Hemispheres).
+c
+c     INPUT:
+c     storm     An array of type tcvcard.  Use this for the storm ID
+c     outlon    longitude  fix position for this storm at this time
+c               which is to be written out to the  output file
+c     outlat    latitude  fix position for this storm at this time
+c               which is to be written out to the  output file
+c     xsfclon   low-level longitude estimate for this storm & time,
+c               computed ideally from mean of mslp & low-level winds.
+c     xsfclat   low-level latitude estimate for this storm & time,
+c               computed ideally from mean of mslp & low-level winds.
+c     inp       contains input date and model number information
+c     ist       the number storm that we're processing (can be 1-15)
+c     ifcsthr   the current forecast hour being output
+c     vmaxwind  the max surface wind for this storm at this fcst hour
+c     xminmslp  the min mslp for this storm at this fcst hour
+c     ike       integrated kinetic energy, in units of TJ
+c     sdp       storm surge damage potential
+c     wdp       wind damage potential
+c
+c     OUTPUT:
+c     ioaxret   integer return code from this subroutine
+c
+c     LOCAL:
+c     intlon    integer that holds the value of outlon*10
+c     intlat    integer that holds the value of outlat*10
+c
+
+      write (74,81) basinid,storm(ist)%tcv_storm_id(1:2)
+     &  ,atcfymdh
+     &  ,adjustr(atcfname),output_fhr,intlat,clatns,intlon,clonew
+     &  ,int((vmaxwind*conv_ms_knots) + 0.5)
+     &  ,int(xminmslp/100.0 + 0.5)
+     &  ,', XX,  91, IKE',int((wdp*10)+0.5),int((sdp*10)+0.5)
+     &  ,int(ike(1)+0.5),int(ike(2)+0.5),int(ike(3)+0.5)
+     &  ,int(ike(4)+0.5),int(ike(5)+0.5),int(ike(6)+0.5)
+     &  ,intlat100,clatns,intlon100,clonew
+c
+   81 format (a2,', ',a2,', ',i10.10,', 03, ',a4,', ',i3.3,', ',i3,a1
+     &       ,', ',i4,a1,', ',i3,', ',i4,a14,8(',',i5)
+     &       ,', ',i4,a1,', ',i5,a1)
+
+
+fort.76 -- 
+====================================================================================================
+
+      subroutine output_fract_wind (outlon,outlat,xsfclon,xsfclat
+     &          ,inp,ist,ifcsthour,vmaxwind,xminmslp,wfract_cov
+     &          ,wfract_type,pdf_ct_bin,pdf_ct_tot,maxstorm,iofwret)
+c
+c     ABSTRACT: This subroutine  outputs a 1-line message for a given
+c     storm at an input forecast hour.  This message contains the
+c     values for the fractional areal coverage of various wind
+c     thresholds.  In addition, this subroutine also writes out
+c     records to a file containing data on the PDF of wind magnitudes
+c     within r=350 km.
+c
+c     This format will mimic the current atcfunix format with the
+c     difference coming late in the record, where the various wind radii
+c     will be replaced with areal coverage thresholds.
+c
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             000, 100,  34, NEE,  981,  857,  629,  810
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             000, 100,  50, NEE,  874,  732,  319,  610
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             000, 100,  64, NEE,  454,  327,   99,  270
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             000, 100,  34, AAE,  721,  721,  721,  721
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             000, 100,  50, AAE,  465,  465,  465,  465
+c     AL, 13, 2000092500, 03, AVNO, 036, 243N,  675W,  42,  995, XX,
+c             000, 100,  64, AAE,  298,  298,  298,  298
+c
+c     (NOTE: Each of the above lines beginning with "AL" is output as
+c            a single line of text.)
+c
+c     Note that in this example, for this 36h forecast hour, there are
+c     3 entries.  This is so that we can include the pctgs for the
+c     3 different wind thresholds (34kt, 50kt and 64kt).  So the only
+c     thing different in each entry is the wind pctg info;  all the
+c     other info is identical for each entry.
+c
+c     Listed after the "XX" in each record is the radius from which
+c     the coverage is valid (000 km in this case); Next is the radius
+c     at which the coverage stops (100 km in this case).  Next is the
+c     wind threshold (34, 50, 64).  Next is an identifier for which
+c     quadrant the coverage starts in (first 2 characters are NE, SE,
+c     SW, NW); the last character indicates if the coverages are
+c     computed in the quadrants as earth-relative ("E") or
+c     storm-motion relative ("R").  The ones listed there as "AAE"
+c     are for the full disc (i.e., 4-quadrant average), earth-relative.
+c     Next are the wind coverage percentages, listed as percentage * 10
+c     (e.g., 981 = 98.1%).
+c
+c     This message also contains the intensity estimates (in knots)
+c     for every forecast hours  The  conversion for m/s to knots is
+c     to multiply m/s by 1.9427 (3.281 ft/m, 1 naut mile/6080 ft,
+c     3600s/h).
+c
+c     NOTE: The longitudes that are passed into this subroutine are
+c     given in 0 - 360, increasing eastward.  The format for the
+c     atcfunix system requires that the  output be 0-180E or
+c     0-180W, so we must adjust the values, if needed.  Also, the
+c     values for southern latitudes must be positive (use 'N' and
+c     'S' to distinguish Northern/Southern Hemispheres).
+c
+c     INPUT:
+c     outlon    longitude  fix position for this storm at this time
+c               which is to be written out to the  output file
+c     outlat    latitude  fix position for this storm at this time
+c               which is to be written out to the  output file
+c     xsfclon   low-level longitude estimate for this storm & time,
+c               computed ideally from mean of mslp & low-level winds.
+c     xsfclat   low-level latitude estimate for this storm & time,
+c               computed ideally from mean of mslp & low-level winds.
+c     inp       contains input date and model number information
+c     ist       the number storm that we're processing (can be 1-15)
+c     ifcsthr   the current forecast hour being output
+c     vmaxwind  the max surface wind for this storm at this fcst hour
+c     xminmslp  the min mslp for this storm at this fcst hour
+c     wfract_cov percent areal coverage for various wind thresholds
+c     wfract_type 'earth' or 'storm' relative analysis
+c     pdf_ct_bin array for pdf of wind magnitudes within r=350 km
+c     pdf_ct_tot total count of pdf points for r < 350 km
+c
+c     OUTPUT:
+c     ioaxret   integer return code from this subroutine
+c
+c     LOCAL:
+c     intlon    integer that holds the value of outlon*10
+c     intlat    integer that holds the value of outlat*10
+c
+
+
+
+
+
+      do ip = 1,16
+        pdfval = float(pdf_ct_bin(ip)) / float(pdf_ct_tot)
+        write (76,85) atcfymdh,basinid,storm(ist)%tcv_storm_id(1:2)
+     &               ,output_fhr,10*(ip-1),10*ip,pdf_ct_bin(ip)
+     &               ,pdf_ct_tot,pdfval
+      enddo
+
+   85 format (1x,i10.10,3x,a2,a2,3x,i3,3x,i3.3,'_',i3.3,3x,i7,2x,i7
+     &       ,2x,f5.3)

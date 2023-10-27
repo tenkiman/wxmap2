@@ -1,0 +1,30 @@
+#!wing
+#!version=5.0
+##################################################################
+# Wing IDE project file                                          #
+##################################################################
+[project attributes]
+proj.directory-list = [{'dirloc': loc('../../prc/flddat'),
+                        'excludes': (),
+                        'filter': u'All Source Files',
+                        'include_hidden': False,
+                        'recursive': False,
+                        'watch_for_changes': True},
+                       {'dirloc': loc('../../prc/tcdat'),
+                        'excludes': (),
+                        'filter': u'All Source Files',
+                        'include_hidden': False,
+                        'recursive': False,
+                        'watch_for_changes': True},
+                       {'dirloc': loc('../../prc/tctrk'),
+                        'excludes': (),
+                        'filter': u'All Source Files',
+                        'include_hidden': False,
+                        'recursive': False,
+                        'watch_for_changes': True}]
+proj.file-list = [loc('../../prc/fim/w2.fim.post2.py'),
+                  loc('../../prc/lib/python/FM.py'),
+                  loc('../../prc/lib/python/w2base.py'),
+                  loc('../../prc/lib/python/w2globalvars.py'),
+                  loc('../../prc/lib/python/w2localvars.py')]
+proj.file-type = 'shared'

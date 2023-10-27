@@ -1,0 +1,37 @@
+function dtitle(t1)
+
+'set line 0'
+'draw recf 0.05 0.05 10.95 0.35'
+'set strsiz 0.14'
+'set string 3 l '_cthkt
+cdtg=dtginc(_dtg,_tau)
+
+if(_area = 'conus' | _area = 'troplant')
+  gtime=_lgtime._tau  
+else
+  gtime=_ugtime._tau
+endif
+
+# -- bottom title verify time + product desc
+#
+# -- old one from grads fails for yyyy > 2021
+#
+#'draw string 0.2 0.46 Verify: 'mydate() -- grads that fails yyyy > 2021
+# -- new one from M.getGtime4DTG()
+#
+'draw string 0.2 0.46 Verify: 'gtime
+'set string 3 r '_cthkt
+'set strsiz 0.12'
+'draw string 10.80 0.46 't1
+
+'set strsiz 0.15 0.18'
+'set strsiz 0.14'
+
+'draw recf 0.05 8.15 10.95 8.50'
+
+'set string 2 l '_cthkt
+
+rc=modtitle()
+
+return
+

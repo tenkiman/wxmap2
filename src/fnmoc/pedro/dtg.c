@@ -1,0 +1,74 @@
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <stdio.h>
+#include <errno.h>
+
+#define BUFSIZE 256
+/* Pedro Tsai : Retrun current dtg or CRDATE variable 
+                Between 00-11.59z it return 00z 
+		Between 12.00-23.59z it return 12z
+		If CRDATE variable is set , then just return 
+		CRDATE string (yyyymmddhh).
+   To compile: gcc dtg.c -o dtg
+*/
+
+
+int main(int argc, char *argv[])
+{
+  time_t  seconds ;
+  struct tm *ptr_dtg ;
+  char* dtgstr;
+  int chour,cmin,yy,century;
+  century=20;
+	
+/* Get CRDATE variable */
+        if ( dtgstr=getenv("CRDATE") )
+	{
+	  printf("%s\n",dtgstr) ;
+	  exit(0) ;
+	}
+/* Else use the system time (gmt) for dtg string */
+   time(&seconds) ; /* get the GMT offset from the local machine */
+   if (seconds == -1 ) 
+   {
+     fprintf(stderr,"error in time function,errno = %d \n",errno) ;
+     return 1 ; 
+   }
+   ptr_dtg=gmtime(&seconds) ;
+   chour=ptr_dtg->tm_hour;
+   cmin=ptr_dtg->tm_min;
+
+  if ( (ptr_dtg->tm_hour >= 0) && (ptr_dtg->tm_hour < 6) ) {
+       ptr_dtg->tm_hour=0 ;
+  } else if ( (ptr_dtg->tm_hour >= 6) && (ptr_dtg->tm_hour < 12) ) {
+       ptr_dtg->tm_hour=6 ;
+  } else if ( (ptr_dtg->tm_hour >= 12) && (ptr_dtg->tm_hour < 18) ) {
+       ptr_dtg->tm_hour=12 ;
+  } else if ( (ptr_dtg->tm_hour >= 18) && (ptr_dtg->tm_hour < 24) ) {
+       ptr_dtg->tm_hour=18 ;
+  }
+
+/* Out put the current DTG string */
+
+/*printf("19") ; */
+
+  yy=ptr_dtg->tm_year;
+  if(yy == 100)  yy=00 ; 
+  if(yy > 100)  yy=yy-100 ; 
+if ( (argc > 1) && (*(argv[1])=='-' && *(argv[1]+1)=='h') ) {
+  printf("%02d%02d%02d",century,yy,(ptr_dtg->tm_mon + 1 )) ;
+  printf("%02d%02d %02d:%02d\n",ptr_dtg->tm_mday,ptr_dtg->tm_hour,
+    chour-ptr_dtg->tm_hour,cmin) ;
+} else {
+  printf("%02d%02d%02d",century,yy,(ptr_dtg->tm_mon + 1 )) ;
+  printf("%02d%02d\n",ptr_dtg->tm_mday,ptr_dtg->tm_hour) ;
+}
+
+return 0 ;
+}
+
+
+
+
+

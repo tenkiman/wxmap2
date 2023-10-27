@@ -1,0 +1,273 @@
+body		
+ 	{
+	background-color : #DEB887;
+	background-color : #fcf1da;
+	color: Maroon;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt.;
+}
+table.tdo
+  	{
+	border: medium ridge;
+	border-bottom-color: #006400;
+	border-right-color: #006400;
+	border-left-color: #8B0000;
+	border-top-color: #8B0000;
+	background-color : Olive;
+	text-align : center;
+	padding : 5px 5px 5px 5px;
+	padding-bottom : 5px;
+	padding-left : 5px;
+	padding-right : 5px;
+	padding-top : 5px;
+}
+a				 {
+	color: Navy;
+	border : 0px none;
+	font-variant : normal;
+	font : normal normal normal/normal;
+	text-transform : none;
+	text-decoration : none;
+}
+  a:active {
+	color: Navy;
+	border : 0px none;
+	font-variant : normal;
+}
+  a:visited	{
+	color: Navy;
+	border : 0px none;
+	font-variant : normal;
+}
+  a:hover		{
+	color: #2E8B57;
+	border : 0px none;
+	background-color : Yellow;
+}
+tabemp
+  	     {
+	background-color: transparent;
+	border: groove Olive;
+}
+tdemp
+        {
+	background: transparent;
+	border : Olive;
+}
+div 
+       {text-align: left;
+        ruby-align : center; 	
+   		 position : absolute;}
+table.tdo td   
+   {
+	background-color : #FAEBD7;
+	font-family : "MS Serif", "New York", serif;
+	text-align : center;
+	vertical-align : top;
+	padding : 3px 7px 3px 7px;
+}
+table.tdo th
+    {
+	background-color: Gray;
+	color: White;
+	font-size: 16pt;
+}   
+.button {
+	font-family: Arial, Helvetica, sans-serif;
+	color: Silver;
+	border : 0px none;
+	width: 75px;
+	font: bold;
+	background-color: Maroon;
+}
+.button:visited {
+	width: 75px;
+	color: #708090;
+	border : 0px none;
+}
+ .buttonover {
+	font-family: Arial, Helvetica, sans-serif;
+	width: 75px;
+	color: Maroon;
+	border : 0px none;
+	font: bold;
+	background-color: Yellow;
+	font-weight : bolder;
+}
+
+
+
+.btnsml { 
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	align: left;
+	padding: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}	
+
+.btntop { 
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 100px;
+	align: left;
+	padding: 0px;
+	margin-bottom: 0px;
+}	
+
+
+table.btncolv {
+	width : 40px;
+	padding: 0px;
+	margin: 0px;
+}
+
+table.btncolv td {
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : normal;
+	font-weight : normal;
+	width : 38px;
+	text-align : left;
+	vertical-align : middle;
+	padding: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+table.btncolv td.bdesc {
+	text-align : center;
+	font-weight : bold;
+	vertical-align : middle;
+	width : 38px;
+	background-color : LightGrey;
+	font-color : Black;
+}
+
+
+table.btncolv .bhelp{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	font-weight: bold;
+	font-style: italic;
+	color: White;
+	background-color : Red;
+	text-align : center;
+	vertical-align : middle;
+}
+
+table.models {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	font-weight: bold;
+	font-style: italic;
+	text-align : center;
+}
+
+table.models th {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+	font-style : normal;
+	font-weight : bold;
+	text-align : center;
+	vertical-align : middle;
+}
+
+
+table.models td.key {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 8pt;
+	font-style : normal;
+	font-weight : bold;
+	text-align : center;
+	vertical-align : middle;
+	background-color : lightyellow;
+        background-color : khaki;
+        border: 0;
+	padding: 0px;
+}
+
+table.models td.basin {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 6pt;
+	font-style : normal;
+	font-weight : normal;
+	text-align : center;
+	vertical-align : middle;
+	background-color : lightyellow;
+        background-color : khaki;
+        border: 0;
+	padding: 0px;
+}
+
+table.models td.nbsp {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 9pt;
+	font-style : normal;
+	font-weight : bold;
+	text-align : middle;
+	vertical-align : middle;
+        background-color : khaki;
+	padding: 0px;
+}
+
+table.models td {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 9pt;
+	font-style : normal;
+	font-weight : bold;
+	text-align : middle;
+	vertical-align : middle;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+table.models td.btntop {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 9pt;
+	font-style : normal;
+	font-weight : bold;
+	text-align : middle;
+	vertical-align : middle;
+	background-color : khaki;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+table.models td.title {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 12pt;
+	font-style : normal;
+	font-weight : bold;
+	text-align : left;
+	color: navy;
+        background-color : khaki;
+	vertical-align : middle;
+        padding: 0px;
+	width: 600;
+}
+
+table.models td.code {
+	font-family : Courier;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+	font-style : normal;
+	font-weight : bold;
+	text-align : right;
+        color: red;
+	background-color : lightyellow;
+        background-color : khaki;
+        width: 120;
+        border: 0;
+	vertical-align : middle;
+}
+

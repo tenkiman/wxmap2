@@ -1,0 +1,300 @@
+   599	20:58	la ../../trk_exec/grbindex.exe laf
+   600	20:58	f
+   601	20:58	la ../../trk_exec/grbindex.exe laf
+   602	20:58	p.grbndx.py
+   603	20:59	la
+   604	20:59	../../trk_exec/gettrk.exe < input.nml
+   605	21:00	la
+   606	21:00	la fort.64
+   607	21:00	la ../onebig/fort.64
+   608	21:01	diff fort.64 ../onebig/fort.64
+   609	21:01	diff fort.69 ../onebig/fort.69
+   610	21:01	cd ../..
+   611	21:01	la
+   612	21:02	la arch/
+   613	21:02	cd trk_src/
+   614	21:02	la
+   615	21:02	la gettrk/Makefile
+   616	21:02	cd ..
+   617	21:02	la
+   618	21:02	cd libs/
+   619	21:02	la
+   620	21:03	la src/
+   621	21:03	la src/bacio/
+   622	21:03	cd ..
+   623	21:03	la
+   624	21:03	pa makefile
+   625	21:03	pg makefile
+   626	21:04	m clean
+   627	21:04	la
+   628	21:04	la trk_exec/
+   629	21:04	m
+   630	21:05	la trk_exec/
+   631	21:05	rm trk_exec/*
+   632	21:05	f
+   633	21:06	la /w21/app/src/ncep/grib2/lib
+   634	21:08	la trk_exec/
+   635	21:09	cd trk_src/
+   636	21:09	cd gettrk/
+   637	21:09	m
+   638	21:10	pd ../../libs/src/g2/
+   639	21:10	la
+   640	21:10	ln -s gf_unpack7.F gf_unpack7.f
+   641	21:10	m
+   642	21:10	po
+   643	21:10	ln -s gf_unpack7.F gf_unpack7.f
+   644	21:10	la
+   645	21:10	del gf_unpack7.f
+   646	21:10	la
+   647	21:11	m
+   648	21:11	cd ../tave/
+   649	21:11	la
+   650	21:11	m
+   651	21:12	/w21/app/src/ncep/grib2/lib/w21/app/src/ncep/grib2/lib
+   652	21:15	fortran -fno-range-check -O -I../../libs/mods/g2 tave.f -L../../libs -lw3emc_i4r8 -lw3nco_i4r8 -lbacio -lg2 -L/opt/local/lib -lpng -ljasper -lz -o ../../trk_exec/tave.exe
+   653	21:15	gfortran -fno-range-check -O -I../../libs/mods/g2 tave.f -L../../libs -lw3emc_i4r8 -lw3nco_i4r8 -lbacio -lg2 -L/opt/local/lib -lpng -ljasper -lz -o ../../trk_exec/tave.exe
+   654	21:15	fortran -fno-range-check -O -I../../libs/mods/g2 tave.f -L../../libs -lw3emc_i4r8 -lw3nco_i4r8 -lbacio -lg2 -L/opt/local/lib -lpng -ljasper -lz -o ../../trk_exec/tave.exe
+   655	21:15	gfortran -fno-range-check -O -I../../libs/mods/g2 tave.f -L../../libs -lw3emc_i4r8 -lw3nco_i4r8 -lbacio -lg2 -L/w21/app/src/ncep/grib2/lib -lpng -ljasper -lz -o ../../trk_exec/tave.exe
+   656	21:16	gfortran -fno-range-check -O -I../../libs/mods/g2 tave.f -L../../libs -lw3emc_i4r8 -lw3nco_i4r8 -lbacio -lg2 -L/w21/app/src/ncep/grib2/lib -lpng -lz -o ../../trk_exec/tave.exe
+   657	21:16	gfortran -fno-range-check -O -I../../libs/mods/g2 tave.f -L../../libs -lw3emc_i4r8 -lw3nco_i4r8 -lbacio -lg2 -L/w21/app/src/ncep/grib2/lib -lpng --lz -L/opt/local/lib -ljasper -o ../../trk_exec/tave.exe
+   658	21:17	gfortran -fno-range-check -O -I../../libs/mods/g2 tave.f -L../../libs -lw3emc_i4r8 -lw3nco_i4r8 -lbacio -lg2 -L/w21/app/src/ncep/grib2/lib -lpng -lz -L/opt/local/lib -ljasper -o ../../trk_exec/tave.exe
+   659	21:17	c.w2.a.s
+   660	21:17	la
+   661	21:17	cd ncep/
+   662	21:17	la
+   663	21:17	al grib2-2013/
+   664	21:17	la grib2-2013/
+   665	21:18	la grib2-2013/iplib/
+   666	21:18	la grib2-2013/
+   667	21:18	cd grib2-2013/jasper-1.900.1
+   668	21:18	la
+   669	21:18	m
+   670	21:19	la
+   671	21:19	la src/
+   672	21:19	la src/libjasper/
+   673	21:19	pg src/libjasper/libjasper.la
+   674	21:20	la
+   675	21:20	find . -name "*.a"
+   676	21:20	la src/libjasper/.libs/
+   677	21:21	m install
+   678	21:21	cd ../../grib2
+   679	21:21	la
+   680	21:21	la
+   681	21:22	la jasper-1.900.1/src/libjasper/.libs/
+   682	21:22	la ../grib2-2013/jasper-1.900.1/src/libjasper/.libs/
+   683	21:22	la
+   684	21:22	la lib
+   685	21:23	la jasper-1.900.1/src/libjasper/.libs/
+   686	21:23	la jasper-1.900.1/src/libjasper/.libs/libjasper.a
+   687	21:23	cp jasper-1.900.1/src/libjasper/.libs/libjasper.a lib
+   688	21:23	h
+   689	21:23	c.w2.a
+   690	21:23	la
+   691	21:23	c.w2.s
+   692	21:23	cd tcgfdltrk/
+   693	21:23	la
+   694	21:23	cd standalone_gfdl-vortextracker_v3.9a/
+   695	21:23	la
+   696	21:23	cd trk_src/
+   697	21:23	la
+   698	21:24	cd tave/
+   699	21:24	m
+   700	21:24	m clean
+   701	21:24	m
+   702	21:24	la
+   703	21:25	la /w21/app/src/ncep/grib2/lib
+   704	21:25	la /w21/app/src/ncep/grib2/lib/libjasper.la
+   705	21:25	vi /w21/app/src/ncep/grib2/lib/libjasper.la
+   706	21:27	vi /w21/app/src/ncep/grib2/lib/
+   707	21:27	la /w21/app/src/ncep/grib2/lib/
+   708	21:27	m
+   709	21:28	cd ../../libs/
+   710	21:28	la
+   711	21:29	m clean
+   712	21:29	m
+   713	21:30	la
+   714	21:30	cd ../trk_src/
+   715	21:30	la
+   716	21:31	cd vint/
+   717	21:31	la
+   718	21:31	m
+   719	21:31	cd ../../libs/src/
+   720	21:31	la
+   721	21:31	cd g2
+   722	21:31	la
+   723	21:31	la gf_unpack7.F
+   724	21:32	m
+   725	21:32	la
+   726	21:32	m clean
+   727	21:32	m
+   728	21:33	la gf_unpack7.F
+   729	21:33	which cpp
+   730	21:33	/usr/bin/cpp -P -traditional-cpp -DLITTLE_ENDIAN -DWRF -DLINUX -DUSE_JPEG2000 -DLINUX -DUSE_PNG -DUSE_JPEG2000 gf_unpack7.F gf_unpack7.f
+   731	21:33	m
+   732	21:33	j
+   733	21:34	kill %2
+   734	21:34	kill %3
+   735	21:34	kill %1
+   736	21:34	j
+   737	21:34	ws Makefile
+   738	21:34	j
+   739	21:34	kill %1
+   740	21:34	ws.nw Makefile
+   741	21:37	m
+   742	21:37	m clean
+   743	21:37	m
+   744	21:38	cd ../../../trk_src/
+   745	21:38	la
+   746	21:38	cd tave/
+   747	21:38	m
+   748	21:38	cd ../vint/
+   749	21:38	m
+   750	21:39	cd ..
+   751	21:39	la
+   752	21:39	cd ..
+   753	21:39	la
+   754	21:39	la trk_exec/
+   755	21:39	rm trk_exec/*
+   756	21:39	m clean
+   757	21:39	m
+   758	21:40	la
+   759	21:41	la trk_exec/
+   760	21:44	la
+   761	21:44	cd test_data/
+   762	21:44	la
+   763	21:44	cd multi/
+   764	21:44	la
+   765	21:45	wgrib hwrf.25x25.AL142016.2016100400.f00000
+   766	21:54	cd ../..
+   767	21:54	la
+   768	21:55	cd ../unittest/
+   769	21:55	la
+   770	21:55	pg test.macos.sh
+   771	21:57	cp ../standalone_gfdl-vortextracker_v3.9a/test_data/onebig/input.nml .
+   772	21:58	ws.nw namelist.tctrk.1.5.6 input.nml
+   773	22:03	la
+   774	22:04	../standalone_gfdl-vortextracker_v3.9a/trk_exec/gettrk.exe < input.nml
+   775	22:06	f
+   776	22:06	h
+   777	22:06	cp ../standalone_gfdl-vortextracker_v3.9a/test_data/onebig/input.nml .
+   778	22:06	f
+   779	22:07	../standalone_gfdl-vortextracker_v3.9a/trk_exec/gettrk.exe < input.nml-emc2
+   780	22:08	la
+   781	22:08	lt
+   782	22:09	ln -s -f tmtrk.grb fort.11
+   783	22:09	la
+   784	22:09	ln -f -s tmtrk.grb.ix fort.31
+   785	22:10	../standalone_gfdl-vortextracker_v3.9a/trk_exec/gettrk.exe < input.nml-emc2
+   786	22:10	lt
+   787	22:10	wgrib tmtrk.grb
+   788	22:10	la
+   789	22:11	pg test.macos.sh
+   790	22:11	time ../gettrk_genN.x < namelist.tctrk.1.5.6
+   791	22:12	la ../standalone_gfdl-vortextracker_v3.9a/test_data/
+   792	22:12	la ../standalone_gfdl-vortextracker_v3.9a/test_data/onebig/
+   793	22:12	pd ../standalone_gfdl-vortextracker_v3.9a/test_data/onebig/
+   794	22:12	../../trk_exec/gettrk.exe < input.nml
+   795	22:14	la
+   796	22:14	po
+   797	22:14	la
+   798	22:14	mv fort.12 fort.12-old
+   799	22:15	mv fcst_minutes fcst_minutes-old
+   800	22:15	f
+   801	22:16	la tcvitals2.2010051712.txt
+   802	22:16	pg tcvitals2.2010051712.txt
+   803	22:17	ln -s tcvitals2.2010051712.txt tcvit_rsmc_storms.txt
+   804	22:17	h
+   805	22:17	lt
+   806	22:17	h
+   807	22:17	../standalone_gfdl-vortextracker_v3.9a/trk_exec/gettrk.exe < input.nml-emc2
+   808	22:17	lt
+   809	22:17	pg fort.64
+   810	22:18	pg fort.69
+   811	22:18	la
+   812	22:18	lt
+   813	22:18	pg fort.68
+   814	22:18	lt
+   815	22:18	pg fort.64
+   816	22:19	pg fort.64 fort.64.tracker.gfortan
+   817	22:19	xxdiff fort.64 fort.64.tracker.gfortan
+   818	22:21	la fort.64
+   819	22:21	lt
+   820	22:21	pg fort.68
+   821	22:21	la
+   822	22:22	pg fort.64.tracker.gfortan.macos-201311
+   823	22:22	g 'BB, 01' fort.64.tracker.gfortan.macos-201311
+   824	22:22	g 'BB, 01' fort.64
+   825	22:23	pg fort.64
+   826	22:23	g 'AA, 02' fort.64
+   827	22:24	g 'AA, 02' fort.64.tracker.gfortan.macos-201311
+   828	22:24	g 'AA, 02' fort.64
+   829	22:24	g 'AA, 02' fort.64.tracker.gfortan.macos-201311
+   830	22:25	pg fort.64.tracker.gfortan.macos-201311
+   831	22:25	pg fort.64
+   832	22:26	f
+   833	22:27	h
+   834	22:27	../standalone_gfdl-vortextracker_v3.9a/trk_exec/gettrk.exe < input.nml-emc2
+   835	22:28	f
+   836	22:29	f
+   837	22:29	../standalone_gfdl-vortextracker_v3.9a/trk_exec/gettrk.exe < input.nml-emc2
+   838	22:33	la
+   839	22:33	pg TESTING
+   840	22:33	la
+   841	22:33	ln -s -f tmtrk.1p0deg.grb fort.11
+   842	22:34	ln -s -f tmtrk.1p0deg.grb.ix fort.31
+   843	22:34	f
+   844	22:35	f
+   845	22:36	../standalone_gfdl-vortextracker_v3.9a/trk_exec/gettrk.exe < input.nml-emc2-tcgen
+   846	22:36	../standalone_gfdl-vortextracker_v3.9a/trk_exec/gettrk.exe < input.nml-ecm2-tcgen
+   847	22:36	j
+   848	22:36	kill %1
+   849	22:36	f
+   850	22:36	f
+   851	22:37	mv input.nml-emc2 input.nml-ecm2
+   852	22:37	ws.nw input.nml-ecm2-tcgen
+   853	22:37	../standalone_gfdl-vortextracker_v3.9a/trk_exec/gettrk.exe < input.nml-ecm2-tcgen
+   854	22:38	f
+   855	22:38	time ../standalone_gfdl-vortextracker_v3.9a/trk_exec/gettrk.exe < input.nml-ecm2-tcgen > stdout-new-tcgen
+   856	22:39	f
+   857	22:40	lt
+   858	22:40	pg fort.61
+   859	22:41	pg fort.66
+   860	22:41	la fort.66*
+   861	22:41	la
+   862	22:41	pg fort.64
+   863	22:41	la fort.64*
+   864	22:42	la
+   865	22:42	la namelist.tcgen.lant
+   866	22:42	pg namelist.tcgen.lant
+   867	22:42	f
+   868	22:43	time ../standalone_gfdl-vortextracker_v3.9a/trk_exec/gettrk.exe < input.nml-ecm2-tcgen > stdout-new-tcgen
+   869	22:43	lt
+   870	22:43	la fort.64*
+   871	22:44	xxdiff fort.64 fort.64.tcgen.lant.gfortan.macos-201311
+   872	22:45	pg TESTING
+   873	22:46	time ../standalone_gfdl-vortextracker_v3.9a/trk_exec/gettrk.exe < input.nml-ecm2-tcgen > stdout-new-tcgen
+   874	22:46	tail stdout-new-tcgen
+   875	22:46	tail -25stdout-new-tcgen
+   876	22:46	tail -25 stdout-new-tcgen
+   877	22:47	f
+   878	22:48	time ../standalone_gfdl-vortextracker_v3.9a/trk_exec/gettrk.exe < input.nml-ecm2 > stdout-new
+   879	22:48	pg stdout-new
+   880	22:48	tail -25 stdout-new
+   881	22:49	la
+   882	22:49	h
+   883	22:49	h | g time
+   884	22:49	f
+   885	22:50	f
+   886	22:51	f
+   887	22:51	h | g time
+   888	22:51	f
+   889	22:51	h
+   890	22:52	g 'BB, 01' fort.64
+   891	22:52	h
+   892	22:52	g 'BB, 01' fort.64.tracker.gfortan.macos-201311
+   893	22:52	g 'BB, 01' fort.64.tracker.gfortan.macos-201311 > adeck-old-bb01.txt
+   894	22:53	g 'BB, 01' fort.64 > adeck-new-bb01.txt
+   895	22:53	xxdiff adeck-*
+   896	22:54	h
+   897	22:54	f
+   898	22:55	h > cmds.20180626.txt

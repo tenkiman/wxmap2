@@ -1,0 +1,104 @@
+#
+# *** version 20190303  ***
+# *** use ad2 in w2.tc.all.eps.py vice tigge .xml for ncep...stopped on 03030100?
+# *** changed -E to -2 in w2.tc.all.eps.py
+#
+#------------------------------------------------------
+#
+# -- tenki-linux crontab 
+# -- 20181229 - run TC proc during .gov shutdown
+#
+#------------------------------------------------------
+#
+CRON_TZ="UTC"
+MAILTO=""
+#runcmd='/data/w22/run.cron.tcsh'
+runcmd='/braid1/mfiorino/w22/run.cron.bash'
+w2pdir='/braid1/mfiorino/w22/prc'
+ptmpdir="/braid1/mfiorino/ptmp"
+
+#tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt - TCs
+#
+#
+18,53           0-23             * * * $runcmd "$w2pdir/tcdat/w2-tc-ops-dat.py ops -o -V"                                            >> $ptmpdir/log-w2-tc-ops-dat.py.TENKILF 2>&1
+
+39                *               * * * $runcmd "$w2pdir/tcdat/w2-tc-dss-ad2.py jt -d cur-24.cur"                                    >> $ptmpdir/log-w2.tc.dss.ad2.py.wxmap2.AD2-jt-nhc-hourly-AD2 2>&1
+53	          *               * * * $runcmd "$w2pdir/tcdat/w2-tc-dss-ad2.py jt,gefs,ukmo -d cur-24.cur -9"               >> $ptmpdir/log-w2.tc.dss.ad2.py.wxmap2.AD2-jt-nhc-tm-mftrkN-hourly-AD2-9X 2>&1
+
+
+#eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee - ecmwf bufr from dissemination.ecmwf.int
+#
+# -- 20200705 -- implementaion of tcbufr with wind radii using bufr_dump to .json file
+#
+57      06,12,18,00                * * * $runcmd "$w2pdir/tcdat/w2-tc-ecmwf-wmo-essential-bufr-json.py cur-6 -E"          >> $ptmpdir/log-w2-tc-ecmwf-wmo-essential-bufr-json.py-DET 2>&1
+45      07,13,19,01                * * * $runcmd "$w2pdir/tcdat/w2-tc-ecmwf-wmo-essential-bufr-json.py cur-12.cur-6"      >> $ptmpdir/log-w2-tc-ecmwf-wmo-essential-bufr-json.py-EPS 2>&1
+25      03,09,15,21                * * * $runcmd "$w2pdir/tcdat/w2-tc-ecmwf-wmo-essential-bufr-json.py cur-24.cur-12"     >> $ptmpdir/log-w2-tc-ecmwf-wmo-essential-bufr-json.py-EPSM12 2>&1
+
+# -- ncep tigge eps plots
+#     18z 00z  06z   12z  
+17    1-4,7-10,13-16,19-22         * * * $runcmd "$w2pdir/tcdat/w2-tc-all-eps.py cur-6 -2"                              >> $ptmpdir/log-w2-tc-all-eps.py.EPSPLOTTIGGENCEP 2>&1
+#     12z 18z  00z   06z -- catchup for 12-h old
+47    1-3,7-9,13-15,19-21          * * * $runcmd "$w2pdir/tcdat/w2-tc-all-eps.py cur-12 -2"                             >> $ptmpdir/log-w2-tc-all-eps.py.EPSPLOTTIGGENCEP-M12 2>&1
+# -- go after tigge for ncep/cmc vice just ad2
+27     5,11,17,23                  * * * $runcmd "$w2pdir/tcdat/w2-tc-all-eps.py cur-24.cur-6 -T -m ncep"               >> $ptmpdir/log-w2-tc-all-eps.py.TIGGE-NCEP 2>&1
+37      1,7,13,19                  * * * $runcmd "$w2pdir/tcdat/w2-tc-all-eps.py cur-24.cur-6 -T -m cmc"                >> $ptmpdir/log-w2-tc-all-eps.py.TIGGE-CMC 2>&1
+
+
+#pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp - precip
+#
+# 20090129 -- turn on :: qmorph processing
+# -- 20150924 -- turn off -- big slowdown...did w2.fld.pr.qmorph.clean.py 2015040100 -R to get older data off kaze
+# -- 20180822 -- turn off -- transition from ftp to http in wget
+# -- 20181229 -- turn off on tenki-linux because missing w2.fld.pr.cmorph-8km.lats.gs
+# -- 20190302 -- set up on tenki
+# -- 20201212 -- -J is deprecated
+#
+20           * * * * $runcmd "$w2pdir/flddat/w2-fld-pr-qmorph.py cur-24.cur.24  -S qmorph -n 6"                  >> $ptmpdir/log-w2-fld-qmorph.py.CPC-QMORPH 2>&1
+40           * * * * $runcmd "$w2pdir/flddat/w2-fld-pr-qmorph.py cur-48.cur-24 -S cmorph -n 6"                  >> $ptmpdir/log-w2-fld-qmorph.py.CPC-CMORPH 2>&1
+27           * * * * $runcmd "$w2pdir/flddat/w2-fld-pr-qmorph-products.py ops6 -S qmorph -n 6"                  >> $ptmpdir/log-w2-fld-qmorph-products.py.qmorph.CPC 2>&1
+49           * * * * $runcmd "$w2pdir/flddat/w2-fld-pr-qmorph-products.py cur-36.cur-24 -S cmorph -n 6"         >> $ptmpdir/log-w2-fld-qmorph-products.py.cmorph.CPC 2>&1
+3            * * * * $runcmd "$w2pdir/flddat/w2-fld-pr-qmorph-global-products.py ops6 -S qmorph -n 6"           >> $ptmpdir/log-w2-fld-qmorph-global-products.py.qmorph.CPC 2>&1
+59           * * * * $runcmd "$w2pdir/flddat/w2-fld-pr-qmorph-global-products.py cur-36.cur-24 -S cmorph -n 6"  >> $ptmpdir/log-w2-fld-qmorph-global-products.py.cmorph.CPC 2>&1
+
+
+#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo - ocean
+#
+# 20100804 -- turn on :: mirror of oisst weekly grib
+32   4     * * * $runcmd "$w2pdir/flddat/w2-fld-wget-mirror-cpc-oisst.py"                                              >> $ptmpdir/log-w2-fld-wget-mirror-cpc-oisst.py.CPC.OISST 2>&1
+
+
+#gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg - gfs goes
+#
+# -- 20100607 -- wget gfs goes sat image 1deg files from ftpprd.ncep.noaa.gov
+# -- 20210422 -- 120 hits /min to nomads ftpprd / IP shift to avoid conflists with do-gfs2
+# -- 20211213 -- 19Z run of goes-loop gets kill because??? conflict with ad2 or rsync to wx2?
+13  3-6,9-12,13-18,21-23,0       * * * $runcmd "$w2pdir/flddat/w2-fld-wget-mirror-gfs-stbgoes.py cur-18.cur"          >> $ptmpdir/log-w2-fld-wget-mirror-gfs-stbgoes.py.GFS2 2>&1
+39  6,7,12,13,18,19,0,1       * * * $runcmd "$w2pdir/fldanal/w2-gfs-goes-loop.py ops6 all -A"                         >> $ptmpdir/log-w2-gfs-goes-loop-py.GOES 2>&1
+59  19                        * * * $runcmd "$w2pdir/fldanal/w2-gfs-goes-loop.py ops6 all -A"                         >> $ptmpdir/log-w2-gfs-goes-loop-py.GOES 2>&1
+
+#mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm - model 
+#
+# -- 20211114 -- make late gfs later
+# -- 20220114 -- gfs updating slow... bump up first try 20 min
+# -- 20220120 -- bump up further...trying to complete on first try
+# -- 20220409 -- nomads hosed -- use grib_filter vice get_gfs.pl
+# -- 20220426 -- get_gfs.pl now working...
+# -- 20220825 -- new nomads transport curl -k for insecure; move start times 20 min forward and add a 3rd try
+47    6,12,18,0                     * * * $runcmd "$w2pdir/wxmap2/do-gfs2.py ops6"                                  >> $ptmpdir/log.do-gfs2.py.GFS2_p505 2>&1
+37    7,13,19,1                     * * * $runcmd "$w2pdir/wxmap2/do-gfs2.py ops6"                                  >> $ptmpdir/log.do-gfs2.py.GFS2_p600 2>&1
+27    8,14,20,2                     * * * $runcmd "$w2pdir/wxmap2/do-gfs2.py ops6"                                  >> $ptmpdir/log.do-gfs2.py.GFS2_p700 2>&1
+
+# -- 20201212 -- try for t+8:24 vice t+7:24
+# -- 20210610 -- try t+7:33 to avoid conflict with cgd2?
+# -- 20211022 -- let ecm5 go first, push cgd2 to 1h after first ecm5
+35       8,20                     * * * $runcmd "$w2pdir/wxmap2/do-ecm5.py cur12"                                        >> $ptmpdir/log-w2-do-ecm5.py.ECM5 2>&1
+45       9,21                     * * * $runcmd "$w2pdir/wxmap2/do-ecm5.py cur12"                                        >> $ptmpdir/log-w2-do-ecm5.py.ECM5-LATE 2>&1
+35       10,22                    * * * $runcmd "$w2pdir/wxmap2/do-ecm5.py cur12"                                        >> $ptmpdir/log-w2-do-ecm5.py.ECM5-VERYLATE 2>&1
+45       14,02                    * * * $runcmd "$w2pdir/wxmap2/do-ecm5.py cur12-12"                                     >> $ptmpdir/log-w2-do-ecm5.py.ECM5-MISS 2>&1
+
+
+#pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp - load and process monitor
+# -- load averages using uptime and monitor processes...
+*/5                             *             * * * $runcmd "$w2pdir/wxmap2/w2-load.py"                            >> $ptmpdir/log.load.py.tenki.LOAD 2>&1
+4                               1             * * * $runcmd "$w2pdir/wxmap2/w2-ps-monitor.py -X -S 15"             >> $ptmpdir/log-w2-ps-monitor.py.tenki.PS-MONITOR 2>&1
+*/5                             *             * * * $runcmd "$w2pdir/wxmap2/w2-ps-monitor-anl.py cur-12.cur -K"    >> $ptmpdir/log-w2-ps-monitor-anl.py.tenki.PS-MONITOR-KILL-LONG-PS 2>&1

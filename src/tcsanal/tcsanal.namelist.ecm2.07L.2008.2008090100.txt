@@ -1,0 +1,14 @@
+$parameters
+  spdcrit=15.0,
+  vcrit=7.5,
+  verb=.false.,
+  levwind=1
+$end
+$paths
+  tcapath='/wxmap2/dat2/tc/tcanal/2008/2008090100/trk/wxmap.ecm2.2008090100.07L.txt',
+  tcspath='/wxmap2/dat2/tc/tcanal/2008/2008090100/trk/carq.07L.2008.2008090100.txt',
+  tcfpath='/wxmap2/dat2/tc/tcanal/2008/2008090100/dat/fld.tcstruct.ecm2.2008090100.dat',
+  tcopath='/wxmap2/dat2/tc/tcanal/2008/2008090100/dat/tcstruct.ecm2.07L.2008.2008090100.obs',
+  tcdpath='/wxmap2/dat2/tc/tcanal/2008/2008090100/stt/parms.tcstruct.ecm2.07L.2008.2008090100.txt',
+  tcppath='/wxmap2/dat2/tc/tcanal/2008/2008090100/dat/profiles.tcstruct.ecm2.07L.2008.2008090100.dat',
+$end

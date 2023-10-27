@@ -1,0 +1,452 @@
+<HTML>
+<HEAD>
+<TITLE>WXMAP FAQ</TITLE>
+
+<STYLE TYPE="text/css" TITLE="mike">
+<---
+H2 { color : darkred;
+font-size : 16pt;
+font-weight:bold;
+font-style:italic;
+text-ident:0.5in;
+font-family:Arial,Helvetica,san-serif;
+}
+H3 { color : darkblue;
+font-size : 12pt;
+font-weight:normal;
+font-style:normal;
+text-ident:1.0in;
+font-family:Arial,Helvetica,san-serif;
+}
+-->
+</STYLE>
+</HEAD>
+
+<BODY TEXT="Black" LINK="Blue" VLINK="Purple" BGCOLOR="#FCF1DA">
+
+<FONT SIZE="4" FACE="Arial" COLOR="Navy"><H1 >WXMAP FAQ</H1>
+</FONT>
+
+<h2>Frequently Asked Questions</h2>
+
+<FONT SIZE="3" FACE="Arial" COLOR="Navy"><STRONG>Mike Fiorino</STRONG></P>
+
+<A HREF="mailto:fiorino@llnl.gov">fiorino@llnl.gov</A>
+</font>
+</p>
+Program for Climate Model Diagnosis and Intercomparison<BR>
+Lawrence Livermore National Laboratory<BR>
+University of California<BR>
+P.O. Box 808 L-264<BR>
+Livermore, CA 94551<BR>
+510-423-8505 (voice) 510-422-7675(fax)
+<BR><br>
+<STRONG><EM>
+24 November, 1997<br>
+30 November, 1997<br>
+31 December, 1997<br>
+7 January, 1998<br>
+</EM></STRONG>
+</P> 
+<img src="../icon/colaline.gif">
+<ul>
+<li><b><a href="#540">What is the "540" line on the precip maps? (980107)</a></b></li>
+<li><b><a href="#sched">What is the schedule for the maps?</a></b></li>
+<li><b><a href="#ftp">Can I FTP The graphics files?</a></b></li>
+<li><b><a href="#relative_vort">Why do you plot <b><i>relative</b></i> vorticity when everyone else does absolute?</a></b></li>
+<li><b><a href="#ngp_overwrite">Why do a sometimes a see maps from different areas for NOGAPS?</a></b></li>
+<li><b><a href="#problems">Why aren't the maps available?</a></b></li>
+</ul>
+
+<a name="540"></a>
+<h3>What is the "540" line on the Precipitation Maps?</h3>
+
+<p>
+
+This is a bit of meteorological tradition and insider lingo.
+
+</p><p>
+
+The "540" line is actually the 5400 m 1000-500 mb "thickness"
+line.  Now you're wondering what is "thickness."  It is simply
+the difference between the height of the 500 mb surface and the
+1000 mb surface.  The best way to understand the "height of the
+500 mb surface" is to image you are carrying a barometer in a
+rising balloon (this is how it actually measured by "radiosondes"
+or "rawinsondes").  When the barometer reads 500 mb, you get out
+your handy GPS sensor and record how high you are above "sea
+level."  This is the 500 mb height.  The same thing works for
+1000 mb, but it gets tricky when you're on a mountain where the
+pressure is below 1000 mb or you're in a hurricane.  You would
+have to dig a tunnel until you got to 1000 mb.  Of course we
+don't really do that, but instead approximate the 1000 mb height
+using theory.
+
+</p><p>
+
+It is this theory (hydrostatic balance) which also tells us that
+the difference in height is proportional to the temperature in
+the layer.  Hence, the 1000-500 thickness (height difference) is
+related to the temperature in the 1000-500 mb layer (essentially
+the lower half of the atmosphere).  
+
+</p><p>
+
+The "540" line turns out to be the temperature at which
+precipitation <b>tends</b> to remain in a frozen form when it
+reaches the surface where you live.  Thus, if the model forecasts
+precipitation equatorward of the 540 line, it will likely be
+rain; poleward, snow.
+
+</p><p>
+
+<b><i>The 540 line is only a guide!</i></b> There are many
+factors that determine if precipitation at the ground is snow or
+not and I suspect you could imagine a few, e.g., high elevation,
+shallow layer of cold/warm air, etc.  The bottom line (so to
+speak) is that the 540 line is only a rough, but useful, guide to
+whether (no pun intended) precip will be snow or rain.
+
+</p>
+
+<a name="sched"></a>
+<h3>What is the Map Schedule?</h3>
+
+<p>
+
+The graphics become available when the data arrive at PCMDI.  The
+data schedule for the NCEP models (AVN and MRF) is controlled
+differently than the FNMOC model NGP.  I wait until the "last"
+forecast time (72 h for the AVN and 240 for the MRF) is produced
+before pulling the data from NCEP.  When the data arrive, I make
+ALL the NCEP maps at ONCE.  Hence, all the NCEP model maps are
+available at one time.
+
+</p><p>
+
+In contrast, FNMOC pushes data to LLNL as the NOGAPS model is run
+and I make the maps as the fields become available.  Thus, the
+available maps for NGP <i><b>varies</i></b> during each 12 hour
+cycle so you will have to "refresh" the NGP home pages to see
+what is available.  The NGP maps are updated every 20 min, round
+the clock.
+
+</p><p> 
+
+The table below gives a rough schedule of both data and maps for
+the 00 and 12 UTC runs.  When the network and computers are up,
+the schedule is quite consistent so that deviations indicate a
+problem.
+
+</p>
+
+<table cellpadding=2 border=1>
+<caption> 
+Data and Map Schedule in UTC and Pacific Standard Time (PST)
+</caption>
+<tr>
+<td width=75 align=center>
+Model
+</td>
+<td width=150 align=center>
+00 UTC data
+</td>
+
+<td width=150 align=center>
+12 UTC data
+</td>
+
+<td width=150 align=center>
+00 UTC maps
+</td>
+
+<td width=150 align=center>
+12 UTC maps
+</td>
+</tr>
+
+<tr>
+<td width=75 align=center valign=center>
+<font color=red><b>AVN</b></font>
+</td>
+<td width=150 align=center>
+04:10 UTC<br>
+20:10 PST
+</td>
+
+<td width=150 align=center>
+16:10 UTC<br>
+08:10 PST
+</td>
+
+<td width=150 align=center>
+05:00 - 07:00 UTC<br>
+21:15 - 22:30 PST
+</td>
+
+<td width=150 align=center>
+17:00 - 19:00 UTC<br>
+09:15 - 10:30 PST
+</td>
+</tr>
+
+<tr>
+<td width=75 align=center valign=center>
+<font color=green><b>MRF</b></font>
+</td>
+<td width=150 align=center>
+09:15 UTC<br>
+01:15 PST
+</td>
+
+<td width=150 align=center>
+n/a
+</td>
+
+<td width=150 align=center>
+10:15 - 12:00 UTC<br>
+02:15 - 04:00 PST
+</td>
+
+<td width=150 align=center>
+n/a
+</td>
+</tr>
+
+<tr>
+<td width=75 align=center valign=center>
+<font color=darkblue><b>NGP</b></font>
+</td>
+<td width=150 align=center>
+03:45 - 05:35 UTC<br>
+19:45 - 21:35 PST
+</td>
+
+<td width=150 align=center>
+15:45 - 19:35 UTC<br>
+09:45 - 11:35 PST
+</td>
+
+<td width=150 align=center>
+04:00 - 06:00 UTC<br>
+20:00 - 22:00 PST
+</td>
+
+<td width=150 align=center>
+16:00 - 18:00 UTC<br>
+08:00 - 10:00 PST
+</td>
+</tr>
+
+
+
+
+
+</table>
+
+
+
+
+
+</p>
+
+
+
+
+
+<a name="ftp"></a>
+<h3>Can I FTP the graphics files?</h3>
+
+<pre>
+The maps are available through the web (http protocao) or via ftp.
+
+ftp://sprite.llnl.gov/pub/fiorino/CCC/MMM/grf/archive/YYMMDDHH
+
+where,
+
+CCC = centre = ncep,fnmoc
+MMM = model = avn,mrf,nogaps
+YYMMDDHH = base time of the maps, e.g., 97100400 = 00Z4Oct1997
+
+Inside a directory, the maps are named using the following template:
+
+MMM.PPP.TTT.AAA.gif
+
+MMM = ngp10, avn10, mrf10 (depending on what directory you are in)
+
+PPP = plot with the following names and the meaning:
+
+	Name	Decription 
+        ----	----------
+
+	500	500 hPa Heights [m] and Rel. Vort [10<sup>-5</sup> s<sup>-1</sup>]
+	850	850 hPa Temperature [C], winds [kts] and Rel. Hum. [%]
+	prp	Previous [6,12]-hr Precipitation Rate [mm/day] and Sea Level Pressure [hPa]
+	psl	700 hPa Vert. Vel [Pa s<sup>-1</sup>], SLP [hPa] and 500-1000 Thickness [m]
+	u50	500 hPa Strmlns ;  Rel. Vort [10<sup>-5</sup> s<sup>-1</sup>] ; Wind Barbs
+	u70	700 hPa Strmlns ;  N-S wind componment ; Wind Barbs
+	u20	200 hPa Strmlns ; |850-200 Wind Shear| ; 850 (Red) and 200 (Green) Wind Barbs
+	sst	FNMOC OTIS SST [C] ; SST Anomaly from AMIP II SST Climatology (1979-96)
+	uas	Over Ocean Sfc Winds [kt] ; 500 hPa Heights [m]
+	wav	FNMOC WAM Sig Wave Heights [ft] ; Over Ocean Sfc Winds [kt]
+	tmx	Maximum Sfc Air Temperature [F] ; MRF Previous 24-h
+	tmn	Minimum Sfc Air Temperature [F] ; MRF Previous 24-h
+	thk	1000-500 Thickness [dm] and Sea Level Pressure [mb]
+
+TTT = forecast hour, e.g., 060 = 60 h forecast
+
+AAA = area
+
+	Name		Description
+	----		-----------
+	conus		Continental U.S. (CONUS) Area
+	europe		Europe
+	asia		East Asia
+	ausnz		Australia / New Zealand Area
+	tropwpac	Tropical WESTPAC Area
+	tropepac	Tropical EASTPAC Area
+	troplant	Tropical Atlantic Area
+	whitbread	Whitbread SIO Leg
+
+
+
+</pre>
+<a name="relative_vort"></a>
+<h3>Why do you plot <b><i>relative</b></i> vorticity when everyone else does absolute?</h3>
+
+<p> My first response would be "to be different," but that's not
+the real reason.  Let's turn the question around and ask why
+every one plots absolute vorticity?  The real answer is
+<b><i>tradition</i></b>.  I know all of the usual dynamical
+reasons, e.g., positive shear of positive absolute vorticity
+advection ("PVA") is quasi-geostrophically related to upward
+vertical motion (negative values of vertical velocity in pressure
+coordinates -- "omega") in the layer.  The primary interest in
+absolute vorticity is to estimate vertical motion below 500 mb.
+This is where all the water vapor is and if there is enough
+upward motion and plenty of water, the chances are good you'll
+get rained on.
+</p>
+
+<p>
+
+Using "PVA" is a throw back to days when numerical models could
+not simulate let alone analyze the "secondary" circulation
+(vertical motion).  When the vertical motion is poorly or
+unreliably analyzed, synoptic meteorologist looked to the
+"primary" circulation (the horizontal winds) for clues.  The
+primary circulation was much more reliable, the relationship
+between the primary and secondary circulation was not.  Given the
+choice of bad analyses or pretty good dynamics, the clear winner
+was dynamics and to this day meteorologist are still trained to
+look at vorticity advection.  
+
+</p>
+
+<p>
+
+Things have changed a lot in the last five years and the global
+models are now doing a very good job <b>forecasting</b>
+precipitation.  The only way to get this forecast right is to get
+the vertical motion right and this vertical motion depends on
+much more than PVA.  Hence if you are interested in
+precipitation, look at the model foreasts; if you are interested
+in the vertical motion, look at the model vertical motion field.
+
+</p>
+
+<p>
+
+Of greater synoptic interest to me is the location and intensity
+of the troughs and ridges.  The real action still happens here,
+but absolute vorticity masks the details of the troughs (positive
+or cyclonic relative vorticity) and ridges because the magnitude
+and variation of the earth's voritcity (abs vort = rel vort +
+earth vort) is often on the same scale.  Thus, the small scale
+features get washed out.  So I plot relative vorticity to see the
+details and look to the 700 mb vertical motion and precipitation
+for information on the seconday circulation.
+</p>
+
+<a name="ngp_overwrite"></a>
+<h3>Why do a sometimes a see maps from different areas for
+NOGAPS?</h3>
+
+<p>
+
+I use two workstations to produce the maps, one for the NCEP maps
+and the other for the FNMOC NOGAPS (NGP).  The maps are made by
+dumping the contents of an X window into a gif file.  Since the
+physical X window screen is limited, I can only have ONE plot
+window at a time.  Thus, if by accident I have two plot jobs
+attempting to use the SAME window, I'll dump to the wrong file.
+
+</p><p> 
+
+The current "NGP" machine can produces about 4 maps / minute and
+I make a map run every half hour.  I constrain the total number
+of maps per areas so as not exceed 4 maps / minute * 30 minutes =
+120 maps.  However, the map production rate can only be estimated
+and it DOES vary.  Thus, if the machine is running slow AND I am
+attempting to make the max maps, I'll not complete all the maps
+and the next run will start causing overwrites or dumping of the
+wrong X window.  
+
+</p><p>
+
+
+The NGP data arrives as individual files; one for each
+field and I update the data file with all fields every half hour
+as well.  If a lot of data shows up at once, then a lot of plots
+can be produced.  The script that does the plotting calculates
+the number of plots still needed to be produced / area.  If the
+needed number of plots exceeds the max, then we get overwrite.  I
+attempt to prevent this from happening, but I can't control all
+the possible factors effected when the data arrives and the
+performance of the machine.  I keep playing with the controls
+until it (hopefully) stops.
+
+</p><p>
+
+To conclude, the NGP overwrite syndrome will happen when: 1) the
+machine is running slow; or 2) when all the data shows up at
+once.  This data showing up all at once typically happens at 00Z
+(late at night here in CA).
+
+
+</p><p>
+
+I expect this problem to become an old problem in Dec, 1997.
+I'll be moving the map job to a single, very fast workstation
+with a program called the "X virtual frame buffer" (the command
+is Xvfb). Xvfb is a "virtual" X server (does not display to a
+monitor) that a client (e.g., GrADS) can talk (i.e., plot) to
+that sits in memory NOT on the display.  Thus, I can run two
+virtual X servers and run two jobs that talk to separate screens
+(Xvfb) and avoid the overwrite syndrome.
+
+</p>
+
+
+<a name="problems"></a>
+<h3>Why aren't the maps available?</h3>
+
+<p> 
+
+The short answer is that one of the many machines involved is
+down or the network failed.
+
+</p>
+
+
+
+<br>
+Send Comments to <a href="mailto:fiorino@llnl.gov"> Mike Fiorino</a>, 
+<a href="http://www-pcmdi.llnl.gov">PCMDI</a>, <a
+href="http://www.llnl.gov">LLNL</a>
+<br><br>
+<i>Last updated 31 December, 1997</i><br>
+<a href="http://www.llnl.gov/disclaimer.html">LLNL Disclaimers</a><br>
+UCRL-MI-125630
+</body>
+</html>

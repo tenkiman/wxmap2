@@ -1,0 +1,7 @@
+.svn
+.DS_Store
+.localized
+bin/usr_4.2
+tc-SAV
+tc-old
+*~

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+cd ..
+
+ln -s -f etc/run.cron.tcsh 
+ln -s -f etc/.w2env
+ln -s -f etc/.w2rc.jet
+ln -s -f etc/.pythonrc
+ln -s -f etc/.w2alias.jet   .w2alias
+ln -s -f etc/.w2localrc.jet .w2localrc
+ln -s -f etc/cookies.txt cookies.txt 

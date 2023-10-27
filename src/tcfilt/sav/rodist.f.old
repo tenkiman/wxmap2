@@ -1,0 +1,25 @@
+        subroutine rodist                                                       
+        parameter(nmx=24)                                                       
+        common /vect/xvect(nmx),yvect(nmx)                                      
+       common  /ifact/nnn,rovect(nmx),rb,ienv                                   
+       common  /coor/ xv,yv,xold,yold,xcorn,ycorn,factr,ix,iy                   
+c                                                                               
+        pi=4.0*atan(1.0)                                                        
+        pi180 = 4.*atan(1.0)/180.                                               
+        yo=yold*pi180                                                           
+        fact=cos(yo)                                                            
+        xc=xold-xcorn                                                           
+        yc=yold-ycorn                                                           
+c                                                                               
+        do 10 ip=1,nmx                                                          
+c                                                                               
+        theta=float(ip-1)/float(nmx)*2.*pi                                      
+        r=rovect(ip)                                                            
+c                                                                               
+        xvect(ip)=r*cos(theta)/fact +xc                                         
+        yvect(ip)=r*sin(theta) +yc                                              
+        print *,'rovect(ip) = ',ip,rovect(ip),xvect(ip),yvect(ip)               
+10      continue                                                                
+c                                                                               
+        return                                                                  
+        end                                                                     

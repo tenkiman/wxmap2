@@ -1,0 +1,309 @@
+c                                                                               
+      subroutine phase(ifl,u,v,imx,jmx,us,vs)                                   
+      parameter  (nx=25)                                                        
+      parameter  (im=201,jm=81)                                                  
+cc****************************************************************              
+cc                                                                              
+cc     this subroutine creates  filtered  fields of (u,v) wind                  
+cc                                                                              
+cc                                                                              
+cc****************************************************************              
+cc                                                                              
+cc***************************************************************               
+cc                   important!!!                                               
+cc   we assume that the spacing of all the points is one degree                 
+cc   latitude and longitude.                                                    
+cc                                                                              
+cc                                                                              
+cc     ifl = the strength of the filter varying from 1 (weak damping) to        
+cc           4 (very strong damping). we are currently using ifl=2.             
+cc           thus there are 4 choices for the type of filter desired,           
+cc           ifl = 1, 2, 3, or 4.                                               
+cc                                                                              
+cc                                                                              
+cc     u,v      =  input of the unsmoothed fields                      *        
+cc                                                                              
+cc     imx = number of input and output points in x-direction                   
+cc     jmx = number of input and output points in y-direction                   
+cc                                                                              
+cc     us,vs   =  output of the smoothed fields                       *         
+cc                                                                              
+cc**********************************************************************        
+cc                                                                              
+cc                                                                              
+      dimension     u(imx,jmx), v(imx,jmx)                                      
+      dimension    us(imx,jmx),vs(imx,jmx)                                      
+      dimension    tk(nx),ampf(100)                                             
+      dimension    xtu(im,nx),xtv(im,nx)                                        
+      dimension    ytu(jm,nx),ytv(jm,nx)                                        
+cc                                                                              
+cc                                                                              
+      imxm  = imx-1                                                             
+      jmxm  = jmx-1                                                             
+cc                                                                              
+cc                                                                              
+                                                                                
+cc                                                                              
+      tn = float(nx)                                                            
+ccc                                                                             
+      pi = 4.*atan(1.0)                                                         
+      cosf = cos(2.*pi/tn) - 1.                                                 
+cc                                                                              
+cc *************************************************************                
+cc                                                                              
+cc    ...ifl...  will control the extent of damping requested                   
+cc                                                                              
+cc     ifl is determined in the program test at the beginning                   
+cc                                                                              
+cc                                                                              
+cc    ...nty...  is the number of passes through the smoothing operator         
+cc                                                                              
+       if(ifl.eq.1)nty = 8                                                      
+       if(ifl.eq.2)nty = 11                                                     
+       if(ifl.eq.3)nty = 17                                                     
+       if(ifl.eq.4)nty = 24                                                     
+cc                                                                              
+cc**************************************************************                
+cc                                                                              
+cc  ismth: is the parameter to turn on des-smoothing. we will always ass        
+cc         desmoothing is unnecessary. however it is still in the code f        
+cc         the purpose of generalization.                                       
+cc                                                                              
+       ismth = 0                                                                
+cc                                                                              
+cc**********************************************************************        
+cc                                                                              
+cc                                                                              
+cc                                                                              
+cc  next we will determine the smoothing parameter k to be used                 
+cc  during each of n passes through the smoothing operation.                    
+cc                                                                              
+cc                                                                              
+cc                                                                              
+cc  (see the appendix of kurihara et al., from the monthly weather              
+cc   review article, 1990 .....equation a2).                                    
+cc                                                                              
+cc                                                                              
+       chg = 0.0                                                                
+       kt = 0                                                                   
+cc                                                                              
+cc                                                                              
+cc                                                                              
+         do 802 kty = 1 , nty                                                   
+cc                                                                              
+cc                                                                              
+ccxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                                          
+cc                                                                              
+cc                                                                              
+cc     filter 1...weak filter.....                                              
+cc                                                                              
+cc     n = 8 .... and m varies as 2,3,4,2,5,6,7,2                               
+cc                                                                              
+cc                                                                              
+       if((kty.eq.4.or.kty.eq.8).and.ifl.eq.1)chg = 1.0                         
+cc                                                                              
+cc                                                                              
+ccxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                                         
+cc                                                                              
+cc     filter 2....regular filter.....currently in use                          
+cc                                                                              
+cc     n = 11 .... and m varies as 2,3,4,2,5,6,7,2,8,9,2                        
+cc                                                                              
+cc                                                                              
+       if((kty.eq.4.or.kty.eq.8.or.kty.ge.11)                                   
+     *  .and.ifl.eq.2)chg = 1.0                                                 
+cc                                                                              
+cc                                                                              
+ccxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                                         
+cc                                                                              
+cc     filter 3....strong filter.....effective for hurricane gilbert            
+cc                                                                              
+cc     n = 17 .... and m varies as 2,3,4,2,5,6,7,2,8,9,10,2,11,2,2,2,2          
+cc                                                                              
+cc                                                                              
+       if((kty.eq.4.or.kty.eq.8.or.kty.eq.12.or.kty.ge.14.)                     
+     *  .and.ifl.eq.3)chg = 1.0                                                 
+cc                                                                              
+cc                                                                              
+ccxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                                         
+cc                                                                              
+cc                                                                              
+cc     filter 4.....very strong filter....the pattern will start to beco        
+cc                                                                              
+cc                                                                              
+cc                                                                              
+cc     n = 24.......and m varies as :                                           
+cc                  2,3,4,2,5,6,7,2,8,9,10,2,11,12,13,2,2,2,2,2,2,2,2,2         
+cc                                                                              
+cc                                                                              
+cc                                                                              
+       if((kty.eq.4.or.kty.eq.8.or.kty.eq.12                                    
+     *  .or.kty.ge.16).and.ifl.eq.4)chg = 1.0                                   
+cc                                                                              
+cc                                                                              
+cc                                                                              
+cc**********************************************************************        
+cc                                                                              
+cc                                                                              
+       if(chg.eq.0)kt = kt + 1                                                  
+       if(chg.eq.1.0)tk(kty) = .25                                              
+       if(chg.eq.1.0)go to 801                                                  
+       fact = 2.0*pi/(float(kt) + 1.0)                                          
+       tk(kty) = -.5/(cos(fact) - 1.0)                                          
+       write (6,'(2i5,3f7.2)') kty,kt,chg,fact,tk(kty)                          
+      do 679 na = 2 , 25                                                        
+      ampf(na) = 1 + 2.*tk(kty)*(cos(2.*pi/float(na)) - 1.0)                    
+c     print *,'na = ',na,' ampf(na) = ',ampf(na)                                
+679   continue                                                                  
+ccc                                                                             
+ccc                                                                             
+801    continue                                                                 
+       chg = 0.0                                                                
+802    continue                                                                 
+cc                                                                              
+cc        write(6,815) (tk(kk),kk = 1 , nty)                                    
+ 815      format(2x,'this is tk:',e12.6)                                        
+cc                                                                              
+cc                                                                              
+cc ......this is the end of the kty loop.......................                 
+cc                                                                              
+cc                                                                              
+cc**********desmoothing is set up if needed********************                 
+cc                                                                              
+       if(ismth.eq.1)then                                                       
+         ntym = nty - 1                                                         
+         tff = 1.0                                                              
+         do 61 k = 1 , ntym                                                     
+         tff = tff*(1. + 2.*tk(k)*cosf)                                         
+61       continue                                                               
+         tfr = 1./tff                                                           
+         tk(nty) = (tfr - 1.0)/(2.*cosf)                                        
+cc       write(6,816) tk(nty)                                                   
+816      format(2x,'the desmoothing constant',e12.6)                            
+       endif                                                                    
+cc                                                                              
+c***********print out the damping characteristics***************                
+cc                                                                              
+      irt = kt+1                                                                
+cc                                                                              
+      do 610 nz = 2 , 40                                                        
+      amp = 1.0                                                                 
+      tnn = float(nz)                                                           
+      ckg = 0.0                                                                 
+      if(nz.gt.irt)ckg = 1.0                                                    
+      do 617 kt = 1 , nty                                                       
+      amp1 = (1. + 2*tk(kt)*(cos(2.*pi/tnn)-1.0))                               
+      if(ckg.eq.0.0)go to 619                                                   
+      amp =  amp1*amp                                                           
+619   if(abs(amp1).lt..01)ckg = 1.0                                             
+617   continue                                                                  
+      amm = amp                                                                 
+      if(nz.le.irt)amm=0.0                                                      
+cc                                                                              
+      zz = float(nz)                                                            
+c     write(11,455)zz,amm                                                       
+455   format(f8.3,f8.3)                                                         
+cc                                                                              
+cc                                                                              
+cc                                                                              
+cc  the following write statement will let you know the amount of the           
+cc  wave that has remained after the filtering,                                 
+cc  for the wave of a given length d (which is currently one degree)            
+cc                                                                              
+      if(nz.eq.20.or.nz.eq.30.or.nz.eq.40)then                                  
+         write(6,677)nz,amm                                                     
+677   format(2x,'wave number',i5,2x,'percent wave remaining',e12.6)             
+      endif                                                                     
+cc                                                                              
+610   continue                                                                  
+cc*******************************************************************           
+cc                                                                              
+cc        do the smoothing in the latitudinal direction:                        
+cc                         (equation a1)                                        
+cc                                                                              
+        do 600 j = 1 , jmx                                                      
+cc                                                                              
+        do 58 nn = 1 , nty                                                      
+            xtu(1,nn)   = u(1,j)                                                
+            xtu(imx,nn) = u(imx,j)                                              
+            xtv(1,nn)   = v(1,j)                                                
+            xtv(imx,nn) = v(imx,j)                                              
+58      continue                                                                
+ccc                                                                             
+cc                                                                              
+cc                                                                              
+        do 60 i = 2 , imxm                                                      
+      xtu(i,1) = u(i,j)   + tk(1)*(u(i-1,j) +                                   
+     *             u(i+1,j) - 2.*u(i,j))                                        
+      xtv(i,1) = v(i,j)   + tk(1)*(v(i-1,j) +                                   
+     *             v(i+1,j) - 2.*v(i,j))                                        
+60      continue                                                                
+cc                                                                              
+cc                                                                              
+        do 65 nn = 2 , nty                                                      
+        do 62  i = 2 , imxm                                                     
+      xtu(i,nn) = xtu(i,nn-1) + tk(nn)*(xtu(i-1,nn-1) +                         
+     *xtu(i+1,nn-1) - 2.*xtu(i,nn-1))                                           
+      xtv(i,nn) = xtv(i,nn-1) + tk(nn)*(xtv(i-1,nn-1) +                         
+     *xtv(i+1,nn-1) - 2.*xtv(i,nn-1))                                           
+62    continue                                                                  
+65    continue                                                                  
+cc                                                                              
+       do 70 i = 1 , imx                                                        
+      us(i,j)   = xtu(i,nty)                                                    
+      vs(i,j)   = xtv(i,nty)                                                    
+70    continue                                                                  
+cc                                                                              
+600   continue                                                                  
+c                                                                               
+c                                                                               
+cc********************************************************************          
+cc                                                                              
+cc    now do the smoothing in the meridional direction:                         
+cc                         (equation a3)                                        
+cc                                                                              
+cc                                                                              
+        do 700   i = 1 , imx                                                    
+cc                                                                              
+        do 80 nn = 1 , nty                                                      
+      ytu(1,nn)   = us(i,1)                                                     
+      ytu(jmx,nn) = us(i,jmx)                                                   
+      ytv(1,nn)   = vs(i,1)                                                     
+      ytv(jmx,nn) = vs(i,jmx)                                                   
+80      continue                                                                
+cc                                                                              
+cc                                                                              
+cc                                                                              
+cc                                                                              
+        do 90 j = 2 , jmxm                                                      
+      ytu(j,1) = us(i,j) + tk(1)*(us(i,j-1) + us(i,j+1)                         
+     *                          -2.*us(i,j))                                    
+      ytv(j,1) = vs(i,j) + tk(1)*(vs(i,j-1) + vs(i,j+1)                         
+     *                          -2.*vs(i,j))                                    
+90      continue                                                                
+cc                                                                              
+cc                                                                              
+        do 95 nn = 2 , nty                                                      
+        do 95 j  = 2 , jmxm                                                     
+      ytu(j,nn) = ytu(j,nn-1) + tk(nn)*(ytu(j-1,nn-1)  +                        
+     *              ytu(j+1,nn-1) - 2.*ytu(j,nn-1))                             
+      ytv(j,nn) = ytv(j,nn-1) + tk(nn)*(ytv(j-1,nn-1)  +                        
+     *              ytv(j+1,nn-1) - 2.*ytv(j,nn-1))                             
+95    continue                                                                  
+cc                                                                              
+cc                                                                              
+cc   store the filtered fields in us,vs and gs                                  
+cc                                                                              
+cc                                                                              
+      do 99 j = 1 , jmx                                                         
+      us(i,j)   =  ytu(j,nty)                                                   
+      vs(i,j)   =  ytv(j,nty)                                                   
+99    continue                                                                  
+cc                                                                              
+cc                                                                              
+700   continue                                                                  
+cc                                                                              
+        return                                                                  
+cc                                                                              
+cc                                                                              
+        end                                                                     

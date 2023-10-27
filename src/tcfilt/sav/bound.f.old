@@ -1,0 +1,27 @@
+        subroutine bound(nmx,xr,ro)                                             
+c                                                                               
+        parameter (imx=201 , jmx=81)                                             
+c                                                                               
+        dimension xr(nmx),ro(nmx)                                               
+c       common  /ifact/nnn,ro(nmx),rb,ienv                                      
+        common  /xxx/  xf(imx,jmx),xc,yc,dx,dy                                  
+c        common  /coor/ xv,yv,xold,yold                                          
+       common  /coor/ xv,yv,xold,yold,xcorn,ycorn,factr,ix,iy                   
+c       common  /posit/ xold,yold                                               
+        pi = 4.*atan(1.0)                                                       
+        fact=cos(yold*pi/180.)                                                  
+        do 10 i=1,nmx                                                           
+        theta= 2.*pi*float(i-1)/float(nmx)                                      
+        x=ro(i)/fact*cos(theta)+xc +1.                                          
+        y=ro(i)*sin(theta)+yc +1.                                               
+        ix=int(x/dx)                                                            
+        iy=int(y/dy)                                                            
+        ix1=ix+1                                                                
+        iy1=iy+1                                                                
+        p=x/dx-float(ix)                                                        
+        q=y/dy-float(iy)                                                        
+       xr(i)=(1.-p)*(1.-q)*xf(ix,iy) +(1.-p)*q*xf(ix,iy+1)                      
+     1      +  (1.-q)*p*xf(ix+1,iy) + p*q*xf(ix+1,iy+1)                         
+10     continue                                                                 
+         return                                                                 
+         end                                                                    

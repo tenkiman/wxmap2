@@ -1,0 +1,20 @@
+setenv W2CENTER 'NHC'
+
+
+source .w2pgirc
+
+#
+# add local paths...
+#
+set localpath = ( \
+                ~/prc \
+                /opt/linux/bin \
+		)
+
+
+set path = ( \
+		$path \
+		$localpath \
+)		
+
+

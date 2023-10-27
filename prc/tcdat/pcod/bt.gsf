@@ -1,0 +1,9 @@
+function bt()
+_btn=6
+_bt.1=' 12.1  329.3 test'
+_bt.2=' 11.9  325.5 test'
+_bt.3=' 11.8  321.7 test'
+_bt.4=' 11.9  318.3 test'
+_bt.5=' 12.3  314.9 test'
+_bt.6=' 13.5  306.7 test'
+return

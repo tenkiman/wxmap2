@@ -1,0 +1,269 @@
+Notes on building with gcc/fortran on linux (centos6.9) and macos(10.12.6)
+
+			      Mike Fiorino
+				20180718
+
+I started with Glenn Carver, ECMWF mods in  gettrk_39a-glenn.carver-ecmwf/
+
+installed netcdf4 and hdf5.1 in the standard places on linux the the grib2/jasper/png from the build of wgrib2.tgz from ncep
+
+on the macos side:
+
+# ------------------- kishou.macos
+GRIB2_FFLAGS    =   -I../../libs/mods/g2
+GRIB2_LIBS      =   -L/w21/app/src/ncep/grib2/lib -lpng -ljasper -lz
+CFLAGS_GRIB2    =   -I/w21/app/src/ncep/grib2/include
+
+on linux side:
+
+# ------------------- wxmap2  Extra flags needed for including or linking to GRIB2 library:
+GRIB2_FFLAGS    =   -I../../libs/mods/g2
+GRIB2_LIBS      =   -L/data/amb/users/fiorino/w21-git/app/src/ncep/grib2/lib -lpng -ljasper -lz
+CFLAGS_GRIB2    =   -I/data/amb/users/fiorino/w21-git/app/src/ncep/grib2/include
+
+
+there are two arch dependent files:
+
+./lib/src/bacio/bacio.c-linux and -macos
+
+./trk_src/gettrk/Makefile-linux and -macos
+
+I do ln -s to set bacio.c and Makefile -- the problem, is, you guessed
+it, netcdf...
+
+I used the test_data tarball to test, but have nothing to compare so as
+to verify the build...
+
+cd test_data
+
+../trk_exec/gettrk.exe < input.nml-onebig-linux
+
+output
+
+fort.64-onebig-linux
+
+on my linux VM
+
+
+building on linux
+------------------
+
+cd standalone_gfdl-vortextracker_v3.9a
+
+ln -s configure.trk-linux configure.trk
+cd libs/src/bacio/
+ln -s bacio.c-linux.c bacio.c
+
+cd ../../../
+cd trk_src/gettrk/
+ln -s Makefile-linux Makefile
+
+cd ../../
+
+make     # makes the libraies and the applications into ./trk_exec
+
+
+building on macos
+-----------------
+
+same as above except doing the ln -s to the -macos version...
+
+
+fort.64-onebig-linux:
+
+AL, 14, 2016100400, 03, HREL, 000, 166N,  746W, 123,  934, XX,  34, NEQ, 0226, 0085, 0071, 0080, 1006,  190,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,   -9999,   -9999,   -9999, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 000, 166N,  746W, 123,  934, XX,  50, NEQ, 0061, 0058, 0046, 0055, 1006,  190,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,   -9999,   -9999,   -9999, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 000, 166N,  746W, 123,  934, XX,  64, NEQ, 0043, 0041, 0033, 0039, 1006,  190,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,   -9999,   -9999,   -9999, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 006, 172N,  745W, 128,  927, XX,  34, NEQ, 0214, 0098, 0095, 0065, 1007,  177,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -36,    2479,    4383, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 006, 172N,  745W, 128,  927, XX,  50, NEQ, 0055, 0062, 0048, 0048, 1007,  177,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -36,    2479,    4383, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 006, 172N,  745W, 128,  927, XX,  64, NEQ, 0038, 0035, 0034, 0036, 1007,  177,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -36,    2479,    4383, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 012, 181N,  743W, 126,  929, XX,  34, NEQ, 0222, 0121, 0091, 0073, 1005,   78,  13,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -46,    2626,    3638, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 012, 181N,  743W, 126,  929, XX,  50, NEQ, 0054, 0055, 0047, 0048, 1005,   78,  13,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -46,    2626,    3638, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 012, 181N,  743W, 126,  929, XX,  64, NEQ, 0040, 0041, 0033, 0036, 1005,   78,  13,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -46,    2626,    3638, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 018, 192N,  743W, 119,  938, XX,  34, NEQ, 0208, 0191, 0067, 0061, 1006,  104,  13,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -51,    2655,    2702, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 018, 192N,  743W, 119,  938, XX,  50, NEQ, 0048, 0053, 0046, 0046, 1006,  104,  13,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -51,    2655,    2702, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 018, 192N,  743W, 119,  938, XX,  64, NEQ, 0035, 0034, 0033, 0033, 1006,  104,  13,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -51,    2655,    2702, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 024, 200N,  744W, 120,  940, XX,  34, NEQ, 0209, 0181, 0078, 0061, 1008,  178,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -11,    2698,    2927, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 024, 200N,  744W, 120,  940, XX,  50, NEQ, 0053, 0048, 0046, 0042, 1008,  178,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -11,    2698,    2927, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 024, 200N,  744W, 120,  940, XX,  64, NEQ, 0034, 0034, 0031, 0033, 1008,  178,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -11,    2698,    2927, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 030, 207N,  746W, 110,  949, XX,  34, NEQ, 0091, 0224, 0069, 0070, 1005,   93,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,      -1,    1776,    2211, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 030, 207N,  746W, 110,  949, XX,  50, NEQ, 0048, 0054, 0051, 0044, 1005,   93,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,      -1,    1776,    2211, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 030, 207N,  746W, 110,  949, XX,  64, NEQ, 0035, 0041, 0029, 0033, 1005,   93,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,      -1,    1776,    2211, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 036, 214N,  748W, 114,  949, XX,  34, NEQ, 0144, 0192, 0065, 0133, 1009,  158,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -17,    2362,    2538, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 036, 214N,  748W, 114,  949, XX,  50, NEQ, 0072, 0050, 0045, 0048, 1009,  158,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -17,    2362,    2538, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 036, 214N,  748W, 114,  949, XX,  64, NEQ, 0038, 0038, 0030, 0033, 1009,  158,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -17,    2362,    2538, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 042, 223N,  752W, 120,  946, XX,  34, NEQ, 0114, 0143, 0087, 0082, 1006,  155,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -24,    2133,    2549, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 042, 223N,  752W, 120,  946, XX,  50, NEQ, 0067, 0053, 0050, 0051, 1006,  155,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -24,    2133,    2549, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 042, 223N,  752W, 120,  946, XX,  64, NEQ, 0038, 0039, 0032, 0032, 1006,  155,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -24,    2133,    2549, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 048, 233N,  756W, 115,  950, XX,  34, NEQ, 0108, 0121, 0075, 0067, 1006,  105,  16,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -48,    1958,    2865, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 048, 233N,  756W, 115,  950, XX,  50, NEQ, 0052, 0054, 0041, 0041, 1006,  105,  16,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -48,    1958,    2865, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 048, 233N,  756W, 115,  950, XX,  64, NEQ, 0041, 0035, 0031, 0031, 1006,  105,  16,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -48,    1958,    2865, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 054, 245N,  763W, 116,  950, XX,  34, NEQ, 0126, 0120, 0078, 0118, 1006,  188,  16,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -63,    1859,    2228, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 054, 245N,  763W, 116,  950, XX,  50, NEQ, 0062, 0063, 0047, 0043, 1006,  188,  16,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -63,    1859,    2228, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 054, 245N,  763W, 116,  950, XX,  64, NEQ, 0043, 0042, 0030, 0031, 1006,  188,  16,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -63,    1859,    2228, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 060, 258N,  770W, 112,  947, XX,  34, NEQ, 0124, 0141, 0099, 0122, 1007,  157,  17,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -33,    1962,    2313, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 060, 258N,  770W, 112,  947, XX,  50, NEQ, 0065, 0066, 0044, 0048, 1007,  157,  17,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -33,    1962,    2313, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 060, 258N,  770W, 112,  947, XX,  64, NEQ, 0042, 0041, 0030, 0033, 1007,  157,  17,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -33,    1962,    2313, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 066, 270N,  781W, 121,  939, XX,  34, NEQ, 0174, 0173, 0073, 0134,  999,   67,  18,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -51,    2133,    2908, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 066, 270N,  781W, 121,  939, XX,  50, NEQ, 0064, 0060, 0045, 0052,  999,   67,  18,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -51,    2133,    2908, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 066, 270N,  781W, 121,  939, XX,  64, NEQ, 0041, 0038, 0033, 0036,  999,   67,  18,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -51,    2133,    2908, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 072, 278N,  788W, 124,  935, XX,  34, NEQ, 0179, 0167, 0074, 0152, 1003,   89,  17,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -66,    2413,    3515, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 072, 278N,  788W, 124,  935, XX,  50, NEQ, 0108, 0055, 0045, 0075, 1003,   89,  17,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -66,    2413,    3515, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 072, 278N,  788W, 124,  935, XX,  64, NEQ, 0040, 0040, 0033, 0037, 1003,   89,  17,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -66,    2413,    3515, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 078, 288N,  793W, 120,  931, XX,  34, NEQ, 0181, 0175, 0090, 0152,  999,   76,  16,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -85,    2561,    3930, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 078, 288N,  793W, 120,  931, XX,  50, NEQ, 0111, 0065, 0048, 0075,  999,   76,  16,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -85,    2561,    3930, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 078, 288N,  793W, 120,  931, XX,  64, NEQ, 0042, 0043, 0036, 0034,  999,   76,  16,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -85,    2561,    3930, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 084, 299N,  796W, 118,  933, XX,  34, NEQ, 0244, 0178, 0107, 0178, 1005,  122,  17,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -67,    2466,    4433, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 084, 299N,  796W, 118,  933, XX,  50, NEQ, 0118, 0080, 0044, 0080, 1005,  122,  17,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -67,    2466,    4433, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 084, 299N,  796W, 118,  933, XX,  64, NEQ, 0051, 0042, 0032, 0038, 1005,  122,  17,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -67,    2466,    4433, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 090, 312N,  798W, 117,  930, XX,  34, NEQ, 0201, 0165, 0131, 0097, 1010,  345,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -24,    3077,    4788, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 090, 312N,  798W, 117,  930, XX,  50, NEQ, 0109, 0094, 0074, 0088, 1010,  345,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -24,    3077,    4788, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 090, 312N,  798W, 117,  930, XX,  64, NEQ, 0053, 0050, 0036, 0044, 1010,  345,  15,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -24,    3077,    4788, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 096, 319N,  799W,  92,  941, XX,  34, NEQ, 0209, 0193, 0115, 0163, 1009,  165,  21,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -32,    2820,    3582, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 096, 319N,  799W,  92,  941, XX,  50, NEQ, 0131, 0080, 0078, 0058, 1009,  165,  21,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -32,    2820,    3582, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 096, 319N,  799W,  92,  941, XX,  64, NEQ, 0049, 0046, 0053, 0040, 1009,  165,  21,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     -32,    2820,    3582, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 102, 328N,  797W,  82,  948, XX,  34, NEQ, 0219, 0209, 0131, 0142, 1000,  105,  24,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,      89,    2484,    3611, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 102, 328N,  797W,  82,  948, XX,  50, NEQ, 0141, 0089, 0068, 0027, 1000,  105,  24,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,      89,    2484,    3611, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 102, 328N,  797W,  82,  948, XX,  64, NEQ, 0050, 0050, 0040, 0000, 1000,  105,  24,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,      89,    2484,    3611, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 108, 340N,  790W,  74,  960, XX,  34, NEQ, 0200, 0197, 0126, 0094,  992,   62,  29,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     157,    2263,    2447, N, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 108, 340N,  790W,  74,  960, XX,  50, NEQ, 0104, 0105, 0000, 0000,  992,   62,  29,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     157,    2263,    2447, N, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 108, 340N,  790W,  74,  960, XX,  64, NEQ, 0000, 0050, 0000, 0000,  992,   62,  29,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     157,    2263,    2447, N, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 114, 348N,  784W,  52,  969, XX,  34, NEQ, 0211, 0208, 0135, 0069, 1005,  152,  51,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     171,    1373,    1979, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 114, 348N,  784W,  52,  969, XX,  50, NEQ, 0000, 0065, 0000, 0000, 1005,  152,  51,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     171,    1373,    1979, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 120, 360N,  766W,  52,  981, XX,  34, NEQ, 0209, 0207, 0175, 0110, 1009,  189, 100,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     200,     418,    1699, N, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 120, 360N,  766W,  52,  981, XX,  50, NEQ, 0102, 0000, 0000, 0000, 1009,  189, 100,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     200,     418,    1699, N, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 126, 376N,  750W,  52,  984, XX,  34, NEQ, 0223, 0226, 0150, 0220,  992,   57,  87,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     291,     750,    -735, Y, 10, DT, -999
+AL, 14, 2016100400, 03, HREL, 126, 376N,  750W,  52,  984, XX,  50, NEQ, 0091, 0000, 0000, 0089,  992,   57,  87,   0,   0,    ,   0,    ,   0,   0,           ,  ,   ,    ,   0,   0,   0,   0,       THERMO PARAMS,     291,     750,    -735, Y, 10, DT, -999
+
+
+input.nml-onebig-linux:
+
+&datein
+  inp%bcc = 20,
+  inp%byy = 16,
+  inp%bmm = 10,
+  inp%bdd = 04,
+  inp%bhh = 00,
+  inp%model = 17,
+  inp%modtyp = "regional",
+  inp%lt_units = "hours",
+  inp%file_seq = "onebig",
+  inp%nesttyp = "moveable",
+/
+
+&atcfinfo
+  atcfnum = 81,
+  atcfname = "HREL",
+  atcfymdh = 2016100400,
+  atcffreq = 100,
+/
+
+&trackerinfo
+  trkrinfo%type = "tracker",
+  trkrinfo%mslpthresh = 0.0015,
+  trkrinfo%use_backup_mslp_grad_check = "y",
+  trkrinfo%v850thresh = 1.5,
+  trkrinfo%use_backup_850_vt_check = "y",
+  trkrinfo%enable_timing = 1,
+  trkrinfo%gridtype = "regional",
+  trkrinfo%contint = 100.0,
+  trkrinfo%want_oci = T,
+  trkrinfo%out_vit = "y",
+  trkrinfo%use_land_mask = "y",
+  trkrinfo%inp_data_type = "grib",
+  trkrinfo%gribver = 1,
+  trkrinfo%g2_jpdtn = 0,
+  trkrinfo%g2_mslp_parm_id = 192,
+  trkrinfo%g1_mslp_parm_id = 2,
+  trkrinfo%g1_sfcwind_lev_typ = 105,
+  trkrinfo%g1_sfcwind_lev_val = 10,
+/
+
+&phaseinfo
+  phaseflag = "y",
+  phasescheme = "both",
+  wcore_depth = 1.0,
+/
+
+&structinfo
+  structflag = "n",
+  ikeflag = "n",
+/
+
+&fnameinfo
+  gmodname = "hwrf",
+  rundescr = "25x25",
+  atcfdescr = "AL142016",
+/
+
+&waitinfo
+  use_waitfor = "n",
+  wait_min_age = 10,
+  wait_min_size = 100,
+  wait_max_wait = 3600,
+  wait_sleeptime = 5,
+  use_per_fcst_command = "y",
+  per_fcst_command = "./deliver %[FHOUR] %[FMIN]",
+/
+
+&netcdflist
+  netcdfinfo%lat_name = "",
+  netcdfinfo%lmaskname = "",
+  netcdfinfo%lon_name = "",
+  netcdfinfo%mslpname = "",
+  netcdfinfo%netcdf_filename = "",
+  netcdfinfo%num_netcdf_vars = 0,
+  netcdfinfo%rv700name = "",
+  netcdfinfo%rv850name = "",
+  netcdfinfo%time_name = "",
+  netcdfinfo%time_units = "",
+  netcdfinfo%tmean_300_500_name = "",
+  netcdfinfo%u500name = "",
+  netcdfinfo%u700name = "",
+  netcdfinfo%u850name = "",
+  netcdfinfo%usfcname = "",
+  netcdfinfo%v500name = "",
+  netcdfinfo%v700name = "",
+  netcdfinfo%v850name = "",
+  netcdfinfo%vsfcname = "",
+  netcdfinfo%z200name = "",
+  netcdfinfo%z300name = "",
+  netcdfinfo%z350name = "",
+  netcdfinfo%z400name = "",
+  netcdfinfo%z450name = "",
+  netcdfinfo%z500name = "",
+  netcdfinfo%z550name = "",
+  netcdfinfo%z600name = "",
+  netcdfinfo%z650name = "",
+  netcdfinfo%z700name = "",
+  netcdfinfo%z750name = "",
+  netcdfinfo%z800name = "",
+  netcdfinfo%z850name = "",
+  netcdfinfo%z900name = "",
+/
+
+&parmpreflist
+  user_wants_to_track_zeta700 = "y",
+  user_wants_to_track_wcirc850 = "y",
+  user_wants_to_track_wcirc700 = "y",
+  user_wants_to_track_gph850 = "y",
+  user_wants_to_track_gph700 = "y",
+  user_wants_to_track_mslp = "y",
+  user_wants_to_track_wcircsfc = "y",
+  user_wants_to_track_zetasfc = "y",
+  user_wants_to_track_thick500850 = "y",
+  user_wants_to_track_thick200500 = "y",
+  user_wants_to_track_thick200850 = "y",
+  user_wants_to_track_zeta850 = "y",
+/
+
+&verbose
+  verb = 0,
+  verb_g2 = 0,
+/
+
+
+
+
+
+

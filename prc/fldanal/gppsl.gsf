@@ -1,0 +1,264 @@
+function gppsl(k)
+
+dowap=0
+
+if(_dobasemap != 1)
+  'draw map'
+endif
+
+if(dowap = 1)
+  t1='SLP [hPa] / 1000-500mb Thck [dm] / 700mb w [Pa/s]'
+else
+  t1='SLP [hPa] / 1000-500mb Thck [dm]'
+endif
+
+#-------------------------------------------------------
+# vert motion - wap
+#-------------------------------------------------------
+
+if(dowap = 1)
+
+  wvar='(wap(lev=700))'
+  rcw7=datachk(wvar)
+  print 'wwwwwwwwwwwwwwwwww 'rcw7
+  'wa7='wvar
+
+  'set grads off'
+  'set xlint '_xlint
+  'set ylint '_ylint
+
+  if (rcw7 = 0)
+
+    if(_regriduas = 1)
+      'ls=const(sftlf.'_fm'(t=1),0,-u)'
+      'wa7=lterp(wa7,ls)'
+    endif
+
+    rc=jaecol()
+    pcol.1='69 68 67 66 65 64 63 62 61 51 52 53 54 55 56 57 58 59'
+    'set gxout shaded'
+    'set csmooth on' 
+    'set cterp on'
+    'set rbrange -2 2'
+    'set rbcols 'pcol.1
+    'set cint 0.10'
+    'set black -0.20 0.20'
+    'd wa7'
+    'q shades'
+    _shades=result
+    'set rbcols auto'
+
+  endif 
+
+endif
+
+
+#-------------------------------------------------------
+# pressure
+#-------------------------------------------------------
+
+pslci=4
+
+'pm=const(maskout(const(lat,-1),abs(lat)-20.0),0,-u)'
+'p='_pslvar
+
+rc=datachk(p)
+_shades=0
+if(rc != 0) ; return(rc) ; endif
+
+if(_pslsmth = 1)
+  'p=smth9(p)'
+
+  if(_regridpsl = 1)
+    'p=re(psl,0.75)'
+  endif
+
+endif
+
+
+if(_ukfill) ; rc=lonfill('p') ; endif
+
+doold=0
+if(doold) 
+'set gxout contour'
+'set grads off'
+'set xlint '_xlint
+'set ylint '_ylint
+
+'set ccolor 76'
+'set cthick 20'
+'set cint 'pslci
+'set clab off'
+'d p'
+
+'set ccolor rainbow'
+'set rbrange 980 1032'
+'set cthick 5'
+'set cint 'pslci
+'set clab off'
+'d p'
+
+'set ccolor rainbow'
+*'set ccolor revrain'
+'set rbrange 980 1032'
+'set clab on'
+'set cint 4'
+'d p'
+endif
+
+pslnhem=4
+*
+*  plot slp
+*
+
+'set gxout contour'
+'set ccolor 0'
+'set ccolor 76'
+'set cthick 10'
+'set cint 2'
+if(_area = 'nhem'); 'set cint 'pslnhem ; endif
+'set clab off'
+'d p'
+
+if(_interact = 1) ; 'q pos' ; endif
+
+'set ccolor rainbow'
+'set rbrange 980 1032'
+'set cthick 2'
+'set cint 2'
+if(_area = 'nhem'); 'set cint 'pslnhem ; endif
+'set clab off'
+'d p'
+
+'set ccolor rainbow'
+'set rbrange 980 1032'
+'set clab on'
+'set clskip 2 2.0'
+'set clopts -1 -1 0.075'
+'set cthick 2'
+'set cint 4'
+if(_area = 'nhem'); 'set cint 'pslnhem ; endif
+'d p'
+
+'set ccolor 0'
+'set clab on'
+'set clskip 2'
+'set cthick 7'
+'set cint 1'
+if(_area = 'nhem'); 'set cint 'pslnhem ; endif
+if(_regridpr = 1)
+  'pm=re(pm,0.75)'
+endif
+
+if(rcpm > 0)
+  'set clab on'
+  'set clskip 2'
+  'set ccolor rainbow'
+  'set rbrange 980 1032'
+  'set cthick 2'
+  'set cint 1'
+if(_area = 'nhem'); 'set cint 'pslnhem ; endif
+  'd maskout(p,pm)'
+endif
+
+if(_interact = 1) ; 'q pos' ; endif
+
+'z5=zg(lev=500)'
+'z10=zg(lev=1000)'
+
+rcz5=datachk(z5)
+rcz10=datachk(z10)
+
+'zthk=(z5-z10)/10'
+
+if(rcz5=0 & rcz10=0)
+
+if(_model=ifs | _model='ecm5' | _model='era5'  )
+  'zthk=zthk/'_gravity
+endif
+
+if(_ukfill) ; rc=lonfill('zthk') ; endif
+
+if(_regridzthk = 1)
+  'zthk=re(zthk,0.75)'
+  'pm=re(pm,0.75)'
+endif
+
+'zthk=smth9(zthk)'
+
+'set gxout contour'
+#
+# mid-lats
+#
+
+zcint=3
+'set ccolor 0'
+'set cstyle 2'
+'set cthick 15'
+'set clab off'
+'set cint 'zcint
+'d zthk'
+
+'set ccolor 1'
+'set cstyle 2'
+
+'set ccolor 5'
+'set cthick 4'
+'set clab on'
+'set grads off'
+'set cint 'zcint
+'d zthk'
+
+
+#
+# tropics
+#
+zcint=0.5
+'set ccolor 0'
+'set cstyle 5'
+'set cthick 15'
+'set clab off'
+'set cint 'zcint
+'set clskip 2'
+'d maskout(zthk,pm)'
+
+'set ccolor 1'
+'set cstyle 5'
+'set ccolor 5'
+'set cthick 4'
+'set clab on'
+'set grads off'
+'set clskip 2'
+'set cint 'zcint
+'d maskout(zthk,pm)'
+
+*
+*	plot 540 thickness line
+*
+'set clevs 540'
+'set ccolor 1'
+'set cthick 20'
+'set cstyle 1'
+'set grads off'
+'d zthk'
+
+'set clevs 540'
+'set ccolor 4'
+'set cthick 10'
+'set cstyle 1'
+'set grads off'
+'d zthk'
+endif
+
+if(_dobasemap != 1)
+  rc=drawmap()
+endif
+
+rc=dtitle(t1)
+###print 'PPPPPPPPPPPP psl shade bug '_shades
+if(subwrd(_shades,1) = 'None') ; return(0) ; endif
+if(_shades!=0 & _shades!='') ; rc=cbarc() ; endif
+
+return(0)
+
+

@@ -1,0 +1,20 @@
+function tctrkp()
+_plttaus='  0 12 24 36 48 72 96 120'
+_mtitle1=' Best Track `412L.1996  `0TY `2LILI'
+_mtitle2=' period 1996101412 to 1996102900'
+_lnmn=255.0
+_lnmx=345.0
+_ltmn=0.0  
+_ltmx=55.0 
+_lnint=10.0 
+_ltint=10.0 
+_lnmnall=255.0
+_lnmxall=370.0
+_ltmnall=0.0  
+_ltmxall=65.0 
+_lnintall=10.0 
+_ltintall=10.0 
+_interact=0
+_ruleflg='NHC'
+_docfc='0'
+return

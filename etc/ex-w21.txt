@@ -1,0 +1,14 @@
+__*
+dump
+.svn*
+*~
+*SAV*
+#*
+.DS_Store
+*.bak
+*.pyc
+#*archive*
+w2local.php
+80.htaccess
+.htaccess
+robots*

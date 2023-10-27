@@ -1,0 +1,296 @@
+*
+*-------------------------- gpz500 ------------------
+*
+function gpz500(k)
+
+if(_area = 'nhem')
+   t1='500mb  Heights / Rel Vort'
+else 
+   t1='500mb  Heights / Rel Vort / T [`3.`0C]'
+endif
+rc=dtitle(t1)
+
+reres=0.25
+rerest=0.50
+
+pstat=1
+_shades=0
+'set lev 500'
+'set grads off'
+'set timelab '_timelabopt
+'set map 1 0 4'
+
+'z5=zg'
+'u5=ua'
+'v5=va'
+'t5=ta'
+
+rcz=datachk(z5) 
+rcu=datachk(u5)
+rcv=datachk(v5)
+rct=datachk(t5) 
+
+if(_ukfill)
+if(rcz=0); rc=lonfill('z5') ; endif
+if(rcu=0); rc=lonfill('u5') ; endif
+if(rcv=0); rc=lonfill('v5') ; endif
+if(rct=0); rc=lonfill('t5') ; endif
+endif
+
+# -- data check and bail -- for navg
+
+if(rcz != 0); return(rcz) ; endif
+if(rcu != 0); return(rcu) ; endif
+if(rcv != 0); return(rcv) ; endif
+if(rct != 0); return(rct) ; endif
+
+#
+# vorticity
+#
+
+if(rcu=0 & rcv=0)
+
+'cf=lat/abs(lat)'
+'cf=const(cf,1,-u)'
+'vrt=hcurl(u5,v5)*1e5*cf'
+  
+if(_regridz5 = 1)
+  'ls=const(sftlf.'_fm'(t=1),0,-u)'
+  'cf=re(cf,'reres')'
+  'vrt=re(vrt,'reres')'
+endif
+
+
+#
+#  colorise land
+#
+
+
+pstat=0
+'set gxout shaded'
+'set csmooth on'
+'set cterp on'
+rc=jaecol()
+
+
+pcol.2='49 48 47 46 45 44 43 42 41 21 22 23 24 25 26 27 28 29'
+pcol.2='49 48 47 46 45 44 43 42 41 31 32 33 34 35 36 37 38 39'
+pcol.1='69 66 65 63 61 61 53 55 56 57 58 59'
+pcol.1='59 58 57 55 55 53 52 51 61 62 63 64 65 66 67 68 69'
+*pcol.1='49 48 47 45 44 43 42 62 63 64 65 66 67 68 69'
+pcol.1='54 53 52 61 42 43 44 45 47 48 49 69 68 67 66 65 64 63 21 22 23 24 25 26'
+
+'set xlint '_xlint
+'set ylint '_ylint
+'set rbrange -14 20'
+'set rbcols 'pcol.1
+'set clevs  -14 -12 -10 -8 -6 -4 -2  2   4  6  8  10  12  14  16 18 20'
+'set ccols 54  53  52  61 42 43 44 0 47  48 49 69  68  67  66  65 64 63 21 22 23 24 25 26'
+
+'set rgb 49  00 20 60'
+'set rgb 47  00 40 100'
+'set rgb 43  00 60 150'
+'set rgb 61  00 120 200'
+
+'set rgb 69 20  5 00'
+'set rgb 68 50  5 00'
+'set rgb 67 100 10 00'
+'set rgb 66 120 10 00'
+'set rgb 65 130 10 00'
+'set rgb 64 150 40 0'
+'set rgb 63 170 60 00'
+'set rgb 21 200 100 00'
+'set rgb 22 255 232 120'
+'set rgb 22 255 140 100'
+
+'set clevs  -14  -12  -10 -8  -6  -4  -2   2  4   6   8  10  12  14  16  18  20'
+'set ccols 57   55  52  61  43  47  49   0  69  68  67  66  65  64  63  21  22  23 24 25 26'
+'set ccols 57   55  52  61  43  47   0   0   0  68  67  66  65  64  63  21  22  23 24 25 26'
+'set ccols 57   55  52  61  43  47   0   0   0  29  28  27  26 25  24  23  22 21 25 26'
+#'set black -4 4'
+'set cint 2'
+'set gxout shaded'
+
+'d vrt'
+'q shades'
+_shades=result
+
+
+endif
+
+plotta=1
+if(_area = 'nhem') ; plotta=0 ; endif
+if(plotta=1 & rct=0) 
+
+  'tt=ta-273.16'
+  if(_regridz5 = 1)
+    'tt=re(tt,'rerest')'
+  endif
+#
+# 20050921 -- smooth the ta fields; the new ncep gfs t384 is noisy
+#
+  taexpr='smth9(tt)'
+
+  'set gxout contour'
+
+  'set cint 2'
+  'set clskip 3'
+  'set ccolor 0'
+  'set clskip 2 2.0'
+  'set clopts -1 -1 0.075'
+  'set cthick '_cthkb
+  'set grads off'
+  'set clab off'
+  'd 'taexpr
+
+  'set cint 2'
+  'set ccolor 3'
+  'set cthick '_cthk
+  'set clab on'
+  'set clskip 2 2.0'
+  'set clopts -1 -1 0.075'
+
+  'd 'taexpr
+
+endif
+
+plotdzdt=0
+if(plotdzdt) 
+
+if(_dtau=12)
+  'set cint 30'
+else
+  'set cint 15'
+endif
+
+if( _tau >= _dtau ) 
+  taup=_tau-_dtau
+  dtgp=incdtgh(_bdtg,taup)
+  timep=dtghcur(dtgp)
+
+  'zd=zg.'_fn'-zg.'_fn'(time='timep')'
+  if(_model='ifs' | _model='era5' _model='ecm5')
+    'zd=zd/'_gravity
+  endif
+
+  rc=dtitle(t1)
+  rc=datachk(zd) 
+  if(rc=0)
+  if(_regridz5 = 1)
+    'zd=re(zd,'reres')'
+  endif
+
+
+  zdepxr='zd'
+
+  'set gxout contour'
+  'set ccolor 0'
+  'set cthick '_cthkb
+  'set grads off'
+  'set clab off'
+  'd 'zdexpr
+  'set ccolor rainbow'
+  'set ccolor 3'
+  'set cthick '_cthk
+  'set clab off'
+  'd 'zdexpr
+  'set cthick '_cthkb
+  'set clevs 0'
+  'set ccolor 3'
+  'set clab off'
+  'd 'zdexpr
+  else
+*    return(rc)
+  endif
+endif
+
+endif
+
+if(rcz = 0)
+pstat=0
+if(_model='ifs' | _model = 'ecm5' | _model = 'era5' )
+  'z5=z5/'_gravity
+endif
+
+'zlat=lat'
+if(_regridz5 = 1)
+  'z5=re(z5,'reres')'
+  'zlat=re(lat,'reres')'
+endif
+
+z5expr='z5'
+z5expr='smth9(z5)'
+
+*
+*	z 500 
+*
+'set grads off'
+'set gxout contour'
+'set rbcols auto'
+'set ccolor 0'
+'set cthick '_cthkb
+'set cint 60'
+'d 'z5expr
+
+'set ccolor 15'
+'set cthick '_cthk
+'set cint 60'
+'set clab on'
+'set clskip 2 2.0'
+'set clopts -1 -1 0.075'
+
+'d 'z5expr
+
+tropint=20
+'set ccolor 0'
+'set cthick '_cthkb
+'set cint 'tropint
+'d maskout('z5expr',20-abs(zlat))'
+
+'set ccolor 52'
+'set cthick '_cthk
+'set cint 'tropint
+'d maskout('z5expr',20-abs(zlat))'
+
+vrtcnt=1
+dovrt0=0
+if(vrtcnt)
+
+'set gxout contour'
+'set cint 4'
+'set ccolor 0'
+'set clab off'
+'set black -2 2'
+'set grads off'
+'d vrt'
+
+  if(dovrt0)
+  
+    vrt0expr='smth9(smth9(smth9(re(vrt,0.75))))'
+
+    'set clevs 0'
+    'set cthick 15'
+    'set ccolor 0'
+    'set clab off'
+    'd 'vrt0expr
+    'set cthick 5'
+    'set ccolor 1'
+    'set clevs 0'
+    'set clab off'
+    'd 'vrt0expr
+  endif
+
+endif
+
+
+if(_dobasemap != 1)
+#  'set map 1 0 6'
+#  'draw map'
+endif
+endif
+#rc=drawmap()
+rc=dtitle(t1)
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+
+return(pstat)
+

@@ -1,0 +1,28 @@
+setenv W2CENTER 'ESRL'
+setenv NCARG_ROOT /w21/app/ncar
+
+#setenv NIO_GRIB2_CODETABLES /lfs0/projects/fim/whitaker/lib/python2.5/site-packages/PyNIO/ncarg/grib2_codetables/
+
+echo "setting ld_library_path in .w2localrc"
+
+setenv DYLD_LIBRARY_PATH "$W2_BDIRAPPLIB":/w21/app/opengrads2.0/bin/gex/
+
+setenv GALIBD "$W2_GRADS_BDIR/lib"
+if ( $?LD_LIBRARY_PATH ) then
+   setenv LD_LIBRARY_PATH .:"$LD_LIBRARY_PATH":"$GALIBD":"$W2_BDIRDB5LIB"
+else
+   setenv LD_LIBRARY_PATH .:"$W2_BDIRDB5LIB":"$GALIBD"
+endif
+
+#source .w2pgirc
+
+set localpath = ( \
+                $NCARG_ROOT/bin \
+		)
+
+
+set path = ( \
+		$path \
+		$localpath \
+)		
+

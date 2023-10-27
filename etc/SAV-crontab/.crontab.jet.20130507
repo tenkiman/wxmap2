@@ -1,0 +1,58 @@
+MAILTO=""
+#------------------------------------------------------
+#
+#      wjet crontab
+#
+#------------------------------------------------------
+#
+
+# 20090203 -- checked out wxmap2 -> w21 and just src/opengrads src/python; mod .alias .tcshrc .envrc .pythonrc .pathrc
+runcmd='/lfs1/projects/fim/fiorino/w21/run.cron.tcsh'
+w2pdir='/lfs1/projects/fim/fiorino/w21/prc'
+
+#-- more agressive; tau 240 shows up at 0700 for 00z and 1915 for 12z
+3,18,32,47  6-13,18-23,0,1    * * * $runcmd "$w2pdir/wxmap2/w2.nwp2.py ops12 ecm2 -D"   >> /lfs1/projects/fim/fiorino/tmp/log.w2.nwp2.py.ECM2 2>&1
+10,30,50  6-11,18-23    * * * $runcmd "$w2pdir/wxmap2/w2.nwp2.py ops12 ngp2 -D"   >> /lfs1/projects/fim/fiorino/tmp/log.w2.nwp2.py.NGP2 2>&1
+ 5,25,45  6-11,18-23    * * * $runcmd "$w2pdir/wxmap2/w2.nwp2.py ops12 cmc2 -D"   >> /lfs1/projects/fim/fiorino/tmp/log.w2.nwp2.py.CMC2 2>&1
+ 7,27,47           *    * * * $runcmd "$w2pdir/wxmap2/w2.jet.rsync.tracker.py cur-36.cur"  >> /lfs1/projects/fim/fiorino/tmp/log.w2.jet.rsync.tracker.sh.RTRK 2>&1
+
+# 20100517 -- fimx is now fimchem for the icano
+
+###--- 03  5-11,15-23    * * * $runcmd "$w2pdir/fim/w2.fim.post2.py cur12-24.cur12 rtfimy -Q"   >> /lfs1/projects/fim/fiorino/tmp/log.w2.fim.post2.py.FIMY 2>&1
+###--- 29       08-15    * * * $runcmd "$w2pdir/fim/w2.fim.post2.py cur12-48.ops12 rtfim9 -Q"   >> /lfs1/projects/fim/fiorino/tmp/log.w2.fim.post2.py.FIM9 2>&1
+
+# -- 20121106 -- new batch system just run interactively until fixed in fp2; got right magic on 20121107
+# -- 20121128 -- got working on new os on jet 
+# -- 20130201 -- fim account does not work on sjet, but fim-njet does...
+#
+53  5-11,15-23    * * * $runcmd "$w2pdir/fim/w2.fim.post2.py cur12-24.cur12 rtfim -Q"    >> /lfs1/projects/fim/fiorino/tmp/log.w2.fim.post2.py.FIM 2>&1
+43        0-23    * * * $runcmd "$w2pdir/fim/w2.fim.post2.py cur12-24.cur12 rtfimx -Q"   >> /lfs1/projects/fim/fiorino/tmp/log.w2.fim.post2.py.FIMXchem 2>&1
+23        0-23    * * * $runcmd "$w2pdir/fim/w2.fim.post2.py cur12-24.cur12 rtfim7 -Q"   >> /lfs1/projects/fim/fiorino/tmp/log.w2.fim.post2.py.FIM7 2>&1
+29        0-23    * * * $runcmd "$w2pdir/fim/w2.fim.post2.py cur12-24.cur12 rtfim9 -Q"       >> /lfs1/projects/fim/fiorino/tmp/log.w2.fim.post2.py.FIM9 2>&1
+
+# 20110823 -- ecbufr
+#
+2,17,32,47   5-9,17-21    * * * $runcmd "$w2pdir/tcdat/w2.tc.ecbufr.py ops12"   >> /lfs1/projects/fim/fiorino/tmp/log.w2.tc.ecbufr.py.ECBUFR 2>&1
+
+# 20120801 -- trackers/adeck from hfip 2012
+#07        0-23    * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.adeck.py fimens2012 -y cur"   >> /lfs1/projects/fim/fiorino/tmp/log.w2.tc.dss.adeck.py.FIMENS2012 2>&1
+#07        0-23    * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.adeck.py fim9hfip -y cur"   >> /lfs1/projects/fim/fiorino/tmp/log.w2.tc.dss.adeck.py.FIM9HFIP 2>&1
+
+51       3 * * * $runcmd "$w2pdir/flddat/w2.mss.nwp2-w2flds.py all all -I"      >> /lfs1/projects/fim/fiorino/tmp/log.w2.mss.nwp2-w2flds.pyinv.NWP2 2>&1
+31       3 * * * $runcmd "$w2pdir/flddat/w2.mss.nwp2-w2flds.py all all -W -I"   >> /lfs1/projects/fim/fiorino/tmp/log.w2.mss.nwp2-w2flds.pyinv.W2FLDS 2>&1
+11       3 * * * $runcmd "$w2pdir/flddat/w2.mss.nwp2-w2flds.py all all -R -I"   >> /lfs1/projects/fim/fiorino/tmp/log.w2.mss.nwp2-w2flds.pyinv.RTFIM 2>&1
+
+
+
+# 20110824 -- process gfs and fim ensemble for genesis
+###0,5,10,15,20,25,30,35,40,45,50,55  5-11,17-23   * * * $runcmd "$w2pdir/hfip/w2.hfip.tier1.fimy.demo2011.py ops12"      >> /lfs1/projects/fim/fiorino/tmp/log.w2.w2.hfip.tier1.fimy.demo2011.py.TIER1FIMY 2>&1
+### 9,49     4-7,10-13,16-19,22-23,0-1  * * * $runcmd "$w2pdir/wxmap2/w2.nwp2.py ops6 gfsk -t -o"    >> /lfs1/projects/fim/fiorino/tmp/log.w2.nwp2.py.GFSK 2>&1
+###15  5-13,16-23,0-1  * * * $runcmd "$w2pdir/tctrk/p.gfsenkf.tmtrk.py ops12 -Q"               >> /lfs1/projects/fim/fiorino/tmp/log.p.gfsenkf.tmtrk.py.GFSENS 2>&1
+###45  5-13,16-23,0-1  * * * $runcmd "$w2pdir/tctrk/p.gfsenkf.tmtrk.py ops12 -T fimens -Q"     >> /lfs1/projects/fim/fiorino/tmp/log.p.gfsenkf.tmtrk.py.FIMENS 2>&1
+###35  9-13,21-23,0-2  * * * $runcmd "$w2pdir/tctrk/p.gfsenkf.tmtrk.py ops12 -D -Q"  >> /lfs1/projects/fim/fiorino/tmp/log.p.gfsenkf.tmtrk.py.TMTRKDET 2>&1
+
+
+FH='/lfs0/projects/fim/fiorino/fim/FIM685'
+FH='/lfs1/projects/fim/fiorino/FIMXnew'
+FEXP='FIMretro'
+#0-57/3 * * * * /usr/local/esrl/bin/workflowmgr.rb --xml="$FH/FIMwfm/xml/$FEXP.xml" --store="$FH/FIMwfm/log/$FEXP.store"

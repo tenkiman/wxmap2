@@ -1,0 +1,305 @@
+*-------------------------- gp850 ------------------
+*
+#
+#  20000309 - require RH to plot
+#
+function gp850(k)
+
+
+plev=850
+t1=plev'mb Temperatures / RH / Winds'
+'set lev 'plev
+pstat=1
+_shades=0
+
+
+if(_res=10 & _model=ngp)
+
+endif
+
+# -- HHHUUUSS -- models with hus 
+#
+if(_model = 'ecmt' | _model = 'cgd2')
+
+#  use spec hum if using ldm data
+#
+   'qaa=hus(lev='plev')'
+   'taa=ta(lev='plev')'
+
+#  convert to Pa to hPa
+#
+#    'qaa=qaa*0.01'
+
+    rcqa=datachk(qaa)
+    rcta=datachk(taa)
+
+    if(rcqa=0 & rcta=0) 
+      'hurp=( ('plev'*qaa) /((0.622+qaa)*esmrf(taa)))*100'
+      'hurp=const(maskout(hurp,hurp),0.0,-u)'
+    else
+      return(pstat)
+    endif
+
+endif
+
+# -- HHHUUURRR -- models with hur
+#
+if(_model != ngp & _model != 'gsm' & _model != 'ecmt' & _model != 'cgd2')
+  'hurlev=hur'
+  'hurp=hurlev*1'
+  if(_ukfill) ; rc=lonfill(hurp) ; endif
+endif
+
+if(_model = 'gsm')
+  rc=datachk(ddp)
+  if(rc=0) 
+    'hurp=(esmrf(ta-ddp)/esmrf(ta))*100'
+  else
+    return('')
+  endif
+endif
+
+rc=datachk(hurp) 
+if(rc != 0) ; return(rc) ; endif
+
+# -- PPPLLLOOOTTT -- hur
+#
+if (rc = 0) 
+'set grads off'
+'set xlint '_xlint
+'set ylint '_ylint
+'set gxout shaded'
+'set csmooth on'
+'set cterp on'
+
+# color scheme from Dan Reinhart 20000612
+
+'set rgb 71  250 250 250'   
+'set rgb 72  220 220 220'
+'set rgb 75  195 195 195'   
+'set rgb 74  182 182 182'   
+'set rgb 76  180 180 180'   
+'set rgb 77  128 128 128'   
+'set rgb 78  112 112 112'
+'set rgb 79  64 64 64 '
+'set clevs   80  85  90  95  98'
+'set ccols 0  79   78  76  72   71'
+'d smth9(hurp)'
+'q shades'
+_shades=result
+  if(_dobasemap != 1)
+    'draw map'
+  endif
+endif
+
+# -- black doesn't render in printim for v2.1?
+'set rgb 99 1 1 1'
+bcol=0
+bcol=99 
+
+# -- PPPLLLOOOTTT -- freezing line
+#
+'talev=ta'
+rc=datachk(talev) ; if(rc!=0) ; return(rc) ; endif
+
+'ta8=talev-273.16'
+
+'ta8=smth9(smth9(smth9(ta8)))'
+pstat=0
+tcint=3
+'set gxout contour'
+'set ccolor 'bcol
+'set cint 'tcint
+'set cthick '_cthkb
+'set clskip 2'
+'set grads off'
+'set clab off'
+'d ta8'
+
+'set rbrange -20 20'
+'set ccolor rainbow'
+'set cint 'tcint
+'set cthick '_cthk
+'set grads off'
+'set clskip 2'
+'set clab on'
+'d ta8'
+
+'ta80=ta8'
+
+'set ccolor 1'
+'set clevs 0'
+'set cthick '_cthkbp
+'set grads off'
+'set clab on'
+'set clab FR'
+'d ta80'
+
+'set ccolor 4'
+'set clevs 0'
+'set cthick '_cthkp
+'set grads off'
+'set clab on'
+'set clab FR'
+'d ta80'
+
+'ualev=ua'
+'valev=va'
+
+if(_interact = 1) ; 'q pos' ; endif
+
+if(_ukfill)
+  rc=lonfill('ualev')
+  rc=lonfill('valev')
+endif
+
+rc=datachk(ualev) ; if(rc!=0) ; return(rc) ; endif
+
+# -- PPPLLLOOOTTT -- wind
+#
+'set gxout barb'
+'set digsiz 0.035'
+*
+*	winds greater than 8 kts
+*
+'set ccolor 'bcol
+'set cthick '_cthkb
+'u=ualev*'_ms2kt
+'v=valev*'_ms2kt
+'m=mag(u,v)'
+
+'us=re(u,0.75)'
+'vs=re(v,0.75)'
+'ms=re(m,0.75)'
+
+bskip=_vskip850
+w='skip(us,'bskip');maskout(vs,ms-5.0))'
+'d 'w
+
+'set cthick '_cthk
+'set ccolor 1'
+'d 'w
+
+*
+*	plot winds greater than 25 kts in yellow
+*
+'set ccolor 'bcol
+'set cthick '_cthkb
+w='skip(us,'bskip');maskout(vs,ms-24.0))'
+'d 'w
+
+'set cthick '_cthk
+'set ccolor 12'
+'d 'w
+*
+*	plot winds greater than 35 kts in orange
+*
+'set ccolor 'bcol
+'set cthick '_cthkb
+w='skip(us,'bskip');maskout(vs,ms-34.0))'
+'d 'w
+
+'set cthick '_cthk
+'set ccolor 8'
+'d 'w
+
+*
+*	plot winds greater than 50 kts in red
+*
+'set ccolor 'bcol
+'set cthick '_cthkb
+w='skip(us,'bskip');maskout(vs,ms-49.0))'
+'d 'w
+
+'set cthick '_cthk
+'set ccolor 2'
+'d 'w
+
+if(_dobasemap != 1)
+  rc=drawmap()
+endif
+
+rc=dtitle(t1)
+
+#
+# mf 20050803 -- bug check; bad rh data?
+#
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+
+if(_interact = 1) ; 'q pos' ; endif
+
+return(pstat)
+
+# DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD------------- deprecated code
+
+function oldngp(args)
+
+#
+#  use spec hum if using ldm data
+#
+  if(_specopt = 'npmocldm')
+
+    'qaa=qa(lev='plev')'
+    'taa=ta(lev='plev')'
+#
+# regrid smooth to fill bad points with smoothed 
+#
+    'qaas=re(qaa,5,5,ba_ma000)'
+    'qaas=lterp(qaas,qaa)'
+    'mqaa=const(const(qaa,-1),0,-u)'
+    'qaac=const(maskout(qaas,mqaa),0,-u) + const(qaa,0,-u)'
+    'qaaf=smth9(smth9(qaac))'
+    'qaa=qaaf'
+#
+#  convert to Pa to hPa
+#
+    'qaa=qaa*0.01'
+
+    rcqa=datachk(qaa)
+    rcta=datachk(taa)
+
+    if(rcqa=0 & rcta=0) 
+###      'qaa=maskout(qaa,qaa)'
+      'hurp=( qaa / esmrf(taa) )*100'
+      'hurp=const(maskout(hurp,hurp),0.0,-u)'
+    else
+      return(pstat)
+    endif
+
+  else
+
+  if(_model != 'cgd2')
+
+#  use hur vice ddp from cagips
+#
+      rcpdd=999
+      'huraa=hur(lev='plev')'
+      'taa=ta(lev='plev')'
+
+      'hurp=hur'
+      if(_ukfill)
+        rc=lonfill('huraa')
+        rc=lonfill('hurp')
+      endif
+
+      rchur=datachk(huraa)
+      rcta=datachk(taa)
+
+      gothur=0
+      if(rcddp=0 & rcta=0) 
+        'hurp=( esmrf(taa - ddpr) / esmrf(taa) )*100'
+        gothur=1
+      endif
+
+     if(rchur=0 & rcta=0)
+        'hurp=huraa'
+        gothur=1
+      else
+        return('')
+      endif
+    endif
+
+  endif
+
+return
+

@@ -1,0 +1,8 @@
+20021227
+
+
+carq data hosed, bt year for shem is 2003, but carq and forecasts
+for storms in 2002 go to 2002 adecks, but bdeck is 2003!!
+
+modified p.tc.tracks.2.adeck.pl to output adeck for atcf in both
+years, was based on 2003 bdecks and so was going to 2003 vice 2002

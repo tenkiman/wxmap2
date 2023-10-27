@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# 20040406
+#f2py jtwc.clipper.lib.f -m jclip -h jclip.pyf --overwrite-signature 
+#f2py -c jclip.pyf jtwc.cliper.lib.f
+#exit
+
+# 2003
+f2py jtwc.clipper.lib.f -m jclip -h jclip.pyf --overwrite-signature --overwrite-makefile
+f2py jclip.pyf
+make -f Makefile-jclip
+

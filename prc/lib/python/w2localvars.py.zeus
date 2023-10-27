@@ -1,0 +1,97 @@
+from w2globalvars import *
+
+# -- geqfqdn returns fully qualified domain name -- if available, otherwise gethostname which is the single name
+#
+onTacc=0
+onKishou=0
+onKaze=0
+onWjet=0
+onZeus=1
+pan2Jet=0
+
+curuSer=os.getenv('USER')
+
+
+# -- OS details
+#
+W2OsName=os.name
+(W2OsuName,W2uNameHost,W2uNameVersion,W2uNameDate,W2uNameType)=os.uname()
+
+W2plotXsize=900
+W2plotAspect=3.0/4.0
+
+W2adminuSer='fiorino'
+
+
+# -- set log/prw tmp dirs here vice in w2base.py to /ptmp
+#
+LogBdirW2='/scratch1/portfolios/BMC/fim/fiorino/tmp'
+PrwLoopTmpDir='/scratch1/portfolios/BMC/fim/fiorino/tmp/prw'
+
+HfipWebBdir='/data/amb/projects/hfip'
+W2LocalBaseDir='/scratch1/portfolios/BMC/fim/fiorino'
+W21LocalBaseDir="%s/w21"%(W2LocalBaseDir)
+
+DATLocalBaseDir=W2LocalBaseDir
+DATKazeBaseDir='/data/hfip/fiorino'
+DATW21LocalBaseDir="%s/w21"%(DATLocalBaseDir)
+
+LocalBaseDirDat="%s/dat"%(DATW21LocalBaseDir)
+LocalBaseDirPrc="%s/prc"%(W21LocalBaseDir)
+LocalBaseDirLog="%s/log"%(DATW21LocalBaseDir)
+
+LocalBaseDirEtc="%s/w21/etc"%(W2LocalBaseDir)
+
+Nwp2ModelsAll=['gfs2','fim8','ecm2','ukm2','ngp2','ecmn','cmc2','ngpc','gfsk','ohc','ocn','ww3']
+# -- no more gfsk after hfip.2011 season
+Nwp2ModelsAll=['gfs2','fim8','ecm2','ukm2','ngp2','ecmn','cmc2','ngpc','ohc','ocn','ww3']
+# -- remove new ecm
+Nwp2ModelsAll=['gfs2','fim8','ecm2','ukm2','ngp2','cmc2','ngpc','ohc','ocn','ww3','gfsc','ukmc','jmac','ngpj','goes','gfsr','gfr1','ecmn','ecmg','mpas']
+Nwp2ModelsActive=['gfs2','fim8','ecm2','ukm2','ngp2','cmc2','ngpc','ohc','ocn','ww3','gfsc','ukmc','jmac','ngpj','goes','ecmg']
+Nwp2ModelsNwp=['gfs2','fim8','ecm2','ukm2','ngp2','cmc2','ngpc','ohc','ocn','ww3','gfsc','ukmc','jmac','ngpj']
+
+W2adminuSer='Michael.Fiorino'
+W2currentuSer=getpass.getuser()
+W2adminuSers=['Michael.Fiorino','jeffrey.a.hamilton']  # changed on 20130903
+ 
+W2AreasPrw=['prwLant','prwEpac','prwWpac','prwIo','prwSpac']
+
+#zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz - zeus vars
+
+
+CagipsPrcDir="%s/cagips/rulebotagent"%(LocalBaseDirPrc)
+
+if(onKishou):
+    CagipsDatBdir='/dat2/dat/cagips/'
+else:
+    CagipsDatBdir="%s/dat/cagips"%(DATW21LocalBaseDir)
+
+CagipsSdirNgpc="%s/HDN"%(CagipsDatBdir)
+CagipsSdirGfsc="%s/WXMAP_GFS"%(CagipsDatBdir)
+CagipsSdirNgpj="%s/WXMAP_AOI"%(CagipsDatBdir)
+CagipsSdiruKmc="%s/WXMAP_UKM"%(CagipsDatBdir)
+CagipsSdirJmac="%s/WXMAP_JMA"%(CagipsDatBdir)
+CagipsSdirOcn="%s/OCEAN_GLOBAL"%(CagipsDatBdir)
+CagipsSdirOhc="%s/OCEAN_OHC"%(CagipsDatBdir)
+CagipsSdirWw3="%s/WW3_GLOBAL"%(CagipsDatBdir)
+
+# -- set to 1 to avoid multiple runs
+nMaxPidInCron=1
+dochkifrunning=1
+
+
+# -- nwp awips ecmwf feed
+#
+
+W2rawECHiRes='/scratch/staging/amb/ldm/data/rawECHiRes/'
+W2rawECHiRes='/data/amb/ldm/data/rawECHiRes/'
+
+# -- ccs data feed
+
+EcNogapsCssFeed='/lfs0/projects/fim/whitaker/ecnogaps'
+EcNogapsCssFeed='/lfs1/projects/fim/fiorino/w21/dat/ecnogaps'
+EcNogapsCssFeed='/lfs1/projects/wrfruc/alexander/tropical/ecnogaps'
+EcNogapsCssFeed='/pan2/projects/nrtrr/alexander/tropical/ecnogaps'
+
+
+

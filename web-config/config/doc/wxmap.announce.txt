@@ -1,0 +1,76 @@
+    Announcing the PCMDI NOGAPS/AVN/MRF Weather Graphics Web
+				
+			  Mike Fiorino
+			fiorino@llnl.gov
+
+     Program for Climate Model Diagnosis and Intercomparison
+	     Lawrence Livermore National Laboratory
+		    University of California
+		       P.O. Box 808 L-264
+		       Livermore, CA 94551
+	     510-423-8505 (voice) 510-422-7675(fax)
+
+			 11 October, 1996
+			 16 October, 1996
+
+1.0 	INTRODUCTION
+
+I have completed a "first quess" for an HTML interface to my
+operational NWP global model weather maps.
+
+The initial URL is:
+
+http://www-pcmdi.llnl.gov/fiorino/wxmap/wx.htm
+
+for webs from previous watches use,
+
+http://www-pcmdi.llnl.gov/fiorino/wxmap/wx.YYMMDDHH.htm
+
+where YYMMDDHH is the Date Time Group (e.g., 96101600 = 00Z 16
+October, 1996).
+
+The documentation is in the works and it's very much alpha, but
+hopefully, you'll intuitively figure out what to do.  The buttons
+are there to click...
+
+The web emanating from wx.htm is created dynamically, so it won't
+be the same from moment to moment.  The number of models changes
+according to data availability which, of course, is highly
+variable as it depends on the network and various machines...
+
+However, a rough schedule is:
+
+UTC	PST	EST	Model	Watch
+
+0530	2130	0030	AVN 	00Z
+0830	0030	0330	NOGAPS 	00Z
+1100	0300	0600	MRF	00Z
+1830	1030	1330	AVN	12Z
+2230	1430	1730	NOGAPS	12Z
+
+Key:
+
+NOGAPS or NGP 	- Navy Operational Global Atmospheric Prediction
+		  System of Fleet Numerical Meteorology and
+		  Oceanography Center (FNMOC), Monterey, CA
+
+AVN 		- early 72-h run of the U.S. National Centers for
+		  Environmental Prediction (NCEP) Medium
+		  Range Forecast (MRF) global model
+
+MRF		- long integration of the NCEP MRF model
+
+The delay in the NOGAPS maps is at the request of the Commanding
+Officer, FNMOC, but the AVN and MRF maps are created very close
+to real time.
+
+The design of the model home pages is very much like COLAs (e.g.,
+http://grads.iges.org/pix/avn.fcst.html) and I have borrowed
+heavily from their site, including some of their gif files.
+While I have fewer maps, the buttons in the boxes really do show
+if the map is there (green dot) or not (red dot).  Also, you can
+maneuver between models and taus (forecast times).
+
+Please send your comments along and thanks for taking a look.
+
+Mike

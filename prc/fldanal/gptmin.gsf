@@ -1,0 +1,162 @@
+
+*
+*-------------------------- gptmin ------------------
+*
+function gptmin(k)
+# -- black doesn't render in printim for v2.1?
+'set rgb 99 1 1 1'
+bcol=0
+bcol=99 
+
+if(_mopt1 = 'C') 
+  t1='Previous 24-h Minimum Sfc Air T [`3.`0C]'
+  tmnrb='-30 44'
+  tmncint=2
+else 
+  t1='Previous 24-h Minimum Sfc Air T [`3.`0F]'
+  tmnrb='-20 110'
+  tmncint=5
+endif
+
+maxopt=0
+
+rc=dtitle(t1)
+pstat=1
+_shades=0
+
+'set grads off'
+
+if(_tau <= 12) ; return ; endif
+
+tmnchk='tasmn'
+if(_tau >= 192) ; tmnchk='tasmn.'_fnf25 ; endif
+
+rc=datachk(tmnchk) 
+if(rc != 0)
+  return(pstat)
+else
+  pstat=0
+endif
+
+*
+*  day 1 min
+*
+
+'dtmn=tasmn(t=2)-tasmn(t=3)'
+'tmn0=min(tasmn,t-3,t+0))'
+
+if(_mopt1 = 'C') 
+  'tmn0=(tmn0-273.16)'
+else
+  'tmn0=(tmn0-273.16)*(9/5)+32'
+endif
+
+if(maxopt)
+  'dtmx=tasmax(t=3)-tasmax(t=2)'
+  'tmx1=maskout(tasmax,dtmx)'
+  'tmx2=maskout(tasmax(t=2),const(-tmx1,+1,-u))'
+  'tmx0=const(tmx1,0,-u)+const(tmx2,0,-u))'
+  if(_mopt1 = 'C') 
+    'tmx0=(tmx0-273.16)'
+  else
+    'tmx0=(tmx0-273.16)*(9/5)+32'
+  endif
+endif
+*
+*  current day min
+*
+
+
+'dtmn=tasmn(t-1)-tasmn(t+0)'
+'tmn1=maskout(tasmn,dtmn)'
+'tmn2=maskout(tasmn(t+0),const(-abs(tmn1),+1,-u))'
+'tmn=const(tmn1,0,-u)+const(tmn2,0,-u))'
+'tmn=min(tasmn,t-3,t+0))'
+
+if(_mopt1 = 'C') 
+  'tmn=(tmn-273.16)'
+else
+  'tmn=(tmn-273.16)*(9/5)+32'
+endif
+
+if(maxopt) 
+  'dtmx=tasmax-tasmax(t-1)'
+  'tmx1=maskout(tasmax,dtmx)'
+  'tmx2=maskout(tasmax(t-1),const(-tmx1,+1,-u))'
+  'tmx=const(tmx1,0,-u)+const(tmx2,0,-u))'
+  if(_mopt1 = 'C') 
+    'tmx=(tmx-273.16)'
+  else
+    'tmx=(tmx-273.16)*(9/5)+32'
+  endif
+endif
+
+if(_tau >= 192) 
+  dtmno='tmn-lterp(tmn0,tmn)'
+else
+  dtmno='tmn-tmn0'
+endif
+
+'set xlint '_xlint
+'set ylint '_ylint
+
+'set gxout shaded'
+'set csmooth on'
+'set cterp on'
+
+colscheme=efs
+if(colscheme=efs)
+  rc=efscol(efs_2)
+  i=subwrd(rc,1)
+  ie=subwrd(rc,2)
+  card='set rbcols '
+  while(i<=ie)
+    card=card' 'i
+    i=i+1
+  endwhile
+  card
+endif
+
+
+'set rbrange 'tmnrb
+'set cint 'tmncint
+dtmno='tmn'
+
+if(_tau >= 24)
+'d 'dtmno
+'q shades'
+_shades=result
+else
+'c'
+endif
+
+
+'set gxout contour'
+'set cint 'tmncint
+'set cthick '_cthkb
+'set ccolor 'bcol
+'set clab off'
+'d tmn'
+
+'set cthick '_cthk
+'set cint 'tmncint
+'set clskip 3 3.0'
+'set clopts -1 -1 0.075'
+'set clab on'
+'set rbrange 'tmnrb
+'set ccolor rainbow'
+
+if(_dobasemap != 1)
+  rc=drawmap()
+endif
+
+'d tmn'
+
+rc=dtitle(t1)
+cbarg='0.90 0 5.5 0.78'
+cbarg='0.80 1 10.60 4.25'
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+
+return(pstat)
+
+

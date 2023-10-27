@@ -1,0 +1,123 @@
+#-------------------------------- for taifuu during shutdown
+#sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss settings
+#mintauTC=130                        # in w2.nwp2.py = mintauPLOT
+#mintauPLOT=132                      # use w2.Model2PlotMinTau(model,dtg)
+
+maxfphrWeb=9.0                      # in w2.nwp2.py -- max
+
+#ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss switches
+# -- switches to control main processing scripts
+#
+W2doM2Tryarch=0
+W2Nwp2DataOnly=0
+W2doTCdiag=1
+W2doTCgen=0
+W2doFimPost2DataOnly=0
+
+W2RsyncNcepOff=0
+W2RsyncTCAtcfNcepOff=1
+W2RsyncTCAdeckNcepOff=0
+
+W2Model2PlotWeb=1
+# 20090829 -- failed
+# 20120507 -- working on kaze to get tcvitals to /w3/rapb/fiorino/tc/tcvitals...in w2.tc.dss.md2.anl.py
+W2doW3Rapb=0
+
+W2doW3RapbEpsInv=0
+W2doW3RapbRefTrk=0
+
+W2doW3RapbBdecks=0
+
+#hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+# -- hfip turn off 20121206 -- in rsync.mirror.wjet.adeck.2.local
+W2isHfipDemo=1
+
+# -- 20130801 turn on for 2013 hfip demo
+#W2doW3RapbBdecks=0
+W2doW3RapbFimAdecks=0
+W2doW3RapbRtfimAdecks=0
+W2doMirrorWjet=1
+W2doMirrorHfip=0
+W2doPublicAdecks=0
+W2doGfsEnkfOnly=0
+W2doGfsEnkf=1
+W2doNcepEnsTrackers=0
+
+W2doW3RapbRsync=0
+W2doW3RapbXmlAdecks=1
+W2doW3RapbWjetAdecks=0
+W2doW3RapbNcepCmcAdecks=0
+
+
+
+
+# 20121113 -- turn off for todd kimberlain to look at 04L (debby)
+W2doTcepsAnl=0
+#W2doTcepsAnl=1
+
+# tcfilt -- havn't run since 20100606
+mintauTCfilt=144
+W2doTCfilt=0
+
+# 20120126 -- turn back on after kishou sys/dat4 disk died..
+# 20120326 -- problem updating on kaze and getting right DSs over, disable in w2.tc.rsync.kaze.2.kishou.dat.py
+W2doKaze2KishouTCdat=1
+# -- 20120702 -- takes too long?
+W2doKaze2KishouTCdat=0
+
+# 20101114 -- jet issues...?
+W2doWjet=1
+
+# 20101114 -- issue with gfsenkf on jet? -- in w2.tc.rsync.mirror.wjet.adeck.2.local.py
+wjetsources=['taac','rtfim','rtfimx','rtfimy','gfsenkf']
+# 20100701
+wjetsources=['rtfim','rtfimx','rtfimy','rtfimz','gfsenkf','fim8eps']
+# 20101114 -- issue with gfsenkf on jet?
+wjetsources=['rtfim','rtfimx','rtfimy','rtfimz','gfsenkf','gfsenkf_irwd','gfsenkf_irwdx']
+# 20101229 -- turn off because not running...
+wjetsources=['rtfim','rtfimx','rtfimy','rtfimz','gfsenkf']
+
+# 20110906 -- gfsenkf done in w2.tc.rsync.mirror.before this
+wjetsources=['rtfim','rtfimx','rtfimy','rtfimz','rtfim7','cfsrr','ecbufr']
+
+# fimens2012 is adeck_2012 name on wjet -> adeck/esrl/2012/fimens
+#wjetADsources=['fimens2012','fim9hfip']
+
+# 20121206 -- hfip turn off sources
+wjetsources=['rtfim','rtfimx','rtfim9','rtfimz','rtfim7','fimens','fim9hfip','gfsenkf','ecbufr']
+wjetsources=['rtfim','rtfimx','rtfim9','rtfim7','ecbufr']
+
+
+TcTcepsNcepSource='adeckonly'
+# 20120730 -- broke on ccs because done on dev
+TcTcepsNcepSource='tigge'
+
+# 20090903 -- /w3/rapb almost full...
+# 20100916 -- reduce from 9.0 to 5.0
+#
+W2NdayClean=9.0
+W2NdayCleanPrwLoop=W2NdayClean
+W2NdayCleanTcanal=W2NdayClean
+W2NdayCleanTcfilt=W2NdayClean
+
+#ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss switches
+# set ecmwf/nogaps model here and in wxmap.env.pl
+#
+EcmModel='ecmn'
+EcmModel='ecm'
+
+NgpModel='ngp2'
+NgpModel='ngpc'
+# -- nogaps deprecated 20130313
+NgpModel='navg'
+
+
+# -- extra ctls in W2Nwp2()
+#
+doPrCtl=0
+doHlCtl=0
+doMandCtl=0
+
+# -- set to 1 to avoid multiple runs
+nMaxPidInCron=1
+dochkifrunning=1

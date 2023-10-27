@@ -1,0 +1,47 @@
+       subroutine calcr(ro,rtan,xc,yc,yold,u,v)                                 
+       parameter ( nmx=24)                                                      
+       parameter (imx=201 , jmx=81)                                              
+       dimension xr(nmx),u(imx,jmx),v(imx,jmx)                                  
+c                                                                               
+       common  /total/ ddel,dtha                                                
+c      common  /coor/ xv,yv,xold,yold,xcorn,ycorn,factr,id1,id2                 
+c                                                                               
+          pi = 4.*atan(1.0)                                                     
+       pi180 = pi/180.                                                          
+c      fact =  cos(yold*pi180)                                                  
+c      yo=yold*pi180                                                            
+       fact=cos(yold)                                                           
+c                                                                               
+       dx=ddel/pi180                                                            
+       dy=dtha/pi180                                                            
+c      xc = (xold-xcorn)*dx                                                     
+c      yc = (yold-ycorn)*dy                                                     
+        do 10 i=1,nmx                                                           
+        theta= 2.*pi*float(i-1)/float(nmx)                                      
+        x=ro*cos(theta)/fact +xc +1.                                            
+        y=ro*sin(theta)+yc +1.                                                  
+        ix=int(x/dx)                                                            
+        iy=int(y/dy)                                                            
+        ix1=ix+1                                                                
+        iy1=iy+1                                                                
+        p=x/dx-float(ix)                                                        
+        q=y/dy-float(iy)                                                        
+c      xr(i)=(1.-p)*(1.-q)*xf(ix,iy) +(1.-p)*q*xf(ix,iy+1)                      
+c    1      +  (1.-q)*p*xf(ix+1,iy) + p*q*xf(ix+1,iy+1)                         
+       xr(i)=-sin(theta)*                                                       
+     1    ((1.-p)*(1.-q)*u(ix,iy) +(1.-p)*q*u(ix,iy+1)                          
+     1      +  (1.-q)*p*u(ix+1,iy) + p*q*u(ix+1,iy+1))                          
+     1         +cos(theta)*                                                     
+     1   ((1.-p)*(1.-q)*v(ix,iy) +(1.-p)*q*v(ix,iy+1)                           
+     1      +  (1.-q)*p*v(ix+1,iy) + p*q*v(ix+1,iy+1))                          
+10     continue                                                                 
+       rtan = 0.0                                                               
+c                                                                               
+c calculate azimuthally averaged tangential wind at radius ro                   
+c                                                                               
+       do 40 i = 1 , nmx                                                        
+       rtan = rtan + xr(i)                                                      
+40     continue                                                                 
+       rtan = rtan/float(nmx)                                                   
+         return                                                                 
+         end                                                                    

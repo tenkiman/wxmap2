@@ -1,0 +1,81 @@
+#------------------------------------------------------
+#
+#       tcops.fsl.noaa.gov crontab
+#
+#------------------------------------------------------
+#
+
+runcmd='/data/amb/users/fiorino/w21/run.cron.tcsh'
+w2pdir='/data/amb/users/fiorino/w21/prc'
+w2prjdir='/data/amb/users/fiorino/w21/prj'
+
+# cagips                -> wxmap2
+# TCs
+# gfs goes
+# ocean
+# precip
+# model                 -> wxmap2
+# inventory l2/du/mss   -> wxmap2
+# rtfim                 -> wxmap2
+# special               -> wxmap2
+# jtwc cagips           -> wxmap2
+# cleanup               -> wxmap2
+
+#cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc - cagips
+# -- 20120329 -- something in M.py ? caused this to crash on 20120326
+# -- 20131127 -- no /usr/bin/java on wxmap2 move back to kaze, moved by to wxmap2 after install
+*/3 * * * * $runcmd "$w2pdir/cagips/rulebotagent/p.chk.runagent.running.py"                                   >> /ptmp/log.w2.cagips.RUNNING 2>&1
+# -- 20120517 -- kill agent and clear cache
+1  1  * * * $runcmd "$w2pdir/cagips/rulebotagent/p.reset.cagips.agent.py"                                     >> /ptmp/log.w2.cagips.RESETCACHE 2>&1
+
+
+#tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt - TCs
+### on tcops03   2      * * * $runcmd  "$w2pdir/tcdat/w2.tc.dss.md2.py -b w,e,l -Y -Z -y cur"                               >> /ptmp/log.w2.tc.dss.md2.py.MD29XUPDATE 2>&1
+
+# -- 20130219 -- run with -R to rsync reftrk to jet/zeus daily
+#
+08     0-23                 * * * $runcmd "$w2pdir/tcdat/w2.tc.ops.dat.py ops"                                >> /ptmp/log.w2.tc.ops.dat.py.TCOPSLF 2>&1
+05,19,35,49  5-9,17-21      * * * $runcmd "$w2pdir/tcdat/w2.tc.rsync.mirror.wjet.adeck.2.local.py ops12"      >> /ptmp/log.w2.tc.rsync.mirror.wjet.adeck.2.local.py.RSYNCECBUFR 2>&1
+53        1                 * * * $runcmd "$w2pdir/tcdat/w2.tc.ops.dat.py ops -R"                             >> /ptmp/log.w2.tc.ops.dat.py.TCOPSREFTRKONLY 2>&1
+
+# -- break up kaze->kishou between fast and slow (adeck,cira,tceps,tcanal)
+15     0-23/2               * * * $runcmd "$w2pdir/tcdat/w2.tc.rsync.kaze.kishou.dat.py -R -u -X"             >> /ptmp/log.w2.rsync.kaze.kishou.TCRSYNC_RFAST 2>&1
+05     1,7,13,19            * * * $runcmd "$w2pdir/tcdat/w2.tc.rsync.kaze.kishou.dat.py -R -u -L -X"          >> /ptmp/log.w2.rsync.kaze.kishou.TCRSYNC_RSLOW 2>&1  # only twice / day --  slow process # now 4x because hfip disk faster
+
+# 20120702 -- tc trk and lsdiag clean
+03   2                      * * * $runcmd "$w2pdir/tctrk/w2.tc.tmtrkN.py cur-24.cur-6 all -k                  >> /ptmp/log.w2.tc.tmtrkN.py.TCTRKCLEAN 2>&1
+
+0-59/15 8-11,18-23          * * * $runcmd "$w2pdir/tcdat/w2.tc.wget.ecmwf.eps.plots.py cur-6"                 >> /ptmp/log.w2.wget.EPSPLTS 2>&1
+
+# -- full update of tmtrkN and mftrkN adecks daily
+31     1                    * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.adeck.py tmtrkN -y cur -K"                 >> /ptmp/log.w2.tmtrkN.ADECK2-K 2>&1
+51     1                    * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.adeck.py mftrkN -y cur -K"                 >> /ptmp/log.w2.mftrkN.ADECK2-K 2>&1
+31     2                    * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.vdeck.py tmtrkN -y cur -E"                 >> /ptmp/log.w2.tmtrkN.VDECK2-E 2>&1
+51     2                    * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.vdeck.py mftrkN -y cur -E"                 >> /ptmp/log.w2.mftrkN.VDECK2-E 2>&1
+
+# -- 20090129 -- turn on :: TC climo (daily)
+45 09                      * * * $runcmd "$w2pdir/tc/w2.tc.season.py cur cur -p ops.climo.all" >> /ptmp/log.w2.cur.clm.py.TC.CLM 2>&1
+
+#gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg - gfs goes
+# -- 20100607 -- wget gfs goes sat image 1deg files from ftpprd.ncep.noaa.gov
+23,57  3-6,9-12,13-18,21-23,0       * * * $runcmd "$w2pdir/flddat/w2.fld.wget.mirror.gfs.stbgoes.py cur-18.cur"  >> /ptmp/log.w2.fld.wget.mirror.gfs.stbgoes.py.GFS2 2>&1
+21,51  4-7,10-13,16-19,22-23,0-1    * * * $runcmd "$w2pdir/fldanal/w2.gfs.goes.loop.py ops6 all -A"              >> /ptmp/log.w2.gfs.goes.loop.py.GOES 2>&1
+
+#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo - ocean
+# 20100804 -- turn on :: mirror of oisst weekly grib
+ 32   4     * * * $runcmd "$w2pdir/flddat/w2.fld.wget.mirror.cpc.oisst.py"                          >> /ptmp/log.w2.fld.wget.mirror.cpc.oisst.py.CPC.OISST 2>&1
+
+#pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp - precip
+# 20090129 -- turn on :: qmorph processing
+01-59/30                   * * * * $runcmd "$w2pdir/flddat/w2.fld.pr.qmorph.py cur -n 5"            >> /ptmp/log.w2.fld.qmorph.py.CPC 2>&1
+
+# 20090318 -- turn on :: qmorph products processing
+15  * * * * $runcmd "$w2pdir/flddat/w2.fld.pr.qmorph.products.py ops6 -S qmorph -n 5"               >> /ptmp/log.w2.fld.qmorph.products.py.qmorph.CPC 2>&1
+15  * * * * $runcmd "$w2pdir/flddat/w2.fld.pr.qmorph.products.py cur-24 -S cmorph -n 5"             >> /ptmp/log.w2.fld.qmorph.products.py.cmorph.CPC 2>&1
+
+# 20090318 -- turn on :: qmorph products processing
+45     * * * * $runcmd "$w2pdir/flddat/w2.fld.pr.qmorph.global.products.py ops6 -S qmorph -n 5"     >> /ptmp/log.w2.fld.qmorph.global.products.py.qmorph.CPC 2>&1
+45     * * * * $runcmd "$w2pdir/flddat/w2.fld.pr.qmorph.global.products.py cur-24 -S cmorph -n 5"   >> /ptmp/log.w2.fld.qmorph.global.products.py.cmorph.CPC 2>&1
+
+# -- load averages using uptime
+*/5                              *                * * * $runcmd "$w2pdir/flddat/w2.load.py"                      >> /ptmp/log.load.py.tcops.LOAD 2>&1

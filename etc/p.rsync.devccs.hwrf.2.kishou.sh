@@ -1,0 +1,10 @@
+rsync -alvn -e ssh --ignore-existing --rsync-path=/usrx/local/bin/rsync 'tpcprd1@prodccs.ncep.noaa.gov:/ptmp/wx20vt/hwrf/2007051012/01l/ANDREA.2007051100/COUPLED_FCST/PARENT' ANDREA.2007051100/COUPLED_FCST/PARENT
+rsync -alvn -e ssh --ignore-existing --rsync-path=/usrx/local/bin/rsync 'tpcprd1@prodccs.ncep.noaa.gov:/ptmp/wx20vt/hwrf/2007051012/01l/ANDREA.2007051100/COUPLED_FCST/PARENT/' ANDREA.2007051100/COUPLED_FCST/PARENT
+rsync -alv "tpcprd1@prodccs.ncep.noaa.gov:/ptmp/wx20vt/hwrf/2007051100/01l/ANDREA.2007051100/COUPLED_FCST/PARENT/HWRF*F06" 2007051100/01l/ANDREA.2007051100/COUPLED_FCST/PARENT/
+rsync -alvn "tpcprd1@prodccs.ncep.noaa.gov:/ptmp/wx20vt/hwrf/2007051100/01l/ANDREA.2007051100/COUPLED_FCST/PARENT/HWRF*F06" "2007051100/01l/ANDREA.2007051100/COUPLED_FCST/PARENT"
+rsync -alvn --rsync-path=/usrx/local/bin/rsync "tpcprd1@prodccs.ncep.noaa.gov:/ptmp/wx20vt/hwrf/2007051100/01l/ANDREA.2007051100/COUPLED_FCST/PARENT/HWRF*F06" "2007051100/01l/ANDREA.2007051100/COUPLED_FCST/PARENT"
+rsync -alv --rsync-path=/usrx/local/bin/rsync "tpcprd1@prodccs.ncep.noaa.gov:/ptmp/wx20vt/hwrf/2007051100/01l/ANDREA.2007051100/COUPLED_FCST/PARENT/HWRF*F06" "2007051100/01l/ANDREA.2007051100/COUPLED_FCST/PARENT"
+rsync -alv --rsync-path=/usrx/local/bin/rsync "tpcprd1@prodccs.ncep.noaa.gov:/ptmp/wx20vt/hwrf/2007051100/01l/ANDREA.2007051100/COUPLED_FCST/PARENT/HWRF*F06" "2007051100/01l/ANDREA.2007051100/COUPLED_FCST/PARENT/"
+rsync -alv -P --rsync-path=/usrx/local/bin/rsync "tpcprd1@prodccs.ncep.noaa.gov:/ptmp/wx20vt/hwrf/2007051100/01l/ANDREA.2007051100/COUPLED_FCST/PARENT/HWRF*F06" "2007051100/01l/ANDREA.2007051100/COUPLED_FCST/PARENT/"
+rsync -alv -P --rsync-path=/usrx/local/bin/rsync "tpcprd1@prodccs.ncep.noaa.gov:/ptmp/wx20vt/hwrf/2007051100/01l/ANDREA.2007051100/COUPLED_FCST/PARENT/HWRF*F06" "2007051100/01l/ANDREA.2007051100/COUPLED_FCST/PARENT/"
+rsync -alv -P --rsync-path=/usrx/local/bin/rsync "tpcprd1@prodccs.ncep.noaa.gov:/ptmp/wx20vt/hwrf/2007051100/01l/ANDREA.2007051100/COUPLED_FCST/PARENT/HWRF*F06" "2007051100/01l/ANDREA.2007051100/COUPLED_FCST/PARENT/"

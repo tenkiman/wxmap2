@@ -1,0 +1,21 @@
+# Cookies for domains related to ecmwf.int.
+# This content may be pasted into a cookies.txt file and used by wget
+# Example:  wget -x --load-cookies cookies.txt http://nwmstest.ecmwf.int/
+#
+#nwmstest.ecmwf.int	FALSE	/	FALSE	0	JSESSIONID
+#2313A3B02F96D3237D5A87D3B29E32E2
+#.ecmwf.int	TRUE	/	FALSE	1331918525.489616	WebAuth_TEST
+#ticket%3AveerMQqTsjDBS2yxGGEDlNqViYioRG8YrRWonFrN1NLgHyYuGuB6r8WT2DqemEdHRhDqYIVej49NXo2fkXPiPU%2FSYuAdA99zwiJNCQaAd2g%3D%20levels%3A3%20uid%3Awmo_us
+
+# Cookies for domains related to ecmwf.int.
+# This content may be pasted into a cookies.txt file and used by wget
+# Example:  wget -x --load-cookies cookies.txt http://www.ecmwf.int/products/forecasts/d/charts/medium/tropcyclones/Forecast/strike/
+#
+ecmwf.int	FALSE	/	FALSE	0	JSESSIONID	034800F0AFFE724BFDD73BEA3F02FF78
+www.ecmwf.int	FALSE	/	FALSE	0	JSESSIONID	88F1807589A7E06C373040AAA887DC2F
+.ecmwf.int	TRUE	/	FALSE	1421281708		__utma	267635482.573354792.1331659598.1340918302.1358209075.24
+.ecmwf.int	TRUE	/	FALSE	1358211508		__utmb	267635482.7.10.1358209075
+.ecmwf.int	TRUE	/	FALSE	0			__utmc	267635482
+.ecmwf.int	TRUE	/	FALSE	1373977708		__utmz	267635482.1358209075.24.1.utmcsr=ruc.noaa.gov|utmccn=(referral)|utmcmd=referral|utmcct=/wxmap2/
+.ecmwf.int	TRUE	/	FALSE	1389313708		WebAuth	uid%3Awmo_us%20ticket%3AFlU0cPGDkPIlayg7cWChxESwN%2BiwzEV%2BLw8nPONI1VS05AFsijRCFA%3d%3d%20levels%3A2
+

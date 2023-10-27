@@ -1,0 +1,13 @@
+      subroutine readit(i0,zfine,igrid,jgrid,title1,                            
+     * imin,imax,jmin,jmax)                                                     
+      dimension zfine(imin:imax,jmin:jmax)                                      
+      character*80 title1                                                       
+      print *,'reading ',i0,' i,jmin,i,jmax = ',imin,imax,jmin,jmax             
+        read (i0)  title1,i50mn,i50mx,j50mn,j50mx,ig,jg                         
+        print *,i50mn,i50mx,j50mn,j50mx,ig,jg                                   
+        print *,title1                                                          
+        do i = imin,imax                                                        
+              read (i0) (zfine(i,j),j=jmin,jmax)                                
+        end do                                                                  
+      return                                                                    
+      end                                                                       

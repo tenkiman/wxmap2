@@ -1,0 +1,63 @@
+	       Rerunning wxmap for archived cases
+
+			    20020408
+		     CDR Mike Fiorino, USNR
+
+
+1) cd /dat/nwp/wxmap/prc/wxmap and l.pl dat MMM
+
+where MMM is the model, e.g.,
+
+l.pl dat avn (dtg -h -> 2002040818 02:56) ->
+
+-rw-r--r--    1 fiorino  fiorino  34959118 Mar 31 10:11 avn.10.2002033112.grb
+.
+.
+.
+-rw-r--r--    1 fiorino  fiorino  34788078 Apr  7 22:00 avn.10.2002040800.grb
+-rw-r--r--    1 fiorino  fiorino  20895616 Apr  8 03:24 avn.10.2002040806.grb
+-rw-r--r--    1 fiorino  fiorino  34869518 Apr  8 10:00 avn.10.2002040812.grb
+
+2) if target dtg is < first one (e.g., 2002033112 above) then you
+   must "restore" from the "archive" directory from wxmap.old.  
+   
+   For 2002030300,
+
+cp /wxmap_old/dat2/ncep/avn/200203/avn.10.2002030300.* /dat/nwp/wxmap/dat
+
+where the first dir is the nfs mounted filesystem on wxmap.old
+where the archive data are located.
+
+run l.pl again to verify the 2002030300 data are there...
+
+
+3) run wxmap.redo.pl, e.g.,
+
+wxmap.redo.pl ->
+
+wxmap(JTWC.new):/dat/nwp/wxmap/prc/wxmap 60 > wxmap.redo.pl
+
+Current DTG:  2002040812
+
+The wxmap.redo.pl argument list is:
+
+     sdtg       : YYYYmmddhh | cur | cur-12 | cur-24
+     edtg       : YYYYmmddhh | cur | cur-12 | cur-24
+     clean gifs : y | n | 500 850 basemap prp psl sst tas thk tmn tmx u20 u50 u70 uas w20 w70 wav wdl 
+     make maps  : y | n
+     make html  : n | y (just html) | Y (reset html) | A (reset and make current) |
+                  onearea (just html in the area)
+      onemodel  : n | ifs | ngp
+      onearea   : n | asia | bigaus | tropwpac | tropnio | tropsio | tropswpac | tropepac | troplant | 
+        [dotc]  : [y] | n 
+    [Xdisplay]  : -- deprecated not really used
+       [okchk]  : [y] | n 
+  Try again
+
+run:
+
+wxmap.redo.pl 2002030300 2002030300 n y y avn n y
+
+to do TC tracking and plots for all areas
+
+

@@ -1,0 +1,23 @@
+function pslvar()
+
+if(_model='ecm' | _model='cmc' | _model='gfs' | _model='ukm' | _model='gfs' | _model='ngp')
+  _pslvar='psl'
+  _pslsmth=1
+endif
+
+if(_model ='ngp2' | _model ='ngpc'  | _model ='navg' | _model ='ecm2' | _model ='ecm4' | _model ='ecm5' | _model ='cgd2'   | _model ='ecmn' | _model ='ecmg' | _model ='ukm2' | _model ='gfs2' | _model ='cmc2' | _model ='fim8' | _model ='fimx' | _model = 'ecmt' | _model = 'jgsm')
+  _pslvar='psl*0.01'
+  _pslsmth=1
+endif
+
+if(_model ='fv3e' | _model = 'fv3g')
+  _pslvar='psl*0.01'
+  _pslsmth=1
+endif
+
+if(_model ='ngpj' | _model ='ukmc' | _model ='gfsc' | _model ='jmac')
+  _pslvar='psl*0.01'
+  _pslsmth=1
+endif
+
+return

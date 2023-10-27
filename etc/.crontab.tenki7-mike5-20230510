@@ -1,0 +1,31 @@
+#
+# *** version 20190303  ***
+# *** use ad2 in w2.tc.all.eps.py vice tigge .xml for ncep...stopped on 03030100?
+# *** changed -E to -2 in w2.tc.all.eps.py
+#
+#------------------------------------------------------
+#
+# -- tenki-linux crontab 
+# -- 20181229 - run TC proc during .gov shutdown
+#
+#------------------------------------------------------
+#
+CRON_TZ="UTC"
+MAILTO=""
+#runcmd='/data/w22/run.cron.tcsh'
+runcmd='/data/w22/run.cron.bash'
+w2pdir='/data/w22/prc'
+w2prjdir='/data/w22/prj'
+ptmpdir="/ptmp"
+#ggggggggggggggggggggggmmmmmmmmmmmmmmmmmmmmmmmmmmmmmuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+#
+37     4,10,16,22      * * * $runcmd "$w2pdir/wxmap2/w2-tc-rsync-gmu.py -R"                                         >> $ptmpdir/log-w2-tc-rsync-gmu.py.TCDAT2GMU 2>&1
+
+# -- clean log files
+  17           3            1-31/10 * * $runcmd "$w2pdir/wxmap2/w2-clean-log.py -A"                     >> $ptmpdir/log-w2-clean-log.py.LOGCLEAN 2>&1
+
+#pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp - load and process monitor
+# -- load averages using uptime and monitor processes...
+*/5                             *             * * * $runcmd "$w2pdir/wxmap2/w2-load.py"                            >> $ptmpdir/log.load.py.tenki.LOAD 2>&1
+4                               1             * * * $runcmd "$w2pdir/wxmap2/w2-ps-monitor.py -X -S 15"             >> $ptmpdir/log-w2-ps-monitor.py.tenki.PS-MONITOR 2>&1
+*/5                             *             * * * $runcmd "$w2pdir/wxmap2/w2-ps-monitor-anl.py cur-12.cur -K"    >> $ptmpdir/log-w2-ps-monitor-anl.py.tenki.PS-MONITOR-KILL-LONG-PS 2>&1

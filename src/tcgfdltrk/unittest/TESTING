@@ -1,0 +1,344 @@
+		   runnning the gettrk_gen unit test
+			      mike fiorino
+				20100609
+				20111019
+				20130219
+				20130319
+				20130924
+				20131126 -- kaze/wxmap2
+				20221107 -- mike5/wxmap2
+
+20201107
+========
+
+tctrk mike5-tenki7:
+real	0m1.667s
+user	0m1.619s
+sys	0m0.048s
+
+tcgen mike5-tenki7:
+real	0m3.775s
+user	0m3.670s
+sys	0m0.105s
+
+
+20131126
+========
+
+added test.wxmap2.sh
+
+need to prep.grbindex.sh first, then test.wxmap2.sh
+
+tctrk wxmap2:
+real    0m4.432s
+user    0m3.984s
+sys     0m0.401s
+
+tcgen wxmap2:
+real    0m10.820s
+user    0m10.087s
+sys     0m0.697s
+
+
+20130924
+========
+
+cleaned up unittesting code on jet
+
+del
+*.ix
+
+added
+prep.grbindex.sh to make .ix
+test.jet.sh to do test on jet
+
+timings (after getting on my own node using jqrsh)
+
+tctrk:
+
+real    0m6.526s
+user    0m4.181s
+sys     0m0.213s
+
+tcgen:
+
+real    0m11.936s
+user    0m11.643s
+sys     0m0.230s
+
+
+20130319
+========
+
+made using gfortran on kishou
+Darwin kishou.fsl.noaa.gov 11.4.2 Darwin Kernel Version 11.4.2: Thu Aug 23 16:25:48 PDT 2012; root:xnu-1699.32.7~1/RELEASE_X86_64 x86_64
+
+time ../gettrk_genN.x < namelist.tctrk.1.5.6
+3.755u 0.101s 0:03.87 99.4%	0+0k 19+10io 0pf+0w
+
+    69	22:02	xxdiff fort.64 fort.64.tracker.gfortan -- are diffs with linux
+    71	22:03	svn add fort.64.tracker.gfortan.macos
+
+time ../gettrk_genN.x < namelist.tcgen.lant.1.5.6
+9.545u 0.162s 0:09.76 99.3%	0+0k 3+6io 0pf+0w
+11.502u 3.501s 0:15.08 99.4%	0+0k 1+2io 0pf+0w  <-- old kishou ~ 15% faster
+
+    75	22:04	xxdiff fort.64 fort.64.tcgen.lant.gfortan -- are diffs with linux
+    78	22:06	svn add fort.64.tcgen.lant.gfortan.macos
+
+kishou.linux
+------------
+
+Kishou(LINUX)[W2:ESRL]: /w21/src/tcgfdltrk/unittest 590 > time ../gettrk_genN.x < namelist.tctrk.1.5.6 > /dev/null
+3.054u 0.171s 0:03.23 99.6%     0+0k 0+0io 0pf+0w
+
+Kishou(LINUX)[W2:ESRL]: /w21/src/tcgfdltrk/unittest 595 > time ../gettrk_genN.x < namelist.tcgen.lant.1.5.6 > /dev/null
+8.299u 0.488s 0:08.84 99.2%     0+0k 0+0io 0pf+0w
+xxdiff fort.64 fort.64.tcgen.lant.gfortan.macos  -- less diffs than against tcgen.lant.gfortan
+
+
+20111019
+========
+
+merged in all my changes in gettrk_gen/gettrk_main_gen.f into 20111014-v1.5.6/gettrk_main_gen.f 
+
+for testing:
+
+gettrk_genN.x < namelist.tctrk.1.5.6
+
+20130209
+========
+
+on jet -- make using latest version of gfortan
+
+from gettrk_gen_20111014
+
+../gettrk_genN.x < namelist.tctrkN
+
+comp fort.64 to fort.64.tracker.gfortran.jet
+
+
+
+20111018
+========
+
+got lastest/greatest from Tim 1.5.6 put in ../20111014-1.5.6
+added verbose_output mod; verb=2 gives limited output
+
+recompiled libw3.a with gfortan v g95
+
+time for gen:
+
+verb=3
+kishou(DARWIN)[W2:ESRL]: /w21/src/tcgfdltrk/gettrk_gen/unittest 411 > time gettrk_gen.1.5.6.x < namelist.tcgen.lant.1.5.6 > /dev/null
+13.634u 3.634s 0:17.30 99.7%	0+0k 0+6io 0pf+0w
+
+verb=2
+kishou(DARWIN)[W2:ESRL]: /w21/src/tcgfdltrk/gettrk_gen/unittest 413 > time gettrk_gen.1.5.6.x < namelist.tcgen.lant.1.5.6 > /dev/null
+11.502u 3.501s 0:15.08 99.4%	0+0k 1+2io 0pf+0w
+
+gfortran ~ 15-20% faster!  but diffs in trackers ~ 0.1 deg and 1 nm
+
+
+
+
+
+
+the tracker runs in two modes: 1) 'tracker' ; and 2) 'tcgen'
+
+tracker:
+========
+
+
+1) time gettrk_gen.x < namelist.tctrk
+
+on kishou
+uname -a:
+Darwin kishou.fsl.noaa.gov 10.3.0 Darwin Kernel Version 10.3.0: Fri Feb 26 11:58:09 PST 2010; root:xnu-1504.3.12~1/RELEASE_I386 i386
+
+output:
+
+ TIMING: beginning ...  23:32:28
+
+
+* . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . 
+     PROGRAM GETTRK   HAS BEGUN. COMPILED 1999104.62     ORG: NP22   
+     STARTING DATE-TIME  JUN 09,2010  23:32:28.158  160  WEN   2455357
+
+
+MFTC 01B LAILA     20100517 1200 117N  886E 335  31 1004 1007  426 13 139 -999 -999 -999 -999 S
+MFTC 02A BANDU     20100517 1200  94N  573E 115  21 1007 1008  287 10 111 -999 -999 -999 -999 S
+MFTC 95S UNKNOWN   20100517 1200  92S 1101E  90  23 1007 -999 -999 10 -99 -999 -999 -999 -999 X
+MFTC 97P UNKNOWN   20100517 1200  58S 1006E  90  26 -999 -999 -999 10 -99 -999 -999 -999 -999 X
+2010051712 F000 117N 0886E 01B 20100517 1200 117N 0886E   0   0    0    0    0  0   0    0    0    0    0 
+2010051712 F000 094N 0573E 02A 20100517 1200 094N 0573E   0   0    0    0    0  0   0    0    0    0    0 
+2010051712 F000 092S 1101E 95S 20100517 1200 092S 1101E   0   0    0    0    0  0   0    0    0    0    0 
+2010051712 F000 058S 1006E 97P 20100517 1200 058S 1006E   0   0    0    0    0  0   0    0    0    0    0 
+
+
+     ENDING DATE-TIME    JUN 09,2010  23:32:35.253  160  WEN   2455357
+     PROGRAM GETTRK   HAS ENDED.  IBM RS/6000 SP
+* . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . 
+6.986u 0.110s 0:07.10 99.8%	0+0k 0+6io 0pf+0w
+
+
+2) time gettrk_gen.x < namelist.tctrk.verb > /dev/null  runs tracker with full print output to stdout
+
+same as in 1) except:
+
+kishou(DARWIN)[W2]: /w21/src/tcgfdltrk/unittest 365 > time gettrk_gen.x < namelist.tctrk.verb > /dev/null
+8.431u 0.115s 0:08.59 99.4%	0+0k 0+3io 0pf+0w
+
+or about 20% of the run time is writing to stndout
+
+
+tcgen:
+======
+
+
+1) gettrk_gen.x < namelist.tcgen.lant
+ TIMING: beginning ...  23:35:58
+
+
+* . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . 
+     PROGRAM GETTRK   HAS BEGUN. COMPILED 1999104.62     ORG: NP22   
+     STARTING DATE-TIME  JUN 09,2010  23:35:58.750  160  WEN   2455357
+
+
+MFTC 01B LAILA     20100517 1200 117N  886E 335  31 1004 1007  426 13 139 -999 -999 -999 -999 S
+MFTC 02A BANDU     20100517 1200  94N  573E 115  21 1007 1008  287 10 111 -999 -999 -999 -999 S
+MFTC 95S UNKNOWN   20100517 1200  92S 1101E  90  23 1007 -999 -999 10 -99 -999 -999 -999 -999 X
+MFTC 97P UNKNOWN   20100517 1200  58S 1006E  90  26 -999 -999 -999 10 -99 -999 -999 -999 -999 X
+2010051712 F000 117N 0886E 01B 20100517 1200 117N 0886E   0   0    0    0    0  0   0    0    0    0    0 
+2010051712 F000 094N 0573E 02A 20100517 1200 094N 0573E   0   0    0    0    0  0   0    0    0    0    0 
+2010051712 F000 092S 1101E 95S 20100517 1200 092S 1101E   0   0    0    0    0  0   0    0    0    0    0 
+2010051712 F000 058S 1006E 97P 20100517 1200 058S 1006E   0   0    0    0    0  0   0    0    0    0    0 
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  21  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  21  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  21  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  21  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  21  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  21  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  21  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  21  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  21  igucret =  92
+  
+ !!! ERROR in getradii allocating isortix or dtemp
+ !!! array for quadrant=  4  iisa =  211
+ !!! idta=  211  iwa=  211
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  21  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  21  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  21  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  21  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  21  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  21  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  31  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  31  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  31  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  31  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  31  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  31  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  52  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  52  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  52  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  52  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  52  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  52  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  57  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  57  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  57  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  57  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  57  igucret =  92
+  
+ !!! ERROR in get_uv_center in call to find_maxmin
+ !!! storm num =  57  igucret =  92
+  
+ !!! ERROR in getradii allocating isortix or dtemp
+ !!! array for quadrant=  4  iisa =  211
+ !!! idta=  211  iwa=  211
+  
+ !!! ERROR in getradii allocating isortix or dtemp
+ !!! array for quadrant=  4  iisa =  211
+ !!! idta=  211  iwa=  211
+
+
+     ENDING DATE-TIME    JUN 09,2010  23:36:12.342  160  WEN   2455357
+     PROGRAM GETTRK   HAS ENDED.  IBM RS/6000 SP
+* . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . * . 
+13.330u 0.268s 0:13.60 99.9%	0+0k 0+8io 0pf+0w
+
+
+comparison of output
+=====================
+
+gettrk_gen.x produces two basic output files
+
+fort.64 -- standard atcf adeck
+fort.68 -- 'kitchen sink' atcf adeck with extra info like the hart cyclone phase space...
+
+compare the fort.6? to fort.6?.tracker and .tcgen.lant
+

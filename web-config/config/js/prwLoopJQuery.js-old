@@ -1,0 +1,399 @@
+
+	///////////// CREATE ALL BUTTONS //////////////
+
+	//Create all model buttons
+	for (var i=1 ; i<=allModels.length ; i++) {
+		model = allModels[i-1];
+		modelstr = "model" + i
+		inputInfo = "<input id=" + modelstr + " type='button' class='btnmod' value='"+model+"'>";
+		$('#Row1').append("<div class='divCell'>" + inputInfo + "</div>");
+		$('#'+modelstr).attr({
+			onMouseOver: "className='btnmodover'",
+			onMouseOut:  "className='btnmod'"
+		});
+	}
+
+	//Create all domain buttons
+	for (var i=1 ; i<=allDomains.length ; i++) {
+		domain = allDomains[i-1];
+		domainstr = "domain" + i
+		inputInfo = "<input id=" + domainstr + " type='button' class='btntd' value='"+domain+"'>";
+		$('#Row1').append("<div class='divCell'>" + inputInfo + "</div>");
+		$('#'+domainstr).attr({
+			onMouseOver: "className='btntdover'",
+			onMouseOut:  "className='btntd'"
+		});
+	}
+
+	//Create WxMap2 button
+	inputInfo = "<input id='WxMap' type='button' class='btn100' value='WxMAP2.H'>"
+	$('#Row2').append("<div class='divCell'>" + inputInfo + "</div>");
+	$('#WxMap').attr({
+		onMouseOver: "className='btn100over'",
+		onMouseOut:  "className='btn100'"
+		});
+
+	//Create all dtg buttons
+	for (var i=1 ; i<=numDTGweb ; i++) {
+		dtg = allDtgs[i-1];
+		dtgstr = "dtg" + i
+		inputInfo = "<input id=" + dtgstr + " type='button' class='btndtg' value='"+dtg+"'>";
+		$('#Row2').append("<div class='divCell'>" + inputInfo + "</div>");
+		$('#'+domainstr).attr({
+			onMouseOver: "className='btndtgover'",
+			onMouseOut:  "className='btndtg'"
+		});
+	}
+
+	//Create all frame buttons
+	for (var i=1 ; i<=allFrames.length ; i++) {
+		frame = allFrames[i-1];
+		framestr = "frame" + i
+		inputInfo = "<input id=" + framestr + " type='button' class='btntaudtg' value='" + frame +"'>";
+		$('#Row2').append("<div class='divCell'>" + inputInfo + "</div>");
+		$('#'+framestr).attr({
+			onMouseOver: "className='btntaudtgover'",
+			onMouseOut: "className='btntaudtg'"
+		});
+	}
+	
+	//Create loop button
+	inputInfo = "<input id='loop' type='button' class='btn50loop' value='LOOP'>"
+	$('#Row2').append("<div class='divCell'>" + inputInfo + "</div>");
+	$('#loop').attr({
+		onMouseOver: "className='btn50loopover'",
+		onMouseOut:  "className='btn50loop'"
+		});
+
+	//////////// UPDATE BUTTON FUNCTIONS //////////////////
+
+	// update the DTG buttons when one is clicked
+	//   - slide them over and change color
+	function updateDTGbtns() {
+
+		var ind = allDtgs.indexOf(curDTG);
+		var curBtnNum;
+
+		//shift buttons over
+		var limit = Math.floor(numDTGweb/2.0);
+		if (ind>=limit && ind<=(allDtgs.length-1)-limit) { // dtg is in middle
+
+			var counter = limit;
+			for(var i=1;i<=numDTGweb;i++) {
+				dtgstr = '#dtg' + i;
+				$(dtgstr).attr('value',allDtgs[ind-counter]);
+				counter--;
+			}
+			if (numDTGweb%2==1) {
+				curBtnNum = Math.ceil(numDTGweb/2.0);
+			} else { // even number
+				curBtnNum = Math.ceil(numDTGweb/2.0) + 1;
+			}
+
+		} else if (ind<limit) { //first few allDtgs
+
+			for (var i=0;i<numDTGweb;i++) {
+				dtgNum = i+1
+				dtgstr = '#dtg' + dtgNum;
+				$(dtgstr).attr("value",allDtgs[i]);
+			}
+			curBtnNum = ind+1;
+
+		} else { //last few allDtgs
+			
+			for (var i=0;i<numDTGweb;i++) {
+				dtgNum = i+1
+				dtgstr = '#dtg' + dtgNum;
+				tmp = (allDtgs.length - numDTGweb) + i
+				$(dtgstr).attr("value",allDtgs[tmp]);
+			}
+			curBtnNum = numDTGweb - (allDtgs.length-(ind+1))
+		}
+
+		// change color attrs of current button
+		dtgstr = '#dtg' + curBtnNum
+		$(dtgstr).attr({
+			class: "btndtgcur",
+			onMouseOver: "className='btndtgcurover'",
+			onMouseOut:  "className='btndtgcur'"
+		});
+		for (var i=1;i<=numDTGweb;i++) {
+			//change color of non-current buttons (and make active/inactive)
+			if (i != curBtnNum) {
+				dtgstr = '#dtg' + i;
+				dtg = $(dtgstr).attr('value')
+				// if model/domain not present for curDTG, disable dtg
+				if ( dtgDict[dtg][0].indexOf(curModel)==-1 || dtgDict[dtg][1].indexOf(curDomain)==-1 ) {
+					$(dtgstr).attr('disabled',true);
+					$(dtgstr).attr('class','btndtgnot');
+				} else {
+					$(dtgstr).removeAttr('disabled');
+					$(dtgstr).attr({
+						class: 'btndtg',
+						onMouseOver: "className='btndtgover'",
+						onMouseOut:  "className='btndtg'"
+					});
+				}
+			}
+		}
+	}
+
+	function updateModelBtns() {
+
+		//enable or disable buttons based on dict
+		
+		for (var i=0 ; i < dtgDict[curDTG][0].length ; i++) {
+			for (var j=1 ; j <= allModels.length ; j++) {
+				
+				modelstr = '#model' + j;
+				// if model not present for curDTG, disable btn
+				if (dtgDict[curDTG][0].indexOf( allModels[j-1] ) == -1) {
+					$(modelstr).attr({
+						disabled: true,
+						class:    'btnmodnot',
+					});
+
+				} else { //model DOES exist for dtg
+					$(modelstr).removeAttr("disabled");
+					//change color
+					$(modelstr).attr({
+						class:       'btnmod',
+						onMouseOver: "className='btnmodover'",
+						onMouseOut:  "className ='btnmod'"
+					});
+				}
+			}
+		}
+	}//end function updateModelBtns
+
+	function updateDomainBtns() {
+
+		for (var i=0 ; i < dtgDict[curDTG][1].length ; i++) {
+			for (var j=1 ; j <= allDomains.length ; j++) {
+				
+				domainstr = '#domain' + j;
+				if (dtgDict[curDTG][1].indexOf( allDomains[j-1] ) == -1) { 
+					$(domainstr).attr({
+						disabled: true,
+						class:    'btntdnot'
+					});
+
+				} else { //domain DOES exist for dtg
+					$(domainstr).removeAttr("disabled");
+					$(domainstr).attr({
+						class:       'btntd',
+						onMouseOver: "className='btntdover'",
+						onMouseOut:  "className ='btntd'"
+					});
+				}
+			}
+		}
+	}//end function updateDomainBtns
+
+	//changes variables for latitude/longitude cursor
+	function updateLatLon() {
+
+		tempX = 0
+		tempY = 0
+
+		// offset that makes upper righthand corner (0,0)
+		offsetxL=tp[0]
+		offsetyT=tp[1]
+		IEoffsetX=-3
+		IEoffsetY=-3
+
+                xL=areaDict[curDomain][4]
+                xR=areaDict[curDomain][5]
+                lonL=areaDict[curDomain][2]
+                lonR=areaDict[curDomain][3]
+                yT=areaDict[curDomain][6]+areaDict[curDomain][8]
+                yB=areaDict[curDomain][7]+areaDict[curDomain][8]
+                latT=areaDict[curDomain][0]
+                latB=areaDict[curDomain][1]
+
+		dX=xR-xL
+		dlonP=(lonR-lonL)/dX
+		dY=yB-yT
+		dlatP=(latT-latB)/dY
+	}
+
+	///////////////// BUTTON-IMAGE CONNECTIONS ///////////////////
+
+	// connect various buttons
+	function connect( varString ) {
+
+		$(varString).click(function(evt) {
+
+			// update everything except for image
+			if (varString.substr(1,3) == 'dtg') {
+				curDTG = $(this).attr('value');
+				updateDTGbtns();
+				updateModelBtns();
+				updateDomainBtns();
+			} else if (varString.substr(1,5) == 'model') {
+				curModel = $(this).attr('value');
+				updateDTGbtns();
+			} else if (varString.substr(1,6) == 'domain') {
+				curDomain = $(this).attr('value');
+				updateDTGbtns();
+				updateLatLon();
+			// if loop btn pressed, do nothing except update image
+			}
+
+			// make path to new imgage
+			if (curModel=='GOES') {
+				var imgPath =   'plt_loop/gfs.goes.chn03.prw' +
+						curDomain.charAt(0) + curDomain.slice(1).toLowerCase()+'.'+
+						curDTG + '.' +
+						'loop.gif';
+			} else {
+				var imgPath = 'plt_loop/prw.' + curModel.toLowerCase() + '.' +
+								curDTG + '.' +
+								curDomain.toLowerCase()+'.'+
+								'loop.gif';
+			}
+
+			//change image
+            		// -- remove myImage tag, but this is used in showlatlong.js
+			$('#myImage').remove()
+			$('#imgRow').append("<img id='myImage' src='" + imgPath + "'>");
+
+			// -- remove showlatlon.js in <div id=llJs> and add back in to reinitialize
+			$('#latlonJs').remove()
+        	        $('#llJs').append('<script language="Javascript1.2" src="js/showlatlon.js" type="text/javascript" id=latlonJs></script>')
+   	 
+			//change headRow
+			$('#headDtg').text(curDTG+' ');
+			$('#headDomain').text(curDomain+' ');
+			$('#headModel').text(curModel+' ');
+
+			//change title
+			$('#title').text('PRW ' + curModel + ' BDTG: ' + curDTG)
+
+		});
+	}
+
+
+	// connect model buttons
+	for (i=1;i<=allModels.length;i++) {
+		modelstr = '#model' + i;
+		connect(modelstr);
+	}
+
+	//connect dtg buttons
+	for (i=1 ; i<=numDTGweb ; i++) {
+		dtgstr = '#dtg' + i;
+		connect(dtgstr);
+	}
+
+	//connect domain buttons
+	for (i=1 ; i<=allDomains.length ; i++) {
+		domainstr = '#domain' + i;
+		connect(domainstr);
+	}
+
+	//connect WxMain2 button
+	$('#WxMap').click(function() {
+		window.location = "http://ruc.noaa.gov/wxmap2/";
+	});
+
+	//connect frame buttons
+	for (i=1 ; i<=allFrames.length ; i++) {
+
+		framestr = '#frame' + i;
+
+		$(framestr).click(function(evt) {
+
+			value = $(this).attr('value')
+			intValue = parseInt( value );
+			if ( intValue >= 0 && intValue <= 9 ) {
+				prefix = 'f00';
+			} else if ( intValue >= 10 && intValue <= 99 ) {
+				prefix = 'f0';
+			} else if ( intValue >= 100 ) {
+				prefix = 'f';
+			} else if ( intValue <= 0 && intValue >= -9 ) {
+				prefix = 'm00';
+			} else if ( intValue <= -10 && intValue >= -99) {
+				prefix = 'm0';
+			} else if ( intValue <= -100 ) {
+				prefix = 'm';
+			}
+
+			if (curModel=='GOES') {
+				var imgPath =   'plt_prw_goes/' + curDTG + '/gfs.goes.chn03.prw' +
+						curDomain.charAt(0) + curDomain.slice(1).toLowerCase()+'.'+
+						curDTG + '.' +
+						prefix + value.slice(1) + ".png";
+
+			} else {
+				var imgPath =   'plt_prw_goes/' + curDTG + '/prw.' +
+						curModel.toLowerCase() + '.' +
+						curDTG + '.' +
+						curDomain.toLowerCase()+'.'+
+						prefix + value.slice(1) + ".png";
+			}
+
+			//change image
+            		// -- remove myImage tag, but this is used in showlatlong.js
+			$('#myImage').remove()
+			$('#imgRow').append("<img id='myImage' src='" + imgPath + "'>");
+
+			// -- remove showlatlon.js in <div id=llJs> and add back in to reinitialize
+			$('#latlonJs').remove()
+        	        $('#llJs').append('<script language="Javascript1.2" src="js/showlatlon.js" type="text/javascript" id=latlonJs></script>')
+		
+		}); //end click event
+	}
+
+	//connect loop button
+	$('#loop').click(connect('#loop'));
+
+	//////////////////// INTIALIZATION ///////////////////////
+
+	//put times on buttons
+	for (var i=0;i<numDTGweb;i++) {
+		dtgNum = i+1
+		dtgstr = '#dtg' + dtgNum;
+		$(dtgstr).attr("value",allDtgs[i]);
+	}
+
+	//set default model and dtg
+	var curDTG = allDtgs[0]
+	var curModel = dtgDict[curDTG][0][0]; //take first model of first dtg
+
+	url = String(window.location);
+	ind = url.search('#')
+	if (ind != -1) {
+		var curDomain = url.slice(ind+1); // get domain from url
+	} else {
+		curDomain = 'LANT';
+	}
+
+	updateLatLon()
+
+	//window.onload = function() {
+	//alert('hello')
+	//}
+	//window.onpopstate = function() {
+	//alert('hello2')
+	//}
+
+$(document).ready(function()
+{
+	//Fake-click the first dtg to initialize
+	$('#dtg1').click();
+
+	if (window.history.state=='1') {
+		history.pushState('0');
+		alert('back button clicked')
+		location.reload();
+	} else {
+		history.pushState('1');
+	}
+
+});
+
+
+
+

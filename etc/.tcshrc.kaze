@@ -1,0 +1,38 @@
+set verb=0
+
+umask 022
+
+limit coredumpsize 0
+
+if ( $?prompt ) then      # if this is an interactive shell...
+set history=500
+set savehist=30000
+set ignoreeof
+endif
+
+set osver=`uname -a | awk '{print $3}'`
+set chost=`uname -a | awk '{print $2}'`
+set osname=`uname -a | awk '{print $1}'`
+
+if ( $verb  ) then
+  echo "TTTTT: running .tcshrc on $chost which is a $osname machine"
+endif
+
+if ( $osname == Linux || $osname == SunOS || $osname == Darwin) then
+
+   if( $verb) then
+      echo "LLLLL: doing linux"
+   endif
+  source $HOME/.wxmaprc
+  source $HOME/.envrc
+  source $HOME/.pathrc
+
+  if ( $?prompt ) then      # if this is an interactive shell...
+    source $HOME/.alias
+    fixprompt
+  endif
+
+endif
+
+
+exit

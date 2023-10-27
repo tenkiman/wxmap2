@@ -1,0 +1,306 @@
+!%f90 -*- f90 -*-
+python module nclip23 ! in 
+    interface  ! in :nclip23
+        function lastch(string_v) ! in :nclip23:nhc.clipper.lib.f
+            character*(*) :: string_v
+            integer :: lastch
+        end function lastch
+        subroutine xtrap(iymdh,latcur,loncur,latm12,lonm12,strmid) ! in :nclip23:nhc.clipper.lib.f
+            integer :: iymdh
+            real :: latcur
+            real :: loncur
+            real :: latm12
+            real :: lonm12
+            character*8 :: strmid
+            integer dimension(11,3) :: ifpxtrp
+            common /extrap/ ifpxtrp
+        end subroutine xtrap
+        subroutine rhdst(flat,flng,tlat,tlng,dir,dst) ! in :nclip23:nhc.clipper.lib.f
+            real :: flat
+            real :: flng
+            real :: tlat
+            real :: tlng
+            real :: dir
+            real :: dst
+        end subroutine rhdst
+        subroutine rltlg(flat,flng,tlat,tlng,dir,dst) ! in :nclip23:nhc.clipper.lib.f
+            real :: flat
+            real :: flng
+            real :: tlat
+            real :: tlng
+            real :: dir
+            real :: dst
+        end subroutine rltlg
+        subroutine atclip(iymdh,y,x,dnow,snow,dm12,sm12,wkts,strmid) ! in :nclip23:nhc.clipper.lib.f
+            integer :: iymdh
+            real :: y
+            real :: x
+            real :: dnow
+            real :: snow
+            real :: dm12
+            real :: sm12
+            real :: wkts
+            character*8 :: strmid
+            integer dimension(11,3) :: ifpclip
+            real dimension(7) :: flat
+            real dimension(7) :: flon
+            common /cliper/ ifpclip,flat,flon
+        end subroutine atclip
+        subroutine cgulf(y,x,u,v,u12,v12,dn,w,wgulf,gulf) ! in :nclip23:nhc.clipper.lib.f
+            real :: y
+            real :: x
+            real :: u
+            real :: v
+            real :: u12
+            real :: v12
+            real :: dn
+            real :: w
+            real :: wgulf
+            real dimension(10) :: gulf
+        end subroutine cgulf
+        subroutine atshif(ymdh,alat,alon,alat12,alon12,vel,vel12,strmid) ! in :nclip23:nhc.clipper.lib.f
+            integer*4 :: ymdh
+            real :: alat
+            real :: alon
+            real :: alat12
+            real :: alon12
+            real :: vel
+            real :: vel12
+            character*8 :: strmid
+            integer dimension(11,3) :: ishifor
+            common /shifor/ ishifor
+        end subroutine atshif
+        subroutine ashif3(p1,p2,p3,p4,p6,p7) ! in :nclip23:nhc.clipper.lib.f
+            double precision :: p1
+            double precision :: p2
+            double precision :: p3
+            double precision :: p4
+            double precision :: p6
+            double precision :: p7
+        end subroutine ashif3
+        subroutine atshif5d(ymdh,alat,alon,alat12,alon12,vel,vel12,strmid) ! in :nclip23:nhc.clipper.lib.f
+            integer :: ymdh
+            real :: alat
+            real :: alon
+            real :: alat12
+            real :: alon12
+            real :: vel
+            real :: vel12
+            character*6 :: strmid
+            real dimension(10,36) :: scoef
+            real dimension(10,36) :: avg
+            real dimension(10,36) :: sdev
+            integer dimension(11,3) :: ishifor5
+            common /al5coef/ scoef,avg,sdev
+            common /shifor5/ ishifor5
+        end subroutine atshif5d
+        subroutine jday(imon,iday,iyear,julday) ! in :nclip23:nhc.clipper.lib.f
+            integer :: imon
+            integer :: iday
+            integer :: iyear
+            integer :: julday
+        end subroutine jday
+        subroutine epcl84(ymdh,la0,lo0,lam12,lom12,lam24,lom24,dir0,spd0,wnd0,strmid) ! in :nclip23:nhc.clipper.lib.f
+            integer*4 :: ymdh
+            real :: la0
+            real :: lo0
+            real :: lam12
+            real :: lom12
+            real :: lam24
+            real :: lom24
+            real :: dir0
+            real :: spd0
+            real :: wnd0
+            character*8 :: strmid
+            real dimension(164) :: p
+            integer dimension(11,3) :: ifpclip
+            real dimension(7) :: flat
+            real dimension(7) :: flon
+            real dimension(12) :: cdi
+            common /pp/ p
+            common /cliper/ ifpclip,flat,flon
+            common /cl84/ cdi
+        end subroutine epcl84
+        subroutine mult1 ! in :nclip23:nhc.clipper.lib.f
+            real dimension(164) :: p
+            common /pp/ p
+        end subroutine mult1
+        subroutine mult2 ! in :nclip23:nhc.clipper.lib.f
+            real dimension(164) :: p
+            common /pp/ p
+        end subroutine mult2
+        subroutine mult3 ! in :nclip23:nhc.clipper.lib.f
+            real dimension(164) :: p
+            common /pp/ p
+        end subroutine mult3
+        subroutine mult4 ! in :nclip23:nhc.clipper.lib.f
+            real dimension(164) :: p
+            common /pp/ p
+        end subroutine mult4
+        subroutine sthgpr(xlath,xlonh,bear,gridsz,xi0,yj0) ! in :nclip23:nhc.clipper.lib.f
+            real :: xlath
+            real :: xlonh
+            real :: bear
+            real :: gridsz
+            real :: xi0
+            real :: yj0
+            real dimension(3,3) :: a
+            real :: radpdg
+            real :: rrthnm
+            real :: dgridh
+            real :: hgridx
+            real :: hgridy
+            common /hgrprm/ a,radpdg,rrthnm,dgridh,hgridx,hgridy
+        end subroutine sthgpr
+        subroutine ll2xyh(xlat,xlong,xi,yj) ! in :nclip23:nhc.clipper.lib.f
+            real :: xlat
+            real :: xlong
+            real :: xi
+            real :: yj
+            real dimension(3,3) :: a
+            real :: radpdg
+            real :: rrthnm
+            real :: dgridh
+            real :: hgridx
+            real :: hgridy
+            common /hgrprm/ a,radpdg,rrthnm,dgridh,hgridx,hgridy
+        end subroutine ll2xyh
+        subroutine xy2llh(xi,yj,xlat,xlong) ! in :nclip23:nhc.clipper.lib.f
+            real :: xi
+            real :: yj
+            real :: xlat
+            real :: xlong
+            real dimension(3,3) :: a
+            real :: radpdg
+            real :: rrthnm
+            real :: dgridh
+            real :: hgridx
+            real :: hgridy
+            common /hgrprm/ a,radpdg,rrthnm,dgridh,hgridx,hgridy
+        end subroutine xy2llh
+        subroutine epshif(idtg,alat,alon,alat12,alon12,vel,vel12,strmid) ! in :nclip23:nhc.clipper.lib.f
+            integer :: idtg
+            real :: alat
+            real :: alon
+            real :: alat12
+            real :: alon12
+            real :: vel
+            real :: vel12
+            character*8 :: strmid
+            integer dimension(11,3) :: ishifor
+            common /shifor/ ishifor
+        end subroutine epshif
+        subroutine epshif5d(ymdh,elat,elon,elat12,elon12,vel,vel12,strmid) ! in :nclip23:nhc.clipper.lib.f
+            integer :: ymdh
+            real :: elat
+            real :: elon
+            real :: elat12
+            real :: elon12
+            real :: vel
+            real :: vel12
+            character*6 :: strmid
+            real dimension(10,36) :: scoef
+            real dimension(10,36) :: avg
+            real dimension(10,36) :: sdev
+            integer dimension(11,3) :: ishifor5
+            common /ep5coef/ scoef,avg,sdev
+            common /shifor5/ ishifor5
+        end subroutine epshif5d
+        block data _BLOCK_DATA_ ! in :nclip23:nhc.clipper.lib.f
+            real dimension(10,36) :: alscoef
+            real dimension(10,36) :: alavg
+            real dimension(10,36) :: alsdev
+            real dimension(10,36) :: epscoef
+            real dimension(10,36) :: epavg
+            real dimension(10,36) :: epsdev
+            real optional,dimension(3,3) :: a=0.
+            real optional :: radpdg=1.745 3293 e-2
+            real optional :: rrthnm=3 440.17
+            real optional :: dgridh=120.
+            real optional :: hgridx=0.
+            real optional :: hgridy=0.
+            common /al5coef/ alscoef,alavg,alsdev
+            common /ep5coef/ epscoef,epavg,epsdev
+            common /hgrprm/ a,radpdg,rrthnm,dgridh,hgridx,hgridy
+        end block data _BLOCK_DATA_
+        subroutine readbt(datfile,cent,dtg,flat,ns,flon,ew,iwind,ios) ! in :nclip23:nhc.clipper.lib.f
+            integer :: datfile
+            character*2 :: cent
+            character*8 :: dtg
+            real :: flat
+            character*1 :: ns
+            real :: flon
+            character*1 :: ew
+            integer :: iwind
+            integer :: ios
+        end subroutine readbt
+        subroutine readbest(datfile,basin,cycnum,cent,dtg,flat,ns,flon,ew,iwind,ios) ! in :nclip23:nhc.clipper.lib.f
+            integer :: datfile
+            character*2 :: basin
+            character*2 :: cycnum
+            character*2 :: cent
+            character*8 :: dtg
+            real :: flat
+            character*1 :: ns
+            real :: flon
+            character*1 :: ew
+            integer :: iwind
+            integer :: ios
+        end subroutine readbest
+        subroutine dowriteaidrcd(datfile,stormid,cdtg,techname,itau,llwnd) ! in :nclip23:nhc.clipper.lib.f
+            integer :: datfile
+            character*8 :: stormid
+            character*10 :: cdtg
+            character*4 :: techname
+            integer :: itau
+            integer dimension(3) :: llwnd
+        end subroutine dowriteaidrcd
+        subroutine writeaidrcd(datfile,stormid,cdtg,techname,ltlnwnd) ! in :nclip23:nhc.clipper.lib.f
+            integer :: datfile
+            character*8 :: stormid
+            character*10 :: cdtg
+            character*4 :: techname
+            integer dimension(10,3) :: ltlnwnd
+        end subroutine writeaidrcd
+        subroutine newwriteaidrcd(datfile,stormid,cdtg,techname,ltlnwnd) ! in :nclip23:nhc.clipper.lib.f
+            integer :: datfile
+            character*8 :: stormid
+            character*10 :: cdtg
+            character*4 :: techname
+            integer dimension(11,3) :: ltlnwnd
+        end subroutine newwriteaidrcd
+        subroutine writeaid(datfile,stormid,century,cdtg,techname,ltlnwnd) ! in :nclip23:nhc.clipper.lib.f
+            integer :: datfile
+            character*6 :: stormid
+            character*2 :: century
+            character*8 :: cdtg
+            character*4 :: techname
+            integer dimension(10,3) :: ltlnwnd
+        end subroutine writeaid
+        subroutine readnext(datfile,rcd,ios) ! in :nclip23:nhc.clipper.lib.f
+            type atcf_record ! in :nclip23:nhc.clipper.lib.f:readnext
+            end type atcf_record
+            type unknown_type ! in :nclip23:nhc.clipper.lib.f:readnext
+            end type unknown_type
+            type unknown_type ! in :nclip23:nhc.clipper.lib.f:readnext
+            end type unknown_type
+            type unknown_type ! in :nclip23:nhc.clipper.lib.f:readnext
+            end type unknown_type
+            type unknown_type ! in :nclip23:nhc.clipper.lib.f:readnext
+            end type unknown_type
+            type unknown_type ! in :nclip23:nhc.clipper.lib.f:readnext
+            end type unknown_type
+            type unknown_type ! in :nclip23:nhc.clipper.lib.f:readnext
+            end type unknown_type
+            type unknown_type ! in :nclip23:nhc.clipper.lib.f:readnext
+            end type unknown_type
+            type unknown_type ! in :nclip23:nhc.clipper.lib.f:readnext
+            end type unknown_type
+            type unknown_type ! in :nclip23:nhc.clipper.lib.f:readnext
+            end type unknown_type
+        end subroutine readnext
+    end interface 
+end python module nclip23
+
+! This file was auto-generated with f2py (version:2.317).
+! See http://cens.ioc.ee/projects/f2py2e/

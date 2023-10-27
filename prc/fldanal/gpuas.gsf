@@ -1,0 +1,205 @@
+#
+#-------------------------- gpuas ------------------
+#
+function gpuas(k)
+###t1='500mb Heights / Over ocean Sfc Winds'
+t1='Over ocean Sfc Winds'
+pstat=1
+_shades=0
+dolsmask=0
+
+'usfc=uas'
+'vsfc=vas'
+'z5=zg(lev=500)'
+
+if(_ukfill=1)
+  rc=lonfill('usfc')
+  rc=lonfill('vsfc')
+  rc=lonfill('z5')
+endif
+
+rc=datachk(usfc) ; if(rc!=0) ; return(rc) ; endif
+rc=datachk(vsfc) ; if(rc!=0) ; return(rc) ; endif
+rcz=datachk(z5)  ; if(rcz!=0) ; return(rcz) ; endif
+
+'ls=const(const(maskout(sftlf.'_fm'(t=1),sftlf.'_fm'(t=1)-'_pland'),-1),0,-u)'
+
+pstat=0
+'usa=usfc*'_ms2kt
+'vsa=vsfc*'_ms2kt
+
+if(dolsmask = 1)
+  'us=maskout(usa,ls)'
+  'vs=maskout(vsa,ls)'
+else
+  'us=usa'
+  'vs=vsa'
+endif
+
+'ms=mag(us,vs)'
+
+'uss=us'
+'vss=vs'
+'mss=ms'
+
+if(_regriduas = 1)
+  'uss=re(us,0.75)'
+  'vss=re(vs,0.75)'
+  'mss=re(ms,0.75)'
+endif
+
+
+'set grads off'
+'set xlint '_xlint
+'set ylint '_ylint
+
+stmden=_strmdenuas
+wskip=_vskipuas+1
+
+if(_area = 'tropenso')
+  wskip = _vskipuas+5
+  stmden=3
+  'set digsiz 0.04'
+endif
+
+'set gxout shaded'
+'set csmooth on'
+'set cterp on'
+'set rgb 47  10 80 160'
+'set rgb 49  00 50 100'
+'set clevs   10 15 20 30 50  65'
+'set ccols 0 0 49 47 43  21 25 29'
+# - 20020212 - change min to 15 kts by setting 10-15 color to 0(CPT Cantrell request)
+'set clevs   15 20 30 50  65'
+'set ccols 0 47 43  21 25 29'
+
+# -- black doesn't render in printim for v2.1?
+'set rgb 99 1 1 1'
+bcol=0
+bcol=99 
+
+
+'d ms'
+'q shades'
+_shades=result
+
+'set gxout contour'
+'set clab off'
+'set ccolor 'bcol
+'set cthick '_cthkb
+'set cthick 7'
+'set clevs 15 20 30'
+'d ms'
+
+'set ccolor 'bcol
+'set clab off'
+'set cthick '_cthk
+'set clevs 15 20 30'
+#'d ms'
+
+
+'set gxout stream'
+'set strmden 'stmden
+'set cthick 10'
+'set ccolor 'bcol
+'d uss;vss'
+
+'set cthick 4'
+'set ccolor 34'
+'d uss;vss'
+
+'set gxout barb'
+'set digsiz 0.04'
+
+
+*	winds greater than 8 kts
+*
+'set ccolor 'bcol
+'set cthick 20'
+'d skip(uss,'wskip');maskout(vss,mss-8.0))'
+
+'set cthick 4'
+'set ccolor 1'
+'d skip(uss,'wskip');maskout(vss,mss-8.0))'
+
+*
+*	plot winds greater than 25 kts in yellow
+*
+'set ccolor 'bcol
+'set cthick 10'
+'d skip(uss,'wskip');maskout(vss,mss-24.0))'
+
+'set cthick 4'
+'set ccolor 12'
+'d skip(uss,'wskip');maskout(vss,mss-24.0))'
+*
+*	plot winds greater than 35 kts in orange
+*
+'set ccolor 'bcol
+'set cthick 10'
+'d skip(uss,'wskip');maskout(vss,mss-34.0))'
+
+'set cthick 4'
+'set ccolor 8'
+'d skip(uss,'wskip');maskout(vss,mss-34.0))'
+*
+*	plot winds greater than 50 kts in red
+*
+'set ccolor 'bcol
+'set cthick 10'
+'d skip(uss,'wskip');maskout(vss,mss-49.0))'
+
+'set cthick 4'
+'set ccolor 2'
+'d skip(uss,'wskip');maskout(vss,mss-49.0))'
+
+
+rc=dtitle(t1)
+# -- black doesn't render in printim for v2.1?
+'set rgb 99 1 1 1'
+bcol=0
+bcol=99 
+
+
+doz500=0
+if(doz500)
+'set lev 500'
+'zgd=z5'
+if(_model = 'ifs') 
+  'zgd=zg/'_gravity
+endif
+rcz=datachk(zgd)
+if(rcz=0)
+
+  pstat=0 
+  'set gxout contour'
+  'set cint 60'
+  'set ccolor 'bcol
+  'set cthick 15'
+  'set clskip 2 3.0'
+  'd zgd'
+  'set cint 60'
+  'set cthick 4'
+  'set ccolor 32'
+  'set clskip 2 3.0'
+  'd zgd'
+
+  'set cmin 5820'
+  'set cint 20'
+  'set ccolor 'bcol
+  'set cthick 15'
+  'set clskip 2 3.0'
+  'd zgd'
+  'set cmin 5820'
+  'set cint 20'
+  'set cthick 4'
+  'set ccolor 52'
+  'set clskip 2 3.0'
+  'd zgd'
+  
+endif
+endif
+
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+
+return(pstat)

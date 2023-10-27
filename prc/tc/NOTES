@@ -1,0 +1,71 @@
+20040614
+========
+
+recipe for ops updating
+
+c.w2
+
+1) update storm names
+=====================
+
+and NHC bdecks (now done in wxmap.tc.dat.ops.pl)
+
+w2.tc.get.atcf.bdeck.py -p ops -S nhc
+
+
+2) update BT.final
+==================
+
+w2.tc.bt.bdeck.final.py cur -- only real storms
+w2.tc.bt.bdeck.final.py ops -- real + 9X storms
+
+2a) update bt.climo mo dataset
+
+c.w2 ; cd tc
+p.tc.bt.climo.pl 200406 and a few months back
+
+2b) update ngtrp for tc.activity
+
+c.w2
+p.tc.posit.py all 2004010100 cur /tmp/ngtrp.2004.BT.final.txt
+
+2c) climo plots go to ../../plt/tc/activity ; climo
+
+activity: spectrographs
+-----------------------
+
+g.tc.activity.pl 2004010100 2005010100 /tmp/ngtrp.2004.BT.final.txt
+
+climo: timeseries
+-----------------
+
+g.tc.bt.timeseries.mo.py -y 200101.cur -b wpac  :: for the basins ...
+
+climo: maps
+-----------
+
+g.tc.bt.climo.ll.py -y 200401.cur -b wpac :: for basins including global/nhem/shem
+
+
+
+3) make bt mo
+=============
+
+w2.tc.bt.mo.final.py 200401 cur
+
+
+4) veridata all:
+================
+
+w2.tc.veri.data.all.py ops.2004.nhem -m ops -d ops -p ops -b NHS
+
+-p ops forces pull of tracks from ../dat/tc/fc/ops
+
+5)
+
+cd tc
+
+p.tc.names.py 2004 (no 9X)
+p.tc.names.py cur (9X)
+
+p.tc.season.py -y cur -p py -- create ../TCstatsCur.py

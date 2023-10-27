@@ -1,0 +1,222 @@
+###############/nawips2/.csrhc
+
+############################################################################
+#
+#  IMPORTANT:  path must be set BEFORE setting up the N-AWIPS environment,
+#               because gemenv.csh adds items relative to $path.
+#
+#  Set the path.
+#
+######################################################################
+
+setenv NAWIPS /nawips2
+
+#####source .gemenv.csh.nawips2----
+###########################################################################
+#
+#  gemenv.csh
+#
+#  This source file sets up the N-AWIPS environment.
+#
+##
+# Log:
+# T. Piper/SAIC		01/08	Created from .cshrc
+# T. Piper/SAIC		11/07	HP only:  Added -lXp and -lXext to XLIBS
+# T. Piper/SAIC		11/07	All:  Moved $OS_BIN to the head of $path
+# S. Jacobs/NCEP	12/07	Added options for GCC4/GFORTRAN
+# T. Piper/SAIC		01/08	Removed $OS_LIB/<>.a environment variables
+# T. Piper/SAIC		01/08	Removed GEMEXE and GEMOLB
+###########################################################################
+#
+#  IMPORTANT:  The system environment variable NAWIPS must be
+#		set in the site's .cshrc startup file.
+#
+#========================================================================
+#
+#  Set the operating system environment variable.
+#  /bin/uname is available on most UNIX systems.
+#
+if ( -e /bin/uname ) then
+    setenv OS `/bin/uname`
+else
+    echo
+    echo "What type of workstation are you using?"
+    echo
+    echo "Find the command uname, and insert the correct"
+    echo "information in this file."
+    echo
+endif
+
+#
+#  Set the OS version, OS_VER, and the OS release, OS_REL.
+#
+setenv OS_VER ""
+setenv OS_REL ""
+
+switch ( $OS )
+    case "AIX":
+# IBM
+	setenv OS_VER	`uname -v`
+	breaksw
+
+    case "HP-UX":
+# Hewlett-Packard
+	unsetenv OS
+	setenv OS	HPUX
+	setenv OS_VER	`uname -r | cut -f2 -d.`
+	breaksw
+
+    case "IRIX":
+    case "IRIX64":
+# Silicon Graphics
+	setenv OS_VER	`uname -r | cut -f1 -d.`
+	setenv OS_REL	`uname -r | cut -f2 -d.`
+
+# Fix for IRIX64
+	if  ( $OS == "IRIX64" )  then
+	    setenv OS	IRIX
+	endif
+	breaksw
+
+    case "Linux":
+# Linux
+	setenv OS_VER	`uname -r | cut -f1 -d.`
+	setenv OS_REL	`uname -r | cut -f2 -d.`
+	if  ( $OS_REL == 6 && $MACHTYPE != x86_64 )  then
+	    setenv OS_REL	4
+	endif
+	set entrp = `uname -r | awk -F. '{print $NF}'| tr "[A-Z]" "[a-z]"`
+	if  ( $entrp == "el" || $entrp == "elsmp" )  then
+	    setenv OS_REL	`echo $OS_REL`el
+	endif
+	breaksw
+
+    case "SunOS":
+# Sun Micro Systems
+	setenv OS_VER	`uname -r | cut -f1 -d.`
+	breaksw
+
+    default:
+	echo "What type of UNIX do you have?"
+	echo
+	echo "Find the command uname, and insert the correct"
+	echo "information in the .cshrc file."
+	echo
+	breaksw
+endsw
+
+#
+#  Set NA_OS to the lowercase equivalent of OS.
+#  Add the Version number to the name and for Linux, also add the release number.
+#
+if ( $OS == "Linux" ) then
+    setenv NA_OS	`echo $OS | tr "[A-Z]" "[a-z]"``echo $OS_VER`.`echo $OS_REL`
+else
+    setenv NA_OS	`echo $OS | tr "[A-Z]" "[a-z]"``echo $OS_VER`
+endif
+
+#
+#========================================================================
+#  Set N-AWIPS system environment variables.
+#
+setenv GEMPAK	$NAWIPS/gempak
+
+setenv OS_ROOT	$NAWIPS/os/$NA_OS
+setenv OS_BIN	$OS_ROOT/bin
+setenv OS_INC	$OS_ROOT/include
+setenv OS_LIB	$OS_ROOT/lib
+
+setenv GEMDATA	$GEMPAK/data
+setenv GEMERR	$GEMPAK/error
+setenv GEMHLP	$GEMPAK/help
+setenv GEMINC	$GEMPAK/include
+setenv GEMMAPS	$GEMPAK/maps
+setenv GEMNTS	$GEMPAK/nts
+setenv GEMPARM	$GEMPAK/parm
+setenv GEMPDF	$GEMPAK/pdf
+setenv GEMTBL	$GEMPAK/tables
+setenv GEMPTXT	$GEMPAK/txt/programs
+setenv GEMGTXT	$GEMPAK/txt/gemlib
+
+setenv MEL_BUFR_TABLES	$GEMPAK/tables/melbufr
+setenv NMAP_RESTORE	$GEMNTS/nmap/restore
+
+#
+#========================================================================
+#  Set X/Motif search paths.
+#
+setenv XMICONSEARCHPATH		$NAWIPS/icons/%N/%B
+setenv XUSERFILESEARCHPATH	./%N:$HOME/%N:$HOME/Resource/%N:$NAWIPS/resource/%N
+
+#
+#  Set operating system specific path and MANPATH.
+#
+set path = ( . $OS_BIN $path $NAWIPS/bin )
+set path = ( $path $NAWIPS/scripts/ez $NAWIPS/scripts/nawips )
+set path = ( $path $NAWIPS/scripts/prnt )
+
+#
+#========================================================================
+#  Set printer variables.
+#
+setenv NPRINTER		""
+setenv NLPDEST		""
+
+switch ( $OS )
+    case "AIX":
+	setenv LP		"lpr"
+	setenv LPFLAG		"-P"
+	setenv LPAODT		"mpage -lo1 -z$LP -Z$LPFLAG"
+	setenv LPAODTFLAG	"-P"
+	breaksw
+    case "HPUX":
+	setenv LP		"lp"
+	setenv LPFLAG		"-d"
+	setenv LPAODT		"mpage -lo1 -z$LP -Z$LPFLAG"
+	setenv LPAODTFLAG	"-P"
+	breaksw
+    case "IRIX":
+	setenv LP		"lpr"
+	setenv LPFLAG		"-P"
+	setenv LPAODT		"mpage -lo1 -z$LP -Z$LPFLAG"
+	setenv LPAODTFLAG	"-P"
+	breaksw
+    case "Linux":
+	setenv LP		"lpr"
+	setenv LPFLAG		"-P"
+	setenv LPAODT		"mpage -lo1 -z$LP -Z$LPFLAG"
+	setenv LPAODTFLAG	"-P"
+	breaksw
+    case "SunOS":
+	setenv LP		"lpr"
+	setenv LPFLAG		"-P"
+	setenv LPAODT		"mpage -lo1 -z$LP -Z$LPFLAG"
+	setenv LPAODTFLAG	"-P"
+	breaksw
+    default:
+	echo
+	echo "WARNING..."
+	echo
+	echo "The print command has not been set properly."
+	echo
+	breaksw
+endsw
+
+setenv NADATA                   /msa_1000/accounts/naprod
+source $NAWIPS/.cshrc_data
+
+setenv VGFTMP ./
+setenv NADATA                   /msa_1000/accounts/naprod
+setenv NAWIPS_EXE  $OS_BIN
+
+set path = ( $path ${NADATA}/nhc_exe )
+set path = ( $path . ~/bin ~/bin/$NA_OS )
+
+#Enable automatic resolution detection
+set path = ( $path . /accounts/graphics/bin/lnhc_exe )
+set screenNumber = `echo $DISPLAY | grep -Eo '[0-9]$'`
+set screenResolution = `xdpyinfo | grep -C1 "screen #$screenNumber" | grep -Eo ' [0-9]+x[0-9]+ '`
+
+#	X-Windows Resource Path (for automatic resolution detection)
+setenv XUSERFILESEARCHPATH  ./%N:$HOME/%N:$HOME/Resource/%N:$NAWIPS/resource/$screenResolution/%N:$NAWIPS/resource/%N
+

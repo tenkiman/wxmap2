@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+#       96110100 -- changed this to tcsh after all the mucking around with .cshrc
+#
+#       set the environment
+#
+. ~/.bashrc
+echo $W2
+# -- do in .bashrc vice here? on climateb
+export TZ="UTC"
+cd "$W2"
+#source .w2rc 
+echo "Executing run.crontab.bash"
+echo "************************************"
+echo "*"
+echo "QQQQQ: START $1 at "`date`" on "`hostname`
+echo "*"
+echo "************************************"
+time $1
+echo "************************************"
+echo "*"
+echo "QQQQQ:  END $1 at "`date`" on "`hostname`
+echo "*"
+echo "************************************"
+exit

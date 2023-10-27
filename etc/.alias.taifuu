@@ -1,0 +1,351 @@
+alias crl 'crontab -l'
+alias atcf 'ssh -X atcf-ops@atcfsvr1.nhc.noaa.gov'
+alias tenki '~/prc/tenki.llnl.exp'
+alias gdiff 'kcompare'
+alias xrdb.x 'xrdb  ~/.Xresources'
+#alias ps 'ps --cols 256'
+alias ps.ef 'ps -ef'
+alias use 'source ~/.use.\!*'
+alias d 'dtg6 -h'
+alias j 'jobs'
+alias f 'fg %\!*'
+alias b 'bg'
+alias h 'history'
+alias c clear
+alias a 'alias'
+alias g "grep"
+alias l "cat \!* | less"
+alias lc "cut -c0-130 \!* | less"
+alias m 'make'
+alias x "exit"
+alias s "source \!*"
+alias s.a "source ~/.alias"
+alias cp "cp -p \!*"
+alias rrdiff "/Applications/editors-diff/RoaringDiff.app/Contents/MacOS/RoaringDiff \!*"
+
+alias w2 "cd /w${W2_VERSION} ; source .w2rc"
+
+
+# -  cvs
+
+alias gacvs "cvs -z3 -d:ext:mike_fiorino@opengrads.cvs.sourceforge.net:/cvsroot/opengrads"
+
+# - printing
+
+
+alias lpr.ps 'lp -ddaffy'
+alias lpr.ps.c 'lp -ddaffy'
+
+
+# machines
+
+alias clank 'ssh -Y clank'
+alias ratchet 'ssh -Y ratchet'
+alias tacc 'ssh -Y mfiorino@ranger.tacc.utexas.edu'
+alias vapor 'ssh -Y -L11219:localhost:11219 wx80mf@vapor.rdhpcs.noaa.gov'
+alias esrl.tom 'ssh -X fiorino@tom.fsl.noaa.gov'
+alias esrl.ratchet 'ssh -X fiorino@ratchet.fsl.noaa.gov'
+alias wjet 'ssh -Y -L16395:localhost:16395  fiorino@wjet.rdhpcs.noaa.gov'
+alias jet 'ssh -Y -L16395:localhost:16395  fiorino@jet.rdhpcs.noaa.gov'
+alias scp.2j "scp \!* fiorino@jetscp.rdhpcs.noaa.gov:/lfs0/projects/fim/fiorino/tmp/."  
+alias scp.4j "scp fiorino@jetscp.rdhpcs.noaa.gov:/lfs0/projects/fim/fiorino/tmp/\!* ."  
+alias devccs 'ssh -X devccs.ncep.noaa.gov -l wx80mf'
+alias devccs 'ssh -X devccs.ncep.noaa.gov -l tpcprd1'
+alias prodccs 'ssh -X prodccs.ncep.noaa.gov -l tpcprd1'
+alias atcf1 'ssh -X atcf-tdau@atcfsvr1.nhc.noaa.gov'
+alias atcf2 'ssh -X atcf-tdau@atcfsvr2.nhc.noaa.gov'
+alias compute1 "ssh -X compute1 -l mfiorino"
+alias compute2 "ssh -X compute2 -l mfiorino"
+alias shad "ssh -X shad -l naprod"
+alias skate "ssh -X skate.nhc.noaa.gov -l mfiorino"
+alias dogfish "ssh -X dogfish.nhc.noaa.gov -l mfiorino"
+alias kaze "ssh -Y fiorino@kaze.fsl.noaa.gov"
+alias kishou "ssh -Y fiorino@kishou.fsl.noaa.gov"
+alias atos2 "ssh asd1uc.fnmoc.navy.mil -l fiorinom"
+alias atos2 "ssh 10.10.232.10 -l fiorinom"
+alias atos2a "ssh asd1uc1.fnmoc.navy.mil -l fiorinom"
+alias chico "chico.exp"
+alias mfw "mfw.exp"
+alias titania "echo RH9.0 ; titania.exp"
+alias foxfire "foxfire.exp"
+alias nonstop "nonstop.exp"
+alias psu.ftp "ftp mmtrop1.essc.psu.edu"
+alias neko.ftp "ftp neko.llnl.gov"
+alias sprite "sprite.exp"
+alias ftpprd.ftp "ftp ftpprd.ncep.noaa.gov"
+alias nhc.ftp "ftp ftp.nhc.noaa.gov"
+alias sprite.ftp "ftp sprite.llnl.gov"
+alias j90 "telnet k.nersc.gov"
+alias ncds 'telnet nssdca.gsfc.nasa.gov'
+alias ftp.ssec 'ftp 144.92.108.76'
+alias ftp.goes 'ftp explorer.arc.nasa.gov'
+alias ftp.wuarchive 'ftp wuarchive.wustl.edu'
+alias unitree 'ftp dirac 1021'
+alias ecmwf "telnet ecaccess.ecmwf.int"
+alias ftp.ecmwf "ftp ftp.ecmwf.int"
+alias hpss "ftp hpss.nersc.gov"
+alias alpha.au "rlogin luke.maths.unsw.EDU.AU -l fiorino"
+alias barker "rlogin barker.nrlmry.navy.mil -l fiorino"
+alias condor "rlogin condor -l fiorino"
+alias cloud "rlogin cloud -l fiorino"
+alias dao.hera_hpux "rlogin hera.gsfc.nasa.gov -l fiorino"
+alias dao.melrose_irix62 "rlogin melrose.gsfc.nasa.gov -l fiorino"
+alias nec.bom "telnet 134.178.12.1" # account is nec
+alias nrl "setenv DISPLAY 192.160.158.72:0"
+alias fnmoc "setenv TERM vt100 ; unsetenv DISPLAY ; unalias pine"
+alias hp.nhc "rlogin keystone.nhc.noaa.gov"
+alias nersc "killeen.exp"
+alias seaborg "seaborg.exp"
+alias seaborg.ftp "seaborg.ftp"
+alias nersc.ftp "ftp killeen.nersc.gov"
+alias typhoon "rlogin typhoon"
+alias sas "telnet sas.nersc.gov"
+alias sas.hp "rlogin sas-hp.nersc.gov -l u9508"
+alias csu "rlogin typhoon.atmos.colostate.edu -l fiorino"
+alias veil "rlogin veil -l fiorino"
+alias storage.ftp "ftp storage.llnl.gov"
+alias wxmap.chips "cd /dat/nwp/wxmap/prc/chips"
+alias wxmap.npmoc "ssh -Y 138.163.146.36 -l fiorino"
+#alias wxmap.npmoc "~/prc/wxmap.npmoc.exp"
+alias wxmap.npmoc.ftp "sftp fiorino@138.163.146.36"
+alias tenki.ftp "ftp tenki.llnl.gov"
+alias stargate "~/prc/stargate.exp"
+alias mri "rlogin mriim1.mri-jma.go.jp"
+alias bitbank "ftp bitbank.nersc.gov"
+alias enso "~/prc/enso.exp"
+alias enso.ftp "ftp enso"
+alias hpss "ftp hpss.nersc.gov"
+alias whirlwind "rlogin whirlwind.llnl.gov"
+alias ibm.ou  "rlogin cumulus.gcn.uoknor.edu -l mfiorino"
+alias rosmondt  "rlogin rosmondt.nrlmry.navy.mil -l fiorino"
+alias rootboy 'rlogin rootboy -l fiorino'
+alias charney.nasa 'rlogin charney.gsfc.nasa.gov -l yfmaf'
+alias charney 'charney.nrlmry.exp'
+alias charney.ftp 'ftp charney.nrlmry.navy.mil'
+alias dirac 'rlogin dirac -l yfmaf'
+alias clouds 'rlogin clouds -l fiorino'
+alias climate 'rlogin climate.gsfc.nasa.gov -l fiorino'
+alias cola 'rlogin cola.iges.org -l fiorino'
+alias cola.ftp 'ftp cola.iges.org'
+alias cola.web 'rlogin cola9.iges.org -l fiorino'
+alias nmc 'rlogin mfiorino.wwb.noaa.gov -l fiorino'
+alias typhoon.gsfc 'rlogin typhoon.gsfc.nasa.gov -l fiorino'
+alias cirrus 'rlogin cirrus'
+alias rainbow 'rlogin rainbow'
+alias sgi80 'rlogin sgi80.wwb.noaa.gov -l wd20mf'
+alias sgi39 'rlogin sgi80.wwb.noaa.gov -l wd20mf'
+alias sgi39.ftp 'ftp sgi80.wwb.noaa.gov'
+alias sgi80.ftp 'ftp sgi80.wwb.noaa.gov'
+alias supernet 'rlogin supernet.ans.net -l supernet'
+
+# data sets
+
+alias d.cams "cd /dat1/tas/cams"
+
+#  locations
+
+alias c.hwrf "cd /storage/dat/hwrf"
+alias c.cagips "cd /opt/linux/cagips2-beta"
+alias c.prj "cd /dat1/prj"
+alias c.arm.d "cd /pcmdi/itea/dat/arm/3h"
+alias c.capt "cd ~fiorino/prj/capt/prc/molts/mf"
+alias c.d.gdas "cd /dat/nwp/ncep/gdas"
+alias c.capt.gdas "cd ~fiorino/prj/capt/src/gdas"
+alias c.capt.d "cd /pcmdi/CAPT2/dat/fc/cam/tmp/fa"
+alias c.capt.d "cd /pcmdi/CAPT2/dat/fc/cam/molts"
+alias c.capt.d.am2 "cd /pcmdi/capt1/dat/fc/am2/fa/FA_AM2p13bgrid2000Production_ERA40"
+alias c.capt.d.arm "cd /pcmdi/capt1/dat/ob/arm"
+alias c.capt.d.r2.fc "cd /pcmdi/CAPT2/dat/fc/r2"
+alias c.goes.d "cd /pcmdi/capt1/dat/ob/satimage"
+alias c.gsm.d "cd /pcmdi/capt1/dat/fc/gsm/tmp"
+alias c.gsm.p "cd  ~/prj/gsm/prc"
+alias c.gsm.s "cd  ~/prj/gsm/t42k28/srcs/src/chgr"
+alias c.gsm "cd  ~/prj/gsm/runs"
+alias c.gmt "cd  /opt/gmt/GMT3.4.1"
+alias c.psu "cd ~fiorino/prj/marathon_oil/prc"
+alias c.lats "cd /dat/d1/lats"
+alias c.r2.sfc "cd /pcmdi/cagate1/kana"
+alias c.r2.1h "cd /dat1/reanal/ncep/r2"
+alias c.r2.6h "cd /pcmdi/reanal/ncep/r2/6h"
+alias c.r2.an "cd /pcmdi/reanal/ncep/r2/an"
+alias c.i.d "cd /pcmdi/itea/dat/ncep/r2"
+alias c.i.d "cd /pcmdi/cagate1/dat/ncep/r2"
+alias c.i.d.e "cd /pcmdi/itea/dat/ecmwf/era40/an"
+alias c.i "cd ~/prj/itea/prc"
+alias c.eta "cd /dat/nwp/ncep/eta/prc"
+alias c.py.site "cd /opt/python/lib/python2.1/site-packages"
+alias c.kc "cd ~/prj/koeppen/prc"
+alias c.kc.old "cd /dat/d1/prj/amip_anal/prc/koeppen"
+alias c.kc.g "cd /dat/d2/amip/grf/kc"
+alias c.kc.d.pr "cd /dat1/pr/cmap"
+alias c.kc.d.tas "cd /dat1/tas/cams"
+alias c.kc.o "cd /dat/d2/amip/obs/ac"
+alias c.kc.m "cd /dat/d2/amip/mod/ac"
+
+alias c.ferret "cd /opt/linux/ferret"
+alias c.neko "cd /pcmdi/chico_dat/neko"
+alias c.cdunif "cd /opt/work/main/cdms/src/cdunif"
+alias c.pp "cd /dat/d1/prj/amip_anal/grf"
+alias c.pp.g "cd /dat/d2/amip/grf/stt/pp/"
+alias c.cdunif "cd /opt/work/main/cdms/src/cdunif"
+alias c.cdms "cd /opt/work/main/cdms"
+alias c.cdat "cd /opt/work/main/cdat"
+alias c.cdat-src "cd /opt/work/cdat-src"
+alias c.cdat-dist "cd /opt/work/cdat-dist"
+alias c.cdms.py "cd /opt/work/main/cdat/Packages/cdms"
+alias c.html.base "cd /var/www/html"
+alias c.httpd.conf "cd /opt/linux/conf"
+alias c.http.root "cd /var/www/html"
+alias c.www "cd /dat/www"
+alias c.p4 "cd /opt/work/main"
+alias c.cdat.p "cd ~/prj/cdat"
+alias c.cdat.s "cd /opt/work/main/cdat/"
+alias c.cdat.d "cd /pcmdi/scratch/staff/krishna/test"
+alias c.upa.d "cd /dat1/reanal/ncep/r1/upamon"
+alias c.upa.d.e "cd /dat1/reanal/ecmwf/era40/upamon"
+alias c.upa "cd ~/reanal/ncep/bufr/upamon"
+alias c.bufr.ncep "cd ~/reanal/ncep/bufr/wbufr"
+alias c.bufr "cd ~/era/src/bufr"
+alias c.archive "cd /pcmdi/scratch/staff/fiorino/archive"
+alias c.s.tmp "cd /pcmdi/scratch/staff/fiorino/tmp"
+alias c.analog "cd /opt/linux/src/analog-4.11" 
+alias c.opt "cd /opt/linux" 
+alias c.asd "echo ASD TC analysis ; cd ~/prj/asd/prc" 
+alias c.mm5 "echo MM5 climate ; cd ~/prj/mm5/prc" 
+alias c.badc "echo BADC obs ; cd ~/prj/badc/prc" 
+alias c.cur "echo python for processing era40; cd ~/era/prc/6h_monitor" 
+alias c.cur.e "echo python for processing era40; cd ~/era/prc/6h_monitor_ecmwf" 
+alias c.dods "echo DODS build and test ; cd /opt/linux/src/DODS"
+alias c.dods.notes "echo DODS are NOTES.dods in /opt/libsrc; cd /opt/libsrc"
+alias c.dods.prc "echo DODS prc; cd ~/prj/dods"
+
+alias c.tc.ecmwf.bufr "cd /home/fiorino/era/ecmwf/bufr_000270"
+alias c.tc.ecmwf.bufr "cd ~/prj/ecmwf_tc_bufr_tracker/"
+alias c.tc "cd ~/era/tc/prc/tctrack"
+alias c.tc.f "echo tcfilt - vortectomy ; cd /pcmdi/chico_dat/wxmap2/prc"
+alias c.tc.f.s "echo tcfilt - vortectomy source ; cd ~/era/tc/src/nps/gfdl_vortectomy/tcfilt"
+alias c.tc.d "cd /dat/nwp/dat/tc/ft_ops"
+alias c.tc.d "cd /dat/nwp/dat/tc"
+alias c.tc.s.d "cd /dat/nwp/dat/tc/tcstruct"
+alias c.tc.d.e "cd /pcmdi/scratch/staff/fiorino/tc/dat/ft_exp"
+alias c.tc.p "cd /dat/tc/plt"
+alias c.tc.b "cd ~/tenki/era/tc/prc/tcbog" 
+alias c.tc.s "cd ~/era/tc/prc/tcstruct" 
+alias c.tc.s.s "cd ~/era/tc/src/mf" 
+alias c.tc.s.d "cd ~/era/tc/prc/tcstruct" 
+alias c.tc.src "cd ~/era/tc/src/gfdl" 
+alias c.tc.s.g "cd ~/era/tc/src/nps/gfdl_vortectomy" 
+
+
+alias c.r.tc.e.l "cd /dat1/reanal/ecmwf/era40/fc/tcanal/"
+alias c.r.tc.e "cd /pcmdi/reanal/ecmwf/era40/fc/tcanal/"
+alias c.r "pd ~/reanal/\!*"
+alias c.r.ncep.doe "pd /dat/d1/reanal/ncep_doe"
+alias c.d "cd /dat1/reanal/ncep/6h/monitor"
+alias c.d.pvents "cd /pcmdi/chico_dat/reanal/ncep/r2/pvents"
+alias c.preodb "cd ~/era/prc/preodb"
+alias c.preodb.s "cd ~/era/src/preodb"
+alias c.d.gsod "cd /dat2/obs/gsod"
+alias c.d.patmos "cd /pcmdi/cagate1/dat/patmos"
+alias c.d.isccp "cd /pcmdi/cagate1/dat/isccp/d2"
+alias c.d.preodb "cd /pcmdi/reanal/ecmwf/era40/ob/preodb"
+alias c.d.preodb.tmp "cd /dat2/reanal/ecmwf/era40/preodb"
+alias c.d.preodb.mo "cd /pcmdi/reanal/ecmwf/era40/ob/preodb/mo"
+alias c.p.odb "cd ~/era/prc/odb"
+alias c.p.r1 "cd ~/reanal/ncep/prc"
+alias c.d.r.r1.mo "cd /pcmdi/reanal/ncep/r1/mo"
+alias c.d.r.r2.mo "cd /pcmdi/reanal/ncep/r2/mo"
+alias c.d.r.n.o   "cd /dat1/reanal/ncep/ocean"
+alias c.d.r.soda   "cd /dat1/reanal/umd/soda"
+alias c.d.r.e.an.ml   "cd /pcmdi/reanal/ecmwf/era40/an/ml"
+alias c.d.r.e.an.pl   "cd /pcmdi/reanal/ecmwf/era40/an/pl"
+alias c.d.r.e.an.pl.ggf   "cd /pcmdi/reanal/ecmwf/era40/an/pl/ggf"
+alias c.d.r.e.t   "cd /dat1/reanal/ecmwf/era40/6h/monitor"
+alias c.d.r.e.c   "cd /pcmdi/chico_dat/reanal/ecmwf/era40/6h/monitor"
+alias c.d.r.e.m.mo  "cd /pcmdi/reanal/ecmwf/era40/6h/monitor/mo"
+alias c.d.r.e.tovs  "cd /pcmdi/reanal/ecmwf/era40/ob/tovs1c"
+alias c.d.r.e.mo   "cd /pcmdi/reanal/ecmwf/era40/mo/mars"
+alias c.d.r.e.c.mo   "cd /pcmdi/chico_dat/reanal/ecmwf/era40/mo/ecfs"
+alias c.d.r.e.c.an   "cd /pcmdi/chico_dat/reanal/ecmwf/era40/an"
+alias c.d.r.n.obs_denisty "cd /dat2/reanal/ncep/obs_density"
+alias c.d.r.e "cd /pcmdi/reanal/ecmwf/era40/6h/monitor"
+alias c.d.r.o.upa "cd /pcmdi/reanal/ecmwf/era40/ob/upamon"
+alias c.d.r.r1.6h "cd /pcmdi/reanal/ncep/r1/6h/monitor"
+alias c.d.r.r2.6h "cd /pcmdi/reanal/ncep/r2/6h"
+alias c.sst "cd ~/tenki/era/prc/sst_sic_ecmwf"
+alias c.sst.amip2 "cd /dat/d1/amip2/prc"
+alias c.sst.d "cd /data/sst_sic/era40"
+alias c.sst.d.hadisst "cd /data/sst_sic/era40/ukmo/HadisstCDC"
+alias c.g "pd ~/grads/src180"
+alias c.f "cd /pcmdi/ftp_outgoing/fiorino/tmp"
+alias c.f.i "cd /pcmdi/ftp_incoming/fiorino"
+alias c.s "pd /pcmdi/scratch/staff/fiorino/"
+alias c.src.l "pd /opt/linux/src"
+alias c.src "pd /dat/d1/src"
+alias c.o.p "pd ~fiorino/obs/prc"
+alias c.o "pd /pcmdi/obs/mo"
+alias c.doc "cd ~/doc/working"
+alias c.ht "cd /pcmdi/htdocs.draft/fiorino" 
+
+
+alias nawips "csh ; cd /mnt/satellite ; cd /mnt/model ; cd /mnt/nawips1 ; source .cshrc ; ntl"
+alias nas "ssh sfe1.nas.nasa.gov -l fiorino"
+
+alias gdiff "nxdiff -g 1024x900-10+10 \!*"
+alias gftp "IglooFTP-PRO"
+alias pc.display "setenv DISPLAY 24.9.229.107:0.0"
+alias pc.display "setenv DISPLAY c522920-a.plstn1.sfba.home.com:0.0"
+alias nrl.display "setenv DISPLAY 192.160.158.78:0"
+alias gg 'grads -lc "open \!* " -g 800x600-30'
+alias gg.r.b 'grads -lbc "run \!* " -g 800x600-30'
+alias gg.r 'grads -lc "run \!* " -g 800x600-30'
+alias gg.b 'grads -lbc "open \!* " -g 800x600-30'
+alias gg.x 'dgrads -lc "xdfopen \!* " -g 640x480-30'
+alias gg.s 'grads -lc "sdfopen \!* " -g 640x480-30'
+alias xgg.s 'xgrads -lc "sdfopen \!* " -g 640x480-30'
+alias xg 'xgrads -lc "open \!* " -g 640x480-30'
+alias xg.r 'xgrads -lc "run \!* " -g 800x600-30+0'
+alias xclock 'xclock -analog -bg blue -hl grey -fg yellow -update 1 -geometry 100x100-144+34 -fg yellow -bg blue -hl white &' 
+alias fs.afs  "/usr/afsws/bin/fs"
+alias chmoda "chmod a+x *.*sh *.pl *.exp *.py"
+alias slide  "csh /usr/local/bin/transparency \!*"
+alias chknmcreanal "nmcymp.rsh 'pg /tmp/rl23bk/v02/nmcdate'" 
+alias unitree "ftp dirac.gsfc.nasa.gov 1021"
+alias mfd "mountfd"
+alias ufd "umountfd;eject"
+
+alias sumike "su - mikeroot"
+alias pd "pushd \!*;fixprompt"
+alias po "popd ; fixprompt"
+alias fixprompt 'set prompt="$HOSTNAMESHORT($HOSTOSLOWER):`pwd` \! > "'
+alias la ls -la
+alias lh ls -lha
+alias lf ls --full-time -a
+alias lt ls -lta
+alias ld 'find . -type d -print'
+##alias cd "pushd \!*;fixprompt"
+alias cd "cd \!*;fixprompt"
+alias dir ls
+alias pg more
+alias del 'rm -i'
+alias copy 'cp'
+alias cls 'clear'
+
+alias gv "ghostview \!*"
+alias gv "/Applications/Preview.app/Contents/MacOS/Preview \!*"
+###alias ws.new '/pcmdi/drach/local/emacs-20.2/src/emacs -l ~/.wordstar'
+####alias ws.new '/pcmdi/drach/local/emacs-20.2/src/emacs -l ~/.wordstar'
+###alias ws.noX 'emacs -l ~/.emacs.noX'
+alias ws '/Applications/Emacs.app/Contents/MacOS/Emacs -l ~/.emacs'
+alias ws "emacs -l ~/.emacs -fn 7x14 \!*"
+alias ws.nw "emacs -nw -q -l ~/.emacs.nw \!*"
+alias xe "xemacs \!*"
+
+alias pgf77 "pgf77 -Mextend \!*"
+
+alias grecover "nwrecover -s tethys "
+alias recover "recover -s tethys"
+alias convert.sh "convert -crop 0x0 -density 144 -rotate 90 -geometry 933x700 \!*.ps \!*.gif"
+alias convert.nocrop.sh "convert -density 144 -rotate 90 -geometry 933x700 \!*.ps \!*.gif"
+alias convert.portrait.sh "convert -crop 0x0 -density 144  -geometry 1000x1333 \!*.ps \!*.gif"
+

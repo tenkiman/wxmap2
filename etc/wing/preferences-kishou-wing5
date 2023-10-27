@@ -1,0 +1,56 @@
+[user-preferences]
+cache.changed-reload-policy = 'edit-reload'
+debug.pretty-print-in-shells = True
+edit.background-color = (251,
+                         239,
+                         223)
+edit.caret-line-highlight = ((112,
+                              112,
+                              221),
+                             50)
+edit.caret-width = 3
+edit.qt-bookmark-color = (253,
+                          253,
+                          104)
+edit.qt-display-font = u'Menlo,13'
+edit.show-line-numbers = 1
+edit.tab-size = 4
+gui.apple-keyboard = 'no'
+gui.keymap-override = {'Ctrl-C': 'forward-page',
+                       'Ctrl-D': 'forward-char',
+                       'Ctrl-E': 'previous-line',
+                       'Ctrl-F': 'forward-word',
+                       'Ctrl-G': 'forward-delete-char',
+                       'Ctrl-H': 'backward-delete-char',
+                       'Ctrl-K': '',
+                       'Ctrl-K Ctrl-B': 'start-select-char',
+                       'Ctrl-K Ctrl-C': 'copy-selection-or-line',
+                       'Ctrl-K Ctrl-D': 'close',
+                       'Ctrl-K Ctrl-K': '',
+                       'Ctrl-K Ctrl-S': 'save',
+                       'Ctrl-K Ctrl-V': 'paste',
+                       'Ctrl-K S': 'save',
+                       'Ctrl-L': 'repeat-command',
+                       'Ctrl-Q Ctrl-A': 'replace',
+                       'Ctrl-Q Ctrl-B': 'beginning-of-line',
+                       'Ctrl-Q Ctrl-C': 'end-of-document',
+                       'Ctrl-Q Ctrl-E': 'end-of-line',
+                       'Ctrl-Q Ctrl-F': 'isearch-forward',
+                       'Ctrl-Q Ctrl-J': 'toggle-bookmark',
+                       'Ctrl-Q Ctrl-J Ctrl-K': 'toggle-bookmark',
+                       'Ctrl-Q Ctrl-L': 'goto-line',
+                       'Ctrl-Q Ctrl-R': 'start-of-document',
+                       'Ctrl-Q Ctrl-U': 'redo',
+                       'Ctrl-R': 'backward-page',
+                       'Ctrl-S': 'backward-char',
+                       'Ctrl-U': 'undo',
+                       'Ctrl-U Ctrl-U': 'redo',
+                       'Ctrl-X': 'next-line',
+                       'Ctrl-Y': 'delete-line'}
+gui.last-feedback-shown = 1386027388.950036
+gui.qt-display-font = u'Lucida Grande,13'
+gui.show-feedback-dialog = False
+gui.show-osx-keyboard-warning = False
+gui.toolbar-icon-size = 'small'
+gui.toolbar-icon-style = 'icon-only'
+gui.typing-group-timeout = 0.0

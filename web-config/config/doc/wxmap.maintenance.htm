@@ -1,0 +1,343 @@
+<html>
+<head>
+<title>WXMAP Maintenance</title>
+<style type="text/css" title="mike">
+<---
+h2 { color : darkblue;
+font-size : 16pt;
+font-weight:bold;
+font-style:normal;
+text-ident:0.5in;
+font-family:arial,helvetica,san-serif;
+}
+
+h3 { color : darkred;
+font-size : 12pt;
+font-weight:normal;
+font-style:italic;
+text-ident:0.25in;
+font-family:arial,helvetica,san-serif;
+}
+
+h4 {font-size: 12pt; font-family: courier new; font-weight: bold; line-height: 12pt; text-align: left; color: maroon }
+
+-->
+</style>
+</head>
+
+<body text="Black" link="Blue" vlink="Purple" bgcolor="#FCF1DA">
+<h1>WXMAP Maintenance -- </h1>
+<h3><i><font color=red>What I typically do to keep the web up...</font></i></h3>
+<ul>
+<li><a href="#data_check"><b>Data Check</b></a>
+<li><a href="#machine_check"><b>Machine Check</b></a>
+<li><a href="#data_recovery"><b>Data Recovery</b></a>
+<li><a href="#wxmap_redo"><b>Redoing the graphics and html</b></a>
+<li><a href="#wxmap_configuration"><b>WXMAP Configuation - changing areas and graphics</b></a>
+</ul>
+<img src="../icon/colaline.gif">
+
+<p>
+
+This document describes how I keep the web up and running at
+PCMDI and is intended to help non-wxmap webmasters (e.g., Jay
+Hnilo, the prespective WXMAP webmaster) maintain the web should
+something go wrong.  I also discuss "light-duty" development such
+as changing areas and maps.  Please set the main techincal doc <a
+href="wxmap.doc.htm">technical document</a> and the <a
+href="wxmap.add.area.htm">add area doc</a> for more information
+on development.
+
+</p><p>
+
+The first step is to simply open the web and see if the maps are
+there according the <a href="wxmap.faq.htm#sched">schedule</a>.
+If something's amiss, I do the following:
+
+<pre>
+1) check the data:
+2) if data OK; check whether the machines are up
+3) if missing data; recover data and run the "redo" script
+4) if data and machines OK; check the symbolic links
+
+</pre>
+
+Most problems are resolved after steps 1-3.  Step 4 is rare and
+is symptomatic of NFS automounting problems (contact the System
+Administrator (SA) <a href="mailto:thoang@llnl.gov">Tony
+Hoang</a>.
+
+</p><p>
+
+
+If the problem can't be resolved after these checks, then it's
+probably something more serious requiring digging into the codes.
+
+</p>
+
+
+<!--
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#
+# data_check
+#
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+-->
+
+<a name="data_check"></a>
+<hr>
+<h3>Data Check</h3>
+
+<p>
+
+The first thing I do is check the data.  Data are first put in
+"receipt" directories on sprite, (NGP:
+<code>/pcmdi/scratch/ftp/pub/fiorino/fnmoc/nogaps/dat</code> and
+AVN/MRF <code>/pcmdi/scratch/ftp/pub/fiorino/ncep</code>) and
+then are processed and put in the main storage file system
+(<code>/pcmdi/typhoon_d1/nwp/dat</code>).  Here are the commands
+to check data:
+
+<pre>
+cd /pcmdi/typhoon_d1/nwp/wxmap/prc/wxmap   # this dir contains the major perl scripts 
+or
+cd $WXMAP_PRC_WXMAP_DIR
+
+l.pl dat ngp                               # see if NGP data is there/ready
+l.pl dat avn                               # see if AVN data is there/ready
+l.pl dat mrf                               # see if MRF data is there/ready
+l.pl ncep                                  # see what NCEP is in the reciept directory
+l.pl ngp                                   # see what FNMOC data is in the reciept directory
+
+</pre>
+
+</p><p>
+
+If data are missing in the final data directory (from the
+<code>l.pl dat MMM</code> command) AND the receipt directory,
+then you'll have to recover from the source, either NCEP (AVN,
+MRF) and/or ARAC (NGP).  See the below and data doc <a
+href="wxmap.data.htm">wxmap.data.htm</a> for instructions.
+
+
+</p>
+
+
+<!--
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#
+# machine_check
+#
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+-->
+
+<a name="machine_check"></a>
+<hr>
+<h3>Machine Check</h3>
+
+<p>
+
+As of 31 December, the following machines are
+<b><i>directly</i></b> used in the web.  FNMOC data are pushed to
+PCMDI from machines at <a
+href="http://www-ep.es.llnl.gov/www-ep/atm/ARAC/arac.html">ARAC/LLNL</a>.
+I have direct control only over these systems.
+
+</p>
+
+
+<table cellpadding=3 cellspacing=1 border=1>
+<caption> 
+WXMAP Machines and Purpose
+</caption>
+<tr>
+<td width=200 align=center>
+Machine
+</td>
+<td width=150 align=center>
+Location
+</td>
+<td width=300 align=center>
+Purpose
+</td>
+<td width=100 align=center>
+Critical?
+</td>
+</tr>
+
+<tr>
+<td width=200 align=center>
+<font color=red><b>stargate.llnl.gov</b></font>
+</td>
+<td width=150 align=center>
+PCMDI/LLNL
+</td>
+<td width=300 align=left>
+master controller; map and html production 
+</td>
+<td width=100 align=center>
+<font color=red><b>YES!!!</b></font>
+</td>
+</tr>
+
+<tr>
+<td width=200 align=center>
+<font color=red><b>sprite.llnl.gov</b></font>
+</td>
+<td width=150 align=center>
+PCMDI/LLNL
+</td>
+<td width=300 align=left>
+ftp server for the graphics<br>
+data receiver
+</td>
+<td width=100 align=center>
+<font color=red><b>YES!!!</b></font>
+</td>
+</tr>
+
+<tr>
+<td width=200 align=center>
+<font color=red><b>rainbow.llnl.gov</b></font>
+</td>
+<td width=150 align=center>
+PCMDI/LLNL
+</td>
+<td width=300 align=left>
+PCMDI web server
+</td>
+<td width=100 align=center>
+<font color=red><b>YES!!!</b></font>
+</td>
+</tr>
+
+<tr>
+<td width=200 align=center>
+typhoon.llnl.gov
+</td>
+<td width=150 align=center>
+PCMDI/LLNL
+</td>
+<td width=300 align=left>
+data file system
+</td>
+<td width=100 align=center>
+<font color=darkgreen><b>Yes</b></font><br>
+will move fs to stargate in 1998, then no
+</td>
+</tr>
+
+<tr>
+<td width=200 align=center>
+sgi39.wwb.noaa.gov
+</td>
+<td width=150 align=center>
+NCEP
+</td>
+<td width=300 align=left>
+extract AVN/MRF fields from the NCEP op file systems<br>
+ftp AVN/MRF fields to sprite.llnl.gov
+</td>
+<td width=100 align=center>
+<font color=darkgreen><b>no</b></font>, only effects NCEP model availability
+</td>
+</tr>
+
+</table>
+
+<p>
+
+
+</p>
+
+
+
+<!--
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#
+# data_recovery
+#
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+-->
+
+<a name="data_recovery"></a>
+<hr>
+<h3>Data Recovery</h3>
+
+<p>
+
+I've put all info on the WXMAP data flow in <a
+href="wxmap.data.htm">wxmap.data.htm</a>.  The instructions for
+recovery NCEP data are in <a
+href="wxmap.data.htm#ncep_recovery">wxmap.data.htm#ncep_recovery</a>
+and for FNMOC, in in <a
+href="wxmap.data.htm#fnmoc_recovery">wxmap.data.htm#fnmoc_recovery</a>.
+
+</p><p>
+
+The principle points of contact at the data centers are for <b>NCEP</b>:
+Dr. Jordan Alpert, Environmental Modeling Center (EMC), comp
+resources (<a
+href="mailto:wd23ja\@sun1.wwb.noaa.gov">wd23ja@sun1.wwb.noaa.gov</a>(,
+and Dr. Steve Lord, EMC acting Director (<a
+href="mailto:wd23sl\@sgi39.wwb.noaa.gov">wd23sl@sgi39.wwb.noaa.gov</a>).
+For the FNMOC data coming from <b>ARAC</b>: Mr. Bob Shectman (<a
+href="mailto:shechtman\@seti.llnl.gov">shechtman@seti.llnl.gov</a>),
+and at <b>FNMOC</b>: Ms. Darlene Hardenburger (<a
+href="mailto:hardenbr\@fnoc.navy.mil">hardenbr@fnoc.navy.mil</a>).
+
+</p><p>
+
+
+</p>
+
+<!--
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#
+# wxmap_redo
+#
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+-->
+
+<a name="wxmap_redo"></a>
+<hr>
+<h3>Redoing the graphics or html</h3>
+
+<p>
+
+The 
+
+</p>
+
+<!--
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#
+# wxmap_configuration
+#
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+-->
+
+<a name="wxmap_configuration"></a>
+<hr>
+<h3>WXMAP Configuration - change the areas and plots</h3>
+
+<p>
+
+I've prepared a separate doc on adding areas <a
+href="wxmap.add.area.htm">wxmap.add.area.htm</a> and their is a
+section in the main technical doc on the details for the area
+geometry setup, see <a
+href="wxmap.doc.htm#webarea">wxmap.doc.htm#webarea</a>.
+
+
+</p>
+
+<i>Last Update: 31 December, 1997</i><br>
+Send Comments to <a href="mailto:fiorino@llnl.gov"> Mike Fiorino</a>, 
+<a href="http://www-pcmdi.llnl.gov">PCMDI</a>, <a
+href="http://www.llnl.gov">LLNL</a>
+<br>
+<a href="http://www.llnl.gov/disclaimer.html">LLNL Disclaimers</a><br>
+UCRL-MI-125630
+</body>
+</html>

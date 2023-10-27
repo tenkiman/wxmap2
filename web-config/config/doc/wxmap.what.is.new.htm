@@ -1,0 +1,529 @@
+<html>
+<head>
+<title>WXMAP What's New</title>
+</head>
+<body background="../icon/wxmap.bkg.1.gif" TEXT="#000000" LINK="#0000FF" VLINK="#006030">
+<h1>WXMAP What's New --</h1>
+<h2><i><font color=red>Recent Additions and Changes as of 23 May, 1998</font></i></h2>
+<img src="../icon/colaline.gif">
+<a name="web_structure"></a>
+
+<h4>23 May, 1998 -- WXMAP to be mothballed 1 June</h4>
+
+<p>
+
+The PCMDI WXMAP web will be discontinued starting 1 June, 1998 due to an
+urgent need to redirect computer resources toward mission-critical
+projects. 
+
+</p><p>
+
+We regret any inconvenience this may cause and expect to bring the web
+back up when Dr. Fiorino returns from assignment in September, 1999, and
+when new computer resources may become available.
+
+</p>
+
+<h4>14 March, 1998 -- Mike F. to ECMWF until Sep, 1999</h4>
+
+<p>
+
+I'll be on assignment to the <a href="http://www.ecmwf.int">European
+Centre for Medium-range Weather Forecasts</a> for a year and a
+half to work on their next reanalysis.
+
+</p><p>
+
+I will make occasional adjustments such as changing the map mix for the
+northern Hemisphere tropical cyclone season.
+
+</p><p>
+
+I can be reached at <a
+href="mailto:Mike.Fiorino@ecmwf.int">Mike.Fiorino@ecmwf.int</a>,
+but as much as you (and I) might like, <b><i>I will <font color=red><u>NOT</u></font>
+be adding the ECMWF model to the web</b></i>.
+
+
+<h4>7 February, 1998 --Docs resources</h4> 
+
+<p>
+
+I'll be out of the country until 25 February. 
+
+</p>
+
+
+<p>
+
+I've also put up a couple of new docs.  Check out the <a href="wxmap.faq.htm">"WXMAP FAQ"</a>
+(Frequently Asked Questions) and <a href="wxmap.www.stat.htm">"WXMAP Stats"</a> (web usage statistics)
+
+</p>
+
+
+
+<h4>7 December,1997 -- New map server and processing for NGP</h4>
+
+<p>
+
+The woes of overwritting NGP maps (see <a
+href="wxmap.faq.htm">wxmap.faq.htm</a> and unreliability of the
+web server and maps should be over.
+
+</p><p>
+
+PCMDI has recently brought on line a new server that is literally
+3x faster than any platform I have used in the past to make the
+maps.  The combination of more disk space and the "X Virtual
+frame buffer" X server will make the web more reliable and
+timely.  I am now updating the NGP maps every 20 minutes.
+
+</p><p>
+
+The upshot of all this is that I will be putting out more maps and
+areas, stay tuned.
+
+</p>
+
+<h4>25 November, 1997 -- New Areas</h4>
+
+<p>
+
+I've added a big area covering Africa and S. Asia and the Indian
+Ocean (IO) at the request of several people.  I'm initially only
+putting out the 500 and precip maps, but this can change...
+
+</p>
+
+<p>
+
+I've also added S. America area again, initially only with 500 mb
+and precip maps.
+
+</p>
+
+<p>
+
+I've shifted the Whitbread area for the third leg - Freemantle to
+Sydney.
+
+</p>
+
+<h4>17 November, 1997 -- New Map - Significant Wave Heights</h4>
+
+<p> I am now receiving 1 degree (same as the models) WAM (Wave
+Model) forecasts (there isn't a real "analysis") of significant
+wave heights - swell and waves from FNMOC.  My output units are
+feet until someone complains.  This field is only available for
+the NGP run and in the following areas: Conus, Europe, Asia,
+Whitbread, S. America, Africa.
+
+</p>
+
+
+<h4>3 September, 1997 -- Shift in European Area</h4>
+
+<p>
+
+I rotated the European area a but eastward to cover Isreal at the
+request of several people.
+
+</p>
+
+<h4>2 September, 1997 -- t=0 precip and precipitation rate</h4>
+
+<p>
+
+You may have noticed a "t=0" precip map, e.g., in the Europoe AVN home page
+
+<href="http://www-pcmdi.llnl.gov/fiorino/wxmap/avn.europe.htm">
+http://www-pcmdi.llnl.gov/fiorino/wxmap/avn.europe.htm</a> is now
+available.  This precipitation is NOT observed but comes from the
+previous model run and was added for completeness.  For example,
+the t=0 precipitation for the 97090212 mmaps come from the 12-h
+forecast precip from the 97090200 run of the model.
+
+</p>
+
+<p> One of the most frequently asked questions concerns the
+precipitation map.  There are two issues.  What is precipitation
+in a numerical model and why I express the precipitation as a
+rate [mm/day].  First, precipitation is a byproduct of the model
+integration and represents the rain which fell during a two time
+periods.  For example, the "t=12" precip in the NGP/MRF is the
+rain that fell from t=0 to t=12 h.  That is, the "previous 12-h
+precipition".  I take that precipitation (so many mm of water)
+and convert it to mm/day (multiply by 2).  I express as a rate
+because the models do not "tip the bucket" at the same frequency.
+The AVN outputs precipitation every 6 h and the NGP/MRF every 12
+h.  By converting to a rate we can intercompare the precipitation
+forecast, but to find out how much rain fell, take the rate and
+divide by 2 for NGP/MRF to get mm of water during the previous 12
+h, or by 4 for the AVN to get mm of water during the previous 6
+h.
+
+</p>
+
+<p> I have actually considered getting all the precip forecasts
+from the AVN and forming 12-h accumulations as in the MRF/NGP.
+Unfortunately, this is a lot of work and in the end would produce
+a rate not too different from the 6-h output.  Hence, I will stay
+with the rates and let the user decide how to think about the
+precipitation.  My personal preference is rate, but at least you
+hopefully know how to get back the original data which was
+accumulated precipitation during two integration times (12 h for
+NGP/MRF and 6 h for AVN).</p>
+
+<h4>12 July, 1997 -- NEW MAPS!!</h4>
+
+<p>
+
+I've added two new maps to the suite: 1) max and min surface air
+temperature for the MRF run; and 2) 700 mb streamlines in the
+tropical Atlantic and eastern Pacific.  The other significant
+change is that the latest MRF run is always on the main page <a
+href="http://www-pcmdi.llnl.gov/fiorino/wxmap/wx.htm">
+http://www-pcmdi.llnl.gov/fiorino/wxmap/wx.htm</a> or through a
+link like <a
+href="http://www-pcmdi.llnl.gov/fiorino/wxmap/mrf.conus.htm">
+http://www-pcmdi.llnl.gov/fiorino/wxmap/mrf.conus.htm</a>.  I've
+also added a bit more intelligence to how the buttons are put on
+the map pages so that if you hit the button the chances are
+higher the plot will be there.
+
+</p>
+
+<p> The MRF max and min surface air temperature maps need some
+explanation before they are used.  Unlike other models, the MRF
+saves the max and min surface temperature <b>at each time
+step</b> during a 12-h forecast period.  That is, at each grid
+point during each 12-h forecast period, the max and min
+temperature is output as a diagnostic.  This is NOT the same as
+finding the max temperature at each 6-h <b>output</b> period and
+is thus reflective of the true model max/min temperature.  I
+output every 24-h to get the <b><i>local</b></i> max and min.
+</p>
+
+<p> The units are degree F only because I'm used to this unit,
+but I can change to Celsius over non-US regions if requested.
+</p>
+
+<p> The 700 mb flow map was requested by the hurricane
+forecasters at the National Hurrican Center to track easterly
+waves coming off Africa.  I shade the N-S wind component ("v"),
+in the tropics to help track these waves and I only put out wind
+barbs for winds 15 kts and over to avoid clutter.
+</p>
+
+<p> I'm only outputing this map in the tropical Atlantic and
+eastern North Pacific because of requests.  I can extend to the
+western Pacific, etc. if there is interest.  Your comments are
+requested.  </p>
+
+<h4>7 July, 1997 -- New Look and Feel -- overhaul of buttons and navigation</h4>
+
+<p>
+
+I've revamped the whole processing structure of the web and have
+added many new navigation featrures.  I did this during my annual
+two-weeks of active duty with the Navy the <a
+href="http://www.nlmoc.navy.mil">Naval Atlantic Meteorology and
+Oceanograph Center (NLMOC), Norfolk Va</a> where I rehosted the
+web on NLMOC system.  I took this opportunity to overhaul the
+driving perl and GrADS scripts and I now have a much easier
+system to maintain and extend.  See the <a
+href="http://www-pcmdi.llnl.gov/fiorino/wxmap/doc/wxmap.doc.htm">technical
+web doc</a> for a fuller description of the system.
+
+</p>
+
+<p> The first obvious change is the main <a
+href="http://www-pcmdi.llnl.gov/fiorino/wxmap/wx.htm">home
+page</a>.  I took out the java time script and substituted a
+status line.  I also added buttons to get you directly to the
+<b>model</b> home pages for each <b>area</b> without having to go
+to the <b>area</b> home page first.  Hit the model button below
+the area icon.  You'll also notice new buttons for documentation
+and other resources.
+
+</p>
+
+<p> The <b>area</b> home pages, the main page to get to the maps,
+features new time buttons and addition buttons for area-wide
+resources such as SST analyses and satellite links.  You can also
+point yourself to a specific model and specific area home page by
+pointing to:
+<br><br>
+<pre>
+http://www-pcmdi.llnl.gov/fiorino/wxmap/MMM.AAA.htm
+
+where,
+   
+   MMM = avn | mrf | ngp
+
+         (avn = Aviation run of the NCEP MRF model) 
+         (mrf = MRF run of the NCEP MRF model) 
+         (ngp = FNMOC NOGAPS run) 
+   
+   AAA = conus | europe | ausnz | tropwpac | tropepac | troplant
+
+         i.e., the area
+or
+
+http://www-pcmdi.llnl.gov/fiorino/wxmap/wx.AAA.htm
+
+to get to the home page for an area
+
+
+For example,
+
+<a href="http://www-pcmdi.llnl.gov/fiorino/wxmap/ngp.conus.htm">
+http://www-pcmdi.llnl.gov/fiorino/wxmap/ngp.conus.htm</a> takes
+you to the current NGP maps for CONUS.
+
+and,
+
+<a href="http://www-pcmdi.llnl.gov/fiorino/wxmap/wx.conus.htm">
+http://www-pcmdi.llnl.gov/fiorino/wxmap/wx.conus.htm</a> takes you to the current conus home page
+
+</pre>
+</p>
+
+<p>
+
+The most striking change will be the maps pages.  I have made
+small navigation buttons and put them on the top of the map.  I
+did this because some people never say these buttons as they were
+on the left and often off the screen.  The new location will
+hopefully make it easier to maneuver through the maps.  The other
+major change here are new "other map" buttons.  These buttons
+allow you to look at the other maps without having to go back to
+the home page.  Here are the acronyms:
+<pre>
+SLP  - Sea level pressure and 700 mb vertical motion
+T850 - Temperature, winds and RH at 850 mb
+prp  - Precip and thickness
+V200 - 200 mb flow and 850-200 shear
+V500 - 500 mb flow
+Vsfc - Sfc wind and 500 mb height
+Tmax - Max surface air temperature (future)
+Tmin - Min surface air temperature (future)
+V700 - 700 mb flow (future)
+</pre>
+
+Note that some of the maps have not been created; they will soon...
+</p>
+
+
+<h4>8 June, 1997 -- Tropical Cyclone and Satellite Button links on maps on the tropical pages</h4>
+<p>
+
+I've added two new buttons to the map pages (i.e., individual
+maps) in the tropics that point to tropical cyclone (TC) and
+Satellite links for that area.  I'm also updating the buttons...
+
+<p>
+
+<h4>5 June, 1997 -- OTIS SST maps are up; New Tropical and Mid-latitude Area ; overhaul of the web s/w; a new marquee and new navigation between analyses</h4>
+<p>
+
+As promised below, the OTIS SST analysis and anomalies are up.
+I've also added navigation buttons at the analysis time to allow
+you to maneuver in time through analyses and not just verifying
+forecasts.  This feature is useful for looking for trends in the
+tropics.
+
+<p>
+
+The web has been a mess the last two days with many many maps
+missing or cross-linked with wrong areas.  The reason was a
+complete overhaul of my perl scripts which builds the web and my
+GrADS scripts that create the plots.  The overhaul was long overdue and now I can more easily customize and manage the web.
+
+</p>
+
+<p>
+
+I spent a day looking around for a good java applet for a
+marquee.  The answer comes from Sweden and is quite nice see <a
+href="http://www.algonet.se/~jannea/FunScroll/FunScroll.html">http://www.algonet.se/~jannea/FunScroll/FunScroll.html</a>.
+I'll be using this to post new information on the web so get a java-aware browser!.
+
+</p>
+
+<p> At the request of users in New Zealand and here in the
+States.  I've put up a new tropical area covering the eastern
+North Pacific and a mid-latitude area down under.  Hope you like
+them.
+
+</p>
+
+<h4>30 May, 1997 -- Added Two Tropical Areas with Specialized Maps and Drop E. Asia Area for now...</h4>
+
+
+
+<p>
+The Atlantic tropical cyclone (TC) cyclone season officially opens 1
+June and because I'm an old TC guy, I've added two areas
+specifically to look at events in the tropics.  The E. Asia area
+has been dropped for now, but the new Tropical WESTPAC covers
+most of that region.  I plan on restoring that area during the
+NHEM winter.
+
+<dl>
+<dt>The tropical areas feature three new map types and the precip chart:<dd>
+
+<dd><b>Surface winds and 500 mb heights</b> - The magnitude (kt)
+of the surface winds (10 m level) is shaded and wind barbs (kt)
+for winds over 8 kts are shown (why 8? because barbs are drawn
+every 5 kt).  As the winds go up the barbs change color.  The 500
+mb heights are also drawn, but the contour interval and color
+changes between the "midlatitudes" (z < 5820, interval = 60 m)
+and "tropics" (z >= 5820, interval = 20 m).  The change in
+contour interval allows better resolution of mass features in the
+tropics <br>
+
+<dd><b>500 mb Flow</b> - This map is same as the midlatitude 500
+mb chart except I draw streamlines and add wind barbs (kt).  The
+streamlines can better depict details in the 500 flow that is
+known to be representive of the "steering" flow<br>
+
+<dd><b>200 mb Flow and 850-200 Shear</b> - The magnitude of the
+850-200 wind shear is shaded.  The higher the shear, the less
+likely tropical cyclone formation is to occur.  Also high shear
+regions are unfavorable for TC development; can reduce intensity
+and change the steering flow level.  The green wind barbs
+correspond to the 200 mb flow and the red to 850.  The two barbs
+visually show the vector shear.<br>
+
+
+<dd><b>Precip and Sea Level Pressure</b> - This map is the same
+as in the midlatitude areas.  Precipitation is the primary energy
+source for the tropics and the 2 mb contour interval helps to
+better locate tropical distribances<br>
+
+
+</dl>
+
+These new maps are my first quess at what a TC person might want
+to see routinely.  Suggestions for other maps are welcome.  </p>
+
+<p>
+
+The U.S. Navy "OTIS" SST analysis will be coming on line shortly.
+This SST analysis is performed every 12 h.  See <a
+href="http://metoc-u1.fnmoc.navy.mil/otis/otis.html">http://metoc-u1.fnmoc.navy.mil/otis/otis.html</a>
+for another rendition of the data.  The climatology used to
+calculate the anomoly is based on the "AMIP II" (Atmospheric
+Model Intercomparison Project) <a
+href="http://www-pcmdi.llnl.gov/amip2">http://www-pcmdi.llnl.gov/amip2</a>
+SST and sea ice concentration observations <a
+href="http://www-pcmdi.llnl.gov/amip2/bcs_obs/amip2_bcs.htm">http://www-pcmdi.llnl.gov/amip2/bcs_obs/amip2_bcs.htm</a>
+for the period 1979-1996.  The source data for the AMIP II obs
+comes from the UKMO Hadley Center GISST2.2a and NCEP Reynolds SST
+analyses and is what we believe to be state-of-the are for model
+integrations.
+
+</p>
+
+<p>
+
+I have also added movie button the the single map docs and other
+buttons will be added for better navigation.
+
+</p>
+
+
+<h4>3 March, 1997 -- Added SPECIAL Area ...</h4>
+
+<p>
+
+The tropical cyclone email group I belong to began a discussion
+about a developing cyclone in the southern Hemisphere making
+reference to maps that were not generally available.  I decided
+to add a "special" area that will "float" around as interests of
+the users dictates.  Suggestions are welcome.
+
+</p>
+
+<h4>12 Dec 1996 -- Extend JAVA Movies to 144 h...</h4>
+
+<p>
+
+I arbitrarily decided to stop the movies at 120 to save memory on
+your machine when I first put these out.  However, seeing that
+I'm now producing both NOGAPS and MRF maps out 144 h maps, I now
+animate the whole set.
+
+</p>
+
+<h4>3 Dec 1996 -- Bug in the MRF precipitation rate...</h4>
+
+<p>
+
+The precipitation rate from the MRF is actually a 12-h
+accumulation vice 6 h as in the AVN run.  For example, the
+precipitation rate for the 12-h MRF forecast map is based on the
+rainfall which fell from t=0 to t=12 h (take this amount in mm and
+multiply by 2 to get mm/day).  The "bucket" in the model is then
+tipped and accumulation starts again.
+
+</p>
+
+<h4>27 Nov 1996 -- Improved Maps with Sea level Pressure</h4>
+
+<p>
+
+The maps with sea level pressure (precip and slp) have improved
+legibility, particularly in high pressure areas.  I also added
+700 hPa vertical motion to the SLP and 1000-500hPa thickness
+chart.  Let me know what you think...
+
+</p>
+
+<h4>13 Nov 1996 -- Increased the Number of NOGAPS Forecast Maps from 120 h to 144 h</h4>
+
+<p>
+A new data flow from FNMOC started today that allows me to make
+maps out to 144 hours vice 120 hours.  Use the 12 UTC NOGAPS run
+for long-term forecasts (> 72 hour) as the NCEP MRF only runs at 00 UTC.
+</p>
+
+<p> 
+The available model(s) is now displayed in the PCMDI WXMAP status
+table of the <a href="../web/wx.htm">home</a> page.
+</p>
+
+<h4>8 Nov 1996 -- Modified <a href="../web/wx.asia.htm">E. Asia</a></h4>
+
+<p>Added <a href="wxmap.help.htm#hints">Hints</a> to the <a href="wxmap.help.htm">help</a> document</p>
+
+<p>I changed the equatorward extent of the E. Asia area to pick up a couple of typhoons</p>
+
+<h4>7 Nov 1996 -- <a href="../web/wxmap.web.archive.htm">Web Archive Link</a></b>
+</h4>
+<p>
+
+You can now start at any of the previous "webs" available on this
+site.  A web is the home page for a particular model run, for
+example the integrations made for 00 UTC 7 November, 1996.  I run
+a "clean up" utility which current deletes all web material that
+is older than 15 days.  This is necessary because of server disk
+space limitations.  However, I am archiving the maps on our tape
+system...
+
+</p>
+<h4>7 Nov 1996 -- Added Resources Button Bar to the <a href="../web/wx.htm">Main Page</a></b>
+</h4>
+<p>
+This button bar will hold new features and links
+</p>
+<i>Last Update: 7 July, 1997</i><br>
+Send Comments to <a href="mailto:fiorino@llnl.gov"> Mike Fiorino</a>
+<br><br>
+<a href="http://www.llnl.gov/disclaimer.html">LLNL Disclaimers</a><br>
+UCRL-MI-125630
+</body>
+</html>
+

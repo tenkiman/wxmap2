@@ -1,0 +1,127 @@
+from w2globalvars import *
+
+# -- geqfqdn returns fully qualified domain name -- if available, otherwise gethostname which is the single name
+#
+W2Host=gethostname()
+onTacc=(mf.find(W2Host,'ranger.tacc'))
+onKishou=(mf.find(W2Host,'kishou.fsl'))
+onKaze=(mf.find(W2Host,'kaze'))
+
+# -- when qsubing can't detect -- since this is local...
+#
+onTacc=0
+onKaze=0
+onKishou=0
+onWjet=1
+onZeus=0
+onTheia=0
+onTenki=0
+onTaifuu=0
+
+pan2Jet=0
+
+curuSer=os.getenv('USER')
+
+# -- OS details
+#
+W2OsName=os.name
+(W2OsuName,W2uNameHost,W2uNameVersion,W2uNameDate,W2uNameType)=os.uname()
+
+W2plotXsize=900
+W2plotAspect=3.0/4.0
+# -- set log/prw tmp dirs here vice in w2base.py to /ptmp
+#
+HfipWebBdir='/data/amb/projects/hfip'
+DATKazeBaseDir='/data/hfip/fiorino'
+
+if(pan2Jet):
+    W2LocalBaseDir='/pan2/projects/fim-njet/fiorino/w21'
+    DATLocalBaseDir='/pan2/projects/fim-njet/fiorino/w21'
+    
+else:
+####    W2LocalBaseDir='/lfs2/projects/fim/fiorino/w21'
+####    DATLocalBaseDir='/lfs2/projects/fim/fiorino/w21'
+
+    W2LocalBaseDir='/lfs1/projects/fim/fiorino/w21'
+    DATLocalBaseDir='/lfs1/projects/fim/fiorino/w21'
+
+DATW21LocalBaseDir="%s/w21"%(DATLocalBaseDir)
+W21LocalBaseDir="%s/w21"%(W2LocalBaseDir)
+LocalBaseDirDat="%s/dat"%(DATW21LocalBaseDir)
+LocalBaseDirPrc="%s/prc"%(W21LocalBaseDir)
+LocalBaseDirLog="%s/log"%(DATW21LocalBaseDir)
+
+LocalBaseDirEtc="%s/w21/etc"%(W2LocalBaseDir)
+
+Nwp2ModelsAll=['gfs2','fim8','ecm2','ukm2','ngp2','ecmn','cmc2','ngpc','gfsk','ohc','ocn','ww3']
+# -- no more gfsk after hfip.2011 season
+Nwp2ModelsAll=['gfs2','fim8','ecm2','ukm2','ngp2','ecmn','cmc2','ngpc','ohc','ocn','ww3']
+# -- remove new ecm
+Nwp2ModelsAll=['gfs2','fim8','ecm2','ukm2','ngp2','cmc2','ngpc','ohc','ocn','ww3','gfsc','ukmc','jmac','ngpj','goes','gfsr','gfr1','ecmn','ecmg','ecm4',
+'fv3e','fv3g','fv7g','fv7e',
+]
+Nwp2ModelsActive=['gfs2','fim8','ecm2','ukm2','ngp2','cmc2','ngpc','ohc','ocn','ww3','gfsc','ukmc','jmac','ngpj','goes','ecmg']
+Nwp2ModelsNwp=['gfs2','fim8','ecm2','ukm2','ngp2','cmc2','ngpc','ohc','ocn','ww3','gfsc','ukmc','jmac','ngpj']
+Nwp2ModelsNwp=['ecm2','ngp2','cmc2','ecm4']
+Nwp2ModelsActive=['ecm2','ngp2','cmc2','ecm4']
+Nwp2ModelsActiveW2flds=Nwp2ModelsActive
+
+W2adminuSer='fiorino'
+W2adminuSer='Michael.Fiorino'  # changed on 20130903
+W2adminuSers=['Michael.Fiorino','jeffrey.a.hamilton','rtfim']  # changed on 20130903
+W2currentuSer=getpass.getuser()
+ 
+W2AreasPrw=['prwLant','prwEpac','prwWpac','prwIo','prwSpac']
+
+#jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj -- jet vars
+#
+
+####sbaseWjet='/lfs2/projects/fim/fiorino'
+sbaseWjet='/lfs1/projects/fim/fiorino'
+
+# 2010040812-0900 -- rtfim ran off /lfs0, now doing this all the time
+srootWjet='/lfs0/projects/rtfim'
+# -- 20110606 -- now hard off /lfs0
+srootWjet='/lfs0/projects/rtfim'
+#-- 20110720 -- after jetquotas flail, now through a ~rtfim
+#
+srootWjet='/whome/rtfim'
+
+CagipsPrcDir="%s/cagips/rulebotagent"%(LocalBaseDirPrc)
+
+if(onKishou):
+    CagipsDatBdir='/dat2/dat/cagips/'
+else:
+    CagipsDatBdir="%s/dat/cagips"%(DATW21LocalBaseDir)
+
+CagipsSdirNgpc="%s/HDN"%(CagipsDatBdir)
+CagipsSdirGfsc="%s/WXMAP_GFS"%(CagipsDatBdir)
+CagipsSdirNgpj="%s/WXMAP_AOI"%(CagipsDatBdir)
+CagipsSdiruKmc="%s/WXMAP_UKM"%(CagipsDatBdir)
+CagipsSdirJmac="%s/WXMAP_JMA"%(CagipsDatBdir)
+CagipsSdirOcn="%s/OCEAN_GLOBAL"%(CagipsDatBdir)
+CagipsSdirOhc="%s/OCEAN_OHC"%(CagipsDatBdir)
+CagipsSdirWw3="%s/WW3_GLOBAL"%(CagipsDatBdir)
+
+# -- set to 1 to avoid multiple runs
+nMaxPidInCron=1
+dochkifrunning=1
+
+
+# -- nwp awips ecmwf feed
+#
+
+W2rawECHiRes='/scratch/staging/amb/ldm/data/rawECHiRes/'
+W2rawECHiRes='/data/amb/ldm/data/rawECHiRes/'
+
+# -- ccs data feed
+
+EcNogapsCssFeed='/lfs0/projects/fim/whitaker/ecnogaps'
+####EcNogapsCssFeed='/lfs2/projects/fim/fiorino/w21/dat/ecnogaps'
+####EcNogapsCssFeed='/lfs2/projects/wrfruc/alexander/tropical/ecnogaps'
+EcNogapsCssFeed='/pan2/projects/nrtrr/alexander/tropical/ecnogaps'
+EcNogapsCssFeed='/lfs3/projects/nrtrr/alexander/tropical/ecnogaps' # 20171102 - pan2 decomm
+EcNogapsCssFeed='/lfs3/projects/nrtrr/alexander/tropical/ecnogaps' # 20180124 - set again for git
+
+
+

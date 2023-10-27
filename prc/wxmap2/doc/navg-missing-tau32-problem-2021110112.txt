@@ -1,0 +1,8 @@
+weird case where one tau was missing...
+added -D option to:
+
+w2-tc-runTrks.py
+w2-tc-tmtrkN.py
+w2-tc-mftrkN.py
+
+to bypass complete tau check

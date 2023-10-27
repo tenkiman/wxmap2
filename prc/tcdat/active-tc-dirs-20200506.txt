@@ -1,0 +1,41 @@
+AD:tc/adeck/2019/
+AD:tc/adeck/2020/
+AD:tc/adeck/atcf-form/ 2019/ 2020/
+AD:tc/adeck/cmc/  Z2019/   2020/
+AD:tc/adeck/ecmwf/ 2019/wmo/ 2020/wmo/
+AD:tc/adeck/esrl/  2018/  2019/  2020/
+AD:tc/adeck/jtwc/  2018/  2019/  2020/
+AD:tc/adeck/mftrkN/ 2019/ 2020/
+AD:tc/adeck/ncep/  2019/   2020/
+AD:tc/adeck/nhc/  2018/  2019/  2020/
+AD:tc/adeck/tmtrkN/ 2019/  2020/
+AD:tc/adeck/ukmo/  Z2019/   2020/
+BD:tc/bdeck/jtwc/ 2019/ 2020/
+BD:tc/bdeck/nhc/  2019/ 2020/
+BT:tc/bt/  2019/  2020/
+CQ:tc/carq/  2019/  2020/
+TM:tc/cira/mtcswa/  Z2019/  2020/
+TL:tc/climo/
+TC:tc/cmc/tigge/  2019/  2020/
+TO:tc/com/
+TS:tc/dis/
+DS:tc/DSs/  C2020/
+EC:tc/ecmwf/wmo-essential/
+ED:tc/edeck/
+FD:tc/fdeck/
+JT:tc/jtwc/
+MK:tc/mdeck/  2019/  2020/
+NA:tc/names/  C2020 C2021
+NC:tc/ncep/tigge/  Z2019/  2020/
+NH:tc/nhc/
+ST:tc/stext/  nhc/  jtwc/
+TD:tc/tcanal/  Z2019/  2020/
+TE:tc/tceps/cmc/   Z2019/  2020/
+TE:tc/tceps/ecmwf/ Z2019/  2020/
+TE:tc/tceps/ncep/  Z2019/  2020/
+TG:tc/tcgen/ 2019/ 2020/
+TV:tc/tcvitals/
+TT:tc/tmtrkN/  2019/  2020/
+#TT:tc/tmtrkN/DSs/
+sTU:tc/ukmo/tigge/  Z2019/  2020/
+

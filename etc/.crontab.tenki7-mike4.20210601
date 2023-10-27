@@ -1,0 +1,49 @@
+#
+# *** version 20190303  ***
+# *** use ad2 in w2.tc.all.eps.py vice tigge .xml for ncep...stopped on 03030100?
+# *** changed -E to -2 in w2.tc.all.eps.py
+#
+#------------------------------------------------------
+#
+# -- tenki-linux crontab 
+# -- 20181229 - run TC proc during .gov shutdown
+#
+#------------------------------------------------------
+#
+
+runcmd='/data/w22/run.cron.tcsh'
+w2pdir='/data/w22/prc'
+w2prjdir='/data/w22/prj'
+
+#tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt - TCs
+#
+#
+#08,43           0-23             * * * $runcmd "$w2pdir/tcdat/w2-tc-ops-dat.py ops"                                        >> /ptmp/log-w2-tc-ops-dat.py.TENKILF 2>&1
+#17,47            0-23             * * * $runcmd "$w2pdir/tcdat/w2-tc-rsync-mirror-TC-names-DSs-tcvitals-wxmap2.py -R -X"       >> /ptmp/log-w2-tc-rsync-mirror-TC-names-DSs-tcvitals-wxmap2.py.TC2WXMAP2 2>&1
+
+# -- 20190318 - on mike4 
+#20              0-23             * * * $runcmd "$w2pdir/tcdat/w2-tc-active.py -C -W -P 1 -r -X"                               >> /ptmp/log-w2-tc-active-rsync-wxmap2.py.TCACT2WXMAP2-P1 2>&1
+#30              0-23             * * * $runcmd "$w2pdir/tcdat/w2-tc-active.py -C -W -P 2 -r -X"                               >> /ptmp/log-w2-tc-active-rsync-wxmap2.py.TCACT2WXMAP2-P2 2>&1
+#40              0-23             * * * $runcmd "$w2pdir/tcdat/w2-tc-active.py -C -W -P 3 -r -X"                               >> /ptmp/log-w2-tc-active-rsync-wxmap2.py.TCACT2WXMAP2-P3 2>&1
+#50              0-23             * * * $runcmd "$w2pdir/tcdat/w2-tc-active.py -C -W -P 4 -r -X"                               >> /ptmp/log-w2-tc-active-rsync-wxmap2.py.TCACT2WXMAP2-P4 2>&1
+
+# -- 20210601 -- rsync all of dat/tc/ to gmu -- don't do pulls from wxmap2.com
+
+17,47              *               * * * $runcmd "$w2pdir/wxmap2/w2-tc-rsync-gmu.py -R"                                          >> /ptmp/log-w2-tc-rsync-gmu.py.TCDAT2GMU 2>&1
+
+
+#rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr - era5
+#33              1,13             * * * $runcmd "$w2pdir/reanl/p-inv-era5-tenki7.py"                          >> /ptmp/log-p-inv-era5-tenki7.py.INV-ERA5 2>&1
+#33              */2              * * * $runcmd "$w2pdir/reanl/p-rsync-era5-tenki7.py -X"                     >> /ptmp/log-p-rsync-era5-tenki7.py.RSYNC-ERA5 2>&1
+
+#ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg - gmu rsync
+13               *                * * * $runcmd "$w2pdir/wxmap2/w2-w2flds-rsync-gmu.py cur-12.cur all -R"            >> /ptmp/log-w2-w2flds-rsync-gmu.py.GMU-W2FLDS 2>&1
+43           3,9,15,21            * * * $runcmd "$w2pdir/wxmap2/w2-w2flds-rsync-gmu.py cur12-72.cur12-48 ecmt -R"    >> /ptmp/log-w2-w2flds-rsync-gmu.py.GMU-ECMT-W2FLDS 2>&1
+23                 *              * * * $runcmd "$w2pdir/wxmap2/w2-pr-rsync-gmu.py -R"                               >> /ptmp/log-w2-pr-rsync-gmu.py.GMU-PR 2>&1
+33                 1              * * * $runcmd "$w2pdir/wxmap2/w2-ocean-oisst-gmu.py -R"                            >> /ptmp/log-w2-ocean-oisst-gmu.py.GMU-OISST 2>&1
+
+#pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp - load and process monitor
+# -- load averages using uptime and monitor processes...
+*/5                             *             * * * $runcmd "$w2pdir/wxmap2/w2-load.py"                      >> /ptmp/log.load.py.tenki.LOAD 2>&1
+4                               1             * * * $runcmd "$w2pdir/wxmap2/w2-ps-monitor.py -X -S 15"       >> /ptmp/log-w2-ps-monitor.py.tenki.PS-MONITOR 2>&1
+*/5                             *             * * * $runcmd "$w2pdir/wxmap2/w2-ps-monitor-anl.py cur -K"     >> /ptmp/log-w2-ps-monitor-anl.py.tenki.PS-MONITOR-KILL-LONG-PS 2>&1

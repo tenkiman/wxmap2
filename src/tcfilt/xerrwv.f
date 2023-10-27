@@ -1,0 +1,153 @@
+      subroutine xerrwv(messg,nmessg,nerr,level,ni,i1,i2,nr,r1,r2)
+c***begin prologue  xerrwv
+c***date written   800319   (yymmdd)
+c***revision date  820801   (yymmdd)
+c***category no.  r3c
+c***keywords  error,xerror package
+c***author  jones, r. e., (snla)
+c***purpose  processes error message allowing 2 integer and two real
+c            values to be included in the message.
+c***description
+c     abstract
+c        xerrwv processes a diagnostic message, in a manner
+c        determined by the value of level and the current value
+c        of the library error control flag, kontrl.
+c        (see subroutine xsetf for details.)
+c        in addition, up to two integer values and two real
+c        values may be printed along with the message.
+c
+c     description of parameters
+c      --input--
+c        messg - the hollerith message to be processed.
+c        nmessg- the actual number of characters in messg.
+c        nerr  - the error number associated with this message.
+c                nerr must not be zero.
+c        level - error category.
+c                =2 means this is an unconditionally fatal error.
+c                =1 means this is a recoverable error.  (i.e., it is
+c                   non-fatal if xsetf has been appropriately called.)
+c                =0 means this is a warning message only.
+c                =-1 means this is a warning message which is to be
+c                   printed at most once, regardless of how many
+c                   times this call is executed.
+c        ni    - number of integer values to be printed. (0 to 2)
+c        i1    - first integer value.
+c        i2    - second integer value.
+c        nr    - number of real values to be printed. (0 to 2)
+c        r1    - first real value.
+c        r2    - second real value.
+c
+c     examples
+c        call xerrwv('smooth -- num (=i1) was zero.',29,1,2,
+c    1   1,num,0,0,0.,0.)
+c        call xerrwv('quadxy -- requested error (r1) less than minimum (
+c    1r2).,54,77,1,0,0,0,2,errreq,errmin)
+c
+c     latest revision ---  19 mar 1980
+c     written by ron jones, with slatec common math library subcommittee
+c***references  jones r.e., kahaner d.k., "xerror, the slatec error-
+c                 handling package", sand82-0800, sandia laboratories,
+c                 1982.
+c***routines called  fdump,i1mach,j4save,xerabt,xerctl,xerprt,xersav,
+c                    xgetua
+c***end prologue  xerrwv
+      character*(*) messg
+      character*20 lfirst
+      character*37 form
+      dimension lun(5)
+c     get flags
+c***first executable statement  xerrwv
+      lkntrl = j4save(2,0,.false.)
+      maxmes = j4save(4,0,.false.)
+c     check for valid input
+      if ((nmessg.gt.0).and.(nerr.ne.0).and.
+     1    (level.ge.(-1)).and.(level.le.2)) go to 10
+         if (lkntrl.gt.0) call xerprt('fatal error in...',17)
+         call xerprt('xerror -- invalid input',23)
+         if (lkntrl.gt.0) call fdump
+         if (lkntrl.gt.0) call xerprt('job abort due to fatal error.',
+     1  29)
+         if (lkntrl.gt.0) call xersav(' ',0,0,0,kdummy)
+         call xerabt('xerror -- invalid input',23)
+         return
+   10 continue
+c     record message
+      junk = j4save(1,nerr,.true.)
+      call xersav(messg,nmessg,nerr,level,kount)
+c     let user override
+      lfirst = messg
+      lmessg = nmessg
+      lerr = nerr
+      llevel = level
+      call xerctl(lfirst,lmessg,lerr,llevel,lkntrl)
+c     reset to original values
+      lmessg = nmessg
+      lerr = nerr
+      llevel = level
+      lkntrl = max0(-2,min0(2,lkntrl))
+      mkntrl = iabs(lkntrl)
+c     decide whether to print message
+      if ((llevel.lt.2).and.(lkntrl.eq.0)) go to 100
+      if (((llevel.eq.(-1)).and.(kount.gt.min0(1,maxmes)))
+     1.or.((llevel.eq.0)   .and.(kount.gt.maxmes))
+     2.or.((llevel.eq.1)   .and.(kount.gt.maxmes).and.(mkntrl.eq.1))
+     3.or.((llevel.eq.2)   .and.(kount.gt.max0(1,maxmes)))) go to 100
+         if (lkntrl.le.0) go to 20
+            call xerprt(' ',1)
+c           introduction
+            if (llevel.eq.(-1)) call xerprt
+     1('warning message...this message will only be printed once.',57)
+            if (llevel.eq.0) call xerprt('warning in...',13)
+            if (llevel.eq.1) call xerprt
+     1      ('recoverable error in...',23)
+            if (llevel.eq.2) call xerprt('fatal error in...',17)
+   20    continue
+c        message
+         call xerprt(messg,lmessg)
+         call xgetua(lun,nunit)
+         isizei = log10(float(i1mach(9))) + 1.0
+         isizef = log10(float(i1mach(10))**i1mach(11)) + 1.0
+         do 50 kunit=1,nunit
+            iunit = lun(kunit)
+            if (iunit.eq.0) iunit = i1mach(4)
+            do 22 i=1,min(ni,2)
+               write (form,21) i,isizei
+   21          format ('(11x,21hin above message, i',i1,'=,i',i2,')   ')
+               if (i.eq.1) write (iunit,form) i1
+               if (i.eq.2) write (iunit,form) i2
+   22       continue
+            do 24 i=1,min(nr,2)
+               write (form,23) i,isizef+10,isizef
+   23          format ('(11x,21hin above message, r',i1,'=,e',
+     1         i2,'.',i2,')')
+               if (i.eq.1) write (iunit,form) r1
+               if (i.eq.2) write (iunit,form) r2
+   24       continue
+            if (lkntrl.le.0) go to 40
+c              error number
+               write (iunit,30) lerr
+   30          format (15h error number =,i10)
+   40       continue
+   50    continue
+c        trace-back
+         if (lkntrl.gt.0) call fdump
+  100 continue
+      ifatal = 0
+      if ((llevel.eq.2).or.((llevel.eq.1).and.(mkntrl.eq.2)))
+     1ifatal = 1
+c     quit here if message is not fatal
+      if (ifatal.le.0) return
+      if ((lkntrl.le.0).or.(kount.gt.max0(1,maxmes))) go to 120
+c        print reason for abort
+         if (llevel.eq.1) call xerprt
+     1   ('job abort due to unrecovered error.',35)
+         if (llevel.eq.2) call xerprt
+     1   ('job abort due to fatal error.',29)
+c        print error summary
+         call xersav(' ',-1,0,0,kdummy)
+  120 continue
+c     abort
+      if ((llevel.eq.2).and.(kount.gt.max0(1,maxmes))) lmessg = 0
+      call xerabt(messg,lmessg)
+      return
+      end

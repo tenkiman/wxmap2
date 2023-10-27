@@ -1,0 +1,141 @@
+	    PCMDI NOGAPS/AVN/MRF Graphics on the Web
+
+			 Mike Fiorino
+		    fiorino@typhoon.llnl.gov
+
+     Program for Climate Model Diagnosis and Intercomparison
+	     Lawrence Livermore National Laboratory
+		    University of California
+		       P.O. Box 808 L-264
+		       Livermore, CA 94551
+	     510-423-8505 (voice) 510-422-7675(fax)
+
+		       19 September, 1996
+			 8 October, 1996
+
+
+1.0	INTRODUCTION
+
+I am now generating real-time weather map graphics using 1 deg
+and 2.5 deg data from the Navy's global NWP model called the Navy
+Operational Global Atmospheric Prediction System (NOGAPS) run at
+Fleet Numerical Meteorology and Oceanography Center (FNMOC).  My
+motivation was simple.  I wanted to see how NOGAPS performed on
+the two big Atlantic tropical cyclones in September vis-a-vis the
+National Centers for Environmental Prediction (NCEP) Medium Range
+Forecast (MRF) global model as seen in the weather maps at COLA
+(http://grads.iges.org/pix/wx.html).  Further, NOGAPS was
+occasionally mentioned in the prog discussion at National
+Hurricane Center (NHC).
+
+Since putting together the NOGAPS maps, I have set up a data flow
+from NCEP to get the data necessary to create the same maps but
+for MRF (00 UTC only) and "Aviation" run of the MRF (AVN).  The
+MRF completes the 120 h forecast around +8.5 and the AVN (OO and
+12 UTC) 72-h forecast is done about +4.5 and my maps should be
+out about 45 min. after these events.  
+
+At the request of FNMOC, I have put a time delay on the putting
+the NOGAPS maps on the ftp server.  They should be available
+about +9 h.
+
+Here is a rough schedule
+
+UTC	PST	EST	Model	Watch
+
+0530	2130	0030	AVN 	00Z
+0830	0030	0330	NOGAPS 	00Z
+1100	0300	0600	MRF	00Z
+1730	0930	1230	AVN	12Z
+2230	1430	1730	NOGAPS	12Z
+
+The initial area is generic to the US/Canada and does not cover
+the tropics well. However, it is a simple matter to define other
+areas should there be interest.
+
+An interactive html interface is being developed now, but in most
+browser, you can use ftp of http URLs to locate and display the
+images.
+
+2.0	WHERE AND WHAT
+
+The starting URL is:
+
+NOGAPS	ftp://sprite.llnl.gov/pub/fiorino/fnmoc/nogaps/grf
+AVN:	ftp://sprite.llnl.gov/pub/fiorino/ncep/avn/grf
+MRF:	ftp://sprite.llnl.gov/pub/fiorino/ncep/mrf/grf
+
+or (initially)
+
+NOGAPS	http://www-pcmdi.llnl.gov/fiorino/fnmoc.nogaps.grf
+AVN:	http://www-pcmdi.llnl.gov/fiorino/ncep.avn.grf
+MRF:	http://www-pcmdi.llnl.gov/fiorino/ncep.mrf.grf
+
+Below each of these are the directories:
+
+archive		-	current and older maps 
+current		-	the latest
+
+Below the archive directory you will find subdirectories named
+with the "Date-Time-Group" of the run (yymmddhh), e.g.,
+
+96091312 
+
+would be the 12Z 13 September, 1996 run.
+
+Within the directories, I use the file name convention:
+
+MMMRR.PPP.TTT.AAA.gif
+
+where,
+
+MMM 	=	ngp for NOGAPS
+MMM 	=	avn for AVN
+MMM 	=	mrf for MRF
+
+RR 	= 	10 for 1.0 deg data or 25 for 2.5 deg
+		always 10 for the AVN and MRF 
+
+PPP 	= 	plot type
+
+  500 = 500 mb z and vort
+  850 = 850 T, V and RH
+  prp = precip and slp
+  slp = slp + 1000-500 thickness (2.5 deg only)
+
+TTT 	= 	forecast time in hours
+
+AAA 	= 	area
+
+  conus = CONUS (the only one I'm running now, but can do others)
+
+The times displayed in your browser are probably UTC.  
+
+3.0 	PROCESSING
+
+The maps are created using the Grid Analysis and Display System
+(GrADS, http://grads.iges.org/grads).  The script is available
+upon request.
+
+The map creation process is executed every hour and checks for
+data availability and whether the plot has already been made.
+
+Note, the "RH" in the 1.0 deg NOGAPS plots is not really RH, but
+an index based on the dewpoint depression.  Specifically,
+
+rhindex = 100 * (ddp-25)/25
+
+where ddp is in deg C.  I hope to get the actual RH soon, but in
+the meantime, this seems to work like the 2.5 deg RH.  I will
+calculate RH when I start getting the NOGAPS temperature data.
+
+UDPATE: It turned out I had been getting the temperature field so
+I now calculate the RH for the 1 deg data using the saturation
+vapor pressure calculator used in the NCPE MRF model.
+
+4.0	COMMENTS
+
+Take a look and let me know what you think.  Your comments and
+suggestions are welcome.
+
+

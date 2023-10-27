@@ -1,0 +1,64 @@
+from w2globalvars import *
+
+onWjet=0
+
+W2adminuSer='mfiorino'
+
+HfipWebBdir='/data/amb/projects/hfip'
+W2LocalBaseDir='/data/amb/users/fiorino'
+W21LocalBaseDir="%s/w21"%(W2LocalBaseDir)
+
+DATLocalBaseDir='/data/hfip/fiorino'
+DATKazeBaseDir='/data/hfip/fiorino'
+DATW21LocalBaseDir="%s/w21"%(DATLocalBaseDir)
+
+LocalBaseDirDat="%s/dat"%(DATW21LocalBaseDir)
+LocalBaseDirPrc="%s/prc"%(W21LocalBaseDir)
+LocalBaseDirLog="%s/log"%(DATW21LocalBaseDir)
+
+LocalBaseDirEtc="%s/w21/etc"%(W2LocalBaseDir)
+
+Nwp2ModelsAll=['gfs2','fim8','ecm2','ukm2','ngp2','ecmn','cmc2','ngpc','gfsk','ohc','ocn','ww3']
+# -- no more gfsk after hfip.2011 season
+Nwp2ModelsAll=['gfs2','fim8','ecm2','ukm2','ngp2','ecmn','cmc2','ngpc','ohc','ocn','ww3']
+# -- remove new ecm
+Nwp2ModelsAll=['gfs2','fim8','ecm2','ukm2','ngp2','cmc2','ngpc','navg','ohc','ocn','ww3','gfsc','ukmc','jmac','ngpj','goes','gfsr','gfr1','ecmn','ecmg']
+Nwp2ModelsActive=['gfs2','fim8','ecm2','ukm2','ngp2','cmc2','ngpc','ohc','ocn','ww3','gfsc','ukmc','jmac','ngpj','goes','ecmg']
+Nwp2ModelsActive=['gfs2','fim8','ecm2','ecmn','ukm2','cmc2','ngpc','navg','ngp2','ohc','ocn','ww3','gfsc','ukmc','jmac','ngpj','goes']
+Nwp2ModelsNwp=['gfs2','fim8','ecm2','ukm2','ngp2','cmc2','ngpc','navg','ohc','ocn','ww3','gfsc','ukmc','jmac','ngpj']
+
+
+CagipsPrcDir="%s/cagips/rulebotagent"%(LocalBaseDirPrc)
+CagipsPrcDirBeta="%s/cagips/rulebotagent-beta"%(LocalBaseDirPrc)
+
+if(onKishou):
+    CagipsDatBdir='/dat2/dat/cagips/'
+else:
+    CagipsDatBdir="%s/dat/cagips"%(DATW21LocalBaseDir)
+
+CagipsSdirNavg="%s/NAVGEM"%(CagipsDatBdir)
+CagipsSdirNgpc="%s/HDN"%(CagipsDatBdir)
+CagipsSdirGfsc="%s/WXMAP_GFS"%(CagipsDatBdir)
+CagipsSdirNgpj="%s/WXMAP_AOI"%(CagipsDatBdir)
+CagipsSdiruKmc="%s/WXMAP_UKM"%(CagipsDatBdir)
+CagipsSdirJmac="%s/WXMAP_JMA"%(CagipsDatBdir)
+CagipsSdirOcn="%s/OCEAN_GLOBAL"%(CagipsDatBdir)
+CagipsSdirOhc="%s/OCEAN_OHC"%(CagipsDatBdir)
+CagipsSdirWw3="%s/WW3_GLOBAL"%(CagipsDatBdir)
+
+# -- set to 1 to avoid multiple runs
+nMaxPidInCron=1
+dochkifrunning=1
+
+
+# -- nwp awips ecmwf feed
+#
+W2rawECHiRes='/scratch/staging/amb/ldm/data/rawECHiRes/'
+W2rawECHiRes='/data/amb/ldm/data/rawECHiRes/'
+
+# -- ccs data feed
+#
+EcNogapsCssFeed='/lfs0/projects/fim/whitaker/ecnogaps'
+EcNogapsCssFeed='/lfs1/projects/fim/fiorino/w21/dat/ecnogaps'
+EcNogapsCssFeed='/lfs1/projects/wrfruc/alexander/tropical/ecnogaps'
+EcNogapsCssFeed='/pan2/projects/nrtrr/alexander/tropical/ecnogaps'

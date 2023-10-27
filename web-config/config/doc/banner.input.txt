@@ -1,0 +1,11 @@
+<75>Welcome to the PCMDI NWP WXMAP Web!<down>
+<75>Featuring NOGAPS - the Navy Operational Global Atmospheric Prediction System<down>
+<75>Click inside this box to start and stop the display<explode>
+<75><color=white>Click here for the "What's New" doc<down>
+URL:http://www-pcmdi.llnl.gov/fiorino/wxmap/doc/what.is.new.htm
+<100>New Stuff as of 3 March, 2000:<down>
+<75>Return of Mike F. from ECMWF<down>
+<75>Link to FNMOC WXMAP<down>
+<75>New features from internal ECMWF version ...<down>
+<75>better navigation and new graphics<down>
+<75>Tropical Cyclone Obs and Forecasts Positions!!<down>

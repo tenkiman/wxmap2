@@ -1,0 +1,198 @@
+action items
+------------
+
+* turn on ncep data flow to teds
+
+
+
+sitrep
+------
+
+dtg -h	print current dtg + hour	: get current dtg 
+l.pl dat ngp | avn | mrf		: list data files
+look at /tmp/log.wxmap.*
+c.wg.
+
+
+cron
+----
+
+crontab -e
+crontab -l
+crontab ~fiorino/.crontab.wxmap
+
+39 5 1,5     * * $runcmd "wxmappdir/wxmap.clean.log.pl' > /tmp/log.wxmap.clean.log.pl 2>&1
+
+39 = min
+5 = hour
+1,5 = sunday, friday
+
+* = month (all)
+* = year (all)
+
+
+current crontab job
+-------------------
+
+
+#------------------------------------------------------
+#
+#       wxmap jtwc crontab
+#
+#------------------------------------------------------
+#
+#       get ngp data from llnl feed to local ftp dir for processing
+#       llnl goes 25, 55 on the hour wait 15 minutes
+#
+#------------------------------------------------------
+#
+#bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+#
+runcmd='/dat/nwp/wxmap/prc/wxmap/run.cron.tcsh'
+wxmapddir='/dat/nwp/wxmap/prc/dat'
+wxmappdir='/dat/nwp/wxmap/prc/wxmap'
+10,40 0-23 * * * $runcmd "$wxmapddir/wxmap.ngp.grb.pl cur" >> /tmp/log.wxmap.ngp.grb.pl 2>&1
+20,50 0-23 * * * $runcmd "$wxmappdir/wxmap.ngp.pl cur" >> /tmp/log.wxmap.ngp.pl 2>&1
+15 5,17    * * * $runcmd "$wxmapddir/wxmap.ncep.pl cur avn" >> /tmp/log.wxmap.ncep.avn.pl 2>&1
+15 1       * * * $runcmd "$wxmapddir/wxmap.ncep.pl cur mrf" >> /tmp/log.wxmap.ncep.mrf.pl 2>&1
+#
+#------------------------------------------------------
+#
+#       TC track processing - get b/a decks from ATCF and update ngtrp
+#       do full update of ngtrp_YYYY once a day; otherwise do just previous 36 h
+#
+#------------------------------------------------------
+#
+25 4       * * * $runcmd "$wxmapddir/wxmap.tc.ops.dat.pl all" >> /tmp/log.wxmap.tc.ops.dat.all.pl 2>&1
+5 0,2,4,6,8,10,12,14,16,18,20,22 * * * $runcmd "$wxmapddir/wxmap.tc.ops.dat.pl cur" >> /tmp/log.wxmap.tc.ops.dat.cur.pl 2>
+&1
+#
+#------------------------------------------------------
+#
+#       clean up
+#
+#------------------------------------------------------
+#
+30 3       * * * $runcmd "wxmappdir/wxmap.clean.wxmap.pl cur 10 n' >> /tmp/log.wxmap.clean.wxmap.pl 2>&1
+39 5 1,5     * * $runcmd "wxmappdir/wxmap.clean.log.pl' > /tmp/log.wxmap.clean.log.pl 2>&1
+#
+#eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+
+
+wxmap directories on wxmap.npmoc.navy.mil:
+-----------------------------------------
+
+/dat/nwp/wxmap/			:*	 base directory of wxmap
+
+/dat/nwp/wxmap/prc		:*      processing directory
+/dat/nwp/wxmap/prc/wxmap	:	wxmap plotting and drivers
+/dat/nwp/wxmap/prc/data		:	data processing (ftp <-> of grib and tc data)
+/dat/nwp/wxmap/prc/html		:	create wxmap html
+
+
+/dat/nwp/wxmap/perl		:*	 perl modules and local libraries
+/dat/nwp/wxmap/perl/lib		:	 mf.pl utility perl functions
+
+
+
+data directories on wxmap.npmoc.navy.mil:
+-----------------------------------------
+
+/dat/nwp/dat			:	model fields (GRIB)
+
+/dat/nwp/dat/tc			:*	tropical cyclone tracks
+/dat/nwp/dat/tc/jtwc		:*	b/a decks from atcf to drive trackers
+/dat/nwp/dat/tc/ft_ops		:*	output from local trackers source 
+					to create adecks for atcf 
+
+grads
+-----
+
+/usr/local/grads/		:*	data files, executables; utils
+
+TC processing
+-------------
+
+/home/fiorino/era/tc/prc/tctrack
+
+TC docs
+-------
+
+/dat/www/tc			:*	various tc docs 
+/dat/www/tc/sitrep/2001.shem	:*	shem 2001 season summary with tracks for ecmwf/ngp/ncep
+
+
+wxmap config
+------------
+
+/home/fiorino/.wxmaprc:
+
+setenv WXMAP_BDIR /dat/nwp/wxmap
+setenv WXMAP_PERL_DIR "$WXMAP_BDIR/perl"
+setenv WXMAP_PRC_WXMAP_DIR "$WXMAP_BDIR/prc/wxmap"
+setenv WXMAP_PRC_TC_DIR "$HOME/era/tc/prc"
+setenv WXMAP_TC_CURRENT_SEASON "2001.shem"
+setenv WXMAP_TC_SITREP_DIR "/dat/www/tc/sitrep"
+
+/dat/nwp/wxmap/prc/wxmap/wxmap.env.pl  -- defines all 
+
+
+
+crontab scripts
+---------------
+
+$wxmappdir=/dat/nwp/wxmap/prc/wxmap	-	plotting / driver scripts
+$wxmapddir=/dat/nwp/wxmap/prc/dat	-	data /driver scripts
+
+
+$wxmapddir/wxmap.ngp.grb.pl cur		-	collect NOGAPS data from blackgbs to wxmap machine
+					-	opt1 options is set to 'llnl' to pull from llnl feed
+
+	scripts called:
+
+	$pdir_dat/wxmap.ftp.fnmoc.llnl.feed.2.local.pl $tdtg	-	pull ngp to wxmap from llnl feed to blackgbs
+	$pdir_dat/wxmap.ftp.fnmoc.feed.2.local.pl $tdtg		-	pull ngp to wxmap from fnmoc feed
+	$pdir_dat/wxmap.ngp.clean.fnmoc.grb.pl $dtg4		-	filter out crap from fnmoc grib using wgrib
+	$pdir_dat/wxmap.gribmap.pl $dtg4 ngp			-	create ngp grads .ctl and gribmap
+
+
+
+$wxmappdir/wxmap.ngp.pl cur		 -	graphics, html and tc track of ngp data
+
+	scripts called:
+	p.tc.track.all.pl $tcdtg $tcdtg $model $tctrackopt	-	run tc trackers
+	wxmap.plot.all.pl $tdtg ngp				-	ngp wxmap plots
+	wxmap.web.pl $tdtg y n					-	make wxmap web html
+
+
+$wxmapddir/wxmap.ncep.pl cur avn	-	collect ncep feed of avn run from blackgbs to wxmap
+$wxmapddir/wxmap.ncep.pl cur mrf	-	collect mrf run
+	
+	these are "fire and forget" i.e., the periodically look for data on blackgbs until
+	it shows up or times out
+
+	scripts called:
+        $pdir_dat/wxmap.ftp.ncep.feed.2.local.pl $tdtg $model	-	collect ncep feed from blackgbs to wxmap
+	$pdir_dat/wxmap.gribmap.pl $tdtg $model			-	create ncep grads .ctl and gribmap
+	$pdir_dat/wxmap.ftp.ncep.feed.2.atcf.pl $tdtg		-	put ncep feed to atcf machine for teds ingest
+									***** currently turned off *****
+	 p.tc.track.all.pl $tcdtg $tcdtg $model ops		-	tc tracking
+	 wxmap.plot.all.pl $tdtg $model				-	wxmap graphics 
+	 wxmap.web.pl $dtg y n					-	wxmap web html
+
+$wxmapddir/wxmap.tc.ops.dat.pl all	-	tc track processing; do full update
+$wxmapddir/wxmap.tc.ops.dat.pl cur	-	tc track processing; just latest 36 hours
+
+	scripts called:
+
+	$pdir_dat/wxmap.ftp.jtwc.track.2.local.pl cur"		-	bring atcf a/b decks to wxmap machine
+	p.tc.bt.jtwc.pl cur					-	b decks to my bt format
+        p.tc.bt.jtwc.2.ngtrp.pl cur				-	convert my bt format to ngtrp_YYYY.jtwc
+	p.tc.track.2.adeck.pl $tdtg				-	convert my tracks to adecks
+	pdir_dat/wxmap.ftp.jtwc.adeck.2.atcf.pl $tdtg		-	ftp my adecks to atcf
+	p.tc.bt.ngtrp.pl cur					-	convert ngtrp_YYYY.jtwc to my bt tracks
+
+
+$wxmappdir/wxmap.clean.wxmap.pl cur 10 n	-		clean wxmap
+$wxmappdir/wxmap.clean.log.pl			-		clean wxmap logs
+

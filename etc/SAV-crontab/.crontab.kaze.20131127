@@ -1,0 +1,30 @@
+#------------------------------------------------------
+#
+#       kaze.fsl.noaa.gov crontab -- 20131127 -- no java on wxmap2
+#
+#------------------------------------------------------
+#
+
+runcmd='/data/amb/users/fiorino/w21/run.cron.tcsh'
+w2pdir='/data/amb/users/fiorino/w21/prc'
+w2prjdir='/data/amb/users/fiorino/w21/prj'
+
+# cagips
+# TCs
+# gfs goes
+# ocean
+# precip
+# model
+# inventory l2/du/mss
+# rtfim
+# special
+# jtwc cagips
+# cleanup
+
+#cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc - cagips
+# -- 20120329 -- something in M.py ? caused this to crash on 20120326
+# -- 20131127 -- no /usr/bin/java on wxmap2 move back to kaze
+*/3 * * * * $runcmd "$w2pdir/cagips/rulebotagent/p.chk.runagent.running.py"                                   >> /ptmp/log.w2.cagips.RUNNING 2>&1
+# -- 20120517 -- kill agent and clear cache
+1  1  * * * $runcmd "$w2pdir/cagips/rulebotagent/p.reset.cagips.agent.py"                                     >> /ptmp/log.w2.cagips.RESETCACHE 2>&1
+

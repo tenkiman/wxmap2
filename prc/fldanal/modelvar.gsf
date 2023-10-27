@@ -1,0 +1,196 @@
+function modelvar()
+
+_pland=50
+_bskip=5
+_vskip=3
+_vskip850=3
+_vskip2=4
+_vskipuas=4
+_strmdenuas=4
+_strmdenua=5
+_strmdenua2=5
+_regridshr=0
+_regriduas=0
+_regridprw=0
+_regridqv=0
+_regridthk=0
+_regriddlm=0
+_regridpr=0
+_regridpsl=0
+_regridzthk=0
+_regridz5=0
+
+if(_model='ecm' | _model='cmc' | _model='gfs' | _model='ukm' | _model='gfs' | _model='ngp')
+  _bskip=5
+  _vskip=3
+endif
+
+if(_model ='ngp2' | _model ='ecm2' | _model ='ecmn' | _model ='cmc2')
+  _bskip=5
+  _vskip=3
+  _vskipuas=3
+  _vskip3=10
+
+# -- be like 0.5 deg models
+#
+  _bskip=8
+  _vskipuas=5
+  _regridua=1
+  _regridshr=1
+  _regriduas=1
+endif
+
+if(_model ='ecmg')
+  _bskip=8
+  _vskip=3
+  _vskip2=8
+  _vskip3=10
+  _strmdenua2=4
+  _strmdenua=4
+  _regridshr=1
+endif
+
+if(_model = 'jgsm')
+  _vskipuas=4
+  _regridpr=0
+  _bskip=5
+  _vskip=3
+  _vskip2=8
+  _vskip3=10
+
+  _strmdenuas=4
+  _strmdenua2=4
+  _strmdenua=4
+
+  _regridua=1
+  _regridshr=1
+  _regriduas=1
+  _regriddlm=1  
+  
+endif
+
+if(_model = 'gfs2' | _model = 'fim8' | _model = 'ngpc' | _model = 'navg' | _model = 'gfsc'  | _model = 'ecmt')
+  _bskip=8
+  _vskip=5
+  _vskip2=8
+  _vskip3=10
+  _vskipuas=5
+  _strmdenuas=4
+  _strmdenua=4
+  _strmdenua2=5
+  _regridshr=1
+  _regriduas=1
+  _regridua=1
+  _regriddlm=1  
+
+endif
+
+# -- like 0.5 deg models
+#
+if(_model = 'fv3e' | _model = 'fv3g')
+  _bskip=8
+  _vskip=5
+  _vskip2=8
+  _vskip3=10
+  _vskipuas=5
+  _strmdenuas=4
+  _strmdenua=4
+  _strmdenua2=5
+  _regridshr=1
+  _regriduas=1
+  _regridua=1
+endif
+
+
+if(_model = 'fimx' | _model = 'ukm2')
+  _bskip=6
+  _vskip=6
+  _vskip2=8
+  _vskip3=10
+  _vskipuas=5
+  _strmdenuas=4
+  _strmdenua=4
+  _strmdenua2=5
+  _regridshr=1
+  _regriduas=1
+  _regridua=1
+endif
+
+
+# -- new hi-res data since 201006
+#
+if(_model = 'ukm2')
+  _bskip=15
+  _vskip=10
+  _vskip2=12
+  _vskipuas=5
+  _strmdenuas=4
+  _strmdenua=4
+  _strmdenua2=4
+  _regriduas=1
+  _regridua=1
+  _regridz5=1
+  _regridzthk=1
+
+endif
+
+# -- new hi-res data since 20140722
+#
+if(_model = 'ukm2')
+  _bskip=10
+  _vskip=5
+  _vskip2=20
+  _vskipuas=5
+  _strmdenuas=4
+  _strmdenua=4
+  _strmdenua2=4
+  _regriduas=1
+  _regridua=1
+  _regridz5=1
+  _regridzthk=1
+
+endif
+
+# -- new hi-res data since 20170711
+#
+if(_model = 'ukm2')
+  _bskip=8
+  _vskip=4
+  _vskip2=32
+  _vskipuas=5
+  _strmdenuas=4
+  _strmdenua=4
+  _strmdenua2=4
+  _regriduas=1
+  _regridua=1
+  _regridz5=1
+  _regridzthk=1
+  _regridshr=1
+
+endif
+
+
+# -- new hi-res data since 20170126
+# -- 20170214 - using 0.25 gfs2 -- same as ecm4
+#
+if(_model = 'ecm4' | _model = 'gfs2' | _model = 'ecm5' | _model = 'cgd2')
+  _bskip=16
+  _vskip=5
+  _vskip2=24
+  _vskipuas=5
+  _strmdenuas=4
+  _strmdenua=4
+  _strmdenua2=4
+  _regridshr=1
+  _regriduas=1
+  _regridua=1
+  _regridz5=1
+  _regridzthk=1
+  if(_regridshr = 1) ; _bskip=10 ; endif
+  if(_regridua  = 1) ; _bskip=5 ; _vskip=5 ; endif
+  if(_regridshr = 1) ; _strmdenua2=5 ; endif
+  _regriddlm=1  
+
+endif
+
+return

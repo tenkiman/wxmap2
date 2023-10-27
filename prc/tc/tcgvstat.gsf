@@ -1,0 +1,38 @@
+function tcgvstat()
+
+_prod=0
+
+_plttype='fe'
+_vpath='/tmp/tc.veri.stat.ctl'
+
+# model cards
+_m1tcen='NCEP'       ; _m1tmod='GFS (T254L64)'     ; _m1tup='GFS'
+_m2tcen='NRL/ATCF'       ; _m2tmod='CLIPER'     ; _m2tup='CLP'
+
+# title cards
+_tt1='`22005 LANT`0 TC Mean Forecast Error (FE) [nm] and Max Sfc Wind [kt] :: GFS v CLP'
+_tt2=' `2Hetero (all cases) :: `0Verirule: JTWC  NCEP GFS (T254L64) v NRL/ATCF CLIPER'
+_st1='FE - bar ; # cases (N) - bullet bars ; Vmax model (color)and BT(black,dash) - lines'
+
+# max plot limits
+_ntmax=500  ;  _mwmax=100 ; _femax=500
+
+# units
+_units='english'
+
+pltdir='/pcmdi/chico_dat/wxmap2/plt/tc/ops/veri/2005.nhem'
+pltbase='tc.veri.stat.fe.english.ops.2005.nhem.jtwc.hetero.L.avn.clp'
+pltname=pltdir'/'pltbase
+
+_pngpath=pltname'.png'
+_pspath=pltname'.ps'
+_epspath=pltname'.eps'
+_gmpath=pltname'.gm'
+_pngfile='~/'pltbase'.png'
+_epsfile='~/'pltbase'.eps'
+
+
+_st2=_m1tmod' = green bar ; '_m2tmod' = blue bar'
+_st3='bullet bars : Top = # obs ; green = # detected '_m1tup' ; blue = # detected '_m2tup
+
+return

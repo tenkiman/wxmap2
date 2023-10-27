@@ -1,0 +1,902 @@
+<html>
+<head>
+<title>WXMAP Technical Documentation</title>
+</head>
+<body background="../icon/bkgswirl.gif" TEXT="#000000" LINK="#0000FF" VLINK="#006030">
+<h1>WXMAP Technical Documentation -- </h1>
+<h3><i><font color=red>How the Web is built and maintained...</font></i></h3>
+<ul>
+<li><a href="#webenvset"><b>Environment Setup</b></a>
+<li><a href="#weblayout"><b>Layout of the Web</b></a>
+<li><a href="#webprc"><b>Processing Scripts</b></a>
+<li><a href="#webarea"><b>Adding/Changing Areas</b></a>
+<li><a href="#webgrf"><b>Weather Map Plot Script</b></a>
+<li><a href="#webgrads"><b>GrADS - Grid Analysis and Display System</b></a>
+</ul>
+<img src="../icon/colaline.gif">
+
+<p>
+This document describes how the WXMAP web is configured and run
+for maintainance purposes.  
+</p>
+
+<p>
+The four major components of the web
+are: 1) configuration; 2) file locations; 3) perl processing
+scripts; and 4) the GrADS graphics script.
+</p>
+
+<!--
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#
+# web environment
+#
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+-->
+
+<a name="webenvset"></a>
+<hr>
+<h3>Environment setup</h3>
+
+<p><b>The web runs under the csh or tcsh</b>.  The root of the web is
+set in your .cshrc file.  Add the following</p>
+
+<pre>
+setenv WXMAP_BDIR "/home2/wxmap"
+source "$WXMAP_BDIR/.wxmaprc"
+</pre>
+
+<p> <code>.wxmaprc</code> sets environment variables that control
+most aspects of the web.  Other setup is done in the <code>wxmap.env.pl</code>
+script located in <code>$WXMAP_BDIR/prc/wxmap</code>.
+</p>
+
+<h3><code>.wxmaprc</code></h3>
+
+<p>
+A listing of <code>.wxmaprc</code> is given below with a desription of the variables. 
+</p>
+
+
+<pre>
+##################################################
+#
+#	WXMAP loop environment
+#
+##################################################
+
+setenv WXMAP_PROD_CENTER "NAVLANTMETOCCEN"   <---  title on the web documents; who's web this is
+
+setenv WXMAP_SHDIR "$WXMAP_BDIR/prc/wxmap"   <---  location of scripts
+setenv WXMAP_PERLDIR "$WXMAP_BDIR/perl"      <---  location of perl utility scripts
+                                                   lib/mf.pl)
+
+setenv WXMAP_FTPDIR_FNMOC /pub/fiorino/fnmoc/dat  <--- dir on ftp server with NOGAPS data
+setenv WXMAP_FTPDIR_NCEP /pub/fiorino/ncep/dat    <--- dir on ftp server with NCEP (MRF/AVN) data
+
+setenv WXMAP_GEODIR "$WXMAP_BDIR/dat/geog"        <--- geography data (I have put a 1deg 
+                                                       land-sea mask and topo data set here)  
+setenv WXMAP_CLIMOSST "$WXMAP_BDIR/dat/climo/sst" <--- climo SST for anomaly calc
+                                                       (based on 1979-96 AMIP II SST sea-ice data)
+
+setenv WXMAP_PRC_WXMAP_DIR "$WXMAP_BDIR/prc/wxmap"  <--- processing directory for graphics 
+                                                         and utilities
+setenv WXMAP_PRC_HTML_DIR "$WXMAP_BDIR/prc/html"    <--- processing dir for making web docs
+setenv WXMAP_PRC_DAT_DIR "$WXMAP_BDIR/prc/dat"      <--- processing dir for data
+
+##################################################
+#
+#	HTML
+#
+##################################################
+
+setenv WXMAP_HTML_BASE "/wxmap/web"                 <--- root URL of web (set by server)
+setenv WXMAP_HTML_BASE_DOC "/wxmap/doc"             <--- web doc dir
+setenv WXMAP_HTML_BASE_CLASSES "/wxmap/classes"     <--- java applications
+setenv WXMAP_HTML_BASE_GRF "/wxmap/grf"             <--- location of web graphics
+setenv WXMAP_HTML_BASE_ICON "/wxmap/icon"           <--- location of web icons 
+setenv WXMAP_WEB_DIR "$WXMAP_BDIR/web"              <--- FILESYSTEM pointed to by root URL
+
+
+###################################################
+#
+#	AREA PROPERTIES
+#	NLMOC
+#
+###################################################
+
+setenv WXMAP_AREAS aor:localops:norbar:conus:usa_wc:usa_se:usa_ne
+       ^--- the areas, these are the internal names
+       
+setenv WXMAP_AREAS_MODELS "avn mrf ngp":"avn mrf ngp":"avn mrf ngp":"mrf ngp":"mrf ngp":"mrf ngp":"mrf ngp"
+       ^--- the models for each areas
+
+setenv WXMAP_AREAS_PRC gif:gif:gif:gif:gif:gif:gif
+       ^--- how the graphics are processed:  gif - xtof utility; gxgif - gxgif utility 
+
+setenv WXMAP_AREAS_MACH default:default:default:default:default:default:default
+       ^--- what machine produces the graphics
+
+setenv WXMAP_AREAS_TYPES tropic:midlat:midlat:longrange:longrange:longrange:longrange
+       ^--- area plot types, plots are based on the area type
+
+setenv WXMAP_AREAS_DESC "NLMOC AOR":"LOCALOPS":"North Barents Sea":"CONUS":"West Coast USA":"Southeast USA":"Northeast USA"
+       ^--- area titles in the web
+
+setenv WXMAP_PLOT_TYPES midlat:tropic:longrange
+       ^--- the types of plots
+
+setenv WXMAP_PLOT_TYPES_PLOTS "uas 500 psl 850 prp":"uas u20 u50 prp":"thk prp tmx tmn 500"
+       ^--- what plots are made for each type 
+
+setenv WXMAP_PLOT_TYPES_TAUS "default":"default":"0 240 24"
+       ^--- what forecast times are plotted, default is the data taus
+
+###################################################
+#
+#	MODEL PROPERTIES
+#
+###################################################
+
+setenv WXMAP_MODELS avn:mrf:ngp
+       ^--- the models
+
+setenv WXMAP_MODELS_CENTER ncep:ncep:fnmoc
+       ^--- center running the model
+
+setenv WXMAP_MODELS_FTPSERVER sprite.llnl.gov:sprite.llnl.gov:sprite.llnl.gov
+       ^--- ftp server providing the data
+
+setenv WXMAP_MODELS_FTPDIR /pub/fiorino/ncep/dat:/pub/fiorino/ncep/dat:/pub/fiorino/fnmoc/dat
+       ^--- location of the model data on the server
+
+setenv WXMAP_MODELS_CURRENT_DATDIR $WXMAP_BDIR/dat/ncep/current:$WXMAP_BDIR/dat/ncep/current:$WXMAP_BDIR/dat/fnmoc/current
+       ^--- directory where the current data is put
+
+setenv WXMAP_MODELS_ARCHIVE_DATDIR $WXMAP_BDIR/dat/ncep/archive:$WXMAP_BDIR/dat/ncep/archive:$WXMAP_BDIR/dat/fnmoc/archive
+       ^--- archive directory where the data are stored
+
+setenv WXMAP_MODELS_ARCHIVE_GRFDIR $WXMAP_BDIR/grf/ncep/archive:$WXMAP_BDIR/grf/ncep/archive:$WXMAP_BDIR/grf/fnmoc/archive
+       ^--- archive directory where the graphics are stored for each model
+
+setenv WXMAP_MODELS_GDIR "$WXMAP_BDIR/grf/ncep":"$WXMAP_BDIR/grf/ncep":"$WXMAP_BDIR/grf/fnmoc"
+       ^--- NOT USED...
+
+setenv WXMAP_MODELS_HTTP_GDIR "$WXMAP_HTML_BASE_GRF/ncep":"$WXMAP_HTML_BASE_GRF/ncep":"$WXMAP_HTML_BASE_GRF/fnmoc"
+       ^--- URL for graphics for each model
+
+setenv WXMAP_MODELS_DESC "NCEP AVN":"NCEP MRF":"FNMOC NOGAPS"
+       ^--- description of the model in the web
+
+setenv WXMAP_MODELS_BKG "bkgred.gif":"bkggreen.gif":"bkgblue.gif"
+       ^--- background gif image for the model homepages
+
+setenv WXMAP_MODELS_RUN00 1:1:1
+       ^--- 1 if the model is run at 00Z
+
+setenv WXMAP_MODELS_RUN12 1:0:1
+       ^--- 1 if the model is run at 12Z
+
+setenv WXMAP_MODELS_NTAU 72:144:144
+       ^--- max forecast of tau for the plots
+
+setenv WXMAP_MODELS_DATA_NTAU 72:240:144
+       ^--- max forecast of tau for data for each model
+
+setenv WXMAP_MODELS_TAUINC 12:12:12
+       ^--- tau increment of the data and plots
+
+setenv WXMAP_MODELS_PRACCUM 6:12:12
+       ^--- number of forecast hours in the precipitation accumulation
+
+setenv WXMAP_MODELS_HTML_DIR "avn/archive":"mrf/archive":"ngp/archive"
+       ^--- NOT USED?
+
+setenv WXMAP_MODELS_ADD_MAPS 0:0:1
+       ^--- additional maps produced for each model (1 for ngp is for SST)
+
+setenv WXMAP_MODELS_COLOR "red":"green":"navy"
+       ^--- color code of text for each model (1 for ngp is for SST)
+
+setenv WXMAP_MODELS_UCASE "AVN":"MRF":"NGP"
+       ^--- upper case model name
+
+</pre>
+
+<!--
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$
+$ web layout
+$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+-->
+
+<a name="weblayout"></a>
+<hr>
+<h3>Layout of the Web</h3>
+<p>
+The web is organized as a
+
+</p>
+
+<pre>
+/home2/wxmap/
+             .wxmaprc  # the map resource file 
+             tar.sh    # a sh script to package up the web scritps, etc
+
+             classes/                        <-- java classes for the applets
+
+             dat/                            <-- root dir for the GRIB data
+                 climo/                      <-- root dir for climo data
+                       sst/                  <-- AMIP SST climo data
+                 fnmoc/                      <-- root of FNMOC GRIB data
+                       current/              <-- where real time data is put first
+                       archive/              <-- data is moved to the archive
+                               97061800/     <-- each YYMMDDHH dir contains data for that DTG
+                                  .
+                                  .
+                                  .
+                               97062700/
+
+                 geog/                       <-- geography data ; 1deg land-sea mask and 
+                                                 topography using the same 10' data and 
+                                                 algorithm as in NOGAPS
+                 ncep/                       <-- root of NCEP data
+                      current/               <-- where real time data is put first
+                      archive/               <-- data is moved to the archive
+                              97061800/      <-- as in fnmoc above
+                                 .
+                                 .
+                                 .
+                              97062700/
+
+             doc/                            <-- html documentation
+
+             etc/                            <-- miscellaneous
+
+             grf/                            <-- root directory of graphics 
+                 fnmoc/                      <-- root of FNMOC (NOGAPS) graphics
+                       archive/              <-- organized like the data
+                               97061800/
+                                 .
+                                 .
+                                 .
+                               97062700/
+                 ncep/                       <-- root of NCEP (AVN and MRF) graphics
+                      archive/               <-- as above
+                              97061800/
+                                 .
+                                 .
+                                 .
+                              97062700/
+
+             icon/                           <-- original icons from the PCMDI WXMAP web
+                  new/                       <-- new and improved icons
+
+             perl/                           <-- root of perl utilities
+                  lib/                       <-- utility library; mf.pl contains the 
+                                                 time and DTG functions
+
+             prc/                            <-- root of all web processing
+                 dat/                        <-- ftp and manage processing
+                 html/                       <-- html creation scripts
+                 wxmap/                      <-- weather map graphics
+
+            web/                             <-- root of the web itself contains home pages
+                ngp/                         <-- root of NOGAPS html
+                    archive/                 <-- as in the data and graphics
+                            97061800/
+                                .
+                                .
+                                .
+                            97062700/
+
+                avn/                         <-- root of AVN html
+                    archive/                 <-- as above
+                            97061800/
+                                .
+                                .
+                                .
+                            97062700/
+
+                mrf/                         <-- root of MRF html
+                    archive/                 <-- as above
+                            97061800/
+                                .
+                                .
+                                .
+                            97062700/
+
+
+</pre>
+
+<!--
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$
+$ GrADS
+$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+-->
+<a name="webgrads"></a>
+<hr>
+<h3>GrADS Setup</h3>
+
+<p>
+
+At NLMOC, a complete installation of the latest GrADS has been
+put on <code>french.nlmoc.navy.mil</code>.  Start with the <a
+href="http://grads.iges.org/grads">GrADS</a> web site for some
+basic information and other points of reference.
+</p>
+
+<p>
+The key components of this distribution are:
+</p>
+
+<pre>
+/usr/local/grads/
+                bin/     <-- binaries of GrADS and various utilities
+                dat/     <-- GrADS font and geography data files
+                doc/     <-- GrADS documentation
+                gui/     <-- Athena-based GUI widget scripts
+                lib/     <-- various GrADS utility scripts
+                udf/     <-- "User Defined Funtions"
+
+Contents of bin/
+
+ grads          - full feature GrADS executable includes netCDF support;
+                  GRIB/netCDF output and scriptable GUI  
+ gribmap        - GrADS utility that creates the map between GRIB data and the
+                  GrADS data model
+ gribscan       - GrADS utility for listing/filtering GRIB data
+ gxeps          - GrADS utility that converts GrADS meta files to EPS
+ gxgif          - GrADS utility that converts GrADS meta files to GIF
+ gxps           - GrADS utility that converts GrADS meta files to PS
+ gxtran         - GrADS utility displays GrADS meta files
+ sample.gui     - sample GUI script
+ stnmap         - GrADS utility that maps station (observation) data
+ wgrads         - less featured GrADS executable for faster processing
+ wgrib          - GRIB list/filter utility by Wesley Ebizusaki (CPC/NCEP)
+ xtof           - Gary Love's Xwindow to graphics file dumper
+
+
+Contents of doc/
+
+ gadoc151.pdf       - PDF (V3.0) version of the Mother of All GrADS Documents (150+ pages)
+ gadoc151.ps        - ps version of the MOA doc
+ gadoc151.ps.a4     - A4 paper version
+ gadoc151.ps.gz     - gziped
+ gadoc151.txt       - txt version of the MOA
+ gadoc151.txt.gz    - gziped 
+ grads.proj.doc     - projections in Grads
+ gradsusr.doc       - GrADS email group doc
+ grib.grads.doc     - doing GRIB in GrADS doc
+ refv1.0-a4.ps                - "Gouge" sheet for GrADS in A4 
+ refv1.0-lang-a4.ps           - "Gouge" sheet for GrADS scripting in A4 
+ refv1.0-lang-letter.ps       - "Gouge" sheet for GrADS for US printers
+ refv1.0-letter.ps            - "Gouge" sheet for GrADS scripting for US printers
+ xa.doc                       - doc on the xtof utilities
+
+
+Contents of gui/    - various GUI scripts (POC: Dr. Arlindo DaSilva; asilva@dao.gsfc.nasa.gov)
+
+
+Contents of lib/    - various GrADS scripts; notable ones:
+
+                cbarn.gs - generic color bar sript
+                cbarc.gs - "circle" color bar sript
+
+Contents of udf/    - various GrADS scripts; notable ones:
+
+               esmrf/          - MRF saturation vapor pressure UDF source (fortran)
+               esmrf.exe       - MRF saturation vapor pressure UDF exec
+               lterp/          - Brian Doty's generic bilinear interpolator source (C)
+               lterp.exe       - Brian Doty's generic bilinear interpolator exec
+               regrid2/        - Mike Fiorino's general grid regrider source (fortran)
+               regrid2.exe     - Mike Fiorino's general grid regrider source (fortran) exec
+               udft            - the UDF table
+
+Setting your Environment for using GrADS:
+
+1) add /usr/local/grads/bin to your path
+
+2) set environment variables, i.e.,
+ 
+   setenv GADDIR /usr/local/grads/dat
+   setenv GASCRP /usr/local/grads/lib
+   setenv GAUDFT /usr/local/grads/udf/udft
+
+</pre>
+
+<!--
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#
+# web processing
+#
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+-->
+
+<a name="webprc"></a>
+<hr>
+<h3>Processing Scripts</h3>
+
+<p>All the processing scripts are written in perl and all have a
+.pl extension.  Further, if you run the scripts without command
+line options, a brief description will be given, including
+documentation on the command line arguements.
+</p>
+
+<p> The web is routinely generated using a cronjob on
+<b>french</b> under user <b>fiorino</b>.  It will be necessary to
+chown the web dir for another user to run the processes because
+of permission issues.  Here is the crontab file: </p>
+
+<pre>
+~fiorino/.crontab
+#------------------------------------------------------
+#
+#	tenki crontab
+#
+#	970306 - PDT update : +1 h on wxmap
+#
+45 4,16 * * * /home2/wxmap/prc/dat/run.cron.csh '/home2/wxmap/prc/dat/wxmap.ftp.pl current avn all' > /tmp/log.wxmap.ftp.avn.pl 2>&1
+15 9 * * * /home2/wxmap/prc/dat/run.cron.csh '/home2/wxmap/prc/dat/wxmap.ftp.pl current mrf all > /tmp/log.wxmap.ftp.mrf.pl 2>&1
+15 6,18 * * * /home2/wxmap/prc/dat/run.cron.csh '/home2/wxmap/prc/dat/wxmap.ftp.pl current ngp all' > /tmp/log.wxmap.ftp.ngp.pl 2>&1
+
+#------------------------------------------------------
+#
+#  Clean up the web
+#  970603
+#
+#------------------------------------------------------
+15 11 * * * /home2/wxmap/prc/dat/run.cron.csh '/home2/wxmap/prc/wxmap/wxmap.clean.web.pl current 5 n' > /tmp/log.wxmap.clean.web.pl 2>&1
+</pre>
+
+<p> The clock on <code>french</code> is now in UTC and three jobs
+are run, one for each model.  The avn is kicked off at +4:45 OOZ
+and 12Z, the ngp run at +6:15 00Z and 12Z and the mrf at +9:15 at
+00Z. 
+</p>
+
+<p> The main driving script is
+<b><code>/home2/wxmap/prc/dat/wxmap.ftp.pl</code></b>.  All
+processing flows from this script, including ftp data xfr,
+graphics generation and web contstruction.  This script is "fire
+and forget."  That is, it checks if the data are available and if
+not falls asleep and the wakes up and checks until the data are
+ready for ftp from the ftp server (set in .wxmaprc and currently
+sprite.llnl.gov).  The script will go through this wake-up-sleep
+cycle for up to 7 hours (set by $nhoursleep variable) before
+giving up.  <code>wxmap.ftp.pl</code> can also be used to list
+the contents of the ftp server directory for checking purposes.
+Following the scripts invoked by <code>wxmap.ftp.pl</code> is the
+best way to learn how the web works, but before discussing these
+scripts, I'll give a listing of all the perl scripts for
+reference.</p>
+
+<pre>
+
+
+/home2/wxmap/prc/dat/    *************** data processing 
+
+<a href="../prc/dat/l.pl">l.pl</a>                  <-- a data listing utilitiy
+<a href="../prc/dat/wxmap.ftp.pl">wxmap.ftp.pl</a>          <-- the data xfr script and main management script by cron          
+<a href="../prc/dat/wxmap.gribmap.pl">wxmap.gribmap.pl</a>      <-- moves the "current" grib data to the archive directory
+                           and creates the GrADS .ctl file and does the gribmap.  
+                           This creates the data GrADS accesses for creating the maps
+
+
+/home2/wxmap/prc/wxmap/  *************** graphics and setup/management
+
+<a href="../prc/wxmap/t.wxmap.pl">t.wxmap.pl</a>                   <-- script to test the grads graphics script g.wxmap.gs
+<a href="../prc/wxmap/wxmap.archive.dat.pl">wxmap.archive.dat.pl</a>         <-- NOT USED HERE
+<a href="../prc/wxmap/wxmap.button.area.pl">wxmap.button.area.pl</a>         <-- creates area buttons graphics for the web
+<a href="../prc/wxmap/wxmap.clean.web.pl">wxmap.clean.web.pl</a>           <-- deletes old data, graphics and html
+<a href="../prc/wxmap/wxmap.env.pl">wxmap.env.pl</a>                 <-- utility script which is invoked by all the scripts 
+<a href="../prc/wxmap/wxmap.make.g.wxmap.gs.cfg.pl">wxmap.make.g.wxmap.gs.cfg.pl</a> <-- creates input file for the GrADS script g.wxmap.gs
+<a href="../prc/wxmap/wxmap.plot.all.pl">wxmap.plot.all.pl</a>            <-- plot all areas
+<a href="../prc/wxmap/wxmap.plot.pl">wxmap.plot.pl</a>                <-- main graphics production script
+<a href="../prc/wxmap/wxmap.redo.pl">wxmap.redo.pl</a>                <-- used to redo graphics and/or html, typically used to
+                                 reconstruct the web when changes have by made
+
+<a href="../prc/wxmap/g.wxmap.gs">g.wxmap.gs</a>            <-- GrADS script which makes the weather maps
+<a href="../prc/wxmap/wxmap.button.area.gs">wxmap.button.area.gs</a>   <-- GrADS scripit to make the area buttons
+
+
+/home2/wxmap/prc/html/   *************** web html doc creation 
+
+wxmap.check.pl               <-- checks number of html docs created
+wxmap.htm.pl                 <-- MAIN html production script
+wxmap.main.pl                <-- makes the main home pages
+wxmap.movie.pl               <-- makes movie loop html
+wxmap.sst.htm.pl             <-- makes html for FNMOC SST 
+wxmap.web.pl                 <-- main DRIVER routine which is makes all
+                                 the web doc html
+</pre>
+
+<!--
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#
+# web areas
+#
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+-->
+
+<a name="webarea"></a>
+<h3>Adding/Changing Areas</h3>
+<hr>
+
+<p> The properties of the areas are defined by configuration
+files located in /home2/wxmap/prc/wxmap.  The are named
+<code>area.AAAA.cfg</code> where <code>AAAA</code> is the area
+name defined in <code>.wxmaprc</code>.  There are two basic
+types: 1) spherical (lat/lon grids); and 2) polar projections.
+The area parameters will be described for both types.
+</p>
+
+<pre>
+
+********** LON/LAT (SPHERICAL) PROJECTION *********
+
+area.aor.cfg:
+
+scaled               <-- GrADS projection, either "scaled" (disregard aspect ratio)
+                         or latlon (aspect ratio maintained)          
+mres                 <-- map data set (mres = medium res ; hires = hires lowrew = lowres)
+0.8 10.2 0.8 7.8     <-- limits of the plot area in inches
+-100                 <-- DATA and DISPLAY grid W lon (deg E)
+10                   <-- DATA and DISPLAY grid E lon (deg E)
+-5                   <-- DATA and DISPLAY grid S lat (deg N)
+75                   <-- DATA and DISPLAY grid N lat (deg N)
+default              <-- project parameters default means ignore 
+default
+default
+default
+20                   <-- increment for longitude lines
+10                   <-- increment for latitude lines
+
+********** POLAR STERIO PROJECTION ***********
+
+area.conus.cfg:
+
+nps                  <-- defines a north polar stereo DISPLAY projection
+mres                 
+0.4 10.8 0.65 8.25
+-180                 <-- DATA grid W lon (deg E)
+-30                  <-- DATA grid E lon (deg E)
+10                   <-- DATA grid S lat (deg N)
+75                   <-- DATA grid N lat (deg N)
+-140                 <-- DISPLAY W lon (deg E)
+-65                  <-- DISPLAY E lon (deg E)
+22                   <-- DISPLAY S lat (deg N)
+70                   <-- DISPLAY N lat (deg N)
+10                   as above
+10
+
+</pre> 
+
+
+<p>I create a new area by simply making a <code>area.*.cfg</code>
+file and then adjusting the parameters by trail and error.  I use
+the prc/wxmap/t.gxmap.pl script for this purpose.  This script is
+used for testing both new areas and plots.  The key to
+understanding how these parameters work is to first understand
+the distinction between the "DATA" grid and the "DISPLAY" grid in
+GrADS.</p>
+
+<p>The graphics are actually calculated on the DATA grid as
+defined by the GrADS dimension enviroment (e.g, 'set lat -10 20 ;
+set lon 180 360').  The are put onto the screen by transform from
+grid coordinates (i,j) to "world" coordinates (lon,lat) and then
+to graphics coordinates (x,y on screen).  The DISPLAY lon/lat
+bounds control the DISPLAY project for the polar stereo DISPLAY
+projection.  Thus, for stereo projections, the DATA grid (where
+the graphics happen) should be larger than the limits defined by
+the DISPLAY parameters to insure the entire display grid is
+filled with a graphic.
+</p>
+
+<!--
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#
+# web graphics
+#
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+-->
+
+<a name="webgrf"></a>
+<hr>
+<h3>Weather Map Plot Script</h3>
+
+<p> The main GrADS plotting script is
+<a href="../prc/wxmap/g.wxmap.gs"><b><code>/home2/wxmap/prc/wxmap/g.wxmap.gs</code></b></a>.  This is
+the heart of the system and represents my five years of
+experience with GrADS and 20 years of professional meteorological
+experience.  The trick to adding new plots or adjusting current
+plots is to understand this script.  A quick tour through the
+script is given below:
+
+</p>
+
+<pre>
+
+*************************************************
+*
+* main function driver for plotting function gwxmap
+*  
+**************************************************
+nrun=readrun(args)
+.
+.
+.
+irun=1
+while(irun<=nrun)
+  args=_args.irun  
+  rc=gwxmap(args)
+  irun=irun+1
+endwhile
+if(rc!='') ; 'quit' ; endif
+
+*************************************************
+*
+*	plotting function gwxmap 
+*	same as g.wxmap.gs
+*  
+**************************************************
+
+function gwxmap (args)
+
+.
+.
+.
+
+_bdtg=subwrd(args,1)                    <-- parse the args passed to the plot function
+_model=subwrd(args,2)
+_tau=subwrd(args,3)
+_area=subwrd(args,4)
+_pn=subwrd(args,5)
+_batch=subwrd(args,6)
+if(_batch = '') ; _batch='n' ; endif
+_gname=subwrd(args,7)
+if(_gname='') ; _gname=0 ; endif
+_offline=subwrd(args,8)
+if(_offline='') ; _offline=0 ; endif
+_grfprc=subwrd(args,9)
+if(_grfprc='') ; _grfprc=_grfprcdef ; endif
+
+.
+.
+.
+
+_myname='LCDR Mike Fiorino, NMORA 1887, Santa Clara, CA'  <-- author
+if(_model=ngp)
+tack1='NOGAPS Data Courtesy of Fleet Numerical Meteorology and Oceanography Center, Monterey, CA'
+tack2='GrADS (http://grads.iges.org/grads) Graphics by '_myname
+endif
+
+.
+.
+.
+
+rc=readcfg()                              <-- configuration info passed through a file
+                                          <-- interaction between the system and a 
+                                          <-- GrADS script is very primitive now
+
+.
+.
+.
+
+********************************************************
+*
+*  open the data files!!!
+*
+********************************************************
+
+
+if(_fnf < 0 )
+  if(_model='mrf')
+    _fnf=ofile(_datdir'/mrf.10.'_bdtg'.ctl')
+    _fm=ofile(_geodir'/geo.1deg.ctl')
+    _fsc=ofile(_climosstdir'/climobs_sst_clim.ctl')
+   _fnf25=ofile(_datdir'/mrf.25.'_bdtg'.ctl')
+  else
+    _fnf=ofile(_datdir'/'_model'.'_bdtg'.ctl')
+    _fm=ofile(_geodir'/geo.1deg.ctl')
+    _fsc=ofile(_climosstdir'/climobs_sst_clim.ctl')
+  endif
+endif
+
+.
+.
+.
+
+************************************************************************
+*
+*	call main plot function
+*       pass the plot number,
+*       return and then convert to gif
+*
+************************************************************************
+
+rc=pman(_pn)
+
+.
+.
+.
+
+return(2)
+
+************************************************************************
+************************************************************************
+*
+*	main plot function
+*       pass the plot number 
+*       one function for each plot type 
+*
+************************************************************************
+************************************************************************
+
+function pman(k)
+
+.
+.
+.
+
+************************
+*
+*  the relationship between plot number and three letter mnemonic
+*  is set in wxmap.env.pl
+*
+*  note that I have started on a new plot u700 for
+*  the 700 mb flow in the tropics
+*
+************************
+pstat=1
+if(k=1) ; rc=gpz500(j) ; endif
+if(k=2) ; rc=gppsl(j) ; endif
+if(k=3) ; rc=gpprecip(j,_prvar) ; endif
+if(k=4) ; rc=gp850(j) ; endif
+if(k=5) ; rc=gptas(j) ; endif
+if(k=6) ; rc=gpuas(j) ; endif
+if(k=7) ; rc=gpu500(j) ; endif
+if(k=8) ; rc=gpu200(j) ; endif
+if(k=9) ; rc=gpu700(j) ; endif
+if(k=10) ; rc=gpsst(j) ; endif
+if(k=20) ; rc=gptmax(j) ; endif
+if(k=21) ; rc=gptmin(j) ; endif
+if(k=22) ; rc=gpthk(j) ; endif
+
+if(rc = 0) ; pstat=0 ; endif
+if(rc = 99) ; pstat=99 ; endif
+return(pstat) 
+
+*
+*-------------------------- gpu700 ------------------
+*
+function gpu700(k)
+t1='700mb  Flow / barbs (kt) / v comp'
+rc=dtitle(t1,k)
+pstat=1
+_shades=0
+'set lev 500'
+'set grads off'
+rc=datachk(zg) 
+if(rc != 0)
+  return(pstat)
+endif
+
+'set lev 700'
+
+rcu=datachk(ua)
+rcv=datachk(va)
+if(rcu=0 & rcv=0)
+
+'u7=ua*'_ms2kt
+'v7=va*'_ms2kt
+'s7=mag(u7,v7)'
+
+pstat=0
+'set gxout shaded'
+'set csmooth on'
+rc=jaecol()
+
+pcol.2='49 48 47 46 45 44 43 42 41 21 22 23 24 25 26 27 28 29'
+pcol.2='49 48 47 46 45 44 43 42 41 31 32 33 34 35 36 37 38 39'
+pcol.1='69 68 67 66 65 63 61 61 53 55 56 57 58 59'
+pcol.1='59 58 57 55 55 53 52 51 61 62 63 64 65 66 67 68 69'
+pcol.1='59 58 57 55 55 53 52 62 63 64 65 66 67 68 69'
+*pcol.1='49 48 47 45 44 43 42 62 63 64 65 66 67 68 69'
+pcol.1='54 53 52 61 42 43 44 45 47 48 49 69 68 67 66 65 64 63 21 22 23 24 25 26'
+
+'set xlint '_xlint
+'set ylint '_ylint
+'set rbrange -20 20'
+'set rbcols 'pcol.1
+'set black -2 2'
+'set cint 2'
+'d va'
+'q shades'
+_shades=result
+
+vrtcnt=1
+if(vrtcnt)
+'set gxout contour'
+'set cint 4'
+'set ccolor 0'
+'set clab off'
+'set black -2 2'
+'set grads off'
+'d va'
+endif
+
+'set gxout stream'
+'set strmden 5'
+'set cthick 10'
+'set ccolor 0'
+'d ua;va'
+'set cthick 4'
+'set ccolor 33'
+'d ua;va'
+
+'set gxout barb'
+'set cthick 20'
+'set ccolor 0'
+'set digsiz 0.05'
+'d skip(u7,5);v7'
+
+'set cthick 5'
+'set ccolor 3'
+'set ccolor rainbow'
+'d skip(u7,5);v7;s7'
+
+'set map 0 0 12'
+'draw map'
+
+'set map 1 0 7'
+'draw map'
+
+
+endif
+
+rc=dtitle(t1,k)
+if(_shades!=0) ; rc=cbarc() ; endif
+return(pstat)
+
+
+------------------- more plotting functions and utility functions -------
+
+.
+.
+.
+
+
+</pre>
+
+<h3>Weather Button Graphics</h3>
+
+<p>
+
+All the button icons from the original PCMDI WXMAP web have been
+updated and improved.  These graphics are located in
+<b><code>/home2/wxmap/icon/new</code></b> and were created using
+the win32 program <b><i>PhotoImpact with web extensions</i></b>
+by Ulead Systems.  The package is installed on an NT box in 70
+department.  The buttons are generated by exporting the graphic
+in GIF.  The source (photoimpact native format) files have a .UFO
+extension and are named <b><code>button_NNNN_XXxYY.UFO</code></b>
+where <b><code>NNNN</code></b> is a descriptor
+<b><code>XX</code></b> is the size in pixels in x (width) and
+<b><code>YY</code></b> is the size in y (height).  When view a
+doc on the web, examine the html source (view source in netscape)
+to see how the button icons are included.
+</p>
+
+<i>Last Update: 27 June, 1997</i><br>
+Send Comments to <a href="mailto:fiorino@llnl.gov"> Mike Fiorino</a>, 
+<a href="http://www-pcmdi.llnl.gov">PCMDI</a>, <a
+href="http://www.llnl.gov">LLNL</a>
+<br>
+<a href="http://www.llnl.gov/disclaimer.html">LLNL Disclaimers</a><br>
+UCRL-MI-125630
+</body>
+</html>

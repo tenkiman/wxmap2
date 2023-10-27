@@ -1,0 +1,277 @@
+20080430
+========
+
+bugs in jtwc adeck:  ash032000.dat line 2910 -- missing comma in lat, added
+SH, 03, 1999123012, 03, JTWC,  36, 126S,  495E,  20,    0,   ,  35, AAA,    0,    0,    0,    0, 
+ 
+
+20080827-28
+===========
+
+w2.tc.neumann.2.bdeck.py -- convert charlie's data to atcf bdeck form
+p.bt.neumann.sh -- do 1945 - 1990
+
+rules for selecting data set in merge
+
+neumann v ops
+
+W:
+-
+
+N <= 1971
+Ops > 1972
+
+A,B:
+---
+
+N <= 1997
+Ops >= 1998
+
+S,P -- 1992 12S in neumann broken?
+---
+
+Ops == 1992
+N <= 1996
+Ops >= 1997
+
+
+
+
+
+
+
+VitalsCard
+
+0	 'gfsn',
+1 2	 'FE',  '233',
+3 4 5	 'CT/Ab:',  '-115',  '-129',
+6 7 8    'CT/Av:','100', '17',
+9 10 11  'CT/AeN:', '-147', '-139',
+12 13 14 'VmB/Fc:', '43', '27',
+15 16 17 'VeCA/b:', '20', '-2',
+18 19 20 'VeUA/b:', '18.0', '-2.0', 
+21 22 23 'VeRA/b:', '22.0', '-16.4'
+
+
+
+# 0   1     2         3          4        5     6     7  8  9 10 11 12   13  14  15     16   17    18    19 
+#fsse 072 08L.2006 2006091412 2006091712 FLG: BTC_Fee TC HU CQ WN CQ WN  TDO: JLB FE:   85.7  LF:  0.00  0.00 
+
+# 20     21     22  23    24     25  26    27     28  29    30    31   32    33    34   35    36  37    38 
+#Bmot:  307.2   8.3 BP:  20.4  311.5 CP:  20.3  311.4 WP:  20.3  311.4 FP:  19.0  311.8 BW:  80.0 FW: 101.0 
+
+# 20     21     22  23      24    25   26    27     28  29    30    31   32    33    34   35   36    37    38   39   40   41 
+#Bmot:  307.2   8.3 Cmot:  300.0  10.0 BP:  20.4  311.5 CP:  20.3  311.4 WP:  20.3  311.4 FP:  19.0  311.8 BW:  80.0 FW: 101.0 
+
+#42    43   44   45  46     47     48    49     50     51    52 53
+#CW:  85.0 WW:  90.0 FS: -888.8  -88.8 -888.8  -88.8 -888.8  CT: CC 
+
+#  54            55     56       57      58      59     60
+#CT_AT(nm):   -56.7   -64.3    51.2    68.7    16.9   -84.0 
+
+#  61   62
+#BVd:  100 
+
+#  63   64   65 
+#FVd:  100  153
+
+# 66   67   68   69
+#FV:   80  100  101
+
+# 70    71   72   73
+#FVe:    0  -20  -21
+
+
+0 1	 ecmn 072 -- forecast aid id ;  TTT tau 
+
+2 4	 08L.2006 2006091700 2006092000 SSS.YYYY stormid.year ; base dtg ; valid dtg
+         flag BXX --  XX = TC, NT (non tc), mm (missing -- overwarned)
+                  FXX -- XX
+                         ee (forecast exists)
+                         BE (big error); 
+                         MR (forecast not made at this synoptic time) ;
+                         nr (no run, but should have) ;
+                         nt (no forecast for this tau) ;
+                         MT (missing tau -- forecast is missing for valid bt)
+                         e0 (no bt initially but forecast made)
+
+                      TC flg = TC|NT
+                         bdeck indicator TC state -- "Development" class in atcf best tracking
+                            bt in carq current tau
+                               bt in warning current tau
+                                  bt in carq tau 00
+                                     bt in warning tau 00
+                                     
+5 12	 FLG: BTC_Fee TC HU CQ WN CQ WN  
+
+
+         forecaster
+              initials
+13 14	 TDO: SRS
+
+         forecast error
+               -977.9 -- forecast but no verifying position
+               -888.8 -- REAL miss, verifying bt but no forecast -- big error
+               -999.9 -- no forecast...
+               -955.9 -- no forecast but bt -- fc is mia
+               -911.9 -- no forecast but was not suppose to for tau 
+15 16	 FE:   50.6  
+
+         land frac >=0.0
+                bt
+                      fc ; < 0 -- missing, not needed
+17 19	 LF:  0.00  0.00
+
+20 22	 Bmot:  273.5   8.2 12-h dir/spd bt motion
+23 25	 Cmot:  273.5   8.2 CARQ dir/spd
+
+26 28	 BP:  24.5  305.7 - bt lat/lon (e) position
+29 31	 CP:  24.6  305.7 - carq position 
+32 34	 WP:  24.6  305.7 - warning posit
+35 37	 FP:  24.3  304.8 - forecast position
+
+38 39	 BW:  95.0 - bt max sfc wind (kt) 
+40 41	 FW:  53.0 - forecast max sfc wind (kt)
+42 43	 CW:  95.0 - CARQ max sfc wind (kt)
+44 45	 WW:  95.0 - warning max sfc wind (kt)
+
+
+         Forecast Structure
+              fmaxspddist -- distance from center to max wind
+                      fminspd -- min sfc wind speed (kt)
+                            fminspddist -- dist from center to min wind (nm)
+                                   fmaxvrt -- rel vort max (10E-5)
+                                          fmaxvrtdist -- distance to max vort
+46 51	 FS:  112.8   11.5   15.8   25.5   23.3  
+
+
+         circ type
+             CC - closed sfc circ based on fnmoc tracker
+52 53	 CT: CC
+
+                        ct       at -- relative to bt
+                                         ct      at -- relative to forecast track
+                                                        E-W     N-S -- relative to bt
+54 60	 CT_AT(nm):   -56.7   -64.3    51.2    68.7    16.9   -84.0 
+
+               bvmaxchange
+61 62	 BVd:   36 
+
+                 fvmaxchange
+
+63 65	 FVd:   65   43
+
+                fcvmax -- corred + 5 kt
+                     fcvmaxun -- uncorred + 5 k6
+                           fcmvaxraw -- raw output
+66 67	 FV:    45   50    26 
+
+                 fcvmaxerr
+                     fcvmaxerrun
+                           fcvmaxerrraw
+68 73	 FVe:    0    -5   19
+
+
+
+
+
+
+20060118 -- update by storm
+---------------------------
+
+1) convert atcf adecks to wxmap form:
+
+   w2.tc.adeck.2.wxmap.adeck.py -y 2005 -m all
+
+2) do vdecks and extrap 
+
+   w2.tc.vdeck.py -s 30L.2005 -m all -B
+
+3) do vitals
+
+  w2.tc.vdeck.vitals.py -s 30L.2005 -m all.all
+
+
+
+
+
+
+
+
+
+20051207 -- updating data
+
+tcdat/
+
+w2.tc.names.py -y cur
+w2.tc.bt.bdeck.final.py ops
+w2.tc.bt.adeck.final.py ops
+w2.tc.bt.mdeck.final.py ops
+
+w2.tc.fc.update.py cur all -O
+
+w2.tc.vdeck.py -s 29L.2005 -m all -B
+
+w2.tc.vdeck.vitals.py -s 29L.2005 -m all
+
+
+
+20060101
+========
+
+
+comparison of doing +6 extrap of con of 00 v con of 06:
+
+cn3 of mmm00:
+-------------
+ tau    mfe1    mfe2  gainxy mfe2-1    POD%   POF%   Nr  NrM  Nbt  Nfc NfcM NfcO Mod1.Mod2
+  0h     9.0     9.0       0      0    95.3  100.0  316   15  316  301    0    0   cn3.cn3   L.2005
+ 12h    40.4    40.4       0      0    96.1   99.6  316   15  284  273    1   12   cn3.cn3   L.2005
+ 24h    65.4    65.4       0      0    96.9   99.6  316   15  255  247    1   19   cn3.cn3   L.2005
+ 36h    80.5    80.5       0      0    96.9   99.1  316   15  226  219    2   24   cn3.cn3   L.2005
+ 48h    93.3    93.3       0      0    96.5   99.0  316   15  202  195    2   26   cn3.cn3   L.2005
+ 72h   138.5   138.5       0      0    98.2   99.4  316   15  164  161    1   31   cn3.cn3   L.2005
+ 96h   227.8   227.8       0      0    79.2   82.4  316   15  130  103   22   30   cn3.cn3   L.2005
+120h   290.0   290.0       0      0    71.7   73.2  316   15   99   71   26   26   cn3.cn3   L.2005
+ffffffff do anal:                                                     time:  0.57 s
+
+
+cn3 of mmm06:
+-------------
+ tau    mfe1    mfe2  gainxy mfe2-1    POD%   POF%   Nr  NrM  Nbt  Nfc NfcM NfcO Mod1.Mod2
+  0h     8.8     8.8       0      0    45.9  100.0  632  342  632  290    0    0   cn3.cn3   L.2005
+ 12h    39.8    39.8       0      0    46.1   99.6  632  342  570  263    1   10   cn3.cn3   L.2005
+ 24h    66.0    66.0       0      0    46.4   99.6  632  342  511  237    1   18   cn3.cn3   L.2005
+ 36h    95.5    95.5       0      0    46.8   99.5  632  342  455  213    1   20   cn3.cn3   L.2005
+ 48h   109.3   109.3       0      0    47.0   99.5  632  342  406  191    1   24   cn3.cn3   L.2005
+ 72h   159.8   159.8       0      0    47.0   99.4  632  342  332  156    1   29   cn3.cn3   L.2005
+ 96h   256.2   256.2       0      0    38.4   82.1  632  342  263  101   22   25   cn3.cn3   L.2005
+120h   298.6   298.6       0      0    34.8   73.7  632  342  201   70   25   22   cn3.cn3   L.2005
+ffffffff do anal:                                                     time:  9.28 s
+
+
+cn3 of mmm00 +06:  --> linear process, i.e., con of 06 = +6 of con of 00y
+-----------------
+ tau    mfe1    mfe2  gainxy mfe2-1    POD%   POF%   Nr  NrM  Nbt  Nfc NfcM NfcO Mod1.Mod2
+  0h     9.4     9.4       0      0    45.9  100.0  632  342  632  290    0    0 cn306.cn306 L.2005
+ 12h    39.9    39.9       0      0    46.1   99.6  632  342  570  263    1   10 cn306.cn306 L.2005
+ 24h    65.8    65.8       0      0    46.4   99.6  632  342  511  237    1   18 cn306.cn306 L.2005
+ 36h    95.4    95.4       0      0    46.8   99.5  632  342  455  213    1   20 cn306.cn306 L.2005
+ 48h   108.8   108.8       0      0    47.0   99.5  632  342  406  191    1   24 cn306.cn306 L.2005
+ 72h   159.7   159.7       0      0    47.0   99.4  632  342  332  156    1   29 cn306.cn306 L.2005
+ 96h   256.4   256.4       0      0    38.4   82.1  632  342  263  101   22   25 cn306.cn306 L.2005
+120h   298.1   298.1       0      0    34.8   73.7  632  342  201   70   25   23 cn306.cn306 L.2005
+
+
+con:
+----
+ tau    mfe1    mfe2  gainxy mfe2-1    POD%   POF%   Nr  NrM  Nbt  Nfc NfcM NfcO Mod1.Mod2
+  0h     8.4     8.4       0      0    91.8  100.0  632   52  632  580    0    0 con00.con00 L.2005
+ 12h    37.8    37.8       0      0    93.2   99.6  632   52  570  531    2   21 con00.con00 L.2005
+ 24h    57.4    57.4       0      0    93.5   98.8  632   52  511  478    6   36 con00.con00 L.2005
+ 36h    77.1    77.1       0      0    94.5   99.1  632   52  455  430    4   41 con00.con00 L.2005
+ 48h    99.7    99.7       0      0    94.6   98.7  632   52  406  384    5   55 con00.con00 L.2005
+ 72h   150.6   150.6       0      0    93.4   98.1  632   52  332  310    6   64 con00.con00 L.2005
+ 96h   227.0   227.0       0      0    92.0   97.2  632   52  263  242    7   60 con00.con00 L.2005
+120h   296.5   296.5       0      0    90.0   94.3  632   52  201  181   11   63 con00.con00 L.2005
+

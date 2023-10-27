@@ -1,0 +1,157 @@
+#
+# *** version 20190303  ***
+# *** use ad2 in w2.tc.all.eps.py vice tigge .xml for ncep...stopped on 03030100?
+# *** changed -E to -2 in w2.tc.all.eps.py
+#
+#------------------------------------------------------
+#
+# -- tenki-linux crontab 
+# -- 20181229 - run TC proc during .gov shutdown
+#
+#------------------------------------------------------
+#
+
+runcmd='/dat1/w21/run.cron.tcsh'
+w2pdir='/dat1/w21/prc'
+w2prjdir='/dat1/w21/prj'
+
+#tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt - TCs
+#
+#
+08,43           0-23             * * * $runcmd "$w2pdir/tcdat/w2-tc-ops-dat.py ops"                                                  >> /ptmp/log.w2-.tc-ops-dat.py.TENKILF 2>&1
+29,59           0-23             * * * $runcmd "$w2pdir/tcdat/w2-tc-rsync-mirror-TC-names-DSs-tcvitals-wxmap2.py -X"                 >> /ptmp/log.w2-tc-rsync-mirror-TC-names-DSs-tcvitals-wxmap2.py.TC2WXMAP2 2>&1
+
+
+##########################28,48     0-23             * * * $runcmd "$w2pdir/tcdat/w2.tc.ops.dat.py ops -a"                               >> /ptmp/log.w2.tc.ops.dat.py.TENKIATCFONLY 2>&1
+
+# -- adc + ad2 for ecmt running 48 h behind... -- modified w2.tc.tmtrkN/mftrkN.py to do adc and ad2 for both NN and 9X
+#
+#29             03,15              * * * $runcmd "$w2pdir/tcdat/w2.tc.convert-tm-mftrkN-to-atcf-adeck.py tmtrkN -d cur-60.cur-36 -A"       >> /ptmp/log.w2.tc.convert-tm-mftrkN-to-atcf-adeck.py.wxmap2.ADC-tmtrkN-AD2-ECMT 2>&1
+#49             03,15              * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.ad2.py tmtrkN,mftrkN -d cur-60.cur-36 -9"                        >> /ptmp/log.w2.tc.dss.ad2.py.wxmap2.AD2-jt-nhc-tm-mftrkN-hourly-AD2-ECMT-9X 2>&1
+
+# -- really need?  tmtrkN,mftrkN,ec-wmo, ukmo?
+39          *               * * * $runcmd "$w2pdir/tcdat/w2.tc.convert-tm-mftrkN-to-atcf-adeck.py ncep,ukmo -d cur-24.cur -A"             >> /ptmp/log.w2.tc.convert-tm-mftrkN-to-atcf-adeck.py.wxmap2.ADC-all-hourly-AD2 2>&1
+
+# -- ad2 for non-adc (jt)
+09                *               * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.ad2.py jt -d cur-24.cur"                                    >> /ptmp/log.w2.tc.dss.ad2.py.wxmap2.AD2-jt-nhc-hourly-AD2 2>&1
+# -- do 9X really need? -- yes for a non adc source
+13		          *               * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.ad2.py jt,ncep,ukmo -d cur-24.cur -9"               >> /ptmp/log.w2.tc.dss.ad2.py.wxmap2.AD2-jt-nhc-tm-mftrkN-hourly-AD2-9X 2>&1
+
+# 20120702 -- tmtrkN clean
+#
+03   2                            * * * $runcmd "$w2pdir/tctrk/w2.tc.tmtrkN.py cur-24.cur-6 all -k"                                   >> /ptmp/log.w2.tc.tmtrkN.py.TCTRKCLEAN 2>&1
+
+# -- 20190315 -- add back tc.season
+#
+45 09                      * * * $runcmd "$w2pdir/tcclimo/w2.tc.season.py cur s -p ops.climo.all"                                     >> /ptmp/log.w2.cur.clm.py.TC.CLM-CUR 2>&1
+45 10                      * * * $runcmd "$w2pdir/tcclimo/w2.tc.season.py cur n -p ops.climo.all"                                     >> /ptmp/log.w2.cur.clm.py.TC.CLM-OTHER 2>&1
+
+
+#eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee - ecmwf bufr from dissemination.ecmwf.int
+#
+# -- 20180704 -- initial implementation on kaze from tenki.mike2
+
+57      06,18                     * * * $runcmd "$w2pdir/tcdat/w2.tc.wget.mirror.ecmwf-essential-tcbufr.py cur12 -E"            >> /ptmp/log.w2.tc.wget.mirror.ecmwf-essential-tcbufr.py-DET 2>&1
+45      07,19                     * * * $runcmd "$w2pdir/tcdat/w2.tc.wget.mirror.ecmwf-essential-tcbufr.py cur12-12.cur12"      >> /ptmp/log.w2.tc.wget.mirror.ecmwf-essential-tcbufr.py-EPS 2>&1
+25      03,15                     * * * $runcmd "$w2pdir/tcdat/w2.tc.wget.mirror.ecmwf-essential-tcbufr.py cur12-24.cur12-12"   >> /ptmp/log.w2.tc.wget.mirror.ecmwf-essential-tcbufr.py-EPSM12 2>&1
+
+# -- ecmwf bufr eps plots
+#
+####################################21,51  8-10,20-22                 * * * $runcmd "$w2pdir/tcdat/w2.tc.g.epsanal.dss.ad2.py ops12 ecmb"                  >> /ptmp/log.w2.tc.g.epsanal.dss.ad2.py.EPSPLOTECBUFR 2>&1
+
+# -- ncep tigge eps plots
+#     18z 00z  06z   12z  
+17    1-4,7-10,13-16,19-22         * * * $runcmd "$w2pdir/tcdat/w2.tc.all.eps.py cur-6 -2"                              >> /ptmp/log.w2.tc.all.eps.py.EPSPLOTTIGGENCEP 2>&1
+#     12z 18z  00z   06z -- catchup for 12-h old
+47    1-3,7-9,13-15,19-21          * * * $runcmd "$w2pdir/tcdat/w2.tc.all.eps.py cur-12 -2"                             >> /ptmp/log.w2.tc.all.eps.py.EPSPLOTTIGGENCEP-M12 2>&1
+# -- go after tigge for ncep/cmc vice just ad2
+27     5,11,17,23                  * * * $runcmd "$w2pdir/tcdat/w2.tc.all.eps.py cur-24.cur-6 -T -m ncep"               >> /ptmp/log.w2.tc.all.eps.py.TIGGE-NCEP 2>&1
+
+#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo - ocean
+#
+# 20100804 -- turn on :: mirror of oisst weekly grib
+32   4     * * * $runcmd "$w2pdir/flddat/w2.fld.wget.mirror.cpc.oisst.py"                                              >> /ptmp/log.w2.fld.wget.mirror.cpc.oisst.py.CPC.OISST 2>&1
+
+
+#gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg - gfs goes
+#
+# -- 20100607 -- wget gfs goes sat image 1deg files from ftpprd.ncep.noaa.gov
+23  3-6,9-12,13-18,21-23,0       * * * $runcmd "$w2pdir/flddat/w2.fld.wget.mirror.gfs.stbgoes.py cur-18.cur"          >> /ptmp/log.w2.fld.wget.mirror.gfs.stbgoes.py.GFS2 2>&1
+57  5-7,11-13,17-19,23,0-1       * * * $runcmd "$w2pdir/fldanal/w2.gfs.goes.loop.py ops6 all -A"                      >> /ptmp/log.w2.gfs.goes.loop.py.GOES 2>&1
+
+#mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm - model 
+#
+#20    4,10,16,22                    * * * $runcmd "$w2pdir/wxmap2/w2.nwp2.py ops6  gfs2"               >> /ptmp/log.w2.nwp2.py.GFS2_p420 2>&1
+# -- do the plot for gfs2...but not public .htm
+05    5,11,17,23                    * * * $runcmd "$w2pdir/wxmap2/w2.nwp2.py ops6 gfs2"                            >> /ptmp/log.w2.nwp2.py.GFS2_p505 2>&1
+01    7,13,19,1                     * * * $runcmd "$w2pdir/wxmap2/w2.nwp2.py ops6 gfs2"                            >> /ptmp/log.w2.nwp2.py.GFS2_p600 2>&1
+
+# -- 20160625 -- add ncep source of navgem -- really much easier/better than cagips
+
+05    6,12,18,0                     * * * $runcmd "$w2pdir/wxmap2/w2.nwp2.py ops6  navg"                           >> /ptmp/log.w2.nwp2.py.NAVG_p605 2>&1
+31    7,13,19,1                     * * * $runcmd "$w2pdir/wxmap2/w2.nwp2.py cur-6 navg"                           >> /ptmp/log.w2.nwp2.py.NAVG_700 2>&1
+31    8,14,20,2                     * * * $runcmd "$w2pdir/wxmap2/w2.nwp2.py cur-6 navg"                           >> /ptmp/log.w2.nwp2.py.NAVG_800 2>&1
+
+# -- 20150721 -- start collection ecmt on kishou
+# -- 20191114 -- turn off... failing on tenki7-mike2
+# -- 20191125 -- turn on twice/12h -- bad queue at ecmwf is now okay...
+# -- 20191128 -- turn off -- big queue
+# -- 20191221 -- turn back on ... no okay?
+# -- 20200117 -- turn off -- big queue?
+#
+39    9,11,21,23                  * * * $runcmd "$w2pdir/flddat/w2.fld.tigge.ecmwf.py cur12-d2 -t"                  >> /ptmp/log.w2.fld.tigge.ecmwf.py.ECMT 2>&1
+
+# -- 20200301 -- deprecate as last noaa dependency
+# # -- ecm4 -- only once / run on tenki -- problem with rsync of ln -s
+# 50    7,19                     * * * $runcmd "$w2pdir/wxmap2/do-ecm4.py ops12"                                        >> /ptmp/log.w2.nwp2.py.ECM4 2>&1
+# 20    9,21                     * * * $runcmd "$w2pdir/wxmap2/do-ecm4.py ops12"                                        >> /ptmp/log.w2.nwp2.py.ECM4 2>&1
+# 35    0,13                     * * * $runcmd "$w2pdir/wxmap2/do-ecm4.py cur12-12"                                     >> /ptmp/log.w2.nwp2.py.ECM4-cur12-12 2>&1
+
+# -- ecm5 -- 20191213 -- from ECMWF
+# -- 20200322 -- only kick off one per hour
+35       7,19                     * * * $runcmd "$w2pdir/wxmap2/do-ecm5.py cur12"                                        >> /ptmp/log.w2-do-ecm5.py.ECM5 2>&1
+25       8,20                     * * * $runcmd "$w2pdir/wxmap2/do-ecm5.py cur12"                                        >> /ptmp/log.w2-do-ecm5.py.ECM5-LATE 2>&1
+
+# -- cgd2 -- 20200102 -- from CMC dx 24km run
+47       6,18                     * * * $runcmd "$w2pdir/wxmap2/do-cgd2.py cur12"                                        >> /ptmp/log.w2.nwp2.py.CGD2 2>&1
+
+
+#pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp - precip
+#
+# 20090129 -- turn on :: qmorph processing
+# -- 20150924 -- turn off -- big slowdown...did w2.fld.pr.qmorph.clean.py 2015040100 -R to get older data off kaze
+# -- 20180822 -- turn off -- transition from ftp to http in wget
+# -- 20181229 -- turn off on tenki-linux because missing w2.fld.pr.cmorph-8km.lats.gs
+# -- 20190302 -- set up on tenki
+#
+01-59/30     * * * * $runcmd "$w2pdir/flddat/w2.fld.pr.qmorph.py cur-24.cur.24 -S qmorph -n 6 -J"                  >> /ptmp/log.w2.fld.qmorph.py.CPC-QMORPH 2>&1
+01-59/45     * * * * $runcmd "$w2pdir/flddat/w2.fld.pr.qmorph.py cur-48.cur-24 -S cmorph -n 6 -J"                  >> /ptmp/log.w2.fld.qmorph.py.CPC-CMORPH 2>&1
+15           * * * * $runcmd "$w2pdir/flddat/w2.fld.pr.qmorph.products.py ops6 -S qmorph -n 6 -J"                  >> /ptmp/log.w2.fld.qmorph.products.py.qmorph.CPC 2>&1
+15           * * * * $runcmd "$w2pdir/flddat/w2.fld.pr.qmorph.products.py cur-36.cur-24 -S cmorph -n 6 -J"         >> /ptmp/log.w2.fld.qmorph.products.py.cmorph.CPC 2>&1
+5            * * * * $runcmd "$w2pdir/flddat/w2.fld.pr.qmorph.global.products.py ops6 -S qmorph -n 6 -J"           >> /ptmp/log.w2.fld.qmorph.global.products.py.qmorph.CPC 2>&1
+45           * * * * $runcmd "$w2pdir/flddat/w2.fld.pr.qmorph.global.products.py cur-36.cur-24 -S cmorph -n 6 -J"  >> /ptmp/log.w2.fld.qmorph.global.products.py.cmorph.CPC 2>&1
+
+# -- 20190225 -- JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT JTdiag
+#
+00   2,3,8,9,14,15,20,21          * * * $runcmd "$w2pdir/tcdiag/w2.tc.jtdiag.cp.png.2.tcdiag.py cur-12.cur "    >> /ptmp/log.w2.tc.jtdiag.py-JTdiag-ph2-3 2>&1 
+30   2,8,14,20                    * * * $runcmd "$w2pdir/tcdiag/w2.tc.jtdiag.cp.png.2.tcdiag.py cur-12.cur "    >> /ptmp/log.w2.tc.jtdiag.py-JTdiag-ph2p5 2>&1 
+00   4-6,10-12,16-18,21-23        * * * $runcmd "$w2pdir/tcdiag/w2.tc.jtdiag.cp.png.2.tcdiag.py cur-12.cur "    >> /ptmp/log.w2.tc.jtdiag.py-JTdiag-LATE 2>&1 
+
+
+#ccccccccccccccccccccccccccccrrrrrrrrrrrrrrrrrrrrrrrrrrooooooooooooooooooooooooooooooooooooootttttttttttttttttttttttttttttt - crontab html via cronv
+# -- 20190314
+01           *                    * * * $runcmd "$w2pdir/wxmap2/w2-cronv.py -X -d 18"                           >> /ptmp/log.w2.cronv.py.CRONV 2>&1
+
+
+#cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc - cleanup
+# 20090507 -- turn on web clean
+  17           2                 * * * $runcmd "$w2pdir/wxmap2/w2.clean.web.py -A"                     >> /ptmp/log.w2.clean.web.py.WEBCLEAN 2>&1
+# -- clean log files
+  17           3            1-31/15 * * $runcmd "$w2pdir/wxmap2/w2.clean.log.py -A"                    >> /ptmp/log.w2.clean.log.py.LOGCLEAN 2>&1
+
+
+#pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp - load and process monitor
+# -- load averages using uptime and monitor processes...
+*/5                             *              * * * $runcmd "$w2pdir/flddat/w2.load.py"                      >> /ptmp/log.load.py.tenki.LOAD 2>&1
+4                               1             * * * $runcmd "$w2pdir/wxmap2/w2.ps.monitor.py -X -S 15"       >> /ptmp/log.w2.ps.monitor.py.tenki.PS-MONITOR 2>&1
+*/5  * * * * $runcmd "$w2pdir/wxmap2/w2.ps.monitor.anl.py cur -K"                                             >> /ptmp/log.w2.ps.monitor.anl.py.tenki.PS-MONITOR-KILL-LONG-PS 2>&1

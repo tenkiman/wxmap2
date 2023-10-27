@@ -1,0 +1,111 @@
+SHELL=/bin/sh
+
+OBJS=	avgddt.o \
+	bogread.o \
+	calcntr.o \
+	calddto.o \
+	calint.o \
+	chkcir.o \
+	chkfcir.o \
+	chlen.o \
+	cirloc.o \
+	clltxy.o \
+	cxytll.o \
+	evaliso.o \
+	isocnt.o \
+	isofnd.o \
+	isotrc.o \
+	isovzm.o \
+	mf.modules.o \
+	f77Output.o \
+	mf.routines.o \
+	mf.trackem.o \
+	mf.track.o \
+	numchk.o \
+	outgdat.o \
+	rcalhdst.o \
+	rcaltln.o \
+	rumdirdist.o \
+	rumlatlon.o \
+	selcyc.o \
+	sortem2.o \
+	trackem.o \
+	verify.o \
+	valinp.o \
+	mf.grhilo.o \
+	mf.grhilo.vrt850.o \
+	mf.grhilo.psl.o \
+	ngtrk.o \
+	xieee.o 
+
+ISRC=	
+		
+#
+# CF		Name of the fortran compiling system to use
+# LDFLAGS	Flags to the loader
+# LIBS		List of libraries
+# CMD		Name of the executable
+# PROFLIB	Library needed for profiling
+#
+
+CF =		cf77
+LD=             $(MSPATH)/bin/empesqlcc
+LDFLAGS =   -Wl,"-D map=brief;preset=indef"	
+LIBS =		-l /usr/local/fnoc/lib/libfnoc.a 
+CMD =   ngtrk
+FFLAGS =    -Wf"-ei -o aggress"
+
+CF =		f77 
+LD=             f77
+
+CF=		pgf77 
+LD=             pgf77
+
+CF =		pgf90
+LD=             pgf90
+FFLAGS = -fast -Mextend -byteswapio -Bstatic
+
+CF =		g77
+LD=             g77
+
+CF =		g95
+LD =		g95
+
+#CF =		gfortran44
+#LD =            gfortran44
+
+CF =		gfortran
+LD =            gfortran
+
+#CF =		/usr/local/gfortran-4.4/bin/gfortran
+#LD =            /usr/local/gfortran-4.4/bin/gfortran
+
+FFLAGS =  -g -ffixed-line-length-132
+
+LDFLAGS =  -Bstatic
+LIBS =	
+CMD =   ngtrkN.x
+
+
+
+# Lines from here on down should not need to be changed.  They are the
+# actual rules which make uses to build a.out.
+#
+
+$(CMD):		$(OBJS) $(ISRC)
+	$(LD) -o $(CMD) $(OBJS) $(LIBS) $(LDFLAGS)
+
+clean:
+	rm *.o *.mod $(CMD)
+
+install:
+	mv $(CMD) ../../../prc/tctrack
+
+
+
+.f.o:
+	$(CF) $(FFLAGS) -c $*.f -o $@ 
+
+.f90.o:
+	$(CF) $(FFLAGS) -c $*.f -o $@ 
+

@@ -1,0 +1,297 @@
+from M import *
+import mf
+from w2switches import EcmModel,NgpModel
+
+center='esrl'
+version='0.1'
+
+WxmapCenter='NHC'
+WxmapCenter='GSL'
+WxmapCenter='wxmap2.com'
+
+PzalWxmapBaseDir='/tdocommon/wxmap'
+
+W2BaseDir=os.getenv('W2')
+W2BasePrcDir=os.getenv('W2_PRC_DIR')
+
+HfipBaseDir='%s/../../'%(os.getenv('W2_HFIP'))
+HfipBaseDirDat="%s/w21/dat"%(HfipBaseDir)
+HfipTcDatDir="%s/tc"%(HfipBaseDirDat)
+
+# -- html
+#
+wxpdWxmap="%s/fldanal"%(W2BasePrcDir)
+wxpdDat="%s/flddat"%(W2BasePrcDir)
+wxpdHtml="%s/web"%(W2BasePrcDir)
+
+wxhWeb="%s/web"%(W2BaseDir)
+wxhWeb="%s/web"%(W2BaseDir)
+wxhWebClm="%s/clm"%(wxhWeb)
+
+if(EcmModel == 'ecmn'):
+    htmMainTemplate="%s/template/wxmap.main.template.ecmn.txt"%(wxhWeb)
+elif(EcmModel == 'ecmg'):
+    htmMainTemplate="%s/template/wxmap.main.template.ecmg.txt"%(wxhWeb)
+elif(EcmModel == 'ecmt'):
+    htmMainTemplate="%s/template/wxmap.main.template.ecmt.txt"%(wxhWeb)
+else:
+    htmMainTemplate="%s/template/wxmap.main.template.txt"%(wxhWeb)
+
+
+TcPrcBaseDir='/home/fiorino/era/tc/prc'
+TcStructPrcDir="%s/tcstruct"%(TcPrcBaseDir)
+
+AtcfFtpserver='198.97.80.42'
+AtcfLogin='atcfp1'
+AtcfPasswd='atcfp112'
+AtcfArchiveDir='/opt/DEVELOPMENT/atcfs'
+AtcfStormDir='/opt/DEVELOPMENT/atcf/storms'
+
+TcJtwcDatDir='/dat/nwp/dat/tc/jtwc'
+
+
+# jma
+#
+JmaFtpserver='ddb.kishou.go.jp'
+JmaIdir='/dat/nwp/dat'
+
+NcepJtwcFtpserver='ftpprd.ncep.noaa.gov'
+NcepJtwcIdir='/pcmdi/tenki_dat/nwp/dat'
+NcepJtwcIdir='/dat/nwp/dat'
+LdmQueueDir="%s/ldmqueue"%(NcepJtwcIdir)
+
+FtpAlarmMins=45      # max number of minutes to wait before killing (hung) ftp
+TimeSleepMaxHours=6  # max hours to sleep in hours
+TimeSleepSecs=90     # time to sleep in sec
+#TimeSleepSecs=10     # time to sleep in sec
+
+wxmapbdir=os.environ['W2']
+
+ClimoPlots=['200','500','700','850','sfc','shr','lmt']
+
+if(EcmModel == 'ecmn'):
+    wxModels=['gfs','fim','ecmn','ngp','ukm']
+    wxModels=['gfs','fim','fimx','ecmn','ukm']
+    wxModels=['gfs','fim','ngpc','navg','ecmn','ukm']
+elif(EcmModel == 'ecmg'):
+    wxModels=['gfs','fim','ngpc','ecmg','ukm']
+else:
+    wxModels=['gfs','fim','ecm','ngp','ukm']
+    wxModels=['gfs','fim','fimx','ecm','ukm']
+    wxModels=['gfs','fim','navg','ecm','ukm']
+    if(NgpModel == 'ngpc'): wxModels=['gfs','fim','ngpc','navg','ecm','ukm']
+    if(NgpModel == 'ngp2'): wxModels=['gfs','fim','ngp','navg','ecm','ukm']
+    # -- 20180113 -- deprecate fim replace with fv3e
+    
+    wxModels=['gfs','fv3e','navg','ecm','ukm']
+    wxModels=['gfs','ecm','cmc','navg','gsm']
+
+# -- geqfqdn returns fully qualified domain name -- if available, other gethostname which is the single name
+#
+#remoteHost=getfqdn()  -- 20190531 -- hangs in vmware fusion centos7 -- kill through out
+W2Host=gethostname()
+remoteHost=W2Host
+#onTacc=(mf.find(W2Host,'ranger.tacc'))
+onTacc=0
+
+# -- onWjet in w2localvars.py -- depends on machine for only on zeus is it different from the complicated logic
+#    in w2local.vars.jet|kishou|kaze
+#
+curuSer=os.getenv('USER')
+
+# -- OS details
+#
+W2OsName=os.name
+(W2OsuName,W2uNameHost,W2uNameVersion,W2uNameDate,W2uNameType)=os.uname()
+
+# -- plots size
+#
+W2plotXsize=900
+W2plotAspect=3.0/4.0
+
+# -- users for db
+#
+W2currentuSer=getpass.getuser()
+
+
+# -- prw areas
+#
+#W2AreasPrw=['prwLant','prwEpac','prwWpac','prwIo','prwSpac','prwEnso']
+#W2AreasPrwOld=['lant','epac','wpac','io','spac','enso']
+
+# -- reduced
+# -- increase to bring back IO and SPAC
+W2AreasPrw=['prwLant','prwEpac','prwWpac','prwCpac','prwIo','prwSpac']
+W2AreasPrwOld=['lant','epac','wpac','cpac','io','spac']
+
+W2AreasPrws={
+    'prwLant':'lant',
+    'prwEpac':'epac',
+    'prwCpac':'cpac',
+    'prwIo':'io',
+    'prwWpac':'wpac',
+    'prwSpac':'spac',
+    'prwEnso':'enso',
+    }
+
+# -- define how old is 'too' old when doregen in w2.prw.loop.py, w2-gfs-goes-loop.py, w2.plotA.py
+#
+W2MaxOldRegen=25.0    
+
+
+#jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj -- jet vars
+#
+
+# 2010040812-0900 -- rtfim ran off /lfs0, now doing this all the time
+srootWjet='/lfs0/projects/rtfim'
+# -- 20110606 -- now hard off /lfs0
+srootWjet='/lfs0/projects/rtfim'
+#-- 20110720 -- after jetquotas flail, now through a ~rtfim
+#
+srootWjet='/whome/rtfim'
+srootWjet='/home/rtfim' # works on zeus and jet now 20130806
+
+#zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz -- zeus vars
+#
+
+sbaseWjet='/lfs1/projects/fim/fiorino'
+
+srootZeus='/scratch1/portfolios/BMC/fim'
+sbaseZeus="%s/fiorino"%(srootZeus)
+
+srootTheia='/scratch3/BMC/fim'
+sbaseTheia="%s/fiorino"%(srootTheia)
+
+srootHera='/scratch2/BMC/gsd-fv3-dev'
+sbaseHera="%s/fiorino"%(srootHera)
+
+
+
+# -- nwp awips ecmwf feed
+#
+
+W2rawECHiRes='/scratch/staging/amb/ldm/data/rawECHiRes/'
+W2rawECHiRes='/data/amb/hfip/ldm/data/rawECHiRes/'
+
+# -- ccs data feed
+
+EcNogapsCssFeed='/lfs0/projects/fim/whitaker/ecnogaps'
+####EcNogapsCssFeed='/lfs2/projects/fim/fiorino/w21/dat/ecnogaps'
+####EcNogapsCssFeed='/lfs2/projects/wrfruc/alexander/tropical/ecnogaps'
+EcNogapsCssFeed='/pan2/projects/nrtrr/alexander/tropical/ecnogaps'
+EcNogapsCssFeed='/lfs3/projects/nrtrr/alexander/tropical/ecnogaps' # 20171102 - pan2 decommm
+EcNogapsCssFeed='/lfs1/projects/fim/fiorino/w21/dat/ecnogaps'  # 20180208 -- lfs2 decom
+
+# -- wxmap2.com
+#
+W2BaseDirWebConfig="%s/web-config"%(W2BaseDir)
+
+class W2GlobalVars(MFbase):
+
+    curdtg=mf.dtg()
+    curphr=mf.dtg('phr')
+    curyear=curdtg[0:4]
+    
+    def initW2GlobalVars(self,upload=0):
+
+        self.center=center
+        self.version=version
+
+        self.WxmapCenter=WxmapCenter
+
+        self.PzalWxmapBaseDir=PzalWxmapBaseDir
+
+        self.W2BaseDir=W2BaseDir
+        self.W2BasePrcDir=W2BasePrcDir
+
+        self.HfipBaseDir=HfipBaseDir
+        self.HfipBaseDirDat=HfipBaseDirDat
+
+        self.wxpdWxmap=wxpdWxmap
+        self.wxpdDat=wxpdDat
+        self.wxpdHtml=wxpdHtml
+
+        self.wxhWeb=wxhWeb
+        self.wxhWebClm=wxhWebClm
+
+        self.htmMainTemplate=htmMainTemplate
+
+        self.TcPrcBaseDir=TcPrcBaseDir
+        self.TcStructPrcDir=TcStructPrcDir
+
+        self.AtcfFtpserver=AtcfFtpserver
+        self.AtcfLogin=AtcfLogin
+        self.AtcfPasswd=AtcfPasswd
+        self.AtcfArchiveDir=AtcfArchiveDir
+        self.AtcfStormDir=AtcfStormDir
+
+        self.TcJtwcDatDir=TcJtwcDatDir
+
+        self.JmaFtpserver=JmaFtpserver
+        self.JmaIdir=JmaIdir
+
+        self.NcepJtwcFtpserver=NcepJtwcFtpserver
+        self.NcepJtwcIdir=NcepJtwcIdir
+        self.LdmQueueDir=LdmQueueDir
+
+        self.FtpAlarmMins=FtpAlarmMins
+        self.TimeSleepMaxHours=TimeSleepMaxHours
+        self.TimeSleepSecs=TimeSleepSecs
+        
+        self.wxmapbdir=wxmapbdir
+
+        self.ClimoPlots=ClimoPlots
+
+        self.EcmModel=EcmModel
+        self.wxModels=wxModels
+
+        self.remoteHost=remoteHost
+        self.W2Host=W2Host
+        self.onTacc=onTacc
+
+        self.curuSer=curuSer
+
+        # -- OS details
+        #
+        self.W2OsName=W2OsName
+        self.W2OsuName=W2OsuName
+        self.W2uNameHost=W2uNameHost
+        self.W2uNameVersion=W2uNameVersion
+        self.W2uNameDate=W2uNameDate
+        self.W2uNameType=W2uNameType
+
+        self.W2plotXsize=W2plotXsize
+        self.W2plotAspect=W2plotAspect
+
+        self.W2currentuSer=W2currentuSer
+
+        self.W2AreasPrw=W2AreasPrw
+
+        #jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj -- jet vars
+        #
+        self.sbaseWjet=sbaseWjet
+
+        #zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz -- zeus vars
+        #
+        self.sbaseZeus='/scratch1/portfolios/BMC/fim/fiorino'
+
+        # -- nwp awips ecmwf feed
+        #
+        self.W2rawECHiRes='/%s/../../../ldm/data/rawECHiRes/'%(os.getenv('W2_HFIP'))
+
+        # -- ccs data feed
+        #
+        self.EcNogapsCssFeed=EcNogapsCssFeed
+
+
+
+
+
+if (__name__ == "__main__"):
+
+    gV=W2GlobalVars()
+    gV.ls()
+    sys.exit()
+
+
+

@@ -1,0 +1,9 @@
+20091209
+
+web/config  -- files for web configuration and processing
+
+css/ -- 
+js/ --
+php/ -- php
+
+make.ln.sh -- shell script to make symbolic links at the root of the

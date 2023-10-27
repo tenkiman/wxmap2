@@ -1,0 +1,37 @@
+&datein
+  inp%bcc=20,
+  inp%byy=10,
+  inp%bmm=05,
+  inp%bdd=17,
+  inp%bhh=12,
+  inp%model=17,
+  inp%lt_units='hours'
+/
+&atcfinfo
+  atcfnum=83,
+  atcfname='ECM2',
+  atcfymdh=2010051712
+/
+&trackerinfo
+  trkrinfo%southbd=  0.0,
+  trkrinfo%northbd= 30.0,
+  trkrinfo%westbd=260.0,
+  trkrinfo%eastbd=359.0,
+  trkrinfo%type='tcgen',
+  trkrinfo%mslpthresh=0.0015,
+  trkrinfo%v850thresh=1.5000,
+  trkrinfo%gridtype='global',
+  trkrinfo%contint=100.0,
+  trkrinfo%out_vit='y'
+/
+&phaseinfo 
+  phaseflag='y',
+  phasescheme='both'
+/
+&structinfo 
+  structflag='n',
+  ikeflag='n'
+/
+&verbose
+  verb=1
+/

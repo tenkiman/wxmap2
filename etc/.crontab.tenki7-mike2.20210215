@@ -1,0 +1,17 @@
+#------------------------------------------------------
+#
+# -- tenki7-mike3/4 for pulling tc from wxmap2.com
+# -- 20210309
+#------------------------------------------------------
+
+runcmd='/data/w22/run.cron.tcsh'
+w2pdir='/data/w22/prc'
+w2prjdir='/data/w22/prj'
+
+#tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt - TCs
+#
+13              0-23             * * * $runcmd "$w2pdir/tcdat/w2-tc-active.py  -W -r -3 -P 1 -X"                                         >> /ptmp/log-w2-tc-active-rsync-wxmap2.py.TCACT2WXMAP2-P1 2>&1
+23              0-23             * * * $runcmd "$w2pdir/tcdat/w2-tc-active.py  -W -r -3 -P 2 -X"                                         >> /ptmp/log-w2-tc-active-rsync-wxmap2.py.TCACT2WXMAP2-P2 2>&1
+33              0-23             * * * $runcmd "$w2pdir/tcdat/w2-tc-active.py  -W -r -3 -P 3 -X"                                         >> /ptmp/log-w2-tc-active-rsync-wxmap2.py.TCACT2WXMAP2-P3 2>&1
+43              0-23             * * * $runcmd "$w2pdir/tcdat/w2-tc-active.py  -W -r -3 -P 4 -X"                                         >> /ptmp/log-w2-tc-active-rsync-wxmap2.py.TCACT2WXMAP2-P4 2>&1
+

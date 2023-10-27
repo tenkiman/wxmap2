@@ -1,0 +1,69 @@
+setenv W2CENTER 'ESRL.PSD'
+
+#setenv NCARG_ROOT /w21/app/ncar
+#setenv NIO_GRIB2_CODETABLES /lfs0/projects/fim/whitaker/lib/python2.5/site-packages/PyNIO/ncarg/grib2_codetables/
+
+# -- use emacs.nw.sh for crontab -e, svn ci
+#
+setenv EDITOR "$W2_PRC_DIR/util/emacs.nw.sh"
+
+###echo "setting grads, path and ld_library_path in .w2localrc.kaze"
+
+# -- grads
+#
+
+setenv W2_GRADS_BDIR "$W2_BDIRAPP/grads"
+setenv W2_GRADS1_BDIR "$W2_BDIRAPP/opengrads1.10"
+setenv W2_GRADS2_BDIR "$W2_BDIRAPP/opengrads2.0"
+setenv W2_GRADS2_BDIR "$W2_BDIRAPP/grads-2.0.1.oga.1/Classic"
+setenv W2_OPENGRADS2_BDIR "$W2_BDIRAPP/grads-2.0.1.oga.1/Contents"
+
+setenv GADDIR "$W2_GRADS_BDIR/data"
+setenv GASCRP "$W2_GRADS_BDIR/gslib"
+setenv GA1UDXT "$W2_GRADS1_BDIR/bin/gex/udxt"
+setenv GA2UDXT "$W2_GRADS2_BDIR/bin/gex/udxt"
+
+setenv GALIBD "$W2_GRADS2_BDIR/bin/gex"
+
+if ( $?LD_LIBRARY_PATH ) then
+   #setenv LD_LIBRARY_PATH .:"$LD_LIBRARY_PATH":"$GALIBD"
+   setenv LD_LIBRARY_PATH .:"$LD_LIBRARY_PATH"
+else
+   #setenv LD_LIBRARY_PATH .:"$GALIBD"
+   setenv LD_LIBRARY_PATH .
+endif
+
+
+# ************* LOCAL USER PATH
+set lpath = ( \
+                "$W2_BDIRBIN" \
+                "$W2_BDIRMSSBIN" \
+                "$W2_GRADS_BDIR/util" \
+                "$W2_GRADS1_BDIR/bin" \
+#                "$W2_GRADS2_BDIR/bin" \
+                "$W2_OPENGRADS2_BDIR" \
+                "$W2_BDIRAPP/python/bin" \
+                "$W2_BDIRAPP/perl/bin" \
+                "$W2_BDIRAPP/bin" \
+#                "/opt/local/bin" \
+#                "/opt/CollabNet_Subversion/bin" \
+                "/usr/local/bin" \
+		)
+
+
+# *************  PROJECT PATHS
+set projectpath = ( \
+                    "$W2_BDIR/prc/wxmap2" \
+                    "$W2_BDIR/prc/flddat" \
+		    "$W2_BDIR/prc/tcdat" \
+                    "$W2_BDIR/prc/util" \
+		    )
+
+set path = ( \
+		. \
+		$lpath \
+		$projectpath \
+		$path \
+#		$adminpath \
+)		
+

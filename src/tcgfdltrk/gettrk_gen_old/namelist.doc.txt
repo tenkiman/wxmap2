@@ -1,0 +1,95 @@
+&datein
+  inp%bcc=20,
+  inp%byy=05,
+  inp%bmm=08,
+  inp%bdd=27,
+  inp%bhh=00,
+# anything 1 = gfs
+  inp%model=17,
+  inp%lt_units='hours'
+  inp%lt_units='minutes'
+/
+&atcfinfo
+  atcfnum=83,
+  atcfname='HAHW',
+  atcfymdh=2005082700
+/
+&trackerinfo
+  trkrinfo%westbd=260.0,
+  trkrinfo%eastbd=350.0,
+  trkrinfo%northbd=40.0,
+  trkrinfo%southbd=1.0,
+  trkrinfo%type='tracker',
+  trkrinfo%type='tcgen',  --
+  trkrinfo%type='midlat', -- like tcgen but only tracks based on slp
+  trkrinfo%mslpthresh=0.0015, -- pressure gradient check 0.5 mb / 330 km
+  trkrinfo%v850thresh=1.5000, -- 850 mean tang winds m/s within 225 km must be >= to this, good to drop storms
+  trkrinfo%gridtype='regional',
+  trkrinfo%gridtype='global',
+  trkrinfo%contint=100.0, -- closed slp for roci/poci [pa] = 1 mb; only for tracker run, to kill off troughs...
+  trkrinfo%out_vit='n'  - 'y' to cycle for genesis
+/
+&phaseinfo 
+  phaseflag='n',
+  phasescheme='both' -- 'cps' (hart) | 'vtt' (vitart, warm core check)
+/
+&structinfo 
+  structflag='y',  -- radial profiles in km in 4 quads for total/tang/radial fractional areal coverage of 35/50/65 kt winds
+  ikeflag='y'
+/
+
+files:
+======	
+
+-rw-r--r--  1 fiorino  frdrapb  3535908 Feb  6 05:30 2005082700.grib.HAHW
+-rwxr-xr-x  1 fiorino  frdrapb     5986 Feb  6 05:30 2005082700.grib.HAHW.ix
+lrwxr-xr-x  1 fiorino  frdrapb       22 Feb 24 19:55 fort.11 -> ./2005082700.grib.HAHW
+lrwxr-xr-x  1 fiorino  frdrapb       54 Feb 24 19:55 fort.12 -> /ptmp/bernarde/HWRF/12L/2005082700/messages/tcvital.as
+lrwxr-xr-x  1 fiorino  frdrapb        9 Feb 24 19:55 fort.14 -> gen_vital
+lrwxr-xr-x  1 fiorino  frdrapb       12 Feb 24 19:55 fort.15 -> fcst_minutes  == taus in minutes
+lrwxr-xr-x  1 fiorino  frdrapb       25 Feb 24 19:55 fort.31 -> ./2005082700.grib.HAHW.ix
+-rwxr-xr-x  1 fiorino  frdrapb        0 Feb  6 05:30 fort.51
+-rw-r--r--  1 fiorino  frdrapb      113 Feb  6 05:30 fort.64
+-rw-r--r--  1 fiorino  frdrapb      211 Feb  6 05:30 fort.68
+lrwxr-xr-x  1 fiorino  frdrapb       27 Feb 24 19:55 fort.69 -> gvt_HAHW_12L_2005082700.txt
+-rw-r--r--  1 fiorino  frdrapb        0 Feb  6 05:30 gen_vital
+-rw-r--r--  1 fiorino  frdrapb      460 Feb  6 05:30 gvt_HAHW_12L_2005082700.txt
+-rw-r--r--  1 fiorino  frdrapb   299062 Feb  6 05:33 tracker.stdout
+
+rwxr-xr-x  2 fiorino  frdrapb       884 Feb 24 20:32 .
+drwxr-xr-x  4 fiorino  frdrapb      1258 Feb 24 20:36 ..
+-rw-r--r--  1 fiorino  frdrapb   3535908 Feb  6 05:30 2005082700.grib.HAHW
+-rwxr-xr-x  1 fiorino  frdrapb      5986 Feb 24 20:22 2005082700.grib.HAHW.ix
+-rw-r--r--  1 fiorino  frdrapb        44 Feb  6 05:30 fcst_minutes
+lrwxr-xr-x  1 fiorino  frdrapb        22 Feb 24 19:55 fort.11 -> ./2005082700.grib.HAHW
+lrwxr-xr-x  1 fiorino  frdrapb        23 Feb 24 20:21 fort.12 -> tcvitals.2005082700.txt
+lrwxr-xr-x  1 fiorino  frdrapb         9 Feb 24 19:55 fort.14 -> gen_vital
+lrwxr-xr-x  1 fiorino  frdrapb        12 Feb 24 19:55 fort.15 -> fcst_minutes
+lrwxr-xr-x  1 fiorino  frdrapb        25 Feb 24 19:55 fort.31 -> ./2005082700.grib.HAHW.ix
+
+-rwxr-xr-x  1 fiorino  frdrapb         0 Feb  6 05:30 fort.51
+
+# stndard atcf
+-rw-r--r--  1 fiorino  frdrapb       339 Feb 24 20:31 fort.64
+
+-rw-r--r--  1 fiorino  frdrapb       633 Feb 24 20:31 fort.68
+
+# hfip atcf output
+lrwxr-xr-x  1 fiorino  frdrapb        27 Feb 24 19:55 fort.69 -> gvt_HAHW_12L_2005082700.txt
+
+# structure 7X -- output_... to find out what the unit # are...
+-rw-r--r--  1 fiorino  frdrapb      4080 Feb 24 20:28 fort.72
+-rw-r--r--  1 fiorino  frdrapb      3690 Feb 24 20:28 fort.73
+-rw-r--r--  1 fiorino  frdrapb       135 Feb 24 20:28 fort.74
+-rw-r--r--  1 fiorino  frdrapb       976 Feb 24 20:28 fort.76
+
+-rw-r--r--  1 fiorino  frdrapb         0 Feb  6 05:30 gen_vital
+-rw-r--r--  1 fiorino  frdrapb      1380 Feb 24 20:31 gvt_HAHW_12L_2005082700.txt
+-rw-r--r--  1 fiorino  frdrapb       569 Feb 24 20:31 namelist
+
+#phase goes to stdout... 900-300 every 50 mb
+-rw-r--r--  1 fiorino  frdrapb  22239484 Feb 24 20:31 stdout
+
+-rw-r--r--  1 fiorino  frdrapb        96 Feb 24 20:27 tcvitals.2005082700.txt
+-rw-r--r--  1 fiorino  frdrapb        96 Feb 24 20:20 tcvitals.2005082700.txt~
+-rw-r--r--  1 fiorino  frdrapb    299062 Feb  6 05:33 tracker.stdout

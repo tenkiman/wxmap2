@@ -1,0 +1,1 @@
+../../src/tcdiag/lsdiag.x

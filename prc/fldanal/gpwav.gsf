@@ -1,0 +1,171 @@
+
+*
+*-------------------------- gpwav ------------------
+*
+function gpwav(k)
+
+if(_model = 'ocn') 
+t1='Sig Wave Heights [ft] / NGP Sfc Winds [kt]'
+_t1top=''
+endif
+
+if(_model = 'ifs') 
+t1='ECMWF IFS/WAM Sig Wave Heights [ft] / Sfc Winds [kt]'
+endif
+
+
+pstat=1
+_shades=0
+
+uasngp='uas.'_fnfmod2
+vasngp='vas.'_fnfmod2
+zgngp='zg.'_fnfmod2
+
+print 'nnnnnnnnn 'uasngp' nnnnnnnnnnnnnnnnnnnnn'
+
+rc=datachk(uasngp) ; if(rc!=0) ; return(rc) ; endif
+rc=datachk(vasngp) ; if(rc!=0) ; return(rc) ; endif
+rc=datachk(htsgw) ; if(rc!=0 & _model = ocn) ; return(rc) ; endif
+
+'ls=const(const(maskout(sftlf.'_fm'(t=1),sftlf.'_fm'(t=1)-'_pland'),-1),0,-u)'
+
+pstat=0
+'us='uasngp'*'_ms2kt
+'vs='vasngp'*'_ms2kt
+'us=maskout(us,ls)'
+'vs=maskout(vs,ls)'
+'sigwav=maskout(htsgw,ls)*'_m2ft
+
+'set grads off'
+'set xlint '_xlint
+'set ylint '_ylint
+'set gxout shaded'
+'set csmooth on'
+'set cterp on'
+*'set rgb 44  70 80 230'
+*'set rgb 45  55 80 210'
+*'set rgb 46  40 80 200'
+*'set rgb 47  10 80 160'
+*'set rgb 48   5 65 120'
+*'set rgb 49  00 50 100'
+
+'set rgb 99 4 6 43'
+'set rgb 98 7 22 56'
+'set rgb 97 7 22 85'
+'set rgb 96 18 40 103'
+'set rgb 95 33 56 126'
+'set rgb 94 30 73 140'
+'set rgb 93 50 87 163'
+'set rgb 92 51 107 190'
+'set rgb 91 48 146 218'
+'set rgb 90 87 198 246'
+'set clevs   10 15 20 30 50  65'
+'set clevs   1  2   4   6  8  10 12 14 16 18 20  24  28 32 36 44'
+'set ccols 0  99 98 97 96 95 94   42 41 21 22 23 24  25 26 27 28 29'
+'d sigwav'
+'q shades'
+_shades=result
+
+
+'set gxout barb'
+'set digsiz 0.05'
+*
+*	winds greater than 8 kts
+*
+'set ccolor 0'
+'set cthick 20'
+'d skip(us,'_vskip');maskout(vs,(mag(us,vs)-8.0))'
+
+'set cthick 4'
+'set ccolor 1'
+'d skip(us,'_vskip');maskout(vs,(mag(us,vs)-8.0))'
+
+*
+*	plot winds greater than 25 kts in yellow
+*
+'set ccolor 0'
+'set cthick 10'
+'d skip(us,'_vskip');maskout(vs,(mag(us,vs)-24.0))'
+
+'set cthick 4'
+'set ccolor 12'
+'d skip(us,'_vskip');maskout(vs,(mag(us,vs)-24.0))'
+*
+*	plot winds greater than 35 kts in orange
+*
+'set ccolor 0'
+'set cthick 10'
+'d skip(us,'_vskip');maskout(vs,(mag(us,vs)-34.0))'
+
+'set cthick 4'
+'set ccolor 8'
+'d skip(us,'_vskip');maskout(vs,(mag(us,vs)-34.0))'
+*
+*	plot winds greater than 50 kts in red
+*
+'set ccolor 0'
+'set cthick 10'
+'d skip(us,'_vskip');maskout(vs,(mag(us,vs)-49.0))'
+
+'set cthick 4'
+'set ccolor 2'
+'d skip(us,'_vskip');maskout(vs,(mag(us,vs)-49.0))'
+
+*
+* contour interesting sig wave z
+*
+
+'set gxout contour'
+'set clevs  2 6 12 24 36'
+'set ccolor 0'
+'set cthick 15'
+'set clab off'
+'d sigwav'
+
+'set clevs  2 6 12 24 36'
+'set ccolor 2'
+'set cthick 5'
+'set clab on'
+'set clopts 1 6 0.10'
+'d sigwav'
+
+rc=dtitle(t1)
+
+do500=0
+'set lev 500'
+rcz=datachk(zgngp)
+if(rcz=0 & do500)
+
+  pstat=0 
+  'set gxout contour'
+  'set cint 60'
+  'set ccolor 0'
+  'set cthick 15'
+  'set clskip 2 3.0'
+  'd 'zgngp
+  'set cint 60'
+  'set cthick 4'
+  'set ccolor 32'
+  'set clskip 2 3.0'
+  'd 'zgngp
+
+  'set cmin 5820'
+  'set cint 20'
+  'set ccolor 0'
+  'set cthick 15'
+  'set clskip 2 3.0'
+  'd 'zgngp
+  'set cmin 5820'
+  'set cint 20'
+  'set cthick 4'
+  'set ccolor 52'
+  'set clskip 2 3.0'
+  'd 'zgngp
+  
+endif
+
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+
+
+return(pstat)
+

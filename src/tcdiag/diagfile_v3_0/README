@@ -1,0 +1,140 @@
+###############################################################################
+# README - Diagnostic file generation code
+#
+# Latest update: Version 3.0, 05/15/2015
+#
+# Contact: Kate Musgrave, Kate.Musgrave@colostate.edu
+###############################################################################
+Update Notes:
+Notes on update to Version 3.0 (05/15/2015)
+   -input.params has had three new parameters added:
+      -mnameflag (0/1) - 0:uses the model name(s) specified in the input files
+                       - 1:uses the model name specified in input.params
+      -logemailflag (0/1) - 1:sends an email with details on completion
+      -logemail - email address to send email to when logemailflag is set to 1
+
+   -added handling of all global basins
+      -updated gbland.f; added aland.f, shland.f, wland.f
+      -updated aland.dat, shland.dat, wland.dat
+      -updated recognition of basins and sub-basins in create_diagfiles.sh
+
+   -text parsing tasks have been moved to create_diagfiles.sh
+      -removed nameparse.f
+      -removed gridparse.f
+         -updated handling of grid arrays in inddiag.f
+      -removed getcenter.f
+         -updated diag_utils.f to remove readADeck() and its dependencies
+         -removed dataio.f, dataioparms.inc, dataformats.inc
+         -updated totaldiag.f to remove dependecy on upcase()
+
+   -removed all early exit conditions in create_diagfiles.sh
+      -script skips case if initial file or track is missing
+      -script fills in missing values for forecast time if grid file missing
+
+   -updated Makefile
+
+Notes on update to Version 2.1 (12/31/2012)
+   -DELTAT added to NTIME line for consistency (totaldiag.f)
+
+   -added alternate field names to nest wgrib2 calls for consistency
+    with parent wgrib2 calls (create_diagfiles.sh)
+
+   -unit conversions for P, T, and SST moved out of lsdiags.f and 
+    writeparams() (diag_util.f), and into readgrid() (diag_util.f)
+      -lsdiags.f operation is now consistent with introductory comments
+       (receives pressure in hPa, temperature and SST in C)
+
+   -framework for including custom (optional) variables updated
+      -alterations to inddiag.f, inddiagnull.f, totaldiag.f, lsdiags.f,
+       and writeparams() (diag_util.f)
+
+   -custom parameter TGRD added (lsdiags.f, totaldiag.f, diag_util.f)
+
+   -framework for including comments updated to display averaging radii
+      -alterations to create_diagfiles.sh, lsdiags.f, totaldiag.f
+
+   -separate radii for TPW added (lsdiags.f)
+      -uses 200km in parent grid for calculation (not 500km)
+
+   -updated documentation
+
+Notes on update to Version 2.0 (08/07/2012)
+   -intermediate files containing model fields changed from ascii to
+    binary (create_diagfiles.sh, readparams() (diag_util.f))
+
+   -alternate model field names added to wgrib2 calls for use with
+    global model ensembles
+
+###############################################################################
+Description:
+
+The current version of the diagnostic code, version 3.0, is set up to 
+run off of the HWRF grib2 files.  The create_diagfiles.sh script drives
+the system, and is where you would need to concentrate your changes for
+accounting for any different file types.  The script delivers binary files
+for each field read in and processed by the Fortran diagnostic code.  The 
+diagnostic calculations are confined almost entirely to lsdiags.f.  Each
+forecast time is dealt with separately, and then combined in the end into
+the output diagnostic file.
+
+There are three input files: input.list, input.params, and input.plvls.
+-The input.list file contains the absolute addresses of cases to run
+ (designated by the parent grid file at forecast time 0).
+-The input.plvls file tells the script which pressure levels to look 
+ for (and needs to have the same number of levels as specified in 
+ input.params).
+-The input.params file has ten lines: 
+   -the number of pressure levels, 
+   -the maximum time (in hrs), 
+   -the time interval (in hrs), 
+   -the nested flag (1 if nested grid needs to be read; 0 if only 
+    one grid), 
+   -the model name flag (1 if model name from input.params should be
+    printed out in the diagnostic file; 0 if model name derived from 
+    filename in input.list should be printed out in diagnostic file),
+   -the 4-char model name for printout into the diagnostic file, 
+   -the 1-char runtype for writing out the diagnostic filename,
+   -the 4-char version for writing out the diagnostic filename,
+   -the email logging flag (1 to send email on completion; 0 to not
+    send email on completion),
+   -and the email address to use if the email flag is set.
+
+Depending on what you will use it for, you may want just the diagnostic
+calculations contained in lsdiags.f, or the whole system.
+
+The most common issues with importing this version to different 
+modeling groups is that 1) it requires regular lat/lon grids on 
+pressure levels and 2) with different models involved different field 
+names and unit conversions may be needed.  If you run into any 
+problems along those lines email me and I can point you to the 
+appropriate places to adjust in the code.
+
+Questions, comments, and suggestions are all appreciated.
+
+#######################################################################
+Included Files:
+
+-create_diagfiles.sh
+-code (directory)
+   -aland.dat
+   -diag_util.f
+   -gbland.f
+   -include (directory)
+      -aland.dat
+      -shland.dat
+      -wland.dat
+   -inddiag.f
+   -inddiagnull.f
+   -input.list
+   -input.params
+   -input.plvls
+   -lsdiags.f
+   -Makefile
+   -shland.f
+   -totaldiag.f
+   -wland.f
+-diag_in (directory, optional)
+-diag_out (directory)
+-README
+
+#######################################################################

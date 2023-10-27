@@ -1,0 +1,10 @@
+#!/bin/sh
+
+tdir="/pcmdi/fiorino/era/tc/prc/tctrack"
+echo $tdir
+ls -l ?clip*.so
+cp ?clip*.so $tdir/.
+cp ?clip.pyf $tdir/.
+cp TCclip.py $tdir/.
+cp nhc_epcliper.cof $tdir/.
+cp p.tc.cliper.py $tdir/.

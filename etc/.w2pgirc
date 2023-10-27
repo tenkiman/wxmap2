@@ -1,0 +1,8 @@
+setenv PGI /usr/pgi
+setenv LM_LICENSE_FILE $PGI/license.dat
+
+
+set path = ( \
+		$path \
+		$PGI/linux86/6.0/bin \
+)		

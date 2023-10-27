@@ -1,0 +1,1 @@
+wxmap.settings.kaze-wxmap2.pl

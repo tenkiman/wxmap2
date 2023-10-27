@@ -1,0 +1,8 @@
+.svn
+*.pyc
+*~
+fimbao/
+fim/
+hfip/DTC
+#lib/python/w2localvars*
+tcdat/p.*

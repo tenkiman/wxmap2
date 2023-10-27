@@ -1,0 +1,4 @@
+!#/bash
+time rsync -alv mfiorino@hopper1.orc.gmu.edu:/scratch/mfiorino/dat/tc/adeck/jtwc/2022/ /data/w22/dat/tc/adeck/jtwc/2022/
+
+

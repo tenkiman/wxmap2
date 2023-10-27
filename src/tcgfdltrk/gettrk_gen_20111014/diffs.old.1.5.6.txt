@@ -1,0 +1,55 @@
+17492,17493c16267
+< ccc      SUBROUTINE ORDERS_4byte (IN,ISORT,IDATA,INDEX,N,M,I1,I2)
+<       SUBROUTINE ORDERS (IN,ISORT,IDATA,INDEX,N,M,I1,I2)
+---
+>       SUBROUTINE ORDERS_4byte (IN,ISORT,IDATA,INDEX,N,M,I1,I2)
+17551,17552c16325
+< ccc      JBYT = IAND(ISHFT(IDATA(1,INDEX(I)),-IBYT*8_8),255_8)
+<       JBYT = IAND(ISHFT(IDATA(1,INDEX(I)),-IBYT*8_8),255)
+---
+>       JBYT = IAND(ISHFT(IDATA(1,INDEX(I)),-IBYT*8_8),255_8)
+17562,17563c16335
+< ccc      JBYT = IAND(ISHFT(IDATA(1,ISORT(I)),-IBYT*8_8),255_8)
+<       JBYT = IAND(ISHFT(IDATA(1,ISORT(I)),-IBYT*8_8),255)
+---
+>       JBYT = IAND(ISHFT(IDATA(1,ISORT(I)),-IBYT*8_8),255_8)
+
+14256d13259
+<         iret=0
+
+6572,6573c6157,6158
+<       character*2 :: cquad(4) = (/'NE','SE','SW','NW'/)
+<       character*2 :: crel(4) = (/'FR','BR','BL','FL'/)
+---
+>       character :: cquad*2(4) = (/'NE','SE','SW','NW'/)
+>       character :: crel*2(4) = (/'FR','BR','BL','FL'/)
+
+4324,4326c4020,4023
+<       character*2 :: cquad(4) = (/'NE','SE','SW','NW'/)
+<       character*5 :: cbin(5) = (/'0-100','0-200','0-300','0-400','0-500'/)
+<       character*2 :: cthresh(3) = (/'34','50','64'/)
+---
+>       character :: cquad*2(4) = (/'NE','SE','SW','NW'/)
+>       character :: cbin*5(5) = (/'0-100','0-200','0-300','0-400'
+>      &                          ,'0-500'/)
+>       character :: cthresh*2(3) = (/'34','50','64'/)
+
+9308,9318c8763,8767
+<         if ( verb .ge. 3 ) then
+<           print *,' '
+< c***********************************************************************************************************
+< c---      mf 20100609
+< c         CAUSE OF SEG FAULT!!!!!!!! -- not sure still an issue if detmp properly allocated
+< c
+<           !print *,' dtemp(isortix(1)) = ',dtemp(isortix(1))
+<           print *,' dtemp(isortix(quadct(k)))= ',dtemp(isortix(quadct(k)))
+<           print *,' isortix(1) = ',isortix(1)
+<           print *,' isortix(quadct(k)) = ',isortix(quadct(k))
+<         endif
+---
+>         print *,' '
+>         print *,' dtemp(isortix(1)) = ',dtemp(isortix(1))
+>         print *,' dtemp(isortix(quadct(k)))= ',dtemp(isortix(quadct(k)))
+>         print *,' isortix(1) = ',isortix(1)
+>         print *,' isortix(quadct(k)) = ',isortix(quadct(k))
+

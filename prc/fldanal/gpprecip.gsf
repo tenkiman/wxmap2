@@ -1,0 +1,286 @@
+function gpprecip(k)
+
+t1='SLP [hPa] / 540 Line / Prev 6-h Prcp Rate [mm/day]'
+
+#print 'QQQQQ '_fnf' '_prvar' _tau '_tau
+'set dfile '_fnf
+
+'prd='_prvar
+'p='_pslvar
+#'psl='_pslvar
+
+cthk0=7
+cthk=3
+
+plotpr=1
+doprcntr=0
+
+# -- black doesn't render in printim for v2.1?
+'set rgb 99 1 1 1'
+bcol=0
+bcol=99 
+
+if(_ukfill=1)
+  rc=lonfill('prd')
+endif
+
+if(_tau = 0)
+
+  if(_fnfp != 0 & (_fnfp != _fnf) )
+    'set dfile '_fnfp
+    'prd='_prvar
+    'set dfile '_fnf
+  else
+    'set t 2'
+    'prd='_prvar
+    'set t 1'
+  endif
+
+endif
+
+if(_regridpr = 1)
+  'p=re(p,0.75)'
+  'prd=re(prd,0.75)'
+endif
+
+# land mask for overland smoothing
+#
+dolandsmth=1
+if(dolandsmth)
+  'lm=sftlf.'_fm'(t=1)*0.01'
+  'p=smth9(smth9(smth9(smth9(smth9(p)))))'
+  'p2=re(p,2)'
+  'pl=maskout(lterp(p2,p),lterp(lm-0.5,p))'
+  'pl=smth9(smth9(smth9(pl)))'
+  'plm=const(const(pl,-1),1,-u)'
+  'po=maskout(p,plm)'
+  'pa=const(po,0,-u)+const(pl,0,-u)'
+  'p=pa'
+endif
+
+# tropical pressure mask
+#
+
+'pm=const(maskout(const(lat,-1),abs(lat)-20),0,-u)'
+rcpm=datachk(pm)
+
+#
+# smooth pressure
+#
+if(_pslsmth = 1)
+  'p=smth9(p)'
+endif
+
+if(_ukfill=1)
+  rc=lonfill('p')
+endif
+
+'set lev 1000'
+'z1000=zg'
+if(_ukfill=1)
+  rc=lonfill('z1000')
+endif
+
+'set lev 500'
+'z500=zg'
+if(_ukfill=1) ; rc=lonfill('z500') ; endif
+'zthk=(z500-z1000)/10'
+rczthk=datachk(zthk)
+if(_model = 'ecm5' | _model = 'era5')
+  'zthk=zthk/'_gravity
+endif
+
+if(_regridpr = 1)
+  'zthk=re(zthk,0.75)'
+  'z1000=re(z1000,0.75)'
+  'z500=re(z500,0.75)'
+endif
+
+# -- land smooth 540 line
+#
+if(dolandsmth & rczthk = 0)
+  'lm=sftlf.'_fm'(t=1)*0.01'
+  'z=smth9(smth9(smth9(smth9(smth9(zthk)))))'
+  'z2=re(z,2)'
+  'zl=maskout(lterp(z2,z),lterp(lm-0.5,p))'
+  'zl=smth9(smth9(smth9(zl)))'
+  'zlm=const(const(zl,-1),1,-u)'
+  'zo=maskout(z,zlm)'
+  'za=const(zo,0,-u)+const(zl,0,-u)'
+  'zthk=za'
+endif
+
+
+
+_shades=0
+if(_tau < 0) ; return ; endif
+
+rcpr=datachk(prd)
+'q dims'
+'set map 0 0 0'
+
+# -- light smooth to clear grib noise in ecm5
+# -- 20200512 -- turn off for now? -- no!  noise is too big and the pattern not affected by smth9
+if(_model = 'ecm5')
+  'prd=smth9(prd)'
+endif
+
+if(rcpr != 0); return(rcpr) ; endif
+
+if(rcpr = -999); plotpr=0; endif
+
+if(_tau >= 0 & plotpr=1) 
+
+  if (rcpr != 0) ; return(rcpr) ; endif 
+*
+*  971208 - require psl before plotting
+*
+  rcpsl=datachk(p)
+  if (rcpsl != 0) ; return(rcpsl) ; endif 
+
+  'set grads off'
+  'set xlint '_xlint
+  'set ylint '_ylint
+  'set clevs   1  2  4  8  16  32 64 128'
+  'set gxout shaded'
+  'set csmooth on'
+  'set cterp on'
+  'set ccols 0 32 33 35 36 37 39'
+#
+# 20000614 - change rec by dan reinhart
+# 20170713 - turn off transparency for color# 98 (was 50)
+  'set rgb 98 185 255 00'
+  'set ccols 0 39 37 36 98 22 24 26 61'
+#'set ccols 0 39 37 36 34 22 24 26'
+  'set csmooth on'
+  'set cterp on'
+
+  'd prd'
+
+if(doprcntr)
+  'set gxout contour'
+  'set ccolor 'bcol
+  'set cthick 'cthk0
+  'set clevs 8 16' 
+  'set clab off'
+  'd prd'
+
+  'set ccolor 39'
+  'set cthick 'cthk
+  'set clevs 8 16' 
+  'set clab off'
+  'd prd'
+endif
+
+  'q shades'
+  if(sublin(result,1) != 'None') 
+    _shades=result
+  else
+   _shades=0 
+  endif
+
+endif
+
+pslnhem=4
+
+*  plot slp
+*
+
+'set gxout contour'
+'set ccolor 'bcol
+'set ccolor 76'
+'set cthick 'cthk0
+'set cint 2'
+if(_area = 'nhem'); 'set cint 'pslnhem ; endif
+'set clab off'
+'d p'
+
+if(_interact = 1) ; 'q pos' ; endif
+
+'set ccolor rainbow'
+'set rbrange 980 1032'
+'set cthick 'cthk
+'set cint 2'
+if(_area = 'nhem'); 'set cint 'pslnhem ; endif
+'set clab off'
+'d p'
+
+'set ccolor rainbow'
+'set rbrange 980 1032'
+'set clab on'
+'set clskip 2 2.0'
+'set clopts -1 -1 0.075'
+'set cthick 'cthk
+'set cint 4'
+if(_area = 'nhem'); 'set cint 'pslnhem ; endif
+'d p'
+
+'set ccolor 'bcol
+'set clab on'
+'set clskip 2'
+'set cthick 'cthk
+'set cint 1'
+if(_area = 'nhem'); 'set cint 'pslnhem ; endif
+if(_regridpr = 1)
+  'pm=re(pm,0.75)'
+endif
+
+if(rcpm > 0)
+  'set clab on'
+  'set clskip 2'
+  'set ccolor rainbow'
+  'set rbrange 980 1032'
+  'set cthick 'cthk
+  'set cint 1'
+if(_area = 'nhem'); 'set cint 'pslnhem ; endif
+  'd maskout(p,pm)'
+endif
+
+if(_interact = 1) ; 'q pos' ; endif
+
+plot500=0
+if(plot500)
+  'set gxout contour'
+  'set ccolor 'bcol
+  'set cthick 'cthk0
+  'set cint 60'
+  'd z500'
+
+  'set ccolor 1'
+  'set cthick 'cthk
+  'set cint 60'
+  'set clab on'
+  'd z500'
+endif
+
+
+if(rczthk=0)
+'set gxout contour'
+
+*
+*	plot 540 thickness line
+*
+'set clevs 540'
+'set ccolor 1'
+'set cthick 10'
+'set cstyle 1'
+'set grads off'
+'d zthk'
+
+'set clevs 540'
+'set ccolor 4'
+'set cthick 4'
+'set cstyle 1'
+'set grads off'
+
+'d zthk'
+endif
+
+if(_dobasemap != 1)
+  rc=drawmap()
+endif
+
+rc=dtitle(t1)
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+
+return(0)

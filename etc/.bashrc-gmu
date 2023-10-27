@@ -1,0 +1,288 @@
+# .bashrc
+
+#echo "BBB--bashrc-GMU `date`"
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+module load emacs
+module load git
+export HOSTNAMESHORT=`hostname|awk -F. '{ print toupper($1) }'`
+export HOSTOSLOWER=`uname|awk '{ print tolower($1) }'`
+export HOSTOSUPPER=`uname|awk '{ print toupper($1) }'`
+
+# -- set up screen to run non-sudo
+export SCREENDIR=$HOME/.screen
+
+# -- hardwire local dirs
+#
+export W2='/home/mfiorino/w22'
+export PTMP='/scratch/mfiorino/ptmp'
+export W2_BDIRWEB="/scratch/mfiorino/hfip/fiorino/products/wxmap2/"
+export W2_BDIRWEBCONFIG="/scratch/mfiorino/web-config/"
+export W2_HFIP="/scratch/mfiorino/hfip/fiorino/products/hfip"
+export W2_HFIPDAT="/scratch/mfiorino/hfip/fiorino/products/hfip"
+
+# -- prompt
+#
+export PS1='GMU-wxmap2 \A \u@\h \w \! > '
+
+# -- w2 dirs
+#
+export W2_VERSION="21"
+export W2_BDIR="$W2"
+export W2_BDIRDAT="$W2/dat"
+export W2_BDIRAPP="$W2/app"
+export W2_BDIRBIN="$W2/bin"
+export W2_BDIRMSSBIN="$W2/mss/bin"
+export W2_BDIRAPPLIB="$W2/app/lib"
+export W2_BDIRDB3LIB="$W2/app/db4.8/lib"
+export W2_BDIRDB5LIB="$W2/app/db5.0/lib"
+export W2_BDIRLIB="$W2/lib"
+export W2_BDIRPLT="$W2/plt"
+export W2_BDIREVT="$W2/evt"
+export W2_BDIRLOG="$W2/log"
+
+export W2_SRC_DIR="$W2_BDIR/src"
+export W2_PRC_DIR="$W2_BDIR/prc"
+export W2_PERL_DIR="$W2_PRC_DIR/lib/perl"
+export W2_PY_DIR="$W2_PRC_DIR/lib/python"
+
+# -- wgrib1 table
+#
+
+export GRIBTAB="$W2_BDIRLIB/wgrib/w2.wgrib1.var.table.txt"
+
+# -- ecmwf bufr
+#
+export BUFR_TABLES="$W2_BDIRLIB/bufrtables/"
+export LD_LIBRARY_PATH="$W2/app/eccodes-2p21/lib64/"
+export ECCODES_DEFINITION_PATH="$W2/app/eccodes-2p21/share/eccodes/definitions/"
+
+export LD_LIBRARY_PATH="$W2/app/eccodes-2p20/lib64/"
+export ECCODES_DEFINITION_PATH="$W2/app/eccodes-2p20/share/eccodes/definitions/"
+
+
+# -- python
+#
+export PYTHONSTARTUP="$W2_BDIR/.pythonrc"
+export PYTHONPATH="$W2_PRC_DIR/lib/python"
+
+export W2CENTER='WXMAP2'
+
+# -- perl
+
+export PERL5LIB="$W2_BDIR/lib"
+
+# -- ucar passwd for data pulls
+#
+export RDAPSWD=3KF24Qnm
+
+# -- use emacs.nw.sh for crontab -e, svn ci
+#
+export EDITOR="$W2/prc/util/emacs.nw.sh"
+export VISUAL="$W2/prc/util/emacs.nw.sh"
+
+# -- grads
+#
+export ECMWF_API_URL="https://api.ecmwf.int/v1"
+export ECMWF_API_KEY="f82b35d7acb2cb819a08d97b0f454a82"
+export ECMWF_API_EMAIL="michael.fiorino@noaa.gov"
+
+export W2_GRADS_BDIR="$W2_BDIRAPP/grads"
+export W2_GRADS_VERSION="opengrads-2.2.1.oga.1"
+export W2_OPENGRADS2_BDIR="$W2_BDIRAPP/$W2_GRADS_VERSION/Contents"
+export W2_GRADS2_BDIR="$W2_OPENGRADS2_BDIR"
+
+export GADDIR="$W2_GRADS_BDIR/data"
+export GASCRP="$W2_GRADS_BDIR/gslib"
+export GA2UDXT="$W2_GRADS2_BDIR/bin/gex/udxt"
+
+export GALIBD="$W2_GRADS2_BDIR/bin/gex"
+
+export ED=vi
+
+# -- PPPPPPPPPPAAAAAAAAAAATTTTTTTTTTHHHHHHHHHHHHHHh
+#
+lpath="$W2_BDIRBIN":\
+"$W2_GRADS_BDIR/util":"$W2_OPENGRADS2_BDIR":\
+"$W2_BDIRAPP/python/bin":\
+"$W2_BDIRAPP/eccodes/bin":\
+"$W2_BDIRAPP/bin"
+
+# *************  PROJECT PATHS
+projectpath="$W2_BDIR/prc/wxmap2":"$W2_BDIR/prc/flddat":"$W2_BDIR/prc/tcdat":"$W2_BDIR/prc/tctrk":"$W2_BDIR/prc/util":$PATH
+
+
+export PATH=".:$lpath:$projectpath"
+
+# User specific aliases and functions
+
+alias rm='rm'
+alias la='ls -la'
+alias pg='more'
+alias del='rm -i'
+alias s='.'
+alias a='alias'
+alias g='grep -i'
+alias b='bg'
+alias c='clear'
+alias ct='cleartool'
+alias d='dtg6 -h'
+alias del='rm -i'
+alias dir='ls'
+alias f='fg'
+alias g='grep -i'
+alias h='history'
+alias j='jobs'
+alias l='less'
+alias l.='ls -d .* --color=auto'
+alias la='ls -al'
+alias lc='cut -c0-130 "$1" | less'
+alias lf='ls --full-time -a'
+alias lh='ls -lha'
+alias ll='ls -l --color=auto'
+alias ls='ls --color=auto'
+alias lt='ls -lta'
+alias m='make'
+alias mc='. /usr/libexec/mc/mc-wrapper.sh'
+alias pg='more'
+alias rm='rm -i'
+alias w2='cd $W2'
+alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+alias ws.nw='emacs -nw -q -l ~/.emacs.nw '
+alias x='exit'
+alias pd='pushd'
+alias po='popd'
+alias ud='usage.py'
+alias chmoda="chmod a+x *.*sh *.pl *.py"
+
+alias wx2="ssh -Y -p2222 mfiorino@wxmap2.com"
+
+# -- crontab
+#
+alias crl-act="crontab -l | grep ptmpdir | grep -v \#"
+alias crl="crontab -l"
+
+# -- grads22
+#
+alias grads22x="$W2_BDIRAPP/opengrads-2.2.1.oga.1/Contents/gradsX11"
+alias grads22="$W2_BDIRAPP/opengrads-2.2.1.oga.1/Contents/grads"
+
+alias dft="df | grep -i -v tmpfs | grep -i -v dev/sr0"
+alias dfth="df -h | grep -i -v tmpfs | grep -i -v dev/sr0"
+
+alias w2s="$W2_BDIR/prc/util/w2s.sh"
+alias w2s='function _w2s(){ w2-status.py "$@" | less; };_w2s'
+alias w2l="$W2_PRC_DIR/wxmap2/w2-log-anl.py"
+
+alias c.w2="cd $W2_BDIR"
+alias c.w2.wx2="cd $W2_BDIR/prc/wx2"
+alias c.w2.e="cd $W2_BDIR/etc"
+alias c.w2.a="cd $W2_BDIR/app"
+alias c.w2.p="cd $W2_BDIR/prj"
+alias c.w2.pt="cd $W2_BDIR/prj-2018/tc"
+alias c.w2.pt="cd $W2_BDIR/prj-2019/tc"
+alias c.w2.pf="cd $W2_BDIR/prj/fim"
+alias c.w2.pg="cd $W2_BDIR/prj/tc/20120312_cfsr_reforecast"
+alias c.w2.a.s="cd $W2_BDIR/app/src"
+alias c.w2.o="cd $W2_BDIR/opt"
+alias c.w2.o.s="cd $W2_BDIR/opt/src"
+alias c.w2.tc="cd $W2_PRC_DIR/tc"
+alias c.w2.2="cd $W2_PRC_DIR/wxmap2"
+alias c.w2.t="cd $W2_PRC_DIR/tcdat"
+alias c.w2.r="cd $W2_PRC_DIR/reanl"
+alias c.w2.tclip="cd $W2_PRC_DIR/tcclip"
+alias c.w2.tt="cd $W2_PRC_DIR/tctrk"
+alias c.w2.td="cd $W2_PRC_DIR/tcdiag"
+alias c.w2.tb="cd $W2_PRC_DIR/tcbog"
+alias c.w2.to="cd $W2_PRC_DIR/tcobs"
+alias c.w2.tg="cd $W2_PRC_DIR/tcgen"
+alias c.w2.te="cd /dat2/hfip/web/tceps"
+alias c.w2.tf="cd $W2_PRC_DIR/tcfilt"
+alias c.w2.ta="cd $W2_PRC_DIR/tcanal"
+alias c.w2.tc="cd $W2_PRC_DIR/tcclimo"
+alias c.w2.tcc="cd $W2_PRC_DIR/tctcc"
+alias c.w2.h="pd $W2_PRC_DIR/hfip"
+alias c.w2.h.e="cd $W2_HFIP/tceps"
+alias c.w2.h.g="cd $W2_HFIP/tcgen"
+alias c.w2.h.d="cd $W2_HFIP/tcdiag"
+alias c.w2.h.a="cd $W2_HFIP/tcact"
+alias c.w2.products="cd $W2_HFIP ; cd ../prodcuts"
+alias c.w2.t.p="cd $W2_PRC_DIR/tcplt"
+alias c.w2.d="cd /scratch/mfiorino/dat"
+alias c.w2.s="cd $W2_PRC_DIR ; cd ../src"
+alias c.w2.f="cd $W2_PRC_DIR ; cd flddat"
+alias c.w2.fv="cd $W2_PRC_DIR ; cd fldveri"
+alias c.w2.w="cd $W2_PRC_DIR ; cd web"
+alias c.w2.fa="cd $W2_PRC_DIR ; cd fldanal"
+
+alias c.w2.t.sgp.d="cd $W2_BDIRDAT/tc/sgp" 
+alias c.w2.t.sgp.p="cd $W2_BDIRPLT/tc/tcsgp" 
+alias c.w2.t.sgp="cd $W2_PRC_DIR/tcsgp" 
+
+alias pse="ps -ef | g $USER | g -v root | g -v /usr/libexec"
+#alias psep=" ps -ef | g ython | g -v grep | g -v wing | g -v w2.ps.monitor | g -v applet | g -v tuned | g -v firewall | g -v yum"
+alias psep=" ps -ef | g ython | g fiorino | g -v grep | g -v wing | g -v applet"
+
+alias psma='function _psma(){ w2-ps-monitor-anl.py "$@"; };_psma'
+alias lsl='grep LLL: $PTMP/log.load.py.tenki.LOAD | tail -100 | grep -v "_05_??" | grep -v "_15_??" | grep -v _25_ | grep -v _35_  | grep -v _45_ | grep -v _55_ | grep -v fix | cut -c6-100 | uniq'
+
+alias tc='$W2_PRC_DIR/tcdat/w2-tc-posit.py'
+alias vd='$W2_PRC_DIR/tcdat/w2.tc.vdeck.py'
+alias avd='$W2_PRC_DIR/tcdat/w2.tc.adeck.2.wxmap.adeck.py'
+
+alias ttc='time $W2_PRC_DIR/tctrk/w2-tc-runTrks.py'
+alias mtc='time $W2_PRC_DIR/tctrk/w2-tc-mftrkN.py'
+alias ptc='time $W2_PRC_DIR/tctrk/w2-tc-trkplt.py'
+alias gtc='time $W2_PRC_DIR/tcgen/w2-tc-tcgen2.py'
+alias gta='time $W2_PRC_DIR/tcgen/w2.tc.tcgen2.anlSC.py'
+alias otc='time $W2_PRC_DIR/tcdat/w2-tc-ops-dat.py'
+alias adk='time $W2_PRC_DIR/tcdat/w2.tc.dss.adeck.py'
+alias ad2='time $W2_PRC_DIR/tcdat/w2-tc-dss-ad2.py'
+alias ada='$W2_PRC_DIR/tcdat/w2.tc.dss.adeck.anl.py'
+alias ad2a='$W2_PRC_DIR/tcdat/w2-tc-dss-ad2-anl.py'
+alias adc='time $W2_PRC_DIR/tcdat/w2-tc-convert-tm-mftrkN-to-atcf-adeck.py'
+alias vd2a='time $W2_PRC_DIR/tcdat/w2-tc-dss-vd2-anl.py'
+alias mdk='time $W2_PRC_DIR/tcdat/w2-tc-dss-mdeck.py'
+alias md2='time $W2_PRC_DIR/tcdat/w2-tc-dss-md2.py'
+alias md2a='time $W2_PRC_DIR/tcdat/w2-tc-dss-md2-anl.py'
+alias mda='$W2_PRC_DIR/tcdat/w2.tc.dss.mdeck.anl.py'
+alias ldtc='time $W2_PRC_DIR/tcdiag/w2-tc-lsdiag.py'
+
+alias l2='$W2_PRC_DIR/flddat/l2.py'
+
+# -- machines
+#
+alias ecgate="ssh -Y vsmf@ecaccess.ecmwf.int"
+alias climateb="ssh -i ~/.ssh/id_rsa -Y mfiorino@climateb.aori.u-tokyo.ac.jp"
+
+alias argo="ssh -Y mfiorino@argo-1.orc.gmu.edu"
+alias scp.2a='function _scp.2a(){ scp "$1" mfiorino@argo-1.orc.gmu.edu:~/.;};_scp.2a'
+
+alias hopper="ssh -Y mfiorino@hopper1.orc.gmu.edu"
+alias scp.2h='function _scp.2h(){ scp "$1" mfiorino@hopper1.orc.gmu.edu:~/.;};_scp.2h'
+
+# -- rsync
+#
+rclim="mfiorino@climateb.aori.u-tokyo.ac.jp://braid1/mfiorino/w22/"
+rsshc="\"ssh -i ~/.ssh/id_rsa\""
+rsclm="-alv -e $rsshc $rclim"
+
+alias  rsc2h='function _rsc2h(){  c2hr="rsync  -alv $rsclm$1 $2" ; echo $c2hr ; rsync -alv  -e "ssh -i ~/.ssh/id_rsa" mfiorino@climateb.aori.u-tokyo.ac.jp://braid1/mfiorino/w22/"$1" "$2";};_rsc2h'
+alias nrsc2h='function _nrsc2h(){ c2hr="rsync -alvn $rsclm$1 $2" ; echo $c2hr ; rsync -alvn -e "ssh -i ~/.ssh/id_rsa" mfiorino@climateb.aori.u-tokyo.ac.jp://braid1/mfiorino/w22/"$1" "$2";};_nrsc2h'
+
+alias  rsc2hu='function _rsc2hu(){  c2hr="rsync -alvu  $rsclm$1 $2" ; echo $c2hr ; rsync  -aluv -e "ssh -i ~/.ssh/id_rsa" mfiorino@climateb.aori.u-tokyo.ac.jp://braid1/mfiorino/w22/"$1" "$2";};_rsc2hu'
+alias nrsc2hu='function _nrsc2hu(){ c2hr="rsync -alvun $rsclm$1 $2" ; echo $c2hr ; rsync -alvun -e "ssh -i ~/.ssh/id_rsa" mfiorino@climateb.aori.u-tokyo.ac.jp://braid1/mfiorino/w22/"$1" "$2";};_nrsc2hu'
+
+alias  rsh2c='function _rsh2c(){  h2cr="rsync -alv  $1 $rsclm$2" ; echo $h2cr ; rsync -alv  -e "ssh -i ~/.ssh/id_rsa" "$1" mfiorino@climateb.aori.u-tokyo.ac.jp://braid1/mfiorino/w22/"$2" ;};_rsh2c'
+alias nrsh2c='function _nrsh2c(){ h2cr="rsync -alvn $1 $rsclm$2" ; echo $h2cr ; rsync -alvn -e "ssh -i ~/.ssh/id_rsa" "$1" mfiorino@climateb.aori.u-tokyo.ac.jp://braid1/mfiorino/w22/"$2" ;};_nrsh2c'
+
+alias  rsh2cu='function _rsh2cu(){  h2cr="rsync -aluv  $1 $rsclm$2" ; echo $h2cr ; rsync -aluv  -e "ssh -i ~/.ssh/id_rsa" "$1" mfiorino@climateb.aori.u-tokyo.ac.jp://braid1/mfiorino/w22/"$2" ;};_rsh2cu'
+alias nrsh2cu='function _nrsh2cu(){ h2cr="rsync -aluvn $1 $rsclm$2" ; echo $h2cr ; rsync -aluvn -e "ssh -i ~/.ssh/id_rsa" "$1" mfiorino@climateb.aori.u-tokyo.ac.jp://braid1/mfiorino/w22/"$2" ;};_nrsh2cu'
+
+# -- grads
+
+#alias gg 'grads -Hlc "open \!* " -g 800x600-30'
+alias gg='function _gg(){ grads -Hlc \"open "$1"\" -g 1200x760-30;};_gg'

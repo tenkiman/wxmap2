@@ -1,0 +1,127 @@
+       subroutine calct(deltar,xc,yc,yo,xf,rmxlim)                              
+c                                                                               
+c  calculates the radial profile for eight azimuthal angles                     
+c                                                                               
+       parameter ( nmx=24)                                                      
+       parameter (imx=201 , jmx=81, iimx=110)                                    
+       dimension xf(imx,jmx)                                                    
+       dimension idst(nmx),hmax(nmx),rmax(nmx)                                  
+c                                                                               
+       common /scale/rmxavg,rfind                                               
+       common /pass/xr(iimx,nmx),dist(nmx)                                      
+       common  /total/ ddel,dtha                                                
+       common  /coor/ xv,yv,xold,yold,xcorn,ycorn,factr,id1,id2                 
+c                                                                               
+          pi = 4.*atan(1.0)                                                     
+       pi180 = 4.*atan(1.0)/180.                                                
+       arad=6371.                                                               
+       print*,'calct',deltar,xc,yc,yo,yold                                      
+       fact=cos(yo)                                                             
+c                                                                               
+c      set the factor to determine lower limit of dist search                   
+c                                                                               
+       bfact = .5                                                               
+       rdistl =  bfact*rmxavg                                                   
+c                                                                               
+       print*                                                                   
+       print*,'b factor to determine rdistl: ',bfact                            
+c                                                                               
+c                                                                               
+c assume the maximum wind is within rfavg of center (but <10.8 also)            
+c                                                                               
+        irend =int(rmxlim/deltar)                                               
+c                                                                               
+c                                                                               
+        iravg =int(rdistl/deltar)                                               
+c                                                                               
+        print*,'lower limit and radius of dist search: ',rdistl,iravg           
+        print*,'upper limit and radius of dist search: ',rmxlim,irend           
+c                                                                               
+       dx=ddel*(1./pi180)                                                       
+       dy=dtha/pi180                                                            
+c                                                                               
+c  angle loop                                                                   
+c                                                                               
+        do 10 i=1,nmx                                                           
+        theta= 2.*pi*float(i-1)/float(nmx)                                      
+c                                                                               
+        do 11 ir=1,iimx                                                         
+        ro=float(ir)*deltar                                                     
+        x=(ro*cos(theta))/(fact) +xc +1.                                        
+        y=(ro*sin(theta)) +yc +1.                                               
+        ix=int(x/dx)                                                            
+        iy=int(y/dy)                                                            
+        ix1=ix+1                                                                
+        iy1=iy+1                                                                
+        p=x/dx-float(ix)                                                        
+        q=y/dy-float(iy)                                                        
+       xr(ir,i)=(1.-p)*(1.-q)*xf(ix,iy) +(1.-p)*q*xf(ix,iy+1)                   
+     1      +  (1.-q)*p*xf(ix+1,iy) + p*q*xf(ix+1,iy+1)                         
+11     continue                                                                 
+c                                                                               
+c find relative max after which ro check begins                                 
+c                                                                               
+      do id = 1,nmx                                                             
+          idst(id) = 0                                                          
+c                                                                               
+        hmax(id)=-10.e10                                                        
+      end do                                                                    
+        do 12 ir=iravg,irend                                                    
+          hmax(i)=amax1(hmax(i),xr(ir,i))                                       
+          if(hmax(i).eq.xr(ir,i))dist(i)=float(ir)*deltar                       
+          if(hmax(i).eq.xr(ir,i))idst(i)=ir                                     
+12      continue                                                                
+c                                                                               
+c  if the max. value is also the endpt it maynot be a relative max              
+c  check backwards from irend for the last relative max                         
+c                                                                               
+c                                                                               
+       irvgu = iravg+1                                                          
+       if(irvgu.le.2)then                                                       
+       irvgu = 3                                                                
+       endif                                                                    
+c                                                                               
+       if(irend.eq.idst(i).or.iravg.eq.idst(i))then                             
+         do 13 ir=irend,irvgu,-1                                                
+            if(xr(ir-1,i).lt.0.)goto14                                          
+            if(xr(ir-1,i).gt.xr(ir,i).and.xr(ir-1,i).ge.xr(ir-2,i))then         
+               dist(i)=float(ir-1)*deltar                                       
+               print*,'readjusting dist'                                        
+     1                ,dist(i),hmax(i),xr(ir-1,i),rmxlim                        
+               go to 14                                                         
+c                                                                               
+           endif                                                                
+c                                                                               
+13      continue                                                                
+c                                                                               
+14      continue                                                                
+       endif                                                                    
+c                                                                               
+c                                                                               
+         if(idst(i).lt.iravg)then                                               
+         print*,'lower limit check, dist changed to rmxlim, i is: ',i           
+         dist(i) = rmxlim                                                       
+         endif                                                                  
+c                                                                               
+c                                                                               
+10       continue                                                               
+c                                                                               
+cc     do 450 iaa = 1 , nmx                                                     
+cc     write(94,*)iaa,dist(iaa)                                                 
+cc450    continue                                                               
+c                                                                               
+c      write(94,*)rdistl,rmxlim                                                 
+c                                                                               
+c                                                                               
+       do idd = 1,nmx                                                           
+        dist(idd) = dist(idd) * 1.1                                             
+       end do                                                                   
+       print*,'relative max found '                                             
+        print 4400,dist                                                         
+4400    format(25f4.1)                                                          
+c         write(4,400)                                                          
+          write(6,400)                                                          
+     1        (float(ir)*deltar,(xr(ir,i)/100.,i=1,1),ir=1,iimx)                
+400     format(25f5.1)                                                          
+         return                                                                 
+         end                                                                    

@@ -1,0 +1,4 @@
+20150706
+
+TCDnamelist must point to the correct machine version in ../../src/tcdiag
+did svn del

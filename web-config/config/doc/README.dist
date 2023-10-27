@@ -1,0 +1,231 @@
+		     WxMAP 1.1 Distribution
+
+			  Mike Fiorino
+                           PCMDI/LLNL
+                        fiorino@llnl.gov
+
+			14 December, 2000
+
+
+Introduction
+------------
+
+the gzip tar file wxmap-V.V.tar.gz contains all files data and
+script used by the WxMAP web located at 
+
+http://www-pcmdi.llnl.gov/wxmap
+
+V.V is the version number which is current 1.1
+
+Let BDIR = the base directory of WxMAP, e.g., /home/myhome
+
+after gunzip and untar you will have the following director structure:
+
+
+$BDIR/wxmap-1.1/
+
+ .crontab.cloud		-	various crontab file that drive the system
+ .crontab.stargate		I use .crontab.stargate and .crontab.tenki
+ .crontab.tenki			
+ .crontab.tmp
+ .crontab.typhoon
+
+ .envrc			-	my env resource file
+ 
+ .tcbogrc		-	my TC resource file
+
+ .wxmaprc		-	wxmap resource file
+
+ README			-	this file
+ 
+ dat			-	data files
+
+ grads			-	grads user defined function
+
+ perl			-	perl resources
+
+ prc			-	base of processing
+ 
+ web			-	base of web
+
+
+2.0   dat
+---------
+
+two data sets are used in wxmap: 1) monthly mean sst climatology
+from the AMIP II experiment to calculate sst anomalies; and 2)
+land-sea mask to maskout land for ocean plots.
+
+$BDIR/dat/climo/sst/
+climobs_sst_clim.ctl	-	grads .ctl file for 1deg monnthly mean sst
+
+$BDIR/dat/geog/		
+geo.1deg.ctl		-	1deg orogography sfc type data
+ls.1deg.ctl		-	1deg land-sea mask
+
+
+3.0   grads
+-----------
+
+two grads user defined functions are needed: 1)
+
+$BDIR/grads/udf/udft    -	 use defined function table
+$BDIR/grads/udf/esmrf/  -	 saturation vapor pressure
+$BDIR/grads/udf/lterp/  -	 linear interpolation
+
+4.0  perl
+---------
+
+$BDIR/perl/lib/MIME/	-	 MIME package for creating email with graphics
+$BDIR/perl/lib/mf.pl	-	 basic perl functions, e.g, time routines
+
+
+5.0  prc
+--------
+
+the main processing happens in here
+
+$BDIR/prc/wxmap	    	-	main processing
+
+signficant perl scripts:
+------------------------
+
+l.pl			-	list data and graphics
+
+wxmap.all.pl		-	script that does everything
+wxmap.bitbank.pl	-	archive
+wxmap.button.area.pl	-	create buttons for areas
+
+clean up scripts:
+
+wxmap.clean.cfg.pl
+wxmap.clean.g.wxmap.input.txt.pl
+wxmap.clean.htm.pl
+wxmap.clean.log.pl
+wxmap.clean.web.pl
+wxmap.clean.wxmap.pl
+
+wxmap.env.pl		-	configuration scrcipt
+
+wxmap.make.g.wxmap.gs.cfg.pl
+wxmap.ngp.pl		-	nogaps processing
+wxmap.plot.all.pl	-	plot all
+wxmap.plot.pl		-	plot by area
+wxmap.redo.pl		-	redo prcoessiung
+wxmap.tar.system.pl	-	script that tars up wxmap
+wxmap.tc.posits.pl	-	TC handling 
+
+non perl scritps:
+-----------------
+
+run.cron.tcsh		-	tcsh script for use in crontab
+
+-rw-r--r--    1 fiorino  climate       860 Apr 25  1998 eclogo.gs
+-rw-r--r--    1 fiorino  climate     24187 Mar  6  2000 g.button.area.gs
+-rw-r--r--    1 fiorino  climate     75413 Jul 17 09:10 g.wxmap.gs
+
+
+grads scripts:
+--------------
+eclogo.gs		-	draw ECMWF logo
+g.button.area.gs	-	draw area buttons
+g.wxmap.gs		-	main plotting script
+
+
+area configuration files:
+-------------------------
+
+area.XXXX.cfg
+
+where XXXX is the area, e.g. for tropwpac:
+
+area.tropwpac.cfg:
+
+latlon			type of projection
+mres			resolution of the map
+0.4 10.8 0.65 8.25	parea in grads
+80			W lon of box
+200			E lon of box
+-10			S lat of box
+60			N lat of box
+default			mproj parameters for polar proj...
+default
+default
+default
+20			lon label increment
+10			lat label increment
+
+
+
+$BDIR/prc/metgram	-	ECMWF metgrams (only works there...)
+
+
+$BDIR/prc/dat		-	data handling
+
+perl scripts:
+-------------
+
+wxmap.arac.ftp.raw.pl	-	recover from NARAC
+wxmap.arac.ngp.pl
+wxmap.arac.ngp.psu.pl
+wxmap.arac.recover.pl
+
+wxmap.ftp.cola.pl	-	ftp scripts
+wxmap.ftp.ngp.2.cola.pl
+wxmap.ftp.pcmdi.pl
+wxmap.ftp.put.pl
+
+
+wxmap.gribmap.pl	-	create .ctl from GRIB data and run gribmap
+
+wxmap.ifs.all.pl	-	ECMWF only processing
+wxmap.ifs.pl
+
+wxmap.ncep.pl		-	NCEP AVN/MRF processing
+
+wxmap.ncep.via.cola.pl
+
+wxmap.ngp.filt.pl	
+wxmap.ngp.grb.pl	-	processing NOGAPS GRIB from FNMOC
+wxmap.ngp.via.arac.pl
+
+wxmap.tc.ops.dat.pl	-	TC processing
+
+wxmap.tos.ngp.pl	-	sst processing
+
+
+$BDIR/prc/html		-	web processing
+
+perl scripts:
+-------------
+
+
+wxmap.announce.cover.htm.pl	-	turn off web cover
+
+wxmap.check.pl			-	check a web dir
+
+wxmap.htm.pl			-	make htm for an area/model
+
+wxmap.main.pl			-	main html
+
+wxmap.movie.js.pl		-	javascrpt movie
+
+wxmap.movie.pl
+
+wxmap.sst.htm.pl
+
+wxmap.web.archive.pl
+
+wxmap.web.pl			-	make all web html
+
+wxmap.wxmail.pl			-	email weblets
+
+
+
+
+
+
+
+
+
+

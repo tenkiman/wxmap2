@@ -1,0 +1,636 @@
+% This file is auto-generated with f2py (version:2.317)
+\documentclass{article}
+\usepackage{a4wide}
+\begin{document}
+\tableofcontents
+
+\section{Module \texttt{nclip23}}
+
+
+
+\subsection{Wrapper function \texttt{lastch}}
+
+
+\noindent{{}\verb@lastch = lastch@{}}\texttt{(string\_v)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@string_v : input string(len=-1)@{}}
+
+\end{description}
+\noindent Return objects:
+\begin{description}
+\item[]{{}\verb@lastch : int@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{xtrap}}
+
+
+\noindent{{}\verb@xtrap@{}}\texttt{(iymdh, latcur, loncur, latm12, lonm12, strmid)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@iymdh : input int@{}}
+
+\item[]{{}\verb@latcur : input float@{}}
+
+\item[]{{}\verb@loncur : input float@{}}
+
+\item[]{{}\verb@latm12 : input float@{}}
+
+\item[]{{}\verb@lonm12 : input float@{}}
+
+\item[]{{}\verb@strmid : input string(len=8)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{rhdst}}
+
+
+\noindent{{}\verb@rhdst@{}}\texttt{(flat, flng, tlat, tlng, dir, dst)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@flat : input float@{}}
+
+\item[]{{}\verb@flng : input float@{}}
+
+\item[]{{}\verb@tlat : input float@{}}
+
+\item[]{{}\verb@tlng : input float@{}}
+
+\item[]{{}\verb@dir : input float@{}}
+
+\item[]{{}\verb@dst : input float@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{rltlg}}
+
+
+\noindent{{}\verb@rltlg@{}}\texttt{(flat, flng, tlat, tlng, dir, dst)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@flat : input float@{}}
+
+\item[]{{}\verb@flng : input float@{}}
+
+\item[]{{}\verb@tlat : input float@{}}
+
+\item[]{{}\verb@tlng : input float@{}}
+
+\item[]{{}\verb@dir : input float@{}}
+
+\item[]{{}\verb@dst : input float@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{atclip}}
+
+
+\noindent{{}\verb@atclip@{}}\texttt{(iymdh, y, x, dnow, snow, dm12, sm12, wkts, strmid)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@iymdh : input int@{}}
+
+\item[]{{}\verb@y : input float@{}}
+
+\item[]{{}\verb@x : input float@{}}
+
+\item[]{{}\verb@dnow : input float@{}}
+
+\item[]{{}\verb@snow : input float@{}}
+
+\item[]{{}\verb@dm12 : input float@{}}
+
+\item[]{{}\verb@sm12 : input float@{}}
+
+\item[]{{}\verb@wkts : input float@{}}
+
+\item[]{{}\verb@strmid : input string(len=8)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{cgulf}}
+
+
+\noindent{{}\verb@cgulf@{}}\texttt{(y, x, u, v, u12, v12, dn, w, wgulf, gulf)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@y : input float@{}}
+
+\item[]{{}\verb@x : input float@{}}
+
+\item[]{{}\verb@u : input float@{}}
+
+\item[]{{}\verb@v : input float@{}}
+
+\item[]{{}\verb@u12 : input float@{}}
+
+\item[]{{}\verb@v12 : input float@{}}
+
+\item[]{{}\verb@dn : input float@{}}
+
+\item[]{{}\verb@w : input float@{}}
+
+\item[]{{}\verb@wgulf : input float@{}}
+
+\item[]{{}\verb@gulf : input rank-1 array('f') with bounds (10)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{atshif}}
+
+
+\noindent{{}\verb@atshif@{}}\texttt{(ymdh, alat, alon, alat12, alon12, vel, vel12, strmid)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@ymdh : input int@{}}
+
+\item[]{{}\verb@alat : input float@{}}
+
+\item[]{{}\verb@alon : input float@{}}
+
+\item[]{{}\verb@alat12 : input float@{}}
+
+\item[]{{}\verb@alon12 : input float@{}}
+
+\item[]{{}\verb@vel : input float@{}}
+
+\item[]{{}\verb@vel12 : input float@{}}
+
+\item[]{{}\verb@strmid : input string(len=8)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{ashif3}}
+
+
+\noindent{{}\verb@ashif3@{}}\texttt{(p1, p2, p3, p4, p6, p7)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@p1 : input float@{}}
+
+\item[]{{}\verb@p2 : input float@{}}
+
+\item[]{{}\verb@p3 : input float@{}}
+
+\item[]{{}\verb@p4 : input float@{}}
+
+\item[]{{}\verb@p6 : input float@{}}
+
+\item[]{{}\verb@p7 : input float@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{atshif5d}}
+
+
+\noindent{{}\verb@atshif5d@{}}\texttt{(ymdh, alat, alon, alat12, alon12, vel, vel12, strmid)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@ymdh : input int@{}}
+
+\item[]{{}\verb@alat : input float@{}}
+
+\item[]{{}\verb@alon : input float@{}}
+
+\item[]{{}\verb@alat12 : input float@{}}
+
+\item[]{{}\verb@alon12 : input float@{}}
+
+\item[]{{}\verb@vel : input float@{}}
+
+\item[]{{}\verb@vel12 : input float@{}}
+
+\item[]{{}\verb@strmid : input string(len=6)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{jday}}
+
+
+\noindent{{}\verb@jday@{}}\texttt{(imon, iday, iyear, julday)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@imon : input int@{}}
+
+\item[]{{}\verb@iday : input int@{}}
+
+\item[]{{}\verb@iyear : input int@{}}
+
+\item[]{{}\verb@julday : input int@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{epcl84}}
+
+
+\noindent{{}\verb@epcl84@{}}\texttt{(ymdh, la0, lo0, lam12, lom12, lam24, lom24, dir0, spd0, wnd0, strmid)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@ymdh : input int@{}}
+
+\item[]{{}\verb@la0 : input float@{}}
+
+\item[]{{}\verb@lo0 : input float@{}}
+
+\item[]{{}\verb@lam12 : input float@{}}
+
+\item[]{{}\verb@lom12 : input float@{}}
+
+\item[]{{}\verb@lam24 : input float@{}}
+
+\item[]{{}\verb@lom24 : input float@{}}
+
+\item[]{{}\verb@dir0 : input float@{}}
+
+\item[]{{}\verb@spd0 : input float@{}}
+
+\item[]{{}\verb@wnd0 : input float@{}}
+
+\item[]{{}\verb@strmid : input string(len=8)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{mult1}}
+
+
+\noindent{{}\verb@mult1@{}}\texttt{()}
+
+
+
+
+\subsection{Wrapper function \texttt{mult2}}
+
+
+\noindent{{}\verb@mult2@{}}\texttt{()}
+
+
+
+
+\subsection{Wrapper function \texttt{mult3}}
+
+
+\noindent{{}\verb@mult3@{}}\texttt{()}
+
+
+
+
+\subsection{Wrapper function \texttt{mult4}}
+
+
+\noindent{{}\verb@mult4@{}}\texttt{()}
+
+
+
+
+\subsection{Wrapper function \texttt{sthgpr}}
+
+
+\noindent{{}\verb@sthgpr@{}}\texttt{(xlath, xlonh, bear, gridsz, xi0, yj0)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@xlath : input float@{}}
+
+\item[]{{}\verb@xlonh : input float@{}}
+
+\item[]{{}\verb@bear : input float@{}}
+
+\item[]{{}\verb@gridsz : input float@{}}
+
+\item[]{{}\verb@xi0 : input float@{}}
+
+\item[]{{}\verb@yj0 : input float@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{ll2xyh}}
+
+
+\noindent{{}\verb@ll2xyh@{}}\texttt{(xlat, xlong, xi, yj)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@xlat : input float@{}}
+
+\item[]{{}\verb@xlong : input float@{}}
+
+\item[]{{}\verb@xi : input float@{}}
+
+\item[]{{}\verb@yj : input float@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{xy2llh}}
+
+
+\noindent{{}\verb@xy2llh@{}}\texttt{(xi, yj, xlat, xlong)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@xi : input float@{}}
+
+\item[]{{}\verb@yj : input float@{}}
+
+\item[]{{}\verb@xlat : input float@{}}
+
+\item[]{{}\verb@xlong : input float@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{epshif}}
+
+
+\noindent{{}\verb@epshif@{}}\texttt{(idtg, alat, alon, alat12, alon12, vel, vel12, strmid)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@idtg : input int@{}}
+
+\item[]{{}\verb@alat : input float@{}}
+
+\item[]{{}\verb@alon : input float@{}}
+
+\item[]{{}\verb@alat12 : input float@{}}
+
+\item[]{{}\verb@alon12 : input float@{}}
+
+\item[]{{}\verb@vel : input float@{}}
+
+\item[]{{}\verb@vel12 : input float@{}}
+
+\item[]{{}\verb@strmid : input string(len=8)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{epshif5d}}
+
+
+\noindent{{}\verb@epshif5d@{}}\texttt{(ymdh, elat, elon, elat12, elon12, vel, vel12, strmid)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@ymdh : input int@{}}
+
+\item[]{{}\verb@elat : input float@{}}
+
+\item[]{{}\verb@elon : input float@{}}
+
+\item[]{{}\verb@elat12 : input float@{}}
+
+\item[]{{}\verb@elon12 : input float@{}}
+
+\item[]{{}\verb@vel : input float@{}}
+
+\item[]{{}\verb@vel12 : input float@{}}
+
+\item[]{{}\verb@strmid : input string(len=6)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{readbt}}
+
+
+\noindent{{}\verb@readbt@{}}\texttt{(datfile, cent, dtg, flat, ns, flon, ew, iwind, ios)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@datfile : input int@{}}
+
+\item[]{{}\verb@cent : input string(len=2)@{}}
+
+\item[]{{}\verb@dtg : input string(len=8)@{}}
+
+\item[]{{}\verb@flat : input float@{}}
+
+\item[]{{}\verb@ns : input string(len=1)@{}}
+
+\item[]{{}\verb@flon : input float@{}}
+
+\item[]{{}\verb@ew : input string(len=1)@{}}
+
+\item[]{{}\verb@iwind : input int@{}}
+
+\item[]{{}\verb@ios : input int@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{readbest}}
+
+
+\noindent{{}\verb@readbest@{}}\texttt{(datfile, basin, cycnum, cent, dtg, flat, ns, flon, ew, iwind, ios)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@datfile : input int@{}}
+
+\item[]{{}\verb@basin : input string(len=2)@{}}
+
+\item[]{{}\verb@cycnum : input string(len=2)@{}}
+
+\item[]{{}\verb@cent : input string(len=2)@{}}
+
+\item[]{{}\verb@dtg : input string(len=8)@{}}
+
+\item[]{{}\verb@flat : input float@{}}
+
+\item[]{{}\verb@ns : input string(len=1)@{}}
+
+\item[]{{}\verb@flon : input float@{}}
+
+\item[]{{}\verb@ew : input string(len=1)@{}}
+
+\item[]{{}\verb@iwind : input int@{}}
+
+\item[]{{}\verb@ios : input int@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{dowriteaidrcd}}
+
+
+\noindent{{}\verb@dowriteaidrcd@{}}\texttt{(datfile, stormid, cdtg, techname, itau, llwnd)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@datfile : input int@{}}
+
+\item[]{{}\verb@stormid : input string(len=8)@{}}
+
+\item[]{{}\verb@cdtg : input string(len=10)@{}}
+
+\item[]{{}\verb@techname : input string(len=4)@{}}
+
+\item[]{{}\verb@itau : input int@{}}
+
+\item[]{{}\verb@llwnd : input rank-1 array('i') with bounds (3)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{writeaidrcd}}
+
+
+\noindent{{}\verb@writeaidrcd@{}}\texttt{(datfile, stormid, cdtg, techname, ltlnwnd)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@datfile : input int@{}}
+
+\item[]{{}\verb@stormid : input string(len=8)@{}}
+
+\item[]{{}\verb@cdtg : input string(len=10)@{}}
+
+\item[]{{}\verb@techname : input string(len=4)@{}}
+
+\item[]{{}\verb@ltlnwnd : input rank-2 array('i') with bounds (3,10)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{newwriteaidrcd}}
+
+
+\noindent{{}\verb@newwriteaidrcd@{}}\texttt{(datfile, stormid, cdtg, techname, ltlnwnd)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@datfile : input int@{}}
+
+\item[]{{}\verb@stormid : input string(len=8)@{}}
+
+\item[]{{}\verb@cdtg : input string(len=10)@{}}
+
+\item[]{{}\verb@techname : input string(len=4)@{}}
+
+\item[]{{}\verb@ltlnwnd : input rank-2 array('i') with bounds (3,11)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{writeaid}}
+
+
+\noindent{{}\verb@writeaid@{}}\texttt{(datfile, stormid, century, cdtg, techname, ltlnwnd)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@datfile : input int@{}}
+
+\item[]{{}\verb@stormid : input string(len=6)@{}}
+
+\item[]{{}\verb@century : input string(len=2)@{}}
+
+\item[]{{}\verb@cdtg : input string(len=8)@{}}
+
+\item[]{{}\verb@techname : input string(len=4)@{}}
+
+\item[]{{}\verb@ltlnwnd : input rank-2 array('i') with bounds (3,10)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{readnext}}
+
+
+\noindent{{}\verb@readnext@{}}\texttt{(datfile, rcd, ios)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@datfile : input float@{}}
+
+\item[]{{}\verb@rcd : input float@{}}
+
+\item[]{{}\verb@ios : input int@{}}
+
+\end{description}
+
+
+\subsection{Common block \texttt{extrap}}
+
+\begin{description}
+\item[]{{}\verb@ifpxtrp : rank-2 array('i') with bounds (3,11)@{}}
+\end{description}
+\subsection{Common block \texttt{cliper}}
+
+\begin{description}
+\item[]{{}\verb@ifpclip : rank-2 array('i') with bounds (3,11)@{}}
+\item[]{{}\verb@flat : rank-1 array('f') with bounds (7)@{}}
+\item[]{{}\verb@flon : rank-1 array('f') with bounds (7)@{}}
+\end{description}
+\subsection{Common block \texttt{shifor}}
+
+\begin{description}
+\item[]{{}\verb@ishifor : rank-2 array('i') with bounds (3,11)@{}}
+\end{description}
+\subsection{Common block \texttt{al5coef}}
+
+\begin{description}
+\item[]{{}\verb@scoef : rank-2 array('f') with bounds (36,10)@{}}
+\item[]{{}\verb@avg : rank-2 array('f') with bounds (36,10)@{}}
+\item[]{{}\verb@sdev : rank-2 array('f') with bounds (36,10)@{}}
+\end{description}
+\subsection{Common block \texttt{shifor5}}
+
+\begin{description}
+\item[]{{}\verb@ishifor5 : rank-2 array('i') with bounds (3,11)@{}}
+\end{description}
+\subsection{Common block \texttt{pp}}
+
+\begin{description}
+\item[]{{}\verb@p : rank-1 array('f') with bounds (164)@{}}
+\end{description}
+\subsection{Common block \texttt{cl84}}
+
+\begin{description}
+\item[]{{}\verb@cdi : rank-1 array('f') with bounds (12)@{}}
+\end{description}
+\subsection{Common block \texttt{hgrprm}}
+
+\begin{description}
+\item[]{{}\verb@a : rank-2 array('f') with bounds (3,3)@{}}
+\item[]{{}\verb@radpdg : rank-0 array(float,'f')@{}}
+\item[]{{}\verb@rrthnm : rank-0 array(float,'f')@{}}
+\item[]{{}\verb@dgridh : rank-0 array(float,'f')@{}}
+\item[]{{}\verb@hgridx : rank-0 array(float,'f')@{}}
+\item[]{{}\verb@hgridy : rank-0 array(float,'f')@{}}
+\end{description}
+\subsection{Common block \texttt{ep5coef}}
+
+\begin{description}
+\item[]{{}\verb@scoef : rank-2 array('f') with bounds (36,10)@{}}
+\item[]{{}\verb@avg : rank-2 array('f') with bounds (36,10)@{}}
+\item[]{{}\verb@sdev : rank-2 array('f') with bounds (36,10)@{}}
+\end{description}
+
+\end{document}

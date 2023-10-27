@@ -1,0 +1,30 @@
+iadeck.dat input adeck with CARQ 0 and -12 h
+modeldiag.dat -- input diag file
+iships.x
+ships.dat -- adeck output  
+
+NNNS - ships
+NNNG - lgem
+NNND - decay ships
+
+
+ships.log -- debug
+ships.tst -- debug
+ships.txt -- output
+
+ships10_coef_atlc.dat ships coeff
+shipl10_coef_atlc.dat lgem coeff
+
+for atlc and epac only
+
+mpi calc ok in wpac,epac,lant, NOT in SHEM
+
+world aland from john knaff.
+
+
+ohc data: ohcclim.atl, .epc  need for .wpc .shm
+
+req action for other basins:
+
+wpac: wland, coeffs, ochclim
+shem: wland, coeffs, ohclim, mpi

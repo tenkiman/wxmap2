@@ -1,0 +1,60 @@
+	       setting up and testing the GFDL TC tracker
+
+			      Mike Fiorino
+				20130924
+				20131112
+
+20131112
+
+clean up test on kishou after svn co from new repo
+
+
+
+latest and greatest code is in 
+
+c.w2.s (go to root of src)
+
+tcgfdltrk/gettrk_gen_20111014/
+
+all apps use gfortran
+
+1) make the libw3.a and grbindex.x
+
+cd tcgfdltrk/w3lib
+
+macos: ln -s -f bacio.macos.c bacio.c
+linux: ln -s -f bacio.linux.c bacio.c
+
+make -f makefile.linux or macos
+
+use
+ 
+.linux on jet/zeus/kaze|tcops|wxmap2 (all are w2.onKaze) machines
+.macos on kishou/taifuu
+
+2) make gettrk_genN.x
+
+cd tcgfdltrk/gettrk_gen_20111014/
+
+Makefile.linux Makefile.macos
+
+3) run unittest
+
+cd tcgfdltrk/unittest
+
+make grib index using
+
+prep.grbindex.sh
+
+the depending on machine, e.g., for jet
+
+test.jet.sh
+test.zeus.sh
+test.macos.sh
+
+will do a diff of tracker output against previous on these machines:
+
+1) jet
+
+
+

@@ -1,0 +1,31 @@
+SHELL=  /bin/sh
+COMP=   gfortran
+LDFLAGS=
+FFLAGS= -g -O
+
+
+COMP=   gfortran
+FFLAGS= -g -O  -frecord-marker=4  -fno-range-check  -ffixed-line-length-132
+FFLAGS= -gdwarf-2 -O  -frecord-marker=4  -fno-range-check -ffixed-line-length-132
+LIBS=     ../w3lib/libw3.a
+
+COMP=   g95
+FFLAGS= -g -O -ftrace=full -ffixed-line-length-132
+LIBS=   ../w3lib/libw3.g95.a
+
+gettrk_gen:      gettrk_main_gen.f gettrk_modules_gen.o
+	@echo " "
+	@echo "  making the tracking program...gettrk.wjet.x"
+	$(COMP) $(FFLAGS) $(LDFLAGS) gettrk_main_gen.f gettrk_modules_gen.o  $(LIBS) -o ../gettrk_gen.x
+	@echo " "
+
+gettrk_modules_gen.o:    gettrk_modules_gen.f
+	@echo " "
+	@echo "  Compiling the modules....."
+	$(COMP) $(FFLAGS) -c gettrk_modules_gen.f -o gettrk_modules_gen.o
+	@echo " "  
+
+
+
+clean:
+	rm -f *.o *.mod ../gettrk_gen.x

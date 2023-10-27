@@ -1,0 +1,2326 @@
+
+</table>
+
+<!-- 111111111111111111111111111111111111111111111111
+     AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 
+-->
+
+<table class="main" cellspacing=0 cellpadding=0 border=0>
+<tr>
+
+<td class='areatitle'>
+Mid-Lat E ASIA
+</td>
+
+<td class='areatitle'>
+Mid-Lat CONUS
+</td>
+
+<!--
+<td class='areatitle'>
+Mid-Lat EUROPE 
+</td>
+-->
+
+<td class='areatitle'>
+Mid-Lat NHEM 
+</td>
+
+</tr>
+</table>
+
+<!-- AAAAAAAAAAAAAAAAAAA RRRRRRRRRRRRROOOOOOOOOOOOOOOWWWWWWWWWWWWWWWWWWWWWWWWWWw -->
+<table border=0>
+<tr>
+
+<!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB  1.2 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
+<!-- area.box.1_1.txt -->
+<!-- B2 1.1 -->
+<td width=125 valign=center align=right height=100>
+<img src="icon/asia.area.button.png" width=115 height=90>
+</td>
+
+<!-- B2 2.1 WWWAAA  -->
+<td valign=top width=175>
+<table class="button">
+
+<!-- B2 2.1.1 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlgfs'
+onMouseOver="className='btnasmlgfsover';" onMouseOut="className='btnasmlgfs';"
+value='GFS' name="tctrk"  
+onClick="area='asia';model='gfs';dtg=dtggfs;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='500 Loop' name="tctrk"  
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='asia';model='gfs';plot='500';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.2 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlfim'
+onMouseOver="className='btnasmlfimover';" onMouseOut="className='btnasmlfim';"
+value='FIM' name="tctrk"
+onClick="area='asia';model='fim';dtg=dtgfim;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='SLP/Pr Loop' name="tctrk"  
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='asia';model='gfs';plot='prp';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.3 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlngp'
+onMouseOver="className='btnasmlngpover';" onMouseOut="className='btnasmlngp';"
+value='NAVG' name="tctrk"
+onClick="area='asia';model='navg';dtg=dtgnavg;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80single'
+value='Precip/SLP' name="tctrk"
+onMouseOver="className='btn80singleover';" onMouseOut="className='btn80single';"
+onClick="area='asia';model='gfs';plot='prp',dtg=dtggfs;htype='areatau0',swaphtm();">
+</td>
+
+</tr>
+<tr>
+<td>
+<input type='button' class='btnasmlecm'
+onMouseOver="className='btnasmlecmover';" onMouseOut="className='btnasmlecm';"
+value='ECM' name="tctrk"
+onClick="area='asia';model='ecm';dtg=dtgecm;htype='area',swaphtm();">
+</td>
+
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.5 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+
+</tr>
+</table>
+
+
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlukm'
+onMouseOver="className='btnasmlukmover';" onMouseOut="className='btnasmlukm';"
+value='UKM' name="tctrk"
+onClick="area='asia';model='ukm';dtg=dtgukm;htype='area',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+</td>
+</table>
+</td>
+<!-- EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 1.2 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
+
+<!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB  1.2 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
+<!-- area.box.1_1.txt -->
+<!-- B2 1.1 -->
+<td width=125 valign=center align=right height=100>
+<img src="icon/conus.area.button.png" width=115 height=90>
+</td>
+
+<!-- B2 2.1 WWWAAA  -->
+<td valign=top width=175>
+<table class="button">
+
+<!-- B2 2.1.1 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlgfs'
+onMouseOver="className='btnasmlgfsover';" onMouseOut="className='btnasmlgfs';"
+value='GFS' name="tctrk"  
+onClick="area='conus';model='gfs';dtg=dtggfs;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='500 Loop' name="tctrk"  
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='conus';model='gfs';plot='500';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.2 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlfim'
+onMouseOver="className='btnasmlfimover';" onMouseOut="className='btnasmlfim';"
+value='FIM' name="tctrk"
+onClick="area='conus';model='fim';dtg=dtgfim;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='SLP/Pr Loop' name="tctrk"  
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='conus';model='gfs';plot='prp';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.3 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlngp'
+onMouseOver="className='btnasmlngpover';" onMouseOut="className='btnasmlngp';"
+value='NAVG' name="tctrk"
+onClick="area='conus';model='navg';dtg=dtgnavg;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80single'
+value='Precip/SLP' name="tctrk"
+onMouseOver="className='btn80singleover';" onMouseOut="className='btn80single';"
+onClick="area='conus';model='gfs';plot='prp',dtg=dtggfs;htype='areatau0',swaphtm();">
+</td>
+</tr>
+<tr>
+
+<td>
+<input type='button' class='btnasmlecm'
+onMouseOver="className='btnasmlecmover';" onMouseOut="className='btnasmlecm';"
+value='ECM' name="tctrk"
+onClick="area='conus';model='ecm';dtg=dtgecm;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='GFS Tmx' name="tctrk"
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='conus';model='gfs';plot='tmx',dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.5 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+</tr>
+</table>
+
+
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlukm'
+onMouseOver="className='btnasmlukmover';" onMouseOut="className='btnasmlukm';"
+value='UKM' name="tctrk"
+onClick="area='conus';model='ukm';dtg=dtgukm;htype='area',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+</td>
+</table>
+</td>
+<!-- EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 1.2 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
+
+
+<!-- area.box.2_1.txt AAAAAAAAAABBBBBBBBBB22222222222111111111-->
+<!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB  2.2 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
+<!-- B1 1.1 -->
+<td width=125 valign=center align=right height=100>
+
+<!-- <img src="icon/europe.area.button.png" width=115 height=90> -->
+
+<img src="icon/nhem.area.button.png" width=115 height=90>
+</td>
+
+<!-- B2 2.1 WWWAAA  -->
+<td valign=top width=175>
+<table class="button">
+
+<!-- B2 2.1.1 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<!--
+<td>
+<input type='button' class='btnasmlgfs'
+onMouseOver="className='btnasmlgfsover';" onMouseOut="className='btnasmlgfs';"
+value='GFS' name="tctrk"  
+onClick="area='europe';model='gfs';dtg=dtggfs;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='500 Loop' name="tctrk"  
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='europe';model='gfs';plot='500';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+-->
+
+<td>
+<input type='button' class='btnasmlgfs'
+onMouseOver="className='btnasmlgfsover';" onMouseOut="className='btnasmlgfs';"
+value='GFS' name="tctrk"  
+onClick="area='nhem';model='gfs';dtg=dtggfs;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='500 Loop' name="tctrk"  
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='nhem';model='gfs';plot='500';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.2 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<!--
+<td>
+<input type='button' class='btnasmlfim'
+onMouseOver="className='btnasmlfimover';" onMouseOut="className='btnasmlfim';"
+value='FIM' name="tctrk"
+onClick="area='europe';model='fim';dtg=dtgfim;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='SLP/Pr Loop' name="tctrk"  
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='europe';model='gfs';plot='prp';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+-->
+
+<td>
+<input type='button' class='btnasmlfim'
+onMouseOver="className='btnasmlfimover';" onMouseOut="className='btnasmlfim';"
+value='FIM' name="tctrk"
+onClick="area='nhem';model='fim';dtg=dtgfim;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='SLP/Pr Loop' name="tctrk"  
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='nhem';model='gfs';plot='prp';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.3 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlngp'
+onMouseOver="className='btnasmlngpover';" onMouseOut="className='btnasmlngp';"
+value='NAVG' name="tctrk"
+onClick="area='nhem';model='navg';dtg=dtgnavg;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80single'
+value='Precip/SLP' name="tctrk"
+onMouseOver="className='btn80singleover';" onMouseOut="className='btn80single';"
+onClick="area='nhem';model='gfs';plot='prp',dtg=dtggfs;htype='areatau0',swaphtm();">
+</td>
+
+</tr>
+<tr>
+<td>
+<input type='button' class='btnasmlecm'
+onMouseOver="className='btnasmlecmover';" onMouseOut="className='btnasmlecm';"
+value='ECM' name="tctrk"
+onClick="area='nhem';model='ecm';dtg=dtgecm;htype='area',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.5 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+
+</tr>
+</table>
+
+
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlukm'
+onMouseOver="className='btnasmlukmover';" onMouseOut="className='btnasmlukm';"
+value='UKM' name="tctrk"
+onClick="area='nhem';model='ukm';dtg=dtgukm;htype='area',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+</td>
+</table>
+</td>
+
+<!-- EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE  2.2 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
+
+</tr>
+</table>
+
+
+
+
+<!-- 111111111111111111111111111111111111111111111111
+     AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 
+-->
+
+<table class="main" cellspacing=0 cellpadding=0 border=0>
+<tr>
+
+<td class='areatitle'>
+Tropical WESTPAC
+</td>
+
+<td class='areatitle'>
+Tropical EASTPAC
+</td>
+
+<td class='areatitle'>
+Tropical LANT 
+</td>
+
+</tr>
+</table>
+
+<!-- AAAAAAAAAAAAAAAAAAA RRRRRRRRRRRRROOOOOOOOOOOOOOOWWWWWWWWWWWWWWWWWWWWWWWWWWw -->
+<table border=0>
+<tr>
+
+<!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB  1.2 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
+<!-- area.box.1_1.txt -->
+<!-- B2 1.1 -->
+<td width=125 valign=center align=right height=100>
+<img src="icon/tropwpac.area.button.png" width=115 height=90>
+</td>
+
+<!-- B2 2.1 WWWAAA  -->
+<td valign=top width=175>
+<table class="button">
+
+<!-- B2 2.1.1 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlgfs'
+onMouseOver="className='btnasmlgfsover';" onMouseOut="className='btnasmlgfs';"
+value='GFS' name="tctrk"  
+onClick="area='tropwpac';model='gfs';dtg=dtggfs;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80prwloop'
+onMouseOver="className='btn80prwloopover';" onMouseOut="className='btn80prwloop';"
+value='PRW LOOP' name="tctrk"  
+onClick="htype='prwloop';area='wpac';opentype='window',swaphtm();">
+</td>
+
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.2 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlfim'
+onMouseOver="className='btnasmlfimover';" onMouseOut="className='btnasmlfim';"
+value='FIM' name="tctrk"
+onClick="area='tropwpac';model='fim';dtg=dtgfim;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='Sfc V Loop' name="tctrk"  
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='tropwpac';model='gfs';plot='uas';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.3 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlngp'
+onMouseOver="className='btnasmlngpover';" onMouseOut="className='btnasmlngp';"
+value='NAVG' name="tctrk"
+onClick="area='tropwpac';model='navg';dtg=dtgnavg;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='SLP/Pr Loop' name="tctrk"
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='tropwpac';model='gfs';plot='prp',dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.5 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlecm'
+onMouseOver="className='btnasmlecmover';" onMouseOut="className='btnasmlecm';"
+value='ECM' name="tctrk"
+onClick="area='tropwpac';model='ecm';dtg=dtgecm;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80single'
+value='Vsfc' name="tctrk"
+onMouseOver="className='btn80singleover';" onMouseOut="className='btn80single';"
+onClick="area='tropwpac';model='gfs';plot='uas',dtg=dtggfs;htype='areatau0',swaphtm();">
+</td>
+
+</tr>
+</table>
+
+
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlukm'
+onMouseOver="className='btnasmlukmover';" onMouseOut="className='btnasmlukm';"
+value='UKM' name="tctrk"
+onClick="area='tropwpac';model='ukm';dtg=dtgukm;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80single'
+value='850 NHC' name="tctrk"
+onMouseOver="className='btn80singleover';" onMouseOut="className='btn80single';"
+onClick="area='tropwpac';model='gfs';plot='n850',dtg=dtggfs;htype='areatau0',swaphtm();">
+</td>
+</tr>
+
+<tr>
+
+</tr>
+</table>
+</td>
+</tr>
+
+</td>
+</table>
+</td>
+<!-- EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 1.2 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
+
+<!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB  1.2 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
+<!-- area.box.1_1.txt -->
+<!-- B2 1.1 -->
+<td width=125 valign=center align=right height=100>
+<img src="icon/tropepac.area.button.png" width=115 height=90>
+</td>
+
+<!-- B2 2.1 WWWAAA  -->
+<td valign=top width=175>
+<table class="button">
+
+<!-- B2 2.1.1 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlgfs'
+onMouseOver="className='btnasmlgfsover';" onMouseOut="className='btnasmlgfs';"
+value='GFS' name="tctrk"  
+onClick="area='tropepac';model='gfs';dtg=dtggfs;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80prwloop'
+onMouseOver="className='btn80prwloopover';" onMouseOut="className='btn80prwloop';"
+value='PRW LOOP' name="tctrk"  
+onClick="htype='prwloop';area='epac';opentype='window',swaphtm();">
+</td>
+
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.2 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlfim'
+onMouseOver="className='btnasmlfimover';" onMouseOut="className='btnasmlfim';"
+value='FIM' name="tctrk"
+onClick="area='tropepac';model='fim';dtg=dtgfim;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='Sfc V Loop' name="tctrk"  
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='tropepac';model='gfs';plot='uas';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.3 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlngp'
+onMouseOver="className='btnasmlngpover';" onMouseOut="className='btnasmlngp';"
+value='NAVG' name="tctrk"
+onClick="area='tropepac';model='navg';dtg=dtgnavg;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='SLP/Pr Loop' name="tctrk"
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='tropepac';model='gfs';plot='prp',dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.5 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlecm'
+onMouseOver="className='btnasmlecmover';" onMouseOut="className='btnasmlecm';"
+value='ECM' name="tctrk"
+onClick="area='tropepac';model='ecm';dtg=dtgecm;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80single'
+value='Vsfc' name="tctrk"
+onMouseOver="className='btn80singleover';" onMouseOut="className='btn80single';"
+onClick="area='tropepac';model='gfs';plot='uas',dtg=dtggfs;htype='areatau0',swaphtm();">
+</td>
+
+</tr>
+</table>
+
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlukm'
+onMouseOver="className='btnasmlukmover';" onMouseOut="className='btnasmlukm';"
+value='UKM' name="tctrk"
+onClick="area='tropepac';model='ukm';dtg=dtgukm;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80single'
+value='850 NHC' name="tctrk"
+onMouseOver="className='btn80singleover';" onMouseOut="className='btn80single';"
+onClick="area='tropepac';model='gfs';plot='n850',dtg=dtggfs;htype='areatau0',swaphtm();">
+</td>
+
+</tr>
+
+<tr>
+			
+</tr>
+</table>
+</td>
+</tr>
+
+</td>
+</table>
+</td>
+<!-- EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 1.2 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
+
+<!-- B1 1.1 -->
+<td width=125 valign=center align=right height=100>
+<img src="icon/troplant.area.button.png" width=115 height=90>
+</td>
+
+<!-- B2 2.1 WWWAAA  -->
+<td valign=top width=175>
+<table class="button">
+
+<!-- B2 2.1.1 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlgfs'
+onMouseOver="className='btnasmlgfsover';" onMouseOut="className='btnasmlgfs';"
+value='GFS' name="tctrk"  
+onClick="area='troplant';model='gfs';dtg=dtggfs;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80prwloop'
+onMouseOver="className='btn80prwloopover';" onMouseOut="className='btn80prwloop';"
+value='PRW LOOP' name="tctrk"  
+onClick="htype='prwloop';area='lant';opentype='window',swaphtm();">
+</td>
+
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.2 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlfim'
+onMouseOver="className='btnasmlfimover';" onMouseOut="className='btnasmlfim';"
+value='FIM' name="tctrk"
+onClick="area='troplant';model='fim';dtg=dtgfim;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='Sfc V Loop' name="tctrk"  
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='troplant';model='gfs';plot='uas';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.3 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlngp'
+onMouseOver="className='btnasmlngpover';" onMouseOut="className='btnasmlngp';"
+value='NAVG' name="tctrk"
+onClick="area='troplant';model='navg';dtg=dtgnavg;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='SLP/Pr Loop' name="tctrk"
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='troplant';model='gfs';plot='prp',dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.5 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlecm'
+onMouseOver="className='btnasmlecmover';" onMouseOut="className='btnasmlecm';"
+value='ECM' name="tctrk"
+onClick="area='troplant';model='ecm';dtg=dtgecm;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80single'
+value='Vsfc' name="tctrk"
+onMouseOver="className='btn80singleover';" onMouseOut="className='btn80single';"
+onClick="area='troplant';model='gfs';plot='uas',dtg=dtggfs;htype='areatau0',swaphtm();">
+</td>
+
+</tr>
+</table>
+
+
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlukm
+onMouseOver="className='btnasmlukmover';" onMouseOut="className='btnasmlukm';"
+value='UKM' name="tctrk"
+onClick="area='troplant';model='ukm';dtg=dtgukm;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80single'
+value='850 NHC' name="tctrk"
+onMouseOver="className='btn80singleover';" onMouseOut="className='btn80single';"
+onClick="area='troplant';model='gfs';plot='n850',dtg=dtggfs;htype='areatau0',swaphtm();">
+</td>
+
+</tr>
+
+<tr>
+
+</tr>
+
+</table>
+</td>
+</tr>
+
+</td>
+</table>
+</td>
+
+<!-- EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE  2.2 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
+
+
+
+</tr>
+</table>
+
+<!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB tropical shem -->
+
+<table class="main" cellspacing=0 cellpadding=0 border=0>
+<tr>
+
+<td class='areatitle'>
+Tropical SIO
+</td>
+
+<td class='areatitle'>
+Tropical OZ
+</td>
+
+<td class='areatitle'>
+Tropical SWPAC
+</td>
+
+
+</tr>
+</table>
+
+<!-- BBBBBBBBBBBBBBBB AAAAAAAAAAAA element tropsio -->
+<table border=0>
+<tr>
+
+<td width=125 valign=center align=right height=100>
+<img src="icon/tropsio.area.button.png" width=115 height=90>
+</td>
+
+<!-- B2 2.1 WWWAAA  -->
+<td valign=top width=175>
+<table class="button">
+
+<!-- B2 2.1.1 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlgfs'
+onMouseOver="className='btnasmlgfsover';" onMouseOut="className='btnasmlgfs';"
+value='GFS' name="tctrk"  
+onClick="area='tropsio';model='gfs';dtg=dtggfs;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80prwloop'
+onMouseOver="className='btn80prwloopover';" onMouseOut="className='btn80prwloop';"
+value='PRW LOOP' name="tctrk"  
+onClick="htype='prwloop';area='io';opentype='window',swaphtm();">
+</td>
+
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.2 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlfim'
+onMouseOver="className='btnasmlfimover';" onMouseOut="className='btnasmlfim';"
+value='FIM' name="tctrk"
+onClick="area='tropsio';model='fim';dtg=dtgfim;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='Sfc V Loop' name="tctrk"  
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='tropsio';model='gfs';plot='uas';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.3 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlngp'
+onMouseOver="className='btnasmlngpover';" onMouseOut="className='btnasmlngp';"
+value='NAVG' name="tctrk"
+onClick="area='tropsio';model='navg';dtg=dtgnavg;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='SLP/Pr Loop' name="tctrk"
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='tropsio';model='gfs';plot='prp',dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.5 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlecm'
+onMouseOver="className='btnasmlecmover';" onMouseOut="className='btnasmlecm';"
+value='ECM' name="tctrk"
+onClick="area='tropsio';model='ecm';dtg=dtgecm;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80single'
+value='Vsfc' name="tctrk"
+onMouseOver="className='btn80singleover';" onMouseOut="className='btn80single';"
+onClick="area='tropsio';model='gfs';plot='uas',dtg=dtggfs;htype='areatau0',swaphtm();">
+</td>
+
+</tr>
+</table>
+
+
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlukm'
+onMouseOver="className='btnasmlukmover';" onMouseOut="className='btnasmlukm';"
+value='UKM' name="tctrk"
+onClick="area='tropsio';model='ukm';dtg=dtgukm;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80single'
+value='850 NHC' name="tctrk"
+onMouseOver="className='btn80singleover';" onMouseOut="className='btn80single';"
+onClick="area='tropsio';model='gfs';plot='n850',dtg=dtggfs;htype='areatau0',swaphtm();">
+</td>
+
+</tr>
+
+<tr>
+
+</tr>
+
+
+</table>
+</td>
+</tr>
+
+</td>
+</table>
+</td>
+
+<td width=125 valign=center align=right height=100>
+<img src="icon/tropoz.area.button.png" width=115 height=90>
+</td>
+
+<!-- B2 2.1 WWWAAA  -->
+<td valign=top width=175>
+<table class="button">
+
+<!-- B2 2.1.1 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlgfs'
+onMouseOver="className='btnasmlgfsover';" onMouseOut="className='btnasmlgfs';"
+value='GFS' name="tctrk"  
+onClick="area='tropoz';model='gfs';dtg=dtggfs;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80prwloop'
+onMouseOver="className='btn80prwloopover';" onMouseOut="className='btn80prwloop';"
+value='PRW LOOP' name="tctrk"  
+onClick="htype='prwloop';area='spac';opentype='window',swaphtm();">
+</td>
+
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.2 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlfim'
+onMouseOver="className='btnasmlfimover';" onMouseOut="className='btnasmlfim';"
+value='FIM' name="tctrk"
+onClick="area='tropoz';model='fim';dtg=dtgfim;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='Sfc V Loop' name="tctrk"  
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='tropoz';model='gfs';plot='uas';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.3 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlngp'
+onMouseOver="className='btnasmlngpover';" onMouseOut="className='btnasmlngp';"
+value='NAVG' name="tctrk"
+onClick="area='tropoz';model='navg';dtg=dtgnavg;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='SLP/Pr Loop' name="tctrk"
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='tropoz';model='gfs';plot='prp',dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.5 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlecm'
+onMouseOver="className='btnasmlecmover';" onMouseOut="className='btnasmlecm';"
+value='ECM' name="tctrk"
+onClick="area='tropoz';model='ecm';dtg=dtgecm;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80single'
+value='Vsfc' name="tctrk"
+onMouseOver="className='btn80singleover';" onMouseOut="className='btn80single';"
+onClick="area='tropoz';model='gfs';plot='uas',dtg=dtggfs;htype='areatau0',swaphtm();">
+</td>
+
+</tr>
+</table>
+
+
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlukm'
+onMouseOver="className='btnasmlukmover';" onMouseOut="className='btnasmlukm';"
+value='UKM' name="tctrk"
+onClick="area='tropoz';model='ukm';dtg=dtgukm;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80single'
+value='850 NHC' name="tctrk"
+onMouseOver="className='btn80singleover';" onMouseOut="className='btn80single';"
+onClick="area='tropoz';model='gfs';plot='n850',dtg=dtggfs;htype='areatau0',swaphtm();">
+</td>
+
+</tr>
+
+<tr>
+
+</tr>
+
+
+</table>
+</td>
+</tr>
+
+</td>
+</table>
+</td>
+<!-- EEEEEEEEEEEEEEEEEEEE AAAAAAA element tropoz -->
+
+
+
+<!-- B2 1.1 -->
+<td width=125 valign=center align=right height=100>
+<img src="icon/tropswpac.area.button.png" width=115 height=90>
+</td>
+
+<!-- B2 2.1 WWWAAA  -->
+<td valign=top width=175>
+<table class="button">
+
+<!-- B2 2.1.1 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlgfs'
+onMouseOver="className='btnasmlgfsover';" onMouseOut="className='btnasmlgfs';"
+value='GFS' name="tctrk"  
+onClick="area='tropswpac';model='gfs';dtg=dtggfs;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80prwloop'
+onMouseOver="className='btn80prwloopover';" onMouseOut="className='btn80prwloop';"
+value='PRW LOOP' name="tctrk"  
+onClick="htype='prwloop';area='spac';opentype='window',swaphtm();">
+</td>
+
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.2 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlfim'
+onMouseOver="className='btnasmlfimover';" onMouseOut="className='btnasmlfim';"
+value='FIM' name="tctrk"
+onClick="area='tropswpac';model='fim';dtg=dtgfim;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='Sfc V Loop' name="tctrk"  
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='tropswpac';model='gfs';plot='uas';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.3 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlngp'
+onMouseOver="className='btnasmlngpover';" onMouseOut="className='btnasmlngp';"
+value='NAVG' name="tctrk"
+onClick="area='tropswpac';model='navg';dtg=dtgnavg;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80loop'
+value='SLP/Pr Loop' name="tctrk"
+onMouseOver="className='btn80loopover';" onMouseOut="className='btn80loop';"
+onClick="area='tropswpac';model='gfs';plot='prp',dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.5 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlecm'
+onMouseOver="className='btnasmlecmover';" onMouseOut="className='btnasmlecm';"
+value='ECM' name="tctrk"
+onClick="area='tropswpac';model='ecm';dtg=dtgecm;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80single'
+value='Vsfc' name="tctrk"
+onMouseOver="className='btn80singleover';" onMouseOut="className='btn80single';"
+onClick="area='tropswpac';model='gfs';plot='uas',dtg=dtggfs;htype='areatau0',swaphtm();">
+</td>
+
+</tr>
+</table>
+
+
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnasmlukm'
+onMouseOver="className='btnasmlukmover';" onMouseOut="className='btnasmlukm';"
+value='UKM' name="tctrk"
+onClick="area='tropswpac';model='ukm';dtg=dtgukm;htype='area',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btn80single'
+value='850 NHC' name="tctrk"
+onMouseOver="className='btn80singleover';" onMouseOut="className='btn80single';"
+onClick="area='tropswpac';model='gfs';plot='n850',dtg=dtggfs;htype='areatau0',swaphtm();">
+</td>
+
+</tr>
+
+<tr>
+
+</tr>
+
+</table>
+</td>
+</tr>
+
+</td>
+</table>
+</td>
+<!-- EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 1.2 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
+
+
+</tr>
+	
+
+
+<!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB Button row -->
+<table class="main" cellspacing=0 cellpadding=0 border=0>
+
+<tr>
+<td class='areatitle2'>
+WxMap & Model Links
+</td>
+
+<td class='areatitle2'>
+TC & Tropical Links
+</td>
+</tr>
+</table>
+
+<!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM table-->
+<table border=0>
+
+<tr>
+
+<!-- beg CCCCCCCCCCCCCCCCC1111111111111111111111111111111 -->
+<td valign=top width=450 STYLE="background-image: url(icon/wxmap.favicon.bkg.light.80x45.gif)">
+
+<table class="button">
+<tr>
+
+<td >
+<input type='button' class='btnrscbig'
+value='WxMAP Archive' name="tctrk"  
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+onClick="htype='wxmap.archive',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='PZAL WxMAP' name="tctrk"  
+onClick="htype='wxmap.pzal';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btndrop'
+onMouseover="dropdownmenu(this, event, menufim, '200px')" ;
+onMouseout="delayhidemenu()";
+value='GSD FIM WxMAP...' name='tctrk'">
+</td>
+
+</tr>
+
+<tr>
+<td>
+<input type='button' class='btnrscbig'
+value='FNMOC WxMAP' name="tctrk"  
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+onClick="htype='wxmap.fnmoc';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='COLA WxMap' name="tctrk"  
+onClick="htype='wxmap.cola';dtg=dtgcur;opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='NRL Coamps TC' name="tctrk"  
+onClick="cvalue=getW2Url('nrl.tc.coamps');opentype='window',loadW2Html(cvalue,opentype);">
+</td>
+
+
+</tr>
+
+<tr>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='NCEP Model Veri' name="tctrk"  
+onClick="htype='ncep.model.veri';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='EMC Model VSDB' name="tctrk"  
+onClick="htype='ncep.emc.stat.maps';opentype='window',swaphtm();">
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='NCEP CONV  Obs' name="tctrk"  
+onClick="htype='ncep.obs.conv';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='NCEP Suru Obs' name="tctrk"  
+onClick="htype='ncep.obs.suru';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='NCEP SAT Obs' name="tctrk"  
+onClick="htype='ncep.obs.sat';opentype='window',swaphtm();">
+</td>
+
+</tr>
+
+<!--fnmoc obs cov -->
+<tr>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='FNMOC ObsCvrg' name="tctrk"  
+onClick="cvalue=getW2Url('fnmoc.obs');opentype='window',loadW2Html(cvalue,opentype);">
+</td>
+
+
+</tr>
+
+<tr>
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='ATCF CARQ' name="tctrk"  
+onClick="cvalue=getW2Url('atcf.carq');opentype='window',loadW2Html(cvalue,opentype);">
+</td>
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='FNMOC TcTrk' name="tctrk"  
+onClick="htype='fnmoc.tc.trk';opentype='window',swaphtm();">
+</td>
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='GTS TcTrk' name="tctrk"  
+onClick="htype='gts.tc.trk';opentype='window',swaphtm();">
+</td>
+</tr>
+
+<tr>
+<td>
+<input type='button' class='btnmodbig'
+onMouseOver="className='btnmodbigover';" onMouseOut="className='btnmodbig';"
+value='ECMWF TCs' name="tctrk"  
+onClick="htype='ecmwf.tc';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnmodbig'
+onMouseOver="className='btnmodbigover';" onMouseOut="className='btnmodbig';"
+value='ECMWF tigge TCs' name="tctrk"  
+onClick="cvalue=getW2Url('ecmwf.tc.tigge');opentype='window',loadW2Html(cvalue,opentype);">
+</td>
+</tr>
+
+<tr>
+<td>
+<input type='button' class='btnmodbig'
+onMouseOver="className='btnmodbigover';" onMouseOut="className='btnmodbig';"
+value='ECMWF 72-h WP' name="tctrk"  
+onClick="htype='ecmwf.72.wpac';opentype='window',swaphtm();">
+</td>
+<td>
+<input type='button' class='btnmodbig'
+onMouseOver="className='btnmodbigover';" onMouseOut="className='btnmodbig';"
+value='ECMWF 72-h NA' name="tctrk"  
+onClick="htype='ecmwf.72.na';opentype='window',swaphtm();">
+</td>
+</tr>
+
+<tr>
+
+<td>
+<input type='button' class='btnmodbig'
+onMouseOver="className='btnmodbigover';" onMouseOut="className='btnmodbig';"
+value='ECMWF OBS' name="tctrk"  
+onClick="htype='ecmwf.obs';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnmodbig'
+onMouseOver="className='btnmodbigover';" onMouseOut="className='btnmodbig';"
+value='UKMO OBS' name="tctrk"  
+onClick="htype='ukmo.obs';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnrscbigNOT'
+onMouseOver="className='btnrscbigNOT';" onMouseOut="className='btnrscbigNOT';"
+value='UKMO TC EPS' name="tctrk"  
+</td>
+
+<!--
+onClick="htype='ukmo.tc.eps';opentype='window',swaphtm();">
+-->
+
+</tr>
+
+
+</table>
+
+</td>
+
+<!-- beg CCCCCCCCCCCCCCCCC1111111111111111111111111111111 -->
+<td valign=top width=450 STYLE="background-image: url(icon/19W-Chaba.light.80x45.gif)">
+
+<table class="button">
+
+<!--- centers -------->
+
+<tr>
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='NHC Home' name="tctrk"  
+onClick="htype='nhc.home';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='JTWC Home' name="tctrk"  
+onClick="htype='jtwc.home';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='NCAR RAL TCGP' name="tctrk"  
+onClick="cvalue=getW2Url('ncar.tcgp');opentype='window',loadW2Html(cvalue,opentype);">
+</td>
+
+<!--
+<td>
+<input type='button' class='btnrsc100grey'
+onMouseOver="className='btnrsc100grey';" onMouseOut="className='btnrsc100grey';"
+value='JTWC TDO Ref' name="tctrk">  
+onClick="htype='jtwc.tdo.ref';opentype='window',swaphtm();"
+</td>
+-->
+
+<td>
+<input type='button' class='btnrsc100'
+onMouseOver="className='btnrsc100over';" onMouseOut="className='btnrsc100';"
+value='Hart CPS Doc' name="tctrk"  
+onClick="cvalue=getW2Url('hart.cps');opentype='window',loadW2Html(cvalue,opentype);">
+</td>
+
+</tr>
+
+<!--- navy tc -------->
+
+<tr>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='NRL TC Page' name="tctrk"  
+onClick="cvalue=getW2Url('nrl.tc');opentype='window',loadW2Html(cvalue,opentype);">
+</td>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='FNMOC TC Page' name="tctrk"  
+onClick="htype='fnmoc.tc';dtg=dtgcur;opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='JMA TC Page' name="tctrk"  
+onClick="htype='jma.tc';dtg=dtgcur;opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='SHIPS/LGEM' name="tctrk"  
+onClick="cvalue=getW2Url('ships.lgem');opentype='window',loadW2Html(cvalue,opentype);">
+</td>
+
+</tr>
+
+<!--- cira -------->
+
+<tr>
+<!---------------------------------------
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='CIRES TCGen' name="tctrk"  
+onClick="htype='cires.tcgen.fcst';opentype='window',swaphtm();">
+</td>
+---------------------------------------->
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='CIRA TC' name="tctrk"  
+onClick="htype='cira.rammb.tc';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btndrop'
+onMouseover="dropdownmenu(this, event, menucira, '200px')" ;
+onMouseout="delayhidemenu()";
+value='CIRA...' name='tctrk'">
+</td>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='TropLANT Recon' name="tctrk"  
+onClick="cvalue=getW2Url('troplant.recon'),loadW2Html(cvalue,'window');">
+</td>
+
+<td>
+<input type='button' class='btnrsc100'
+onMouseOver="className='btnrsc100over';" onMouseOut="className='btnrsc100';"
+value='FSU CycPhsSpc' name="tctrk"  
+onClick="htype='fsu.xt-tc';opentype='window',swaphtm();">
+</td>
+
+</tr>
+
+<!--- cimss  -------->
+<tr>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='CIMSS TC' name="tctrk"  
+onClick="htype='cimss.tc';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btndrop'
+onMouseover="dropdownmenu(this, event, menucimss, '200px')" ;
+onMouseout="delayhidemenu()";
+value='CIMSS...' name='tctrk'">
+</td>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='TIGGE CXML' name="tctrk"  
+onClick="cvalue=getW2Url('tigge.cxml');opentype='window',loadW2Html(cvalue,opentype);">
+</td>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='TUTTlog' name="tctrk"  
+onClick="cvalue=getW2Url('tuttlog');opentype='window',loadW2Html(cvalue,opentype);">
+</td>
+
+
+
+</tr>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='NRL TC WW3' name="tctrk"  
+onClick="htype='nrl.tcww3';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btndrop'
+onMouseover="dropdownmenu(this, event, menuusnsat, '200px')" ;
+onMouseout="delayhidemenu()";
+value='USN SAT...' name='tctrk'">
+</td>
+
+<td>
+<input type='button' class='btndrop'
+onMouseover="dropdownmenu(this, event, menussd, '200px')" ;
+onMouseout="delayhidemenu()";
+value='NESDIS SSD SAT...' name='tctrk'">
+</td>
+
+<!---
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='NRL SAT Trop' name="tctrk"  
+onClick="htype='nrl.sat.tropics.wp';opentype='window',swaphtm();">
+</td>
+--->
+
+</tr>
+
+<!--- oceano/low freq -------->
+<tr>
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='CPC TC' name="tctrk"  
+onClick="htype='cpc.tc';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btndrop'
+onMouseover="dropdownmenu(this, event, menucpc, '200px')" ;
+onMouseout="delayhidemenu()";
+value='CPC...' name='tctrk'">
+</td>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='CPC.ENSO' name="tctrk"  
+onClick="cvalue=getW2Url('cpc.enso');opentype='window',loadW2Html(cvalue,opentype);">
+</td>
+</tr>
+
+<!--- scatt -------->
+<tr>
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='NESDIS QScat' name="tctrk"  
+onClick="htype='nesdis.qs';opentype='window',swaphtm();">
+</td>
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='ASCAT' name="tctrk"  
+onClick="htype='ascat.25';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnrscbig'
+onMouseOver="className='btnrscbigover';" onMouseOut="className='btnrscbig';"
+value='Hwind SfcV' name="tctrk"  
+onClick="cvalue=getW2Url('hrd.hwind');opentype='window',loadW2Html(cvalue,opentype);">
+</td>
+
+
+
+</tr>
+
+<tr>
+<td>
+<input type='button' class='btnrscbigmf'
+onMouseOver="className='btnrscbigmfover';" onMouseOut="className='btnrscbigmf';"
+value='MF TC Act SPEC' name="tctrk"  
+onClick="htype='tc.act.spec';opentype='window',swaphtm();">
+</td>
+<td>
+<input type='button' class='btnrscbigmf'
+onMouseOver="className='btnrscbigmfover';" onMouseOut="className='btnrscbigmf';"
+value='MF TC Act LLMAP' name="tctrk"  
+onClick="htype='tc.act.llmap';opentype='window',swaphtm();">
+</td>
+<td>
+<input type='button' class='btnrscbigmf'
+onMouseOver="className='btnrscbigmfover';" onMouseOut="className='btnrscbigmf';"
+value='MF TC Act TS' name="tctrk"  
+onClick="htype='tc.act.ts';opentype='window',swaphtm();">
+</td>
+</tr>
+
+<tr>
+<td>
+<input type='button' class='btnrscbigmf'
+onMouseOver="className='btnrscbigmfover';" onMouseOut="className='btnrscbigmf';"
+value='MF TCeps' name="tctrk"  
+onClick="cvalue=getW2Url('tc.hfip.tceps'),loadW2Html(cvalue,'window');">
+</td>
+<td>
+<input type='button' class='btnrscbigmf'
+onMouseOver="className='btnrscbigmfover';" onMouseOut="className='btnrscbigmf';"
+value='MF TCgen' name="tctrk"  
+onClick="cvalue=getW2Url('tc.hfip.tcgen'),loadW2Html(cvalue,'window');">
+</td>
+<td>
+<input type='button' class='btnrscbigmf'
+onMouseOver="className='btnrscbigmfover';" onMouseOut="className='btnrscbigmf';"
+value='MF TCdiag' name="tctrk"  
+onClick="cvalue=getW2Url('tc.hfip.tcdiag'),loadW2Html(cvalue,'window');">
+</td>
+<td>
+<input type='button' class='btnrscbigmf'
+onMouseOver="className='btnrscbigmfover';" onMouseOut="className='btnrscbigmf';"
+value='JW GfsEnKF' name="tctrk"  
+onClick="cvalue=getW2Url('tc.hfip.gfsenkf'),loadW2Html(cvalue,'window');">
+</td>
+</tr>
+
+
+
+
+</table>
+
+</td>
+<!-- end CCCCCCCCCCCCCCCCCCCCCCCCCCCC111111111111111111111111111 -->
+
+</tr>
+</table>
+<!-- EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE Button row -->
+
+
+
+
+
+</table>
+
+
+
+
+
+<!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB other midlat trop areasrow -->
+
+<table class="main" cellspacing=0 cellpadding=0 border=0>
+
+<tr>
+<td class='areatitle2'>
+WxMap MidLat-Misc Areas
+</td>
+
+<td class='areatitle2'>
+Other WxMap Tropical Areas
+</td>
+</tr>
+
+
+<table border=0>
+<tr>
+<td valign=top width=450>
+<table class="button">
+<tr>
+<td>
+<input type='button' class='btnareangp'
+value='NAVG WCONUS' name="tctrk"  
+onMouseOver="className='btnareafimover';" onMouseOut="className='btnareafim';"
+onClick="area='wconus';model='navg';plot='prp';dtg=dtgnavg;htype='arealoop',swaphtm();">
+
+<td>
+<input type='button' class='btnareangp'
+value='NAVG CONUS' name="tctrk"  
+onMouseOver="className='btnareafimover';" onMouseOut="className='btnareafim';"
+onClick="area='conus';model='navg';plot='prp';dtg=dtgnavg;htype='arealoop',swaphtm();">
+</td>
+
+<!--
+<td>
+<input type='button' class='btnareangp'
+value='NAVG Europe' name="tctrk"  
+onMouseOver="className='btnareafimover';" onMouseOut="className='btnareafim';"
+onClick="area='europe';model='navg';plot='prp';dtg=dtgnavg;htype='arealoop',swaphtm();">
+</td>
+-->
+
+<td>
+<input type='button' class='btnareangp'
+value='NAVG NHEM' name="tctrk"  
+onMouseOver="className='btnareafimover';" onMouseOut="className='btnareafim';"
+onClick="area='nhem';model='navg';plot='prp';dtg=dtgnavg;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btnareagfs'
+value='GFS WCONUS' name="tctrk"  
+onMouseOver="className='btnareagfsover';" onMouseOut="className='btnareagfs';"
+onClick="area='wconus';model='gfs';plot='prp';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnareagfs'
+value='GFS CONUS' name="tctrk"  
+onMouseOver="className='btnareagfsover';" onMouseOut="className='btnareagfs';"
+onClick="area='conus';model='gfs';plot='prp';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+<!--
+<td>
+<input type='button' class='btnareagfs'
+value='GFS Europe' name="tctrk"  
+onMouseOver="className='btnareagfsover';" onMouseOut="className='btnareagfs';"
+onClick="area='europe';model='gfs';plot='prp';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+-->
+
+<td>
+<input type='button' class='btnareagfs'
+value='GFS NHEM' name="tctrk"  
+onMouseOver="className='btnareagfsover';" onMouseOut="className='btnareagfs';"
+onClick="area='nhem';model='gfs';plot='prp';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+
+<table class="button">
+<tr>
+<td>
+<input type='button' class='btnareaukm'
+value='UKM WCONUS' name="tctrk"  
+onMouseOver="className='btnareaukmover';" onMouseOut="className='btnareaukm';"
+onClick="area='wconus';model='ukm';plot='prp';dtg=dtgukm;htype='arealoop',swaphtm();">
+</td>
+<td>
+<input type='button' class='btnareaukm'
+value='UKM CONUS' name="tctrk"  
+onMouseOver="className='btnareaukmover';" onMouseOut="className='btnareaukm';"
+onClick="area='conus';model='ukm';plot='prp';dtg=dtgukm;htype='arealoop',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnareaukm'
+value='UKM NHEM' name="tctrk"  
+onMouseOver="className='btnareaukmover';" onMouseOut="className='btnareaukm';"
+onClick="area='nhem';model='ukm';plot='prp';dtg=dtgukm;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+</table>
+
+</td>
+
+<!-- B2 2.1 -->
+<td valign=middle width=450>
+<table class="button">
+
+<!-- B2 2.1.1 -->
+<tr>
+<td>
+
+<table class="button">
+
+<tr>
+<td >
+<input type='button' class='btnareagfs'
+onMouseOver="className='btnareagfsover';" onMouseOut="className='btnareagfs';"
+value='GFS TropNIO' name="tctrk"  
+onClick="area='tropnio';model='gfs';plot='prp';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnareagfs'
+value='GFS TropOZ' name="tctrk"  
+onMouseOver="className='btnareagfsover';" onMouseOut="className='btnareagfs';"
+onClick="area='tropoz';model='gfs';plot='prp';dtg=dtggfs;htype='arealoop',swaphtm();">
+</td>
+
+</tr>
+
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.2 -->
+<tr>
+<td>
+<table class="button">
+
+
+<tr>
+<td>
+<input type='button' class='btnareafim'
+value='FIM TropNIO' name="tctrk"  
+onMouseOver="className='btnareafimover';" onMouseOut="className='btnareafim';"
+onClick="area='tropnio';model='fim';plot='prp';dtg=dtgfim;htype='arealoop',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnareafim'
+value='FIM TropOZ' name="tctrk"  
+onMouseOver="className='btnareafimover';" onMouseOut="className='btnareafim';"
+onClick="area='tropoz';model='fim';plot='prp';dtg=dtgfim;htype='arealoop',swaphtm();">
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.3 -->
+<tr>
+<td>
+<table class="button">
+
+<tr>
+<td>
+<input type='button' class='btnareaecm'
+onMouseOver="className='btnareaecmover';" onMouseOut="className='btnareaecm';"
+value='ECM TropNIO' name="tctrk"  
+onClick="area='tropnio';model='ecm';plot='prp';dtg=dtgecm;htype='arealoop',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnareaecm'
+value='ECM TropOZ' name="tctrk"  
+onMouseOver="className='btnareaecmover';" onMouseOut="className='btnareaecm';"
+onClick="area='tropoz';model='ecm';plot='prp';dtg=dtgecm;htype='arealoop',swaphtm();">
+</td>
+</tr>
+
+<tr>
+<td>
+<input type='button' class='btnareafim'
+onMouseOver="className='btnareafimover';" onMouseOut="className='btnareafim';"
+value='NAVG TropNIO' name="tctrk"  
+onClick="area='tropnio';model='navg';plot='prp';dtg=dtgnavg;htype='arealoop',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnareafim'
+value='NAVG TropOZ' name="tctrk"  
+onMouseOver="className='btnareafimover';" onMouseOut="className='btnareafim';"
+onClick="area='tropoz';model='navg';plot='prp';dtg=dtgnavg;htype='arealoop',swaphtm();">
+</td>
+</tr>
+
+<tr>
+<td>
+<input type='button' class='btnareaukm'
+onMouseOver="className='btnareaukmover';" onMouseOut="className='btnareaukm';"
+value='UKM TropNIO' name="tctrk"  
+onClick="area='tropnio';model='ukm';plot='prp';dtg=dtgukm;htype='arealoop',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnareaukm'
+value='UKM TropOZ' name="tctrk"  
+onMouseOver="className='btnareaukmover';" onMouseOut="className='btnareaukm';"
+onClick="area='tropoz';model='ukm';plot='prp';dtg=dtgukm;htype='arealoop',swaphtm();">
+</td>
+</tr>
+
+
+
+
+
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.4 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B2 2.1.5 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+</tr>
+</table>
+</td>
+</table>
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE other midlat trop areasrow -->
+
+
+
+
+<!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB Climo row -->
+<table class="main" cellspacing=0 cellpadding=0 border=0>
+
+<tr>
+<td class='areatitle2'>
+NHC/JTWC Tropical AOR Wind Climatology
+</td>
+
+<td class='areatitle2'>
+Other Climo Links 
+</td>
+</tr>
+
+<!-- AAAAAAAAAAAAAAAAAAA RRRRRRRRRRRRROOOOOOOOOOOOOOOWWWWWWWWWWWWWWWWWWWWWWWWWWw -->
+<table border=0>
+<tr>
+
+<!-- climo.box.2_1.txt -->
+<!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB  2.1 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
+<!-- B1 1.1 -->
+<td width=125 valign=center align=right height=80>
+<img src="icon/tropaor.area.button.png" width=115 height=90>
+</td>
+
+<!-- B1 2.1 -->
+<td valign=middle width=325>
+<table class="button">
+
+<!-- B1 2.1.1 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btntop'
+onMouseOver="className='btntopover';" onMouseOut="className='btntop';"
+value='Current Climo' name="tctrk"  
+onClick="htype='cur.clm';opentype='window',swaphtm();">
+</td>
+
+<td >
+<input type='button' class='btntop'
+value='Monthly Climo' name="tctrk"  
+onMouseOver="className='btntopover';" onMouseOut="className='btntop';"
+onClick="htype='mo.clm',swaphtm();">
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+<input type='button' class='btnrscbig1'
+value='CPC MJO Anim' name="tctrk"  
+onMouseOver="className='btnrscbig1over';" onMouseOut="className='btnrscbig1';"
+onClick="htype='cpc.mjo.anim';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnrscbig1'
+value='CPC MJO Disc' name="tctrk"  
+onMouseOver="className='btnrscbig1over';" onMouseOut="className='btnrscbig1';"
+onClick="htype='cpc.mjo.disc';opentype='window',swaphtm();">
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+<input type='button' class='btnrscbig1'
+value='CPC MJO FCST' name="tctrk"  
+onMouseOver="className='btnrscbig1over';" onMouseOut="className='btnrscbig1';"
+onClick="htype='cpc.mjo.fcst';opentype='window',swaphtm();">
+</td>
+
+</tr>
+
+</table>
+</td>
+</tr>
+
+<!-- B1 2.1.2 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B1 2.1.3 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B1 2.1.4 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B1 2.1.4 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+
+</tr>
+</table>
+<!-- EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE Climo row -->
+
+
+
+
+
+</body>
+</html>

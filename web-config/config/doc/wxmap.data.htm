@@ -1,0 +1,456 @@
+<html>
+<head>
+<title>WXMAP Data Flow</title>
+<style type="text/css" title="mike">
+<---
+h2 { color : darkblue;
+font-size : 16pt;
+font-weight:bold;
+font-style:normal;
+text-ident:0.5in;
+font-family:arial,helvetica,san-serif;
+}
+
+h3 { color : darkred;
+font-size : 12pt;
+font-weight:normal;
+font-style:italic;
+text-ident:0.25in;
+font-family:arial,helvetica,san-serif;
+}
+
+h4 {font-size: 12pt; font-family: courier new; font-weight: bold; line-height: 12pt; text-align: left; color: darkgreen }
+
+-->
+</style>
+</head>
+
+<body text="Black" link="Blue" vlink="Purple" bgcolor="#FCF1DA">
+<h1>WXMAP Data -- </h1>
+<h3><i><font color=red>How the GRIB data flow works...</font></i></h3>
+<ul>
+<li><a href="#crontab"><b>crontab setup</b></a>
+<li><a href="#fnmoc"><b>FNMOC data flow</b></a>
+<li><a href="#fnmoc_recovery"><b>FNMOC data recovery</b></a>
+<li><a href="#ncep"><b>NCEP data flow</b></a>
+<li><a href="#ncep_recovery"><b>NCEP data recovery</b></a>
+</ul>
+<img src="../icon/colaline.gif">
+
+<p>
+
+This document describes the flow of FNMOC NGP and NCEP AVN/MRF
+GRIB data into the wxmap system.  I had set up a data flow from
+of JMA GSM data from the JMA (ddb.kishou.go.jp) server, but did
+not pursue adding the model to web as it required a fair amount
+of work to regrid the data to the standard 1 deg global grid of
+the NGP and AVN/MRF data.
+
+</p><p>
+
+All the processing wxmap scripts run at PCMDI are written in <a
+href="www.perl.com">perl</a> and all have a ".pl" extension.  The
+WXMAP data handling script at PCMDI are located in,
+
+<pre>
+/pcmdi/typhoon_d1/nwp/wxmap/prc/data
+</pre>
+
+Simply run the script to find out what it does and what the
+command line input are, e.g., running,
+
+<pre>
+cd /pcmdi/typhoon_d1/nwp/wxmap/prc/dat
+wxmap.ncep.pl
+</pre>
+
+yields:
+
+<pre>
+wxmap.ncep.pl processing - data, graphics and html:
+
+         dtg : yymmddhh | current | current-12
+       model : avn | mrf 
+   [opt1] : grf | datonly | override (ignore lock) !grf if grf then do not sleep
+
+  Try again
+</pre>
+
+
+</p><p>
+
+
+
+
+
+</p>
+
+<!--
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#
+# crontab
+#
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+-->
+
+<a name="crontab"></a>
+<hr>
+<h3><code>crontab</code> setup</h3>
+
+<p>
+
+The data flow is automated through "cron" scripts.  These scripts
+are run routinely according to a schedule defined by a "crontab"
+file.  I also use crontab to automate other processing such as
+map making and html creation.  Please see the <a
+href="wxmap.doc.htm">main technical document</a> for the details.
+
+</p><p>
+
+The wxmap data flow is managed on two machines:
+<code>stargate.llnl.gov</code> at PCMDI and
+<code>sgi39.wwb.noaa.gov</code> at NCEP.  Data from FNMOC is
+<b><i>pushed</b></i> to PCMDI via ARAC and NCEP data is
+<b><i>pulled</b></i> from the operational file systems at NCEP.
+The two styles of accessing data are reflective of the two
+fundamentally different traditions of the data producers.  FNMOC
+has always pushed data to its users whereas NCEP has always put
+data on servers for users to pull.  Consequently, the data flow
+is somewhat complex.  As an aside, I have worked at both centers
+so have a fairly "inside" view of how things work.
+
+</p>
+
+<h4><code>NCEP crontab</code></h3>
+
+
+<p>
+
+Here is the NCEP crontab file (<code>sgi39.wwb.noaa.gov:~wd20mf/.crontab</code>)
+
+<pre>
+##################################################
+#
+#       get avn and mrf data by filtering the op files
+#
+##################################################
+10 23,11 * * * /export/sgi80/wd20mf/grib/wgrib/avn/p.filt.avn.sh current avn
+y y > /tmp/log.p.filt.avn.sh 2>&1
+7  15 4 * * * /export/sgi80/wd20mf/grib/wgrib/avn/p.filt.avn.sh current mrf y y
+> /tmp/log.p.filt.avn.sh 2>&1
+
+</pre>
+
+At 11:10 and 23:11 EASTERN local time (EST) (this has to be
+adjusted when changing to/from daylight savings time).  The
+p.filt.avn.sh script is run.  This is the main script which pull
+data off the operational cray file systems and anonymous ftp's it
+to PCMDI (to <code>sprite.llnl.gov</code>).
+
+</p><p>
+
+The script, using military jargon, is "fire and forget."  That
+is, it keeps running until the data is available or "runs out of
+fuel" (i.e., times out).  It wakes up every five minutes and
+checks for the <i>completion</i> of the run, i.e., that the
+final, <i>desired</i> forecast is done (72 h for the AVN and 240
+for the MRF).
+
+
+</p><p>
+
+When the final forecast is complete, the script uses the <a
+href="http://wesley.wwb.noaa.gov/wgrib.html">"wgrib"</a> utility
+to cull out only the fields I want as the entire run available on
+<a href="ftp://nic.fb4.noaa.gov">"the NIC"</a> or the <a
+href="http://tgsv5.nws.noaa.gov/oso/ftpgate.shtml">"the OSO
+server"</a> is simply too large.  For example, in the <a
+href="ftp://140.90.6.103/ncepb/avn/avn.cur">AVN run on the OSO
+server</a>, the pressure level data files are of the form
+<code>gblav.T[II]Z.PGrbF[FF]</code> where <code>[II]</code> is
+the initial time <code>00 or 12</code> and <code>[FF]</code> is
+the forecast hour.  Each file is 16 Mb...  Further, the
+diagnostics such as precipitation are not available.  Ditto for
+the <a href="ftp://140.90.6.103/ncepb/mrf/mrf.cur">MRF run</a>.
+
+</p>
+
+<h4><code>PCMDI crontab</code></h3>
+
+<p>
+
+The PCMDI crontab (
+<code>stargate.llnl.gov:~fiorino/.crontab.stargate</code>)
+processes both the data pulled from NCEP and data pushed from
+FNMOC via ARAC:
+
+
+<pre>
+#------------------------------------------------------
+#
+#	stargate crontab
+#
+#	970306 - PDT update : +1 h on wxmap
+#	971026 - PDT update : -1 h on wxmap
+#
+#------------------------------------------------------
+38  8,20 * * * /pcmdi/typhoon_d1/nwp/wxmap/prc/wxmap/run.cron.tcsh '/pcmdi/typhoon_d1/nwp/wxmap/prc/dat/wxmap.ncep.pl current avn y' >> /tmp/log.wxmap.ncep.avn.pl 2>&1
+4 2 * * * /pcmdi/typhoon_d1/nwp/wxmap/prc/wxmap/run.cron.tcsh '/pcmdi/typhoon_d1/nwp/wxmap/prc/dat/wxmap.ncep.pl current mrf y' >> /tmp/log.wxmap.ncep.mrf.pl 2>&1
+#-----------------------------------------------------
+#
+#      FNMOC grib processing
+#
+#------------------------------------------------------
+5,35 0-23 * * * /pcmdi/typhoon_d1/nwp/wxmap/prc/wxmap/run.cron.tcsh '/pcmdi/typhoon_d1/nwp/wxmap/prc/dat/wxmap.ngp.grb.pl current' >> /tmp/log.wxmap.ngp.grb.pl 2>&1
+
+</pre>
+
+We see two runs of NCEP model perl script
+<code>wxmap.ncep.pl</code> at 8:38 and 20:38 for the AVN and
+02:04 for the MRF.  As with the shell script run at NCEP, this
+script is fire and forget and simple waits until the data has
+shown up on <code>sprite.llnl.gov</code> until the real work
+begins.  The successful transfer of data is signalled by the
+existence of the file "alldone.MMM.YYMMDDHH" in the directory
+where the data is ftp'd to from NCEP:
+
+<pre>
+/pcmdi/scratch/ftp/pub/fiorino/ncep
+</pre>
+
+YYMMDDHH is the data time group and MMM is either AVN or MRF.
+
+</p><p>
+
+The NGP data processing perl script <code>wxmap.ngp.grb.pl</code>
+is run every half hour at :05 and :35 and looks for individual fields (one per file) in the receipt directory:
+
+<pre>
+/pcmdi/scratch/ftp/pub/fiorino/fnmoc/nogaps/dat
+</pre>
+
+This is where ARAC pushes the data coming from FNMOC to their
+servers.  I originally had FNMOC push the data directly to me,
+but since the summer of 1996 ARAC and PCMDI have merged our data
+flows.  The point of contact at ARAC is Bob Shectman
+(shectman@seti.llnl.gov).
+
+</p><p>
+
+
+</p
+
+<!--
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#
+# fnmoc
+#
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+-->
+
+<a name="fnmoc"></a>
+<hr>
+<h3>The FNMOC data flow</h3>
+
+<p>
+
+FNMOC pushes GRIB files to an ARAC ftp server.  Unlike, NCEP, the
+FNMOC GRIB files have one field / file and use the following naming convention:
+
+<pre>
+LVV1TTTGR
+
+where,
+
+L   - level code
+VV  - variable code
+1   - the "flaps" character using FNMOC-talk = 1deg global grid
+TTT - the "tau" or forecast hour
+GR  - GRIB data
+
+examples,
+
+A011000GR = mean sea level (A) pressure (01) at t=0 (000)
+B101000GR = ocean sfc (B) temperature (10) at t=0 (000) (a.k.a., SST)
+C001000GR = 1000 mb (C) heights (00) at t=0 (000)
+F201072GR = 500 mb (F) u comp (20) at t=72 (072)
+F211072GR = 500 mb (F) v comp (21) at t=72 (072)
+
+</pre>
+
+at listing of all the fields PCMDI receives via ARAC is in
+
+<pre>
+/pcmdi/typhoon_d1/nwp/ops/fnmoc/doc/arac2pcmdi.fnmoc.fields.980117.txt
+</pre>
+
+and is controlled by a tcsh script at ARAC, see
+
+<pre>
+/pcmdi/typhoon_d1/nwp/ops/fnmoc/doc/arac2pcmdi.fnmoc.fields.tcsh
+</pre>
+
+
+</p><p>
+
+The FNMOC data feed is mirrored <code>sprite.llnl.gov</code> to the directory
+
+<pre>
+/pub/fiorino/fnmoc/nogaps/dat
+</pre>
+
+and this is where the script <code>wxmap.ngp.grb.pl</code> looks
+for FNMOC fields and then concates to a single file with all the
+NOGAPS data for a particular run in,
+
+<pre>
+/pcmdi/typhoon_d1/nwp/dat/
+</pre>
+
+For example, all the 98013000 data will end up in the file:
+
+<pre>
+/pcmdi/typhoon_d1/nwp/dat/ngp.10.98013000.grb
+</pre>
+
+Again, all the WXMAP data handling script at PCMDI are in
+
+<pre>
+/pcmdi/typhoon_d1/nwp/wxmap/prc/data
+</pre>
+
+and after <code>wxmap.ngp.grb.pl</code> appends to the big file,
+it then runs <code>wxmap.gribmap.pl</code>.  This later script
+creates the grads .ctl files and does the gribmap, so that after
+<code>wxmap.ngp.grb.pl</code> is finished the data are ready for
+plotting.
+
+</p>
+
+<a name="fnmoc_recovery"></a>
+<h4>FNMOC Data Recovery</h4>
+
+<p>
+ 
+Should the NGP data flow ARAC fail (e.g., <code>sprite</code> goes down), I
+can recover from ARAC as they maintain about a 10-day archive.
+The relevant script is:
+
+<pre>
+/pcmdi/typhoon_d1/nwp/wxmap/prc/dat/wxmap.arac.recover.pl
+</pre>
+
+Again, run it and you'll get the relevant command line options.
+
+</p>
+
+<!--
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#
+# NCEP
+#
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+-->
+
+<a name="ncep"></a>
+<hr>
+<h3>The NCEP data flow</h3>
+
+<p>
+
+One of the best features of the NCEP data system is that the
+<i>operational</i> file systems on the crays (in FB4, Suitland)
+are exported (read only) to workstations in the World Weather
+Building (Camp Springs).  Thus, workstations can access the
+operational data files <i>without</i> running on the cray.  The
+basic concept of the NCEP data flow, as discussed above, is to
+run a process on a workstation to take out fields from the
+operational files and then ftp these files to PCMDI.
+
+
+</p><p>
+
+The key shell script on the NCEP workstation
+<code>sgi39.wwb.noaa.gov</code> is:
+
+<pre>
+~wd20mf/grib/wgrib/avn/p.filt.avn.sh
+</pre>
+
+<code>p.filt.avn.sh</code> as of 30 January, 1998 is given in <a
+href="wxmap.p.filt.avn.sh.htm">wxmap.p.filt.avn.sh.htm</a>.
+
+</p><p>
+
+You will have to change this script to change the data flow from
+NCEP, but you better know what you're doing...
+
+</p>
+
+<a name="ncep_recovery"></a>
+<h4>NCEP Data Recovery</h3>
+
+
+<p>
+
+If the NCEP AVN/MRF does not show up on time, I login to
+<code>sgi39.wwb.noaa.gov</code> and manually check for the GRIB
+file, i.e., become <code>fiorino</code> on <code>tenki</code>,
+
+<pre>
+rlogin tenki -l fiorino
+</pre>
+
+Then,
+
+<pre>
+rlogin sgi39.wwb.noaa.gov -l wd20mf
+</pre>
+
+you become <code>wd20mf</code> on the NCEP machine <code>sgi39</code>.  Then,
+
+<pre>
+cd grib/wgrib/avn
+ls -l *grb
+</pre>
+
+to search for GRIB files.  If the files are there, then the
+network failed.  Regardless, you should rerun the data script,
+i.e.,
+
+<pre>
+p.filt.avn YYMMDDHH MMM  y y & (run in background)
+</pre>
+
+where
+
+<pre>
+YYMMDDHH = <a href="what.is.a.dtg.htm">date time group</a>
+MMM      = avn | mrf (the model)
+y        = create a listing for each time
+y        = ftp to <code>sprite.llnl.gov</code>
+</pre>
+
+then logoff,
+
+<pre>
+exit
+</pre>
+
+This is running the job "by-hand" at NCEP and should get the data
+to the receipt directory on sprite. 
+
+
+</p>
+
+<br>
+
+<i>Last Update: 31 January, 1998</i><br>
+Send Comments to <a href="mailto:fiorino@llnl.gov"> Mike Fiorino</a>, 
+<a href="http://www-pcmdi.llnl.gov">PCMDI</a>, <a
+href="http://www.llnl.gov">LLNL</a>
+<br>
+<a href="http://www.llnl.gov/disclaimer.html">LLNL Disclaimers</a><br>
+UCRL-MI-125630
+</body>
+</html>

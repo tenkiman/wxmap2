@@ -1,0 +1,24 @@
+#
+# -- tenki-linux crontab on argo.org.gmu.edu
+# -- 20181229 - run TC proc during .gov shutdown
+
+#------------------------------------------------------
+#
+CRON_TZ="UTC"
+MAILTO='mfiorino@gmu.edu'
+SHELL="/bin/bash"
+runcmd="/home/mfiorino/w22/run.cron.bash"
+w2pdir="/home/mfiorino/w22/prc"
+w2prjdir="/home/mfiorino/w22/prj"
+ptmpdir="/scratch/mfiorino/ptmp"
+
+#ttttttttttttttttttttttttttttt - touch dat/tc to prevent purge old files on scratch 1st of month
+#
+07                             2               * * * $runcmd "$w2pdir/wxmap2/w2-tc-touch-gmu.py -X"          >> $ptmpdir/log-w2-touch-gmu.py.tenki.GMU-TOUCH 2>&1
+
+#ppppppppppppppppppppppppppppp - load and process monitor
+# -- load averages using uptime and monitor processes...
+*/5                             *             * * * $runcmd "$w2pdir/wxmap2/w2-load.py"                      >> $ptmpdir/log.load.py.tenki.LOAD 2>&1
+4                               1             * * * $runcmd "$w2pdir/wxmap2/w2-ps-monitor.py -X -S 15"       >> $ptmpdir/log-w2-ps-monitor.py.tenki.PS-MONITOR 2>&1
+*/6                             *             * * * $runcmd "$w2pdir/wxmap2/w2-ps-monitor-anl.py cur -K"     >> $ptmpdir/log-w2-ps-monitor-anl.py.tenki.PS-MONITOR-KILL-LONG-PS 2>&1
+

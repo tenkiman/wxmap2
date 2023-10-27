@@ -1,0 +1,59 @@
+# -- wxmap2 env
+#
+
+source .w2env
+
+setenv W2_BDIR "$W2"
+setenv W2_BDIRDAT "$W2/dat"
+setenv W2_BDIRAPP "$W2/app"
+setenv W2_BDIRBIN "$W2/bin"
+setenv W2_BDIRMSSBIN "$W2/mss/bin"
+setenv W2_BDIRAPPLIB "$W2/app/lib"
+#setenv W2_BDIRDB3LIB "$W2/app/lib/db4.8/lib"
+setenv W2_BDIRDB3LIB "$W2/app/db4.8/lib"
+setenv W2_BDIRDB5LIB "$W2/app/db5.0/lib"
+setenv W2_BDIRLIB "$W2/lib"
+setenv W2_BDIRPLT "$W2/plt"
+setenv W2_BDIRWEB "$W2/web"
+setenv W2_BDIRWEBA "$W2/weba"
+setenv W2_BDIREVT "$W2/evt"
+setenv W2_BDIRLOG "$W2/log"
+
+setenv W2_SRC_DIR  "$W2_BDIR/src"
+setenv W2_PRC_DIR  "$W2_BDIR/prc"
+setenv W2_PERL_DIR "$W2_PRC_DIR/lib/perl"
+setenv W2_PY_DIR   "$W2_PRC_DIR/lib/python"
+
+
+# -- wgrib1 table
+#
+
+setenv GRIBTAB "$W2_BDIRLIB/wgrib/w2.wgrib1.var.table.txt"
+
+# -- ecmwf bufr
+#
+setenv BUFR_TABLES "$W2_BDIRLIB/bufrtables/"
+
+# -- cvs
+#
+
+setenv CVS_RSH ssh
+
+# -- python
+#
+setenv PYTHONSTARTUP "$W2_BDIR/.pythonrc"
+setenv PYTHONPATH "$W2_PRC_DIR/lib/python"
+
+# -- perl
+#
+#setenv PERL5LIB "$W2_BDIRAPP/perl/lib/5.8.5"
+
+# moved to grads, path and ld_library_path to .w2localrc 
+
+if ( -e .w2localrc ) then
+  source .w2localrc
+  source .w2alias
+  if ( $?prompt ) then      # if this is an interactive shell...
+    fixprompt
+  endif
+endif

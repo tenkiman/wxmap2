@@ -1,0 +1,1 @@
+w2globalvars.py.wxmap2

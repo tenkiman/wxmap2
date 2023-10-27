@@ -1,0 +1,105 @@
+*
+*-------------------------- gpsst ------------------
+*
+function gpsst(k)
+
+if(_model = 'ocn') 
+  t1='SST and Anomaly [`3.`0C] (AMIP II 1979-96 Climo)'
+  _t1top=''
+endif
+
+pstat=1
+_shades=0
+
+'set grads off'
+
+rc=datachk(tos) 
+if(rc != 0)
+say 'XXXX  no tos'
+  rc=datachk(sst) 
+say 'XXXX  no sst'
+  if(rc !=0 )
+    return(pstat)
+  else
+    sstname=sst
+    pstat=0
+  endif
+else
+  sstname=tos
+  pstat=0
+endif
+##### print 'XXXXXXXXXXXXXXXXXXXXXXX 'sstname
+'set xlint '_xlint
+'set ylint '_ylint
+'ls=const(const(maskout(sftlf.'_fm'(t=1),sftlf.'_fm'(t=1)-'_pland'),-1),0,-u)'
+yrb=tyear(_bdtg)
+m1=subwrd(yrb,1)
+w1=subwrd(yrb,2)
+m2=subwrd(yrb,3)
+w2=subwrd(yrb,4)
+say 'yyy '_bdtg' 'm1' 'w1' 'm2' 'w2
+'s='sstname'-273.16'
+'s=maskout(s,s)'
+'sc=(tos.'_fsc'(t='m1')*'w1' + tos.'_fsc'(t='m2')*'w2')-273.16' 
+'sa=maskout(s-lterp(sc,s),ls)'
+'ss=maskout(s,ls)'
+
+'set gxout shaded'
+'set csmooth on'
+'set clevs   -4 -3.5 -2. -2.5 -2 -1.5 -1 -.5   .5 1 1.5 2 2.5 3 3.5 4 4.5 5'
+'set ccols  48  47  46 45 44 43  42 41 0 21 22 23 23 24 25 26 27 28 29'
+
+'d sa'
+'q shades'
+_shades=result
+
+sstcnt=1
+if(sstcnt)
+  'set gxout contour'
+  'set clab on'
+  _sstclev='0 1 2 5 10 15 20 25 27 28.5 30'
+  _sstclev='0 1 2 5 10 15 20 22.5 25 26 27 28 29 30'
+  'set clevs '_sstclev
+  'set cthick '_cthkb
+  'set clskip 2 2.0'
+  'set ccolor 0'
+  'd ss'
+  'set cthick '_cthk
+  'set rbrange 0 30'
+  'set clskip 2 2.0'
+  'set ccolor rainbow'
+  'set clevs '_sstclev
+  'd ss'
+
+  'set clevs 27.0'
+  'set cthick 20'
+  'set clskip 2 2.0'
+  'set cstyle 2'
+  'set ccolor 4'
+  'd ss'
+
+  'set cthick 3'
+  'set rbrange 0 30'
+  'set clskip 2 2.0'
+  'set ccolor 1'
+  'set cstyle 2'
+  'set clevs 27.0'
+  'd ss'
+
+endif
+
+rc=dtitle(t1)
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+
+return(pstat)
+
+
+function lonfill(expr)
+
+'mfill=const(const('expr',-1),0,-u)'
+'dfill=re('expr','_dlatfill')'
+'afill=const(maskout(lterp(dfill,'expr'),mfill),0,-u)+const('expr',0,-u)'
+expr'=afill'
+
+return
+

@@ -1,0 +1,104 @@
+      subroutine xersav(messg,nmessg,nerr,level,icount)
+c***begin prologue  xersav
+c***date written   800319   (yymmdd)
+c***revision date  820801   (yymmdd)
+c***category no.  z
+c***keywords  error,xerror package
+c***author  jones, r. e., (snla)
+c***purpose  records that an error occurred.
+c***description
+c     abstract
+c        record that this error occurred.
+c
+c     description of parameters
+c     --input--
+c       messg, nmessg, nerr, level are as in xerror,
+c       except that when nmessg=0 the tables will be
+c       dumped and cleared, and when nmessg is less than zero the
+c       tables will be dumped and not cleared.
+c     --output--
+c       icount will be the number of times this message has
+c       been seen, or zero if the table has overflowed and
+c       does not contain this message specifically.
+c       when nmessg=0, icount will not be altered.
+c
+c     written by ron jones, with slatec common math library subcommittee
+c     latest revision ---  19 mar 1980
+c***references  jones r.e., kahaner d.k., "xerror, the slatec error-
+c                 handling package", sand82-0800, sandia laboratories,
+c                 1982.
+c***routines called  i1mach,s88fmt,xgetua
+c***end prologue  xersav
+      integer lun(5)
+      character*(*) messg
+      character*20 mestab(10),mes
+      dimension nertab(10),levtab(10),kount(10)
+      save mestab,nertab,levtab,kount,kountx
+c     next two data statements are necessary to provide a blank
+c     error table initially
+      data kount(1),kount(2),kount(3),kount(4),kount(5),
+     1     kount(6),kount(7),kount(8),kount(9),kount(10)
+     2     /0,0,0,0,0,0,0,0,0,0/
+      data kountx/0/
+c***first executable statement  xersav
+      if (nmessg.gt.0) go to 80
+c     dump the table
+         if (kount(1).eq.0) return
+c        print to each unit
+         call xgetua(lun,nunit)
+         do 60 kunit=1,nunit
+            iunit = lun(kunit)
+            if (iunit.eq.0) iunit = i1mach(4)
+c           print table header
+            write (iunit,10)
+   10       format (32h0          error message summary/
+     1      51h message start             nerr     level     count)
+c           print body of table
+            do 20 i=1,10
+               if (kount(i).eq.0) go to 30
+               write (iunit,15) mestab(i),nertab(i),levtab(i),kount(i)
+   15          format (1x,a20,3i10)
+   20       continue
+   30       continue
+c           print number of other errors
+            if (kountx.ne.0) write (iunit,40) kountx
+   40       format (41h0other errors not individually tabulated=,i10)
+            write (iunit,50)
+   50       format (1x)
+   60    continue
+         if (nmessg.lt.0) return
+c        clear the error tables
+         do 70 i=1,10
+   70       kount(i) = 0
+         kountx = 0
+         return
+   80 continue
+c     process a message...
+c     search for this messg, or else an empty slot for this messg,
+c     or else determine that the error table is full.
+      mes = messg
+      do 90 i=1,10
+         ii = i
+         if (kount(i).eq.0) go to 110
+         if (mes.ne.mestab(i)) go to 90
+         if (nerr.ne.nertab(i)) go to 90
+         if (level.ne.levtab(i)) go to 90
+         go to 100
+   90 continue
+c     three possible cases...
+c     table is full
+         kountx = kountx+1
+         icount = 1
+         return
+c     message found in table
+  100    kount(ii) = kount(ii) + 1
+         icount = kount(ii)
+         return
+c     empty slot found for new message
+  110    mestab(ii) = mes
+         nertab(ii) = nerr
+         levtab(ii) = level
+         kount(ii)  = 1
+         icount = 1
+         return
+      end

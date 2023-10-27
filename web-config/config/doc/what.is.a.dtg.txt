@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>What's a DTG?</title>
+</head>
+<body background="/fiorino/icon/bkggrey.gif" TEXT="#000000" LINK="#0000FF" VLINK="#006030">
+<h1>What's a DTG?<br></h1>
+
+The "DTG" or "Date-Time-Group" is a way of representing time
+which I carried over from the days when I worked as a civilian
+for the Navy.  I still use it because of it's simplicity.  It's
+something you'll have to get used to as it'll appear through out
+my weather map web.<br>
+
+Here's the Format:<br><br>
+
+yymmddhh or yyyymmddhh <br><br>
+where:<br>
+
+yy = last two digits the year in 1900's or in preparation for the new millenium<br>
+yyyy
+mm = month number <br>
+dd = day number <br>
+hh = hour in UTC <br>
+
+<br>
+Example,<br>
+
+1996102700 =
+
+00 UTC October, 1996
+
+Send Comments to <a href="mailto:fiorino@llnl.gov"> Mike Fiorino</a>, 
+<a href="http://www-pcmdi.llnl.gov">PCMDI</a>, <a
+href="http://www.llnl.gov">LLNL</a>
+</body>
+</html>

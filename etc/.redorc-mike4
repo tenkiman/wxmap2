@@ -1,0 +1,13 @@
+
+. ~/.bashrc
+
+export runcmd="$W2/run.cron.bash"
+export w2pdir=$W2_PRC_DIR
+export w2prjdir=$W2/prj
+export ptmpdir=$PTMP
+
+export logjgsm="log-w2-do-jgsm.py.JGSM"
+export lognavg="log-do-navg.py.NAVG_p605"
+export loggfs2="log-do-gfs2.py.GFS2_p505"
+export logcgd2="log-w2-do-cgd2.py.CGD2"
+export logecm5="log-w2-do-ecm5.py.ECM5"

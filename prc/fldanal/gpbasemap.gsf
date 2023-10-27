@@ -1,0 +1,73 @@
+
+*
+*-------------------------- gpbasemap ------------------
+*
+function gpbasemap(k)
+t1=''
+
+pstat=1
+_shades=0
+'set grads off'
+
+'set dfile '_fm
+'q file'
+print result
+
+rc=jaecol()
+
+
+pcol.2='49 48 47 46 45 44 43 42 41 21 22 23 24 25 26 27 28 29'
+pcol.2='49 48 47 46 45 44 43 42 41 31 32 33 34 35 36 37 38 39'
+pcol.1='69 68 67 66 65 63 61 61 53 55 56 57 58 59'
+pcol.1='59 58 57 55 55 53 52 51 61 62 63 64 65 66 67 68 69'
+*pcol.1='49 48 47 45 44 43 42 62 63 64 65 66 67 68 69'
+pcol.1='54 53 52 61 42 43 44 45 47 48 49 69 68 67 66 65 64 63 21 22 23 24 25 26'
+
+'set xlint '_xlint
+'set ylint '_ylint
+'set rbrange -14 20'
+'set rbcols 'pcol.1
+'set clevs  -14 -12 -10 -8 -6 -4 -2  2   4  6  8  10  12  14  16 18 20'
+'set ccols 54  53  52  61 42 43 44 0 47  48 49 69  68  67  66  65 64 63 21 22 23 24 25 26'
+
+'set rgb 49  00 20 60'
+'set rgb 47  00 40 100'
+'set rgb 43  00 60 150'
+'set rgb 61  00 120 200'
+
+'set rgb 69 20  5 00'
+'set rgb 68 50  5 00'
+'set rgb 67 100 10 00'
+'set rgb 66 120 10 00'
+'set rgb 65 130 10 00'
+'set rgb 64 150 40 0'
+'set rgb 63 170 60 00'
+'set rgb 21 200 100 00'
+'set rgb 22 255 232 120'
+'set rgb 22 255 140 100'
+
+'set clevs  -14  -12  -10 -8  -6  -4  -2   2  4   6   8  10  12  14  16  18  20'
+'set ccols 57   55  52  61  43  47  49   0  69  68  67  66  65  64  63  21  22  23 24 25 26'
+
+lcol=90
+ocol=91
+'set rgb 90 100 50 25'
+'set rgb 91 10 20 85'
+'set cmin 100000'
+'d orog(t=1)'
+
+'basemap.2 L 'lcol' 1'
+'basemap.2 O 'ocol' 1'
+
+'set map 0 0 10'
+'draw map'
+
+'set cmin 100000'
+'d orog(t=1)'
+
+'set map 1 0 3'
+'draw map'
+
+#rc=drawmap()
+
+return(0)

@@ -1,0 +1,16 @@
+# Cookies for domains related to ecmwf.int.
+# This content may be pasted into a cookies.txt file and used by wget
+# Example:  wget -x --load-cookies cookies.txt http://www.ecmwf.int/en/forecasts/charts/tcyclone/tc_strike_probability?time=2016090112,0,2016090112&unique_id=07L_GASTON_2016
+#
+software.ecmwf.int	FALSE	/wiki	TRUE	0	JSESSIONID	F698CBC4EAA85E5D66AFFE0968070A98
+ecmwf.int		FALSE	/	FALSE	0	has_js		1
+.ecmwf.int		TRUE	/	FALSE	1475939073		__utma	267635482.573354792.1331659598.1412724798.1412867074.30
+.ecmwf.int		TRUE	/	FALSE	0			__utmc	267635482
+old.ecmwf.int		FALSE	/	FALSE	0			JSESSIONID	4D12ACAB62CAF21C1F0A4EDB3253D6C3
+.old.ecmwf.int		TRUE	/	FALSE	1506798883		__utma		34176767.318799740.1403190134.1413819277.1443724859.11
+.old.ecmwf.int		TRUE	/	FALSE	0			__utmc		34176767
+.ecmwf.int		TRUE	/	FALSE	1474830883.882408	WebAuth		uid%3Awmo_us%20ticket%3A7S7Ib3nqm1fS3RDjeaDnrNxN58RHsMELaD1YcVHelbgRJC5Z1cRMZA%3d%3d%20levels%3A2
+.www.ecmwf.int		TRUE	/	FALSE	1474769950.225075	SESSfe9af77d68066cd1ee851e8355eea042	rsutiXqnSCAsVpUCnI6dKRrN_XgxubyQqOGuppkxypk
+www.ecmwf.int		FALSE	/	FALSE	0			has_js					1
+www.ecmwf.int		FALSE	/	FALSE	1473979552.869263	sessionid				4weg1bskglo1oxzy14isjs21vffl1j9c
+.ecmwf.int		TRUE	/	FALSE	1473029155.584639	WebAuth_WREP				ticket%3A%2FnH2nE1t2xISLpl4vlkyBYVEsDCou5j+%2FViZv5Bg4bpCnR+w1PZKRRIADeIOueiVWtvUFR5AIyfxadoHTc7EWmy%2FtvfgJr7w85CcISW9zDw%3D%20uid%3Awmo_us%20levels%3A3

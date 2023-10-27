@@ -1,0 +1,16 @@
+20131112
+
+cd dtg
+make
+mv dtgops ../../bin/dtg6
+
+20070612  dtg/ -- CC code 
+          pedro/ -- C code
+
+dtg utility 
+
+
+94081700
+
+C dtg manipulate programs from Pedro Tsai, FNMOC
+

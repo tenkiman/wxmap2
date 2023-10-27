@@ -1,0 +1,338 @@
+!    -*- f90 -*-
+python module jclip ! in 
+    interface  ! in :jclip
+        subroutine wpclpr(idatim,alat00,alon00,alat12,alon12,alat24,alon24,wind) ! in :jclip:jtwc.clipper.lib.f
+            integer :: idatim
+            real :: alat00
+            real :: alon00
+            real :: alat12
+            real :: alon12
+            real :: alat24
+            real :: alon24
+            real :: wind
+            real dimension(12) :: cfcst
+            real dimension(90,6) :: rcm
+            real dimension(95,6) :: rcz
+            real dimension(6) :: cnstm
+            real dimension(6) :: cnstz
+            integer*2 dimension(90,6) :: npm
+            integer*2 dimension(95,6) :: npz
+            common /wpclpfcst/ cfcst
+            common /block1/ rcm,rcz,cnstm,cnstz
+            common /block2/ npm,npz
+        end subroutine wpclpr
+        function f1(alon) ! in :jclip:jtwc.clipper.lib.f
+            real :: alon
+            real :: f1
+        end function f1
+        function f2(idatim) ! in :jclip:jtwc.clipper.lib.f
+            integer :: idatim
+            real :: f2
+        end function f2
+        block data blkdt2 ! in :jclip:jtwc.clipper.lib.f
+            real optional,dimension(3,3) :: a=0.
+            real optional :: radpdg=1.745 3293 e-2
+            real optional :: rrthnm=3 440.17
+            real optional :: dgridh=120.
+            real optional :: hgridx=0.
+            real optional :: hgridy=0.
+            common /hgrprm/ a,radpdg,rrthnm,dgridh,hgridx,hgridy
+        end block data blkdt2
+        subroutine psetup(p1,p2,p3,p4,p5,p6,p7,p8,p) ! in :jclip:jtwc.clipper.lib.f
+            real :: p1
+            real :: p2
+            real :: p3
+            real :: p4
+            real :: p5
+            real :: p6
+            real :: p7
+            real :: p8
+            real dimension(166) :: p
+        end subroutine psetup
+        subroutine nmi2ll(alat0,alon0,cnmis,cfcst) ! in :jclip:jtwc.clipper.lib.f
+            real :: alat0
+            real :: alon0
+            real*4 dimension(12) :: cnmis
+            real*4 dimension(12) :: cfcst
+        end subroutine nmi2ll
+        function newcyc(nowcyc,n) ! in :jclip:jtwc.clipper.lib.f
+            integer :: nowcyc
+            integer :: n
+            integer :: newcyc
+        end function newcyc
+        block data blkdt1 ! in :jclip:jtwc.clipper.lib.f
+            integer*2 dimension(90,6) :: npm
+            integer*2 dimension(95,6) :: npz
+            real dimension(90,6) :: rcm
+            real dimension(95,6) :: rcz
+            real optional,dimension(6) :: cnstm=-.17755e+3
+            real optional,dimension(6) :: cnstz=-.67623e+3
+            real*4 optional,dimension(95) :: r72z=.2395405e-1
+            real*4 optional,dimension(95) :: r60z=.2069224e+1
+            real*4 optional,dimension(90) :: r60m=.3203984e-2
+            real*4 optional,dimension(90) :: r72m=.3488563e-2
+            integer*2 optional,dimension(90) :: n12m=037
+            real*4 optional,dimension(90) :: r24m=.3153820e+0
+            real*4 optional,dimension(90) :: r36m=.5950992e+0
+            real*4 optional,dimension(95) :: r48z=.4461890e+1
+            integer*2 optional,dimension(90) :: n60m=138
+            integer*2 optional,dimension(90) :: n72m=138
+            integer*2 optional,dimension(95) :: n72z=096
+            integer*2 optional,dimension(95) :: n36z=022
+            integer*2 optional,dimension(95) :: n24z=022
+            real*4 optional,dimension(95) :: r12z=.9006323e+0
+            integer*2 optional,dimension(90) :: n48m=037
+            integer*2 optional,dimension(95) :: n60z=022
+            real*4 optional,dimension(90) :: r48m=.3937869e+1
+            real*4 optional,dimension(95) :: r36z=.3727141e+1
+            real*4 optional,dimension(95) :: r24z=.2211812e+1
+            integer*2 optional,dimension(95) :: n12z=022
+            integer*2 optional,dimension(95) :: n48z=022
+            real*4 optional,dimension(90) :: r12m=.3243071e-1
+            integer*2 optional,dimension(90) :: n24m=037
+            integer*2 optional,dimension(90) :: n36m=037
+            common /block2/ npm,npz
+            common /block1/ rcm,rcz,cnstm,cnstz
+        end block data blkdt1
+        subroutine sthgpr(xlath,xlonh,bear,gridsz,xi0,yj0) ! in :jclip:jtwc.clipper.lib.f
+            real :: xlath
+            real :: xlonh
+            real :: bear
+            real :: gridsz
+            real :: xi0
+            real :: yj0
+            real dimension(3,3) :: a
+            real :: radpdg
+            real :: rrthnm
+            real :: dgridh
+            real :: hgridx
+            real :: hgridy
+            common /hgrprm/ a,radpdg,rrthnm,dgridh,hgridx,hgridy
+        end subroutine sthgpr
+        subroutine ll2xyh(xlat,xlong,xi,yj) ! in :jclip:jtwc.clipper.lib.f
+            real :: xlat
+            real :: xlong
+            real :: xi
+            real :: yj
+            real dimension(3,3) :: a
+            real :: radpdg
+            real :: rrthnm
+            real :: dgridh
+            real :: hgridx
+            real :: hgridy
+            common /hgrprm/ a,radpdg,rrthnm,dgridh,hgridx,hgridy
+        end subroutine ll2xyh
+        subroutine xy2llh(xi,yj,xlat,xlong) ! in :jclip:jtwc.clipper.lib.f
+            real :: xi
+            real :: yj
+            real :: xlat
+            real :: xlong
+            real dimension(3,3) :: a
+            real :: radpdg
+            real :: rrthnm
+            real :: dgridh
+            real :: hgridx
+            real :: hgridy
+            common /hgrprm/ a,radpdg,rrthnm,dgridh,hgridx,hgridy
+        end subroutine xy2llh
+        subroutine db2ll(xlato,xlono,dist,bear,xlatt,xlont) ! in :jclip:jtwc.clipper.lib.f
+            real :: xlato
+            real :: xlono
+            real :: dist
+            real :: bear
+            real :: xlatt
+            real :: xlont
+        end subroutine db2ll
+        subroutine ll2db(xlato,xlono,xlatt,xlont,dist,bear) ! in :jclip:jtwc.clipper.lib.f
+            real :: xlato
+            real :: xlono
+            real :: xlatt
+            real :: xlont
+            real :: dist
+            real :: bear
+        end subroutine ll2db
+        subroutine seiclp(idatim,alat00,alon00,alat12,alon12,alat24,alon24,wind) ! in :jclip:jtwc.clipper.lib.f
+            integer :: idatim
+            real :: alat00
+            real :: alon00
+            real :: alat12
+            real :: alon12
+            real :: alat24
+            real :: alon24
+            real :: wind
+            real dimension(16,6) :: rcm
+            real dimension(14,6) :: rcz
+            real dimension(6) :: cnstm
+            real dimension(6) :: cnstz
+            integer*2 dimension(16,6) :: npm
+            integer*2 dimension(14,6) :: npz
+            real dimension(12) :: cfcst
+            common /blockse1/ rcm,rcz,cnstm,cnstz
+            common /blockse2/ npm,npz
+            common /seiclpfcst/ cfcst
+        end subroutine seiclp
+        block data blkse2 ! in :jclip:jtwc.clipper.lib.f
+            real optional,dimension(3,3) :: a=0.
+            real optional :: radpdg=1.745 3293 e-2
+            real optional :: rrthnm=3 440.17
+            real optional :: dgridh=120.
+            real optional :: hgridx=0.
+            real optional :: hgridy=0.
+            common /hgrprm/ a,radpdg,rrthnm,dgridh,hgridx,hgridy
+        end block data blkse2
+        block data blkse1 ! in :jclip:jtwc.clipper.lib.f
+            real dimension(16,6) :: rcm
+            real dimension(14,6) :: rcz
+            real optional,dimension(6) :: cnstm=.19093e+2
+            real optional,dimension(6) :: cnstz=.11519e+2
+            integer*2 dimension(16,6) :: npm
+            integer*2 dimension(14,6) :: npz
+            real*4 optional,dimension(14) :: r72z=.5412447e+1
+            real*4 optional,dimension(14) :: r60z=.4757084e+1
+            real*4 optional,dimension(16) :: r60m=.2067777e-2
+            real*4 optional,dimension(16) :: r72m=.2259347e-2
+            integer*2 optional,dimension(16) :: n12m=037
+            real*4 optional,dimension(16) :: r24m=.6670975e-3
+            real*4 optional,dimension(16) :: r36m=.1250097e-2
+            real*4 optional,dimension(14) :: r48z=.4371525e+1
+            integer*2 optional,dimension(16) :: n60m=138
+            integer*2 optional,dimension(16) :: n72m=138
+            integer*2 optional,dimension(14) :: n72z=022
+            integer*2 optional,dimension(14) :: n36z=022
+            integer*2 optional,dimension(14) :: n24z=022
+            real*4 optional,dimension(14) :: r12z=.1296249e+1
+            integer*2 optional,dimension(16) :: n48m=138
+            integer*2 optional,dimension(14) :: n60z=022
+            real*4 optional,dimension(16) :: r48m=.1815626e-2
+            real*4 optional,dimension(14) :: r36z=.3506600e+1
+            real*4 optional,dimension(14) :: r24z=.2528738e+1
+            integer*2 optional,dimension(14) :: n12z=022
+            integer*2 optional,dimension(14) :: n48z=022
+            real*4 optional,dimension(16) :: r12m=.6500266e+0
+            integer*2 optional,dimension(16) :: n24m=138
+            integer*2 optional,dimension(16) :: n36m=138
+            common /blockse1/ rcm,rcz,cnstm,cnstz
+            common /blockse2/ npm,npz
+        end block data blkse1
+        subroutine swpclp(idatim,alat00,alon00,alat12,alon12,alat24,alon24,wind) ! in :jclip:jtwc.clipper.lib.f
+            integer :: idatim
+            real :: alat00
+            real :: alon00
+            real :: alat12
+            real :: alon12
+            real :: alat24
+            real :: alon24
+            real :: wind
+            integer*2 dimension(31,6) :: npm
+            integer*2 dimension(31,6) :: npz
+            real dimension(31,6) :: rcm
+            real dimension(31,6) :: rcz
+            real dimension(6) :: cnstm
+            real dimension(6) :: cnstz
+            real dimension(12) :: cfcst
+            common /blocksw2/ npm,npz
+            common /blocksw1/ rcm,rcz,cnstm,cnstz
+            common /swpclpfcst/ cfcst
+        end subroutine swpclp
+        block data blksw2 ! in :jclip:jtwc.clipper.lib.f
+            real optional,dimension(3,3) :: a=0.
+            real optional :: radpdg=1.745 3293 e-2
+            real optional :: rrthnm=3 440.17
+            real optional :: dgridh=120.
+            real optional :: hgridx=0.
+            real optional :: hgridy=0.
+            common /hgrprm/ a,radpdg,rrthnm,dgridh,hgridx,hgridy
+        end block data blksw2
+        subroutine setup(p1,p2,p3,p4,p5,p6,p7,p8,p) ! in :jclip:jtwc.clipper.lib.f
+            real :: p1
+            real :: p2
+            real :: p3
+            real :: p4
+            real :: p5
+            real :: p6
+            real :: p7
+            real :: p8
+            real dimension(166) :: p
+        end subroutine setup
+        subroutine yx2ll(alat0,alon0,disp,cfcst) ! in :jclip:jtwc.clipper.lib.f
+            real :: alat0
+            real :: alon0
+            real*4 dimension(12) :: disp
+            real*4 dimension(12) :: cfcst
+        end subroutine yx2ll
+        block data blksw1 ! in :jclip:jtwc.clipper.lib.f
+            integer*2 dimension(31,6) :: npm
+            integer*2 dimension(31,6) :: npz
+            real dimension(31,6) :: rcm
+            real dimension(31,6) :: rcz
+            real optional,dimension(6) :: cnstm=-.14864e+3
+            real optional,dimension(6) :: cnstz=.10063e+2
+            real*4 optional,dimension(31) :: r72z=-.2664871e+1
+            real*4 optional,dimension(31) :: r60z=.3987733e-1
+            real*4 optional,dimension(31) :: r60m=.1298005e-3
+            real*4 optional,dimension(31) :: r72m=.4869786e-3
+            integer*2 optional,dimension(31) :: n12m=037
+            real*4 optional,dimension(31) :: r24m=.7219834e-1
+            real*4 optional,dimension(31) :: r36m=.2131797e+0
+            real*4 optional,dimension(31) :: r48z=.3610687e-1
+            integer*2 optional,dimension(31) :: n60m=119
+            integer*2 optional,dimension(31) :: n72m=119
+            integer*2 optional,dimension(31) :: n72z=022
+            integer*2 optional,dimension(31) :: n36z=096
+            integer*2 optional,dimension(31) :: n24z=022
+            real*4 optional,dimension(31) :: r12z=.8272212e+0
+            integer*2 optional,dimension(31) :: n48m=119
+            integer*2 optional,dimension(31) :: n60z=096
+            real*4 optional,dimension(31) :: r48m=-.1940412e-3
+            real*4 optional,dimension(31) :: r36z=.2340691e-1
+            real*4 optional,dimension(31) :: r24z=.2063707e+1
+            integer*2 optional,dimension(31) :: n12z=022
+            integer*2 optional,dimension(31) :: n48z=096
+            real*4 optional,dimension(31) :: r12m=-.4287692e+1
+            integer*2 optional,dimension(31) :: n24m=101
+            integer*2 optional,dimension(31) :: n36m=101
+            common /blocksw2/ npm,npz
+            common /blocksw1/ rcm,rcz,cnstm,cnstz
+        end block data blksw1
+        subroutine uprcas(eorw00,eorw12,eorw24) ! in :jclip:jtwc.clipper.lib.f
+            character*1 :: eorw00
+            character*1 :: eorw12
+            character*1 :: eorw24
+        end subroutine uprcas
+        subroutine fixprd(nsind,iyr,mon,idy,ihr,flt,fln,plt12,pln12,plt24,pln24,p) ! in :jclip:jtwc.clipper.lib.f
+            integer :: nsind
+            integer :: iyr
+            integer :: mon
+            integer :: idy
+            integer :: ihr
+            real :: flt
+            real :: fln
+            real :: plt12
+            real :: pln12
+            real :: plt24
+            real :: pln24
+            real dimension(35) :: p
+        end subroutine fixprd
+        subroutine cldxdy(nsind,p,dx,dy) ! in :jclip:jtwc.clipper.lib.f
+            integer :: nsind
+            real dimension(35) :: p
+            real dimension(6) :: dx
+            real dimension(6) :: dy
+        end subroutine cldxdy
+        subroutine oclip(nsind,ymdh,flt,fln,plt12,pln12,plt24,pln24) ! in :jclip:jtwc.clipper.lib.f
+            integer :: nsind
+            integer :: ymdh
+            real :: flt
+            real :: fln
+            real :: plt12
+            real :: pln12
+            real :: plt24
+            real :: pln24
+            real dimension(12) :: cfcst
+            common /oldclpfcst/ cfcst
+        end subroutine oclip
+    end interface 
+end python module jclip
+
+! This file was auto-generated with f2py (version:2.37.233-1545).
+! See http://cens.ioc.ee/projects/f2py2e/

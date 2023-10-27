@@ -1,0 +1,25 @@
+        subroutine amatrix                                                      
+        parameter(nmx=24)                                                       
+        common /matrix/ a(nmx,nmx),capd2                                        
+        common /vect/xvect(nmx),yvect(nmx)                                      
+       common  /ifact/nnn,rovect(nmx),rb,ienv                                   
+       common  /coor/ xv,yv,xold,yold,xcorn,ycorn,factr,ix,iy                   
+c                                                                               
+        pi180 = 4.*atan(1.0)/180.                                               
+        yo=yold*pi180                                                           
+        fact=cos(yo)                                                            
+c       capd2=(2.25)*(2.25)                                                     
+c                                                                               
+c  capd2 defines the radius of influence for each point                         
+c  during the oi                                                                
+c                                                                               
+        capd2=(12.0)*(12.0)                                                     
+        do 10 ip=1,nmx                                                          
+        do 10 jp=ip,nmx                                                         
+          dpij=(fact*(xvect(ip)-xvect(jp)))**2 +(yvect(ip)-yvect(jp))**2        
+          a(ip,jp)= exp(-dpij/capd2)                                            
+          a(jp,ip)= a(ip,jp)                                                    
+10      continue                                                                
+100     format(5f8.4)                                                           
+        return                                                                  
+        end                                                                     

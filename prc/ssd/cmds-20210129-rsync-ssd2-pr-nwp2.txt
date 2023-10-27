@@ -1,0 +1,5 @@
+cd /data/w22/dat
+
+rsync -alv /ssd2/dat/pr/ pr/
+
+rsync -alv --size-only /ssd2/dat/nwp2/ /w21/dat/nwp2/

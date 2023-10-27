@@ -1,0 +1,134 @@
+*
+*-------------------------- gptmax ------------------
+*
+function gptmax(k)
+
+# -- black doesn't render in printim for v2.1?
+'set rgb 99 1 1 1'
+bcol=0
+bcol=99 
+
+if(_mopt1 = 'C') 
+  t1='Previous 24-h Maximum Sfc Air T [`3.`0C]'
+  tmxrb='-30 44'
+  tmxcint=2
+else 
+  t1='Previous 24-h Maximum Sfc Air T [`3.`0F]'
+  tmxrb='-20 110'
+  tmxcint=5
+endif
+
+rc=dtitle(t1)
+pstat=1
+_shades=0
+
+'set grads off'
+
+if(_tau <= 12) ; return ; endif
+
+tmxchk='tasmx'
+if(_tau >= 192) ; tmxchk='tasmx.'_fnf25 ; endif
+
+rc=datachk(tmxchk) 
+if(rc != 0)
+  return(pstat)
+else
+  pstat=0
+endif
+
+*
+*  day 1 max
+*
+
+'dtmx=tasmx(t=3)-tasmx(t=2)'
+'tmx0=max(tasmx,t-3,t+0))'
+
+if(_mopt1 = 'C') 
+  'tmx0=(tmx0-273.16)'
+else
+  'tmx0=(tmx0-273.16)*(9/5)+32'
+endif
+*
+*  current day max
+*
+
+'dtmx=tasmx-tasmx(t-1))'
+'tmx=max(tasmx,t-3,t+0)'
+if(_mopt1 = 'C') 
+  'tmx=(tmx-273.16)'
+else
+  'tmx=(tmx-273.16)*(9/5)+32'
+endif
+
+if(_tau >= 192) 
+  dtmxo='tmx-lterp(tmx0,tmx)'
+else
+  dtmxo='tmx-tmx0'
+endif
+
+'set xlint '_xlint
+'set ylint '_ylint
+
+'set gxout shaded'
+'set csmooth on'
+
+colscheme=efs
+if(colscheme=efs)
+  rc=efscol(efs_2)
+  i=subwrd(rc,1)
+  ie=subwrd(rc,2)
+  card='set rbcols '
+  while(i<=ie)
+    card=card' 'i
+    i=i+1
+  endwhile
+  card
+endif
+
+
+'set rbrange 'tmxrb
+'set cint 'tmxcint
+
+#
+# don't output t - t=1 delta
+#
+
+dtmxo='tmx'
+
+if(_tau >= 24)
+'d 'dtmxo
+'q shades'
+_shades=result
+else
+'c'
+endif
+
+if(_dobasemap != 1)
+  rc=drawmap()
+endif
+
+'set gxout contour'
+'set cterp on'
+'set cint 'tmxcint
+'set cthick '_cthkb
+'set clab off'
+'set ccolor 'bcol
+'d tmx'
+
+'set cthick '_cthk
+'set cint 'tmxcint
+'set clskip 3 3.0'
+'set clopts -1 -1 0.075'
+'set clab on'
+*'set clab off'
+'set rbrange 'tmxrb
+'set ccolor rainbow'
+
+'d tmx'
+
+rc=dtitle(t1)
+cbarg='0.80 1 10.60 4.25'
+*cbarg='0.90 0 5.5 0.78'
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+return(pstat)
+

@@ -1,0 +1,45 @@
+function ftposits(ttau,btau,dtau)
+
+tau=ttau*1
+
+#
+# no posits > 120 h so load all that are available
+#
+if(tau > 120)
+  tau=120
+endif
+
+jmax=100
+i=1
+while(tau>=btau)
+
+  n=_ntcft.tau
+  
+  if(n >=1 )
+    j=1
+    while(j<=n & j<jmax)
+      
+      posit=_tcft.tau.j' 'tau
+      _tcftall.i=posit
+      j=j+1
+      i=i+1
+    endwhile
+
+    if(j = jmax)
+      return(999)
+    endif
+
+  endif
+
+  tau=tau-dtau
+
+endwhile
+
+np=i-1
+if(i=1); np=_ntcft.tau ; endif
+
+_ntcftall.ttau=np
+
+
+return(0)
+

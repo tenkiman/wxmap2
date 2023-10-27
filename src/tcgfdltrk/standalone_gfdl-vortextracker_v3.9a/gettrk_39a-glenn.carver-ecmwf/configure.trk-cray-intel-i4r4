@@ -1,0 +1,97 @@
+
+SHELL           	=       /bin/sh
+
+# Listing of options that are usually independent of machine type.
+# When necessary, these are over-ridden by each architecture.
+
+#ARFLAGS			=
+
+# Variables set by arch/Config.pl:
+
+LIB_Z_PATH      =   /usr/lib64
+LIB_PNG_PATH    =   /ws/home/na/nagc/openifs/gfdl-vortextracker/cray-intel/lib
+LIB_JASPER_PATH =   /usr/local/apps/jasper/1.900.1/lib
+
+# Extra flags needed for including or linking to GRIB2 library:
+GRIB2_FFLAGS    =    -I../../libs/mods/g2
+GRIB2_LIBS      =   -L/ws/home/na/nagc/openifs/gfdl-vortextracker/cray-intel/lib -L/usr/lib64 -L/usr/local/apps/jasper/1.900.1/lib -lz -lpng -ljasper
+CFLAGS_GRIB2    =   -I/usr/local/apps/jasper/1.900.1/lib/../include 
+#### Architecture specific settings ####
+
+# Settings for Linux x86_64, Intel compiler, CrayPE	 (serial)#
+LDFLAGS        =   -Wl,-noinhibit-exec  -L$(MPI_ROOT)/lib
+
+BYTE_ORDER     =   LITTLE_ENDIAN
+SFC            =   ftn -static
+SF90           =   ftn -free -static
+SCC            =   cc
+DEBUG_FLAGS    =   -g -traceback
+FFLAGS_SINGLE  =  -integer-size 32 -real-size 32
+FFLAGS_DOUBLE  =  -integer-size 32 -real-size 32
+FFLAGS         =   -O2 -fp-model precise $(FFLAGS_DOUBLE) \
+                   -I$(MPI_ROOT)/include
+CFLAGS         =  -O3 -DLINUX -DUNDERSCORE -Dfunder -DFortranByte=char \
+                  -DFortranInt=int -DFortranLlong='long long' -I$(MPI_ROOT)/include ${ARCHINTELOPT}
+FFLAGS_BACIO   =   -O3  -DLINUX -fp-model precise -assume byterecl $(FFLAGS_SINGLE)
+CFLAGS_BACIO   =   -O3 -DLINUX -DUNDERSCORE -Dfunder -DFortranByte=char -DFortranInt=int -DFortranLlong='long long' ${ARCHINTELOPT}
+
+FFLAGS_G2      =   -O3  -DLINUX -fp-model precise -assume byterecl 
+CFLAGS_G2      =   -O3 -DUNDERSCORE $(CFLAGS_GRIB2) ${ARCHINTELOPT}
+FFLAGS_SIGIO   =   -O3  -DLINUX -fp-model precise -assume byterecl 
+FFLAGS_W3      =   -O3  -DLINUX -fp-model precise -assume byterecl $(FFLAGS_DOUBLE)
+CFLAGS_W3      =   -O3 -DLINUX -DUNDERSCORE -Dfunder -DFortranByte=char -DFortranInt=int -DFortranLlong='long long' ${ARCHINTELOPT}
+FFLAGS_W3I4R4  =   -O3  -DLINUX -fp-model precise -assume byterecl $(FFLAGS_SINGLE)
+CFLAGS_W3I4R4  =   -O3 -DLINUX -DUNDERSCORE -Dfunder -DFortranByte=char -DFortranInt=int -DFortranLlong='long long' ${ARCHINTELOPT}
+CPP            =   /lib/cpp
+CPPFLAGS       =   -P -traditional-cpp -D$(BYTE_ORDER) -DWRF -DLINUX
+ARFLAGS        =  -ruv
+
+DM_FC          =   ftn
+DM_F90         =   ftn -free
+DM_CC          =   cc
+
+FC             =   $(SFC)
+F90            =   $(SF90)
+CC             =   $(SCC)
+
+
+##################################################################
+#
+#	Macros, these should be generic for all machines
+
+LN		=	ln -sf
+MAKE		=	make -i -r
+RM		= 	/bin/rm -f
+CP		= 	/bin/cp
+AR		=	ar 
+MKDIR           =       /bin/mkdir -p
+
+
+.IGNORE:
+.SUFFIXES: .c .f .F .F90 .f90 .o
+
+#	There is probably no reason to modify these rules
+
+.c.o:
+	$(RM) $@
+	$(CC) $(CFLAGS) -c $<	
+
+.f.o:
+	$(RM) $@ $*.mod
+	$(FC) $(FFLAGS) -c $< 
+
+.F.o:
+	$(RM) $@ $*.mod
+	$(CPP) $(CPPFLAGS) $(FDEFS)  $< > $*.f90
+	$(F90) $(FFLAGS) -c $*.f90 
+	$(RM) $*.f90
+
+.F90.o:
+	$(RM) $@ $*.mod
+	$(CPP) $(CPPFLAGS) $(FDEFS)  $< > $*.f90
+	$(F90) $(FFLAGS) -c $*.f90 
+	$(RM) $*.f90
+
+.f90.o:
+	$(RM) $@ $*.mod
+	$(F90) $(FFLAGS) -c $< 

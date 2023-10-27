@@ -1,0 +1,53 @@
+        subroutine findra(dxc,dyc,yc,rmxavg,rfind,tanuv)                        
+c                                                                               
+c  finds rfind from azimuthally averaged radial profile of tang. wind           
+c                                                                               
+        parameter(imx=201,jmx=81,nmx=24,iimx=110)                                
+        dimension tanuv(iimx)                                                   
+ccc       common /scale/rmxavg,rfind                                            
+c                                                                               
+        dr=0.1                                                                  
+c                                                                               
+c                                                                               
+        dist= rmxavg*1.5                                                        
+        x1 = 0.0                                                                
+        rtan1 = 100000.                                                         
+        r = 1.0                                                                 
+        r=dist                                                                  
+c                                                                               
+c only come back to 666 if rtan > 6m/s                                          
+c                                                                               
+666     continue                                                                
+        rtan1=100000.                                                           
+c                                                                               
+c  return to 777 if gradient, dist, or 3m/s are unmet                           
+c                                                                               
+777     continue                                                                
+c                                                                               
+        r = r + dr                                                              
+        irad= int(r/dr)                                                         
+        rtan= tanuv(irad)                                                       
+c                                                                               
+c       write(56,*)r,rtan                                                       
+        print *,'in findra r = ',r,' rtan = ',rtan                              
+        rtan2 = rtan                                                            
+c        if(rtan.gt.6.)go to 666                                                
+        if(rtan.gt.3.)go to 666                                                 
+c                                                                               
+        if(rtan2.ge.rtan1.and.r.gt.dist.and.x1.gt..5)go to 999                  
+        if(rtan2.ge.rtan1.and.r.gt.dist)then                                    
+        x1 = 1.0                                                                
+c                                                                               
+        endif                                                                   
+c                                                                               
+        if(rtan.lt.3..and.r.gt.dist)go to 999                                   
+c       write(56,*)r,rtan                                                       
+c                                                                               
+        rtan1 = rtan - 4.0                                                      
+        if(r.lt.10.8)go to 777                                                  
+999     continue                                                                
+c                                                                               
+        rfind=r                                                                 
+c                                                                               
+        return                                                                  
+        end                                                                     

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!-- JNLP File for Rulebot Agent Web start --> 
+<jnlp  spec="1.0+" 
+  <!-- codebase="$$codebase" href="$$name" -->
+  codebase="@cagips.codebase@@rulebotagent.context.root@/app" href="agent.jnlp">  
+
+  <information> 
+    <title>Rulebot Agent</title> 
+    <vendor>Fleet Numerical Oceanographic and Meteorology Center</vendor> 
+    <homepage href="@cagips.codebase@/download-agent.html"/> 
+    <description>Rulebot Agent Application</description> 
+    <description kind="short">Download agent for use with Rulebot server</description> 
+    <icon href="images/agent.jpg"/> 
+    <icon kind="splash" href="images/splash.gif"/> 
+    <offline-allowed/> 
+  </information> 
+  <security> 
+      <all-permissions/> 
+  </security> 
+  <resources> 
+    <j2se version="1.5+"/> 
+    <jar href="RulebotAgent.jar" version="2.09" /> 
+    <jar href="lib/commons-httpclient-3.0.1.jar" /> 
+    <jar href="lib/commons-codec-1.3.jar" /> 
+    <jar href="lib/commons-logging-1.1.jar" /> 
+    <jar href="lib/jnlp.jar" />
+    <jar href="lib/fnmoc-http.jar" />
+  
+  </resources> 
+  <application-desc main-class="mil.navy.fnmoc.rulebot.agent.RulebotAgent"/> 
+</jnlp>

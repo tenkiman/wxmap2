@@ -1,0 +1,127 @@
+<html>
+<head>
+<title>Adding/removing wxmap areas</title>
+</head>
+
+<style type="text/css" title="mike">
+<---
+h2 { color : darkblue;
+font-size : 16pt;
+font-weight:bold;
+font-style:normal;
+text-ident:0.5in;
+font-family:arial,helvetica,san-serif;
+}
+
+h3 { color : darkred;
+font-size : 12pt;
+font-weight:normal;
+font-style:italic;
+text-ident:0.25in;
+font-family:arial,helvetica,san-serif;
+}
+
+h4 {font-size: 12pt; font-family: courier new; font-weight: bold; line-height: 12pt; text-align: left; color: maroon }
+
+-->
+</style>
+</head>
+
+<body text="Black" link="Blue" vlink="Purple" bgcolor="#FCF1DA">
+
+<!-- ******************************************
+<body background="/icon/padbkg.gif" TEXT="#000000" LINK="#0000FF" VLINK="#006030">
+-->
+<center>
+<font size="4" face="Arial" color="Navy"><h1>
+Adding/Subtracting Areas in WXMAP<br>
+</font>
+</h1>
+<h2><code>http://wxmap/doc/wxmap.add.area.htm</code></h2>
+
+<font size="3" face="Arial" color="Navy"><strong>Mike Fiorino</strong><br>
+<a href="mailto:fiorino@pcmdi.llnl.gov">fiorino@llnl.gov</a><br><br>
+Program for Climate Model Diagnosis and Intercomparison<br>
+Lawrence Livermore National Laboratory<br>
+University of California<br>
+P.O. Box 808 L-264<br>
+Livermore, CA 94551<br>
+510-423-8505 (voice) 510-422-7675(fax)<br>
+<br>
+<br>
+<strong><em>29 September, 1997</em></strong><br>
+<strong><em>30 January, 1998</em></strong><br>
+<strong><em>28 September, 2001 (while at JTWC)</em></strong><br>
+
+
+
+</p>
+</font>
+</center>
+
+<pre>
+
+IN: <code><b>/dat/nwp/wxmap/prc/wxmap:</code></b>
+
+1)	create area.AAAA.cfg   -- AAAA is the new name
+
+see <a href="wxmap.doc.htm#webarea">wxmap.doc.htm#webarea</a> for
+details on the format of the .cfg file
+
+2)	create basemap:
+
+	t.wxmap.pl basemap AAA
+
+3)	create the button:
+
+	wxmap.button.area.pl AAA title1 title2
+
+4)	edit wxmap.env.pl and modify
+
+
+$WXMAP{'WXMAP_AREAS'}       ="asia:bigaus:tropwpac:tropnio:tropsio:tropswpac:tropepac";
+$WXMAP{'WXMAP_AREAS_TYPES'} ="midlat:special:tropic:tropic:tropic:tropic:tropic";
+$WXMAP{'WXMAP_AREAS_DESC'}  ="East Asia:Big Aus:Tropical WPAC:Tropical NIO:Tropical SIO:Tropical SWPAC:Tropical EPAC";
+
+    there is a one-to-one correspondence between each entry,
+    e.g., asia->midlat->"East Asia"
+
+    for control of plotting by area:
+
+$plot_control{'ngp','tropsio','plots'} = $plots_nhem_tropical_season_full_wav;
+$plot_control{'ngp','tropsio','taus'} = "default";
+
+$plot_control{'avn','tropsio','plots'} = $plots_nhem_tropical_season_full;
+$plot_control{'avn','tropsio','taus'} = "default";
+
+$plot_control{'mrf','tropsio','plots'} = $plots_nhem_tropical_season_full;
+$plot_control{'mrf','tropsio','taus'} = "default";
+
+    if tc info add,
+				      
+$url{'tc','tropsio'}="http://www.solar.ifa.hawaii.edu/Tropical/tropical.html";
+
+5)  you'll need to add the following button gifs to
+
+    /dat/nwp/wxmap/web/icon
+
+    e.g., for tropsio
+
+
+    tropsio.area.button.gif
+
+if creating in ulead photoimpact use: 
+
+/nwp/wxmap/icon/ufo_source/button_area_home_48x24.UFO
+
+
+</pre>
+
+
+
+
+
+
+
+
+

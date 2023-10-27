@@ -1,0 +1,504 @@
+% This file is auto-generated with f2py (version:2.317)
+\documentclass{article}
+\usepackage{a4wide}
+\begin{document}
+\tableofcontents
+
+\section{Module \texttt{jclip}}
+
+
+
+\subsection{Wrapper function \texttt{wpclpr}}
+
+
+\noindent{{}\verb@wpclpr@{}}\texttt{(idatim, alat00, alon00, alat12, alon12, alat24, alon24, wind)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@idatim : input int@{}}
+
+\item[]{{}\verb@alat00 : input float@{}}
+
+\item[]{{}\verb@alon00 : input float@{}}
+
+\item[]{{}\verb@alat12 : input float@{}}
+
+\item[]{{}\verb@alon12 : input float@{}}
+
+\item[]{{}\verb@alat24 : input float@{}}
+
+\item[]{{}\verb@alon24 : input float@{}}
+
+\item[]{{}\verb@wind : input float@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{f1}}
+
+
+\noindent{{}\verb@f1 = f1@{}}\texttt{(alon)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@alon : input float@{}}
+
+\end{description}
+\noindent Return objects:
+\begin{description}
+\item[]{{}\verb@f1 : float@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{f2}}
+
+
+\noindent{{}\verb@f2 = f2@{}}\texttt{(idatim)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@idatim : input int@{}}
+
+\end{description}
+\noindent Return objects:
+\begin{description}
+\item[]{{}\verb@f2 : float@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{psetup}}
+
+
+\noindent{{}\verb@psetup@{}}\texttt{(p1, p2, p3, p4, p5, p6, p7, p8, p)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@p1 : input float@{}}
+
+\item[]{{}\verb@p2 : input float@{}}
+
+\item[]{{}\verb@p3 : input float@{}}
+
+\item[]{{}\verb@p4 : input float@{}}
+
+\item[]{{}\verb@p5 : input float@{}}
+
+\item[]{{}\verb@p6 : input float@{}}
+
+\item[]{{}\verb@p7 : input float@{}}
+
+\item[]{{}\verb@p8 : input float@{}}
+
+\item[]{{}\verb@p : input rank-1 array('f') with bounds (166)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{nmi2ll}}
+
+
+\noindent{{}\verb@nmi2ll@{}}\texttt{(alat0, alon0, cnmis, cfcst)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@alat0 : input float@{}}
+
+\item[]{{}\verb@alon0 : input float@{}}
+
+\item[]{{}\verb@cnmis : input rank-1 array('f') with bounds (12)@{}}
+
+\item[]{{}\verb@cfcst : input rank-1 array('f') with bounds (12)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{newcyc}}
+
+
+\noindent{{}\verb@newcyc = newcyc@{}}\texttt{(nowcyc, n)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@nowcyc : input int@{}}
+
+\item[]{{}\verb@n : input int@{}}
+
+\end{description}
+\noindent Return objects:
+\begin{description}
+\item[]{{}\verb@newcyc : int@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{sthgpr}}
+
+
+\noindent{{}\verb@sthgpr@{}}\texttt{(xlath, xlonh, bear, gridsz, xi0, yj0)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@xlath : input float@{}}
+
+\item[]{{}\verb@xlonh : input float@{}}
+
+\item[]{{}\verb@bear : input float@{}}
+
+\item[]{{}\verb@gridsz : input float@{}}
+
+\item[]{{}\verb@xi0 : input float@{}}
+
+\item[]{{}\verb@yj0 : input float@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{ll2xyh}}
+
+
+\noindent{{}\verb@ll2xyh@{}}\texttt{(xlat, xlong, xi, yj)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@xlat : input float@{}}
+
+\item[]{{}\verb@xlong : input float@{}}
+
+\item[]{{}\verb@xi : input float@{}}
+
+\item[]{{}\verb@yj : input float@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{xy2llh}}
+
+
+\noindent{{}\verb@xy2llh@{}}\texttt{(xi, yj, xlat, xlong)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@xi : input float@{}}
+
+\item[]{{}\verb@yj : input float@{}}
+
+\item[]{{}\verb@xlat : input float@{}}
+
+\item[]{{}\verb@xlong : input float@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{db2ll}}
+
+
+\noindent{{}\verb@db2ll@{}}\texttt{(xlato, xlono, dist, bear, xlatt, xlont)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@xlato : input float@{}}
+
+\item[]{{}\verb@xlono : input float@{}}
+
+\item[]{{}\verb@dist : input float@{}}
+
+\item[]{{}\verb@bear : input float@{}}
+
+\item[]{{}\verb@xlatt : input float@{}}
+
+\item[]{{}\verb@xlont : input float@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{ll2db}}
+
+
+\noindent{{}\verb@ll2db@{}}\texttt{(xlato, xlono, xlatt, xlont, dist, bear)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@xlato : input float@{}}
+
+\item[]{{}\verb@xlono : input float@{}}
+
+\item[]{{}\verb@xlatt : input float@{}}
+
+\item[]{{}\verb@xlont : input float@{}}
+
+\item[]{{}\verb@dist : input float@{}}
+
+\item[]{{}\verb@bear : input float@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{seiclp}}
+
+
+\noindent{{}\verb@seiclp@{}}\texttt{(idatim, alat00, alon00, alat12, alon12, alat24, alon24, wind)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@idatim : input int@{}}
+
+\item[]{{}\verb@alat00 : input float@{}}
+
+\item[]{{}\verb@alon00 : input float@{}}
+
+\item[]{{}\verb@alat12 : input float@{}}
+
+\item[]{{}\verb@alon12 : input float@{}}
+
+\item[]{{}\verb@alat24 : input float@{}}
+
+\item[]{{}\verb@alon24 : input float@{}}
+
+\item[]{{}\verb@wind : input float@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{swpclp}}
+
+
+\noindent{{}\verb@swpclp@{}}\texttt{(idatim, alat00, alon00, alat12, alon12, alat24, alon24, wind)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@idatim : input int@{}}
+
+\item[]{{}\verb@alat00 : input float@{}}
+
+\item[]{{}\verb@alon00 : input float@{}}
+
+\item[]{{}\verb@alat12 : input float@{}}
+
+\item[]{{}\verb@alon12 : input float@{}}
+
+\item[]{{}\verb@alat24 : input float@{}}
+
+\item[]{{}\verb@alon24 : input float@{}}
+
+\item[]{{}\verb@wind : input float@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{setup}}
+
+
+\noindent{{}\verb@setup@{}}\texttt{(p1, p2, p3, p4, p5, p6, p7, p8, p)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@p1 : input float@{}}
+
+\item[]{{}\verb@p2 : input float@{}}
+
+\item[]{{}\verb@p3 : input float@{}}
+
+\item[]{{}\verb@p4 : input float@{}}
+
+\item[]{{}\verb@p5 : input float@{}}
+
+\item[]{{}\verb@p6 : input float@{}}
+
+\item[]{{}\verb@p7 : input float@{}}
+
+\item[]{{}\verb@p8 : input float@{}}
+
+\item[]{{}\verb@p : input rank-1 array('f') with bounds (166)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{yx2ll}}
+
+
+\noindent{{}\verb@yx2ll@{}}\texttt{(alat0, alon0, disp, cfcst)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@alat0 : input float@{}}
+
+\item[]{{}\verb@alon0 : input float@{}}
+
+\item[]{{}\verb@disp : input rank-1 array('f') with bounds (12)@{}}
+
+\item[]{{}\verb@cfcst : input rank-1 array('f') with bounds (12)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{uprcas}}
+
+
+\noindent{{}\verb@uprcas@{}}\texttt{(eorw00, eorw12, eorw24)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@eorw00 : input string(len=1)@{}}
+
+\item[]{{}\verb@eorw12 : input string(len=1)@{}}
+
+\item[]{{}\verb@eorw24 : input string(len=1)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{fixprd}}
+
+
+\noindent{{}\verb@fixprd@{}}\texttt{(nsind, iyr, mon, idy, ihr, flt, fln, plt12, pln12, plt24, pln24, p)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@nsind : input int@{}}
+
+\item[]{{}\verb@iyr : input int@{}}
+
+\item[]{{}\verb@mon : input int@{}}
+
+\item[]{{}\verb@idy : input int@{}}
+
+\item[]{{}\verb@ihr : input int@{}}
+
+\item[]{{}\verb@flt : input float@{}}
+
+\item[]{{}\verb@fln : input float@{}}
+
+\item[]{{}\verb@plt12 : input float@{}}
+
+\item[]{{}\verb@pln12 : input float@{}}
+
+\item[]{{}\verb@plt24 : input float@{}}
+
+\item[]{{}\verb@pln24 : input float@{}}
+
+\item[]{{}\verb@p : input rank-1 array('f') with bounds (35)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{cldxdy}}
+
+
+\noindent{{}\verb@cldxdy@{}}\texttt{(nsind, p, dx, dy)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@nsind : input int@{}}
+
+\item[]{{}\verb@p : input rank-1 array('f') with bounds (35)@{}}
+
+\item[]{{}\verb@dx : input rank-1 array('f') with bounds (6)@{}}
+
+\item[]{{}\verb@dy : input rank-1 array('f') with bounds (6)@{}}
+
+\end{description}
+
+\subsection{Wrapper function \texttt{oclip}}
+
+
+\noindent{{}\verb@oclip@{}}\texttt{(nsind, ymdh, flt, fln, plt12, pln12, plt24, pln24)}
+
+
+\noindent Required arguments:
+\begin{description}
+\item[]{{}\verb@nsind : input int@{}}
+
+\item[]{{}\verb@ymdh : input int@{}}
+
+\item[]{{}\verb@flt : input float@{}}
+
+\item[]{{}\verb@fln : input float@{}}
+
+\item[]{{}\verb@plt12 : input float@{}}
+
+\item[]{{}\verb@pln12 : input float@{}}
+
+\item[]{{}\verb@plt24 : input float@{}}
+
+\item[]{{}\verb@pln24 : input float@{}}
+
+\end{description}
+
+
+\subsection{Common block \texttt{block1}}
+
+\begin{description}
+\item[]{{}\verb@rcm : rank-2 array('f') with bounds (6,90)@{}}
+\item[]{{}\verb@rcz : rank-2 array('f') with bounds (6,95)@{}}
+\item[]{{}\verb@cnstm : rank-1 array('f') with bounds (6)@{}}
+\item[]{{}\verb@cnstz : rank-1 array('f') with bounds (6)@{}}
+\end{description}
+\subsection{Common block \texttt{wpclpfcst}}
+
+\begin{description}
+\item[]{{}\verb@cfcst : rank-1 array('f') with bounds (12)@{}}
+\end{description}
+\subsection{Common block \texttt{block2}}
+
+\begin{description}
+\item[]{{}\verb@npm : rank-2 array('s') with bounds (6,90)@{}}
+\item[]{{}\verb@npz : rank-2 array('s') with bounds (6,95)@{}}
+\end{description}
+\subsection{Common block \texttt{hgrprm}}
+
+\begin{description}
+\item[]{{}\verb@a : rank-2 array('f') with bounds (3,3)@{}}
+\item[]{{}\verb@radpdg : rank-0 array(float,'f')@{}}
+\item[]{{}\verb@rrthnm : rank-0 array(float,'f')@{}}
+\item[]{{}\verb@dgridh : rank-0 array(float,'f')@{}}
+\item[]{{}\verb@hgridx : rank-0 array(float,'f')@{}}
+\item[]{{}\verb@hgridy : rank-0 array(float,'f')@{}}
+\end{description}
+\subsection{Common block \texttt{seiclpfcst}}
+
+\begin{description}
+\item[]{{}\verb@cfcst : rank-1 array('f') with bounds (12)@{}}
+\end{description}
+\subsection{Common block \texttt{blockse2}}
+
+\begin{description}
+\item[]{{}\verb@npm : rank-2 array('s') with bounds (6,16)@{}}
+\item[]{{}\verb@npz : rank-2 array('s') with bounds (6,14)@{}}
+\end{description}
+\subsection{Common block \texttt{blockse1}}
+
+\begin{description}
+\item[]{{}\verb@rcm : rank-2 array('f') with bounds (6,16)@{}}
+\item[]{{}\verb@rcz : rank-2 array('f') with bounds (6,14)@{}}
+\item[]{{}\verb@cnstm : rank-1 array('f') with bounds (6)@{}}
+\item[]{{}\verb@cnstz : rank-1 array('f') with bounds (6)@{}}
+\end{description}
+\subsection{Common block \texttt{swpclpfcst}}
+
+\begin{description}
+\item[]{{}\verb@cfcst : rank-1 array('f') with bounds (12)@{}}
+\end{description}
+\subsection{Common block \texttt{blocksw1}}
+
+\begin{description}
+\item[]{{}\verb@rcm : rank-2 array('f') with bounds (6,31)@{}}
+\item[]{{}\verb@rcz : rank-2 array('f') with bounds (6,31)@{}}
+\item[]{{}\verb@cnstm : rank-1 array('f') with bounds (6)@{}}
+\item[]{{}\verb@cnstz : rank-1 array('f') with bounds (6)@{}}
+\end{description}
+\subsection{Common block \texttt{blocksw2}}
+
+\begin{description}
+\item[]{{}\verb@npm : rank-2 array('s') with bounds (6,31)@{}}
+\item[]{{}\verb@npz : rank-2 array('s') with bounds (6,31)@{}}
+\end{description}
+\subsection{Common block \texttt{oldclpfcst}}
+
+\begin{description}
+\item[]{{}\verb@cfcst : rank-1 array('f') with bounds (12)@{}}
+\end{description}
+
+\end{document}

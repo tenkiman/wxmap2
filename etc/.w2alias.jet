@@ -1,0 +1,131 @@
+# linux version:
+#alias ps.ef.py "ps -ef | g ython | g -v all | g -v grep | cut -c 1-20,145-256" 
+# macosX
+#alias ps.ef.py " ps -ef | g ython | g -v all | g -v grep | g -v "/usr/bin""
+
+alias pse 'ps -ef | g fiorino | g -v root'
+alias psep " ps -ef | g ython | g fiorino | g -v grep | g -v wing | g -v w2.ps.monitor | g -v "/usr/bin" "
+alias ps.ef.py " ps -ef | g ython | g -v grep | g -v "/usr/bin""
+alias ps.ef.tm "ps -ef | g tmtrk | g -v all | g -v grep | cut -c 1-20,145-256"
+alias ps.ef.mf "ps -ef | g mftrk | g -v all | g -v grep | cut -c 1-20,145-256"
+
+alias w2 "cd $W2_BDIR ; source .w2rc"
+
+alias pd "pushd \!*;fixprompt"
+alias po "popd ; fixprompt"
+
+alias c.w2.hwrf "pd $W2_BDIR/../HWRF"
+alias c.w2 "pd $W2_BDIR"
+alias c.w2.e "pd $W2_BDIR/etc"
+alias c.w2.a "pd $W2_BDIR/app"
+alias c.w2.p "pd $W2_BDIR/prj"
+alias c.w2.pt "pd $W2_BDIR/prj-2019/tc"
+alias c.w2.pg "pd $W2_BDIR/prj/tc/20120312_cfsr_reforecast"
+alias c.w2.a.s "pd $W2_BDIR/app/src"
+alias c.w2.o "pd $W2_BDIR/opt"
+alias c.w2.o.s "pd $W2_BDIR/opt/src"
+alias c.w2.tc "pd $W2_PRC_DIR/tc"
+alias c.w2.2 "pd $W2_PRC_DIR/wxmap2"
+alias c.w2.t "pd $W2_PRC_DIR/tcdat"
+alias c.w2.tt "pd $W2_PRC_DIR/tctrk"
+alias c.w2.td "pd $W2_PRC_DIR/tcdiag"
+alias c.w2.tb "pd $W2_PRC_DIR/tcbog"
+alias c.w2.to "pd $W2_PRC_DIR/tcobs"
+alias c.w2.te "pd /dat2/hfip/web/tceps"
+alias c.w2.tf "pd $W2_PRC_DIR/tcfilt"
+alias c.w2.ta "pd $W2_PRC_DIR/tcanal"
+alias c.w2.tc "pd $W2_PRC_DIR/tcclimo"
+alias c.w2.tcc "pd $W2_PRC_DIR/tctcc"
+alias c.w2.h "pd /data/rapb/project/hfip"
+alias c.w2.h "pd /data/rapb/projects/hfip"
+alias c.w2.h "pd $W2_PRC_DIR/hfip"
+alias c.w2.h.e "pd /data/rapb/projects/hfip/tceps"
+alias c.w2.h.g "pd /data/rapb/projects/hfip/tcgen"
+alias c.w2.h.d "pd /data/rapb/projects/hfip/tcdiag"
+alias c.w2.h.k "pd /data/rapb/projects/hfip/gfsenkf"
+alias c.w2.h.a "pd /data/rapb/projects/hfip/tcact"
+alias c.w2.gfdl "pd $W2_PRC_DIR/gfdl"
+alias c.w2.cagips "pd $W2_PRC_DIR/cagips/rulebotagent"
+alias c.w2.t.p "pd $W2_PRC_DIR/tcplt"
+alias c.w2.d "pd $W2_PRC_DIR ; cd ../dat"
+alias c.w2.s "pd $W2_PRC_DIR ; cd ../src"
+alias c.w2.f "pd $W2_PRC_DIR ; cd flddat"
+alias c.w2.fv "pd $W2_PRC_DIR ; cd fldveri"
+alias c.w2.fim "pd $W2_PRC_DIR ; cd fim"
+alias c.w2.w "pd $W2_PRC_DIR ; cd web"
+alias c.w2.fa "pd $W2_PRC_DIR ; cd fldanal"
+
+alias c.w2.t.sgp.d "pd $W2_BDIRDAT/tc/sgp" 
+alias c.w2.t.sgp.p "pd $W2_BDIRPLT/tc/tcsgp" 
+alias c.w2.t.sgp "pd $W2_PRC_DIR/tcsgp" 
+####alias c.w2.fim-jet "pd /lfs2/projects/fim/fiorino/prj" 
+alias c.w2.fim-jet "pd /lfs1/projects/fim/fiorino/prj" 
+
+#
+# tc proc
+#
+
+alias tc  '$W2_PRC_DIR/tcdat/w2.tc.posit.py'
+alias vd  '$W2_PRC_DIR/tcdat/w2.tc.vdeck.py'
+alias avd '$W2_PRC_DIR/tcdat/w2.tc.adeck.2.wxmap.adeck.py'
+alias svd '$W2_PRC_DIR/tcdat/w2.tc.vdeck.stat.py'
+alias bvd '$W2_PRC_DIR/tcdat/w2.tc.vdeck.bctrk.adeck.py'
+alias qvd '$W2_PRC_DIR/tcdat/w2.tc.vdeck.qc.py'
+alias dvd '$W2_PRC_DIR/tcdat/w2.tc.vdeck.dqc.py'
+alias cvd '$W2_PRC_DIR/tcdat/w2.tc.vdeck.con.adeck.py'
+alias tvd '$W2_PRC_DIR/tcplt/w2.tc.g.trk.py'
+alias lvd '$W2_PRC_DIR/tcdat/w2.tc.status.py'
+
+alias stc '$W2_PRC_DIR/tc/w2.tc.season.py'
+alias atc '$W2_PRC_DIR/tcanal/w2.tc.tcanal.py'
+alias ftc '$W2_PRC_DIR/tcfilt/w2.tc.tcfilt.py'
+alias ttc '$W2_PRC_DIR/tctrk/w2.tc.tmtrkN.py'
+alias mtc '$W2_PRC_DIR/tctrk/w2.tc.mftrkN.py'
+alias gtc 'time $W2_PRC_DIR/tctrk/w2.tc.tcgen.py'
+alias gta 'time $W2_PRC_DIR/tctrk/w2.tc.tcgen.anl.py'
+alias otc '$W2_PRC_DIR/tcdat/w2.tc.ops.dat.py'
+alias adk '$W2_PRC_DIR/tcdat/w2.tc.dss.adeck.py'
+alias ada '$W2_PRC_DIR/tcdat/w2.tc.dss.adeck.anl.py'
+alias vdk '$W2_PRC_DIR/tcdat/w2.tc.dss.vdeck.py'
+alias vda '$W2_PRC_DIR/tcdat/w2.tc.dss.vdeck.anl.py'
+alias mdk '$W2_PRC_DIR/tcdat/w2.tc.dss.mdeck.py'
+alias md2 '$W2_PRC_DIR/tcdat/w2.tc.dss.md2.py'
+alias md2a '$W2_PRC_DIR/tcdat/w2.tc.dss.md2.anl.py'
+alias mda '$W2_PRC_DIR/tcdat/w2.tc.dss.mdeck.anl.py'
+alias dtc 'time $W2_PRC_DIR/tcdiag/w2.tc.flddiag.py'
+alias ldtc 'time $W2_PRC_DIR/tcdiag/w2.tc.lsdiag.py'
+alias ltc 'time $W2_PRC_DIR/tcdiag/w2.tc.lgem.py'
+alias btc 'time $W2_PRC_DIR/tcbog/w2.tc.tcbog.py'
+
+#
+# w2 proc
+#
+
+alias pw2 '$W2_PRC_DIR/fldanal/w2.plot.py'
+alias ew2 '$W2_PRC_DIR/wxmap2/w2.nwp2.py'
+alias jw2 '$W2_PRC_DIR/wxmap2/w2.jtwc.nwp2.py'
+alias l2  '$W2_PRC_DIR/flddat/l2.py'
+alias mss 'time $W2_PRC_DIR/flddat/w2.mss.nwp2-w2flds.py'
+alias fp2 '$W2_PRC_DIR/fim/w2.fim.post2.py'
+alias fls '$W2_PRC_DIR/fim/lsfim.py'
+
+if ( $?prompt ) then      # if this is an interactive shell...
+alias fixprompt 'set prompt="Jet.$HOSTNAMESHORT($HOSTOSUPPER)[W2:$W2CENTER]{`whoami`}: `pwd` \! > "'
+endif
+
+#alias jqrsh "qrsh -A fim -l h_rt=01:00:00 -pe nserial 1"
+####alias dfj "df -h /lfs2 /pan2 | grep mnt"
+alias dfj "df -h /lfs1 /pan2 | grep mnt"
+alias jqrsh "qsub -I -l procs=1,walltime=1:00:00 -A fim -lpartition=njet"
+
+alias scp.w2.d "scp \!* mike_fiorino,wxmap2@frs.sourceforge.net:/home/frs/project/w/wx/wxmap2/dat/."
+alias zeus 'ssh -X -L65522:localhost:65522 Michael.Fiorino@zeus.rdhpcs.noaa.gov'
+alias scp.2t "scp \!* Michael.Fiorino@dtn-theia.fairmont.rdhpcs.noaa.gov:/scratch3/BMC/fim/fiorino/tmp/."  
+alias scp.4z "scp Michael.Fiorino@dtn-zeus.rdhpcs.noaa.gov:/scratch1/portfolios/BMC/fim/fiorino/tmp/\!* ."  
+
+alias rtfim 'sudo su - rtfim'
+alias xrtfim 'xsudo rtfim' # then ctrl+ to pop an xterm
+alias door.esrl 'ssh fiorino@door.esrl.noaa.gov'
+
+alias ud "usage.py \!*" 
+

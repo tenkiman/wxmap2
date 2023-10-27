@@ -1,0 +1,229 @@
+*
+*-------------------------- gptas ------------------
+*
+function gptas(k)
+
+tasopt='delta'
+#tasopt='normal'
+
+'set rgb 99 1 1 1'
+bcol=0
+bcol=99 
+
+if(tasopt = 'normal') 
+
+if(_mopt1 = 'C') 
+  t1='Sfc Air T [`3.`0C]'
+  tasrb='-30 44'
+  tascint=2.5
+else 
+  t1='Sfc Air T [`3.`0F]'
+  tasrb='-20 110'
+  tascint=5
+endif
+
+endif
+
+
+if(tasopt = 'delta') 
+  hh=substr(_bdtg,9,2)
+#print '#### hh = 'hh
+
+if(_mopt1 = 'C') 
+
+else 
+
+  if(hh = '12') 
+    t1='Sfc Air T Change [`3.`0F] from t=0 h or 12Z'
+  endif
+
+  if(hh = '18') 
+    t1='Sfc Air T Change [`3.`0F] from t=18 h or 12Z'
+  endif
+
+  if(hh = '00') 
+    t1='Sfc Air T Change [`3.`0F] from t=12 h or 12Z'
+  endif
+
+  if(hh = '06') 
+    t1='Sfc Air T Change [`3.`0F] from t=6 h or 12Z'
+  endif
+
+
+  tasrb='-20 110'
+  tascint=5
+
+  tasdelrb='-30 30'
+  tasdelcint=5
+  tasblk='-5 5'
+
+endif
+endif
+
+rc=dtitle(t1)
+pstat=1
+_shades=0
+
+'set grads off'
+
+taschk='tas'
+rc=datachk(taschk) 
+
+if(rc != 0)
+  return(pstat)
+else
+  pstat=0
+endif
+
+'tascur=tas'
+
+if(hh = '00') ; 'tas00=tas(t=3)' ; taustart=12 ; endif
+if(hh = '06') ; 'tas00=tas(t=2)' ; taustart=6  ; endif
+if(hh = '12') ; 'tas00=tas(t=1)' ; taustart=0  ; endif
+if(hh = '18') ; 'tas00=tas(t=4)' ; taustart=18 ; endif
+
+if(tasopt='delta')
+  if(hh = '00' & _tau <= 12) ; 'tascur=tas00' ; endif
+  if(hh = '06' & _tau <= 6) ; 'tascur=tas00' ; endif
+  if(hh = '12' & _tau <= 0)  ; 'tascur=tas00' ; endif
+  if(hh = '18' & _tau <= 18)  ; 'tascur=tas00' ; endif
+  'tasdelta=tascur-tas00'
+endif
+
+if(_mopt1 = 'C') 
+  'tascur=(tascur-273.16)'
+else
+  'tascur=(tascur-273.16)*(9/5)+32'
+  if(tasopt='delta') ; 'tasdelta=tasdelta*(9/5)' ; endif
+endif
+
+
+'set xlint '_xlint
+'set ylint '_ylint
+
+'set gxout shaded'
+'set csmooth on'
+
+colscheme=efs
+if(colscheme=efs)
+  rc=efscol(efs_2)
+  i=subwrd(rc,1)
+  ie=subwrd(rc,2)
+  card='set rbcols '
+  while(i<=ie)
+    card=card' 'i
+    i=i+1
+  endwhile
+  card
+endif
+
+
+if(tasopt='delta')
+
+if(_tau > taustart)
+ 
+'set csmooth on'
+'set rbrange 'tasdelrb
+'set cint 'tasdelcint
+'set black 'tasblk
+
+'d tasdelta'
+'q shades'
+_shades=result
+endif
+
+if(_dobasemap != 1)
+  rc=drawmap(15)
+endif
+
+'set gxout contour'
+'set cterp on'
+'set cint 'tascint
+'set cthick '_cthkb
+'set clab off'
+'set ccolor 'bcol
+'d tascur'
+
+'set cthick '_cthk
+'set cint 'tascint
+#'set clopts 1 5 0.11'
+'set clskip 2 3.0'
+'set clab on'
+'set clskip 2 2.0'
+'set clopts -1 -1 0.075'
+
+*'set clab off'
+'set rbrange 'tasrb
+'set ccolor rainbow'
+
+'d tascur'
+
+
+if(_mopt1 = 'C') 
+
+tasclevs='0 10 15 20 30'
+tasccols='4 1 2 4 2'
+
+'set cthick 20'
+'set ccolor 'bcol
+'set clevs 'tasclevs
+'d tascur'
+
+'set cthick 15'
+'set clab on'
+'set clskip 2 2.0'
+'set clopts -1 -1 0.075'
+'set clevs 'tasclevs
+'set ccols 'tasccols
+'d tascur'
+
+'set cthick 2'
+'set ccolor 'bcol
+'set clevs 'tasclevs
+'d tascur'
+
+endif
+
+endif
+
+if(_tau >= 0 & tasopt='normal')
+
+'set rbrange 'tasrb
+'set cint 'tascint
+
+'d tascur'
+'q shades'
+_shades=result
+
+if(_dobasemap != 1)
+  rc=drawmap()
+endif
+
+'set gxout contour'
+'set cterp on'
+'set cint 'tascint
+'set cthick '_cthkb
+'set clab off'
+'set ccolor 'bcol
+'d tascur'
+
+'set cthick '_cthk
+'set cint 'tascint
+'set clab on'
+'set clskip 2 2.0'
+'set clopts -1 -1 0.075'
+*'set clab off'
+'set rbrange 'tasrb
+'set ccolor rainbow'
+
+'d tascur'
+
+endif
+
+rc=dtitle(t1)
+cbarg='0.80 1 10.60 4.25'
+*cbarg='0.90 0 5.5 0.78'
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+
+return(pstat)
+

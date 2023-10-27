@@ -1,0 +1,1535 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module nclip24 ! in 
+    interface  ! in :nclip24
+        function lastch(string_bn) ! in :nclip24:nhc.clipper.lib.f
+            character*(*) :: string_bn
+            integer :: lastch
+        end function lastch
+        subroutine xtrap(iymdh,latcur,loncur,latm12,lonm12,strmid) ! in :nclip24:nhc.clipper.lib.f
+            integer :: iymdh
+            real :: latcur
+            real :: loncur
+            real :: latm12
+            real :: lonm12
+            character*8 :: strmid
+            integer dimension(11,3) :: ifpxtrp
+            common /extrap/ ifpxtrp
+        end subroutine xtrap
+        subroutine rhdst(flat,flng,tlat,tlng,dir,dst) ! in :nclip24:nhc.clipper.lib.f
+            real :: flat
+            real :: flng
+            real :: tlat
+            real :: tlng
+            real :: dir
+            real :: dst
+        end subroutine rhdst
+        subroutine rltlg(flat,flng,tlat,tlng,dir,dst) ! in :nclip24:nhc.clipper.lib.f
+            real :: flat
+            real :: flng
+            real :: tlat
+            real :: tlng
+            real :: dir
+            real :: dst
+        end subroutine rltlg
+        subroutine atclip(iymdh,y,x,dnow,snow,dm12,sm12,wkts,strmid) ! in :nclip24:nhc.clipper.lib.f
+            integer :: iymdh
+            real :: y
+            real :: x
+            real :: dnow
+            real :: snow
+            real :: dm12
+            real :: sm12
+            real :: wkts
+            character*8 :: strmid
+            integer dimension(11,3) :: ifpclip
+            real dimension(7) :: flat
+            real dimension(7) :: flon
+            common /cliper/ ifpclip,flat,flon
+        end subroutine atclip
+        subroutine cgulf(y,x,u,v,u12,v12,dn,w,wgulf,gulf) ! in :nclip24:nhc.clipper.lib.f
+            real :: y
+            real :: x
+            real :: u
+            real :: v
+            real :: u12
+            real :: v12
+            real :: dn
+            real :: w
+            real :: wgulf
+            real dimension(10) :: gulf
+        end subroutine cgulf
+        subroutine atshif(ymdh,alat,alon,alat12,alon12,vel,vel12,strmid) ! in :nclip24:nhc.clipper.lib.f
+            integer*4 :: ymdh
+            real :: alat
+            real :: alon
+            real :: alat12
+            real :: alon12
+            real :: vel
+            real :: vel12
+            character*8 :: strmid
+            integer dimension(11,3) :: ishifor
+            common /shifor/ ishifor
+        end subroutine atshif
+        subroutine ashif3(p1,p2,p3,p4,p6,p7) ! in :nclip24:nhc.clipper.lib.f
+            double precision :: p1
+            double precision :: p2
+            double precision :: p3
+            double precision :: p4
+            double precision :: p6
+            double precision :: p7
+        end subroutine ashif3
+        subroutine atshif5d(ymdh,alat,alon,alat12,alon12,vel,vel12,strmid) ! in :nclip24:nhc.clipper.lib.f
+            integer :: ymdh
+            real :: alat
+            real :: alon
+            real :: alat12
+            real :: alon12
+            real :: vel
+            real :: vel12
+            character*6 :: strmid
+            real dimension(10,36) :: scoef
+            real dimension(10,36) :: avg
+            real dimension(10,36) :: sdev
+            integer dimension(11,3) :: ishifor5
+            common /al5coef/ scoef,avg,sdev
+            common /shifor5/ ishifor5
+        end subroutine atshif5d
+        subroutine jday(imon,iday,iyear,julday) ! in :nclip24:nhc.clipper.lib.f
+            integer :: imon
+            integer :: iday
+            integer :: iyear
+            integer :: julday
+        end subroutine jday
+        subroutine epcl84(ymdh,la0,lo0,lam12,lom12,lam24,lom24,dir0,spd0,wnd0,strmid) ! in :nclip24:nhc.clipper.lib.f
+            integer*4 :: ymdh
+            real :: la0
+            real :: lo0
+            real :: lam12
+            real :: lom12
+            real :: lam24
+            real :: lom24
+            real :: dir0
+            real :: spd0
+            real :: wnd0
+            character*8 :: strmid
+            real dimension(164) :: p
+            integer dimension(11,3) :: ifpclip
+            real dimension(7) :: flat
+            real dimension(7) :: flon
+            real dimension(12) :: cdi
+            common /pp/ p
+            common /cliper/ ifpclip,flat,flon
+            common /cl84/ cdi
+        end subroutine epcl84
+        subroutine mult1 ! in :nclip24:nhc.clipper.lib.f
+            real dimension(164) :: p
+            common /pp/ p
+        end subroutine mult1
+        subroutine mult2 ! in :nclip24:nhc.clipper.lib.f
+            real dimension(164) :: p
+            common /pp/ p
+        end subroutine mult2
+        subroutine mult3 ! in :nclip24:nhc.clipper.lib.f
+            real dimension(164) :: p
+            common /pp/ p
+        end subroutine mult3
+        subroutine mult4 ! in :nclip24:nhc.clipper.lib.f
+            real dimension(164) :: p
+            common /pp/ p
+        end subroutine mult4
+        subroutine sthgpr(xlath,xlonh,bear,gridsz,xi0,yj0) ! in :nclip24:nhc.clipper.lib.f
+            real :: xlath
+            real :: xlonh
+            real :: bear
+            real :: gridsz
+            real :: xi0
+            real :: yj0
+            real dimension(3,3) :: a
+            real :: radpdg
+            real :: rrthnm
+            real :: dgridh
+            real :: hgridx
+            real :: hgridy
+            common /hgrprm/ a,radpdg,rrthnm,dgridh,hgridx,hgridy
+        end subroutine sthgpr
+        subroutine ll2xyh(xlat,xlong,xi,yj) ! in :nclip24:nhc.clipper.lib.f
+            real :: xlat
+            real :: xlong
+            real :: xi
+            real :: yj
+            real dimension(3,3) :: a
+            real :: radpdg
+            real :: rrthnm
+            real :: dgridh
+            real :: hgridx
+            real :: hgridy
+            common /hgrprm/ a,radpdg,rrthnm,dgridh,hgridx,hgridy
+        end subroutine ll2xyh
+        subroutine xy2llh(xi,yj,xlat,xlong) ! in :nclip24:nhc.clipper.lib.f
+            real :: xi
+            real :: yj
+            real :: xlat
+            real :: xlong
+            real dimension(3,3) :: a
+            real :: radpdg
+            real :: rrthnm
+            real :: dgridh
+            real :: hgridx
+            real :: hgridy
+            common /hgrprm/ a,radpdg,rrthnm,dgridh,hgridx,hgridy
+        end subroutine xy2llh
+        subroutine epshif(idtg,alat,alon,alat12,alon12,vel,vel12,strmid) ! in :nclip24:nhc.clipper.lib.f
+            integer :: idtg
+            real :: alat
+            real :: alon
+            real :: alat12
+            real :: alon12
+            real :: vel
+            real :: vel12
+            character*8 :: strmid
+            integer dimension(11,3) :: ishifor
+            common /shifor/ ishifor
+        end subroutine epshif
+        subroutine epshif5d(ymdh,elat,elon,elat12,elon12,vel,vel12,strmid) ! in :nclip24:nhc.clipper.lib.f
+            integer :: ymdh
+            real :: elat
+            real :: elon
+            real :: elat12
+            real :: elon12
+            real :: vel
+            real :: vel12
+            character*6 :: strmid
+            real dimension(10,36) :: scoef
+            real dimension(10,36) :: avg
+            real dimension(10,36) :: sdev
+            integer dimension(11,3) :: ishifor5
+            common /ep5coef/ scoef,avg,sdev
+            common /shifor5/ ishifor5
+        end subroutine epshif5d
+        block data  ! in :nclip24:nhc.clipper.lib.f
+            real dimension(10,36) :: alscoef
+            real dimension(10,36) :: alavg
+            real dimension(10,36) :: alsdev
+            real dimension(10,36) :: epscoef
+            real dimension(10,36) :: epavg
+            real dimension(10,36) :: epsdev
+            real optional,dimension(3,3) :: a=0.
+            real optional :: radpdg=1.745 3293 e-2
+            real optional :: rrthnm=3 440.17
+            real optional :: dgridh=120.0
+            real optional :: hgridx=0.0
+            real optional :: hgridy=0.0
+            common /al5coef/ alscoef,alavg,alsdev
+            common /ep5coef/ epscoef,epavg,epsdev
+            common /hgrprm/ a,radpdg,rrthnm,dgridh,hgridx,hgridy
+        end block data 
+        subroutine readbt(datfile,cent,dtg,flat,ns,flon,ew,iwind,ios) ! in :nclip24:nhc.clipper.lib.f
+            integer :: datfile
+            character*2 :: cent
+            character*8 :: dtg
+            real :: flat
+            character*1 :: ns
+            real :: flon
+            character*1 :: ew
+            integer :: iwind
+            integer :: ios
+        end subroutine readbt
+        subroutine readbest(datfile,basin,cycnum,cent,dtg,flat,ns,flon,ew,iwind,ios) ! in :nclip24:nhc.clipper.lib.f
+            integer :: datfile
+            character*2 :: basin
+            character*2 :: cycnum
+            character*2 :: cent
+            character*8 :: dtg
+            real :: flat
+            character*1 :: ns
+            real :: flon
+            character*1 :: ew
+            integer :: iwind
+            integer :: ios
+        end subroutine readbest
+        subroutine dowriteaidrcd(datfile,stormid,cdtg,techname,itau,llwnd) ! in :nclip24:nhc.clipper.lib.f
+            integer :: datfile
+            character*8 :: stormid
+            character*10 :: cdtg
+            character*4 :: techname
+            integer :: itau
+            integer dimension(3) :: llwnd
+        end subroutine dowriteaidrcd
+        subroutine writeaidrcd(datfile,stormid,cdtg,techname,ltlnwnd) ! in :nclip24:nhc.clipper.lib.f
+            integer :: datfile
+            character*8 :: stormid
+            character*10 :: cdtg
+            character*4 :: techname
+            integer dimension(10,3) :: ltlnwnd
+        end subroutine writeaidrcd
+        subroutine newwriteaidrcd(datfile,stormid,cdtg,techname,ltlnwnd) ! in :nclip24:nhc.clipper.lib.f
+            integer :: datfile
+            character*8 :: stormid
+            character*10 :: cdtg
+            character*4 :: techname
+            integer dimension(11,3) :: ltlnwnd
+        end subroutine newwriteaidrcd
+        subroutine writeaid(datfile,stormid,century,cdtg,techname,ltlnwnd) ! in :nclip24:nhc.clipper.lib.f
+            integer :: datfile
+            character*6 :: stormid
+            character*2 :: century
+            character*8 :: cdtg
+            character*4 :: techname
+            integer dimension(10,3) :: ltlnwnd
+        end subroutine writeaid
+        subroutine readnext(datfile,rcd,ios) ! in :nclip24:nhc.clipper.lib.f
+            integer :: datfile
+            type(atcf_record) :: rcd
+            integer :: ios
+            type atcf_record ! in :nclip24:nhc.clipper.lib.f:readnext
+                character*2 :: basin
+                character*2 :: cynum
+                character*10 :: dtg
+                character*2 :: technum
+                character*4 :: tech
+                character*3 :: tau
+                character*4 :: latns
+                character*5 :: lonew
+                character*3 :: vmax
+                character*4 :: mslp
+                character*2 :: ty
+                character*3 :: rad
+                character*3 :: windcode
+                character dimension(4,4),intent(c) :: radii
+                character*4 :: radp
+                character*4 :: rrp
+                character*3 :: mrd
+                character*3 :: gusts
+                character*3 :: eye
+                character*3 :: unused
+                character*3 :: maxseas
+                character*3 :: initials
+                character*3 :: dir
+                character*3 :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                character*2 :: seas
+                character*3 :: seascode
+                character dimension(4,3),intent(c) :: seasrad
+            end type atcf_record
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readnext
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                character*10 :: stormname
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readnext
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                integer :: technum
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                integer :: rad
+                character*3 :: windcode
+                integer dimension(4) :: radii
+                integer :: radp
+                integer :: rrp
+                integer :: mrd
+                integer :: gusts
+                integer :: eye
+                integer :: maxseas
+                character*3 :: initials
+                integer :: dir
+                integer :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                integer :: seas
+                character*3 :: seascode
+                integer dimension(4) :: seasrad
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readnext
+                integer :: numrcrds
+                type(a_record) dimension(aidtaumax*4) :: arecord
+                type(atcf_record) dimension(aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readnext
+                integer :: numrcrds
+                type(a_record) dimension(100*aidtaumax*4) :: arecord
+                type(atcf_record) dimension(100*aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readnext
+                integer*2 :: v
+                integer*2 :: h
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readnext
+                logical*2 :: isvalid
+                logical*2 :: isempty
+                real :: latitude
+                logical*2 :: north
+                real :: longitude
+                logical*2 :: east
+                type(pnt) :: pos
+                integer*2 :: wind
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readnext
+                type(objective_aids_datapoint) dimension(5) :: point
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readnext
+                character*32 :: stormid
+                character*16 :: technique
+                character*9 :: dtg
+                type(objective_aids_datapoints) :: data
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readnext
+                character*5 :: techname
+                character*9 :: dtg
+                integer dimension(5) :: lat
+                integer dimension(5) :: lon
+                integer dimension(5) :: vmax
+                character*6 :: stormid
+            end type unknown_type
+        end subroutine readnext
+        subroutine getarecord(datfile,technique,aidrcd,result) ! in :nclip24:nhc.clipper.lib.f
+            integer :: datfile
+            character*4 :: technique
+            type(aid_data) :: aidrcd
+            integer :: result
+            type atcf_record ! in :nclip24:nhc.clipper.lib.f:getarecord
+                character*2 :: basin
+                character*2 :: cynum
+                character*10 :: dtg
+                character*2 :: technum
+                character*4 :: tech
+                character*3 :: tau
+                character*4 :: latns
+                character*5 :: lonew
+                character*3 :: vmax
+                character*4 :: mslp
+                character*2 :: ty
+                character*3 :: rad
+                character*3 :: windcode
+                character dimension(4,4),intent(c) :: radii
+                character*4 :: radp
+                character*4 :: rrp
+                character*3 :: mrd
+                character*3 :: gusts
+                character*3 :: eye
+                character*3 :: unused
+                character*3 :: maxseas
+                character*3 :: initials
+                character*3 :: dir
+                character*3 :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                character*2 :: seas
+                character*3 :: seascode
+                character dimension(4,3),intent(c) :: seasrad
+            end type atcf_record
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getarecord
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                character*10 :: stormname
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getarecord
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                integer :: technum
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                integer :: rad
+                character*3 :: windcode
+                integer dimension(4) :: radii
+                integer :: radp
+                integer :: rrp
+                integer :: mrd
+                integer :: gusts
+                integer :: eye
+                integer :: maxseas
+                character*3 :: initials
+                integer :: dir
+                integer :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                integer :: seas
+                character*3 :: seascode
+                integer dimension(4) :: seasrad
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getarecord
+                integer :: numrcrds
+                type(a_record) dimension(aidtaumax*4) :: arecord
+                type(atcf_record) dimension(aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getarecord
+                integer :: numrcrds
+                type(a_record) dimension(100*aidtaumax*4) :: arecord
+                type(atcf_record) dimension(100*aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getarecord
+                integer*2 :: v
+                integer*2 :: h
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getarecord
+                logical*2 :: isvalid
+                logical*2 :: isempty
+                real :: latitude
+                logical*2 :: north
+                real :: longitude
+                logical*2 :: east
+                type(pnt) :: pos
+                integer*2 :: wind
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getarecord
+                type(objective_aids_datapoint) dimension(5) :: point
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getarecord
+                character*32 :: stormid
+                character*16 :: technique
+                character*9 :: dtg
+                type(objective_aids_datapoints) :: data
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getarecord
+                character*5 :: techname
+                character*9 :: dtg
+                integer dimension(5) :: lat
+                integer dimension(5) :: lon
+                integer dimension(5) :: vmax
+                character*6 :: stormid
+            end type unknown_type
+        end subroutine getarecord
+        subroutine readarecord(datfile,aidrcd,result) ! in :nclip24:nhc.clipper.lib.f
+            integer :: datfile
+            type(aid_data) :: aidrcd
+            integer :: result
+            type atcf_record ! in :nclip24:nhc.clipper.lib.f:readarecord
+                character*2 :: basin
+                character*2 :: cynum
+                character*10 :: dtg
+                character*2 :: technum
+                character*4 :: tech
+                character*3 :: tau
+                character*4 :: latns
+                character*5 :: lonew
+                character*3 :: vmax
+                character*4 :: mslp
+                character*2 :: ty
+                character*3 :: rad
+                character*3 :: windcode
+                character dimension(4,4),intent(c) :: radii
+                character*4 :: radp
+                character*4 :: rrp
+                character*3 :: mrd
+                character*3 :: gusts
+                character*3 :: eye
+                character*3 :: unused
+                character*3 :: maxseas
+                character*3 :: initials
+                character*3 :: dir
+                character*3 :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                character*2 :: seas
+                character*3 :: seascode
+                character dimension(4,3),intent(c) :: seasrad
+            end type atcf_record
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readarecord
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                character*10 :: stormname
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readarecord
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                integer :: technum
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                integer :: rad
+                character*3 :: windcode
+                integer dimension(4) :: radii
+                integer :: radp
+                integer :: rrp
+                integer :: mrd
+                integer :: gusts
+                integer :: eye
+                integer :: maxseas
+                character*3 :: initials
+                integer :: dir
+                integer :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                integer :: seas
+                character*3 :: seascode
+                integer dimension(4) :: seasrad
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readarecord
+                integer :: numrcrds
+                type(a_record) dimension(aidtaumax*4) :: arecord
+                type(atcf_record) dimension(aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readarecord
+                integer :: numrcrds
+                type(a_record) dimension(100*aidtaumax*4) :: arecord
+                type(atcf_record) dimension(100*aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readarecord
+                integer*2 :: v
+                integer*2 :: h
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readarecord
+                logical*2 :: isvalid
+                logical*2 :: isempty
+                real :: latitude
+                logical*2 :: north
+                real :: longitude
+                logical*2 :: east
+                type(pnt) :: pos
+                integer*2 :: wind
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readarecord
+                type(objective_aids_datapoint) dimension(5) :: point
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readarecord
+                character*32 :: stormid
+                character*16 :: technique
+                character*9 :: dtg
+                type(objective_aids_datapoints) :: data
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:readarecord
+                character*5 :: techname
+                character*9 :: dtg
+                integer dimension(5) :: lat
+                integer dimension(5) :: lon
+                integer dimension(5) :: vmax
+                character*6 :: stormid
+            end type unknown_type
+        end subroutine readarecord
+        subroutine getsingletau(aidrcd,tau,taudata,result) ! in :nclip24:nhc.clipper.lib.f
+            type(aid_data) :: aidrcd
+            integer :: tau
+            type(aid_data) :: taudata
+            integer :: result
+            type atcf_record ! in :nclip24:nhc.clipper.lib.f:getsingletau
+                character*2 :: basin
+                character*2 :: cynum
+                character*10 :: dtg
+                character*2 :: technum
+                character*4 :: tech
+                character*3 :: tau
+                character*4 :: latns
+                character*5 :: lonew
+                character*3 :: vmax
+                character*4 :: mslp
+                character*2 :: ty
+                character*3 :: rad
+                character*3 :: windcode
+                character dimension(4,4),intent(c) :: radii
+                character*4 :: radp
+                character*4 :: rrp
+                character*3 :: mrd
+                character*3 :: gusts
+                character*3 :: eye
+                character*3 :: unused
+                character*3 :: maxseas
+                character*3 :: initials
+                character*3 :: dir
+                character*3 :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                character*2 :: seas
+                character*3 :: seascode
+                character dimension(4,3),intent(c) :: seasrad
+            end type atcf_record
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getsingletau
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                character*10 :: stormname
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getsingletau
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                integer :: technum
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                integer :: rad
+                character*3 :: windcode
+                integer dimension(4) :: radii
+                integer :: radp
+                integer :: rrp
+                integer :: mrd
+                integer :: gusts
+                integer :: eye
+                integer :: maxseas
+                character*3 :: initials
+                integer :: dir
+                integer :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                integer :: seas
+                character*3 :: seascode
+                integer dimension(4) :: seasrad
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getsingletau
+                integer :: numrcrds
+                type(a_record) dimension(aidtaumax*4) :: arecord
+                type(atcf_record) dimension(aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getsingletau
+                integer :: numrcrds
+                type(a_record) dimension(100*aidtaumax*4) :: arecord
+                type(atcf_record) dimension(100*aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getsingletau
+                integer*2 :: v
+                integer*2 :: h
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getsingletau
+                logical*2 :: isvalid
+                logical*2 :: isempty
+                real :: latitude
+                logical*2 :: north
+                real :: longitude
+                logical*2 :: east
+                type(pnt) :: pos
+                integer*2 :: wind
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getsingletau
+                type(objective_aids_datapoint) dimension(5) :: point
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getsingletau
+                character*32 :: stormid
+                character*16 :: technique
+                character*9 :: dtg
+                type(objective_aids_datapoints) :: data
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getsingletau
+                character*5 :: techname
+                character*9 :: dtg
+                integer dimension(5) :: lat
+                integer dimension(5) :: lon
+                integer dimension(5) :: vmax
+                character*6 :: stormid
+            end type unknown_type
+        end subroutine getsingletau
+        subroutine getaidtau(aidrcd,tau,arecord,result) ! in :nclip24:nhc.clipper.lib.f
+            type(aid_data) :: aidrcd
+            integer :: tau
+            type(a_record) :: arecord
+            integer :: result
+            type atcf_record ! in :nclip24:nhc.clipper.lib.f:getaidtau
+                character*2 :: basin
+                character*2 :: cynum
+                character*10 :: dtg
+                character*2 :: technum
+                character*4 :: tech
+                character*3 :: tau
+                character*4 :: latns
+                character*5 :: lonew
+                character*3 :: vmax
+                character*4 :: mslp
+                character*2 :: ty
+                character*3 :: rad
+                character*3 :: windcode
+                character dimension(4,4),intent(c) :: radii
+                character*4 :: radp
+                character*4 :: rrp
+                character*3 :: mrd
+                character*3 :: gusts
+                character*3 :: eye
+                character*3 :: unused
+                character*3 :: maxseas
+                character*3 :: initials
+                character*3 :: dir
+                character*3 :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                character*2 :: seas
+                character*3 :: seascode
+                character dimension(4,3),intent(c) :: seasrad
+            end type atcf_record
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaidtau
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                character*10 :: stormname
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaidtau
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                integer :: technum
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                integer :: rad
+                character*3 :: windcode
+                integer dimension(4) :: radii
+                integer :: radp
+                integer :: rrp
+                integer :: mrd
+                integer :: gusts
+                integer :: eye
+                integer :: maxseas
+                character*3 :: initials
+                integer :: dir
+                integer :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                integer :: seas
+                character*3 :: seascode
+                integer dimension(4) :: seasrad
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaidtau
+                integer :: numrcrds
+                type(a_record) dimension(aidtaumax*4) :: arecord
+                type(atcf_record) dimension(aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaidtau
+                integer :: numrcrds
+                type(a_record) dimension(100*aidtaumax*4) :: arecord
+                type(atcf_record) dimension(100*aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaidtau
+                integer*2 :: v
+                integer*2 :: h
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaidtau
+                logical*2 :: isvalid
+                logical*2 :: isempty
+                real :: latitude
+                logical*2 :: north
+                real :: longitude
+                logical*2 :: east
+                type(pnt) :: pos
+                integer*2 :: wind
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaidtau
+                type(objective_aids_datapoint) dimension(5) :: point
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaidtau
+                character*32 :: stormid
+                character*16 :: technique
+                character*9 :: dtg
+                type(objective_aids_datapoints) :: data
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaidtau
+                character*5 :: techname
+                character*9 :: dtg
+                integer dimension(5) :: lat
+                integer dimension(5) :: lon
+                integer dimension(5) :: vmax
+                character*6 :: stormid
+            end type unknown_type
+        end subroutine getaidtau
+        subroutine getaiddtg(datfile,dtg,aidrcd,result) ! in :nclip24:nhc.clipper.lib.f
+            integer :: datfile
+            character*8 :: dtg
+            type(aid_data) :: aidrcd
+            integer :: result
+            type atcf_record ! in :nclip24:nhc.clipper.lib.f:getaiddtg
+                character*2 :: basin
+                character*2 :: cynum
+                character*10 :: dtg
+                character*2 :: technum
+                character*4 :: tech
+                character*3 :: tau
+                character*4 :: latns
+                character*5 :: lonew
+                character*3 :: vmax
+                character*4 :: mslp
+                character*2 :: ty
+                character*3 :: rad
+                character*3 :: windcode
+                character dimension(4,4),intent(c) :: radii
+                character*4 :: radp
+                character*4 :: rrp
+                character*3 :: mrd
+                character*3 :: gusts
+                character*3 :: eye
+                character*3 :: unused
+                character*3 :: maxseas
+                character*3 :: initials
+                character*3 :: dir
+                character*3 :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                character*2 :: seas
+                character*3 :: seascode
+                character dimension(4,3),intent(c) :: seasrad
+            end type atcf_record
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaiddtg
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                character*10 :: stormname
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaiddtg
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                integer :: technum
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                integer :: rad
+                character*3 :: windcode
+                integer dimension(4) :: radii
+                integer :: radp
+                integer :: rrp
+                integer :: mrd
+                integer :: gusts
+                integer :: eye
+                integer :: maxseas
+                character*3 :: initials
+                integer :: dir
+                integer :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                integer :: seas
+                character*3 :: seascode
+                integer dimension(4) :: seasrad
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaiddtg
+                integer :: numrcrds
+                type(a_record) dimension(aidtaumax*4) :: arecord
+                type(atcf_record) dimension(aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaiddtg
+                integer :: numrcrds
+                type(a_record) dimension(100*aidtaumax*4) :: arecord
+                type(atcf_record) dimension(100*aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaiddtg
+                integer*2 :: v
+                integer*2 :: h
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaiddtg
+                logical*2 :: isvalid
+                logical*2 :: isempty
+                real :: latitude
+                logical*2 :: north
+                real :: longitude
+                logical*2 :: east
+                type(pnt) :: pos
+                integer*2 :: wind
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaiddtg
+                type(objective_aids_datapoint) dimension(5) :: point
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaiddtg
+                character*32 :: stormid
+                character*16 :: technique
+                character*9 :: dtg
+                type(objective_aids_datapoints) :: data
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getaiddtg
+                character*5 :: techname
+                character*9 :: dtg
+                integer dimension(5) :: lat
+                integer dimension(5) :: lon
+                integer dimension(5) :: vmax
+                character*6 :: stormid
+            end type unknown_type
+        end subroutine getaiddtg
+        subroutine gettech(bigaidrcd,tech,aidrcd,result) ! in :nclip24:nhc.clipper.lib.f
+            type(big_aid_data) :: bigaidrcd
+            character*4 :: tech
+            type(aid_data) :: aidrcd
+            integer :: result
+            type atcf_record ! in :nclip24:nhc.clipper.lib.f:gettech
+                character*2 :: basin
+                character*2 :: cynum
+                character*10 :: dtg
+                character*2 :: technum
+                character*4 :: tech
+                character*3 :: tau
+                character*4 :: latns
+                character*5 :: lonew
+                character*3 :: vmax
+                character*4 :: mslp
+                character*2 :: ty
+                character*3 :: rad
+                character*3 :: windcode
+                character dimension(4,4),intent(c) :: radii
+                character*4 :: radp
+                character*4 :: rrp
+                character*3 :: mrd
+                character*3 :: gusts
+                character*3 :: eye
+                character*3 :: unused
+                character*3 :: maxseas
+                character*3 :: initials
+                character*3 :: dir
+                character*3 :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                character*2 :: seas
+                character*3 :: seascode
+                character dimension(4,3),intent(c) :: seasrad
+            end type atcf_record
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:gettech
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                character*10 :: stormname
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:gettech
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                integer :: technum
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                integer :: rad
+                character*3 :: windcode
+                integer dimension(4) :: radii
+                integer :: radp
+                integer :: rrp
+                integer :: mrd
+                integer :: gusts
+                integer :: eye
+                integer :: maxseas
+                character*3 :: initials
+                integer :: dir
+                integer :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                integer :: seas
+                character*3 :: seascode
+                integer dimension(4) :: seasrad
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:gettech
+                integer :: numrcrds
+                type(a_record) dimension(aidtaumax*4) :: arecord
+                type(atcf_record) dimension(aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:gettech
+                integer :: numrcrds
+                type(a_record) dimension(100*aidtaumax*4) :: arecord
+                type(atcf_record) dimension(100*aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:gettech
+                integer*2 :: v
+                integer*2 :: h
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:gettech
+                logical*2 :: isvalid
+                logical*2 :: isempty
+                real :: latitude
+                logical*2 :: north
+                real :: longitude
+                logical*2 :: east
+                type(pnt) :: pos
+                integer*2 :: wind
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:gettech
+                type(objective_aids_datapoint) dimension(5) :: point
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:gettech
+                character*32 :: stormid
+                character*16 :: technique
+                character*9 :: dtg
+                type(objective_aids_datapoints) :: data
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:gettech
+                character*5 :: techname
+                character*9 :: dtg
+                integer dimension(5) :: lat
+                integer dimension(5) :: lon
+                integer dimension(5) :: vmax
+                character*6 :: stormid
+            end type unknown_type
+        end subroutine gettech
+        subroutine getbigaiddtg(datfile,dtg,bigaidrcd,result) ! in :nclip24:nhc.clipper.lib.f
+            integer :: datfile
+            character*10 :: dtg
+            type(big_aid_data) :: bigaidrcd
+            integer :: result
+            type atcf_record ! in :nclip24:nhc.clipper.lib.f:getbigaiddtg
+                character*2 :: basin
+                character*2 :: cynum
+                character*10 :: dtg
+                character*2 :: technum
+                character*4 :: tech
+                character*3 :: tau
+                character*4 :: latns
+                character*5 :: lonew
+                character*3 :: vmax
+                character*4 :: mslp
+                character*2 :: ty
+                character*3 :: rad
+                character*3 :: windcode
+                character dimension(4,4),intent(c) :: radii
+                character*4 :: radp
+                character*4 :: rrp
+                character*3 :: mrd
+                character*3 :: gusts
+                character*3 :: eye
+                character*3 :: unused
+                character*3 :: maxseas
+                character*3 :: initials
+                character*3 :: dir
+                character*3 :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                character*2 :: seas
+                character*3 :: seascode
+                character dimension(4,3),intent(c) :: seasrad
+            end type atcf_record
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getbigaiddtg
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                character*10 :: stormname
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getbigaiddtg
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                integer :: technum
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                integer :: rad
+                character*3 :: windcode
+                integer dimension(4) :: radii
+                integer :: radp
+                integer :: rrp
+                integer :: mrd
+                integer :: gusts
+                integer :: eye
+                integer :: maxseas
+                character*3 :: initials
+                integer :: dir
+                integer :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                integer :: seas
+                character*3 :: seascode
+                integer dimension(4) :: seasrad
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getbigaiddtg
+                integer :: numrcrds
+                type(a_record) dimension(aidtaumax*4) :: arecord
+                type(atcf_record) dimension(aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getbigaiddtg
+                integer :: numrcrds
+                type(a_record) dimension(100*aidtaumax*4) :: arecord
+                type(atcf_record) dimension(100*aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getbigaiddtg
+                integer*2 :: v
+                integer*2 :: h
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getbigaiddtg
+                logical*2 :: isvalid
+                logical*2 :: isempty
+                real :: latitude
+                logical*2 :: north
+                real :: longitude
+                logical*2 :: east
+                type(pnt) :: pos
+                integer*2 :: wind
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getbigaiddtg
+                type(objective_aids_datapoint) dimension(5) :: point
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getbigaiddtg
+                character*32 :: stormid
+                character*16 :: technique
+                character*9 :: dtg
+                type(objective_aids_datapoints) :: data
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:getbigaiddtg
+                character*5 :: techname
+                character*9 :: dtg
+                integer dimension(5) :: lat
+                integer dimension(5) :: lon
+                integer dimension(5) :: vmax
+                character*6 :: stormid
+            end type unknown_type
+        end subroutine getbigaiddtg
+        subroutine backspacefile(datfile,numrcrds) ! in :nclip24:nhc.clipper.lib.f
+            integer :: datfile
+            integer :: numrcrds
+            type atcf_record ! in :nclip24:nhc.clipper.lib.f:backspacefile
+                character*2 :: basin
+                character*2 :: cynum
+                character*10 :: dtg
+                character*2 :: technum
+                character*4 :: tech
+                character*3 :: tau
+                character*4 :: latns
+                character*5 :: lonew
+                character*3 :: vmax
+                character*4 :: mslp
+                character*2 :: ty
+                character*3 :: rad
+                character*3 :: windcode
+                character dimension(4,4),intent(c) :: radii
+                character*4 :: radp
+                character*4 :: rrp
+                character*3 :: mrd
+                character*3 :: gusts
+                character*3 :: eye
+                character*3 :: unused
+                character*3 :: maxseas
+                character*3 :: initials
+                character*3 :: dir
+                character*3 :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                character*2 :: seas
+                character*3 :: seascode
+                character dimension(4,3),intent(c) :: seasrad
+            end type atcf_record
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:backspacefile
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                character*10 :: stormname
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:backspacefile
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                integer :: technum
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                integer :: rad
+                character*3 :: windcode
+                integer dimension(4) :: radii
+                integer :: radp
+                integer :: rrp
+                integer :: mrd
+                integer :: gusts
+                integer :: eye
+                integer :: maxseas
+                character*3 :: initials
+                integer :: dir
+                integer :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                integer :: seas
+                character*3 :: seascode
+                integer dimension(4) :: seasrad
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:backspacefile
+                integer :: numrcrds
+                type(a_record) dimension(aidtaumax*4) :: arecord
+                type(atcf_record) dimension(aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:backspacefile
+                integer :: numrcrds
+                type(a_record) dimension(100*aidtaumax*4) :: arecord
+                type(atcf_record) dimension(100*aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:backspacefile
+                integer*2 :: v
+                integer*2 :: h
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:backspacefile
+                logical*2 :: isvalid
+                logical*2 :: isempty
+                real :: latitude
+                logical*2 :: north
+                real :: longitude
+                logical*2 :: east
+                type(pnt) :: pos
+                integer*2 :: wind
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:backspacefile
+                type(objective_aids_datapoint) dimension(5) :: point
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:backspacefile
+                character*32 :: stormid
+                character*16 :: technique
+                character*9 :: dtg
+                type(objective_aids_datapoints) :: data
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:backspacefile
+                character*5 :: techname
+                character*9 :: dtg
+                integer dimension(5) :: lat
+                integer dimension(5) :: lon
+                integer dimension(5) :: vmax
+                character*6 :: stormid
+            end type unknown_type
+        end subroutine backspacefile
+        subroutine processarcd(aidrcd,atcfrcd,result) ! in :nclip24:nhc.clipper.lib.f
+            type(a_record) :: aidrcd
+            type(atcf_record) :: atcfrcd
+            integer :: result
+            type atcf_record ! in :nclip24:nhc.clipper.lib.f:processarcd
+                character*2 :: basin
+                character*2 :: cynum
+                character*10 :: dtg
+                character*2 :: technum
+                character*4 :: tech
+                character*3 :: tau
+                character*4 :: latns
+                character*5 :: lonew
+                character*3 :: vmax
+                character*4 :: mslp
+                character*2 :: ty
+                character*3 :: rad
+                character*3 :: windcode
+                character dimension(4,4),intent(c) :: radii
+                character*4 :: radp
+                character*4 :: rrp
+                character*3 :: mrd
+                character*3 :: gusts
+                character*3 :: eye
+                character*3 :: unused
+                character*3 :: maxseas
+                character*3 :: initials
+                character*3 :: dir
+                character*3 :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                character*2 :: seas
+                character*3 :: seascode
+                character dimension(4,3),intent(c) :: seasrad
+            end type atcf_record
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:processarcd
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                character*10 :: stormname
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:processarcd
+                character*2 :: basin
+                integer :: cynum
+                character*10 :: dtg
+                integer :: technum
+                character*4 :: tech
+                integer :: tau
+                real :: lat
+                character*1 :: ns
+                real :: lon
+                character*1 :: ew
+                integer :: vmax
+                integer :: mslp
+                character*2 :: ty
+                integer :: rad
+                character*3 :: windcode
+                integer dimension(4) :: radii
+                integer :: radp
+                integer :: rrp
+                integer :: mrd
+                integer :: gusts
+                integer :: eye
+                integer :: maxseas
+                character*3 :: initials
+                integer :: dir
+                integer :: speed
+                character*10 :: stormname
+                character*1 :: depth
+                integer :: seas
+                character*3 :: seascode
+                integer dimension(4) :: seasrad
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:processarcd
+                integer :: numrcrds
+                type(a_record) dimension(aidtaumax*4) :: arecord
+                type(atcf_record) dimension(aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:processarcd
+                integer :: numrcrds
+                type(a_record) dimension(100*aidtaumax*4) :: arecord
+                type(atcf_record) dimension(100*aidtaumax*4) :: atcfrcd
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:processarcd
+                integer*2 :: v
+                integer*2 :: h
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:processarcd
+                logical*2 :: isvalid
+                logical*2 :: isempty
+                real :: latitude
+                logical*2 :: north
+                real :: longitude
+                logical*2 :: east
+                type(pnt) :: pos
+                integer*2 :: wind
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:processarcd
+                type(objective_aids_datapoint) dimension(5) :: point
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:processarcd
+                character*32 :: stormid
+                character*16 :: technique
+                character*9 :: dtg
+                type(objective_aids_datapoints) :: data
+            end type unknown_type
+            type unknown_type ! in :nclip24:nhc.clipper.lib.f:processarcd
+                character*5 :: techname
+                character*9 :: dtg
+                integer dimension(5) :: lat
+                integer dimension(5) :: lon
+                integer dimension(5) :: vmax
+                character*6 :: stormid
+            end type unknown_type
+        end subroutine processarcd
+        subroutine upcase(string_bn,nchar) ! in :nclip24:nhc.clipper.lib.f
+            character*(*) :: string_bn
+            integer :: nchar
+        end subroutine upcase
+    end interface 
+end python module nclip24
+
+! This file was auto-generated with f2py (version:2.45.241_1926).
+! See http://cens.ioc.ee/projects/f2py2e/

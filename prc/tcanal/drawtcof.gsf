@@ -1,0 +1,56 @@
+function drawtcof()
+
+'set rgb 91 254 254 254'
+'set rgb 92 1 1 1'
+
+ofc=91
+ofci=92
+
+ofsiz=0.090
+ofsizs=ofsiz+0.025
+ofsizi=ofsiz-0.050
+if(_ofszscl != '' & _ofszscl!='_ofszscl') ; ofsiz=ofsiz*_ofszscl ; endif
+
+###print 'ttttttttttt '_tau' --->'_ntcofall._tau'<---'
+
+if(_ntcofall._tau = '_ntcofall.'_tau )
+  return
+endif
+ 
+
+n=1
+while(n<=_ntcofall._tau) 
+
+  oflat=subwrd(_tcofall.n,1)
+  oflon=subwrd(_tcofall.n,2)
+  oftype=subwrd(_tcofall.n,3)
+#
+# check if lon setting is deg w
+#
+  if(_lon1 < 0)
+    oflon=oflon-360.0
+  endif
+
+  'q w2xy 'oflon' 'oflat
+
+  x=subwrd(result,3)
+  y=subwrd(result,6)
+  xs=x-0.015
+  ys=y+0.015
+
+  if(oftype = -1); ofci=4; endif
+  ofm=3
+
+  'set line 98'
+  'draw mark 'ofm' 'x' 'y' 'ofsizs
+
+  'set line 'ofc
+  'draw mark 'ofm' 'x' 'y' 'ofsiz
+
+  'set line 'ofci
+  'draw mark 'ofm' 'x' 'y' 'ofsizi
+
+  n=n+1
+endwhile
+
+return

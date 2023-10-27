@@ -1,0 +1,390 @@
+<html>
+<head>
+<title>WXMAP Introduction</title>
+</head>
+<body background="../icon/bkgswirl.gif" TEXT="#000000" LINK="#0000FF" VLINK="#006030">
+<h1>WXMAP Introduction --</h1>
+<h2><i><font color=red>The Basics and Web Organization</font></i></h2>
+<ul>
+<li><b><a href="#web_structure">Web Structure</a></b></li>
+<li><b><a href="#documentation_resources">Documentation Resources</a></b></li>
+<li><b><a href="#weather_bookmarks">Mike's Weather-Related Bookmarks</a></b></li>
+</ul>
+<font color=darkblue size=3 face=arial>This Documentation is under active development, please be patient.....</font>
+
+<img src="../icon/colaline.gif">
+<br><br>
+<table border=0>
+<tr>
+<td width=800 align=left>
+<font size=+2>"Mike, this is all well and good, but why are you doing this?"</font>
+</td>
+</tr>
+<tr>
+<td width=800 align=right>
+<a href="http://www.atmos.colostate.edu/html/gray.html">Prof. Bill Gray, Colorado State University</a>
+</td>
+</tr>
+<tr>
+<td width=800 align=center>
+<font size=+1>"Because at the time it seemed like a good thing to do..."</font>
+</td>
+</tr>
+</table>
+
+<p>This is what my friend, and oft critic of the models, Bill
+Gray is fond of asking seminar speakers and graduate students and
+I suppose you too are wondering what this is all about.  In many
+ways the PCMDI WXMAP Web is "yet another weather map page" and
+even I will toss in some of my <a
+href="#weather_bookmarks">favorite weather sites</a> for good
+measure.  However, I see my Web as having two distinctive
+features:
+
+<font color=darkred>
+<ul>
+<li><b>A Stong Orientation toward <i>Direct</i> Model Intercomparison</b></li>
+<li><b>Model Verification using Statistics and a Map/Web Archive</b></li>
+</ul>
+</font>
+
+While many weather pages have satellite and radar images and
+display current weather conditions, we only offer
+<b><i>NWP</b></i> maps.  So now you are wondering, "what's an NWP?"</p>
+
+<p>NWP stands for "Numerical Weather Prediction," i.e., the
+"computer models" you've heard about (and Bill Gray disapproves
+of becoming too <i>enamored</i> with).  NWP is actually a bit of
+a misnomer as the computer models do not <i>directly</i> forecast
+the weather as most people think of it ("is it going to rain, Mike?").
+Rather, meteorologists make "weather maps" from the output of the
+NWP model forecasts (e.g., winds and temperature) and/or
+diagnosistics (e.g., rainfall) and then <i>infer</i> the weather
+from the maps.</p>
+
+<p>These pages provide basic weather maps using data from the two leading
+NWP agencies in the United States -- the <a
+href="http://www.ncep.noaa.gov">National Centers for
+Environmental Prediction (NCEP)</a> and the Navy's <a
+href="http://www.fnoc.navy.mil"> Fleet Numerical Meteorology
+and Oceanography Center (FNMOC)</a>.  We use <i>two</i> centers
+because PCMDI believes model intercomparison is the key to model
+improvement and this web is arranged accordingly.  Further, we
+focus on <i>global</i> models because PCMDI's mission is to promote
+global climate model improvement through intercomparison and
+diagnosis.  The two models of interest are: 1) the NCEP <a
+href="http://sgi62.wwb.noaa.gov:8080/web2/homepage.html">Medium
+Range Forecast</a> (<a
+href="http://nic.fb4.noaa.gov:8000/research/mrf.html">MRF</a>)
+model -- both the short range (0-72 h at 00, 06, 12 and 18 UTC)
+"Aviation" (<b>AVN</b>) run and the longer range (0-388 h at 00
+UTC) <b>MRF</b> runs; and 2) the FNMOC <a
+href="http://www.nrlmry.navy.mil/global_mod.html">Navy
+Operational Global Atmospheric Prediction System</a> (NOGAPS or
+<b>NGP</b> in these pages).</p>
+
+<p>PCMDI's interest in NWP stems primarily from the use of NWP
+data in climate model verification.  Of special interest is
+<b>atmospheric reanalysis</b> where the observations (what Bill
+Gray would call "real" data) are "put through an unchanging
+analysis/forecast assimilation wringer" to produce long times
+series (greater than 10 years) suitable for climate applications.
+The <a
+href="http://wesley.wwb.noaa.gov/reanalysis.html">NCEP/NCAR
+project</a> is the biggest and prototypical.  More information on
+reanalysis will be coming out on <a
+href="http://www-pcmdi.llnl.gov">PCMDI's</a> web in the next few
+months.
+
+
+<a name="web_structure"></a>
+<h3>Web Structure</h3>
+
+<p>The root of the web is:<br><br>
+
+<a href="http://www-pcmdi.llnl.gov/fiorino/wxmap"<b>http://www-pcmdi.llnl.gov/fiorino/wxmap</b></a><br><br>
+
+If you click on this base, you'll see <b>a lot</b> of files.  All
+my html documents end in the with <b>.htm</b> extension, but
+you'll also find <b>.pl</b> files (perl scripts which actually
+generate the web) and <b>.sh</b> Bourne shell scripts I still use
+for some management functions.  Here are the key files: </p>
+<table border=1>
+
+<tr>
+<td width=250 align=right>
+<a href="../wx.htm">wx.htm</a></b>
+</td>
+<td width=450 align=left>
+The current main page
+</td>   
+</tr>
+
+<tr>
+<td width=250 align=right>
+<a href="../wx.conus.htm">wx.conus.htm</a></b>
+</td>
+<td width=450 align=left>
+The starting  page for the CONUS area, use this link if you want to go to this area
+</td>   
+</tr>
+
+<tr>
+<td width=250 align=right>
+<a href="../wx.asia.htm">wx.asia.htm</a></b>
+</td>
+<td width=450 align=left>
+The starting  page for the East Asia area, this link is for people who are only interested in this region
+</td>   
+</tr>
+
+<tr>
+<td width=250 align=right>
+<a href="../avn.conus.htm">avn.conus.htm</a></b>
+</td>
+<td width=450 align=left>
+The Map page for the AVN model in CONUS, use this if you want to always go to this area and model
+</td>   
+</tr>
+
+
+<tr>
+<td width=250 align=right>
+<a href="../mrf.conus.htm">mrf.conus.htm</a></b>
+</td>
+<td width=450 align=left>
+The current page for the MRF model in CONUS
+</td>   
+</tr>
+
+
+<tr>
+<td width=250 align=right>
+<a href="../ngp.conus.htm">ngp.conus.htm</a></b>
+</td>
+<td width=450 align=left>
+The current page for the NOGAPS model in CONUS
+</td>   
+</tr>
+
+<tr>
+<td width=250 align=right>
+<a href="../avn.europe.htm">avn.europe.htm</a></b>
+</td>
+<td width=450 align=left>
+The Map page for the AVN model in Europe
+</td>   
+</tr>
+
+
+<tr>
+<td width=250 align=right>
+<a href="../mrf.europe.htm">mrf.europe.htm</a></b>
+</td>
+<td width=450 align=left>
+The current page for the MRF model in Europe
+</td>   
+</tr>
+
+
+<tr>
+<td width=250 align=right>
+<a href="../ngp.europe.htm">ngp.europe.htm</a></b>
+</td>
+<td width=450 align=left>
+The current page for the NOGAPS model in Europe
+</td>   
+</tr>
+
+<tr>
+<td width=250 align=right>
+<b>wx.YYMMDDHH.htm</b>
+</td>
+<td width=450 align=left>
+Home page for the web at the YYMMDDHH <a href="wxmap.help.htm#definitions">"Date Time Group"</a>
+</td>   
+</tr>
+
+<tr>
+<td width=250 align=right>
+<b>wx.AREA.YYMMDDHH.htm</b>
+</td>
+<td width=450 align=left>
+
+The main page for the selecting models the AREA area at the
+YYMMDDHH 
+<a href="wxmap.help.htm#definitions">"DTG"</a>.
+Currently, AREA="conus" or "asia"
+
+</td>   
+</tr>
+
+<tr>
+<td width=250 align=right>
+<b>MODEL.AREA.YYMMDDHH.htm</b>
+</td>
+<td width=450 align=left>
+
+The main page for the maps in the AREA area for model MODEL at the YYMMDDHH <a
+href="wxmap.help.htm#definitions">"DTG"</a>.
+Currently, AREA="conus" or "asia" and <a href="wxmap.help.htm#definitions">MODEL="avn" or "mrf" or "ngp"</a>
+
+</td>   
+</tr>
+
+</table>
+
+
+
+
+
+
+<a name="documentation_resources"></a>
+<h3>Documention Resources</h3>
+
+<p>See the <a href="wxmap.doc.htm">technical
+documentation</a> for details maps themselves and the process.
+For more information on running the web see the <a
+href="wxmap.help.htm">use and navigation
+documentation</a> for more information and help.</p>
+
+<a name="weather_bookmarks"></a>
+<h3>Mike's Favorite Weather-Related Web Sites</h3>
+
+
+<p>Here's a list of some my favorite sites, i.e, the ones in my bookmarks:<br>
+
+<table border=1>
+
+<tr>
+<th width=100 align=center>
+Mike's Rating<br>
+0-10
+</th>
+<th width=300 align=center>
+URL
+</th>
+<th width=400 align=center>
+Comments
+</th>
+</tr>
+
+<tr>
+<td width=100 align=center>
+<b>9</b>
+</td>
+<td width=300 align=left>
+<a href="http://grads.iges.org/pix/wx.html">http://grads.iges.org/pix/wx.html</a>
+</td>
+<td width=400 align=left>
+The GrADS/IGES Weather Maps -- <b><i>The Best General Purpose Weather Map Web</b></i>
+</td>
+</tr>
+
+<tr>
+<td width=100 align=center>
+8
+</td>
+<td width=300 align=left>
+<a href="http://cirrus.sprl.umich.edu/wxnet/tropical.html">http://cirrus.sprl.umich.edu/wxnet/tropical.html</a>
+</td>
+<td width=400 align=left>
+A good source for tropical weather and tropical cyclone info
+</td>
+</tr>
+
+<tr>
+<td width=100 align=center>
+8
+</td>
+<td width=300 align=left>
+<a href="http://www.nws.mbay.net/home.html">http://www.nws.mbay.net/home.html</a>
+</td>
+<td width=400 align=left>
+A great jumping off point.  California oriented, but that's where I live...
+</td>
+</tr>
+
+<tr>
+<td width=100 align=center>
+6
+</td>
+<td width=300 align=left>
+<a href="http://sgi62.wwb.noaa.gov:8080/ens/enshome.html">http://sgi62.wwb.noaa.gov:8080/ens/enshome.html</a>
+</td>
+<td width=400 align=left>
+NCEP Ensemble graphics using GrADS (mostly)
+</td>
+</tr>
+
+<tr>
+<td width=100 align=center>
+6
+</td>
+<td width=300 align=left>
+<a href="http://www.ncdc.noaa.gov/onlineprod/ghcnmcdwprcp/monthly/form.html">http://www.ncdc.noaa.gov/onlineprod/ghcnmcdwprcp/monthly/form.html</a>
+</td>
+<td width=400 align=left>
+Example of "On-the-fly" GrADS graphics of climatological data.
+</td>
+</tr>
+
+<tr>
+<td width=100 align=center>
+8
+</td>
+<td width=300 align=left>
+<a href="http://wxp.atms.purdue.edu/main.html">http://wxp.atms.purdue.edu/main.html</a>
+</td>
+<td width=400 align=left>
+The Purdue WXP Weather Page the veritable "kitchen sink" of weather pages.  Lots of NWP models and imagery
+<tr>
+
+<td width=100 align=center>
+6
+</td>
+<td width=300 align=left>
+<a href="http://www.cdc.noaa.gov/~map/maproom/text/weather_products.shtml">http://www.cdc.noaa.gov/~map/maproom/text/weather_products.shtml</a>
+</td>
+<td width=400 align=left>
+Nice model plots made with <a href://grads.iges.org/grads/>GrADS</a>.  Good model intercomparison and the NCEP Ensembles 
+</td>
+</tr>
+
+
+<td width=100 align=center>
+7
+</td>
+<td width=300 align=left>
+<a href="http://ugems.psu.edu/~owens/">http://ugems.psu.edu/~owens/</a>
+</td>
+<td width=400 align=left>
+Good starting off point for many wx resources on the web
+</td>
+</tr>
+
+
+
+</table>
+
+
+<h3>The Usual Caveats</h3>
+
+<p><font color=blue><b><i>While these maps are constructed on a near real-time
+basis, PCMDI makes no guarentees about and bears no
+responsibility or liability concerning the accuracy or
+availability of these images published on the World Wide Web as
+their production depends on many factors beyond our control.
+They are provided without interpretation or correction, and do
+not represent the actual forecast issued by the responsible Official Forecast
+Agencies.</i></b></p></font>
+
+Send Comments to <a href="mailto:fiorino@llnl.gov"> Mike Fiorino</a>, 
+<a href="http://www-pcmdi.llnl.gov">PCMDI</a>, <a
+href="http://www.llnl.gov">LLNL</a>
+<br><br>
+<i>Last updated 29 October, 1996</i><br>
+<a href="http://www.llnl.gov/disclaimer.html">LLNL Disclaimers</a><br>
+UCRL-MI-125630
+</body>
+</html>

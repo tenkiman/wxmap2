@@ -1,0 +1,66 @@
+function prwvar()
+
+#
+# defaults
+#
+_prwhfact=0.01
+_prwsden=4
+_prwbskip=5
+_prwnew=1
+_regridprw=0
+
+if(_model='ecm' | _model='cmc' | _model='gfs' | _model='ukm' | _model='gfs' | _model='ngp')
+  _prwnew=0
+  _pslvar='psl'
+  _pslsmth=1
+endif
+
+#
+# new 2 models
+#
+
+if(_model ='ngp2')
+  _prwhfact=1.0
+  _prwsden=4
+endif
+
+if(_model = 'gfs2' | _model = 'ngpc' | _model = 'navg' | _model = 'fim8' | _model = 'fimx' | _model = 'jgsm')
+  _prwsden=4
+  _prwbskip=10
+  _regridprw=1
+endif
+
+if(_model = 'fv3e' | _model = 'fv3g')
+  _prwsden=4
+  _prwbskip=10
+  _regridprw=1
+endif
+
+
+if(_model = 'ecm2' or _model = 'ecmn' or _model = 'ecmt')
+  _prwhfact=0.01
+  _prwsden=5
+endif
+
+if(_model = 'ukm2')
+  _prwhfact=0.01
+  _prwsden=4
+  _prwbskip=8
+ _regridprw=1
+endif
+
+if(_model = 'ecm4' | _model='ecm5' | _model = 'cgd2' )
+# -- prwhfact not used in cgd2 since it's just hus
+  _prwhfact=0.01  
+  _prwsden=4
+  _prwbskip=8
+ _regridprw=1
+endif
+
+if(_model = 'cmc2')
+  _prwhfact=0.01
+  _prwsden=5
+  _prwbskip=5
+endif
+
+return

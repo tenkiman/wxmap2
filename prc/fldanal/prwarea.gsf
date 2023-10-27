@@ -1,0 +1,60 @@
+function prwarea(args)
+
+if(_area = 'lant')
+  _blat=-10
+  _elat=40
+  _blon=-100
+  _elon=-10
+endif
+
+if(_area = 'wpac')
+  _blat=-10
+  _elat=45
+  _blon=100
+  _elon=200
+endif
+
+if(_area = 'cpac')
+  _blat=-10
+  _elat=45
+  _blon=150
+  _elon=250
+endif
+
+if(_area = 'epac')
+  _blat=-10
+  _elat=40
+  _blon=-160
+  _elon=-70
+endif
+
+if(_area = 'enso')
+  _blat=-20
+  _elat=70
+  _blon=120
+  _elon=360
+endif
+
+if(_area = 'io')
+  _blat=-40
+  _elat=30
+  _blon=20
+  _elon=140
+endif
+
+if(_area = 'spac')
+  _blat=-50
+  _elat=10
+  _blon=100
+  _elon=210
+endif
+
+if(_area = 'global')
+  _blat=-60
+  _elat=60
+  _blon=0
+  _elon=180
+endif
+
+
+return

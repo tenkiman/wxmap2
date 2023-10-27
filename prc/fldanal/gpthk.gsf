@@ -1,0 +1,93 @@
+
+*
+*-------------------------- gpthk ------------------
+*
+
+function gpthk(k)
+
+
+pslci=4
+
+if(_dobasemap != 1)
+  'draw map'
+endif
+
+t1=' SLP [hPa] / 1000-500mb Thck [dm]'
+
+'thk=(zg(lev=500)-zg(lev=1000))/10'
+
+'slp=psl/100'
+
+rc1=datachk(thk)
+rc2=datachk(slp)
+
+if(_regridthk = 1)
+  'thk=re(thk,0.75)'
+  'slp=re(slp,0.75)'
+endif
+
+_shades=0
+
+if(rc1 != 0 | rc2 != 0) ; return(rc) ; endif
+
+  rc=jaecol()
+  pcol.1='59 58 57 55 55 54 53 52 51 61 62 63 64 65 66 67 68 69'
+  'set gxout shaded'
+  'set csmooth on' 
+  'set rbcols 'pcol.1
+  'set rbrange 532 582'
+  'set black 537 543'
+  'set cint 3'
+  'd thk'
+  'q shades'
+  _shades=result
+  'set rbcols auto'
+'set gxout contour'  
+*
+*	plot 540 thickness line
+*
+'set clevs 540'
+'set ccolor 1'
+'set cthick 20'
+'set cstyle 1'
+'set grads off'
+'d thk'
+
+'set clevs 540'
+'set ccolor 2'
+'set cthick 10'
+'set cstyle 1'
+'set clopts 2 7 0.11'
+'set grads off'
+'d thk'
+
+'set gxout contour'
+'set grads off'
+'set xlint '_xlint
+'set ylint '_ylint
+
+'set ccolor 76'
+'set cthick 20'
+'set cint 'pslci
+'set clab off'
+'d slp'
+
+'set ccolor revrain'
+'set rbrange 980 1032'
+'set cthick 5'
+'set cint 'pslci
+'set clab off'
+'d slp'
+
+'set ccolor revrain'
+'set rbrange 980 1032'
+'set clab on'
+'set clopts 1 5 0.11'
+'set cint 4'
+'d slp'
+
+rc=dtitle(t1)
+cbarg='0.90 0 5.5 0.78'
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+return(0)
+

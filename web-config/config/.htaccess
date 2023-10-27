@@ -1,0 +1,11 @@
+# -- 80.htaccess is the real file controlling access
+<Limit GET POST PUT>
+order deny,allow
+deny from all
+allow from navy.mil
+allow from af.mil
+allow from fsl.noaa.gov
+allow from noaa.gov
+allow from psu.edu
+allow 169.154.204.2
+</Limit> 

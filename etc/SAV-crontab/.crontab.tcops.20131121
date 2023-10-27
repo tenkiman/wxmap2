@@ -1,0 +1,61 @@
+#------------------------------------------------------
+#
+#       tcops.fsl.noaa.gov crontab
+#
+#------------------------------------------------------
+#
+
+runcmd='/data/amb/users/fiorino/w21/run.cron.tcsh'
+w2pdir='/data/amb/users/fiorino/w21/prc'
+w2prjdir='/data/amb/users/fiorino/w21/prj'
+
+
+#ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt - TCs
+
+# -- main general processor 
+# 20131017 -- no tceps, done on kaze
+08     0-23                * * * $runcmd "$w2pdir/tcdat/w2.tc.ops.dat.py ops -E"                             >> /ptmp/log.w2.tc.ops.dat.py.TCOPSLF 2>&1
+# -- 20130219 -- run with -R to rsync reftrk to jet/zeus daily
+53        1                * * * $runcmd "$w2pdir/tcdat/w2.tc.ops.dat.py ops -R"                             >> /ptmp/log.w2.tc.ops.dat.py.TCOPSREFTRKONLY 2>&1
+
+# -- separate process to rsync wjet adecks 
+05,19,35,49  5-9,17-21     * * * $runcmd "$w2pdir/tcdat/w2.tc.rsync.mirror.wjet.adeck.2.local.py ops12"      >> /ptmp/log.w2.tc.rsync.mirror.wjet.adeck.2.local.py.RSYNCECBUFR 2>&1
+
+# -- break up kaze->kishou between fast and slow (adeck,cira,tceps,tcanal)
+15     0-23/2              * * * $runcmd "$w2pdir/tcdat/w2.tc.rsync.kaze.kishou.dat.py -R -u -X"             >> /ptmp/log.w2.rsync.kaze.kishou.TCRSYNC_RFAST 2>&1
+05     1,7,13,19           * * * $runcmd "$w2pdir/tcdat/w2.tc.rsync.kaze.kishou.dat.py -R -u -L -X"          >> /ptmp/log.w2.rsync.kaze.kishou.TCRSYNC_RSLOW 2>&1  # only twice / day --  slow process # now 4x because hfip disk faster
+
+# -- ec eps plots
+0-59/15 8-11,18-23         * * * $runcmd "$w2pdir/tcdat/w2.tc.wget.ecmwf.eps.plots.py cur-6"                 >> /ptmp/log.w2.wget.EPSPLTS 2>&1
+
+# -- full update of tmtrkN and mftrkN vdecks daily
+31     3                  * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.vdeck.py tmtrkN -y cur"                     >> /ptmp/log.w2.tmtrkN.VDECK2 2>&1
+51     3                  * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.vdeck.py mftrkN -y cur"                     >> /ptmp/log.w2.mftrkN.VDECK2 2>&1
+
+# -- 20090129 -- turn on :: TC climo (daily)
+### -- until tcops gets gxyat going   45 09                       * * * $runcmd "$w2pdir/tc/w2.tc.season.py cur cur -p ops.climo.all" >> /ptmp/log.w2.cur.clm.py.TC.CLM 2>&1
+
+# 20120702 -- tctrk
+03   2      * * * $runcmd  "$w2pdir/tctrk/w2.tc.tmtrkN.py cur-24.cur-6 all -k"                               >> /ptmp/log.w2.tc.tmtrkN.py.TCTRKCLEAN 2>&1
+
+# -- daily of year update of mdecks2 with 9x -- took out -b w,e,l -- do them all
+03   2      * * * $runcmd  "$w2pdir/tcdat/w2.tc.dss.md2.py -Y -Z -y cur"                            >> /ptmp/log.w2.tc.dss.md2.py.MD29XUPDATE 2>&1
+
+
+#iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii - inventory l2/du/mss
+
+# -- load averages using uptime
+*/5                              *                * * * $runcmd "$w2pdir/flddat/w2.load.py"                      >> /ptmp/log.load.py.LOAD 2>&1
+
+#ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg - gfs goes
+#ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo - ocean
+#ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp - precip
+#mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm - model 
+#fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff - rtfim
+#sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss - special
+#jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj - jtwc cagips
+#ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc - cleanup
+# 20090507 -- turn on web clean
+  17                 3            1-31/3 * * $runcmd "$w2pdir/wxmap2/w2.clean.log.py -A"              >> /ptmp/log.w2.clean.web.py.LOGCLEAN 2>&1
+
+#ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd - data management

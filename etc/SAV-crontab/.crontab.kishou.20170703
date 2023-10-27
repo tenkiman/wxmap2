@@ -1,0 +1,79 @@
+#------------------------------------------------------
+#
+#       kishou.fsl.noaa.gov crontab
+#
+#------------------------------------------------------
+#
+
+runcmd='/w21/run.cron.tcsh'
+w2pdir='/w21/prc'
+w2prjdir='/w21/prj'
+
+#fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff - fields
+# 20130628 -- hi-res cmc gdps (their gfs = global deterministic prediction system)
+
+12 5-6,17-18 * * * $runcmd "$w2pdir/flddat/w2.fld.wget.mirror.cmc.gdps.py ops12"                                                  >> /ptmp/log.w2.fld.wget.mirror.cmc.gdps.py.CMC-GDPS 2>&1
+
+# -- 20150721 -- start collection ecmt on kishou
+ 39    04,06,16,18                         * * * $runcmd "$w2pdir/flddat/w2.fld.tigge.ecmwf.py cur12-d2 -t"      >> /ptmp/log.w2.fld.tigge.ecmwf.py.ECMT 2>&1
+
+#ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt - TCs
+
+# 20121201 -- a/vdecks for major model groups -- consistent with kaze 45 2,8,14,20 lag by two hours... 
+#             can take a long time, especially at the end of the season
+# 20130114 -- do full update at 4Z then -u after
+#01    4                       * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.adeck.py ncep,jtwc,nhc,ecmwf,ukmo,ecbufr -y cur"              >> /ptmp/log.w2.ADECK2 2>&1
+#31    0-23                * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.adeck.py ncep,jtwc,nhc,ecmwf -y cur -u"                           >> /ptmp/log.w2.ADECK2UP 2>&1
+#51    0-23                * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.adeck.py rtfim,rtfim9 -y cur -J -u"                               >> /ptmp/log.w2.ADECK2UP 2>&1
+### -- not needed because adk updates vdeck with -u option ? - no just once / day
+#31    8                * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.vdeck.py ncep,jtwc,nhc,ecmwf,ukmo,ecbufr -y cur"            >> /ptmp/log.w2.VADECK2 2>&1
+
+#01    4                                           * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.adeck.py jtwc,nhc,ecmwf -y cur"           >> /ptmp/log.w2.ADECK2 2>&1
+#31    8                                           * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.vdeck.py jtwc,nhc,ecmwf -y cur"           >> /ptmp/log.w2.VADECK2 2>&1
+
+# # -- 20131221 -- move to tcops
+# # -- 20130506 -- tcgen2 off prj/tc/ -- still in test mode -- moved from kaze
+# 19,49    6-10,18-22               * * * $runcmd "$w2pdir/tcgen/w2.tc.tcgen2.py cur12 all"                               >> /ptmp/log.w2.p.tcgen2.py.TCGEN2 2>&1
+# 19,49    11-12,23,00              * * * $runcmd "$w2pdir/tcgen/w2.tc.tcgen2.py ops12 navg,fim8,rtfim9"                       >> /ptmp/log.w2.p.tcgen2.py.TCGEN2FIM 2>&1
+
+# # -- 20130622 -- tcdiag on kishou from kaze
+# #
+# 09,39   4-14,16-23,0-2       * * * $runcmd "$w2pdir/tcdiag/w2.tc.lsdiag.py ops12 fim8,ecm2,cmc2"                >> /ptmp/log.w2.tc.lsdiag.py.TCDIAG-12h-0012 2>&1
+# 04,34   10-14,22-23,0-2      * * * $runcmd "$w2pdir/tcdiag/w2.tc.lsdiag.py ops12 ukm2"                          >> /ptmp/log.w2.tc.lsdiag.py.TCDIAG-12h-0012-UKM2 2>&1 # coming in quite late
+# 29,59   10-14,22-23,0-2      * * * $runcmd "$w2pdir/tcdiag/w2.tc.lsdiag.py ops6  gfs2,ukm2,navg,rtfim9"         >> /ptmp/log.w2.tc.lsdiag.py.TCDIAG-6h-0618 2>&1
+# 19,49   4-8,16-20            * * * $runcmd "$w2pdir/tcdiag/w2.tc.lsdiag.py ops6  gfs2,ukm2,navg,rtfim9"         >> /ptmp/log.w2.tc.lsdiag.py.TCDIAG-6h-0012 2>&1
+0-59/15   6-11,18-23           * * * $runcmd "$w2pdir/tcdat/w2.tc.wget.ecmwf.eps.plots.py ops12"                   >> /ptmp/log.w2.wget.EPSPLTS 2>&1
+
+# -- 20170619 -- bring over adecks from psd RR2
+19        17                   * * * $runcmd "$w2pdir/tcdat/w2.tc.wget.mirror.psdRR2.adecks.2.local.py cur12-36.cur12-12.24"                  >> /ptmp/log.w2.tc.wget.mirror.psdRR2.adecks.2.local.py.PSDRR2 2>&1
+19        18                   * * * $runcmd "$w2pdir/tcdat/w2.tc.convert-tm-mftrkN-to-atcf-adeck.py psdRR2 cur12-36.cur12-12.24 -A -r"       >> /ptmp/log.w2.tc.convert-tm-mftrkN-to-atcf-adeck.py.PSDRR2 2>&1
+19        19                   * * * $runcmd "$w2pdir/tcdat/w2.tc.dss.ad2.py psdRR2 cur12-36.cur12-12.24 -9 -r"                               >> /ptmp/log.w2.tc.dss.ad2.py.9X-PSDRR2 2>&1
+
+# -- 20130128 -- keep DSs on zeus updated
+1    3,10,15,21                * * * $runcmd "$w2pdir/tcdat/w2.tc.rsync.mirror.local.DSs.2.zeus.py cur"                            >> /ptmp/log.w2.rsync.DSs.2.RSYNCZEUS 2>&1
+
+# 20090507 -- turn on web clean
+  17                 3            1-31/3 * * $runcmd "$w2pdir/wxmap2/w2.clean.log.py -A"                                           >> /ptmp/log.w2.clean.web.py.LOGCLEAN 2>&1
+# 20120924 -- clean of dat3 synced over from kaze
+#
+  17                 2            1-31/3 * * $runcmd "$w2pdir/flddat/w2.fld.clean.dat3.sh -A"                                      >> /ptmp/log.w2.fld.clean.dat3.sh.DAT3CLEAN 2>&1
+# 20121027 -- run backup script to save dat/tc to FWV1b timemachine to FWV1a
+#
+  17                 4                 * * * $runcmd "/Users/fiorino/backup.py"                                                    >> /ptmp/log.BACKUP 2>&1
+# 20130110 -- do mss inventory
+51       4 * * * $runcmd "$w2pdir/flddat/w2.mss.nwp2-w2flds.py all all -i"                                                         >> /ptmp/log.w2.mss.nwp2-w2flds.pyinv.NWP2 2>&1
+31       4 * * * $runcmd "$w2pdir/flddat/w2.mss.nwp2-w2flds.py all all -W -i"                                                      >> /ptmp/log.w2.mss.nwp2-w2flds.pyinv.W2FLDS 2>&1
+11       4 * * * $runcmd "$w2pdir/flddat/w2.mss.nwp2-w2flds.py all all -R -i"                                                      >> /ptmp/log.w2.mss.nwp2-w2flds.pyinv.RTFIM 2>&1
+41       4 * * * $runcmd "$w2pdir/flddat/w2.mss.nwp2-w2flds.py all all -W -5 -i"                                                   >> /ptmp/log.w2.mss.nwp2-w2flds.pyinv.DAT5W2FLDS 2>&1
+21       4 * * * $runcmd "$w2pdir/flddat/w2.mss.nwp2-w2flds.py all all -R -5 -i"                                                   >> /ptmp/log.w2.mss.nwp2-w2flds.pyinv.DAT5RTFIM 2>&1
+41       5 * * * $runcmd "$w2pdir/flddat/w2.mss.nwp2-w2flds.py all all -W -6 -i"                                                   >> /ptmp/log.w2.mss.nwp2-w2flds.pyinv.DAT6W2FLDS 2>&1
+21       5 * * * $runcmd "$w2pdir/flddat/w2.mss.nwp2-w2flds.py all all -R -6 -i"                                                   >> /ptmp/log.w2.mss.nwp2-w2flds.pyinv.DAT6RTFIM 2>&1
+
+# -- load averages using uptime -- blowing up in Darwin 14.3?
+
+###*/5                              *                * * * $runcmd "$w2pdir/flddat/w2.load.py"                      >> /ptmp/log.load.py.LOAD 2>&1
+
+
+# -- special cases
+
+#57 3 * * * $runcmd "$w2pdir/tcgen/w2.tc.tcgen2.py 201105.201110.12 gfs2,fim8,cgd6,ecmt,ukm2,ngpc -O -i -c" >> /ptmp/log.gtc.2011.TCGEN2

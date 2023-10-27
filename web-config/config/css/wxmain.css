@@ -1,0 +1,2797 @@
+h1 {
+color : black;
+font-size : 20pt;
+font-weight:bold;
+font-style:normal;
+text-ident:0.5in;
+font-family:arial,helvetica,san-serif;
+}
+
+h2 {
+color : darkred;
+font-size : 16pt;
+font-weight:bold;
+font-style:italic;
+text-ident:0.5in;
+font-family:verdana,arial,helvetica,san-serif;
+}
+
+h3 {
+color : darkblue;
+font-size : 14pt;
+font-weight:bold;
+font-style:normal;
+text-ident:0.25in;
+font-family:arial,helvetica,san-serif;
+}
+
+h4 {
+font-size: 12pt;
+font-family: courier new;
+font-weight: bold;
+line-height: 12pt;
+text-align: left;
+color: red
+}
+
+
+table.arearow {
+}
+
+
+table.arearow td {
+	vertical-align : top;
+	background-color: beige;
+	
+}
+
+table.row3 {
+	border-collapse: collapse;
+}
+
+table.row {
+	border-collapse: collapse;
+}
+
+
+table.row td {
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width : 450px;
+	text-align : left;
+	vertical-align : top;
+	padding: 0px;
+	margin: 0px;
+}
+
+table.row3 {
+	border-collapse: collapse;
+}
+
+
+table.row3 td {
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width : 300px;
+	text-align : left;
+	vertical-align : top;
+	padding: 0px;
+	margin: 0px;
+}
+
+
+table.row3 td.areatitle {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 8pt;
+	font-style : normal;
+	font-weight : bold;
+	text-align : center;
+	vertical-align : middle;
+	background-color : lightyellow;
+	padding: 2px;
+	width: 200;
+}
+
+
+table.button {
+	width : 100px;
+	border-collapse: collapse;
+}
+
+
+table.button td.d {
+	font-family : Geneva, Arial, Helvetica, sans-serif;
+	font-size : 8pt;
+	font-style : normal;
+	font-weight : normal;
+	width : 100px;
+	text-align : left;
+	vertical-align : middle;
+}
+
+table.button td {
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width : 200px;
+	text-align : left;
+	vertical-align : top;
+	background-color: linen;
+	padding: 0px;
+	margin: 0px;
+}
+
+
+table.button .btnarea { 
+	width: 110px;
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: cadetblue;
+	color: red;
+}	
+
+table.button .btnareaover { 
+	width: 110px;
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: red;
+	color: cadetblue;
+}	
+
+table.button .btnasmlgsm { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: skyblue;
+	color: black;
+}
+	
+table.button .btnasmlNOT { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: grey;
+	color: darkgrey;
+}
+
+table.button .btnasmlNOTover { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: darkgrey;
+	color: grey;
+}
+
+table.button .btnasmlgsmover { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: black;
+	color: skyblue;
+}	
+
+table.button .btnasmlfim { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: skyblue;
+	color: black;
+}	
+
+table.button .btnasmlfimover { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: black;
+	color: skyblue;
+}	
+
+table.button .btnareafim { 
+	width: 110px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: skyblue;
+	color: black;
+}	
+
+table.button .btnareafimover { 
+	width: 110px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: black;
+	color: skyblue;
+}	
+
+table.button .btnasmlecm { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: skyblue;
+	color: purple;
+}	
+
+table.button .btnasmlecmover { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: purple;
+	color: skyblue;
+}	
+
+
+table.button .btnareaecm { 
+	width: 110px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: skyblue;
+	color: purple;
+}	
+
+table.button .btnareaecmover { 
+	width: 110px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: purple;
+	color: skyblue;
+}	
+
+
+table.button .btnasmlfv4 { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: skyblue;
+	color: yellow;
+}	
+
+table.button .btnasmlfv4over { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: yellow;
+	color: skyblue;
+}	
+
+table.button .btnasmlgfs { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: skyblue;
+	color: red;
+}	
+
+table.button .btnasmlgfsover { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: red;
+	color: skyblue;
+}	
+
+table.button .btnareagfs { 
+	width: 110px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: skyblue;
+	color: red;
+}	
+
+table.button .btnareagfsover { 
+	width: 110px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: red;
+	color: skyblue;
+}	
+
+
+table.button .btnasmlngp { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: skyblue;
+	color: navy;
+}	
+
+table.button .btnasmlngpover { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: navy;
+	color: skyblue;
+}	
+
+table.button .btnareangp { 
+	width: 110px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: skyblue;
+	color: navy;
+}	
+
+table.button .btnareangpover { 
+	width: 110px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: navy;
+	color: skyblue;
+}	
+
+
+
+table.button .btnasmlukm { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: skyblue;
+	color: darkgreen;
+}	
+
+table.button .btnasmlukmover { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: darkgreen;
+	color: skyblue;
+}	
+
+table.button .btnareaukm { 
+	width: 110px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: skyblue;
+	color: darkgreen;
+}	
+
+table.button .btnareaukmover { 
+	width: 110px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: darkgreen;
+	color: skyblue;
+}	
+
+
+table.button .btnrsc { 
+	width: 83px;
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: bisque;
+	color: navy;
+}	
+
+table.button .btnrscover { 
+	width: 83px;
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: navy;
+	color: bisque;
+}	
+
+table.button .btnrscmed { 
+	width: 83px;
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: bisque;
+	color: navy;
+	background-color: lightgreen;
+	color: navy;
+}	
+
+table.button .btnrscmedover { 
+	width: 83px;
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: navy;
+	color: bisque;
+	background-color: navy;
+	color: lightgreen;
+}	
+
+table.button .btnrscmed2 { 
+	width: 83px;
+	font-family : Verdana,monospace;
+	font-size : 12px;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-image: url('https://pzal.npmoc.navy.mil/wxmap/icon/wxmap.favicon.3.gif');
+	color: navy;
+}	
+
+table.button .btnrscmed2over { 
+	width: 83px;
+	background-image: url('wxmap/icon/wxmap.favicon.3.gif');
+}	
+
+
+
+table.button .btnrscbig { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: lightgreen;
+	color: navy;
+}	
+
+table.button .btnrscbigover { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: navy;
+	color: lightgreen;
+}	
+
+table.button .btnrscbigNOT { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: grey;
+	color: darkgrey;
+}	
+
+table.button .btnrscbigNOTover { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: darkgrey;
+	color: grey;
+}	
+
+
+table.button .btnrsc100 { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: lightblue;
+	color: navy;
+}	
+
+table.button .btnrsc100over { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: navy;
+	color: lightblue;
+}	
+
+table.button .btnrsc100grey { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: grey;
+	color: black;
+}	
+
+table.button .btnrsc100overgrey { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: black;
+	color: darkgrey;
+}	
+
+table.button .btnrscbigmf { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: gold;
+	color: navy;
+}	
+
+table.button .btnrscbigmfover { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: navy;
+	color: gold;
+}	
+
+table.button .btnsmldrop { 
+	width: 75px;
+	height: 20px;
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: lightsalmon;
+	color: navy;
+}	
+
+table.button .btnsmldropover { 
+	width: 75px;
+	height: 20px;
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: navy;
+	color: lightsalmon;
+}	
+
+table.button .btndrop { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: lightsalmon;
+	color: navy;
+}	
+
+table.button .btndropover { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: navy;
+	color: lightsalmon;
+}	
+
+table.button .btndtg { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: gold;
+	color: navy;
+}	
+
+table.button .btndtgover { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: navy;
+	color: gold;
+}	
+
+
+table.button .btndtgcur { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: maroon;
+	color: khaki;
+}	
+
+table.button .btndtgcurover { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: khaki;
+	color: maroon;
+}	
+
+table.button .btndtga { 
+	width: 85px;
+	height: 15px;
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: gold;
+	color: navy;
+}	
+
+table.button .btndtgaover { 
+	width: 85px;
+	height: 15px;
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: navy;
+	color: gold;
+}	
+
+table.button .btndtgacur { 
+	width: 85px;
+	height: 15px;
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: maroon;
+	color: khaki;
+}	
+
+table.button .btndtgacurover { 
+	width: 85px;
+	height: 15px;
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: khaki;
+	color: maroon;
+}	
+
+table.button .btnmodbig { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: darkorchid;
+	color: white;
+}	
+
+table.button .btnmodbigover { 
+	width: 100px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: white;
+	color: darkorchid;
+}	
+
+table.button .btnrscbig1 { 
+	width: 125px;
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: lightgreen;
+	color: navy;
+}	
+
+table.button .btnrscbig1over { 
+	width: 125px;
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: navy;
+	color: lightgreen;
+}	
+
+table.button .btntop { 
+	width: 125px;
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: gold;
+	color: navy;
+}	
+
+table.button .btntopover { 
+	width: 125px;
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: navy;
+	color: gold;
+}	
+
+table.button .btnsml { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: lightgrey;
+	color: navy;
+}	
+
+table.button .btnsmlover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: navy;
+	color: lightgrey;
+}	
+
+
+table.button .btnmod { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: lightgreen;
+	color: darkred;
+}	
+
+table.button .btntd { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 100px;
+	text-align: middle;
+	background-color: navy;
+	color: gold;
+}	
+
+table.button .btntdover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 100px;
+	text-align: middle;
+	background-color: gold;
+	color: navy;
+}	
+
+table.button .btnmodover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: darkred;
+	color: lightgreen;
+}	
+
+
+table.button th {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 8pt;
+	font-style : normal;
+	font-weight : bold;
+	font-weight : normal;
+	width : 25px;
+	text-align : center;
+	vertical-align : middle;
+}
+
+
+table.button th.d {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 8pt;
+	font-style : normal;
+	font-weight : bold;
+	width : 100px;
+	text-align : left;
+	vertical-align : middle;
+}
+
+table.button .bhelp{
+	font-family : Verdana,monospace;
+	font-size: 7pt;
+	font-weight: bold;
+	font-style: italic;
+	text-align : center;
+	vertical-align : middle;
+	background-color : Red;
+	width: 60px;
+	color: White;
+}
+
+table.button .bhelpover{
+	font-family : Verdana,monospace;
+	font-size: 7pt;
+	font-weight: bold;
+	font-style: italic;
+	text-align : center;
+	vertical-align : middle;
+	width: 60px;
+	background-color : white;
+	color: Red;
+}
+
+table.button .breset{
+	font-family : Verdana,monospace;
+	font-size: 8pt;
+	font-weight: bold;
+	font-style: italic;
+	text-align : center;
+	vertical-align : middle;
+	background-color : Red;
+	width: 70px;
+	height: 20px;
+	color: White;
+}
+
+table.button .bresetover{
+	font-family : Verdana,monospace;
+	font-size: 8pt;
+	font-weight: bold;
+	font-style: italic;
+	text-align : center;
+	vertical-align : middle;
+	width: 70px;
+	height: 20px;
+	background-color : white;
+	color: Red;
+}
+
+table.button .binfo{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	font-weight: bold;
+	font-style: normal;
+	background-color : LightBlue;
+	text-align : center;
+	width : 25;
+}
+
+table.button .bbig{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	font-weight: bold;
+	font-style: italic;
+	background-color : Silver;
+	text-align : center;
+	width : 25;
+}
+
+.bdesc {
+	text-align : center;
+	font-weight : bold;
+	vertical-align : middle;
+	background-color : LightGrey;
+	font-color : Black;
+}
+
+.bdesc {
+	text-align : center;
+	font-weight : bold;
+	vertical-align : middle;
+	background-color : LightGrey;
+	font-color : Black;
+}
+
+
+.be4 {
+	background-color :  #EE82EE;
+}
+
+
+.b12z {
+	background-color : Yellow;
+}
+
+.bda {
+	background-color : #ADD8E6;
+}
+
+
+.bmodel {
+/*	background-color : Yellow; */
+	background-color : lightyellow;
+        background-color : khaki;
+	padding: 0px;
+	width: 60;
+	border: 0;
+	align : center;
+	vertical-align : middle;
+}
+
+
+
+.bsio {
+	background-color : #ADD8E6;
+}
+
+.bshem {
+	background-color : Yellow;
+}
+
+.bnhem {
+	background-color : Yellow;
+}
+
+.bcpac {
+	background-color : LightGreen;
+}
+
+.bnio {
+	background-color : Wheat;
+}
+
+.byearcur {
+	background-color : Orange;
+}
+
+.byear {
+	background-color : LightGreen;
+}
+
+.khaki {
+	background-color : khaki;
+}
+
+
+.bspac {
+	background-color :  #EE82EE;
+}
+
+.bswpac {
+	background-color :  #EE82EE;
+}
+
+.bwpac {
+	background-color :  #EE82EE;
+}
+
+.bepac {
+	background-color :  LightGrey;
+}
+
+
+.btnstm { 
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	align: left;
+	padding: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}	
+
+
+table.main {
+	border-collapse: collapse;
+}
+
+
+table.main td.status {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+	font-style : normal;
+	font-weight : bold;
+	text-align : left;
+	color : black;
+	vertical-align : middle;
+	background-color : lightyellow;
+        background-color : khaki;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 4px;
+	padding-right: 0px;
+	width: 900;
+}
+
+table.main td.status9pt {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 9pt;
+	font-style : normal;
+	font-weight : bold;
+	text-align : left;
+	vertical-align : middle;
+	background-color : lightyellow;
+        background-color : khaki;
+	color : red;	
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 4px;
+	padding-right: 0px;
+	width: 900;
+}
+
+table.main td.areatitle {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 8pt;
+	font-style : normal;
+	font-weight : bold;
+	text-align : center;
+	vertical-align : middle;
+	background-color : lightyellow;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 0px;
+	padding-right: 0px;
+	width: 300;
+}
+
+table.main td.areatitle2 {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 8pt;
+	font-style : normal;
+	font-weight : bold;
+	text-align : center;
+	vertical-align : middle;
+	background-color : lightyellow;
+	padding: 1px;
+	width: 450;
+}
+
+table.main td.basin {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 6pt;
+	font-style : normal;
+	font-weight : normal;
+	text-align : center;
+	vertical-align : middle;
+	background-color : lightyellow;
+        background-color : khaki;
+        border: 0;
+	padding: 0px;
+}
+
+table.main td {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 9pt;
+	font-style : normal;
+	font-weight : bold;
+	text-align : middle;
+	vertical-align : middle;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+table.main td.area {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 14pt;
+	font-style : normal;
+	font-weight : bold;
+	text-align : left;
+	color: navy;
+        padding: 0px;
+	width: 75;
+}
+
+table.main td.title {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 14pt;
+	font-style : normal;
+	font-weight : bold;
+	text-align : left;
+	color: navy;
+	padding-top: 2px;
+	padding-bottom: 6px;
+	padding-left: 2px;
+	padding-right: 2px;
+	width: 900;
+}
+
+table.main td.b1 {
+	   vertical-align : top
+}
+
+table.main td.code {
+	font-family : Courier;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+	font-style : normal;
+	font-weight : bold;
+	text-align : right;
+        color: red;
+	background-color : lightyellow;
+        background-color : khaki;
+        width: 120;
+        border: 0;
+	vertical-align : middle;
+}
+
+
+
+
+
+.btn80single { 
+	width: 80px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: bisque;
+	color: navy;
+}	
+
+.btn80singleover { 
+	width: 80px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: navy;
+	color: bisque;
+}	
+
+
+.btn80loop { 
+	width: 80px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: orchid;
+	color: navy;
+}	
+
+.btn80loopover { 
+	width: 80px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: navy;
+	color: orchid;
+}	
+
+.btn80NOT { 
+	width: 80px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: grey;
+	color: darkgrey;
+}	
+
+.btn80NOTover { 
+	width: 80px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: darkgrey;
+	color: grey;
+}	
+
+.btn50loop { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: orchid;
+	color: navy;
+}	
+
+.btn50loopover { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: navy;
+	color: orchid;
+}	
+.btn50loopa { 
+	width: 50px;
+	height: 15px;
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: orchid;
+	color: navy;
+}	
+
+.btn50loopaover { 
+	width: 50px;
+	height: 15px;
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: navy;
+	color: orchid;
+}	
+
+
+.btn80prwloop { 
+	width: 80px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: indigo;
+	color: white;
+}	
+
+.btn80prwloopover { 
+	width: 80px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: white;
+	color: indigo;
+}	
+
+
+
+
+ .buttonover {
+	font-family: Arial, Helvetica, sans-serif;
+	width: 75px;
+	color: Maroon;
+	border : 0px none;
+	font: bold;
+	background-color: Yellow;
+	font-weight : bolder;
+}
+
+
+.btnsmletc { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 40px;
+	text-align: middle;
+	background-color: navy;
+	color: gold;
+}	
+
+.btnsmletcover { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 40px;
+	text-align: middle;
+	background-color: gold;
+	color: navy;
+}	
+
+.btnsml { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 40px;
+	text-align: middle;
+	background-color: lightgrey;
+	color: navy;
+}	
+
+.btnsmlover { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 40px;
+	text-align: middle;
+	background-color: navy;
+	color: lightgrey;
+}	
+
+.btnsmlmod { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 40px;
+	text-align: middle;
+	background-color: darkgreen;
+	color: lightyellow;
+}	
+
+.btnsmlmodover { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 40px;
+	text-align: middle;
+	background-color: lightyellow;
+	color: darkgreen;
+}	
+
+.btnsmlmodnot { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 40px;
+	text-align: middle;
+	background-color: grey;
+	color: lightgrey;
+}	
+
+.btnsmlmodnotover { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 40px;
+	text-align: middle;
+	background-color: lightgrey;
+	color: grey;
+}	
+.btnasmlmodnot { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: grey;
+	color: lightgrey;
+}	
+
+.btnasmlmodnotover { 
+	width: 50px;
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	background-color: lightgrey;
+	color: grey;
+}	
+
+
+.btntaudtg { 
+	width: 35px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: white;
+	color: red;
+}	
+
+.btntaudtgover { 
+	width: 35px;
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	text-align: middle;
+	vertical-align: middle;		
+	background-color: red;
+	color: white;
+}	
+
+
+.btnsmltau { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	text-align: middle;
+	background-color: white;
+	color: red;
+}	
+
+
+.btnsmltauover { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	text-align: middle;
+	background-color: red;
+	color: white;
+}	
+
+.btnsmltaua { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	height: 15px;
+	text-align: middle;
+	background-color: white;
+	color: red;
+}	
+
+
+.btnsmltauaover { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	height: 15px;
+	text-align: middle;
+	background-color: red;
+	color: white;
+}	
+
+
+.btn50tau { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: white;
+	color: red;
+}	
+
+
+.btn50tauover { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: red;
+	color: white;
+}	
+
+.btn50taua { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	height: 15px;
+	text-align: middle;
+	background-color: white;
+	color: red;
+}	
+
+
+.btn50tauaover { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	height: 15px;
+	text-align: middle;
+	background-color: red;
+	color: white;
+}	
+
+
+
+.btnmedhaitau { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	height: 30px;
+	text-align: middle;
+	background-color: green;
+	color: white;
+}	
+
+.btnmedhaitauover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	height: 30px;
+	text-align: middle;
+	background-color: white;
+	color: green;
+}	
+
+
+.btnmediietau { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	height: 30px;
+	text-align: middle;
+	background-color: red;
+	color: black;
+}	
+
+.btnmediietauover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	height: 30px;
+	text-align: middle;
+	background-color: black;
+	color: red;
+}	
+
+
+.btnsmltau2 { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 20px;
+	text-align: middle;
+	background-color: white;
+	color: red;
+}	
+
+.btnsmltau2over { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 20px;
+	text-align: middle;
+	background-color: red;
+	color: white;
+}	
+
+.btn50etc { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: orangered;
+	color: papayawhip;
+}	
+
+.btn50etcover { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: papayawhip;
+	color: orangered;
+}	
+
+.btn50etca { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	height: 15px;
+	text-align: middle;
+	background-color: orangered;
+	color: papayawhip;
+}	
+
+.btn50etcaover { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	height: 15px;
+	text-align: middle;
+	background-color: papayawhip;
+	color: orangered;
+}	
+
+.btn50etcb { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: orangered;
+	color: papayawhip;
+}	
+
+.btn50etcbover { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: papayawhip;
+	color: orangered;
+}	
+
+.btn50red { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	height: 20px;
+	text-align: middle;
+	background-color: red;
+	color: papayawhip;
+}	
+
+.btn50redover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	height: 20px;
+	text-align: middle;
+	background-color: papayawhip;
+	color: red;
+}	
+
+.btn50grey { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: lightgrey;
+	color: whitesmoke;
+}	
+
+
+.btn50darkorange { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	height: 20px;
+	text-align: middle;
+	background-color: darkorange;
+	color: papayawhip;
+}	
+
+.btn50darkorangeover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	height: 20px;
+	text-align: middle;
+	color: darkorange;
+	background-color: papayawhip;
+}	
+
+.btn50rednot { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: dimgrey;
+	color: lightgrey;
+}	
+
+.btn50rednotover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: grey;
+	color: lightgrey;
+}	
+
+.btnsmlnot { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 40px;
+	text-align: middle;
+	background-color: grey;
+	color: lightgrey;
+}	
+
+.btnsmlnotover { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 40px;
+	text-align: middle;
+	background-color: grey;
+	color: lightgrey;
+}	
+
+.btnsmlngp { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	text-align: middle;
+	background-color: navy;
+	color: gold;
+}	
+
+.btnsmlngpover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	text-align: middle;
+	background-color: gold;
+	color: navy;
+}	
+
+.btnsmlfim { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	text-align: middle;
+	background-color: navy;
+	color: gold;
+}	
+
+.btnsmlfimover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	text-align: middle;
+	background-color: gold;
+	color: navy;
+}	
+
+.btnsmlgfs { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	text-align: middle;
+	background-color: darkred;
+	color: white;
+}	
+
+.btnsmlgfsover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	text-align: middle;
+	background-color: white;
+	color: darkred;
+}	
+
+.btnsmlukm { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	text-align: middle;
+	background-color: purple;
+	color: lightyellow;
+}	
+
+.btnsmlukmover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	text-align: middle;
+	background-color: lightyellow;
+	color: purple;
+}	
+
+
+
+
+.btn50 { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: maroon;
+	color: yellow;
+}	
+
+.btn50over { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: yellow;
+	color: maroon;
+}	
+
+.btn50a { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	height: 15px;
+	text-align: middle;
+	background-color: maroon;
+	color: yellow;
+}	
+
+.btn50aover { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	height: 15px;
+	text-align: middle;
+	background-color: yellow;
+	color: maroon;
+}	
+
+.btn50b { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	height: 15px;
+	text-align: middle;
+	background-color: navy;
+	color: gold;
+}	
+
+.btn50bover { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	height: 15px;
+	text-align: middle;
+	background-color: gold;
+	color: navy;
+}	
+
+.btn75 { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 75px;
+	height: 20px;
+	text-align: middle;
+	background-color: lightgreen;
+	color: darkgreen;
+}	
+
+.btn75over { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 75px;
+	height: 20px;
+	text-align: middle;
+	background-color: darkgreen;
+	color: lightgreen;
+}	
+
+.btn35t { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	height: 20px;
+	text-align: middle;
+	vertical-align : middle;
+	background-color: lightgreen;
+	color: darkgreen;
+}	
+
+.btn35tover { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	height: 20px;
+	text-align: middle;
+	vertical-align : middle;
+	background-color: darkgreen;
+	color: lightgreen;
+}	
+
+.btn50t { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	height: 20px;
+	text-align: middle;
+	vertical-align : middle;
+	background-color: lightgreen;
+	color: darkgreen;
+}	
+
+.btn50tover { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	height: 20px;
+	text-align: middle;
+	vertical-align : middle;
+	background-color: darkgreen;
+	color: lightgreen;
+}	
+
+
+.btn50grn { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: lightgreen;
+	color: darkgreen;
+}	
+
+.btn50grnover { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: middle;
+	background-color: darkgreen;
+	color: lightgreen;
+}	
+
+.btn65grn { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 65px;
+	text-align: middle;
+	background-color: lightgreen;
+	color: darkgreen;
+}	
+
+.btn90grn { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 120px;
+	text-align: right;
+	background-color: lightgreen;
+	color: darkgreen;
+}	
+
+.btn90grnover { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 120px;
+	text-align: right;
+	background-color: darkgreen;
+	color: lightgreen;
+}	
+
+
+.btn90grna { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 120px;
+	height: 15px;
+	text-align: right;
+	background-color: lightgreen;
+	color: darkgreen;
+}	
+
+.btn90grnaover { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 120px;
+	height: 15px;
+	text-align: right;
+	background-color: darkgreen;
+	color: lightgreen;
+}	
+
+
+.btn50grnr { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: right;
+	background-color: lightgreen;
+	color: darkgreen;
+}	
+
+.btn50grnrover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 50px;
+	text-align: right;
+	background-color: darkgreen;
+	color: lightgreen;
+}	
+
+.btn75ngp { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 75px;
+	text-align: middle;
+	background-color: navy;
+	color: gold;
+}	
+
+.btn75ngpover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 75px;
+	text-align: middle;
+	background-color: gold;
+	color: navy;
+}	
+
+.btn75gfs { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 75px;
+	text-align: middle;
+	background-color: darkred;
+	color: white;
+}	
+
+.btn75gfsover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 75px;
+	text-align: middle;
+	background-color: white;
+	color: darkred;
+}	
+
+
+.btn60sat { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 60px;
+	text-align: middle;
+	background-color: mediumblue;
+	color: lightblue;
+}	
+
+.btn60satover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 60px;
+	text-align: middle;
+	background-color: lightblue;
+	color: mediumblue;
+}	
+
+
+
+.btn75ukm { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 75px;
+	text-align: middle;
+	background-color: purple;
+	color: lightyellow;
+}	
+
+.btn75ukmover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 75px;
+	text-align: middle;
+	background-color: lightyellow;
+	color: purple;
+}	
+
+
+
+
+.btn75a { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : italic;
+	font-weight : bold;
+	width: 75px;
+	text-align: middle;
+	background-color: white;
+	color: red;
+}	
+
+.btn75aover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : italic;
+	font-weight : bold;
+	width: 75px;
+	text-align: middle;
+	background-color: red;
+	color: white;
+}	
+
+.btn75b { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : italic;
+	font-weight : bold;
+	width: 75px;
+	height: 20px;
+	text-align: middle;
+	background-color: yellow;
+	color: blue;
+}	
+
+.btn75bover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : italic;
+	font-weight : bold;
+	width: 75px;
+	height: 20px;
+	text-align: middle;
+	color: yellow;
+	background-color: blue;
+}	
+
+
+.btn75c { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 75px;
+	height: 20px;
+	text-align: middle;
+	color: gold;
+	background-color: navy;
+}	
+
+.btn75cover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 75px;
+	height: 20px;
+	text-align: middle;
+	color: navy;
+	background-color: gold;
+}	
+
+
+.btn75d { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 75px;
+	height: 20px;
+	text-align: middle;
+	color: white;
+	background-color: mediumvioletred;
+}	
+
+.btn75dover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 75px;
+	height: 20px;
+	text-align: middle;
+	color: mediumvioletred;
+	background-color: white;
+}	
+
+
+.btn75e { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : normal;
+	font-weight : bold;
+	width: 75px;
+	text-align: middle;
+	background-color: yellow;
+	color: blue;
+}	
+
+.btn75eover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : normal;
+	font-weight : bold;
+	width: 75px;
+	text-align: middle;
+	color: yellow;
+	background-color: blue;
+}	
+
+.btn35e { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	text-align: middle;
+	background-color: yellow;
+	color: blue;
+}	
+
+.btn35eover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 35px;
+	color: yellow;
+	background-color: blue;
+}	
+
+.btn40e { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 40px;
+	text-align: middle;
+	background-color: yellow;
+	color: blue;
+}	
+
+.btn40eover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 40px;
+	color: yellow;
+	background-color: blue;
+}	
+
+
+
+
+
+.btn100 { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 100px;
+	text-align: middle;
+	background-color: wheat;
+	color: navy;
+}	
+
+.btn100over { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 100px;
+	text-align: middle;
+	background-color: navy;
+	color: wheat;
+}	
+
+.btn100pull { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 100px;
+	text-align: middle;
+	background-color: gold;
+	color: navy;
+}	
+
+.btn100pullover { 
+	font-family : Verdana,monospace;
+	font-size : 7pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 100px;
+	text-align: middle;
+	background-color: navy;
+	color: gold;
+}	
+
+.btn125 { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 125px;
+	text-align: middle;
+	background-color: magenta;
+	color: navy;
+}	
+
+.btn125over { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 125px;
+	text-align: middle;
+	background-color: navy;
+	color: magenta;
+}	
+
+.btn85 { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 85px;
+	text-align: middle;
+	background-color: mediumvioletred;
+	color: white;
+}	
+
+.btn85over { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 85px;
+	text-align: middle;
+	background-color: white;
+	color: mediumvioletred;
+}	
+
+.btn75model { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 75px;
+	text-align: middle;
+	background-color: darkred;
+	color: white;
+}	
+
+.btn75modelover { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 75px;
+	text-align: middle;
+	background-color: white;
+	color: darkred;
+}	
+
+.btn85model { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 85px;
+	text-align: middle;
+	background-color: darkred;
+	color: white;
+}	
+
+.btn85modelover { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 85px;
+	text-align: middle;
+	background-color: white;
+	color: darkred;
+}	
+
+.btn125model { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 125px;
+	text-align: middle;
+	background-color: darkred;
+	color: white;
+}	
+
+.btn125modelover { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 125px;
+	text-align: middle;
+	background-color: white;
+	color: darkred;
+}	
+
+.btn150 { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 150px;
+	text-align: middle;
+	background-color: magenta;
+	color: navy;
+}	
+
+.btn150over { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 150px;
+	text-align: middle;
+	background-color: navy;
+	color: magenta;
+}	
+
+.btn125a { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 125px;
+	text-align: middle;
+	background-color: yellow;
+	color: red
+}	
+
+.btn125aover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 125px;
+	text-align: middle;
+	background-color: red;
+	color: yellow;
+}	
+
+
+.btn125b { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 125px;
+	text-align: middle;
+	background-color: mediumvioletred;
+	color: white;
+}	
+
+.btn125bover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 125px;
+	text-align: middle;
+	background-color: white;
+	color: mediumvioletred;
+}	
+
+.btn150a { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 150px;
+	text-align: middle;
+	background-color: yellow;
+	color: red
+}	
+
+.btn150aover { 
+	font-family : Verdana,monospace;
+	font-size : 8pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 150px;
+	text-align: middle;
+	background-color: red;
+	color: yellow;
+}	
+
+.btn85a { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 85px;
+	text-align: middle;
+	background-color: yellow;
+	color: red
+}	
+
+.btn85aover { 
+	font-family : Verdana,monospace;
+	font-size : 6pt;
+	font-style : bold;
+	font-weight : bold;
+	width: 85px;
+	text-align: middle;
+	background-color: red;
+	color: yellow;
+}	
+
+
+
+table.title {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size :9pt;
+	font-style : normal;
+	font-weight : normal;
+	vertical-align : middle;
+/*background-color: gold*/
+}
+
+
+td.button1 {
+
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 8pt;
+	font-style : normal;
+	font-weight : normal;
+	text-align : center;
+	vertical-align : middle;
+visited : white;
+color: white;
+background-color: lightgreen }
+
+  td.button2 {
+
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 8pt;
+	font-style : normal;
+	font-weight : normal;
+	text-align : center;
+	vertical-align : middle;
+        visited : black;
+        color: white;
+        background-color: magenta;
+   }
+
+
+.tctitle  {
+	border: none;
+	text-align: center;
+	font-size: 16pt;
+	color: Navy;
+	font-family:verdana,arial,helvetica,san-serif;
+	font-weight: bolder;
+	font-style: italic;
+}
+
+.tcplttitle  {
+	border: none;
+	text-align: center;
+	font-size: 10pt;
+	color: Navy;
+	font-family:verdana,arial,helvetica,san-serif;
+	font-weight: bolder;
+}
+

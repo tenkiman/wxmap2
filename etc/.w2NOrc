@@ -1,0 +1,87 @@
+#
+# wxmap2 env
+#
+
+source .w2env
+
+setenv W2_BDIR "$W2/trunk"
+setenv W2_BDIRDAT "$W2/dat"
+setenv W2_BDIRAPP "$W2/app"
+setenv W2_BDIRBIN "$W2/bin"
+setenv W2_BDIRLIB "$W2/lib"
+setenv W2_BDIRPLT "$W2/plt"
+setenv W2_BDIRWEB "$W2/web"
+
+setenv W2_SRC_DIR  "$W2_BDIR/src"
+setenv W2_PRC_DIR  "$W2_BDIR/prc"
+setenv W2_PERL_DIR "$W2_PRC_DIR/lib/perl"
+setenv W2_PY_DIR   "$W2_PRC_DIR/lib/python"
+
+#
+# python
+#
+setenv PYTHONSTARTUP "$W2_BDIR/.pythonrc"
+setenv PYTHONPATH "$W2_PRC_DIR/lib/python"
+
+#
+# perl
+#
+
+setenv PERL5LIB "$W2_BDIRAPP/perl/lib/5.8.5"
+
+source .w2alias
+#
+# grads
+#
+setenv GAUDFT "$W2_BDIRAPP/grads/udf/udft"
+setenv GADDIR "$W2_BDIRAPP/grads/data"
+setenv GASCRP "$W2_BDIRAPP/grads/gslib"
+setenv GAUDXT "$W2_BDIRAPP/grads/udc/udxt"
+
+#
+# library path for pgf77 application that does cliper via python w2.tc.cliper.py
+# dependency needs to be removed... couldn't get f2py to build via g95... 
+#
+setenv LD_LIBRARY_PATH /usr/lib:"$W2_BDIRLIB"
+
+# ************* ADMIN PATH
+set adminpath = ( \
+		/bin	\
+		/sbin \
+		/usr/bin \
+		/usr/sbin \
+		/etc \
+		/usr/bin/X11 \
+		)
+
+# ************* LOCAL USER PATH
+set lpath = ( \
+                "$W2_BDIRBIN" \
+                "$W2_BDIRAPP/grads/bin" \
+                "$W2_BDIRAPP/python/bin" \
+                "$W2_BDIRAPP/perl/bin" \
+		)
+
+
+# *************  PROJECT PATHS
+set projectpath = ( \
+                    "$W2_BDIR/prc/wxmap2" \
+                    "$W2_BDIR/prc/flddat" \
+		    "$W2_BDIR/prc/tcdat" \
+                    "$W2_BDIR/prc/util" \
+		    )
+
+
+set path = ( \
+		. \
+		$projectpath \
+		$lpath \
+		$adminpath \
+)		
+
+if ( -e .w2localNOrc ) then
+   echo "loading local config rc .w2localNOrc"
+   source .w2localNOrc
+endif
+
+fixprompt

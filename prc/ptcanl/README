@@ -1,0 +1,43 @@
+Information about Michael Natoli's directory on wxmap2
+
+All of my stuff is located in the subdirectory lsdiag. There are
+several python codes located in this directory from my work for 
+the second half of the summer
+
+- cardanl.py: module with several classes, used by tcanl.py. This
+module has several methods to help with reading the storm files 
+I created, analyzing them, calculating means, and displaying 
+developing and non-developing pTCs. This is a very helpful file
+for the display purposes.
+
+- caseSH14.py: this is a script that only displays the Jan 14 
+landphoon case against all 2013-15 SH TCs. Options for display.
+
+- casewpac15.py: same as above, but compares the two invests in 
+June-July 2015 that had fujiwhara interactions. Options for display.
+
+- data/: subdirectory where I put all of the storm files, i.e. lifetime
+tcdiag variables at tau=0 for all of the storms
+
+- diagcard.py: moduke with classes used by tcdiag-mean.py. Useful for 
+creating the files that are stored in data of the storm lifetimes
+
+- p.tcdiag-anl.*.py: different versions of a code that parses the 
+tcdiag files. Some are my edits, but they come from your original code
+so you shouldn't need this.
+
+- tcanl.py: code for displaying everything, options for different listings
+and displays. Can display up to 1 season of pTCs in a specific variable mentioned. 
+Will automatically correct for gfs2 vs ecmt depending on the year
+
+- tcdiag-anl-card.py: Haven't used this one in a while and it currently doesn't work,
+because of some changes I must have made. Not an important one, but i refrained 
+from deleting the file. I assume the intent was to print out the diagcards.
+
+- tcdiag-mean.py: Important code, prints out diagcards, prints out means, 
+and writes to the data files. Uses diagcard.py module heavily.
+
+- tcdisp4panel.py: displays the pTCs for 4 basins, and gives options on which 
+year to use. 
+
+- w2.tc.lsdiag-anl.py: one of your codes. Shouldn't need this either. 

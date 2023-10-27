@@ -1,0 +1,5 @@
+import rlcompleter
+import readline
+readline.parse_and_bind("tab: complete")
+#import sys
+#sys.path.append("/home/fiorino/lib/python")

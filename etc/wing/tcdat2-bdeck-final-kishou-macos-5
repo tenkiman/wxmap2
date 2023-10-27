@@ -1,0 +1,37 @@
+#!wing
+#!version=5.0
+##################################################################
+# Wing IDE project file                                          #
+##################################################################
+[project attributes]
+proj.directory-list = [{'dirloc': loc('../../prc/lib/python'),
+                        'excludes': (),
+                        'filter': u'All Source Files',
+                        'include_hidden': False,
+                        'recursive': False,
+                        'watch_for_changes': True},
+                       {'dirloc': loc('../../prc/tcdat'),
+                        'excludes': (),
+                        'filter': u'All Source Files',
+                        'include_hidden': False,
+                        'recursive': False,
+                        'watch_for_changes': True},
+                       {'dirloc': loc('../../../w21-git/prj/tc/20151216_hwrf-gfs-ecmt-2007-2015'),
+                        'excludes': (),
+                        'filter': u'All Source Files',
+                        'include_hidden': False,
+                        'recursive': False,
+                        'watch_for_changes': True},
+                       {'dirloc': loc('../../../w21-git/prj/tc/20160301_ncar_tcgen_mpas_review'),
+                        'excludes': (),
+                        'filter': u'All Source Files',
+                        'include_hidden': False,
+                        'recursive': True,
+                        'watch_for_changes': True},
+                       {'dirloc': loc('../../../w21-git/prj/tc/20160506_nostorm_periods'),
+                        'excludes': (),
+                        'filter': u'All Source Files',
+                        'include_hidden': False,
+                        'recursive': True,
+                        'watch_for_changes': True}]
+proj.file-type = 'shared'

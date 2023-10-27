@@ -1,0 +1,26 @@
+&datein 
+  inp%byy=10,
+  inp%bmm=03,
+  inp%bdd=10,
+  inp%bhh=00, 
+  inp%model=1
+/
+&stormlist
+  stswitch =  1 1 1 1 1 3 3 3 3 3 3 3 3 3 3
+/
+&fhlist 
+  itmphrs =  0000 0006 0012 0018 0024 0030 0036 0042 0048 0054 0060 0066 0072 0078 0084 0090 0096 0102 0108 0114 0120 0126 0132 0138 0144 0150 0156 0162 0168 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99
+/
+&atcfinfo 
+  atcfnum=81,
+  atcfname='ECM2',
+  atcfymdh=2010031000
+/
+&phaseinfo 
+  phaseflag='y',
+  phasescheme='cps'
+/
+&structinfo
+  structflag='y',
+  ikeflag='y'
+/

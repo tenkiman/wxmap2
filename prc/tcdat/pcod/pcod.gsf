@@ -1,0 +1,55 @@
+function pcod()
+ 
+_stm=04L
+_dtg=2007082000
+_model=OFCL
+ 
+_latmin=10.0  
+_latmax=30.0  
+_lonmin=255.0 
+_lonmax=285.0 
+ 
+_pcod.1=' 17.5  282.5 test'
+_pcod.2=' 17.3  282.2 test'
+_pcod.3=' 17.4  278.5 test'
+_pcod.4=' 17.4  274.9 test'
+_pcod.5=' 17.6  271.2 test'
+_pcod.6=' 17.8  267.7 test'
+_pcod.7=' 18.1  260.4 test'
+_pcod.8=' 18.3  259.6 test'
+_pcod.9=' 18.7  259.0 test'
+_pcod.10=' 19.3  258.4 test'
+_pcod.11=' 20.0  258.0 test'
+_pcod.12=' 20.8  257.8 test'
+_pcod.13=' 21.5  257.8 test'
+_pcod.14=' 22.3  258.1 test'
+_pcod.15=' 22.9  258.5 test'
+_pcod.16=' 23.5  259.2 test'
+_pcod.17=' 23.8  259.9 test'
+_pcod.18=' 24.0  260.7 test'
+_pcod.19=' 23.9  261.6 test'
+_pcod.20=' 23.9  261.6 test'
+_pcod.21=' 21.8  268.5 test'
+_pcod.22=' 20.8  272.0 test'
+_pcod.23=' 19.6  275.3 test'
+_pcod.24=' 18.6  278.7 test'
+_pcod.25=' 17.7  282.2 test'
+_pcodn=25
+ 
+_fc.1=' 17.5  282.2 test'
+_fc.2=' 18.0  278.6 test'
+_fc.3=' 18.5  275.1 test'
+_fc.4=' 19.2  271.6 test'
+_fc.5=' 19.8  268.1 test'
+_fc.6=' 21.0  261.0 test'
+_fcn=6
+ 
+_bt.1=' 17.5  282.2 test'
+_bt.2=' 17.8  278.5 test'
+_bt.3=' 18.2  274.9 test'
+_bt.4=' 18.9  271.3 test'
+_bt.5=' 19.7  267.8 test'
+_bt.6=' 20.5  261.0 test'
+_btn=6
+ 
+return

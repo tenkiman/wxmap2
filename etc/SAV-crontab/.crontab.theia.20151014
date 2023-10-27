@@ -1,0 +1,29 @@
+MAILTO=""
+#------------------------------------------------------
+# theia crontab
+#------------------------------------------------------
+
+runcmd='/scratch3/BMC/fim/fiorino/w21/run.cron.tcsh'
+w2pdir='/scratch3/BMC/fim/fiorino/w21/prc'
+logdir='/scratch3/BMC/fim/fiorino/tmp'
+
+1,32 * * * * $runcmd "$w2pdir/tcdat/w2.tc.rsync.mirror.com.tracks.atcfunix.py" >> $logdir/log.w2.tracks.NCEP 2>&1
+
+# -- 20130726 -- do fp2 on zeus because rtfim moved from jet to zeus for hfip 2013 demo
+# -- 20150331 -- turn off
+#53  5-11,15-23    * * * $runcmd "$w2pdir/fim/w2.fim.post2.py cur12-24.cur12 rtfim -Q"    >> $logdir/log.w2.fim.post2.py.FIM 2>&1
+
+# -- 20130808 -- only do mss pypdb on zeus --> pushes to jet
+# -- 20140912 -- now works on jet to do -I
+# -- 20140915 -- still a problem on jet?
+51       2 * * * $runcmd "$w2pdir/flddat/w2.mss.nwp2-w2flds.py all all -M"      >> $logdir/log.w2.mss.nwp2-w2flds.pyinv.NWP2 2>&1
+51       3 * * * $runcmd "$w2pdir/flddat/w2.mss.nwp2-w2flds.py all all -W -M"   >> $logdir/log.w2.mss.nwp2-w2flds.pyinv.W2FLDS 2>&1
+51       4 * * * $runcmd "$w2pdir/flddat/w2.mss.nwp2-w2flds.py all all -R -M"   >> $logdir/log.w2.mss.nwp2-w2flds.pyinv.RTFIM 2>&1
+
+# -- clean log files
+  17           3            1-31/5 * * $runcmd "$w2pdir/wxmap2/w2.clean.log.py -A"                     >> $logdir/log.w2.clean.web.py.LOGCLEAN 2>&1
+
+# -- 20140206 -- mpas nc -> grb1
+
+17   8-13,20-23,0-1  * * * $runcmd "$w2pdir/flddat/w2.fld.mpas.nc2grib1.py ops12 -Q"           >> $logdir/log.w2.fld.mpas.nc2grib1.py.MPASNC2GRB1 2>&1
+37   8-13,20-23,0-1  * * * $runcmd "$w2pdir/flddat/w2.fld.mpas.nc2grib1.py ops12 -Q -M mpsg"   >> $logdir/log.w2.fld.mpas.nc2grib1.py.MPSGNC2GRB1 2>&1

@@ -1,0 +1,3443 @@
+Content-type: text/html
+
+<HTML><HEAD><TITLE>Manpage of pavuk</TITLE>
+</HEAD><BODY>
+<H1>pavuk</H1>
+Section: Internet utils (1)<BR>Updated: 2008-07-09T14:17<BR><A HREF="#index">Index</A>
+<A HREF="http://localhost/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+pavuk - HTTP, HTTP over SSL, FTP, FTP over SSL and Gopher recursive document retrieval program
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+<B>pavuk [-mode {normal | resumeregets | singlepage | singlereget | sync | dontstore | ftpdir | mirror}]</B>
+
+<I>[-X] [-runX] [-bg/-nobg] [prefs/-noprefs] [-h] [-v] [-progress/-noprogress] [-stime/-nostime] [-xmaxlog $nr]</I>
+
+<I>[-logfile $file] [-slogfile $file] [-auth_file $file] [-msgcat $dir] [-language $str] [-gui_font $font] [-quiet/-verbose</I>
+
+<I>[-read_css/-noread_css]</I>
+
+<I>[-cdir $dir]</I>
+
+<I>[-scndir $dir]</I>
+
+<I>[-scenario $str] [-dumpscn $filename]</I>
+
+<I>[-lmax $nr] [-dmax $nr]</I>
+
+<I>[-leave_level $nr]</I>
+
+<I>[-maxsize $nr] [-minsize $nr]</I>
+
+<I>[-asite $list] [-dsite $list]</I>
+
+<I>[-adomain $list] [-ddomain $list]</I>
+
+<I>[-asfx $list] [-dsfx $list]</I>
+
+<I>[-aprefix $list] [-dprefix $list]</I>
+
+<I>[-amimt $list] [-dmimet $list]</I>
+
+<I>[-pattern $pattern] [-url_pattern $pattern]</I>
+
+<I>[-rpattern $regexp] [-url_rpattern $regexp]</I>
+
+<I>[-skip_pattern $pattern] [-skip_url_pattern $pattern]</I>
+
+<I>[-skip_rpattern $regexp] [-skip_url_rpattern $regexp]</I>
+
+<I>[-newer_than $time] [-older_than $time]</I>
+
+<I>[-schedule $time] [-reschedule $nr]</I>
+
+<I>[-dont_leave_site/-leave_site] [-dont_leave_dir/-leave_dir]</I>
+
+<I>[-http_proxy $site[:$port]] [-ftp_proxy $site[:$port]]</I>
+
+<I>[-ssl_proxy $site[:$port]] [-gopher_proxy $site[:$port]]</I>
+
+<I>[-ftp_httpgw/-noftp_httpgw] [-ftp_dirtyproxy/-noftp_dirtyproxy]</I>
+
+<I>[-gopher_httpgw/-nogopher_httpgw]</I>
+
+<I>[-noFTP/-FTP] [-noHTTP/-HTTP] [-noSSL/-SSL] [-noGopher/-Gopher]</I>
+
+<I>[-FTPdir/-noFTPdir]</I>
+
+<I>[-noCGI/-CGI]</I>
+
+<I>[-FTPlist/-noFTPlist] [-FTPhtml/-noFTPhtml]</I>
+
+<I>[-noRelocate/-Relocate] [-force_reget/-noforce_reget]</I>
+
+<I>[-nocache/-cache] [-check_size/-nocheck_size]</I>
+
+<I>[-noRobots/-Robots] [-noEnc/-Enc]</I>
+
+<I>[-auth_name $user] [-auth_passwd $pass] [-auth_scheme 1/2/3/4/user/Basic/Digest/NTLM]</I>
+
+<I>[-auth_reuse_nonce/-no_auth_reuse_nonce]</I>
+
+<I>[-http_proxy_user $user] [-http_proxy_pass $pass] [-http_proxy_auth 1/2/3/4/user/Basic/Digest/NTLM]</I>
+
+<I>[-auth_reuse_proxy_nonce/-no_auth_reuse_proxy_nonce]</I>
+
+<I>[-ssl_key_file $file] [-ssl_cert_file $file] [-ssl_cert_passwd $pass]</I>
+
+<I>[-from $email] [-send_from/-nosend_from] [-identity $str] [-auto_referer/-noauto_referer]</I>
+
+<I>[-referer/-noreferer]</I>
+
+<I>[-alang $list] [-acharset $list]</I>
+
+<I>[-retry $nr] [-nregets $nr] [-nredirs $nr] [-rollback $nr] [-sleep $nr] [-timeout $nr]</I>
+
+<I>[-preserve_time/-nopreserve_time] [-preserve_perm/-nopreserve_perm] [-preserve_slinks/-nopreserve_slinks]</I>
+
+<I>[-bufsize $nr] [-maxrate $nr] [-minrate $nr]</I>
+
+<I>[-user_condition $str]</I>
+
+<I>[-cookie_file $file] [-cookie_send/-nocookie_send] [-cookie_recv/-nocookie_recv] [-cookie_update/-nocookie_update] [-cookies_max $nr] [-disabled_cookie_domains $list]</I>
+
+<I>[-disable_html_tag $TAG,[$ATTRIB][;...]] [-enable_html_tag $TAG,[$ATTRIB][;...]]</I>
+
+<I>[-tr_del_chr $str] [-tr_str_str $str1 $str2] [-tr_chr_chr $chrset1 $chrset2]</I>
+
+<I>[-index_name $str] [-store_index/-nostore_index]</I>
+
+<I>[-store_name $str] [-debug/-nodebug] [-debug_level $level]</I>
+
+<I>[-browser $str]</I>
+
+<I>[-urls_file $file]</I>
+
+<I>[-file_quota $nr] [-trans_quota $nr] [-fs_quota $nr] [-enable_js/-disable_js]</I>
+
+<I>[-fnrules $t $m $r] [-store_info/-nostore_info]</I>
+
+<I>[-all_to_local/-noall_to_local] [-sel_to_local/-nosel_to_local]</I>
+
+<I>[-all_to_remote/-noall_to_remote]</I>
+
+<I>[-url_strategie $strategie]</I>
+
+<I>[-remove_adv/-noremove_adv] [-adv_re $RE]</I>
+
+<I>[-check_bg/-nocheck_bg]</I>
+
+<I>[-send_if_range/-nosend_if_range]</I>
+
+<I>[-sched_cmd $str]</I>
+
+<I>[-unique_log/-nounique_log]</I>
+
+<I>[-post_cmd $str] [-ssl_version $v] [-unique_sslid/-nounique_sslid]</I>
+
+<I>[-aip_pattern $re] [-dip_pattern $re]</I>
+
+<I>[-use_http11/-nouse_http11]</I>
+
+<I>[-local_ip $addr]</I>
+
+<I>[-request $req]</I>
+
+<I>[-formdata $req] [-httpad $str]</I>
+
+<I>[-nthreads $nr] [-immesg/-noimmesg]</I>
+
+<I>[-dumpfd $nr] [-dump_urlfd $nr]</I>
+
+<I>[-unique_name/-nounique_name]</I>
+
+<I>[-leave_site_enter_dir/-dont_leave_site_enter_dir]</I>
+
+<I>[-max_time $nr]</I>
+
+<I>[-del_after/-nodel_after] [-singlepage/-nosinglepage]</I>
+
+<I>[-dump_after/-nodump_after] [-dump_response/-nodump_response]</I>
+
+<I>[-auth_ntlm_domain $str] [-auth_proxy_ntlm_domain $str]</I>
+
+<I>[-js_pattern $re] [-follow_cmd $str]</I>
+
+<I>[-retrieve_symlink/-noretrieve_symlink]</I>
+
+<I>[-js_transform $p $t $h $a] [-js_transform2 $p $t $h $a]</I>
+
+<I>[-ftp_proxy_user $str] [-ftp_proxy_pass $str]</I>
+
+<I>[-limit_inlines/-dont_limit_inlines]</I>
+
+<I>[-ftp_list_options $str] [-fix_wuftpd_list/-nofix_wuftpd_list]</I>
+
+<I>[-post_update/-nopost_update] [-info_dir $dir]</I>
+
+<I>[-mozcache_dir $dir] [-aport $list] [-dport $list]</I>
+
+<I>[-hack_add_index/-nohack_add_index]</I>
+
+<I>[-default_prefix $str] [-rsleep/-norsleep]</I>
+
+<I>[-ftp_login_handshake $host $handshake]</I>
+
+<I>[-js_script_file $file]</I>
+
+<I>[-dont_touch_url_pattern $pat]</I>
+
+<I>[-dont_touch_url_rpattern $pat]</I>
+
+<I>[-dont_touch_tag_rpattern $pat]</I>
+
+<I>[-tag_pattern $tag $attrib $url]</I>
+
+<I>[-tag_rpattern $tag $attrib $url]</I>
+
+<I>[-nss_cert_dir $dir]</I>
+
+<I>[-nss_accept_unknown_cert/-nonss_accept_unknown_cert]</I>
+
+<I>[-nss_domestic_policy/-nss_export_policy]</I>
+
+<I>[-[no]verify]</I>
+
+<I>[-tlogfile $file]</I>
+
+<I>[-trelative {object | program}]</I>
+
+<I>[-transparent_proxy FQDN[:port]]</I>
+
+<I>[-transparent_ssl_proxy FQDN[:port]]</I>
+
+<I>[-sdemo]</I>
+
+<I>[-noencode]</I>
+
+<I>[URLs]</I>
+
+<BR>
+
+<P>
+
+<B>pavuk -mode {normal | singlepage | singlereget}</B>
+
+<I>[-base_level $nr]</I>
+
+<BR>
+
+<P>
+
+<B>pavuk -mode sync</B>
+
+<I>[-ddays $nr] [-subdir $dir] [-remove_old/-noremove_old]</I>
+
+<BR>
+
+<P>
+
+<B>pavuk -mode resumeregets</B>
+
+<I>[-subdir $dir]</I>
+
+<BR>
+
+<P>
+
+<B>pavuk -mode linkupdate</B>
+
+<I>[-X] [-h] [-v] [-cdir $dir] [-subdir $dir] [-scndir $dir] [-scenario $str]</I>
+
+<P>
+
+<B>pavuk -mode reminder</B>
+
+<I>[-remind_cmd $str]</I>
+
+<BR>
+
+<P>
+
+<B>pavuk -mode mirror</B>
+
+<I>[-subdir $dir] [-remove_old/-noremove_old] [-remove_before_store/-noremove_before_store] [-always_mdtm/-noalways_mdtm]</I>
+
+<BR>
+
+<P>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+This manual page describes how to use pavuk. Pavuk can be used to
+mirror contents of internet/intranet servers and to maintain copies in
+a local tree of documents.  Pavuk stores retrieved documents in
+locally mapped disk space. The structure of the local tree is the same
+as the one on the remote server. Each supported service (protocol) has
+its own subdirectory in the local tree.  Each referenced server has
+its own subdirectory in these protocols subdirectories; followed by
+the port number on which the service resides, delimited by character
+
+can be be changed. With the option
+<B>-fnrules</B>
+
+you can change the default layout of the local document tree,
+without losing link consistency.
+<BR>
+
+With
+<B>pavuk</B>
+
+it is possible to have up-to-date copies of remote documents in the
+local disk space.
+<BR>
+
+As of version 0.3pl2, pavuk can automatically restart broken connections, and reget
+partial content from an FTP server (which must support the
+<B>REST</B>
+
+command), from a properly configured HTTP/1.1 server, or from a HTTP/1.0
+server which supports
+<B>Ranges.</B>
+
+<BR>
+
+As of version 0.6 it is possible to handle configurations via so
+called scenarios.  The best way to create such a configuration file is
+to use the X Window interface and simply save the created
+configuration. The other way is to use the -dumpscn switch.
+<BR>
+
+As of version 0.7pl1 it is possible to store authentification information
+into an authinfo file, which pavuk can then parse and use.
+<BR>
+
+As of version 0.8pl4 pavuk can fetch documents for use in a local
+proxy/cache server without storing them to local documents tree.
+<BR>
+
+As of version 0.9pl4 pavuk supports
+<B>SOCKS (4/5)</B>
+
+proxies if you have the required libraries.
+<BR>
+
+As of version 0.9pl12 pavuk can preserve permissions of remote files and
+symbolic links, so it can be used for powerful FTP mirroring.
+<BR>
+
+Pavuk supports SSL connections to FTP servers, if you specify ftps://
+URL instead of <A HREF="ftp://.">ftp://.</A>
+<BR>
+
+Pavuk can automatically handle file names with unsafe characters for filesystem.
+This is yet implemented only for Win32 platform and it is hard coded.
+<BR>
+
+Pavuk can now use <B>HTTP/1.1</B> protocol for communication with HTTP servers.
+It can use persistent connections, so one TCP connection should be used to
+transfer several documents without closing it. This feature saves network
+bandwidth and also speedup network communication.
+<BR>
+
+Pavuk can do configurable <B>POST</B> requests to HTTP servers and support
+also file uploading via HTTP POST request.
+<BR>
+
+Pavuk can automatically fill found HTML forms, if user will supply data
+for its fields before with option <B>-formdata</B>.
+<BR>
+
+Pavuk can run configurable number of concurrently running downloading threads when
+compiled with multithreading support.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>Format of supported URLs</H2>
+
+<P>
+<P>
+<I>HTTP</I>
+<BR>
+
+<A HREF="http://[[user][:password]@]host[:port][/document]">http://[[user][:password]@]host[:port][/document]</A>
+<BR>
+
+[[user][:password]@]host[:port][/document]
+<P>
+<I>HTTPS</I>
+<BR>
+
+<A HREF="https://[[user][:password]@]host[:port][/document]">https://[[user][:password]@]host[:port][/document]</A>
+<BR>
+
+ssl[.domain][:port][/document]
+<P>
+<I>FTP</I>
+<BR>
+
+<A HREF="ftp://[[user][:password]@]host[:port][/relative_path][;type=x]">ftp://[[user][:password]@]host[:port][/relative_path][;type=x]</A>
+<BR>
+
+<A HREF="ftp://[[user][:password]@]host[:port][//absolute_path][;type=x]">ftp://[[user][:password]@]host[:port][//absolute_path][;type=x]</A>
+<BR>
+
+ftp[.domain][:port][/document][;type=x]
+<P>
+<I>FTPS</I>
+<BR>
+
+<A HREF="ftps://[[user][:password]@]host[:port][/relative_path][;type=x]">ftps://[[user][:password]@]host[:port][/relative_path][;type=x]</A>
+<BR>
+
+<A HREF="ftps://[[user][:password]@]host[:port][//absolute_path][;type=x]">ftps://[[user][:password]@]host[:port][//absolute_path][;type=x]</A>
+<BR>
+
+ftps[.domain][:port][/document][;type=x]
+<P>
+<I>Gopher</I>
+<BR>
+
+<A HREF="gopher://host[:port][/type[document]]">gopher://host[:port][/type[document]]</A>
+<BR>
+
+gopher[.domain][:port][/type[document]]
+<P>
+<A NAME="lbAF">&nbsp;</A>
+<H2>Default mapping of URLs to local filenames</H2>
+
+<P>
+<P>
+<I>HTTP</I>
+<BR>
+
+<A HREF="http://[[user][:password]@]host[:port][/document][?query]">http://[[user][:password]@]host[:port][/document][?query]</A>
+<BR>
+
+to
+<BR>
+
+http/host_port/[document][?query]
+<P>
+<I>HTTPS</I>
+<BR>
+
+<A HREF="https://[[user][:password]@]host[:port][/document][?query]">https://[[user][:password]@]host[:port][/document][?query]</A>
+<BR>
+
+to
+<BR>
+
+https/host_port/[document][?query]
+<P>
+<I>FTP</I>
+<BR>
+
+<A HREF="ftp://[[user][:password]@]host[:port][/path]">ftp://[[user][:password]@]host[:port][/path]</A>
+<BR>
+
+to
+<BR>
+
+ftp/host_port/[path]
+<P>
+<I>FTPS</I>
+<BR>
+
+<A HREF="ftps://[[user][:password]@]host[:port][/path]">ftps://[[user][:password]@]host[:port][/path]</A>
+<BR>
+
+to
+<BR>
+
+ftps/host_port/[path]
+<P>
+<I>Gopher</I>
+<BR>
+
+<A HREF="gopher://host[:port][/type[document]]">gopher://host[:port][/type[document]]</A>
+<BR>
+
+to
+<BR>
+
+gopher/host_port/[type[document]]
+<P>
+<I>NOTE:</I> Pavuk will use the string with which it queries the target
+server as the name of the results file. This file name may, in some cases,
+contain punctuations such as <B>$,?,=,&amp;</B> etc. Such punctuation can cause
+problems when you are trying to browse downloaded files with your browser or
+you are trying to process downloaded files with shell scripts or view files
+with file management utilities which reference the name of the results file.
+If you believe that this maybe causing problems for you, then you can remove
+all punctuation from the result file name with the option:
+<B>-tr_del_chr [:punct:]</B> or with other options for adjusting filenames.
+<P>
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<P>
+<BR>&nbsp;All&nbsp;options&nbsp;are&nbsp;case&nbsp;insensitive.
+<P>
+<A NAME="lbAH">&nbsp;</A>
+<H2>List of options chapters</H2>
+
+<P>
+<I>Mode</I>
+
+<BR>
+
+<I>Help</I>
+
+<BR>
+
+<I>Indicate/Logging/Interface options</I>
+
+<BR>
+
+<I>Netli options</I>
+
+<BR>
+
+<I>Special start</I>
+
+<BR>
+
+<I>Scenario/Task options</I>
+
+<BR>
+
+<I>Directory options</I>
+
+<BR>
+
+<I>Preserve options</I>
+
+<BR>
+
+<I>Proxy options</I>
+
+<BR>
+
+<I>Proxy Authentification</I>
+
+<BR>
+
+<I>Protocol/Download Option</I>
+
+<BR>
+
+<I>Authentification</I>
+
+<BR>
+
+<I>Site/Domain/Port Limitation Options</I>
+
+<BR>
+
+<I>Limitation Document properties</I>
+
+<BR>
+
+<I>Limitation Document name</I>
+
+<BR>
+
+<I>Limitation Protocol Option</I>
+
+<BR>
+
+<I>Other Limitation Options</I>
+
+<BR>
+
+<I>Javascript support</I>
+
+<BR>
+
+<I>Cookie</I>
+
+<BR>
+
+<I>HTML rewriting engine tuning options</I>
+
+<BR>
+
+<I>Filename/URL Conversion Option</I>
+
+<BR>
+
+<I>Other Options</I>
+
+<BR>
+
+<P>
+<A NAME="lbAI">&nbsp;</A>
+<H2>Mode</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-mode {normal, linkupdate, sync, singlepage, singlereget, resumeregets}</I>
+
+<DD>
+Set operation mode.
+<BR>
+
+<B>normal</B>
+
+- retrieves recursive documents
+<BR>
+
+<B>linkupdate</B>
+
+- update remote URLs in local HTML documents to local URLs if these URLs
+exist in the local tree
+<BR>
+
+<B>sync</B>
+
+- synchronize remote documents with local tree (if a local copy of
+a document is older than remote, the document is retrieved again,
+otherwise nothing happens)
+<BR>
+
+<B>singlepage</B>
+
+- URL is retrieved as one page with all inline objects (picture, sound ...)
+this mode is now obsoleted by <B>-singlepage</B> option.
+<BR>
+
+<B>resumeregets</B>
+
+- pavuk scans the local tree for files that were not retrieved fully
+and retrieves them again (uses partial get if possible)
+<BR>
+
+<B>singlereget</B>
+
+- get URL until it is retrieved in full
+<BR>
+
+<B>dontstore</B>
+
+- transfer page from server, but don't store it to the local tree.
+This mode is suitable for fetching pages that are held in a local
+proxy/cache server.
+<BR>
+
+<B>reminder</B>
+
+- used to inform the user about changed documents
+<BR>
+
+<B>ftpdir</B>
+
+- used to list of contents of FTP directories
+<BR>
+
+<P>
+default operation mode is
+<B>normal</B>
+
+mode.
+<P>
+</DL>
+<A NAME="lbAJ">&nbsp;</A>
+<H2>Help</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-h</I>
+
+<DD>
+Print long verbose help message
+<DT><I>-v</I>
+
+<DD>
+Show version informations and configuration at compilation time.
+<P>
+</DL>
+<A NAME="lbAK">&nbsp;</A>
+<H2>Indicate/Logging/Interface options</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-quiet</I>
+
+<DD>
+Don't show any messages on the screen.
+<DT><I>-verbose</I>
+
+<DD>
+Force to show output messages on the screen (default)
+<DT><I>-progress/-noprogress</I>
+
+<DD>
+Show retrieving progress while running in the terminal (default is progress off)
+<DT><I>-stime/-nostime</I>
+
+<DD>
+Show start and end time of transfer. (default isn't this information shown)
+<DT><I>-xmaxlog $nr</I>
+
+<DD>
+Maximum number of log lines in the Log widget. 0 means unlimited.
+This option is available only when compiled with the GTK+ GUI. (default value is 0)
+<DT><I>-logfile $file</I>
+
+<DD>
+File where all produced messages are stored.
+<DT><I>-unique_log/-nounique_log</I>
+
+<DD>
+When logfile as specified with the option
+<B>-logfile</B>
+
+is already used by another process, try to generate new unique name
+for the log file. (default is this option turned off)
+<DT><I>-slogfile $file</I>
+
+<DD>
+File to store short logs in. This file contains one line of
+informations per processed document.  This is meant to be used in
+connection with any sort of script to produce some statistics, for
+validating links on your website, or for generating simple sitemaps.
+Multiple pavuk processes can use this file concurrently, without
+overwriting each others entries.
+Record structure:
+<BR>
+
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+- <B>PID</B> of pavuk process
+- <B>TIME</B> current time
+- <B>COUNTER</B> in the format current/total number of URLs
+- <B>STATUS</B> contains the type of the error: FATAL, ERR,
+  WARN or OK
+- <B>ERRCODE</B> is the number code of the error
+  (see errcode.h in pavuk sources)
+- <B>URL</B> of the document
+- <B>PARENTURL</B> first parent document of this URL
+  (when it doesn't have parent - [none])
+- <B>FILENAME</B> is the name of the local file the
+  document is saved under
+- <B>SIZE</B> size of requested document if known
+- <B>DOWNLOAD_TIME</B> time which takes downloading of this
+  document in format seconds.mili_seconds
+- <B>HTTPRESP</B> contains the first line of the HTTP server
+  response
+</PRE>
+
+</DL>
+
+<DT><I>-language $str</I>
+
+<DD>
+Native language that pavuk should use for communication with its
+user (works only when there is a message catalog for that language)
+<B>GNU gettext</B> support (for message internationalization) must also be
+compiled in. Default language is taken from your NLS environment variables.
+<DT><I>-gui_font $font</I>
+
+<DD>
+Font used in the GUI interface. To list available X fonts use the
+<B>xlsfonts</B>
+
+command.
+This option is available only when compiled with GTK+ GUI support.
+<P>
+</DL>
+<A NAME="lbAL">&nbsp;</A>
+<H2>Netli options</H2>
+
+
+<DL COMPACT>
+<DT><I>-[no]read_css</I>
+
+<DD>
+Enable or disable fetching objects mentioned in style sheets.
+
+<DT><I>-[no]verify</I>
+
+<DD>
+Enable or disable verifying server CERTS in SSL mode.
+<P>
+
+<DT><I>-tlogfile $file</I>
+
+<DD>
+Turn on Netli logging with output to specified file.
+<P>
+
+<DT><I>-trelative {object | program}</I>
+
+<DD>
+Make Netli timings relative to the start of the first object or the program.
+<P>
+
+<DT><I>-transparent_proxy FQDN[:port]</I>
+
+<DD>
+When processing URL, send the original, but send it to the IP address
+at FQDN
+<P>
+
+<DT><I>-transparent_ssl_proxy FQDN[:port]</I>
+
+<DD>
+When processing HTTPS URL, send the original, but send it to the IP address
+at FQDN
+<P>
+
+<DT><I>-sdemo</I>
+
+<DD>
+Output in sdemo compatible format. This is only used by sdemo. (For
+now it simply means output '-1' rather than '*'  when measurements are
+invalid.)
+<P>
+
+<DT><I>-noencode</I>
+
+<DD>
+Do not escape characters that are &quot;unsafe&quot; in URLS.
+<P>
+</DL>
+<A NAME="lbAM">&nbsp;</A>
+<H2>Special start</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-X</I>
+
+<DD>
+Start program with X Window interface (if compiled with support for GTK+).
+Pavuk as default starts without GUI, and behaves as regular commandline tool.
+<DT><I>-runX</I>
+
+<DD>
+When used together with the <B>-X</B> option, pavuk starts processing of
+URLs immediately after the GUI window is launched. Without the <B>-X</B>
+given, this option doesn't have any effect.
+Only available when compiled with GTK+ support .
+<DT><I>-bg/-nobg</I>
+
+<DD>
+This option allows pavuk to detach from its terminal and run in
+background mode.  Pavuk will not output any messages to the terminal
+than. If you want to see messages, you have to use the
+<B>-log_file</B>
+
+option to specify a file where messages will be written.
+Default pavuk executes at foreground.
+<DT><I>-check_bg/-nocheck_bg</I>
+
+<DD>
+Normally, programs sent into the background after being run in
+foreground continue to output messages to the terminal.  If this
+option is activated, pavuk checks if it is running as background job
+and will not write any messages to the terminal in this case. After
+it becomes a foreground job again, it will start writing messages to
+terminal in the normal way.  This option is available only when your
+system supports retrieving of terminal info via <B>tc*()</B> functions.
+<DT><I>-prefs/-noprefs</I>
+
+<DD>
+When you turn this option on, pavuk will preserve all settings when exiting, and
+when you run pavuk with GUI interface again, all settings will be restored.
+The settings will be stored in the
+<B>~./pavuk_prefs</B>
+
+file. Default pavuk want restore its option when started.
+This option is available only when compiled with GTK+.
+<DT><I>-schedule $time</I>
+
+<DD>
+Execute pavuk at the time specified as parameter. The Format of the
+$time parameter is YYYY.MM.DD.hh.mm.  You need a properly configured
+scheduling with the <B>at</B> command on your system for using this option.
+If default configuration (at -f %f %t %d.%m.%Y) of scheduling command won't work on your system, try to adjust it with <B>-sched_cmd</B> option.
+<DT><I>-reschedule $nr</I>
+
+<DD>
+Execute pavuk periodically with $nr hours period.  You need properly
+configured scheduling with the <B>at</B> command on your system for using this option.
+<DT><I>-sched_cmd $str</I>
+
+<DD>
+Command to use for scheduling. Pavuk explicitly supports scheduling with
+<B>at</B> $str should contain regular characters and macros, escaped by <B>%</B> character.
+Supported macros are:
+<BR>
+
+
+<B>%f</B>
+
+<BR>&nbsp;-&nbsp;for&nbsp;script&nbsp;filename
+<BR>
+
+<B>%t</B>
+
+<BR>&nbsp;-&nbsp;for&nbsp;time&nbsp;(in&nbsp;format&nbsp;HH:MM)
+<BR>
+
+<BR>&nbsp;-&nbsp;all&nbsp;macros&nbsp;as&nbsp;supported&nbsp;by&nbsp;the&nbsp;<B>strftime()</B>&nbsp;function
+
+<DT><I>-urls_file $file</I>
+
+<DD>
+If you use this option, pavuk will read URLs from $file before it
+starts processing.  In this file, each URL needs to be on a separate
+line. After the last URL, a single dot <B>.</B> followed by a LF
+(line-feed) character denotes the end.  Pavuk will start processing
+right after all URLs have been read.  If <B>$file</B> is given as the <B>-</B>
+character, standard input will be read.
+<DT><I>-store_info/-nostore_info</I>
+
+<DD>
+This option causes pavuk to store information about each document
+into a separate file in the <B>.pavuk_info</B>
+directory. This file is used to store the original URL from which
+the document was downloaded. For files that are downloaded via
+HTTP or HTTPS protocols, the whole HTTP response header is stored
+there. I recommend to use this option when you are using options
+that change the default layout of the local document tree, because
+this info file helps pavuk to map the local filename to the
+URL. This option is also very useful when different URLs have the
+same filename in the local tree. When this occurs, pavuk detects
+this using info files, and it will prefix the local name with
+numbers. At default is disabled storing of this extra informations.
+<DT><I>-info_dir $dir</I>
+
+<DD>
+You can set with this option location of separate directory for storing
+info files created when <B>-store_info</B> option is used. This is useful
+when you don't want to mix in destination directory the info files with
+regular document files. The structure of the info files is preserved, just
+are stored in different directory.
+<DT><I>-request $req</I>
+
+<DD>
+With this option you can specify extended informations for starting URLs.
+With this option you can specify query data for <B>POST</B> or <B>GET</B> .
+Current syntax of this option is :
+<B>URL:[&quot;]$url[&quot;] [METHOD:[&quot;]{GET|POST}[&quot;]] [ENCODING:[&quot;]{u|m}[&quot;]] [FIELD:[&quot;]variable=value[&quot;]] [FILE:[&quot;]variable=filename[&quot;] [LNAME:[&quot;]local_filename[&quot;]]</B>
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+- <B>URL:</B> specifies request URL
+- <B>METHOD:</B> specifies request method for URL and is
+  one of <I>GET</I> or <I>POST</I>.
+- <B>ENCODING:</B> specifies encoding for request body data.
+    <B>m</B> is for <I>multipart/form-data</I> encoding
+    <B>u</B> is for <I>application/x-www-form-urlencoded</I>
+    encoding
+- <B>FIELD:</B> specifies field of request data in format
+    <B>variable=value</B>. For encoding of special characters
+    in <I>variable</I> and <I>value</I> you can use same encoding
+    as is used in <B>application/x-www-form-urlencoded</B>
+    encoding.
+- <B>FILE:</B> specifies special field of query, which is
+    used to specify file for <B>POST</B> based file upload.
+- <B>LNAME:</B> specifies localname for this request
+</PRE>
+
+</DL>
+
+When you need to use inside the <B>FIELD:</B> and <B>FILE:</B> fields of
+request specification special characters, you should use the
+<B>application/x-www-form-urlencoded</B> encoding of characters. It means
+all nonASCII characters, quote character (&quot;), space character ( ),
+ampersand character (&amp;), percent character (%) and equal character (=)
+should be encoded in form <B>%xx</B> where <B>xx</B> is hexadecimal
+representation of ASCII value of character. So for example <I>%</I> character
+should be encoded like <I>%25</I>.
+<DT><I>-formdata $req</I>
+
+<DD>
+This option gives you chance to specify contents for HTML forms found during
+traversing document tree.
+<BR>&nbsp;Current&nbsp;syntax&nbsp;of&nbsp;this&nbsp;option&nbsp;is&nbsp;same&nbsp;as&nbsp;for&nbsp;<B>-request</B>&nbsp;option,&nbsp;but
+<B>ENCODING:</B> and <B>METHOD:</B> are meaningless in this option semantics.
+<BR>&nbsp;In&nbsp;<B>URL:</B>&nbsp;you&nbsp;have&nbsp;to&nbsp;specify&nbsp;HTML&nbsp;form&nbsp;action&nbsp;URL,&nbsp;which&nbsp;will&nbsp;be&nbsp;matched
+against action URLs found in processed HTML documents. If pavuk finds action URL
+which matches that supplied in <B>-formdata</B> option, pavuk will construct
+<B>GET</B> or <B>POST</B> request from data supplied in this option and from default
+form field values supplied in HTML document. Values supplied on commandline have
+precedence before that supplied in HTML file.
+<DT><I>-nthreads $nr</I>
+
+<DD>
+By means of this option you can specify how many concurrent threads will
+download documents. Default pavuk executes 3 concurrent downloading threads.
+This option is available only when pavuk is compiled to support multithreading.
+<DT><I>-immesg/-noimmesg</I>
+
+<DD>
+Default pavuks behavior when running multiple downloading threads is to buffer
+all output messages in memory buffer and flush that buffered data just when thread
+finishes processing of one document. With this option you can change this
+behavior to see the messages immediately when it is produced. It is only usable
+when you want to debug some specials in multithreading environment.
+This option is available only when pavuk is compiled to support multithreading.
+<DT><I>-dumpfd $nr</I>
+
+<DD>
+For scripting is sometimes usable to be able to download document directly to
+pipe or variable instead of storing it to regular file. In such case you can use
+this option to dump data for example to stdout ($nr = 1).
+<DT><I>-dump_after/-nodump_after</I>
+
+<DD>
+While using <B>-dumpfd</B> option in multithreaded pavuk, it is required to dump
+document in one moment because documents downloaded in multiple threads can
+overlap. This option is also useful when you want to dump document after pavuk
+adjusts links inside HTML documents.
+<DT><I>-dump_response/-nodump_response</I>
+
+<DD>
+This option have effect only when used with <B>-dumpfd</B> option. It is used to dump HTTP response headers.
+<DT><I>-dump_urlfd $nr</I>
+
+<DD>
+When you will use this option, pavuk will output all URLs found in HTML
+documents to file descriptor $nr. You can use this option to extract and
+convert all URLs to absolute.
+<P>
+</DL>
+<A NAME="lbAN">&nbsp;</A>
+<H2>Scenario/Task options</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-scenario $str</I>
+
+<DD>
+Name of scenario to load and/or run. Scenarios are files with a structure
+similar to the <B>.pavukrc</B> file.
+Scenarios contain saved configurations. You can use it for periodical
+mirroring. Parameters from scenarios specified at the command line
+can be overwritten by command line parameters.
+To be able to use this option, you need to specify scenario base
+directory with option <B>-scndir</B>.
+<DT><I>-dumpscn $filename</I>
+
+<DD>
+Store actual configuration into scenario file with name <B>$filename</B>.
+This is useful to quickly create pre-configured scenarios for manual
+editing.
+<P>
+</DL>
+<A NAME="lbAO">&nbsp;</A>
+<H2>Directory options</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-msgcat $dir</I>
+
+<DD>
+Directory which contains the message catalog for pavuk.
+If you do not have permission
+to store a pavuk message catalog in the system directory, you should simply
+create similar structure of directories in your home directory as it is on
+your system.
+<P>
+<B>For example:</B>
+
+<P>
+Your native language is German, and your home directory is
+/home/jano.
+<P>
+You should at first create the directory
+/home/jano/locales/de/LC_MESSAGES/, then put the German pavuk.mo
+there and set -msgcat to /home/jano/locales/.  If you have properly
+set locale environment values, you will see pavuk speaking German.
+This option is available only when you compiled in support for GNU
+gettext messages internationalization.
+<DT><I>-cdir $dir</I>
+
+<DD>
+Directory where are all retrieved documents are stored. If not
+specified, the current directory is used. If the specified directory doesn't
+exist, it will be created.
+<DT><I>-scndir $dir</I>
+
+<DD>
+Directory in which your scenarios are stored.
+You must use this option when you are loading or storing scenario files.
+<P>
+</DL>
+<A NAME="lbAP">&nbsp;</A>
+<H2>Preserve options</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-preserve_time/-nopreserve_time</I>
+
+<DD>
+Store downloaded document with same modification time as on the remote site. Modification
+time will be set only when such information is available (some FTP servers do not
+support the <B>MDTM</B> command, and some documents on HTTP servers are created online so pavuk
+can't retrieve the modification time of this document).
+At default modification time of documents isn't preserved.
+<DT><I>-preserve_perm/-nopreserve_perm</I>
+
+<DD>
+Store downloaded document with the same permissions as on the remote site.
+This option has effect only when downloading a file through FTP protocol and
+assumes that the <B>-ftplist</B> option is used. At default permissions are not
+preserved.
+<DT><I>-preserve_slinks/-nopreserve_slinks</I>
+
+<DD>
+Set symbolic links to point exactly to same location as on the remote server;
+don't do any relocations.
+This option has effect only when downloading file through FTP protocol and
+assumes that the <B>-ftplist</B> option is used.
+Default symbolic links are not preserved, and are retrieved as regular
+documents with full contents of linked file.
+<P>
+For example, assume that on the FTP server <A HREF="ftp://ftp.xx.org">ftp.xx.org</A> there is a symbolic link
+/pub/pavuk/pavuk-current.tgz, which points to /tmp/pub/pavuk-0.9pl11.tgz.
+Pavuk will create symbolic link ftp/<A HREF="ftp://ftp.xx.org_21">ftp.xx.org_21</A>/pub/pavuk/pavuk-current.tgz
+<BR>
+
+if option -preserve_slinks will be used this symbolic link will point to
+/tmp/pub/pavuk-0.9pl11.tgz
+<BR>
+
+if option -preserve_slinks want be used, this symbolic link will point to
+<BR>&nbsp;../../tmp/pub/pavuk-0.9pl11.tgz
+<DT><I>-retrieve_symlink/-noretrieve_symlink</I>
+
+<DD>
+Retrieve files behind symbolic links instead of replicating symlinks in local tree.
+<P>
+</DL>
+<A NAME="lbAQ">&nbsp;</A>
+<H2>Proxy options</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-http_proxy $site[:$port]</I>
+
+<DD>
+If this parameter is used, then all HTTP requests are going through this proxy
+server. This is useful if your site resides behind a firewall, or if you want
+to use a HTTP proxy cache server. The default port number is 8080.
+Pavuk allows you to specify multiple HTTP proxies
+(using multiple -http_proxy options) and it will rotate proxies with roundrobin priority disabling proxies with errors.
+<DT><I>-nocache/-cache</I>
+
+<DD>
+Use this option whenever you want to get the document directly from
+the site and not from your HTTP proxy cache server. Default pavuk allows
+transfer of document copies from cache.
+<DT><I>-ftp_proxy $site[:$port]</I>
+
+<DD>
+If this parameter is used, then all FTP requests are going through this proxy
+server.
+This is useful when your site resides behind a firewall, or if you want to use
+FTP proxy cache server.  The default port number is 22.
+Pavuk supports three different types of proxies for FTP, see the options
+<B>-ftp_httpgw, -ftp_dirtyproxy.</B>
+If none of the mentioned options is used, then pavuk assumes a regular
+FTP proxy with <B>USER <A HREF="mailto:user@host">user@host</A></B> connecting to remote FTP server.
+<DT><I>-ftp_httpgw/-noftp_httpgw</I>
+
+<DD>
+The specified FTP proxy is a HTTP gateway for the FTP protocol. Default FTP proxy is regular FTP proxy.
+<DT><I>-ftp_dirtyproxy/-noftp_dirtyproxy</I>
+
+<DD>
+The specified FTP proxy is a HTTP proxy which supports a <B>CONNECT</B> request
+(pavuk should use full FTP protocol, except of active data connections).
+Default FTP proxy is regular FTP proxy.
+If both -ftp_dirtyproxy and -ftp_httpgw are specified, -ftp_dirtyproxy is preferred.
+<DT><I>-gopher_proxy $site[:$port]</I>
+
+<DD>
+Gopher gateway or proxy/cache server.
+<DT><I>-gopher_httpgw/-nogopher_httpgw</I>
+
+<DD>
+The specified Gopher proxy server is a HTTP gateway for Gopher protocol.
+When <B>-gopher_proxy</B> is set and this <B>-gopher_httpgw</B> option isn't used,
+pavuk is using proxy as HTTP tunnel with <B>CONNECT</B> request to open connections to Gopher servers.
+<DT><I>-ssl_proxy $site[:$port]</I>
+
+<DD>
+SSL proxy (tunneling) server [as that in CERN httpd + patch or in
+Squid] with enabled <B>CONNECT</B> request (at least on port 443). This
+option is available only when compiled with SSL support (you need
+the SSleay or OpenSSL libraries with development headers)
+<P>
+</DL>
+<A NAME="lbAR">&nbsp;</A>
+<H2>Proxy Authentification</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-http_proxy_user $user</I>
+
+<DD>
+Username for HTTP proxy authentification.
+<DT><I>-http_proxy_pass $pass</I>
+
+<DD>
+Password for HTTP proxy authentification.
+<DT><I>-http_proxy_auth {1/2/3/4/user/Basic/Digest/NTLM}</I>
+
+<DD>
+Authentification scheme for proxy access. Similar meaning as the
+<B>-auth_scheme</B> option (see help for this option for more details).
+Default is 2 (Basic scheme).
+<DT><I>-auth_proxy_ntlm_domain $str</I>
+
+<DD>
+NT or LM domain used for authorization again HTTP proxy server when NTLM authentification scheme is required. This option is available only when compiled with OpenSSL or libdes libraries.
+<DT><I>-auth_reuse_proxy_nonce/-noauth_reuse_proxy_nonce</I>
+
+<DD>
+When using HTTP Proxy Digest access authentification scheme use
+first received nonce value in multiple following requests.
+<DT><I>-ftp_proxy_user $user</I>
+
+<DD>
+Username for FTP proxy authentification.
+<DT><I>-ftp_proxy_pass $pass</I>
+
+<DD>
+Password for FTP proxy authentification.
+<P>
+</DL>
+<A NAME="lbAS">&nbsp;</A>
+<H2>Protocol/Download Options</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-ftp_passive</I>
+
+<DD>
+Uses passive ftp when downloading via ftp.
+<DT><I>-ftp_active</I>
+
+<DD>
+Uses active ftp when downloading via ftp.
+<DT><I>-active_ftp_port_range $min:$max</I>
+
+<DD>
+This option permits to specify the ports used for
+active ftp. This permits easier firewall configuration since the range
+of ports can be restricted.
+<P>
+Pavuk will randomly choose a number from within the specified
+range until an open port is found. Should no open ports be found
+within the given range, pavuk will default to a normal
+kernel-assigned port, and a message (debug level net) is output.
+<P>
+The port range selected must be in the non-privileged range
+(eg. greater than or equal to 1024); it is STRONGLY RECOMMENDED that
+the chosen range be large enough to handle many simultaneous
+active connections (for example, 49152-65534, the IANA-registered
+ephemeral port range).
+<DT><I>-always_mdtm/-noalways_mdtm</I>
+
+<DD>
+Force pavuk to always use &quot;MDTM&quot; to determine the file modification
+time and never uses cached times determined when listing the remote
+files.
+<DT><I>-remove_before_store/-noremove_before_store</I>
+
+<DD>
+Force unlink'ing of files before new content is stored to a file. This
+is helpful if the local files are hardlinked to some other directory
+and after mirroring the hardlinks are checked. All &quot;broken&quot; hardlinks
+indicate a file update.
+<DT><I>-retry $nr</I>
+
+<DD>
+Set the number of attempts to transfer processed document.
+Default set to 1, this mean pavuk will retry once to get documents
+which failed on first attempt.
+<DT><I>-nregets $nr</I>
+
+<DD>
+Set the number of allowed regets on a single document, after a broken transfer.
+Default value for this option is 2.
+<DT><I>-nredirs $nr</I>
+
+<DD>
+Set number of allowed HTTP redirects. (use this for prevention of loops)
+Default value for this option is 5, and conform to HTTP specification.
+<DT><I>-force_reget/-noforce_reget</I>
+
+<DD>
+Force reget'ing of the whole document after a broken transfer when
+the server doesn't support retrieving of partial content.
+Pavuk default behavior is to stop getting documents which don't allow
+restarting of transfer from specified position.
+<DT><I>-timeout $nr</I>
+
+<DD>
+Timeout for stalled connections in minutes. This value is also used for
+connection timeouts. For sub-minute timeouts you can use floating point numbers.
+Default timeout is 0, an that means timeout checking is disabled.
+<DT><I>-noRobots/-Robots</I>
+
+<DD>
+This switch suppresses the use of the <B>robots.txt</B>
+standard, which is used to restrict access of Web robots to some
+locations on the web server. Default is allowed checking of robots.txt
+files on HTTP servers. Enable this option always when you are downloading
+huge sets of pages with unpredictable layout.
+This prevents you from upsetting server administrators :-).
+<DT><I>-noEnc/-Enc</I>
+
+<DD>
+This switch suppresses using of <B>gzip</B> or <B>compress</B> or <B>deflate</B>
+encoding in transfer. I don't know if some servers are broken or what, but they
+are propagating that MIME type application/gzip or application/compress as
+encoded. Turn this option off, when you doesn't have libz support compiled in
+and also <B>gzip</B> program which is used to decode document encoded this way.
+At default is decoding of downloaded document disabled.
+<DT><I>-check_size/-nocheck_size</I>
+
+<DD>
+The option -nocheck_size should be used if you are trying to
+download pages from a HTTP server which sends a wrong
+<B>Content-Length:</B> field in the MIME header of response.
+Default pavuk behavior is to check this field and complain
+when something is wrong.
+<DT><I>-maxrate $nr</I>
+
+<DD>
+If you don't want to give all your transfer bandwidth to pavuk, use
+this option to set pavuk's maximum transfer rate. This option
+accepts a floating point number to specify the transfer rate in kB/s. If
+you want get optimal settings, you also have to play with the size of the read
+buffer (option <B>-bufsize</B>) because pavuk is doing flow control only at
+application level.
+At default pavuk use full bandwidth.
+<DT><I>-minrate $nr</I>
+
+<DD>
+If you hate slow transfer rates, this option allows you to break
+transfers with slow speed. You can set the minimum transfer rate,
+and if the connection gets slower than the given rate, the transfer
+will be stopped. The minimum transfer rate is given in kB/s.
+At default pavuk doesn't check this limit.
+<DT><I>-bufsize $nr</I>
+
+<DD>
+This option is used to specify the size of the read buffer (default
+size: 32kB).  If you have a very fast connection, you may increase
+the size of the buffer to get a better read performance. If you need
+to decrease the transfer rate, you may need to decrease the size of
+the buffer and set the maximum transfer rate with the <B>-maxrate</B>
+option. This option accepts the size of the buffer in kB.
+<DT><I>-fs_quota $nr</I>
+
+<DD>
+If you are running pavuk on a multiuser system, you may need to
+avoid filling up your file system. This option lets you specify how
+many space must remain free. If pavuk detects an underrun of the
+free space, it will stop downloading files. Specify this quota in
+kB. Default value is 0, and that mean no checking of this quota.
+<DT><I>-file_quota $nr</I>
+
+<DD>
+This option is useful when you want to limit downloading of big files,
+but want to download at least $nr kilobytes from big files.
+A big file will be transferred, and when it reaches the specified size,
+transfer will break. Such document will be processed as properly downloaded,
+so be careful when using this option.
+At default pavuk is transferring full size of documents.
+<DT><I>-trans_quota $nr</I>
+
+<DD>
+If you are aware that your selection should address a big amount of
+data, you can use this option to limit the amount of transferred data.
+Default is by size unlimited transfer.
+<DT><I>-max_time $nr</I>
+
+<DD>
+Set maximum amount of time for program run. After time is exceeded, pavuk
+will stop downloading. Time is specified in minutes. Default value is 0, and it means downloading time is not limited.
+<DT><I>-url_strategy $strategy</I>
+
+<DD>
+This option allows you to specify a downloading order for URLs in document tree.
+This option accepts the following strings as parameters :
+<BR>
+
+<P>
+<DL COMPACT><DT><DD>
+<B>level</B>
+
+- will order URLs as it loads it from HTML files (default)
+<BR>
+
+<B>leveli</B>
+
+- as previous, but inline objects URLs come first
+<BR>
+
+<B>pre</B>
+
+- will insert URLs from actual HTML document at start, before other
+<BR>
+
+<B>prei</B>
+
+- as previous, but inline objects URLs come first
+<BR>
+
+</DL>
+
+<DT><I>-send_if_range/-nosend_if_range</I>
+
+<DD>
+Send <B>If-Range:</B> header in HTTP request. I found out, that some HTTP
+servers (greetings, MS :-)) are sending different <B>ETag:</B>
+fields in different responses for the same, unchanged
+document. This causes problems when pavuk attempts to reget a
+document from such a server: pavuk will remember the old ETag value and
+uses it it following requests for this document.
+If the server checks it with the new ETag value and it differs,
+it will refuse to send only part of the document, and start the download
+from scratch.
+<DT><I>-ssl_version $v</I>
+
+<DD>
+Set required SSL protocol version for SSL communication.
+<B>$v</B> is one of ssl2, ssl23, ssl3 or tls1.
+This option is available only when compiled with SSL support.
+Default is ssl23.
+<DT><I>-unique_sslid/-nounique_sslid</I>
+
+<DD>
+This option can be used if you want to use a unique <B>SSL ID</B> for all
+SSL sessions. Default pavuk behavior is to negotiate each time new session
+ID for each connection.
+This option is available only when compiled with SSL support.
+<DT><I>-use_http11/-nouse_http11</I>
+
+<DD>
+This option is used to switch between HTTP/1.0 and HTTP/1.1 protocol
+used with HTTP servers. Now is using of HTTP/1.1 protocol not default
+because its implementation is very fresh and not 100% tested. Even though
+using of HTTP/1.1 is very recommended, because it is faster than HTTP/1.0
+and uses less network bandwidth for initiating connections. In any further
+version I will activate using of HTTP/1.1 as default.
+<DT><I>-local_ip $addr</I>
+
+<DD>
+You can use this option when you want to use specified network interface
+for communication with other hosts. This option is suitable for multihomed
+hosts with several network interfaces. Address should be entered as regular
+IP address or as host name.
+<DT><I>-identity $str</I>
+
+<DD>
+This option allows you to specify content of <B>User-Agent:</B> field of HTTP request.
+This is usable, when scripts on remote server returns different document on same
+URL for different browsers, or if some HTTP server refuse to serve document
+for Web robots like pavuk. Default pavuk sends in <B>User-Agent:</B> field
+<B>pavuk/$VERSION</B> string.
+<DT><I>-auto_referer/-noauto_referer</I>
+
+<DD>
+This option forces pavuk to send HTTP <B>Referer:</B> header field with starting URLs.
+Content of this field will be self URL. Using this option is required,
+when remote server checks the Referer: field.
+At default pavuk wont send Referer: field with starting URLs.
+<DT><I>-referer/-noreferer</I>
+
+<DD>
+This option allows to enable and disable the transmission of HTTP <B>Referer:</B>
+header field. At default pavuk sends Referer: field.
+<DT><I>-httpad $str</I>
+
+<DD>
+In some cases you may want to add user defined fields to HTTP/HTTPS requests.
+This option is exactly for this purpose. In <B>$str</B> you can directly specify
+content of additional header. If you specify only raw header, it will be used
+only for starting requests. When you want to use this header with each request
+while crawling, prefix the header with <B>+</B> character.
+<DT><I>-del_after/-nodel_after</I>
+
+<DD>
+This option allows you to delete FILES from REMOTE server, when download is
+properly finished. At default is this option off.
+<DT><I>-FTPlist/-noFTPlist</I>
+
+<DD>
+When option -FTPlist will be used, pavuk will retrieve content of FTP
+directories with FTP command <B>LIST</B> instead of <B>NLST</B>. So the same listing will be
+retrieved as with &quot;ls -l&quot; UNIX command.
+This option is required if you need to preserve permissions of remote files or
+you need to preserve symbolic links.
+Pavuk supports wide listing on FTP servers with regular <B>BSD</B> or <B>SYSV</B> style &quot;ls -l&quot;
+directory listing, on FTP servers with <B>EPFL</B> listing format, <B>VMS</B> style listing,
+<B>DOS/Windows</B> style listing and <B>Novel</B> listing format.
+Default pavuk behavior is to use NLST fro FTP directory listings.
+<DT><I>-ftp_list_options $str</I>
+
+<DD>
+Some FTP servers require to supply extra options to LIST or NLST FTP commands
+to show all files and directories properly. But be sure not to use any extra
+options which can reformat output of the listing. Useful is especially <B>-a</B>
+option which force FTP server to show also dot files and directories and
+with broken WuFTP servers it also helps to produce full directory listings
+not just files.
+<DT><I>-fix_wuftpd/-nofix_wuftpd</I>
+
+<DD>
+This option is result of several attempts to to get working properly the
+<B>-remove_old</B> option with WuFTPd server when <B>-ftplist</B> option is
+used. The problem is that FTP command LIST on WuFTPd don't mind when trying
+to list nonexisting directory, and indicates success in FTP response code.
+When you activate this option, pavuk uses extra FTP command (STAT -d dir)
+to check whether the directory really exists. Don't use this option until
+you are sure that you really need it!
+<P>
+<P>
+</DL>
+<A NAME="lbAT">&nbsp;</A>
+<H2>Authentification</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-auth_file $file</I>
+
+<DD>
+File where you have stored authentification information for access
+to some service. For file structure see below in <B>FILES</B> section.
+<DT><I>-auth_name $user</I>
+
+<DD>
+If you are using this parameter, program is doing authentification with each HTTP
+access to document. Use this only if you know that only one HTTP server could be
+accessed or use <B>-asite</B> option to specify site to which you use
+authentification. Else your auth parameters will be sent to each accessed
+HTTP server.
+<DT><I>-auth_passwd $passwd</I>
+
+<DD>
+Value of this parameter is used as password for authentification
+<DT><I>-auth_scheme {1/2/3/4/user/Basic/Digest/NTLM}</I>
+
+<DD>
+This parameter specifies used authentification scheme.
+<BR>
+
+<B>1 or user</B>
+
+means
+<B>user</B>
+
+authentification scheme is used as defined in HTTP/1.0 or HTTP/1.1.
+Password and user name are sent unencoded.
+<BR>
+
+<B>2 or Basic</B>
+
+means
+<B>Basic</B>
+
+authentification scheme is used as defined in HTTP/1.0.
+Password and user name are sent BASE64 encoded.
+<BR>
+
+<B>3 or Digest</B>
+
+means
+<B>Digest</B>
+
+access authentification scheme based on MD5 checksums as defined in RFC2069.
+<BR>
+
+<B>4 or NTLM</B>
+
+means
+<B>NTLM</B>
+
+proprietary access authentification scheme used by Microsoft IIS or Proxy servers.
+When you use this scheme, you must also specify NT or LM domain with option <B>-auth_ntlm_domain</B>. This scheme is supported only when compiled with OpenSSL or libdes libraries.
+<DT><I>-auth_ntlm_domain $str</I>
+
+<DD>
+NT or LM domain used for authorization again HTTP server when NTLM authentification scheme is required. This option is available only when compiled with OpenSSL or libdes libraries.
+<DT><I>-auth_reuse_nonce/-noauth_reuse_nonce</I>
+
+<DD>
+While using HTTP Digest access authentification scheme use first received nonce
+value in more following requests.
+Default pavuk negotiates nonce for each request.
+<DT><I>-ssl_key_file $file</I>
+
+<DD>
+File with public key for SSL certificate (learn more from SSLeay or OpenSSL documentation)
+This option is available only when compiled with SSL support (you need SSleay or OpenSSL libraries and development headers)
+<DT><I>-ssl_cert_file $file</I>
+
+<DD>
+Certificate file in PEM format (learn more from SSLeay or OpenSSL documentation)
+This option is available only when compiled with SSL support (you need SSleay or OpenSSL libraries and development headers)
+<DT><I>-ssl_cer_passwd $str</I>
+
+<DD>
+Password used to generate certificate (learn more from SSLeay or OpenSSL documentation)
+This option is available only when compiled with SSL support (you need SSLeay or OpenSSL libraries and development headers)
+<DT><I>-nss_cert_dir $dir</I>
+
+<DD>
+Config directory for NSS (Netscape SSL implementation) certificates. Usually
+~/.netscape (created by Netscape communicator/navigator) or profile directory
+below ~/.mozilla (created by Mozilla browser). The directory should contain
+<B>cert7.db</B> and <B>key3.db</B> files. If you don't use Mozilla nor
+Netscape, you must create this files by utilities distributed with NSS
+libraries. Pavuk opens certificate database only readonly.
+This option is available only when pavuk is compiled with SSL support
+provided by Netscape NSS SSL implementation.
+<DT><I>[-nss_accept_unknown_cert/-nonss_accept_unknown_cert]</I>
+
+<DD>
+By default will pavuk reject connection to SSL server which certificate is not
+stored in local certificate database (set by <B>-nss_cert_dir</B> option).
+You must explicitly force pavuk to allow connection to servers with unknown
+certificates.
+This option is available only when pavuk is compiled with SSL support
+provided by Netscape NSS SSL implementation.
+<DT><I>[-nss_domestic_policy/-nss_export_policy]</I>
+
+<DD>
+Selects sets of ciphers allowed/disabled by USA export rules.
+This option is available only when pavuk is compiled with SSL support
+provided by Netscape NSS SSL implementation.
+<P>
+<DT><I>-from $email</I>
+
+<DD>
+This parameter is used when accessing anonymous FTP server as password or is
+optionally inserted into <B>From</B> field in HTTP request. If not specified
+pavuk discovers this from <B>USER</B> environment variable and from site
+hostname.
+<DT><I>-send_from/-nosend_from</I>
+
+<DD>
+This option is used for enabling or disabling sending of user identification,
+entered in <B>-from</B>
+option, as FTP anonymous user password and <B>From:</B> field of HTTP request.
+As default is this option off.
+<DT><I>-ftp_login_handshake $host $handshake</I>
+
+<DD>
+When you need to use nonstandard login procedure for some of FTP servers,
+you can use this option to change default pavuk login procedure. To allow
+more flexibility, you can assign the login procedure to some server or to
+all. When <I>$host</I> is specified as empty string (<I>&quot;&quot;</I>), than attached
+login procedure is assigned to all FTP servers besides those having assigned
+own login procedures. In the <I>$handshake</I> parameter you can specify exact
+login procedure specified by FTP commands followed by expected FTP response
+codes delimited with backslash (<I>\</I>) characters.
+<BR>
+
+For example this is
+default login procedure when logging in regular ftp server without going
+through proxy server : <I>USER %u\331\PASS %p\230</I>. There are two
+commands followed by two response codes. After USER command pavuk expects
+FTP response code 331 and after PASS command pavuk expects from server FTP
+response code 230. In ftp commands you can use following macros which will be
+replaced by respective values:
+<P>
+<BR>
+
+<BR>&nbsp;<I>%u</I>&nbsp;-&nbsp;user&nbsp;name&nbsp;used&nbsp;to&nbsp;access&nbsp;FTP&nbsp;server
+<BR>
+
+<BR>&nbsp;<I>%p</I>&nbsp;-&nbsp;password&nbsp;used&nbsp;to&nbsp;access&nbsp;FTP&nbsp;server
+<BR>
+
+<BR>&nbsp;<I>%U</I>&nbsp;-&nbsp;user&nbsp;name&nbsp;used&nbsp;to&nbsp;access&nbsp;FTP&nbsp;proxy&nbsp;server
+<BR>
+
+<BR>&nbsp;<I>%P</I>&nbsp;-&nbsp;password&nbsp;used&nbsp;to&nbsp;access&nbsp;FTP&nbsp;proxy&nbsp;server
+<BR>
+
+<BR>&nbsp;<I>%h</I>&nbsp;-&nbsp;hostname&nbsp;of&nbsp;FTP&nbsp;server
+<BR>
+
+<BR>&nbsp;<I>%s</I>&nbsp;-&nbsp;port&nbsp;number&nbsp;on&nbsp;which&nbsp;FTP&nbsp;server&nbsp;listens
+<P>
+</DL>
+<A NAME="lbAU">&nbsp;</A>
+<H2>Site/Domain/Port Limitation Options</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-asite $list</I>
+
+<DD>
+Specify comma separated list of allowed sites on which referenced documents
+are stored.
+<DT><I>-dsite $list</I>
+
+<DD>
+Specify comma separated list of disallowed sites.
+Previous parameter is
+opposite to this one. If both are used the last occurrence of them is used to
+be valid.
+<DT><I>-adomain $list</I>
+
+<DD>
+Specify comma separated list of allowed domains on which referenced documents
+are stored.
+<DT><I>-ddomain $list</I>
+
+<DD>
+Specify comma separated list of disallowed domains. Previous parameter is
+opposite to this one. If both are used the last occurrence of them is used to
+be valid.
+<DT><I>-aport $list</I>
+
+<DD>
+In <B>$list</B>, you can write comma separated list of ports from which you
+allow to download documents.
+<DT><I>-dport $list</I>
+
+<DD>
+This option is opposite option to previous option. It is used to specify
+denied ports. If both <B>-aport</B> and <B>-dport</B> options are used the
+last occurrence of them is used to be valid and all other occurrences will
+be omitted.
+<P>
+</DL>
+<A NAME="lbAV">&nbsp;</A>
+<H2>Limitation Document properties</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-amimet $list</I>
+
+<DD>
+List of comma separated allowed MIME types. You can use with this option also wildcard patterns.
+<DT><I>-dmimet $list</I>
+
+<DD>
+List of comma separated disallowed MIME types. You can use with this option also wildcard patterns.
+Previous parameter is opposite to this one. If both are used the last occurrence of them is used to be valid.
+<DT><I>-maxsize $nr</I>
+
+<DD>
+Maximum allowed size of document.
+This option is applied only when pavuk is able to detect the document before starting the transfer.
+Default value is 0, and it means this limit isn't applied.
+<DT><I>-minsize $nr</I>
+
+<DD>
+minimal allowed size of document.
+This option is applied only when pavuk is able to detect the document before starting the transfer.
+Default value is 0, and it means this limit isn't applied.
+<DT><I>-newer_than $time</I>
+
+<DD>
+Allow only transfer of documents with modification time newer than specified in parameter $time. Format of $time is: YYYY.MM.DD.hh:mm.
+To apply this option pavuk must be able to detect modification time of document.
+<DT><I>-older_than $time</I>
+
+<DD>
+Allow only transfer of documents with modification time older than specified in parameter $time. Format of $time is: YYYY.MM.DD.hh:mm.
+To apply this option pavuk must be able to detect modification time of document.
+<DT><I>-noCGI/-CGI</I>
+
+<DD>
+this switch prevents to transfer dynamically generated parametric documents
+through CGI interface. This is detected with occurrence of <B>?</B> character inside URL.
+Default pavuk behavior is to allow transfer of URLs with query strings.
+<DT><I>-alang $list</I>
+
+<DD>
+this allows you to specify ordered comma separated list of preferred natural
+languages. This option work only with HTTP and HTTPS protocol using
+<B>Accept-Language:</B> MIME field.
+<DT><I>-acharset $list</I>
+
+<DD>
+This options allows you to enter comma separated list of preferred encoding of
+transfered documents. This works only with HTTP and HTTPS urls and only if such
+document encodings are located on destination server.
+<BR>
+
+<B>example: -acharset iso-8859-2,windows-1250,utf8</B>
+
+<P>
+</DL>
+<A NAME="lbAW">&nbsp;</A>
+<H2>Limitation Document name</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-asfx $list</I>
+
+<DD>
+This parameter allows you to specify set of suffixes used to restrict selection
+of documents which will be processed.
+<DT><I>-dsfx $list</I>
+
+<DD>
+Set of suffixes that are used to specify restriction on selection of documents.
+This one is inverse to previous option. They are segregating each other.
+<DT><I>-aprefix $list, -dprefix $list</I>
+
+<DD>
+This two options allow you to specify set of allowed or disallowed prefixes
+of documents. They are segregating each other.
+<DT><I>-pattern $pattern</I>
+
+<DD>
+This option allows you to specify wildcard pattern for documents. All documents
+are tested if they match this pattern.
+<DT><I>-rpattern $reg_exp</I>
+
+<DD>
+This is equal option as previous, but this uses regular expressions.
+Available only on platforms which have any supported RE implementation.
+<DT><I>-skip_pattern $pattern</I>
+
+<DD>
+This option allows you to specify wildcard pattern for documents that should be skipped.
+All documents are tested if they match this pattern.
+<DT><I>-skip_rpattern $reg_exp</I>
+
+<DD>
+This is equal option as previous, but this uses regular expressions.
+Available only on platforms which have any supported RE implementation.
+<DT><I>-url_pattern $pattern</I>
+
+<DD>
+This option allows you to specify wildcard pattern for URLs. All URLs
+are tested if they match this pattern.
+<BR>
+
+<B>Example:</B>
+
+<BR>
+
+-url_pattern <A HREF="http://\*.idata.sk:\*/~ondrej/\*">http://\*.idata.sk:\*/~ondrej/\*</A> . this option enables all HTTP URLs from domain .idata.sk on all ports which are located under /~ondrej/.
+<DT><I>-url_rpattern $reg_exp</I>
+
+<DD>
+This is equal option as previous, but this uses regular expressions.
+Available only on platforms which have any supported RE implementation.
+<DT><I>-skip_url_pattern $pattern</I>
+
+<DD>
+This option allows you to specify wildcard pattern for URLs that should be skipped.
+All URLs are tested if they match this pattern.
+<DT><I>-skip_url_rpattern $reg_exp</I>
+
+<DD>
+This is equal option as previous, but this uses regular expressions.
+Available only on platforms which have any supported RE implementation.
+<DT><I>-aip_pattern $re</I>
+
+<DD>
+This option allows you to limit set of transferred documents by server IP address.
+IP address can be specified as regular expressions, so it is possible to specify
+set of IP addresses by one expression.
+Available only on platforms which have any supported RE implementation.
+<DT><I>-dip_pattern $re</I>
+
+<DD>
+This option similar to previous option, but is used to specify set of disallowed
+IP addresses.
+Available only on platforms which have any supported RE implementation.
+<DT><I>-tag_pattern $tag $attrib $url</I>
+
+<DD>
+More powerful version of <I>-url_pattern</I> option for more precise matching
+of allowed URLs based on HTML tag name pattern, HTML tag attribute name pattern
+and on URL pattern. You can use in all three parameters of this option wildcard
+patterns, thus something like <B>-tag_pattern '*' '*' url_pattern</B> is equal
+to <B>-url_pattern url_pattern</B>. The <I>$tag</I> and <I>$attrib</I> parameters
+are always matched again uppercase strings. For example if you want just let
+pavuk follow only regular links ignoring any stylesheets, images, etc.,
+use option <B>-tag_pattern A HREF '*'</B>.
+<DT><I>-tag_rpattern $tag $attrib $url</I>
+
+<DD>
+This is variation on the <I>-tag_pattern</I>. It uses regular expression
+patterns in parameters instead of wildcard patterns used in the previous option.
+<P>
+</DL>
+<A NAME="lbAX">&nbsp;</A>
+<H2>Limitation Protocol Option</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-noHTTP/-HTTP</I>
+
+<DD>
+This switch suppresses all transfers through HTTP protocol.
+Default is transfer trough HTTP enabled.
+<DT><I>-noSSL/-SSL</I>
+
+<DD>
+This switch suppresses all transfers through HTTPS protocol (HTTP protocol over SSL) .
+Default is transfer trough HTTPS enabled.
+This option is available only when compiled with SSL support (you need SSleay or OpenSSL libraries and development headers)
+<DT><I>-noGopher/-Gopher</I>
+
+<DD>
+Suppress all transfers through Gopher Internet protocol.
+Default is transfer trough Gopher enabled.
+<DT><I>-noFTP/-FTP</I>
+
+<DD>
+This switch prevents processing documents allocated on all FTP servers.
+Default is transfer trough FTP enabled.
+<DT><I>-noFTPS/-FTPS</I>
+
+<DD>
+This switch prevents processing documents allocated on all FTP servers accessed through SSL.
+Default is transfer trough FTPS enabled.
+This option is available only when compiled with SSL support (you need SSleay or OpenSSL libraries and development headers)
+<DT><I>-FTPhtml/-noFTPhtml</I>
+
+<DD>
+By using of option -FTPhtml you can force pavuk to process HTML files downloaded with FTP protocol.
+At default pavuk won't parse HTML files from FTP servers.
+<DT><I>-FTPdir/-noFTPdir</I>
+
+<DD>
+Force recursive processing of FTP directories too.
+At default is recursive downloading from FTP servers denied.
+<DT><I>-disable_html_tag $TAG,[$ATTRIB][;...]</I>
+
+<DD>
+<I>-enable_html_tag $TAG,[$ATTRIB][;...]</I>
+
+Enable or disable processing of particular HTML tags or attributes.
+At default all supported HTML tags are enabled.
+<P>
+For example if you don't want to process all images you should use option
+<B>-disable_html_tag 'IMG,SRC;INPUT,SRC;BODY,BACKGROUND' .</B>
+
+<P>
+</DL>
+<A NAME="lbAY">&nbsp;</A>
+<H2>Other Limitation Options</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-subdir $dir</I>
+
+<DD>
+Subdirectory of local tree directory, to limit some of the modes
+{sync, resumeregets, linkupdate} in its tree scan.
+<DT><I>-dont_leave_site/-leave_site</I>
+
+<DD>
+(Don't) leave starting site. At default pavuk can span host when recursing through WWW tree.
+<DT><I>-dont_leave_dir/-leave_dir</I>
+
+<DD>
+(Don't) leave starting directory. If -dont_leave_dir option is used
+pavuk will stay only in starting directory (including its own subdirectories).
+At default pavuk can leave starting directories.
+<DT><I>-leave_site_enter_dir/-dont_leave_site_enter_dir</I>
+
+<DD>
+If you are downloading WWW tree which spans multiple hosts with huge trees, you may want to allow downloading of document which are in directory hierarchy below directory which we visited as first on each site. To obtain this, use option -dont_leave_site_enter_dir. As default pavuk will go also to higher directory levels on that site.
+<DT><I>-lmax $nr</I>
+
+<DD>
+Set maximum allowed level of tree traverse. Default is set to 0,
+what means that pavuk can traverse at infinitum.
+As of version 0.8pl1 inline objects of HTML pages are placed at same
+level as parent HTML page.
+<DT><I>-leave_level $nr</I>
+
+<DD>
+Maximum level of documents outside from site of starting URL.
+Default is set to 0, and 0 means that checking is not applied.
+<DT><I>-site_level $nr</I>
+
+<DD>
+Maximum level of sites outside from site of starting URL.
+Default is set to 0, and 0 means that checking is not applied.
+<DT><I>-dmax $nr</I>
+
+<DD>
+Set maximum allowed number of documents that are processed.
+Default value is 0.
+That means no restrictions are used in number of processed documents.
+<DT><I>-singlepage/-nosinglepage</I>
+
+<DD>
+Using option <B>-singlepage</B> allows you to transfer just HTML pages with all its
+inlined objects (pictures, sounds, frame documents, ...).
+As default is disabled single page transfer. This option makes <B>-mode singlepage</B>
+option obsolete.
+<DT><I>-limit_inlines/-dont_limit_inlines</I>
+
+<DD>
+With this option you can control whether limiting options apply also to inline
+objects (pictures, sounds, ...). This is useful when you want to download
+specified set of HTML pages with all inline options without any restrictions.
+<P>
+<P>
+<DT><I>-user_condition $str</I>
+
+<DD>
+Script or program name for users own conditions.
+You can write any script which should with exit value decide if download URL or not.
+Script gets from pavuk any number of options, with this meaning :
+
+<P>
+<B>-url $url</B>
+
+- processed URL
+<BR>
+
+<B>-parent $url</B>
+
+- any number of parent URLs
+<BR>
+
+<B>-level $nr</B>
+
+- level of this URL from starting URL
+<BR>
+
+<B>-size $nr</B>
+
+- size of requested URL
+<BR>
+
+<B>-date $datenr</B>
+
+- modification time of requested URL in format
+<I>YYYYMMDDhhmmss</I>
+
+<BR>
+
+
+<P>
+The exit status 0 of script or program means that current URL should be rejected and nonzero exit status means that URL should be accepted.
+<BR>
+
+<B>Warning :</B>
+
+use user conditions only if required because of big slowdowns
+caused by forking scripts for each checked URL.
+<DT><I>-follow_cmd $str</I>
+
+<DD>
+This option allows you to specify script or program which can by its exit status decide whether to follow URLs from current HTML document. This script will be called after download of each HTML document.
+The script will get following options as it's parameters:
+
+<P>
+<B>-url $url</B>
+
+- URL of current HTML document
+<BR>
+
+<B>-infile $file</B>
+
+- local file where is stored HTML document
+
+<P>
+The exit status 0 of script or program means that URLs from current document will be disallowed, other exit status means, that pavuk can follow links from current HTML document.
+<P>
+<P>
+<P>
+</DL>
+<A NAME="lbAZ">&nbsp;</A>
+<H2>Javascript support</H2>
+
+Support for scripting languages like JavaScript or VBScript in pavuk is done bit hacky way. There is no interpreter for this languages, so not all things will work. Whole support which pavuk have for this scripting languages is based on regular expression patterns specified by user. Pavuk search for this patterns in DOM event attributes of HTML tags, in javascript:... URLs, in inline scripts in HTML documents enclosed between &lt;script&gt;&lt;/script&gt; tags and in separate javascript files.
+Support for scripting languages is only available when pavuk is compiled with proper regular expression library (POSIX/GNU/PCRE).
+<DL COMPACT>
+<DT><I>-enable_js/-disable_js</I>
+
+<DD>
+This options are used to enable or disable processing of Javascript parts of HTML documents. You must enable this option to be able to use processing of javascript patterns.
+<DT><I>-js_pattern $re</I>
+
+<DD>
+With this option you are specifying what patterns match interested parts of Javascript for extracting URLs. The parameter must be RE pattern with exactly one subpattern which match exactly the URL part. For example to match URL in following type of javascript expressions :
+<BR>
+
+<BR>&nbsp;&nbsp;document.b1.src='pics/button1_pre.jpg'
+<BR>
+
+you can use this pattern
+<BR>
+
+<BR>&nbsp;&nbsp;&quot;^document.[a-zA-Z0-9_]*.src[&nbsp;	]*=[&nbsp;	]*'(.*)'$&quot;
+<DT><I>-js_transform $p $t $h $a</I>
+
+<DD>
+This option is similar to previous, but you can use custom transform rules for the URL parts of patterns and also specify the exact HTML tag and attribute where to look for this pattern. The <B>$p</B> is the pattern to match the interested part of script. The <B>$t</B> is transform rule for the URL, in this parameter the <B>$x</B> parts will be replaced by x-th subpattern of the <B>$p</B> pattern. The <B>$h</B> parameter is exact HTML tag or &quot;*&quot; when this apply to javascript: URLs or DOM event attribs or &quot;&quot; (empty string) when this apply to javascript body of HTML document or separate JS file. The <B>$a</B> parameter is exact HTML attrib of tag or &quot;&quot; (empty string) when this rule apply to javascript body.
+<DT><I>-js_transform2 $p $t $h $a</I>
+
+<DD>
+This option is very similar to previous. The meaning of all parameters is same,
+just the pattern <B>$p</B> can have only one substring which will be used in
+the transform rule <B>$t</B>. This is required to allow rewriting of URL parts
+of the tags and scripts. This option can also be used to force pavuk to
+recognize HTML targ/attribute pairs which pavuk does not support.
+<P>
+</DL>
+<A NAME="lbBA">&nbsp;</A>
+<H2>Cookie</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-cookie_file $file</I>
+
+<DD>
+File where are stored cookie infos. This file must be in Netscape cookie file format (generated with Netscape Navigator or Communicator ...).
+<DT><I>-cookie_send/-nocookie_send</I>
+
+<DD>
+Use collected cookies in HTTP/HTTPS requests.
+Pavuk will not send at default cookies.
+<DT><I>-cookie_recv/-nocookie_recv</I>
+
+<DD>
+Store received cookies from HTTP/HTTPS responses into memory cookie cache.
+At default pavuk will not remember received cookies.
+<DT><I>-cookie_update/-nocookie_update</I>
+
+<DD>
+Update cookie file on disk and synchronize it with changes made by any concurrent processes.
+At default pavuk will not update cookie file on disk.
+<DT><I>-cookies_max $nr</I>
+
+<DD>
+Maximum number of cookies in memory cookie cache.
+Default value is 0, and that means no restrictions for cookies number.
+<DT><I>-disabled_cookie_domains $list</I>
+
+<DD>
+Comma-separated list of cookie domains which are permitted to send cookies stored into cookie cache
+<DT><I>-cookie_check/-nocookie_check</I>
+
+<DD>
+Check when receiving cookie, if cookie domain is equal to domain of server which sends this cookie. At default pavuk check is server is setting cookies for its domain, and if it tries to set cookie for foreign domain pavuk will complain about that and will reject such cookie.
+<P>
+</DL>
+<A NAME="lbBB">&nbsp;</A>
+<H2>HTML rewriting engine tuning options</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-noRelocate/-Relocate</I>
+
+<DD>
+This switch prevents the program to rewrite relative URLs to absolute, after
+HTML document is transfered. Default pavuk behavior is to maintain link
+consistence of HTML documents. So always when HTML document is downloaded pavuk
+will rewrite all URLs to point to local document if it is available and if it
+is not available it will point to remote document. After document is properly
+downloaded, pavuk will update links in HTML documents, which point to this one.
+<DT><I>-all_to_local/-noall_to_local</I>
+
+<DD>
+This option forces pavuk to change all URLs inside HTML document to local URLs
+immediately after download of document. Default is this option disabled.
+<DT><I>-sel_to_local/-nosel_to_local</I>
+
+<DD>
+This option forces pavuk to change all URLs, which accomplish conditions for download,
+to local inside HTML document immediately after download of document.
+I recommend to use this option, when you are sure, that transfer will be
+without any problems. This option can save a lot of processor time.
+Default is this option disabled.
+<DT><I>-all_to_remote/-noall_to_remote</I>
+
+<DD>
+This option forces pavuk to change all URLs inside HTML document to remote URLs
+immediately after download of document.
+Default is this option disabled.
+<DT><I>-post_update/-nopost_update</I>
+
+<DD>
+This option is especially designed to allow in <B>-fnrules</B> option
+doing rules based on MIME type of document. This option forces pavuk
+to generate local names for documents just after pavuk knows what is
+the MIME type of document. This have big impact on the rewriting engine
+of links inside HTML documents. This option causes disfunction of other
+options for controlling the link rewriting engine. Use this option only
+when you know what you are doing :-)
+<DT><I>-dont_touch_url_pattern $pat</I>
+
+<DD>
+This options serves to deny rewriting and processing of particular URLs
+in HTML documents by pavuk HTML rewriting engine. This option accepts
+wildcard patterns to specify such URLs. Matching is done against untouched
+URLs so when he URL is relative, you must use pattern which matches the
+relative URL, when it is absolute, you must use absolute URL.
+<DT><I>-dont_touch_url_rpattern $pat</I>
+
+<DD>
+This option is variation on previous option. This one uses regular patterns
+for matching of URLs instead of wildcard patterns used by
+<B>-dont_touch_url_pattern</B> option. This option is available only when pavuk
+is compiled with support for regular expression patterns.
+<DT><I>-dont_touch_tag_rpattern $pat</I>
+
+<DD>
+This option is variation on previous option, just matching is made on full HTML
+tag with included &lt;&gt;. This option accepts regular expression patterns. It is
+available only when pavuk is compiled with support for regular expression
+patterns.
+<P>
+</DL>
+<A NAME="lbBC">&nbsp;</A>
+<H2>Filename/URL Conversion Option</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-tr_del_chr $str</I>
+
+<DD>
+All characters found in <B>$str</B> will be deleted from local name of document.
+<B>$str</B> should contain escape sequences similar like in tr command:
+<BR>
+
+<B>\n</B>
+- newline
+<BR>
+
+<B>\r</B>
+- carriage return
+<BR>
+
+<B>\t</B>
+- horizontal tab space
+<BR>
+
+<B>\0xXX</B>
+- hexadecimal  ASCII value
+<BR>
+
+<B>[:upper:]</B>
+
+- all uppercase letters
+<BR>
+
+<B>[:lower:]</B>
+
+- all lowercase letters
+<BR>
+
+<B>[:alpha:]</B>
+
+- all letters
+<BR>
+
+<B>[:alnum:]</B>
+
+- all letters and digits
+<BR>
+
+<B>[:digit:]</B>
+
+- all digits
+<BR>
+
+<B>[:xdigit:]</B>
+
+- all hexadecimal digits
+<BR>
+
+<B>[:space:]</B>
+
+- all horizontal and vertical whitespace
+<BR>
+
+<B>[:blank:]</B>
+
+- all horizontal whitespace
+<BR>
+
+<B>[:cntrl:]</B>
+
+- all control characters
+<BR>
+
+<B>[:print:]</B>
+
+- all printable characters including space
+<BR>
+
+<B>[:nprint:]</B>
+
+- all non printable characters
+<BR>
+
+<B>[:punct:]</B>
+
+- all punctation characters
+<BR>
+
+<B>[:graph:]</B>
+
+- all printable characters excluding space
+<DT><I>-tr_str_str $str1 $str2</I>
+
+<DD>
+String <B>$str1</B> from local name of document will be replaced with <B>$str2</B>.
+<DT><I>-tr_chr_chr $chrset1 $chrset2</I>
+
+<DD>
+Characters from <B>$chrset1</B> from local name of document will be replaced with
+corresponding character from <B>$chrset2</B>. <B>$charset1</B> and <B>$charset2</B> should have
+same syntax as <B>$str</B> in <B>-tr_del_chr</B> option.
+<DT><I>-store_name $str</I>
+
+<DD>
+When you want to change local filename of first file downloaded with
+singlepage mode, you should use this option.
+<DT><I>-index_name $str</I>
+
+<DD>
+With this option you can change directory index name. As default is used <B>_._.html</B> .
+<DT><I>-store_index/-nostore_index</I>
+
+<DD>
+With option -nostore_index you should deny storing of directory indexes into HTML files.
+<DT><I>-fnrules $t $m $r</I>
+
+<DD>
+This is a very powerful option! This option is used to flexible change layout
+of local document tree. It accepts three parameters. First parameter <B>$t</B> is
+used to say what type is following pattern.
+<B>F</B>
+
+is used for wildcard pattern (uses <I>fnmatch()</I>) and
+<B>R</B>
+
+is used for regular expression pattern (using any supported RE implementation).
+Second parameter is matching pattern used to select URLs for this rule.
+If URL match this pattern, then local name for this URL is computed following
+rules of third parameter.
+And third parameter is local name building rule. Pavuk now supports two kinds
+of local name building rules. One is simple based only on <I>simple</I> macros and
+other more complicated <I>extended</I> rule, which also enables to perform several
+functions.
+Recognition between those two kinds of rules is done by looking at first
+character of rule.
+In case when first character is <B>'('</B>, rule is extended
+and in all other cases it is the simple kind of rule.
+<P>
+<B>Simple rule</B> should contain literals or escaped macros.
+Macros are escaped by % character or by $ character.
+<P>
+<B>Here is list of recognized macros:</B>
+
+<P>
+<P>
+<BR>
+
+<B>$x</B>
+
+- where x is any positive number. This macro is replaced with x-th substring
+matched by RE pattern. (If you use this you need to understand RE !)
+<BR>
+
+<B>%i</B>
+
+- is replaced with protocol id (http, https, ftp, gopher)
+<BR>
+
+<B>%p</B>
+
+- is replaced with password. (use this only when usable)
+<BR>
+
+<B>%u</B>
+
+- is replaced with username.
+<BR>
+
+<B>%h</B>
+
+- is replaced with host name.
+<BR>
+
+<B>%m</B>
+
+- is replaced with domain name.
+<BR>
+
+<B>%r</B>
+
+- is replaced with port number.
+<BR>
+
+<B>%d</B>
+
+- is replaced with path to document.
+<BR>
+
+<B>%n</B>
+
+- is replaced with document name.
+<BR>
+
+<B>%b</B>
+
+- is replaced with basename of document (without extension).
+<BR>
+
+<B>%e</B>
+
+- is replaced with extension.
+<BR>
+
+<B>%s</B>
+
+- is replaced with searchstring.
+<BR>
+
+<B>%M</B>
+
+- is replaced with MIME type of document. When you are using this macro, you *must* use also <B>-post_update</B> option else it won't work.
+<BR>
+
+<B>%E</B>
+
+- is replaced with default extension assigned to MIME type of document. When you are using this macro, you *must* use also <B>-post_update</B> option else it won't work.
+<BR>
+
+<B>%x</B>
+
+- where x is positive number. This macro is replaced with x-th directory from path to document from beginning.
+<BR>
+
+<B>%-x</B>
+
+- where x is positive number. This macro is replaced with x-th directory from path to document from end.
+<BR>
+
+<P>
+Here is example. If you want place document into single directories by extension,
+you should use following fnrules option:
+<BR>
+
+<B>-fnrules F '*' '/%e/%n'</B>
+
+<P>
+<B>Extended rule</B> ever begins with character <B>'('</B>. It uses some kind
+of <I>LISP</I> like syntax.
+<P>
+<B>Here are base rules for writing extended rules :</B>
+
+- the local filename of of this kind is return value function
+<BR>
+
+- each function is enclosed inside round braces <B>()</B>
+<BR>
+
+- first token right after opening brace is function name
+<BR>
+
+- each function have nonzero fixed number of parameters
+<BR>
+
+- each function returns numeric or string value
+<BR>
+
+- function parameters are separated by any number of space characters
+<BR>
+
+- parameter of function should be string, number, macro or other function
+<BR>
+
+- string is ever quoted with <B>&quot;</B>
+<BR>
+
+- each numeric parameter can be in any encoding supported by
+<I>strtod()</I> function (octal, decimal, hexadecimal, ...)
+<BR>
+
+- there is no implicit conversion from number to string
+<BR>
+
+- each macro is prefixed by <B>%</B> character and is one character long
+<BR>
+
+- each macro is replaced by its string representation from current URL
+<BR>
+
+- function parameters are typed strictly
+<BR>
+
+- toplevel function must return string value
+<BR>
+
+<P>
+Extended rule supports full set of <I>%</I> escaped macros supported with
+simple rules, plus two following addition macros :
+<BR>
+
+<B>%U</B> - URL string
+<BR>
+
+<B>%o</B> - default localname for URL
+<P>
+<B>Here is description of all supported functions</B>
+
+<P>
+<B>sc</B> - concat two string parameters
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;two&nbsp;string&nbsp;parameters
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;string&nbsp;value
+<BR>
+
+<B>ss</B> - substring form string
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;three&nbsp;parameters.
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;first&nbsp;is&nbsp;string&nbsp;from&nbsp;which&nbsp;we&nbsp;want&nbsp;to&nbsp;cut&nbsp;subpart
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;second&nbsp;is&nbsp;number&nbsp;which&nbsp;represents&nbsp;starting&nbsp;position&nbsp;in&nbsp;string
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;third&nbsp;is&nbsp;number&nbsp;which&nbsp;represents&nbsp;ending&nbsp;position&nbsp;in&nbsp;string
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;string&nbsp;value
+<BR>
+
+<B>hsh</B> - compute modulo hash value from string with specified base
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;two&nbsp;parameters
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;first&nbsp;is&nbsp;string&nbsp;for&nbsp;which&nbsp;we&nbsp;are&nbsp;computing&nbsp;the&nbsp;hash&nbsp;value
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;second&nbsp;is&nbsp;numeric&nbsp;value&nbsp;for&nbsp;base&nbsp;of&nbsp;modulo&nbsp;hash
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;numeric&nbsp;value
+<BR>
+
+<B>md5</B> - compute MD5 checksum for string
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;one&nbsp;string&nbsp;value
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;string&nbsp;which&nbsp;represents&nbsp;MD5&nbsp;checksum
+<BR>
+
+<B>lo</B> - convert all characters inside string to lower case
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;ane&nbsp;string&nbsp;value
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;string&nbsp;value
+<BR>
+
+<B>up</B> - convert all characters inside string to upper case
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;one&nbsp;string&nbsp;value
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;string&nbsp;value
+<BR>
+
+<B>ue</B> - encode unsafe characters in string with same encoding
+which is used for encoding unsafe characters inside URL (<I>%xx</I>)
+As default are encoded all nonascii values when this function is
+used.
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;two&nbsp;string&nbsp;values
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;first&nbsp;is&nbsp;string&nbsp;which&nbsp;we&nbsp;want&nbsp;to&nbsp;encode
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;second&nbsp;is&nbsp;string&nbsp;which&nbsp;contains&nbsp;unsafe&nbsp;characters
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;return&nbsp;string&nbsp;value
+<BR>
+
+<B>dc</B> - delete unwanted characters from string
+(have similar functionality as <B>-tr_del_chr</B> option)
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;two&nbsp;string&nbsp;values
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;first&nbsp;is&nbsp;string&nbsp;from&nbsp;which&nbsp;we&nbsp;want&nbsp;delete
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;second&nbsp;is&nbsp;string&nbsp;which&nbsp;contains&nbsp;characters&nbsp;we&nbsp;want&nbsp;to&nbsp;delete.
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;string&nbsp;value
+<BR>
+
+<B>tc</B> - replace character with other character in string
+(have similar functionality as <B>-tr_chr_chr</B> option)
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;three&nbsp;string&nbsp;values
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;first&nbsp;is&nbsp;string&nbsp;inside&nbsp;which&nbsp;we&nbsp;want&nbsp;to&nbsp;replace&nbsp;characters
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;second&nbsp;is&nbsp;set&nbsp;of&nbsp;characters&nbsp;which&nbsp;we&nbsp;want&nbsp;to&nbsp;replace
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;third&nbsp;is&nbsp;set&nbsp;of&nbsp;characters&nbsp;with&nbsp;which&nbsp;we&nbsp;are&nbsp;replacing
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;string&nbsp;value
+<BR>
+
+<B>ts</B> - replace some string inside string with any other string
+(have similar functionality as <B>-tr_str_str</B> option)
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;three&nbsp;string&nbsp;values
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;first&nbsp;is&nbsp;string&nbsp;inside&nbsp;which&nbsp;we&nbsp;want&nbsp;to&nbsp;replace&nbsp;string
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;second&nbsp;is&nbsp;the&nbsp;from&nbsp;string
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;third&nbsp;is&nbsp;to&nbsp;string
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;string&nbsp;value
+<BR>
+
+<B>spn</B> - calculate initial length of string which contains only specified set of characters.
+(have same functionality as <I>strspn()</I> libc function)
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;two&nbsp;string&nbsp;values
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;first&nbsp;is&nbsp;input&nbsp;string
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;second&nbsp;is&nbsp;set&nbsp;of&nbsp;acceptable&nbsp;characters
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;numeric&nbsp;value
+<BR>
+
+<B>cspn</B> - calculate initial length of string which doesn't contain specified set of characters.
+(have same functionality as <I>strcspn()</I> libc function)
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;two&nbsp;string&nbsp;values
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;first&nbsp;is&nbsp;input&nbsp;string
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;second&nbsp;is&nbsp;set&nbsp;of&nbsp;unacceptable&nbsp;characters
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;numeric&nbsp;value
+<BR>
+
+<B>sl</B> - calculate length of string
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;one&nbsp;string&nbsp;value
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;numeric&nbsp;value
+<BR>
+
+<B>ns</B> - convert number to string by format
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;two&nbsp;parameters
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;first&nbsp;parameter&nbsp;is&nbsp;format&nbsp;string&nbsp;same&nbsp;as&nbsp;for&nbsp;<I>printf()</I>&nbsp;function
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;second&nbsp;is&nbsp;number&nbsp;which&nbsp;we&nbsp;want&nbsp;to&nbsp;convert
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;string&nbsp;value
+<BR>
+
+<B>lc</B> - return position of last occurrence of specified character inside string
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;two&nbsp;string&nbsp;parameters
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;first&nbsp;string&nbsp;which&nbsp;we&nbsp;are&nbsp;searching&nbsp;in
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;second&nbsp;string&nbsp;contains&nbsp;character&nbsp;for&nbsp;which&nbsp;we&nbsp;are&nbsp;looking&nbsp;for
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;numeric&nbsp;value
+<BR>
+
+<B>+</B> - add two numeric values
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;two&nbsp;numeric&nbsp;values
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;numeric&nbsp;value
+<BR>
+
+<B>-</B> - subtract two numeric values
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;two&nbsp;numeric&nbsp;values
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;numeric&nbsp;value
+<BR>
+
+<B>%</B> - modulo addition
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;two&nbsp;numeric&nbsp;values
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;numeric&nbsp;value
+<BR>
+
+<B>*</B> - multiple two numeric values
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;two&nbsp;numeric&nbsp;values
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;numeric&nbsp;value
+<BR>
+
+<B>/</B> - divide two numeric values
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;accepts&nbsp;two&nbsp;numeric&nbsp;values
+<BR>&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;numeric&nbsp;value
+<BR>
+
+<B>rmpar</B> - remove parameter from query string
+<BR>&nbsp;&nbsp;-&nbsp;accepts&nbsp;two&nbsp;string
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;first&nbsp;string&nbsp;is&nbsp;string&nbsp;which&nbsp;we&nbsp;are&nbsp;adjusting
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;second&nbsp;parameter&nbsp;is&nbsp;name&nbsp;of&nbsp;parameter&nbsp;which&nbsp;should&nbsp;be&nbsp;removed
+<BR>&nbsp;&nbsp;-&nbsp;returns&nbsp;adjusted&nbsp;string
+<BR>
+
+<B>getval</B> - get query string parameter value
+<BR>&nbsp;&nbsp;-&nbsp;accepts&nbsp;two&nbsp;string
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;first&nbsp;string&nbsp;is&nbsp;query&nbsp;string&nbsp;from&nbsp;which&nbsp;to&nbsp;get&nbsp;the&nbsp;parameter
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;(usually&nbsp;%s)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;second&nbsp;string&nbsp;is&nbsp;name&nbsp;of&nbsp;parameter&nbsp;for&nbsp;which&nbsp;we&nbsp;want&nbsp;to&nbsp;get
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;value
+<BR>&nbsp;&nbsp;-&nbsp;returns&nbsp;value&nbsp;of&nbsp;the&nbsp;parameter&nbsp;or&nbsp;empty&nbsp;string&nbsp;when&nbsp;the&nbsp;parameter
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;doesn't&nbsp;exists
+<BR>
+
+<B>sif</B> - logical decision
+<BR>&nbsp;&nbsp;-&nbsp;accepts&nbsp;three&nbsp;parameters
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;first&nbsp;is&nbsp;numeric&nbsp;and&nbsp;when&nbsp;is&nbsp;zero&nbsp;than&nbsp;result&nbsp;of&nbsp;this&nbsp;decision
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;result&nbsp;of&nbsp;second&nbsp;parameter,&nbsp;else&nbsp;result&nbsp;is&nbsp;result&nbsp;of&nbsp;third
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parameter
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;second&nbsp;parameter&nbsp;is&nbsp;string
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;third&nbsp;parameter&nbsp;is&nbsp;string
+<BR>&nbsp;&nbsp;-&nbsp;returns&nbsp;string&nbsp;result&nbsp;of&nbsp;decision
+<BR>
+
+<B>!</B> - logical not
+<BR>&nbsp;&nbsp;-&nbsp;accepts&nbsp;one&nbsp;numeric&nbsp;parameter
+<BR>&nbsp;&nbsp;-&nbsp;returns&nbsp;negation&nbsp;of&nbsp;parameter
+<BR>
+
+<B>&amp;</B> - logical and
+<BR>&nbsp;&nbsp;-&nbsp;accept&nbsp;two&nbsp;numeric&nbsp;parameters
+<BR>&nbsp;&nbsp;-&nbsp;returns&nbsp;logical&nbsp;and&nbsp;of&nbsp;parameters
+<BR>
+
+<B>|</B> - logical or
+<BR>&nbsp;&nbsp;-&nbsp;accept&nbsp;two&nbsp;numeric&nbsp;parameters
+<BR>&nbsp;&nbsp;-&nbsp;returns&nbsp;logical&nbsp;or&nbsp;of&nbsp;parameters
+<BR>
+
+<B>getext</B> - get file extension
+<BR>&nbsp;&nbsp;-&nbsp;accept&nbsp;one&nbsp;sting&nbsp;(filename&nbsp;or&nbsp;path)
+<BR>&nbsp;&nbsp;-&nbsp;return&nbsp;string&nbsp;containing&nbsp;extension&nbsp;of&nbsp;parameter
+<BR>
+
+<B>seq</B> - compare two strings
+<BR>&nbsp;&nbsp;-&nbsp;accepts&nbsp;two&nbsp;strings&nbsp;for&nbsp;comparison
+<BR>&nbsp;&nbsp;-&nbsp;returns&nbsp;numeric&nbsp;value&nbsp;0&nbsp;-&nbsp;if&nbsp;different&nbsp;1&nbsp;-&nbsp;if&nbsp;equal
+<BR>
+
+<BR>
+
+<B>jsf</B> - execute JavaScript function
+<BR>&nbsp;&nbsp;-&nbsp;accepts&nbsp;one&nbsp;string&nbsp;parameter&nbsp;which&nbsp;holds&nbsp;name&nbsp;of
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;JavaScript&nbsp;function&nbsp;specified&nbsp;in&nbsp;script&nbsp;loaded&nbsp;with
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<I>-js_script_file</I>&nbsp;option.
+<BR>&nbsp;&nbsp;-&nbsp;returns&nbsp;string&nbsp;value&nbsp;equal&nbsp;to&nbsp;return&nbsp;value&nbsp;of
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;JavaScript&nbsp;function
+<BR>&nbsp;&nbsp;-&nbsp;this&nbsp;function&nbsp;is&nbsp;available&nbsp;only&nbsp;when&nbsp;pavuk&nbsp;is&nbsp;compiled
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;support&nbsp;for&nbsp;JavaScript&nbsp;bindings
+<P>
+For example, if you are mirroring very huge number of internet sites
+into same local directory, too much entries in one directory, should
+cause performance problems. You may use for example <I>hsh</I> or <I>md5</I>
+functions to generate one additional level of hash directories based on hostname
+whit one of following options :
+<P>
+<I>-fnrules F '*' '(sc (nc &quot;%02d/&quot; (hsh %h 100)) %o)'</I>
+<BR>
+
+<I>-fnrules F '*' '(sc (ss (md5 %h) 0 2) %o)'</I>
+<BR>
+
+<DT><I>-base_level $nr</I>
+
+<DD>
+Number of directory levels to omit in local tree.
+<P>
+For example when downloading
+URL <A HREF="ftp://ftp.idata.sk/pub/unix/www/pavuk-0.7pl1.tgz">ftp://ftp.idata.sk/pub/unix/www/pavuk-0.7pl1.tgz</A> you enter at command line
+<B>-base_level 4</B>
+
+in local tree will be created www/pavuk-0.7pl1.tgz not
+ftp/<A HREF="ftp://ftp.idata.sk_21">ftp.idata.sk_21</A>/pub/unix/www/pavuk-0.7pl1.tgz as normally.
+<DT><I>-default_prefix $str</I>
+
+<DD>
+Default prefix of mirrored directory. This option is used only when you are
+trying to synchronize content of remote directory which was downloaded using
+<B>-base_level</B> option. Also you must use directory based synchronization
+method, not URL based synchronization method. This is especially useful, when
+used in conjunction with <B>-remove_old</B> option.
+<DT><I>-remove_adv/-noremove_adv</I>
+
+<DD>
+This option is used for turn on/off of removing HTML tags which contains advertisement banners.
+The banners are not removed from HTML file, but are commented out.
+Such URLs also will not be downloaded.
+This option have effect only when used with option <B>-adv_re</B>.
+Default is turned off.
+This option is available only when your system have support for one of supported regular expressions implementation.
+<DT><I>-adv_re $RE</I>
+
+<DD>
+This option is used to specify regular expressions for matching URLs of advertisement banners.
+For example :
+-adv_re <A HREF="http://ad.doubleclick.net/.*">http://ad.doubleclick.net/.*</A>
+is used to match all files from server ad.doubleclick.net.
+This option is available only when your system have any supported regular expressions implementation.
+<DT><I>-unique_name/-nounique_name</I>
+
+<DD>
+Pavuk as default always attempts to assign to unique URL unique local filename.
+If this behavior is not wanted, you can use option
+<B>-nounique_name</B>
+
+to disable this.
+<P>
+</DL>
+<A NAME="lbBD">&nbsp;</A>
+<H2>Other Options</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>-sleep $nr</I>
+
+<DD>
+This option allows you to specify number of seconds during that the program will
+be suspended between two transfers. Useful to deny server overload.
+Default value for this option is 0.
+<DT><I>-rsleep/-norsleep</I>
+
+<DD>
+When this option is active, pavuk randomizes the the sleep time between transfers in interval between zero and value specified with <B>-sleep</B> option. Default is this option inactive.
+<DT><I>-ddays $nr</I>
+
+<DD>
+If document has modification time later as $nr days, then in sync mode pavuk attempts to
+retrieve newer copy of document from remote server. Default value is 0.
+<DT><I>-remove_old/-noremove_old</I>
+
+<DD>
+Remove improper documents (that, which doesn't exist on remote site).
+This option have effect only when used in directory based <B>sync</B> mode.
+When used with URL based sync mode, pavuk will not remove any old files
+which were excluded from document tree and are not referenced in any HTML
+document.
+You must also use option <B>-subdir</B>, to let pavuk find files which belongs to current mirror.
+As default pavuk won't remove any old files.
+<DT><I>-browser $str</I>
+
+<DD>
+is used to set your browser command (in URL tree dialog you can
+use right click to raise menu, from which you can start browser on actually
+selected URL).
+This option is available only when compiled with GTK GUI and with support for URL tree preview.
+<DT><I>-debug/-nodebug</I>
+
+<DD>
+turns on displaying of debug messages. This option is available only when compiled with -DDEBUG.
+If -debug option is used pavuk will output verbose information about documents,
+whole protocol level information, locking informations and more
+(depends on <B>-debug_level</B> setup). This options is used just like trigger
+to enable output of debug messages selected by <B>-debug_level</B> option.
+Default is debug mode turned off.
+<DT><I>-debug_level $level</I>
+
+<DD>
+Set level of required debug informations. <B>$level</B> can be numeric value
+which represent binary mask for requested debug levels, or comma separated list
+of supported debug levels.
+Currently pavuk supports following debug levels :
+<BR>
+
+<B>html</B> - for HTML parser debugging
+<BR>
+
+<B>protos</B> - to see server side protocol messages
+<BR>
+
+<B>protoc</B> - to see client side protocol messages
+<BR>
+
+<B>procs</B> - to see some special procedure calls
+<BR>
+
+<B>locks</B> - for debugging of documents locking
+<BR>
+
+<B>net</B> - for debugging some low level network stuff
+<BR>
+
+<B>misc</B> - for miscellaneous unsorted debug messages
+<BR>
+
+<B>user</B> - for verbose user level messages
+<BR>
+
+<B>all</B> - request all currently supported debug levels
+<BR>
+
+<B>mtlock</B> - locking of resources in multithreading environment
+<BR>
+
+<B>mtthr</B> - launching/weaking/sleeping/stoping of threads in multithreaded environment
+<BR>
+
+<B>protod</B> - for DEBUGGING of POST requests
+<BR>
+
+<B>limits</B> - for debugging limiting options, you will see the reason why particular URLs are rejected by pavuk and which option caused this.
+<BR>
+
+<B>ssl</B> - to enable verbose reporting about SSL related things.
+<BR>
+
+<DT><I>-remind_cmd $str</I>
+
+<DD>
+This option have effect only when running pavuk in
+<B>reminder</B>
+
+mode. To command specified with this option pavuk sends result of running reminder mode.
+There are listed URLs which are changed and URLs which have any errors.
+Default remind command is &quot;mailx <A HREF="mailto:user@server">user@server</A> -s \&quot;pavuk reminder result\&quot;&quot; .
+<DT><I>-nscache_dir $dir</I>
+
+<DD>
+Path to Netscape browser cache directory. If you specify this path, pavuk
+attempts to find out if you have URL in this cache.  If URL is there it will
+be fetched else pavuk will download it from net. The cache directory index
+file must be named <I>index.db</I> and must be located in the cache directory.
+To support this feature, pavuk have to be linked with BerkeleyDB 1.8x .
+<DT><I>-mozcache_dir $dir</I>
+
+<DD>
+Path to Mozilla browser cache directory. Same functionality as with previous
+option, just for different browser with different cache formats.
+Pavuk supports both formats of Mozilla browser disk cache (old for versions
+&lt;0.9 and new used in 0.9=&lt;).
+The old format cache directory must contain cache directory index database
+with name <I>cache.db</I>. Then new format cache directory must contain map
+file <I>_CACHE_MAP_</I>, and three block files
+<I>_CACHE_001_</I>, <I>_CACHE_002_</I>, <I>_CACHE_003_</I>.
+To support old Mozilla cache format, pavuk have to be linked with
+BerkeleyDB 1.8x. New Mozilla cache format doesn't require any external library.
+<DT><I>-post_cmd $str</I>
+
+<DD>
+Post-processing command, which will be executed after successful download of document.
+This command may somehow handle with document. During time of running this command, pavuk
+leaves actual document locked, so there isn't chance that some other pavuk process
+will modify document.
+This postprocessing command will get three additional parameters from pavuk.
+
+<BR>
+
+- local name of document
+<BR>
+
+-
+<B>1/0</B>
+
+1 if document is HTML document, 0 if not
+<BR>
+
+- original URL of this document
+
+<DT><I>-hack_add_index/-nohack_add_index</I>
+
+<DD>
+This is bit hacky option. It forces pavuk to add to URL queue also directory
+indexes of all queued documents. This allow pavuk to download more documents
+from site, than it is able achieve in normal traversing of HTML documents.
+Bit dirty but useful in some cases.
+<DT><I>-js_script_file $file</I>
+
+<DD>
+Pavuk have optionally builtin JavaScript interpreter to allow high level
+customization of some internal procedures. Currently you are allowed to
+customize with your own JavaScript functions two things. You can use it
+to set precise limiting options, or you can write own functions which can
+be used inside rules of <I>-fnrules</I> option.
+With this option you can load JavaScript script with functions into pavuks
+internal JavaScript interpreter. To learn more about this capabilities read
+separate document jsbind.txt which comes with pavuk sources in toplevel
+directory.
+This option is available only when you have compiled pavuk with support for
+JavaScript bindings.
+<P>
+</DL>
+<A NAME="lbBE">&nbsp;</A>
+<H2>EXIT STATUS</H2>
+
+As of version 0.9pl29 pavuk have changed indication of status by exit codes.
+In earlier versions exit status 0 was for no error and nonzero exit status
+was something like count of failed documents.
+In all version after 0.0pl29 there are defined following exit codes:
+<BR>
+
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;-&nbsp;no&nbsp;error,&nbsp;everything&nbsp;is&nbsp;OK
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;-&nbsp;error&nbsp;in&nbsp;configuration&nbsp;of&nbsp;pavuk&nbsp;options&nbsp;or
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error&nbsp;in&nbsp;config&nbsp;files
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;-&nbsp;some&nbsp;error&nbsp;occurred&nbsp;while&nbsp;downloading&nbsp;documents
+<P>
+<A NAME="lbBF">&nbsp;</A>
+<H2>ENVIRONMENTAL VARIABLES</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>USER</I>
+
+<DD>
+variable is used to construct email address from user and hostname
+<DT><I>LC_* or LANG</I>
+
+<DD>
+used to set internationalized environment
+<DT><I>PAVUKRC_FILE</I>
+
+<DD>
+with this variable you can specify alternative location for your pavukrc
+configuration file.
+<P>
+</DL>
+<A NAME="lbBG">&nbsp;</A>
+<H2>REQUIRED EXTERNAL PROGRAMS</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>at</I>
+
+<DD>
+is used for scheduling.
+<DT><I>gunzip</I>
+
+<DD>
+is used to decode gzip or compress encoded documents.
+</DL>
+<A NAME="lbBH">&nbsp;</A>
+<H2>Bugs</H2>
+
+<P>
+If you find any, please let me know.
+<A NAME="lbBI">&nbsp;</A>
+<H2>FILES</H2>
+
+<P>
+<DL COMPACT>
+<DT><I>@SYSCONFDIR@/pavukrc</I>
+
+<DD>
+<DT><I>~/.pavukrc</I>
+
+<DD>
+<DT><I>~/.pavuk_prefs</I>
+
+<DD>
+<BR>
+
+<P>
+These files are used as default configuration files.
+You may specify there some constant values like your proxy server or
+your preferred WWW browser. Configuration options reflect command line options.
+Not all parameters are suitable for use in default configuration file.
+You should select only some of them, which you really need.
+<BR>
+
+<P>
+File
+<B>~/.pavuk_prefs</B>
+
+is special file which contains automatically stored configuration.
+This file is used only when running GUI interface of pavuk and option
+<B>-prefs</B>
+
+is active.
+<BR>
+
+<P>
+First (if present) parsed file is
+<B>@SYSCONFDIR@/pavukrc</B>
+
+then
+<B>~/.pavukrc</B>
+
+(if present), then
+<B>~/.pavuk_prefs</B>
+
+(if present).
+Last the command line is parsed. The precedence is as follows :
+<BR>
+
+<P>
+- highest -
+<BR>
+
+Entered in user interface
+<BR>
+
+Entered in command line
+<BR>
+
+~/.pavuk_prefs
+<BR>
+
+~/.pavukrc
+<BR>
+
+@SYSCONFDIR@/pavukrc
+<BR>
+
+- lowest -
+<P>
+<BR>
+
+Here is table of config file - command line options pairs.
+<BR>
+
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+MaxLevel:                  ---&gt;  -lmax
+MaxDocs:                   ---&gt;  -dmax
+MaxSize:                   ---&gt;  -maxsize
+MinSize:                   ---&gt;  -minsize
+SleepBetween:              ---&gt;  -sleep
+MaxRetry:                  ---&gt;  -retry
+MaxRegets:                 ---&gt;  -nregets
+MaxRedirections:           ---&gt;  -nredirs
+CommTimeout:               ---&gt;  -timeout
+RegetRollbackAmount:       ---&gt;  -rollback
+DocExpiration:             ---&gt;  -ddays
+UseCache:                  ---&gt;  -nocache
+UseRobots:                 ---&gt;  -noRobots
+AllowFTP:                  ---&gt;  -noFTP
+AllowHTTP:                 ---&gt;  -noHTTP
+AllowSSL:                  ---&gt;  -noSSL
+AllowGopher:               ---&gt;  -noGopher
+AllowCGI:                  ---&gt;  -noCGI
+AllowGZEncoding:           ---&gt;  -noEnc
+AllowFTPRecursion:         ---&gt;  -FTPdir
+ForceReget:                ---&gt;  -force_reget
+Debug:                     ---&gt;  -debug
+AllowedSites:              ---&gt;  -asite
+DisallowedSites:           ---&gt;  -dsite
+AllowedDomains:            ---&gt;  -adomain
+DisallowedDomains:         ---&gt;  -ddomain
+AllowedPrefixes:           ---&gt;  -aprefix
+DisallowedPrefixes:        ---&gt;  -dprefix
+AllowedSuffixes:           ---&gt;  -asfx
+DisallowedSuffixes:        ---&gt;  -dsfx
+AllowedMIMETypes:          ---&gt;  -amimet
+DisallowedMIMETypes:       ---&gt;  -dmimet
+PreferredLanguages:        ---&gt;  -alang
+PreferredCharset:          ---&gt;  -acharset
+WorkingDir:                ---&gt;  -cdir
+WorkingSubDir:             ---&gt;  -subdir
+HTTPAuthorizationScheme:   ---&gt;  -auth_scheme
+HTTPAuthorizationName:     ---&gt;  -auth_name
+HTTPAuthorizationPassword: ---&gt;  -auth_passwd
+AuthReuseDigestNonce:      ---&gt;  -auth_reuse_nonce
+SSLCertPassword:           ---&gt;  -ssl_cert_passwd
+SSLCertFile:               ---&gt;  -ssl_cert_file
+SSLKeyFile:                ---&gt;  -ssl_key_file
+EmailAddress:              ---&gt;  -from
+MatchPattern:              ---&gt;  -pattern
+REMatchPattern:            ---&gt;  -rpattern
+SkipMatchPattern:          ---&gt;  -skip_pattern
+SkipREMatchPattern:        ---&gt;  -skip_rpattern
+URLMatchPattern:           ---&gt;  -url_pattern
+URLREMatchPattern:         ---&gt;  -url_rpattern
+SkipURLMatchPattern:       ---&gt;  -skip_url_pattern
+SkipURLREMatchPattern:     ---&gt;  -skip_url_rpattern
+DefaultMode:               ---&gt;  -mode
+FTPProxy:                  ---&gt;  -ftp_proxy
+HTTPProxy:                 ---&gt;  -http_proxy
+SSLProxy:                  ---&gt;  -ssl_proxy
+GopherProxy:               ---&gt;  -gopher_proxy
+FTPViaHTTPProxy:           ---&gt;  -ftp_httpgw
+GopherViaHTTPProxy:        ---&gt;  -gopher_httpgw
+HTTPProxyUser:             ---&gt;  -http_proxy_user
+HTTPProxyPass:             ---&gt;  -http_proxy_pass
+HTTPProxyAuth:             ---&gt;  -http_proxy_auth
+AuthReuseProxyDigestNonce: ---&gt;  -auth_reuse_proxy_nonce
+Browser:                   ---&gt;  -browser
+ScenarioDir:               ---&gt;  -scndir
+ShowProgress:              ---&gt;  -progress
+XMaxLogSize:               ---&gt;  -xmaxlog
+LogFile:                   ---&gt;  -logfile
+RemoveOldDocuments:        ---&gt;  -remove_old
+AuthFile:                  ---&gt;  -auth_file
+BaseLevel:                 ---&gt;  -base_level
+FTPDirtyProxy:             ---&gt;  -ftp_dirtyproxy
+ActiveFTPData:             ---&gt;  -ftp_active/-ftp_passive
+ActiveFTPPortRange:        ---&gt;  -active_ftp_port_range
+AlwaysMDTM:                ---&gt;  -always_mdtm/-noalways_mdtm
+RemoveBeforeStore:         ---&gt;  -(no)remove_before_store
+ShowDownloadTime:          ---&gt;  -stime
+NLSMessageCatalogDir:      ---&gt;  -msgcat
+Quiet:                     ---&gt;  -quiet/-verbose
+NewerThan:                 ---&gt;  -newer_than
+OlderThan:                 ---&gt;  -older_than
+Reschedule:                ---&gt;  -reschedule
+DontLeaveSite:             ---&gt;  -dont_leave_site/-leave_site
+DontLeaveDir:              ---&gt;  -dont_leave_dir/-leave_dir
+PreserveTime:              ---&gt;  -preserve_time/-nopreserve_time
+LeaveLevel:                ---&gt;  -leave_level
+GUIFont:                   ---&gt;  -gui_font
+UserCondition:             ---&gt;  -user_condition
+CookieFile:                ---&gt;  -cookie_file
+CookieSend:                ---&gt;  -cookie_send/-nocookie_send
+CookieRecv:                ---&gt;  -cookie_recv/-nocookie_recv
+CookieUpdate:              ---&gt;  -cookie_update/-nocookie_update
+CookiesMax:                ---&gt;  -cookies_max
+CookieCheckDomain:         ---&gt;  -cookie_check/-nocookie_check
+DisabledCookieDomains:     ---&gt;  -disabled_cookie_domains
+DisableHTMLTag:            ---&gt;  -disable_html_tag
+EnableHTMLTag:             ---&gt;  -enable_html_tag
+TrDeleteChar:              ---&gt;  -tr_del_chr
+TrStrToStr:                ---&gt;  -tr_str_str
+TrChrToChr:                ---&gt;  -tr_chr_chr
+IndexName:                 ---&gt;  -index_name
+StoreName:                 ---&gt;  -store_name
+PreservePermisions:        ---&gt;  -preserve_perm/-nopreserve_perm
+PreserveAbsoluteSymlinks:  ---&gt;  -preserve_slinks/-nopreserve_slinks
+FTPListCMD:                ---&gt;  -FTPlist/-noFTPlist
+MaxRate:                   ---&gt;  -maxrate
+MinRate:                   ---&gt;  -minrate
+ReadBufferSize:            ---&gt;  -bufsize
+BgMode:                    ---&gt;  -bg/-nobg
+CheckSize:                 ---&gt;  -check_size/-nocheck_size
+SLogFile:                  ---&gt;  -slogfile
+Identity:                  ---&gt;  -identity
+SendFromHeader:            ---&gt;  -send_from/-nosend_from
+RunX:                      ---&gt;  -runX
+FnameRules:                ---&gt;  -fnrules
+StoreDocInfoFiles:         ---&gt;  -store_info/-nostore_info
+AllLinksToLocal:           ---&gt;  -all_to_local/-noall_to_local
+AllLinksToRemote:          ---&gt;  -all_to_remote/-noall_to_remote
+SelectedLinksToLocal:      ---&gt;  -sel_to_local/-nosel_to_local
+ReminderCMD:               ---&gt;  -remind_cmd
+AutoReferer:               ---&gt;  -auto_referer/-noauto_referer
+URLsFile:                  ---&gt;  -urls_file
+UsePreferences:            ---&gt;  -prefs/-noprefs
+FTPhtml:                   ---&gt;  -FTPhtml/-noFTPhtml
+StoreDirIndexFile:         ---&gt;  -store_index/-nostore_index
+Language:                  ---&gt;  -language
+FileSizeQuota:             ---&gt;  -file_quota
+TransferQuota:             ---&gt;  -trans_quota
+FSQuota:                   ---&gt;  -fs_quota
+EnableJS:                  ---&gt;  -enable_js/-disable_js
+UrlSchedulingStrategy:     ---&gt;  -url_strategy
+NetscapeCacheDir:          ---&gt;  -nscache_dir
+RemoveAdvertisement:       ---&gt;  -remove_adv/-noremove_adv
+AdvBannerRE:               ---&gt;  -adv_re
+CheckIfRunnigAtBackground: ---&gt;  -check_bg/-nocheck_bg
+SendIfRange:               ---&gt;  -send_if_range/-nosend_if_range
+SchedulingCommand:         ---&gt;  -sched_cmd
+UniqueLogName:             ---&gt;  -unique_log/-nounique_log
+PostCommand:               ---&gt;  -post_cmd
+SSLVersion:                ---&gt;  -ssl_version
+UniqueSSLID:               ---&gt;  -unique_sslid/-nounique_sslid
+AddHTTPHeader:             ---&gt;  -httpad
+StatisticsFile:            ---&gt;  -statfile
+WaitOnExit:                ---&gt;  -ewait
+AllowedIPAdrressPattern:   ---&gt;  -aip_pattern
+DisallowedIPAdrressPattern:---&gt;  -dip_pattern
+SiteLevel:                 ---&gt;  -site_level
+UseHTTP11:                 ---&gt;  -use_http11
+MaxRunTime:                ---&gt;  -max_time
+LocalIP:                   ---&gt;  -local_ip
+RequestInfo:               ---&gt;  -request
+HashSize:                  ---&gt;  -hash_size
+NumberOfThreads:           ---&gt;  -nthreads
+ImmediateMessages:         ---&gt;  -immesg/-noimmsg
+HTMLFormData:              ---&gt;  -formdata
+DumpFD:                    ---&gt;  -dumpfd
+DumpUrlFD:                 ---&gt;  -dump_urlfd
+DeleteAfterTransfer:       ---&gt;  -del_after/-nodel_after
+UniqueDocName:             ---&gt;  -unique_name/-nounique_name
+LeaveSiteEnterDirectory:   ---&gt;  -leave_site_enter_dir/-dont_leave_site_enter_dir
+SinglePage:                ---&gt;  -singlepage/-nosinglepage
+NTLMAuthorizationDomain:   ---&gt;  -auth_ntlm_domain
+NTLMProxyAuthorizationDomain:
+                           ---&gt;  -auth_proxy_ntlm_domain
+JavascriptPattern:         ---&gt;  -js_pattern
+FollowCommand:             ---&gt;  -follow_cmd
+RetrieveSymlinks:          ---&gt;  -retrieve_symlink/-noretrieve_symlink
+JSTransform:               ---&gt;  -js_transform
+JSTransform2:              ---&gt;  -js_transform2
+FTPProxyUser:              ---&gt;  -ftp_proxy_user
+FTPProxyPassword:          ---&gt;  -ftp_proxy_pass
+LimitInlineObjects:        ---&gt;  -limit_inlines/-dont_limit_inlines
+FTPListOptions:            ---&gt;  -ftp_list_options
+FixWuFTPDBrokenLISTcmd:    ---&gt;  -fix_wuftpd_list/-nofix_wuftpd_list
+PostUpdate:                ---&gt;  -post_update/-nopost_update
+SeparateInfoDir:           ---&gt;  -info_dir
+MozillaCacheDir:           ---&gt;  -mozcache_dir
+AllowedPorts:              ---&gt;  -aport
+DisallowedPorts:           ---&gt;  -dport
+HackAddIndex:              ---&gt;  -hack_add_index/-nohack_add_index
+JavaScriptFile:            ---&gt;  -js_script_file
+FtpLoginHandshake:         ---&gt;  -ftp_login_handshake
+NSSCertDir:                ---&gt;  -nss_cert_dir
+NSSAcceptUnknownCert:      ---&gt;  -nss_accept_unknown_cert/-nonss_accept_unknown_cert
+NSSDomesticPolicy:         ---&gt;  -nss_domestic_policy/-nss_export_policy
+DontTouchUrlREPattern:     ---&gt;  -dont_touch_url_rpattern
+DontTouchUrlPattern:       ---&gt;  -dont_touch_url_pattern
+DontTouchTagREPattern:     ---&gt;  -dont_touch_tag_rpattern
+HTMLTagPattern:            ---&gt;  -tag_pattern
+HTMLTagREPattern:          ---&gt;  -tag_rpattern
+URL:                       ---&gt;  one URL (more lines with URL:
+                                 ... means more URL's)
+
+</PRE>
+
+</DL>
+
+line which begins with '#' means comment.
+<BR>
+
+TrStrToStr: and TrChrToChr: must contain two quoted strings.
+All parameter names are case insensitive. If here is missing any option, try to
+look inside
+<B>config.c</B>
+
+source file.
+<BR>
+
+<P>
+See pavukrc.sample file for example
+<DT><I>.pavuk_authinfo</I>
+
+<DD>
+<P>
+File should contain as many authentification records as you need.
+Records are separated by any number of empty lines.
+Parameter name is case insensitive.
+<P>
+Structure of record:
+<P>
+<DL COMPACT><DT><DD>
+<PRE>
+<B>Proto:</B> &lt;proto ID&gt;    ---&gt; identification of protocol
+                          (ftp/http/https/..)
+                     - required field
+<B>Host:</B> &lt;host:[port]&gt;  ---&gt; host name
+                     - required field
+<B>User:</B> &lt;user&gt;         ---&gt; name of user
+                     - optional
+<B>Pass:</B> &lt;password&gt;     ---&gt; password for user
+                     - optional
+<B>Base:</B> &lt;path&gt;         ---&gt; base prefix of document path
+                     - optional
+<B>Realm:</B> &lt;name&gt;        ---&gt; realm for HTTP authorization
+                     - optional
+<B>NTLMDomain:</B> &lt;domain&gt; ---&gt; NT/LM domain for NTLM authorization
+                     - optional
+<B>Type:</B> &lt;type&gt;         ---&gt; HTTP authentification scheme
+                               - 1/user   - user auth scheme
+                               - 2/Basic  - Basic auth scheme (default)
+                               - 3/Digest - Digest auth scheme
+                               - 4/NTLM   - NTLM auth scheme
+                     - optional
+</PRE>
+
+</DL>
+
+<DT>see pavuk_authinfo.sample file for example<DD>
+<DT><I>~/.pavuk_keys</I>
+
+<DD>
+this is file where are stored information about configurable menu option shortcuts.
+This is available only when compiled with Gtk+1.2 and higher.
+<DT><I>~/.pavuk_remind_db</I>
+
+<DD>
+this file contains informations about URLs for running in
+<B>reminder</B>
+
+mode. Structure of this file is very easy. Each line contains information abou one URL.
+first entry in line is last known modification time of URL (stored in time_t format - number of secons from 1.1.1970 GMT).
+And second entry is URL.
+<P>
+</DL>
+<A NAME="lbBJ">&nbsp;</A>
+<H2>EXAMPLE COMMAND LINE</H2>
+
+<P>
+pavuk -mode mirror -nobg -store_info -info_dir
+<BR>
+
+/mirror/info -nthreads 1 -cdir /mirror/incoming -subdir
+<BR>
+
+/mirror/incoming -preserve_time -nopreserve_perm
+<BR>
+
+-nopreserve_slinks -noretrieve_symlink -force_reget
+<BR>
+
+-noRobots -trans_quota 16384 -maxsize 16777216
+<BR>
+
+-max_time 28 -nodel_after -remove_before_store -ftpdir
+<BR>
+
+-ftplist -ftp_list_options -a -dont_leave_site
+<BR>
+
+-dont_leave_dir -all_to_local -remove_old -nostore_index
+<BR>
+
+-active_ftp_port_range 57344:65535 -always_mdtm
+<BR>
+
+-ftp_passive -base_level 2 http://&lt;my_host&gt;/doc/
+<P>
+<A NAME="lbBK">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<P>
+Look into
+<B>ChangeLog</B>
+
+file for more informations about new features in particular versions of pavuk.
+<P>
+<A NAME="lbBL">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+<P>
+Main development <B>Ondrejicka Stefan</B>
+<BR>
+
+Look into
+<B>CREDITS</B>
+
+file of sources for additional information.
+<P>
+<A NAME="lbBM">&nbsp;</A>
+<H2>AVAILABILITY</H2>
+
+<P>
+pavuk is available from
+<B><A HREF="http://pavuk.sourceforge.net/">http://pavuk.sourceforge.net/</A></B>
+
+<P>
+<P>
+
+<P>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">Format of supported URLs</A><DD>
+<DT><A HREF="#lbAF">Default mapping of URLs to local filenames</A><DD>
+<DT><A HREF="#lbAG">OPTIONS</A><DD>
+<DT><A HREF="#lbAH">List of options chapters</A><DD>
+<DT><A HREF="#lbAI">Mode</A><DD>
+<DT><A HREF="#lbAJ">Help</A><DD>
+<DT><A HREF="#lbAK">Indicate/Logging/Interface options</A><DD>
+<DT><A HREF="#lbAL">Netli options</A><DD>
+<DT><A HREF="#lbAM">Special start</A><DD>
+<DT><A HREF="#lbAN">Scenario/Task options</A><DD>
+<DT><A HREF="#lbAO">Directory options</A><DD>
+<DT><A HREF="#lbAP">Preserve options</A><DD>
+<DT><A HREF="#lbAQ">Proxy options</A><DD>
+<DT><A HREF="#lbAR">Proxy Authentification</A><DD>
+<DT><A HREF="#lbAS">Protocol/Download Options</A><DD>
+<DT><A HREF="#lbAT">Authentification</A><DD>
+<DT><A HREF="#lbAU">Site/Domain/Port Limitation Options</A><DD>
+<DT><A HREF="#lbAV">Limitation Document properties</A><DD>
+<DT><A HREF="#lbAW">Limitation Document name</A><DD>
+<DT><A HREF="#lbAX">Limitation Protocol Option</A><DD>
+<DT><A HREF="#lbAY">Other Limitation Options</A><DD>
+<DT><A HREF="#lbAZ">Javascript support</A><DD>
+<DT><A HREF="#lbBA">Cookie</A><DD>
+<DT><A HREF="#lbBB">HTML rewriting engine tuning options</A><DD>
+<DT><A HREF="#lbBC">Filename/URL Conversion Option</A><DD>
+<DT><A HREF="#lbBD">Other Options</A><DD>
+<DT><A HREF="#lbBE">EXIT STATUS</A><DD>
+<DT><A HREF="#lbBF">ENVIRONMENTAL VARIABLES</A><DD>
+<DT><A HREF="#lbBG">REQUIRED EXTERNAL PROGRAMS</A><DD>
+<DT><A HREF="#lbBH">Bugs</A><DD>
+<DT><A HREF="#lbBI">FILES</A><DD>
+<DT><A HREF="#lbBJ">EXAMPLE COMMAND LINE</A><DD>
+<DT><A HREF="#lbBK">SEE ALSO</A><DD>
+<DT><A HREF="#lbBL">AUTHOR</A><DD>
+<DT><A HREF="#lbBM">AVAILABILITY</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="http://localhost/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:45:03 GMT, July 09, 2008
+</BODY>
+</HTML>

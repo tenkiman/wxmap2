@@ -1,0 +1,10 @@
+				20210713
+
+bug in doing sst...needed to add ln -s for 2021...did for 2021-2024 2024 is a leap year (366 days)
+
+ 1137  pd /data/w22/dat/ocean/oisst/
+ 1142  cd fix/
+ 1144  ln -s aoiclim.71_00.daily.365.dat aoiclim.71_00.daily.2021.dat
+ 1146  ln -s aoiclim.71_00.daily.365.dat aoiclim.71_00.daily.2022.dat
+ 1147  ln -s aoiclim.71_00.daily.365.dat aoiclim.71_00.daily.2023.dat
+ 1148  ln -s aoiclim.71_00.daily.366.dat aoiclim.71_00.daily.2024.dat

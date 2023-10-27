@@ -1,0 +1,750 @@
+*-------------------------- gpclm ------------------
+*
+function gpclm(k)
+
+_re2res='1.5'
+_re2res='1.25'
+
+#
+# _modpt1 carries the gmodname; _model = real data model
+#
+
+'set grads off'
+
+tt=dtginc(_bdtg,0)
+btime=dtg2gtime(tt)
+
+tt=dtginc(_bdtg,120)
+etime=dtg2gtime(tt)
+
+pstat=1
+_shades=0
+
+_t1top=''
+_t1base=_bdtg' Climo'
+_t2base='NCEP/NCAR R1 Global Reanal 1970-2000'
+_t2top=_t2base
+
+nplevs=4
+plevs='850 700 500 200'
+kplevs='8 7 5 2'
+
+pwghts='150 150 250 200'
+
+#
+# number of levels in the low-mid mean
+#
+npllm=3 
+pwghttot='550'
+
+#
+# climo sfc wind
+#
+
+'set dfile '_fwc
+'ucss=ave(uas,time='btime',time='etime')*'_ms2kt
+'vcss=ave(vas,time='btime',time='etime')*'_ms2kt
+'scss=mag(ucss,vcss)'
+
+'ucss=lterp(ucss,ua.'_fnf')'
+'vcss=lterp(vcss,ua.'_fnf')'
+'scss=lterp(scss,ua.'_fnf')'
+
+
+n=1
+while(n<=nplevs)
+
+  plev=subwrd(plevs,n)
+  kplev=subwrd(kplevs,n)
+
+  'set lev 'plev
+  'uc'kplev'=ave(ua,time='btime',time='etime')*'_ms2kt
+  'vc'kplev'=ave(va,time='btime',time='etime')*'_ms2kt
+  'sc'kplev'=mag(uc'kplev',vc'kplev')'
+
+   if(_model != 'nr1')
+    'uc'kplev'=lterp(uc'kplev',ua.'_fnf')'
+    'vc'kplev'=lterp(vc'kplev',ua.'_fnf')'
+    'sc'kplev'=lterp(sc'kplev',ua.'_fnf')'
+
+    'um'kplev'=ave(ua.'_fnf',time='btime',time='etime')*'_ms2kt
+    'vm'kplev'=ave(va.'_fnf',time='btime',time='etime')*'_ms2kt
+    'sm'kplev'=mag(um'kplev',vm'kplev')'
+
+if(_ukfill=1)
+  rc=lonfill(um%kplev)
+  rc=lonfill(vm%kplev)
+  rc=lonfill(sm%kplev)
+endif
+
+
+    'ua'kplev'=um'kplev'-uc'kplev
+    'va'kplev'=vm'kplev'-vc'kplev
+    'sa'kplev'=sm'kplev'-sc'kplev
+   endif
+
+  n=n+1
+endwhile
+
+#
+# initialize wind for low-mid layer
+#
+
+if(_model != 'nr1')
+
+ 'umlm=const(um8,0,-a)'
+ 'vmlm=const(um8,0,-a)'
+
+ 'umss=ave(uas.'_fnf',time='btime',time='etime')*'_ms2kt
+ 'vmss=ave(vas.'_fnf',time='btime',time='etime')*'_ms2kt
+ 'smss=mag(umss,vmss)'
+
+if(_ukfill=1)
+  rc=lonfill('umss')
+  rc=lonfill('vmss')
+  rc=lonfill('smss')
+endif
+
+
+ 'uass=umss-ucss'
+ 'vass=vmss-vcss'
+ 'sass=smss-scss'
+
+endif
+
+'uclm=const(uc8,0,-a)'
+'vclm=const(uc8,0,-a)'
+
+
+k=1
+while(k<=npllm)
+
+  plev=subwrd(kplevs,k)
+  pwght=subwrd(pwghts,k)
+
+  if(_model != 'nr1')
+    'umlm=umlm+um'plev'*('pwght')'
+    'vmlm=vmlm+vm'plev'*('pwght')'
+  endif
+
+  'uclm=uclm+uc'plev'*('pwght')'
+  'vclm=vclm+vc'plev'*('pwght')'
+  k=k+1
+endwhile
+
+'uclm=(uclm) / 'pwghttot
+'vclm=(vclm) / 'pwghttot
+'mclm=mag(uclm,vclm)'
+
+'ucs=uc2-uc8'
+'vcs=vc2-vc8'
+'sms=sc2-sc8'
+
+
+
+if(_model != 'nr1')
+
+  'umlm=(umlm) / 'pwghttot
+  'vmlm=(vmlm) / 'pwghttot
+  'ualm=umlm-uclm'
+  'valm=vmlm-vclm'
+
+  'mmlm=mag(umlm,vmlm)'
+  'malm=mmlm-mclm'
+
+  'ums=um2-um8'
+  'vms=vm2-vm8'
+
+  'uas=ums-ucs'
+  'vas=vms-vcs'
+  'uams=mag(ums,vms)-mag(ucs,vcs)'
+
+endif
+
+# pppppppppppppppppppppppppppppppppppppppppppppppppp
+#
+# plotting
+#
+# pppppppppppppppppppppppppppppppppppppppppppppppppp
+
+gtime=dtg2mo(_bdtg)
+gmonth=subwrd(gtime,1)
+lmonth=subwrd(gtime,2)
+nmonth=substr(_bdtg,5,2)
+
+gdir=_gname
+
+#ssssssfffffffffcccccccccccc wind
+#
+# sfc wind
+#
+#ssssssfffffffffcccccccccccc wind
+
+if(_model != 'nr1')
+
+  t1='0-5 d '_fullmod' MODEL Sfc Wind [kt] '
+  ll='sfc'
+  _t1top='`0'_fullmod' `2'_bdtg'`0 'll' 0-5 d MODEL Sfc Wind [kt]'
+  _t2top='Model'
+  u='umss' ; v='vmss' ; s='smss'
+  gbasem=gdir'/'_mopt1'.clm.sfc.'_bdtg'.'_area'.mod'
+  opt=''
+  rc=pclmwind(u,v,s,t1,gbasem,ll,opt)
+
+  t1='0-5 d '_fullmod' ANOM Sfc Wind [kt] '
+  _t1top='`0'_fullmod' `2'_bdtg' 0-5 d ANOM Sfc Wind [kt]'
+  _t2top='Model-Climo'
+  u='uass' ; v='vass' ; s='sass'
+  gbasea=gdir'/'_mopt1'.clm.sfc.'_bdtg'.'_area'.ano'
+  ll='sfc'
+  opt='anom'
+  rc=pclmwind(u,v,s,t1,gbasea,ll,opt)
+endif  
+
+#
+# plot climo sfc wind
+#
+
+if(_model = 'nr1')
+  _t1top='`2'gmonth'`0 Climo Sfc Wind [kt]'
+  gbasec=gdir'/'_mopt1'.clm.sfc.'nmonth'.'lmonth'.'_area'.clm'
+else
+  _t1top='`0NCEP R1 `2'_bdtg'`0 0-5 d CLIMO Sfc Wind [kt]'
+  gbasec=gdir'/'_mopt1'.clm.sfc.'_bdtg'.'_area'.clm'
+endif
+
+_t2top=_t2base
+t1='0-5 d CLIMO Sfc Wind [kt]'
+u='ucss' ; v='vcss' ; s='scss'
+ll='sfc'
+opt=''
+rc=pclmwind(u,v,s,t1,gbasec,ll,opt)
+
+#uuuuuuuuuuaaaaaaaaaaaa winds
+#
+# plot upper air winds
+#
+#uuuuuuuuuuaaaaaaaaaaaa winds
+
+
+douvclm=1
+
+if(douvclm=1)
+  l=1
+  while(l<=nplevs)
+
+    ll=subwrd(plevs,l)
+    kll=subwrd(kplevs,l)
+
+    t1='0-5 d 'll' mb CLIMO Flow [kt] '
+    u='uc'kll ; v='vc'kll ; s='sc'kll
+
+    _t1top=_t1base' 'll' mb Flow [kt]'
+    if(_model = 'nr1')
+      _t1top='`2'gmonth'`0 'll' mb CLIMO Flow [kt]'
+      gbasec=gdir'/'_mopt'.clm.'ll'.'nmonth'.'lmonth'.'_area'.clm'
+    else
+      _t1top='`0NCEP R1 `2'_bdtg'`0 'll' mb 0-5 d CLIMO Flow [kt]'
+      _t2top=_t2base
+      gbasec=gdir'/'_mopt1'.clm.'ll'.'_bdtg'.'_area'.clm'
+    endif
+
+    opt='doeps'
+    opt=''
+    rc=pclmwind(u,v,s,t1,gbasec,ll,opt)
+
+    if(_model != 'nr1')
+      t1='0-5 d 'll' mb '_fullmod' MODEL Flow [kt] '
+      u='um'kll ; v='vm'kll ; s='sm'kll
+      gbasem=gdir'/'_mopt1'.clm.'ll'.'_bdtg'.'_area'.mod'
+
+      opt=ll
+      _t1top='`0'_fullmod' `2'_bdtg'`0 'll' mb 0-5 d MODEL Flow [kt]'
+      _t2top='Model'
+      rc=pclmwind(u,v,s,t1,gbasem,ll,opt)
+
+      t1='0-5 d 'll' mb '_fullmod' ANOM Flow [kt] '
+      _t1top='`0'_fullmod' `2'_bdtg'`0 'll' mb 0-5 d ANOM Flow [kt]'
+      _t2top='Model-Climo'
+      u='ua'kll ; v='va'kll ; s='sa'kll
+      gbase=gdir'/'_mopt1'.clm.'ll'.'_bdtg'.'_area'.ano'
+      opt='anom'
+      rc=pclmwind(u,v,s,t1,gbase,ll,opt)
+
+    endif  
+
+    l=l+1
+  endwhile
+endif
+
+#
+# shear
+#
+
+if(_model != 'nr1')
+  t1='0-5 d MODEL Shear Flow [kt] / 200(G)&850(R) barbs'
+  _t1top='`0'_fullmod' `2'_bdtg'`0 0-5 d Shear MODEL Flow [kt]'
+  _t2top='Model'
+  us='ums' ; vs='vms' ; u8='um8' ; v8='vm8'; u2='um2' ; v2='vm2'
+  gbasem=gdir'/'_mopt1'.clm.shr.'_bdtg'.'_area'.mod'
+  rc=pclmshear(us,vs,u8,v8,u2,v2,t1,gbasem)
+#  'q pos'
+
+  t1='0-5 d ANOM Shear Flow [kt] / 200(G)&850(R) barbs'
+  _t1top='`0'_fullmod' `2'_bdtg'`0 0-5 d Shear ANOM Flow [kt]'
+  _t2top='Model-Climo'
+  us='uas' ; vs='vas' ; ms='uams'
+  gbase=gdir'/'_mopt1'.clm.shr.'_bdtg'.'_area'.ano'
+  rc=pclmshra(us,vs,ms,t1,gbase)
+#  'q pos'
+endif
+
+
+#
+# plot climo shear
+#
+
+if(_model = 'nr1')
+  _t1top='`2'gmonth'`0 Climo 850-200 Shear [kt]'
+  gbasec=gdir'/'_mopt1'.clm.shr.'nmonth'.'lmonth'.'_area'.clm'
+else
+  _t1top='`0NCEP R1 `2'_bdtg'`0 0-5 d Shear CLIMO Flow [kt]'
+  gbasec=gdir'/'_mopt1'.clm.shr.'_bdtg'.'_area'.clm'
+endif
+
+
+_t2top=_t2base
+t1='0-5 d CLIMO Shear Flow [kt] / 200(G)&850(R) barbs'
+us='ucs' ; vs='vcs' ; u8='uc8' ; v8='vc8'; u2='uc2' ; v2='vc2'
+rc=pclmshear(us,vs,u8,v8,u2,v2,t1,gbasec)
+#'q pos'
+
+#
+# low mid
+#
+
+if(_model = 'nr1')
+  _t1top='`0NCEP R1 `2'_bdtg'`0 Low-Mid Trop CLIMO Flow [kt]'
+  gbasec=gdir'/'_mopt1'.clm.lmt.'nmonth'.'lmonth'.'_area'.clm'
+else
+  _t1top='`0NCEP R1 `2'_bdtg'`0 0-5 d Low-Mid Trop CLIMO Flow [kt]'
+  gbasec=gdir'/'_mopt1'.clm.lmt.'_bdtg'.'_area'.clm'
+endif
+
+  _t2top=_t2base
+
+  t1='0-5 d CLIMO 850/700/500 Flow [kt] '
+  u='uclm' ; v='vclm' ; s='mclm'
+  opt='700'
+  rc=pclmwind(u,v,s,t1,gbasec,'lm',opt)
+#  'q pos'
+
+if(_model != 'nr1')
+
+  _t1top='`0'_fullmod' `2'_bdtg'`0 0-5 d Low-Mid Trop MODEL Flow [kt]'
+  _t2top='Model'
+  t1='0-5 d MODEL 850/700/500 Flow [kt] '
+  u='umlm' ; v='vmlm' ; s='mmlm'
+  gbasem=gdir'/'_mopt1'.clm.lmt.'_bdtg'.'_area'.mod'
+  opt='700'
+  rc=pclmwind(u,v,s,t1,gbasem,'lm',opt)
+#  'q pos'
+
+  _t1top='`0'_fullmod' `2'_bdtg'`0 0-5 d Low-Mid Trop ANOM Flow [kt]'
+  _t2top='Model-Climo'
+  t1='0-5 d ANOM 850/700/500 Flow [kt] '
+  u='ualm' ; v='valm' ; s='malm'
+  gbase=gdir'/'_mopt1'.clm.lmt.'_bdtg'.'_area'.ano'
+  opt='anom'
+  rc=pclmwind(u,v,s,t1,gbase,'lm',opt)
+#  'q pos'
+
+
+endif
+
+#return(99)
+
+return(pstat)
+
+#cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+#
+# clm shear plot
+#
+
+function pclmshear(us,vs,u8,v8,u2,v2,t1,gbase)
+
+
+'c'
+'set xlint '_xlint
+'set ylint '_ylint
+
+'mshr=mag('us','vs')'
+
+if(colscheme=jae)
+  rc=jaecol()
+endif
+
+rc=mfcol(1)
+
+'set rbrange 0 70'
+'set gxout shaded'
+'set csmooth on'
+'set clevs 20 30 40 50 60 70 80 100 110 120 130 140 150'
+'set ccols 0 0  48 47 45 43 21 22 23 24 25 26 27 29'
+
+'set clevs 10 20 30 40 50 60 70 80 100 110 120 130 140 150'
+'set ccols 39 36 33  0  0  45 43 21 22 23 24 25 26 27 29'
+
+'d mshr'
+'q shades'
+_shades=result
+
+shrcnt=1
+if(shrcnt)
+'set gxout contour'
+'set cint 10'
+'set ccolor 0'
+'set clab off'
+'set black 0 30'
+'set grads off'
+'d mshr'
+endif
+
+#
+#  streamline shear not 200
+#
+
+'set gxout stream'
+'set strmden '_strmdenua
+'set cthick '_cthkb
+'set ccolor 0'
+#'d 'us';'vs
+'d re2('us','_re2res');re2('vs','_re2res')'
+
+'set cthick '_cthk
+'set ccolor 34'
+#'d 'us';'vs
+'d re2('us','_re2res');re2('vs','_re2res')'
+
+#
+#  contour light shear
+#
+'smshr=mshr'
+nsmth=10
+n=1
+while(n<=nsmth)
+  'smshr=smth9(smshr)'
+  n=n+1
+endwhile
+  
+'set gxout contour'
+'set cthick 20'
+'set ccolor 0'
+'set clevs 15'
+'d smshr'
+
+'set cthick 7'
+'set ccolor 2'
+'set cstyle 3'
+'set clevs 15'
+'d smshr'
+
+#
+# 850/200 barbs
+#
+
+bskip=_bskip*2
+
+'set gxout barb'
+'set cthick '_cthkb
+'set ccolor 0'
+'set digsiz 0.05'
+'d skip('u2','bskip');'v2
+
+'set cthick '_cthk
+'set ccolor 3'
+'d skip('u2','bskip');'v2
+
+'set cthick '_cthkb
+'set ccolor 0'
+'d skip('u8','bskip');'v8
+
+'set cthick '_cthk
+'set ccolor 2'
+'d skip('u8','bskip');'v8
+
+if(_dobasemap != 1)
+  rc=drawmap()
+endif
+
+
+rc=dtitle(t1)
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+
+if(_model != 'basemap') 
+  rc=bottitle(_tack1,_tack2,1,_t1col,_t2col)
+  if(_doeclogo=1)
+    rc=eclogo(9.1,8.26,0.40)
+  endif
+endif
+
+if(_btthere & _specopt != 'basemap'); rctc=tcplot() ; endif
+
+gname=gbase'.png'
+if(_dobg = 1) 
+  cmd='printim 'gname' -b '_bmname' -t 0 x'_xsize' y'_ysize' png'
+  cmd
+else
+  cmd='printim 'gname' x'_xsize' y'_ysize
+  print 'PPP basemap 'cmd
+  cmd
+endif
+
+rc=1
+
+return(rc)
+
+
+#cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+#
+# clm shear anom plot
+#
+
+function pclmshra(us,vs,ms,t1,gbase)
+
+
+
+'c'
+'set xlint '_xlint
+'set ylint '_ylint
+
+'set gxout shaded'
+'set cterp on'
+'set csmooth on'
+
+rc=jaecol()
+
+'set rgb 23 255 192  60'
+'set rgb 27 160  40  10'
+'set rgb 29 100  10  10'
+
+'set rgb 47  10 80 160'
+'set rgb 49  00 50 100'
+
+'set clevs -40 -30 -20 -10  10  20 30 40'
+'set ccols 43 45  47  49  0 29  27 25  23'
+'d 'ms
+'q shades'
+_shades=result
+
+'set gxout contour'
+'set clab off'
+'set clevs -40 -30 -20 -10  10  20 30 40'
+'set ccolor 0'
+'set cthick 10'
+'d 'ms
+
+'set clevs -40 -30 -20 -10  10  20 30 40'
+'set ccolor 1'
+'set cthick 4'
+'d 'ms
+
+'set gxout stream'
+'set strmden '_strmdenua
+'set strmden 4'
+'set cthick '_cthkb
+'set ccolor 0'
+
+#'d 'us';'vs
+'d re2('us','_re2res');re2('vs','_re2res')'
+'set cthick '_cthk
+'set ccolor 34'
+#'d 'us';'vs
+'d re2('us','_re2res');re2('vs','_re2res')'
+
+'set map 0 1 10'
+'draw map'
+'set map 7 1 4'
+'draw map'
+
+pstat=0
+
+ilen=math_strlen(gname)
+
+if(_dobasemap != 1)
+  rc=drawmap()
+endif
+
+rc=dtitle(t1)
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+
+if(_model != 'basemap') 
+  rc=bottitle(_tack1,_tack2,1,_t1col,_t2col)
+  if(_doeclogo=1)
+    rc=eclogo(9.1,8.26,0.40)
+  endif
+endif
+
+if(_btthere) ;   rctc=tcplot() ; endif
+
+gname=gbase'.png'
+if(_dobg = 1) 
+  cmd='printim 'gname' -b '_bmname' -t 0 x'_xsize' y'_ysize' png'
+  cmd
+else
+  cmd='printim 'gname' x'_xsize' y'_ysize
+  print 'PPP 'cmd
+  cmd
+endif
+rc=1
+
+return(rc)
+
+#cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+#
+# clm wind  plot
+#
+
+function pclmwind(u,v,s,t1,gbase,level,opt)
+
+'c'
+_shades=0
+
+'set grads off'
+
+pstat=0
+
+'set gxout shaded'
+'set csmooth on'
+
+'set xlint '_xlint
+'set ylint '_ylint
+
+if(level = '200')
+  'set clevs 20 30 40 50 60 70 80 100 110 120 130 140 150'
+  'set ccols 0 49 48 47 45 43 21 22 23 24 25 26 27 29'
+  'set ccols 0 0  48 47 45 43 21 22 23 24 25 26 27 29'
+  'set clevs 30 40  50 60 70 80 100 '
+  'set ccols 0 47 43 21 23 25 27 29'
+  wclevs='50'
+endif
+
+if(level = '500' | level = '700' | level = 'lm')
+  'set clevs 15 20 25 30 40 50'
+  'set ccols 0 47 43 21 23 25 27 29'
+  wclevs='30'
+endif
+
+if(level = '850' |  level = 'sfc' )
+  'set clevs  10 15 20   25   30   35  50'
+  'set ccols 0 47  43  21   23   25   27   29'
+  wclevs='30'
+endif
+
+if(opt = 'anom' & (level = '200') )
+
+'set clevs -40 -30 -20 -10  10  20 30 40'
+'set ccols 43 45  47  49  0 29  27 25  23'
+
+endif
+
+if(opt = 'anom' & (level = '500' | level = '700' | level = 'lm') )
+
+'set clevs -30 -20 -15 -10  10 15 20 30'
+'set ccols 43 45  47  49  0 29  27 25  23'
+
+endif
+
+if(opt = 'anom' & (level = '850' | level = 'sfc') )
+
+'set clevs -20 -15 -10 -5  5  10   15   20'
+'set ccols 43 45  47  49  0 29   27  25   23'
+
+endif
+
+
+
+'d 's
+'q shades'
+_shades=result
+
+'set gxout contour'
+'set clab off'
+'set ccolor 0'
+'set cthick '_cthkb
+'set clevs 'wclevs
+'d 's
+
+'set ccolor 2'
+'set clab off'
+'set cthick '_cthk
+'set clevs 'wclevs
+'d 's
+
+'set gxout stream'
+'set strmden '_strmdenua
+'set strmden 4'
+'set cthick 10'
+'set ccolor 0'
+#'d 'u';'v
+'d re2('u','_re2res');re2('v','_re2res')'
+
+'set cthick 4'
+'set ccolor 33'
+
+#'d 'u';'v
+'d re2('u','_re2res');re2('v','_re2res')'
+
+bskip=_bskip*2
+
+'set gxout barb'
+'set cthick 20'
+'set ccolor 0'
+'set digsiz 0.05'
+'d skip('u','bskip');'v
+
+'set cthick 5'
+'set ccolor 2'
+'d skip('u','bskip');'v
+
+if(_dobasemap != 1)
+  rc=drawmap()
+endif
+
+rc=dtitle(t1)
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+
+if(_model != 'basemap') 
+  rc=bottitle(_tack1,_tack2,1,_t1col,_t2col)
+  if(_doeclogo=1)
+    rc=eclogo(9.1,8.26,0.40)
+  endif
+endif
+
+if(_btthere) ;   rctc=tcplot() ; endif
+
+pngpath=gbase'.png'
+gmpath=gbase'.gm'
+epspath=gbase'.eps'
+
+if(_dobg = 1) 
+  cmd='printim 'pngpath' -b '_bmname' -t 0 x'_xsize' y'_ysize' png'
+print cmd
+  cmd
+else
+  cmd='printim 'pngpath' x'_xsize' y'_ysize
+  cmd
+endif
+
+if(opt = 'doeps')
+'enable print 'gmpath
+'print'
+'disable print'
+'!gxeps -c 'gmpath' -o 'epspath
+
+endif
+
+rc=1
+
+return(rc)
+

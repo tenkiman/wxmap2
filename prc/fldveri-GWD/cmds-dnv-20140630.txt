@@ -1,0 +1,200 @@
+   151	18:26	cd fim
+   152	18:26	svn up
+   153	18:26	la
+   154	18:26	la 20140101_tctracks_r3585/
+   155	18:27	la 20140101_tctracks_r3585/cmds.txt
+   156	18:27	pg 20140101_tctracks_r3585/cmds.txt
+   157	18:27	la
+   158	18:27	c.w2.pt
+   159	18:27	svn up
+   160	18:28	la
+   161	18:29	cd ..
+   162	18:29	la
+   163	18:29	la reanal/
+   164	18:29	svn up
+   165	18:30	svn up
+   166	18:30	la fld/
+   167	18:30	la
+   168	18:30	rm *~
+   169	18:30	la
+   170	18:30	la reanal/
+   171	18:30	la reanal/20131202_era-i-uas-197901-201308/
+   172	18:30	la reanal/20131202_era-i-uas-197901-201308/cmds.txt
+   173	18:30	pg reanal/20131202_era-i-uas-197901-201308/cmds.txt
+   174	18:31	la */
+   175	18:31	la reanal/
+   176	18:31	la fld/
+   177	14:51	395859945
+   178	14:51	kill %1
+   179	18:53	mss 201305.12 rtfim9 -R -5 -l
+   180	18:53	mss 201305.12 rtfim9 -R -5 -m
+   181	20:55	j
+   182	20:57	mss 201305.12 rtfim9 -R -5 -l
+   183	20:58	ttc 2013050100 rtfim9 -M -O -U
+   184	21:43	ttc 2013050112.2013053012.12 rtfim9 -M -O -U
+   185	15:14	h
+   186	0:04	zeus
+   187	21:03	jet
+   188	22:54	jet
+   189	18:17	jet
+   190	14:28	wxmap2
+   191	20:43	wxmap2
+   192	18:24	x
+   193	17:29	chmod -R g+w /tmp/wmo.veri.pyp
+   194	17:29	x
+   195	20:33	whoami
+   196	20:33	cd /tmp
+   197	20:33	chmod a+rw *
+   198	20:33	cd ..
+   199	20:33	chmod a+w /tmp
+   200	20:33	exit
+   201	17:54	w2
+   202	17:54	c.w2.d
+   203	17:54	cd nwp2/
+   204	17:54	la
+   205	17:54	cd veriWMO/
+   206	17:54	la
+   207	17:54	d
+   208	17:54	la ../ensFC/
+   209	17:54	la ../ensFC/PYPDB/
+   210	17:54	la ../ensFC/STATS/
+   211	17:54	la ../ensFC/STATS/2014061900/
+   212	18:49	la
+   213	18:49	cd ../ensFC/
+   214	18:49	la
+   215	18:49	cd PYPDB/
+   216	18:49	la
+   217	18:49	ud .
+   218	18:49	la ../STATS/
+   219	18:50	la ../STATS/2014061900/
+   220	18:50	pd ../STATS/2014061900/
+   221	18:50	la
+   222	18:50	pg *
+   223	19:01	g "nhem 072" *
+   224	19:01	g "nhem 072" * | g zg
+   225	19:01	g "nhem 120" * | g zg
+   226	19:05	g "nhem 144" * | g zg
+   227	19:05	g "nhem 168" * | g zg
+   228	19:06	g "nhem 240" * | g zg
+   229	19:06	g "nhem 192" * | g zg
+   230	19:07	g "nhem 168" * | g zg
+   231	19:07	g "nhem 144" * | g zg
+   232	19:07	g "nhem 120" * | g zg
+   233	19:10	g "nhem 120" * | g zg
+   234	19:17	g "nhem 120" * | g zg
+   235	19:19	g "nhem 144" * | g zg
+   236	19:19	g "nhem 168" * | g zg
+   237	19:20	g "shem 168" * | g zg
+   238	19:20	g "shem 144" * | g zg
+   239	19:20	h
+   240	18:56	cd ..
+   241	18:56	la
+   242	18:57	du .
+   243	18:57	cd ..
+   244	18:57	su .
+   245	18:57	la
+   246	18:57	du .
+   247	18:59	pd /w21/prc/fldveri/
+   248	18:59	h
+   249	18:59	la p*py
+   250	18:59	p.veri.wmo.anl.py cur12-12 gfs2
+   251	19:01	p.veri.wmo.anl.py cur12-12 gfs2
+   252	19:07	p.veri.wmo.anl.py cur12-12 gfs2
+   253	19:17	p.veri.wmo.anl.py cur12-12 gfs2
+   254	19:17	p.veri.wmo.anl.py cur12-12 gfs2
+   255	19:18	p.veri.wmo.anl.py cur12-12 gfs2 -W
+   256	19:21	p.veri.wmo.anl.py
+   257	19:21	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   258	19:26	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   259	19:27	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   260	19:36	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   261	19:36	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   262	19:40	la /w21/dat/nwp2/ensFC/FIELDS/2014062300/gfs2_gfs2.zg.500.tropics.2014062300.f000.ctl
+   263	19:40	gg /w21/dat/nwp2/ensFC/FIELDS/2014062300/gfs2_gfs2.zg.500.tropics.2014062300.f000.ctl
+   264	19:55	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   265	19:57	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   266	20:37	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   267	20:41	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   268	20:46	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   269	20:47	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   270	20:47	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   271	21:56	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   272	21:57	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   273	21:58	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   274	22:01	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   275	22:02	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   276	22:02	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   277	22:33	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   278	22:34	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   279	22:37	p.veri.wmo.anl.py cur12-12 gfs2 -W -F
+   280	22:38	p.veri.wmo.anl.py cur12-12 gfs2 -W -F -A ecm2
+   281	22:39	p.veri.wmo.anl.py cur12-12 gfs2 -W -F -A gfs2
+   282	22:41	p.veri.wmo.anl.py cur12-12 gfs2
+   283	22:42	p.veri.wmo.anl.py cur12-12 gfs2
+   284	22:47	g 'uva  200' /w21/dat/nwp2/ensFC/STATS/2014062300/gfs2-gfs2.2014062300.txt
+   285	23:01	p.veri.wmo.anl.py
+   286	23:01	p.veri.wmo.anl.py cur12-12 gfs2 -D hur
+   287	23:02	p.veri.wmo.anl.py cur12-12 gfs2 -D hur
+   288	23:03	p.veri.wmo.anl.py cur12-12 gfs2 -D hur
+   289	23:03	gg /w21/dat/climo/era-dailyclim/all-mass-mean.ctl
+   290	23:07	la ../../dat/climo/cmean/*ctl
+   291	23:07	gg ../../dat/climo/cmean/cmean_1d.ctl
+   292	23:10	gg ../../dat/climo/cmean/cmean_1d.ctl
+   293	23:10	p.veri.wmo.anl.py cur12-12 gfs2 -D hur
+   294	23:11	p.veri.wmo.anl.py cur12-12 gfs2 -D hur -F
+   295	23:11	gg /w21/dat/nwp2/ensFC/FIELDS/2014062000/gfs2_gfs2.hur.700.nhem.2014062000.f072.ctl
+   296	23:13	p.veri.wmo.anl.py cur12-12 gfs2 -D hur -F
+   297	23:14	p.veri.wmo.anl.py cur12-12 gfs2 -D hur -F
+   298	23:14	p.veri.wmo.anl.py cur12-12 gfs2 -D hur -A ecm2
+   299	23:15	p.veri.wmo.anl.py cur12-12 gfs2
+   300	23:21	p.veri.wmo.anl.py cur12-12 gfs2
+   301	23:22	p.veri.wmo.anl.py cur12-12 gfs2
+   302	23:22	f
+   303	23:26	h
+   304	23:26	gg /w21/dat/nwp2/ensFC/FIELDS/2014062000/gfs2_gfs2.hur.700.nhem.2014062000.f072.ctl
+   305	23:26	h
+   306	23:26	g 'uva  200' /w21/dat/nwp2/ensFC/STATS/2014062300/gfs2-gfs2.2014062300.txt
+   307	23:27	g 'zg  500' /w21/dat/nwp2/ensFC/STATS/2014062300/gfs2-gfs2.2014062300.txt
+   308	23:27	g 'zg  500' /w21/dat/nwp2/ensFC/STATS/2014062300/gfs2-gfs2.2014062300.txt | g nhem
+   309	23:27	la /w21/dat/nwp2/ensFC/STATS/2014062300/gfs2-gfs2.2014062300.txt
+   310	23:27	pg /w21/dat/nwp2/ensFC/STATS/2014062300/gfs2-gfs2.2014062300.txt
+   311	23:28	l2 cur12-d3.cur12-12 cmc2 -W
+   312	23:32	l2 cur12-d3.cur12-12 navg -W
+   313	23:32	l2 cur12-d3.cur12-12 ukm2 -W
+   314	23:32	l2 cur12-d3.cur12-12 fim8 -W
+   315	23:33	l2 cur12-12 -w
+   316	23:33	l2 cur12-12 -W
+   317	23:38	p.veri.wmo.anl.py cur12-12 ukm2
+   318	23:39	p.veri.wmo.anl.py cur12-12 ukm2
+   319	23:40	p.veri.wmo.anl.py cur12-12 ukm2
+   320	23:40	p.veri.wmo.anl.py cur12-12 ukm2
+   321	23:41	p.veri.wmo.anl.py cur12-12 ukm2
+   322	23:41	p.veri.wmo.anl.py cur12-24 ukm2
+   323	23:41	p.veri.wmo.anl.py cur12-18 ukm2
+   324	23:41	p.veri.wmo.anl.py cur12-18 cmc2
+   325	23:42	p.veri.wmo.anl.py cur-18 cmc2
+   326	23:42	p.veri.wmo.anl.py cur-18 cmc2
+   327	23:42	p.veri.wmo.anl.py cur-24 cmc2
+   328	23:42	p.veri.wmo.anl.py cur-24 cmc2
+   329	23:43	p.veri.wmo.anl.py cur-24 cmc2
+   330	23:45	l2 cur-24.cur navg -W
+   331	23:47	l2 cur-24.cur navg -W
+   332	23:47	p.veri.wmo.anl.py cur-24 cmc2
+   333	23:47	p.veri.wmo.anl.py cur-24 cmc2
+   334	23:54	p.veri.wmo.anl.py cur12-d3.cur12-12 gfs2 -p
+   335	23:55	p.veri.wmo.anl.py cur12-d3.cur12-12 gfs2 -p
+   336	0:33	p.veri.wmo.anl.py
+   337	0:34	p.veri.wmo.anl.py cur12-24 gfs2 -D wa
+   338	0:34	p.veri.wmo.anl.py cur12-24 gfs2 -D wa
+   339	0:35	p.veri.wmo.anl.py cur12-24 gfs2 -D wa
+   340	0:36	p.veri.wmo.anl.py cur12-24 gfs2 -D wa
+   341	0:47	p.veri.wmo.anl.py cur12-24 gfs2
+   342	22:41	h
+   343	22:42	g 'zg  500' /w21/dat/nwp2/ensFC/STATS/2014062300/gfs2-gfs2.2014062300.txt | g nhem
+   344	22:42	g 'zg  500' /w21/dat/nwp2/ensFC/STATS/2014062300/gfs2-gfs2.2014062700.txt | g nhem
+   345	22:42	g 'zg  500' /w21/dat/nwp2/ensFC/STATS/2014062700/gfs2-gfs2.2014062700.txt | g nhem
+   346	22:44	g 'zg  500' /w21/dat/nwp2/ensFC/STATS/2014062700/ecm2-gfs2.2014062700.txt | g nhem
+   347	22:47	pg /w21/dat/nwp2/ensFC/STATS/2014062700/ecm2-gfs2.2014062700.txt
+   348	17:28	g 'zg  500' /w21/dat/nwp2/ensFC/STATS/2014062700/ecm2-gfs2.2014062700.txt | g nhem
+   349	17:28	h
+   350	17:28	h > cmds-dnv-20140630.txt

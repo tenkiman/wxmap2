@@ -1,0 +1,39 @@
+AD:tc/adeck/2022/
+AD:tc/adeck/atcf-form/    2022/
+AD:tc/adeck/cmc/          2022/
+AD:tc/adeck/ecmwf/        2022/wmo/
+AD:tc/adeck/esrl/         2022/
+AD:tc/adeck/jtwc/         2022/
+AD:tc/adeck/mftrkN/       2022/
+AD:tc/adeck/ncep/         2022/
+AD:tc/adeck/nhc/          2022/
+AD:tc/adeck/tmtrkN/       2022/
+AD:tc/adeck/ukmo/         2022/
+BD:tc/bdeck/jtwc/         2022/
+BD:tc/bdeck/nhc/          2022/
+BT:tc/bt/                 2022/
+CQ:tc/carq/               2022/
+TM:tc/cira/mtcswa/       2022/
+TL:tc/climo/
+#TC:tc/cmc/tigge/         2022/
+TO:tc/com/nhc/                2022/
+TO:tc/com/jtwc/                2022/
+TS:tc/dis/nhc/                2022/
+# just mdecks -- don't do DSs ... must redo on Mike3 if usb->local (doReverse==1)
+DS:tc/DSs/               C2022/
+EC:tc/ecmwf/wmo-essential/  2022/
+ED:tc/edeck/nhc/          2022/
+ED:tc/edeck/jtwc/          2022/
+FD:tc/fdeck/nhc/          2022/
+FD:tc/fdeck/jtwc/          2022/
+JT:tc/jtwc/               
+MK:tc/mdeck/              2022/
+NA:tc/names/             C2022
+NH:tc/nhc/               
+ST:tc/stext/nhc/         2022/
+ST:tc/stext/jtwc/        2022/
+TD:tc/tcanal/            2022/
+TG:tc/tcgen/             2022/
+TV:tc/tcvitals/          C2022
+TT:tc/tmtrkN/            2022/
+

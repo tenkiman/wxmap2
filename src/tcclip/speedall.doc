@@ -1,0 +1,100 @@
+Speedall.for was rewritten from a prior, simpler program, csumanal.for,
+written by LCDR Les Carr, because the speedall.for source code was lost
+before it could be forwarded to the ATCF software maintainer.
+
+Speedall now:
+
+  explains to the user how to enter the date time groups and which ones
+  are available in the aids file,
+
+  offers options to process a range of aids date time groups (for
+  post-storm analysis use) or just one, and to process just the most
+  recent DTG by default,
+
+  correctly processes both five-tau-converted three tau aids historical
+  data with positions missing for 12 and 36 hour taus, and true five tau
+  aids data with positions for all five taus,
+
+  presents relative motion from position to position giving both the
+  storm's recent observed motion as of the synoptic forecast time, where
+  available from the CARQ line, and the storm's forecast motion as
+  predicted by each aid,
+
+  handles missing data intelligently, going back as far as CARQ tau -6
+  or -12 if necessary (and possible) to find a starting point from which
+  to calculate motion, and using the most recent known or forecast
+  position across missing data to calculate motion for positions for
+  which sufficient position data exists,
+
+  deals as best possible with missing CARQ aid positions at the start of
+  storms, by giving relative motion for each of the forecast aid
+  positions but the first, and checks for a WRNG aid as an alternate
+  source of starting points when available,
+
+  highlights unavailable motion pairs with a "no value" output of 99.9
+  knots and 999 degrees, and
+
+  guards against zero divides and other program crash causes.
+
+The first speed and direction pair of each aid's output line is the
+observed motion, and the other five pairs are the forecast motion.
+
+To Les Carr's program, I added to the forecast motions an output for the
+present storm speed and direction, calculated from the CARQ data, since
+it was easy and would act as a reasonableness check on the aids'
+forecasts for the end user, and the end user now gets this along with
+all five forecast taus' speed/direction pairs in a simple listing broken
+down by DTGs.
+
+I also added the ability to ask for a range of date time groups, for the
+case where post storm analysis might find this useful, but this should
+be the rare case of using speedall.  So, useful defaults exist to avoid
+excess typing while still enabling this capability.
+
+Just typing a carriage return at the first DTG prompt starts you off
+with the _last_ DTG in the file, since that seems to be the most useful
+default.
+
+Just typing a carriage return at the second DTG prompt gets you data for
+just the DTG entered for the first DTG prompt, for the case where just
+one DTG, but not necessarily the last one, is desired.
+
+So, typing two carriage returns to the DTG prompts is the fast way to
+process just the most recent aids downloaded.
+
+You get told all that when you run the program.
+
+Because of the "legacy" (to use the obsolete code maintaining industry's
+term of art) converted three tau data, I had to add code to cope with
+data missing in the middle of an aid's set of valid position lat/long
+pairs.  Speedall now gives a speed calculation wherever the position for
+the tau of interest is in the data and there is ANY previous position
+available from which to run the calculation.  It uses the most recent
+such previous position.
+
+The calculation is seeded from the CARQ aid tau 0, -6, and -12
+positions, so if a CARQ aid is missing (and no WRNG aid is available as
+a backup, see below), the first (tau 12 or 24, for 5 or 3 valid taus
+data respectively) aid position will not get a motion result output for
+it, because there won't be a valid earlier position from which to
+compute the motion.
+
+Because my software development testing with old storms and no aids
+download capability frequently produces DTGs consisting of just WRNG and
+JTWC aids with no CARQ aids, there is a careful test to seed from the
+WRNG aid's positions instead of the CARQ if it is present but the CARQ
+absent for a DTG.  WRNG cards are otherwise ignored, since they are not
+really aids and don't use the aids' lines same semantics for the position
+fields or intensity fields.
+
+The date time group limits for the aids data files will be shown to you
+by speedall (it passes once quickly though the aids file to learn them);
+the input data is aids.dat, copied by speed.bat from the current storm's
+aids data file, and the output data from speedall comes to the screen and is
+also saved in aidspeed.dat, all in \ns_model.
+
+To request corrections or additions to this document, contact Kent Paul
+Dolan, Computer Sciences Corporation contractor, c/o Fleet Numerical
+Oceanography Command, (40 Division), Monterey, California, USA
+93943-5005 or dolan@fnoc.navy.mil over Internet and other networks
+gatewayed to it.

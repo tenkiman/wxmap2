@@ -1,0 +1,8 @@
+filename: test                
+grid  ni:  61  nj:  41
+lonW: 227.40  lonE: 257.40
+latS:   3.60  latN:  23.60
+dlon:   0.50  dlat:   0.50
+nvars:   2
+ua         850        ua 850 [m/s]                  
+va         850        va 850 [m/s]                  

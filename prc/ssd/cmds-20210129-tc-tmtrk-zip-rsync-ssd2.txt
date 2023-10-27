@@ -1,0 +1,54 @@
+   347  15:10   rsync -alvn /run/media/fiorino/SSD3Ext4-02/dat/tc-2021/tmtrkN/2021/ 2021/
+   348  15:10   la /run/media/fiorino/SSD3Ext4-02/dat/tc-2021/tmtrkN/2021/ 2021/
+   349  15:11   la 2021/
+   352  15:11   zip trk-tmtrkN-202101.zip -u -r -m 2021??????
+   354  15:11   unzip -t trk-tmtrkN-202101.zip
+   355  15:12   unzip -t trk-tmtrkN-202101.zip | g tcgen
+   356  15:12   unzip -t trk-tmtrkN-202101.zip | g tcgen | l
+   357  15:12   unzip -t trk-tmtrkN-202101.zip | g "navg/"
+   358  15:12   unzip -t trk-tmtrkN-202101.zip | g "navg/tcgen.sink.lant
+   359  15:12   unzip -t trk-tmtrkN-202101.zip | g "navg/tcgen.sink.lant"
+   360  15:13   unzip -t trk-tmtrkN-202101.zip | g "ecm5/tcgen.sink.lant"
+   361  15:13   unzip -t trk-tmtrkN-202101.zip | g "ecm5/tcgen.sink.lant" | cut -c 10-20
+   362  15:13   unzip -t trk-tmtrkN-202101.zip | g "ecm5/tcgen.sink.lant" | cut -c 13-26
+   363  15:13   unzip -t trk-tmtrkN-202101.zip | g "ecm5/tcgen.sink.lant" | cut -c 13-24
+   364  15:13   unzip -t trk-tmtrkN-202101.zip | g "ecm5/tcgen.sink.lant" | cut -c 13-24 | sort
+   365  15:14   cd ../../adeck/tmtrkN/
+   371  15:14   pd /run/media/fiorino/SSD3Ext4-02/dat/tc-2021/adeck/tmtrkN/
+   374  15:14   unzip tmtrkN-202101.zip
+   376  15:15   rsync -alvn /run/media/fiorino/SSD3Ext4-02/dat/tc-2021/adeck/tmtrkN/2021/ ../2021/
+   378  15:15   rsync -alvn /run/media/fiorino/SSD3Ext4-02/dat/tc-2021/adeck/tmtrkN/2021/ 2021/
+   379  15:15   rsync -alv /run/media/fiorino/SSD3Ext4-02/dat/tc-2021/adeck/tmtrkN/2021/ 2021/
+   380  15:15   h | g zip
+   383  15:16   zip tmtrkN-202101.zip -u -m -r 2021??????
+   385  15:16   unzip --help
+   388  15:17   unzip -l tmtrkN-202101.zip | g "ecm5/tcgen.sink.lant" | cut -c 13-24 | sort
+   389  15:17   unzip -l tmtrkN-202101.zip
+   391  15:18   unzip -l tmtrkN-202101.zip | g "tcgen.atcf.epac" | cut -c 30-50
+   392  15:18   unzip -l tmtrkN-202101.zip | g "tcgen.atcf.epac" | cut -c 30-41
+   393  15:18   unzip -l tmtrkN-202101.zip | g "tcgen.atcf.epac" | cut -c 30-40
+   394  15:18   unzip -l tmtrkN-202101.zip | g "tcgen.atcf.epac" | cut -c 30-40 | uniq
+   395  15:18   unzip -l tmtrkN-202101.zip | g "tcgen.atcf.epac"
+   396  15:19   unzip -l tmtrkN-202101.zip | g "tcgen.atcf.epac" | g gfs2
+   397  15:19   unzip -l tmtrkN-202101.zip | g "tcgen.atcf.epac" | g gfs2 | cut 30-40
+   398  15:19   unzip -l tmtrkN-202101.zip | g "tcgen.atcf.epac" | g gfs2 | cut -c 30-40
+   399  15:19   unzip -l tmtrkN-202101.zip | g "tcgen.atcf.epac" | g gfs2 | cut -c 30-40 | sort
+   400  15:19   unzip -l tmtrkN-202101.zip | g "tcgen.atcf.epac" | g gfs2 | cut -c 30-40 | sort | l
+   402  15:20   cd ../../mftrkN/
+   404  15:20   cd 2021
+   407  15:20   h | g pd
+   408  15:20   pd /run/media/fiorino/SSD3Ext4-02/dat/tc-2021/adeck/mftrkN/
+   410  15:20   unzip mftrkN-202101.zip
+   412  15:20   cd ..
+   413  15:20   h | g rsync
+   414  15:21   rsync -alvn /run/media/fiorino/SSD3Ext4-02/dat/tc-2021/adeck/mftrkN/2021/ 2021/
+   415  15:21   rsync -alv /run/media/fiorino/SSD3Ext4-02/dat/tc-2021/adeck/mftrkN/2021/ 2021/
+   416  15:21   cd 2021/
+   418  15:21   zip mftrkN-202101.zip -u -m -r 2021??????
+   419  15:21   h | g unzip
+   420  15:21   unzip -l mftrkN-202101.zip | g "tcgen.atcf.epac" | g gfs2 | cut -c 30-40 | sort | l
+   421  15:21   unzip -l mftrkN-202101.zip | g
+   422  15:21   unzip -l mftrkN-202101.zip
+   423  15:22   unzip -l mftrkN-202101.zip | g tcvitals
+   424  15:22   unzip -l mftrkN-202101.zip | g tcvitals | cut -c 30-40
+   425  15:22   unzip -l mftrkN-202101.zip | g tcvitals | cut -c 30-40 | sort | l

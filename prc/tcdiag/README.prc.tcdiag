@@ -1,0 +1,11 @@
+20131120
+
+set up of tcdiag:
+
+first, do builds in src/tcdiag and src/tclgem
+
+then in c.w2.td
+
+ln -s ../../src/tcdiag/lsdiag.x .
+ln -s ../../src/tclgem/iships.x .
+ln -s ../../src/tcdiag/TCDnamelist .

@@ -1,0 +1,95 @@
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014050918       nhem 000         zg  500    1.000    1.000    5.871    4.204    4.097    4.101
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051018       nhem 024         zg  500    0.996    0.999    9.010    8.225    3.680    3.691
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051118       nhem 048         zg  500    0.984    0.997   16.480   15.812    4.644    4.650
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051218       nhem 072         zg  500    0.963    0.993   25.175   24.455    5.977    5.976
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051318       nhem 096         zg  500    0.940    0.986   33.470   32.538    7.841    7.843
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051418       nhem 120         zg  500    0.913    0.979   40.760   39.989    7.889    7.886
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051518       nhem 144         zg  500    0.880    0.970   49.709   48.974    8.516    8.512
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051618       nhem 168         zg  500    0.848    0.962   56.432   55.726    8.902    8.902
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051718       nhem 192         zg  500    0.737    0.938   70.238   69.825    7.600    7.594
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051818       nhem 216         zg  500    0.576    0.900   85.086   84.878    5.945    5.946
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051918       nhem 240         zg  500    0.469    0.867   94.047   93.581    9.352    9.345
+
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014050918       nhem 000         zg  500    1.000    1.000    5.871    4.204    4.097    4.101
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051018       nhem 024         zg  500    0.996    0.999    9.010    8.225    3.680    3.691
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051118       nhem 048         zg  500    0.984    0.997   16.480   15.812    4.644    4.650
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051218       nhem 072         zg  500    0.963    0.993   25.175   24.455    5.977    5.976
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051318       nhem 096         zg  500    0.940    0.986   33.470   32.538    7.841    7.843
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051418       nhem 120         zg  500    0.913    0.979   40.760   39.989    7.889    7.886
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051518       nhem 144         zg  500    0.880    0.970   49.709   48.974    8.516    8.512
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051618       nhem 168         zg  500    0.848    0.962   56.432   55.726    8.902    8.902
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051718       nhem 192         zg  500    0.737    0.938   70.238   69.825    7.600    7.594
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051818       nhem 216         zg  500    0.576    0.900   85.086   84.878    5.945    5.946
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051918       nhem 240         zg  500    0.469    0.867   94.047   93.581    9.352    9.345
+
+
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014050918       nhem 000         wa  500    0.999    0.999    0.410    0.397    0.105   -0.105
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051018       nhem 024         wa  500    0.652    0.613    6.674    6.663    0.391   -0.391
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051118       nhem 048         wa  500    0.433    0.375    8.525    8.505    0.579   -0.579
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051218       nhem 072         wa  500    0.398    0.345    8.819    8.776    0.875   -0.875
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051318       nhem 096         wa  500    0.361    0.306    9.121    9.076    0.896   -0.896
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051418       nhem 120         wa  500    0.295    0.225    9.695    9.656    0.868   -0.868
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051518       nhem 144         wa  500    0.271    0.202   10.070   10.009    1.109   -1.109
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051618       nhem 168         wa  500    0.298    0.230    9.869    9.757    1.484   -1.484
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051718       nhem 192         wa  500    0.283    0.205    9.795    9.653    1.659   -1.659
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051818       nhem 216         wa  500    0.291    0.209    9.676    9.468    1.994   -1.994
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051918       nhem 240         wa  500    0.344    0.257    9.247    8.967    2.259   -2.259
+
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014050918       nhem 000         wa  500    0.999    0.999    0.410    0.397    0.105   -0.105
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051018       nhem 024         wa  500    0.967    0.962    2.051    2.038    0.225   -0.225
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051118       nhem 048         wa  500    0.922    0.911    3.247    3.206    0.510   -0.510
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051218       nhem 072         wa  500    0.862    0.848    4.291    4.240    0.663   -0.663
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051318       nhem 096         wa  500    0.812    0.795    4.943    4.882    0.770   -0.770
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051418       nhem 120         wa  500    0.750    0.723    5.894    5.825    0.898   -0.898
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051518       nhem 144         wa  500    0.717    0.685    6.502    6.402    1.138   -1.138
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051618       nhem 168         wa  500    0.642    0.603    7.360    7.216    1.448   -1.448
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051718       nhem 192         wa  500    0.546    0.500    7.852    7.715    1.461   -1.461
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051818       nhem 216         wa  500    0.412    0.357    8.555    8.384    1.704   -1.704
+fim8-newgwd-sigfac-0.1-AT0 gfs2 2014051918       nhem 240         wa  500    0.325    0.252    9.130    8.806    2.411   -2.411
+
+
+Kishou(DARWIN)[W2:ESRL]: /w21/prc/fldveri 540 > g 'wa  250' /w21/dat/nwp2/ensFC/STATS/2014050918/gfs2_gfs2_single.2014050918.txt | g nhem
+gfs2                 gfs2 2014050918       nhem 000         wa  250    1.000    1.000    0.000    0.000    0.000    0.000
+gfs2                 gfs2 2014051018       nhem 024         wa  250    0.978    0.976    3.141    3.129    0.276   -0.276
+gfs2                 gfs2 2014051118       nhem 048         wa  250    0.950    0.944    4.601    4.542    0.732   -0.732
+gfs2                 gfs2 2014051218       nhem 072         wa  250    0.904    0.896    6.256    6.167    1.055   -1.055
+gfs2                 gfs2 2014051318       nhem 096         wa  250    0.830    0.822    8.019    7.967    0.910   -0.910
+gfs2                 gfs2 2014051418       nhem 120         wa  250    0.735    0.724    9.859    9.772    1.308   -1.308
+gfs2                 gfs2 2014051518       nhem 144         wa  250    0.656    0.637   11.380   11.259    1.657   -1.657
+gfs2                 gfs2 2014051618       nhem 168         wa  250 -999.000 -999.000 -999.000 -999.000 -999.000 -999.000
+gfs2                 gfs2 2014051718       nhem 192         wa  250    0.511    0.481   13.308   13.189    1.774   -1.774
+
+gfs2                 gfs2 2014050918       nhem 000         wa  250    1.000    1.000    0.000    0.000    0.000    0.000
+gfs2                 gfs2 2014051018       nhem 024         wa  250    0.978    0.976    3.141    3.129    0.276   -0.276
+gfs2                 gfs2 2014051118       nhem 048         wa  250    0.950    0.944    4.601    4.542    0.732   -0.732
+gfs2                 gfs2 2014051218       nhem 072         wa  250    0.904    0.896    6.256    6.167    1.055   -1.055
+gfs2                 gfs2 2014051318       nhem 096         wa  250    0.830    0.822    8.019    7.967    0.910   -0.910
+gfs2                 gfs2 2014051418       nhem 120         wa  250    0.735    0.724    9.859    9.772    1.308   -1.308
+gfs2                 gfs2 2014051518       nhem 144         wa  250    0.656    0.637   11.380   11.259    1.657   -1.657
+gfs2                 gfs2 2014051618       nhem 168         wa  250 -999.000 -999.000 -999.000 -999.000 -999.000 -999.000
+gfs2                 gfs2 2014051718       nhem 192         wa  250    0.511    0.481   13.308   13.189    1.774   -1.774
+
+
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014050918       nhem 000         wa  250    0.998    0.998    0.879    0.870    0.123   -0.123
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051018       nhem 024         wa  250    0.977    0.974    3.201    3.196    0.179   -0.179
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051118       nhem 048         wa  250    0.953    0.948    4.418    4.376    0.609   -0.609
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051218       nhem 072         wa  250    0.901    0.894    6.316    6.224    1.073   -1.073
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051318       nhem 096         wa  250    0.838    0.830    7.790    7.732    0.944   -0.944
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051418       nhem 120         wa  250    0.773    0.764    9.077    8.997    1.199   -1.199
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051518       nhem 144         wa  250    0.730    0.715   10.128   10.028    1.424   -1.424
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051618       nhem 168         wa  250    0.659    0.636   11.231   11.113    1.624   -1.624
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051718       nhem 192         wa  250    0.558    0.530   12.553   12.437    1.701   -1.701
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051818       nhem 216         wa  250    0.474    0.443   13.703   13.545    2.080   -2.080
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051918       nhem 240         wa  250    0.388    0.349   14.012   13.843    2.174   -2.174
+
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014050918       nhem 000         wa  250    0.998    0.998    0.879    0.870    0.123   -0.123
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051018       nhem 024         wa  250    0.977    0.974    3.201    3.196    0.179   -0.179
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051118       nhem 048         wa  250    0.953    0.948    4.418    4.376    0.609   -0.609
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051218       nhem 072         wa  250    0.901    0.894    6.316    6.224    1.073   -1.073
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051318       nhem 096         wa  250    0.838    0.830    7.790    7.732    0.944   -0.944
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051418       nhem 120         wa  250    0.773    0.764    9.077    8.997    1.199   -1.199
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051518       nhem 144         wa  250    0.730    0.715   10.128   10.028    1.424   -1.424
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051618       nhem 168         wa  250    0.659    0.636   11.231   11.113    1.624   -1.624
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051718       nhem 192         wa  250    0.558    0.530   12.553   12.437    1.701   -1.701
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051818       nhem 216         wa  250    0.474    0.443   13.703   13.545    2.080   -2.080
+fim8-newgwd-branch-sigfac-0.1-AT0 gfs2 2014051918       nhem 240         wa  250    0.388    0.349   14.012   13.843    2.174   -2.174

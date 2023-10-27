@@ -1,0 +1,19 @@
+SHELL=  /bin/sh
+
+COMP=   gfortran
+LIBS=     ../w3lib/libw3.a
+
+#COMP=   g95
+#LIBS=     ../w3lib/libw3.g95.a
+LIBS=     ../w3lib/libw3.a
+LDFLAGS=
+FFLAGS= -g -O
+
+grbindex:      grbindex.f
+	@echo " "
+	@echo "  making the tracking program...gettrk.wjet.x"
+	$(COMP) $(FFLAGS) $(LDFLAGS) grbindex.f $(LIBS) -o ../grbindex.x
+	@echo " "
+
+clean:
+	rm -f *.o *.mod ../grbindex.x

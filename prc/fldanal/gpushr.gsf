@@ -1,0 +1,203 @@
+*
+*-------------------------- gpushr ------------------
+*
+function gpushr(k)
+
+plev1=850
+plev2=200
+if(_model = 'ecmn'); plev2=250 ; endif
+
+t1='Shear Flow / |'plev2'-'plev1' shr| [kt] / 'plev2'(G)&'plev1'(R) barbs'
+rc=dtitle(t1)
+pstat=1
+_shades=0
+'set lev 'plev2
+
+rcu=datachk(ua)
+rcv=datachk(va)
+
+if(rcu=0 & rcv=0)
+  'set lev 'plev1
+  rcu=datachk(ua)
+  rcv=datachk(va)
+endif
+
+if(rcu=0 & rcv=0)
+
+'set grads off'
+'set lev 'plev2
+pstat=0
+
+'set xlint '_xlint
+'set ylint '_ylint
+'ushr=(ua(lev='plev2')-ua(lev='plev1'))*'_ms2kt
+'vshr=(va(lev='plev2')-va(lev='plev1'))*'_ms2kt
+'u8=ua(lev='plev1')*'_ms2kt
+'u2=ua(lev='plev2')*'_ms2kt
+'v8=va(lev='plev1')*'_ms2kt
+'v2=va(lev='plev2')*'_ms2kt
+
+if(_ukfill=1)
+  rc=lonfill('ushr')
+  rc=lonfill('vshr')
+  rc=lonfill('u8')
+  rc=lonfill('v8')
+  rc=lonfill('u2')
+  rc=lonfill('v2')
+endif
+
+if(_regridshr = 1)
+  'ushr=re(ushr,0.75)'
+  'vshr=re(vshr,0.75)'
+  'u8=re(u8,0.75)'
+  'u2=re(u2,0.75)'
+  'v8=re(v8,0.75)'
+  'v2=re(v2,0.75)'
+endif
+
+'mshr=mag(ushr,vshr)'
+'mshr=smth9(mshr)'
+#
+# for streamlines gfs2
+#
+if(_regridshr = 1)
+#  'ushr=regrid2(ushr,1)'
+#  'vshr=regrid2(vshr,1)'
+#
+# use wu regrid for plotting purposes -- much faster
+#
+  'ushr=re(ushr,1)'
+  'vshr=re(vshr,1)'
+endif
+
+
+colscheme=jae
+
+if(colscheme=jae)
+  rc=jaecol()
+endif
+
+if(colscheme=efs)
+  rc=efscol(efs_2)
+  i=subwrd(rc,1)
+  ie=subwrd(rc,2)
+  card='set rbcols '
+  while(i<=ie)
+    card=card' 'i
+    i=i+1
+  endwhile
+  card
+endif
+
+rc=mfcol(1)
+
+'set rbrange 0 70'
+'set gxout shaded'
+'set csmooth on'
+'set clevs 20 30 40 50 60 70'
+'set rbcols 0 49 47 43 21 25 29'
+
+#
+#  200 colourisation scheme
+#
+
+'set ccols 0 49 48 47 45 43 21 22 23 24 25 26 27 29'
+'set ccols 0 0  48 47 45 43 21 22 23 24 25 26 27 29'
+
+'set clevs  10 20 30 40 50 60 70 80 100 110 120 130 140 150'
+'set ccols 39 36 33  0  0  45 43 21 22 23 24 25 26 27 29'
+'set ccols 39 36 0  0  0    0 43 21 22 23 24 25 26 27 29'
+
+# -- black doesn't render in printim for v2.1?
+'set rgb 99 1 1 1'
+bcol=0
+bcol=99 
+
+
+'d mshr'
+'q shades'
+_shades=result
+
+shrcnt=1
+if(shrcnt)
+'set gxout contour'
+'set cint 10'
+'set ccolor 'bcol
+'set clab off'
+'set black 0 30'
+'set grads off'
+'d mshr'
+endif
+
+#
+#  streamline shear not 200
+#
+
+'set gxout stream'
+'set strmden '_strmdenua
+'set cthick '_cthkb
+'set ccolor 'bcol
+'d ushr;vshr'
+
+'set cthick '_cthk
+'set ccolor 34'
+'d ushr;vshr'
+
+#
+#  contour light shear
+#
+'smshr=mshr'
+nsmth=10
+n=1
+while(n<=nsmth)
+  'smshr=smth9(smshr)'
+  n=n+1
+endwhile
+  
+'set gxout contour'
+'set cthick 20'
+'set ccolor 'bcol
+'set clevs 15'
+'d smshr'
+
+'set cthick 7'
+'set ccolor 2'
+'set cstyle 3'
+'set clevs 15'
+'d smshr'
+
+
+
+
+#
+# 850/200 barbs
+#
+
+'set gxout barb'
+'set cthick '_cthkb
+'set ccolor 'bcol
+'set digsiz 0.035'
+'d skip(u2,'_bskip');v2'
+
+'set cthick '_cthk
+'set ccolor 3'
+'d skip(u2,'_bskip');v2'
+
+'set cthick '_cthkb
+'set ccolor 'bcol
+'d skip(u8,'_bskip');v8'
+
+'set cthick '_cthk
+'set ccolor 2'
+'d skip(u8,'_bskip');v8'
+
+if(_dobasemap != 1)
+  rc=drawmap()
+endif
+
+endif
+
+rc=dtitle(t1)
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+
+return(pstat)

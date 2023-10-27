@@ -1,0 +1,43 @@
+AD:tc/adeck/2020/
+AD:tc/adeck/2021/
+AD:tc/adeck/atcf-form/  2020/ 2021/
+AD:tc/adeck/cmc/        2020/ 2021/
+AD:tc/adeck/ecmwf/      2020/wmo/ 2021/wmo/
+AD:tc/adeck/esrl/       2020/ 2021/
+AD:tc/adeck/jtwc/       2020/ 2021/
+AD:tc/adeck/mftrkN/     2020/ 2021/
+AD:tc/adeck/ncep/       2020/ 2021/
+AD:tc/adeck/nhc/        2020/ 2021/
+AD:tc/adeck/tmtrkN/     2020/ 2021/
+AD:tc/adeck/ukmo/       2020/ 2021/
+BD:tc/bdeck/jtwc/       2020/ 2021/
+BD:tc/bdeck/nhc/        2020/ 2021/
+BT:tc/bt/               2020/ 2021/
+CQ:tc/carq/             2020/ 2021/
+#TM:tc/cira/mtcswa/      2020/ 2021/
+TL:tc/climo/
+#TC:tc/cmc/tigge/        2020/ 2021/
+TO:tc/com/
+TS:tc/dis/
+# just mdecks -- don't do DSs ... must redo on Mike3 if usb->local (doReverse==1)
+DS:tc/DSs/              C2020/  C2021/
+EC:tc/ecmwf/wmo-essential/
+ED:tc/edeck/
+FD:tc/fdeck/
+JT:tc/jtwc/
+MK:tc/mdeck/            2020/ 2021/
+NA:tc/names/           C2020 C2021
+#NC:tc/ncep/tigge/      2020/ 2021/
+NH:tc/nhc/
+ST:tc/stext/  nhc/  jtwc/
+TD:tc/tcanal/          2020/ 2021/
+#TE:tc/tceps/cmc/       2020/ 2021/
+#TE:tc/tceps/ecmwf/     2020/ 2021/
+#TE:tc/tceps/ncep/      2020/ 2021/
+#TE:tc/tceps/ukmo/      2020/ 2021/
+TG:tc/tcgen/           2020/ 2021/
+TV:tc/tcvitals/
+TT:tc/tmtrkN/          2020/ 2021/
+#TT:tc/tmtrkN/DSs/
+#sTU:tc/ukmo/tigge/     2020/ 2021/
+

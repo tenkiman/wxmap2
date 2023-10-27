@@ -1,0 +1,62 @@
+setenv W2CENTER 'ESRL'
+
+echo "setting grads, path and ld_library_path in .w2localrc.tenki.linux"
+
+# -- use emacs.nw.sh for crontab -e, svn ci
+#
+setenv EDITOR "$W2_PRC_DIR/util/emacs.nw.sh"
+
+# -- grads
+#
+
+setenv W2_GRADS_BDIR "$W2_BDIRAPP/grads"
+setenv W2_GRADS_VERSION "opengrads-2.2.1.oga.1"
+setenv W2_OPENGRADS2_BDIR "$W2_BDIRAPP/$W2_GRADS_VERSION/Contents"
+setenv W2_GRADS2_BDIR  "$W2_OPENGRADS2_BDIR"
+
+setenv GADDIR "$W2_GRADS_BDIR/data"
+setenv GASCRP "$W2_GRADS_BDIR/gslib"
+setenv GA2UDXT "$W2_GRADS2_BDIR/bin/gex/udxt"
+
+setenv GALIBD "$W2_GRADS2_BDIR/bin/gex"
+
+if ( $?LD_LIBRARY_PATH ) then
+   #setenv LD_LIBRARY_PATH .:"$LD_LIBRARY_PATH":"$GALIBD"
+   setenv LD_LIBRARY_PATH .:"$LD_LIBRARY_PATH"
+else
+   #setenv LD_LIBRARY_PATH .:"$GALIBD"
+   setenv LD_LIBRARY_PATH .
+endif
+
+
+# ************* LOCAL USER PATH
+set lpath = ( \
+                "$W2_BDIRBIN" \
+                "$W2_BDIRMSSBIN" \
+                "$W2_GRADS_BDIR/util" \
+                "$W2_OPENGRADS2_BDIR" \
+                "$W2_BDIRAPP/python/bin" \
+#                "$W2_BDIRAPP/perl/bin" \
+#                "$W2_BDIRAPP/go/bin" \
+#                "$W2_BDIRAPP/eccodes/bin" \
+                "$W2_BDIRAPP/bin" \
+                "/usr/local/bin" \
+		)
+
+
+# *************  PROJECT PATHS
+set projectpath = ( \
+                    "$W2_BDIR/prc/wxmap2" \
+                    "$W2_BDIR/prc/flddat" \
+		    "$W2_BDIR/prc/tcdat" \
+                    "$W2_BDIR/prc/util" \
+		    )
+
+set path = ( \
+		. \
+		$lpath \
+		$projectpath \
+		$path \
+#		$adminpath \
+)		
+

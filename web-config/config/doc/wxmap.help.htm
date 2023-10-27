@@ -1,0 +1,526 @@
+<html>
+<head>
+<title>WXMAP Help!</title>
+</head>
+<body background="../icon/bkgswirl.gif" TEXT="#000000" LINK="#0000FF" VLINK="#006030">
+<h1>WXMAP Help --</h1>
+<h2><i><font color=red>Essentials of Operating the WXMAP Web</font></i></h2>
+<ul>
+<li><a href="#hints"><b>Hints</b></a>
+<li><a href="#typical"><b>Typical Session</b></a>
+<li><a href="#wxmap buttons"><b>Buttons within the Web</b></a>
+<li><a href="#area buttons"><b>Area Buttons</b></a>
+<li><a href="#definitions"><b>Definitions</b></a>
+</ul>
+<font color=darkblue size=3 face=arial>This Documentation is under active development, please be patient.....</font>
+<br><br>
+<img src="../icon/colaline.gif">
+<a name="hints"></a>
+<h3><font color=red>Hints! -- suggestions for solving common problems</h3></font>
+
+<dl>
+<dt><h4>When in doubt... hit your browser's Refresh or Reload button</h4>
+<dd>
+
+The dynamic nature of the documents in this web, and the need to
+update graphics, may cause an image or document (you'll get a 404
+error) to either partially load or not load at all (it might be
+generating).  Using "reload" may help.
+
+<dt><h4>Using the "back" and "forward" browser buttons</h4>
+<dd>
+
+<p>The "back" button is very handy for recovering from erroneous
+clicks.  I use it all the time.</p>
+
+
+<p>I also find these browser buttons useful to "flicker" animate
+maps, e.g., compare the t=72 h forecast from the NCEP AVN versus
+the FNMOC NOGAPS model.  However, there are model <a
+href="#wxmap buttons">buttons</a> to do the same thing, but sometimes
+this can more convenient.</p>
+
+<dt><h4>Shutdown your Browser...</h4>
+<dd>
+
+<p>
+
+Java animations and loading lots of maps may fill up the cache in
+your browser causing slow performance.  The only way I know to
+free the memory is to shutdown the browser.
+
+</p>
+</dl>
+
+<hr>
+<a name="typical"></a>
+The following table gives an example of how you might use the PCMDI WXMAP Web.
+<br><br> 
+
+<table border=1>
+<caption><b>Typical Session using the PCMDI WXMAP Web<b></caption>
+
+<tr>
+<th width=150 align=center>
+Action
+</th>
+
+<th width=450 align=center>
+What Happens
+</th>
+</tr>
+
+<tr>
+<td width=150 align=center>
+<a href="../web/wx.htm">Go to the Home Page</a>
+</td>
+
+<td width=450 align=left> The time when the web was created, the
+base <a href="what.is.a.dtg.htm">DTG</a> of the
+maps, and the current DTG are displayed.  You're asked to
+select an area.  </td>
+
+</tr>
+
+<tr>
+<td width=150 align=center>
+<a href="../web/wx.conus.htm">Click on the <b>CONUS</b> Area Icon</a>
+</td>
+
+<td width=450 align=left>
+
+You'll go to the home page for that area. Again the DTG of the
+maps is displayed, but now you'll find a table with <a
+href="#wxmap buttons">navigation buttons</a> to go to other
+<b>available model home pages</b>.  The number of available
+models depends on the time of day.    
+
+</td>
+</tr>
+
+
+<tr>
+<td width=150 align=center>
+Click on the <a href="../web/avn.conus.htm"><b>AVN Home</b> button</a>
+</td>
+
+<td width=450 align=left>
+
+The model, base DTG of the maps and the active area (the one you
+selected at the step above) is displayed in title section, but
+now you'll see two table to work with. The first is where you
+select the maps or movies you want to see for that model.  The
+second contains <a href="#wxmap buttons">navigation buttons</a>
+to go to other <b>available model home pages</b>.  The number of
+available models depends on the time of day.
+
+</td>
+</tr>
+
+<tr>
+<td width=150 align=center>
+Click on the <b>green</b> 24-h 500 mb forecast 
+</td>
+
+<td width=450 align=left>
+
+If the button is NOT green, then it means the map was not
+produced for some reason.<br> The map will appear with two rows
+of <a href="#wxmap buttons">navigation buttons</a> to go to other
+<b>available model home pages</b>.  Again, depending on model and
+forecast availability, a variety of actions are possible.
+
+</td>
+</tr>
+
+
+<tr>
+<td width=150 align=center>
+Click on the <b>NGP</b> button
+</td>
+
+<td width=450 align=left>
+
+This allows you to intercompare the AVN forecast with that from
+the Navy model (NOGAPS or NGP).  The only difference.  Even the
+data grids are the same (1 deg).
+
+</td>
+</tr>
+
+
+<tr>
+<td width=150 align=center>
+Click on <b>+12</b> button
+</td>
+
+<td width=450 align=left>
+
+This advances you 12 hours into the future.  You can move
+backwards and forewards in time.
+
+</td>
+</tr>
+
+
+<tr>
+<td width=150 align=center>
+Click on <b>All Maps</b>  button
+</td>
+
+<td width=450 align=left>
+
+You see something interesting and now want to look at all the
+maps for the forecast time.  All the maps are laid out in a
+single document, you scroll down and see a big rain storm forming
+over the midwest....
+
+</td>
+</tr>
+
+<tr>
+<td width=150 align=center>
+Click on Precip map
+</td>
+
+<td width=450 align=left>
+
+This takes you to the html document with the graphic AND the
+navigation buttons.  You are now curious if the big storm is only
+seen in <i>this</i> run of the model, i.e., has the model been
+<i>consistently</i> forecasting this storm.
+
+</td>
+</tr>
+
+
+<tr>
+<td width=150 align=center>
+Click on <b>Prev Run -12 h</b> button
+</td>
+
+<td width=450 align=left>
+
+The the forecast made 12 h earlier (e.g., the 36-h forecast made
+by 96102700 run), but verifying at the time of the previous map
+(e.g., the 24-h forecast made by the 96102712 run) is displayed.
+You can keep going backwards (or forward) until there are no
+verifying forecasts available.
+
+</td>
+</tr>
+
+
+</table>
+
+<hr>
+<a name="area buttons"> </a> Weather Maps are created for two
+areas as of 28 October.  Others are possible depending on
+interest and computer resources.  Please send requests to 
+<a href="mailto:fiorino@llnl.gov"> Mike Fiorino</a>.
+<br>
+
+<table border=1>
+<caption><b>The Area Button in the <a href="../web/wx.htm">PCMDI WXMAP Home Page</a><b></caption>
+<tr>
+<th width=150 align=center>
+Button
+</th>
+<th width=450 align=left>
+Action
+</th>
+</tr>
+
+<tr>
+<td>
+<img src="../icon/conus.button.gif">
+</td>
+<td>
+<b>The CONtiguous United States</b>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="../icon/asia.button.gif">
+</td>
+<td>
+<b>East Asia</b>
+</td>
+</tr>
+
+</table>
+<br>
+
+<hr>
+<a name="wxmap buttons"></a>
+<p>The following table describes the basic navigation buttons you'll see throughout the web.</p>
+
+<table border=1>
+<caption><b>Description of the Buttons<b></caption>
+<tr>
+<th width=70>
+Button
+</th>
+<th width=530 align=left>
+Action
+</th>
+</tr>
+
+<tr>
+<td width=70>
+<img src="../icon/avn.gif">
+</td>
+<td width=530 align=left>
+Map from the AVN (short integration) run of the NCEP MRF Model
+</td>
+</tr>
+
+<tr>
+<td width=70>
+<img src="../icon/mrf.gif">
+</td>
+<td width=530 align=left>
+Map from the MRF (long integration) run of the NCEP MRF Global Model
+</td>
+</tr>
+
+<tr>
+<td width=70>
+<img src="../icon/ngp.gif">
+</td>
+<td width=530 align=left>
+Map from the FNMOC NOGAPS Global Model
+</td>
+</tr>
+
+<tr>
+<td width=70>
+<img src="../icon/n12.gif">
+</td>
+<td width=530 align=left>
+Display the map 12 h previous to the current map
+</td>
+</tr>
+
+<tr>
+<td width=70>
+<img src="../icon/p12.gif">
+</td>
+<td width=530 align=left>
+Display the map 12 h into the future from the current map 
+</td>
+</tr>
+
+
+<tr>
+<td width=70>
+<img src="../icon/prevrun12.gif">
+</td>
+<td width=530 align=left>
+Display the map from the <b><i>model run 12 h previous</i></b> verifying at the <b><i>current</i></b> time<br>
+24 36 48 and 72 h buttons are shown if available.
+</td>
+</tr>
+
+<tr>
+<td width=70>
+<img src="../icon/nextrun12.gif">
+</td>
+<td width=530 align=left>
+
+Display the map from the <b><i>model run 12 h into the
+future</i></b> verifying at the <b><i>current</i></b> time<br> 24
+36 48 and 72 h buttons are always shown, <font color=red> <b>but
+may NOT be available</b> </font> as the html document is
+calculated only once.
+
+</td>
+</tr>
+
+<tr>
+<td width=70>
+<img src="../icon/allmap.gif">
+</td>
+<td width=530 align=left>
+Display all the maps at the current time (e.g., the 500, 850, precip and sea-level pressure charts for the current t=12 h forecast)
+</td>
+</tr>
+
+<tr>
+<td width=70>
+<img src="../icon/alltau.gif">
+</td>
+<td width=530 align=left>
+Display all forecast times for the current map (e.g., 0, 12, 24, ... , 72 of the 500 mb charts) 
+</td>
+</tr>
+
+<tr>
+<td width=70>
+<img src="../icon/avnhome.gif">
+</td>
+<td width=530 align=left>
+Home page the AVN run for the <b><i>active area</b></i>
+</td>
+</tr>
+
+<tr>
+<td width=70>
+<img src="../icon/mrfhome.gif">
+</td>
+<td width=530 align=left>
+Home page the MRF run for the <b><i>active area</b></i> and <b><i>active base DTG or time</b></i>  
+</td>
+</tr>
+
+<tr>
+<td width=70>
+<img src="../icon/ngphome.gif">
+</td>
+<td width=530 align=left>
+Home page the NOGAPS run for the <b><i>active area</b></i> and <b><i>active base DTG or time</b></i>  
+</td>
+</tr>
+
+<tr>
+<td width=70>
+<img src="../icon/wxmaphome.gif">
+</td>
+<td width=530 align=left>
+Go to the <a href="../web/wx.htm">PCMDI WXMAP Home Page</a>
+</td>
+</tr>
+
+<tr>
+<td width=70>
+<img src="../icon/colawxmap.gif">
+</td>
+<td width=530 align=left>
+Visit our sister <a href="http://grads.iges.org/pix/wx.html">Weather Map</a> site at <a href="http://grads.iges.org/home.html">COLA/IGES</a>
+</td>
+</tr>
+
+</table>
+
+
+<hr>
+<a name="definitions"></a>
+
+<p>Here's a list of the less obvious terms and acroynms you'll
+run across my web.
+</p>
+
+<table border=1>
+
+<tr>
+<th width=100 align=center>
+Term
+</th>
+
+<th width=500 align=center>
+Definition
+</th>
+</tr>
+
+<tr>
+<td width=100 align=right>
+<b>AVN</b>
+</td>
+
+<td width=500 align=left> 
+
+The "Aviation" or short integration (0-72 h) of the NCEP MRF
+model made every 00, 06, 12 and 18 UTC.
+
+</td>
+</tr>
+
+
+<tr>
+<td width=100 align=right>
+<a href="../doc/what.is.a.dtg.htm"><b>DTG</b><a>
+</td>
+
+<td width=500 align=left> 
+
+The"Date Time Group" or how I represent time.  The format is
+(yymmddhh or 19yymmddhh) where yy is the year, mm the month
+number, dd the day number and hh the UTC hour.
+
+</td>
+</tr>
+
+<tr>
+<td width=100 align=right>
+<a href="http://www.fnoc.navy.mil"><b>FNMOC</b></a>
+</td>
+
+<td width=500 align=left>
+The U.S. Navy Fleet Numerical Meteorology and Oceanography Center, Monterey, CA
+</td>
+</tr>
+
+<tr>
+<td width=100 align=right>
+<a href="http://nic.fb4.noaa.gov:8000/research/mrf.html"><b>MRF</b></a>
+</td>
+
+<td width=500 align=left>
+
+The NCEP Medium Range Forecast gloabl model developed by the NCEP
+<a href="http://nic.fb4.noaa.gov:8000/">Environmental Modeling
+Center</a>.  Also refers to the long integration of the MRF made
+every 00 UTC.
+
+</td>
+</tr>
+
+
+<tr>
+<td width=100 align=right>
+<a href="http://www.ncep.noaa.gov"><b>NCEP</b></a>
+</td>
+
+<td width=500 align=left>
+The National Centers for Environmental Prediction
+</td>
+</tr>
+
+
+<tr>
+<td width=100 align=right>
+<a href="http://www.nrlmry.navy.mil/cgi-bin/print_hit_bold.pl/aboutnrl/global_mod.html"><b>NGP<br>NOGAPS</b></a>
+</td>
+
+<td width=500 align=left>
+The Navy Operational Global Atmospheric Prediction System developed by <a href="http://www.nrlmry.navy.mil">Naval Research Lab, Monterey</a>
+</td>
+</tr>
+
+
+<tr>
+<td width=100 align=right>
+<b>NWP</b>
+</td>
+
+<td width=500 align=left>
+Numerical Weather Prediction, i.e, the computer models of the atmosphere
+</td>
+</tr>
+
+
+</table>
+
+
+<br><br>
+<i>Last Update: 28 October, 1996</i><br>
+Send Comments to <a href="mailto:fiorino@llnl.gov"> Mike Fiorino</a>, 
+<a href="http://www-pcmdi.llnl.gov">PCMDI</a>, <a
+href="http://www.llnl.gov">LLNL</a>
+<br><br>
+<a href="http://www.llnl.gov/disclaimer.html">LLNL Disclaimers</a><br>
+UCRL-MI-125630
+</body>
+</html>
+

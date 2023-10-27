@@ -1,0 +1,812 @@
+       program tcfilt                                             
+c                                                                               
+       parameter (imx=201 , jmx=81, nmx=24)                                      
+       parameter  ( kmax=18,lgi=20 ,iimx=110)                                   
+       parameter  (iblkmx=lgi*imx+4*kmax*imx)                                   
+       parameter  (jblkmx=imx+14*kmax*imx)                                      
+       parameter  ( mxtim=7, mxprm=10, mxlvl = 18)                              
+       parameter  (imin = 0,jmin = 0)                                           
+                                                                                
+c                                                                               
+cc     common  /filec/  typ1c(imx,lgi),typ2c(kmax,imx,4)                        
+       common /winds/ dmmm(imx,jmx,2),tang(imx,jmx),                            
+     *      del(imx,jmx),tha(imx,jmx),tanp(imx,jmx),ds(imx,jmx)                 
+c                                                                               
+c                                                                               
+       common  /gdinf/  ngd,ngr,ntr,dt,js,jn,ie,iw,iimax,imax,jjmax,            
+     *                  jmax,nstflg,icx,icy,ihx,ihy,dftx,dfty                   
+       common /pass/rtani(iimx,nmx),disti(nmx)                                  
+cc                                                                              
+       common  /var/  dist,nn1,nn2,nn3,nn4,ifl                                  
+       common  /coor/ xv,yv,xold,yold,xcorn,ycorn,factr,ix,iy                   
+       common /total/ ddel,dtha                                                 
+       common  /ifact/nnn,rnot(nmx),rb,ienv                                     
+        common /matrix/ a(nmx,nmx),capd2                                        
+       dimension  nogcx(6), nogcy(6)                                      
+       dimension  facg1(imx),facg2(imx)                                         
+       dimension  filc(iblkmx),fact1(imx),fact2(imx)                            
+       dimension  diag(jblkmx),u(imx,jmx),v(imx,jmx)                            
+       dimension  xxd(imx,jmx),us(imx,jmx),vs(imx,jmx), xxdu(imx,jmx)           
+       dimension  uall(imx,jmx),vall(imx,jmx)                                   
+       dimension  xhu(imx,jmx),xzerou(imx,jmx)                                  
+       dimension  xhv(imx,jmx),xzerov(imx,jmx)                                  
+       dimension  up(imx,jmx),vp(imx,jmx)                                       
+       dimension  ufils(imx,jmx),vfils(imx,jmx)                                 
+       dimension  ufil(imx,jmx),vfil(imx,jmx)                                   
+       dimension  ufilp(imx,jmx),vfilp(imx,jmx)                                 
+       dimension  uf850(imx,jmx),vf850(imx,jmx)                                 
+       dimension zmattemp(imin:imx,jmin:jmx)                                    
+       dimension ivrbl(22)                                    
+c                                                                               
+       character*4 iblock, parm                                                      
+      character*4 param4(mxprm)  
+	character*7 level(kmax)                                               
+                                                        
+c                                                                               
+c                                                                               
+      data level /'1000 mb',' 975 mb',' 925 mb',' 900 mb',' 850 mb',            
+     1            ' 700 mb',' 500 mb',' 400 mb',' 300 mb',' 250 mb',            
+     2            ' 200 mb',' 150 mb',' 100 mb','  70 mb','  50 mb',
+     3            '  30 mb','  20 mb','  10 mb'/                                
+c                                                                               
+c                                                                               
+      data param4 /'pmsl','tmpc','vapr','uwnd','vwnd',                          
+     1             'hght','tmpc','vapr','uwnd','vwnd'/                          
+	data ivrbl /1,1,6,6,6,6,6,6,6,6,6,5,6,5,5,5,5,5,2,2,2,2/
+c                                                                               
+c                                                                               
+c      read in part of gfdl history tape.........>                              
+c                                                                               
+c      equivalence  (filc(1),typ1c(1,1) )                                       
+c      read (10)nstep,nnest,iblock                                              
+c                                                                               
+c      read(10)ngd,ngr,ntr,dt,js,jn,ie,iw,iimax,imax,jjmax,jmax,                
+c    *         nstflg,ickx,icky,ihx,ihy,dftx,dfty                               
+                                                                                
+c                                                                               
+c######################################################################         
+c                                                                               
+c   the following is the code to remove the hurricane component of the          
+c   disturbance filed from a given wind field.                                  
+c   the resulting field is called the "environmental field"                     
+c   in the gfdl bogus system,  the specified vortex is added to this            
+c   resulting wind field to optain the final initial field.                     
+c                                                                               
+c   first, input the center of the storm called xv ,yv which is                 
+c   defined in lines 86-87 of the code.                                         
+c   this will center an 11 x 11 degree gridpoint square within which            
+c   the global center will be defined (in routine "center").                    
+c   this routine will determine the global center, first based on the           
+c   centroid center, as defined in:  kurihara, bender, and ross (1993)          
+c   mwr, page 2039, equation (6.1).                                             
+c                                                                               
+c   next, the global center is redefined as the gridpoint with the              
+c   largest azimuthally-averaged wind maximum.                                  
+c                                                                               
+c   next, the parameter dist(ir) is defined, as the starting location           
+c   of the search for r0 (the filter domain) in the various aximuthal           
+c   directions.                                                                 
+c   lastly, the non-hurricane wind within ro is determined from an              
+c   optimum interpolation approach.                                             
+c                                                                               
+c                                                                               
+c   important: we assume that the grid spacing of the grid points is            
+c   one degree (dlon,dlat).                                                     
+c                                                                               
+c                                                                               
+c   in this program the input  field will be    fort.10                         
+c   in this program the output field will be    fort.46                         
+c                                                                               
+c                                                                               
+c                                                                               
+c#######################################################################        
+c                                                                               
+c             the following are the input parameters:                           
+c             this code assumes that the lat,lon grid spacing is                
+c             one degree.................                                       
+c                                                                               
+c******************************************************************             
+c                                                                               
+c                                                                               
+c      define the center of the storm:   xv,yv                                  
+c                                      (lon,lat)                                
+c                                                                               
+cc     xv = -70.3                                                               
+ccc    yv =  31.3                                                               
+c                                                                               
+c   robyn's position... 080312                                                  
+c                                                                               
+c      xv = 142.8                                                               
+c      yv =  10.1                                                               
+c                                                                               
+c   robyn's position... 080700                                                  
+c                                                                               
+c      xv = 133.5                                                               
+c      yv =  19.3                                                               
+c   robyn's position... 080100                                                  
+c                                                                               
+       xv = 154.5                                                               
+       yv =   6.8                                                               
+c   david's position... 97091800                                                  
+c                                                                               
+       xv = 142.5                                                               
+       yv =  28.1                                                               
+c                                                                               
+       nogcx(2) = 155.0                                                         
+       nogcy(2) = 7.0                                                           
+       nogcx(3) = 154.0                                                         
+       nogcy(3) = 7.0                                                           
+       nogcx(4) = 153.0                                                         
+       nogcy(4) = 7.0                                                           
+       nogcx(5) = 153.0                                                         
+       nogcy(5) = 7.0                                                           
+       nogcx(6) = 153.0                                                         
+       nogcy(6) = 4.0                                                           
+c                                                                               
+c 080112 position                                                               
+c                                                                               
+c        xv = 152.3                                                             
+c        yv = 7.4                                                               
+c                                                                               
+c 080200 position                                                               
+c                                                                               
+c        xv = 149.9                                                             
+c        yv = 8.7                                                               
+c                                                                               
+c   080212 position                                                             
+c                                                                               
+c        xv = 147.5                                                             
+c        yv = 9.4                                                               
+c                                                                               
+c  080312 position                                                              
+c                                                                               
+         xv = 142.8                                                             
+         yv = 10.1                                                              
+c                                                                               
+c   080400 position                                                             
+c                                                                               
+         xv = 141.5                                                             
+         yv = 10.7                                                              
+c                                                                               
+c   080412 position                                                             
+c                                                                               
+         xv = 140.7                                                             
+         yv = 11.5                                                              
+c                                                                               
+c   david position                                                             
+c                                                                               
+         xv = 142.5                                                             
+         yv = 28.1                                                              
+	print *,'david assigned = ',xv,yv                                                     
+c                                                                               
+cc****************set up the filter strength you want***************            
+c                                                                               
+c   this is the first filter, which seperates the disturbance wind              
+c   field from the basic flow.  the basic flow will be defined as               
+c   (us, vs).                                                                   
+c                                                                               
+cc   see the subroutine phase for details.                                      
+cc                                                                              
+cc    ifl=1   is the weak    filter                                             
+cc    ifl=2   is the regular filter *** currently in use                        
+cc    ifl=3   is the strong  filter                                             
+cc    ifl=4   is very strong filter                                             
+cc                                                                              
+cc                                                                              
+cc    filter is defined in mwr paper of kurihara, et.all, 1990:                 
+cc                                                                              
+                      ifl=3                                                     
+cc                                                                              
+cc                                                                              
+cc**********************************************************                    
+cc                                                                              
+c                                                                               
+c      define the vertical level of your history tape which                     
+c      you want to filter.                                                      
+c      level 10 of the gfdl model is at about 500 hpa height.                   
+c                                                                               
+       kfil = 10                                                                
+c                                                                               
+c                                                                               
+c      define the vertical level of the gfdl history tape which                 
+c      is used to define the filter domain ro (ktop).                           
+c      this should be the model level near 850 hpa. for the gfdl                
+c      model this is level 14.                                                  
+c                                                                               
+       ktop = 14                                                                
+c                                                                               
+c**************************************************************                 
+c                                                                               
+c                                                                               
+c      input the history tape................>>>>>                              
+c                                                                               
+c      these parameters will have to be specified for the program to            
+c      work !!!!!!!!!                                                           
+c                                                                               
+c                                                                               
+c      ddel, dtha is the grid spacing (should be 1 degree for the filter        
+c      characteristics to properly work)                                        
+c      these are inputed in radians !!!!                                        
+c                                                                               
+c                  next:                                                        
+c      del : is the 2-d array containing longtitude in radians of the gr        
+c      tha : is the 2-d array containing latitude   in radians                  
+c                                                                               
+c      ds :  is the area contained with one grid point                          
+c            this is used in routine ....center.... for the first guess         
+c            of the global center (which is a centroid calculation).            
+c                                                                               
+c                                                                               
+c       u :  is the u component of the wind used to define ro                   
+c       v :  is the v component of the wind used to define ro                   
+c       ufil :      u component of the wind used to be filtered                 
+c       vfil :      v component of the wind used to be filtered                 
+c                                                                               
+c**************************************************************                 
+c 
+       open(unit=13,file='david_gfdl_all.2000',form='unformatted')                                                                              
+       open(unit=14,file='david_gfdl_to_gem_2000.bin',
+     *      form='unformatted')                                                                              
+       open(unit=20,file='david_gfdl_to_gem_2000.list',status='new')                                                                              
+       rad = 6.371e3                                                            
+       pi = 4.*atan(1.0)                                                        
+       pi180 = pi/180.                                                          
+c                                                                               
+       dr = .1                                                                  
+c                                                                               
+       xc = xv*pi180                                                            
+       yc = yv*pi180                                                            
+c                                                                               
+c  get first guess field... nogaps                                              
+c                                                                               
+         iu = 1 
+	iopened=0
+	iopen2=0
+	iopen3=0
+c-------------------------------------------------------------
+c    loop over level - set as a code for different field types
+c	ilevel = 1 => 850 level- used as reference vortex structure
+c	ilevel = 3-18 mandatory levels, read as urel,vrel,tmpk,
+c					dpdk,omeg,hght
+c	ilevel = 2 => surface pressure
+c	ilevel = 19 => 975 u,v
+c	ilevel = 20 => 900 u,v
+c	ilevel = 21 => 19 m u,v
+c	ilevel = 22 => 10 m u,v
+c-------------------------------------------------------------                                                                
+         do 91919 ilevel = 1,22
+	 do 91918 ivar=1,ivrbl(ilevel)         
+	 print *,'*************** ilevel,ivar = ',ilevel,ivar                                        
+         iumq = ilevel + 10                                                     
+c        xv = nogcx(ilevel)                                                     
+c        yv = nogcy(ilevel)                                                     
+         found = 0                                                              
+c        ilevel = 6                                                             
+         iparam = 4                                                             
+c        rewind 01                                                              
+c ------------------------------------------------------------
+c  read input fields converted from nogaps 1-deg gempak files
+c
+c - open the appropriate input file
+c   which was written by gemtoasci_nog1_pete.f
+c
+        if(ilevel .eq. 1) then
+		open(unit=1,file='97091800_850.f00',status='old')
+c
+c  first, read in u component
+c
+		read (1,'(i5,1x,a4)') gemlevl, parm(1:4)	
+		do j = 1,jmx
+			read (1,'(10(e13.5,1x))') (ufil(i,j),i=1,imx)
+		end do
+c
+c  second, read in v component
+c
+		read (1,'(i5,1x,a4)') gemlevl, parm(1:4)	
+		do j = 1,jmx
+			read (1,'(10(e13.5,1x))') (vfil(i,j),i=1,imx)
+		end do
+		close(1)
+	endif
+	if(ilevel .eq. 2) then
+		open(unit=1,file='97091800_sfc.f00',status='old')
+c
+c	read in surface pressure
+c
+		read (1,'(i5,1x,a4)') gemlevl, parm(1:4)	
+		do j = 1,jmx
+			read (1,'(10(e13.5,1x))') (ufil(i,j),i=1,imx)
+		end do
+c
+c      set v field to dummy array
+c
+		do i = 1,imx
+			do j = 1,jmx
+			vfil(i,j) = ufil(i,j)
+			end do
+		end do
+		close(1)
+	endif
+	if(ilevel .gt. 2 .and. ilevel .le. 18) then
+		if(iopened .ne. 1) then
+		open(unit=1,file='97091800_asc.f00',status='old')
+		endif
+	 	iopened = 1
+c
+c	read in variable for mandatory level (6 variables per level)
+c	ivar keeps track of the number of variables processed for
+c	each level
+c
+		read (1,'(i5,1x,a4)') gemlevl, parm(1:4)	
+		do j = 1,jmx
+			read (1,'(10(e13.5,1x))') (ufil(i,j),i=1,imx)
+		end do
+c
+c      set v field to dummy array
+c
+		do i = 1,imx
+			do j = 1,jmx
+			vfil(i,j) = ufil(i,j)
+			end do
+		end do
+	endif
+	if(ilevel .eq. 19 .or. ilevel .eq. 20) then
+		if(iopen2 .ne. 1) then
+		open(unit=2,file='97091800_llv.f00',status='old')
+		endif
+	 	iopen2 = 1
+c
+c	read in variable for mandatory level (6 variables per level)
+c	ivar keeps track of the number of variables processed for
+c	each level
+c
+		read (2,'(i5,1x,a4)') gemlevl, parm(1:4)	
+		do j = 1,jmx
+			read (2,'(10(e13.5,1x))') (ufil(i,j),i=1,imx)
+		end do
+c
+c      set v field to dummy array
+c
+		do i = 1,imx
+			do j = 1,jmx
+			vfil(i,j) = ufil(i,j)
+			end do
+		end do
+	endif
+	if(ilevel .gt. 20) then
+		if(iopen3 .ne. 1) then
+		open(unit=3,file='97091800_hgl.f00',status='old')
+		endif
+	 	iopen3 = 1
+c
+c	read in variable for mandatory level (6 variables per level)
+c	ivar keeps track of the number of variables processed for
+c	each level
+c
+		read (3,'(i5,1x,a4)') gemlevl, parm(1:4)	
+		do j = 1,jmx
+			read (3,'(10(e13.5,1x))') (ufil(i,j),i=1,imx)
+		end do
+c
+c      set v field to dummy array
+c
+		do i = 1,imx
+			do j = 1,jmx
+			vfil(i,j) = ufil(i,j)
+			end do
+		end do
+	endif
+c
+c----------------------end of modified input section ---------
+c	stop 'end of read test'
+c
+c     call getfg(ufil,vfil,iu, zmattemp,                                        
+c    2                  level, param4,                                          
+c    5                  igrid, jgrid, imin, imx, jmin, jmx,                     
+c    6                  mxtim,mxprm,mxlvl,                                      
+c    7                  imax,jmax, iftime, ilevel, iparam)                      
+c                                                                               
+c     call getmq(ufil,vfil,imx,jmx,iumq)                                        
+c                                                                               
+       j = 0                                                                    
+       do 15 jj = 1 , jmx                                                       
+cc                                                                              
+       j = j + 1                                                                
+cc                                                                              
+c                                                                               
+c      read in the jmax rows of the gfdl history tape to obtain:                
+c      ds, tha, u and v...............>                                         
+c                                                                               
+c                                                                               
+cc     read(10)(diag(jq)  , jq = 1,jblkmx)                                      
+cc     read(10)(filc(i)  ,   i = 1,iblkmx)                                      
+c                                                                               
+c                                                                               
+c      ddel and dtha will be set to one degree  (in radians)                    
+c      (.017453.....)                                                           
+c                                                                               
+ccc    if(j.eq.5)then                                                           
+ccc    ddel = typ1c(5,2)                                                        
+ccc    dtha = typ1c(5,3)                                                        
+       ddel = pi180                                                             
+       dtha = pi180                                                             
+c                                                                               
+c      endif                                                                    
+c                                                                               
+       do 20 i = 1 , imx                                                        
+ccc     ds(i,j) = typ1c(i,4)                                                    
+ccc    del(i,j) = typ1c(i,5)                                                    
+ccc    tha(i,j) = typ1c(i,6)  
+c
+c  specify grid spacing
+c                                                  
+       ds(i,j) = 1.0   
+c
+c   ty robyn grid 115e, -5 s is lower left corner
+c                                                         
+c      del(i,j) = (115. + (float(i-1))) * ddel                                  
+c      tha(i,j) = (-5. + (float(j-1))) * dtha                                   
+c
+c   hurricane andrew grid
+c
+c       del(i,j) = (266. + (float(i-1))) * ddel                                  
+c       tha(i,j) = ( 4. + (float(j-1))) * dtha                                   
+c
+c  ty david grid
+c
+       del(i,j) = (25. + (float(i-1))) * ddel                                  
+       tha(i,j) = (0. + (float(j-1))) * dtha                                   
+c	
+c
+cc     u(i,j)   = typ2c(ktop,i,1)                                               
+cc     uall(i,j)   = typ2c(ktop,i,1)                                            
+cc     v(i,j)   = typ2c(ktop,i,2)                                               
+cc     vall(i,j)   = typ2c(ktop,i,2)                                            
+cc     ufil(i,j)   = typ2c(kfil,i,1)                                            
+cc     vfil(i,j)   = typ2c(kfil,i,2)                                            
+       u(i,j)   = ufil(i,j)                                                     
+       uall(i,j)   = ufil(i,j)                                                  
+       v(i,j)   = vfil(i,j)                                                     
+       vall(i,j)   = vfil(i,j)                                                  
+20     continue                                                                 
+cc                                                                              
+15     continue                                                                 
+c                                                                               
+c      rewind 10                                                                
+c                                                                               
+        xcorn = del(1,1)/pi180                                                  
+        ycorn = tha(1,1)/pi180                                                  
+cc                                                                              
+        print*                                                                  
+        print*                                                                  
+        print*                                                                  
+        print*                                                                  
+        print*,'this is (xcorn,ycorn): ',xcorn,ycorn                            
+        print*                                                                  
+        print*                                                                  
+        print*                                                                  
+c                                                                               
+c                                                                               
+c       obtain the basic flow field for the wind (u,v)                          
+c                                                                               
+c       call phase(ifl,u,v,imx,jmx,us,vs)                                       
+        call phase(ifl,ufil,vfil,imx,jmx,ufils,vfils)                           
+        call findmx2(ufil,rmax,rmin,imx,jmx,maxi,maxj,mini,minj)                
+        print *,'max ufil ',rmax,' at ',maxi,maxj                               
+        print *,'min ufil ',rmin,' at ',mini,minj                               
+        call findmx2(vfil,rmax,rmin,imx,jmx,maxi,maxj,mini,minj)                
+        print *,'max vfil ',rmax,' at ',maxi,maxj                               
+        print *,'min vfil ',rmin,' at ',mini,minj                               
+        call findmx2(ufils,rmax,rmin,imx,jmx,maxi,maxj,mini,minj)               
+        print *,'max ufils ',rmax,' at ',maxi,maxj                              
+        print *,'min ufils ',rmin,' at ',mini,minj                              
+        call findmx2(vfils,rmax,rmin,imx,jmx,maxi,maxj,mini,minj)               
+        print *,'max vfils ',rmax,' at ',maxi,maxj                              
+        print *,'min vfils ',rmin,' at ',mini,minj                              
+c#############################################################                  
+c                                                                               
+c                                                                               
+c next find the center position of the global vortex and rnot                   
+c                                                                               
+c                                                                               
+c       obtain the total disturbance field:                                     
+c                                                                               
+         do 995 j = 1 , jmx                                                     
+         do 995 i = 1 , imx                                                     
+c        up(i,j) = uall(i,j) - us(i,j)                                          
+c        vp(i,j) = vall(i,j) - vs(i,j)                                          
+         ufilp(i,j) = ufil(i,j) - ufils(i,j)                                    
+         vfilp(i,j) = vfil(i,j) - vfils(i,j)                                    
+995      continue  
+	 print *,'writing ----- level = ',ilevel 
+	if(ilevel .eq. 1) then
+c         print *,'writing ufil,vfil'                                                            
+c         write (13) ufil,vfil       
+c         print *,'writing ufils,vfils'                                                            
+c         write (13) ufils,vfils                                                 
+c         print *,'writing ufilp,vfilp'                                                            
+c         write (13) ufilp,vfilp        
+	else
+         print *,'writing original ',parm                                                            
+         write (13) ufil      
+         print *,'writing filtered ',parm                                                            
+         write (13) ufils                                                
+         print *,'writing perturbation ',parm                                                           
+         write (13) ufilp
+	endif       
+	                                         
+c                                                                               
+c    first find the center position of the global vortex                        
+c    this is the centroid calculation...........                                
+c                                                                               
+ccc       call center(up,vp,xcg,ycg)   
+      print *,'--- locating center, xcf,ycg = ',xcg,ycg  
+c----------------------------------------------------------
+c
+c preserve 850 mb vortex structure
+c
+	if(ilevel .eq. 1 ) then
+	 	do j = 1,jmx
+			do i =1,imx
+				uf850(i,j) = ufilp(i,j)
+				vf850(i,j) = vfilp(i,j)
+			end do
+		end do
+	endif
+c
+c ---------------------------------------------------------                                                       
+                                      
+          if(ilevel .gt. 1) then
+c		call center(ufilp,vfilp,xcg,ycg)   
+		xcg=xcg850
+		ycg=ycg850  
+	  else
+		call center(uf850,vf850,xcg,ycg)
+		xcg850=xcg
+		ycg850=ycg
+	  endif                                 
+c                                                                               
+      xold = xcg                                                                
+      yold = ycg                                                                
+c                                                                               
+c                                                                               
+c                                                                               
+c  adjust the center position of the global vortex                              
+c                                                                               
+      print*,'before maxth', xold,yold                                          
+      if(ilevel .gt. 1) then
+		call maxth(ufilp,vfilp,xcgnew,ycgnew,rmxlim,tanp) 
+	else
+		call maxth(uf850,vf850,xcgnew,ycgnew,rmxlim,tanp) 
+	endif                       
+         print *,'after maxth...'                                               
+         print *,'xcgnew = ',xcgnew,'ycgnew = ',ycgnew                          
+         print *,'rmxlim = ',rmxlim                                             
+        call findmx2(tanp,rmax,rmin,imx,jmx,maxi,maxj,mini,minj)                
+        print *,'max tanp ',rmax,' at ',maxi,maxj                               
+        print *,'min tanp ',rmin,' at ',mini,minj                               
+       xold=xcgnew+xcorn                                                        
+       yold=ycgnew+ycorn                                                        
+      dist= rmxlim                                                              
+c                                                                               
+      xcp = xold*pi180                                                          
+      ycp = yold*pi180                                                          
+c     write(4,*)xold,yold,xcp,ycp                                               
+      print *,' x,yold = ',xold,yold,' x,ycp = ',xcp,ycp                        
+c                                                                               
+c                                                                               
+c                                                                               
+c    now determine the rnot of the global vortex                                
+c                                                                               
+c                                                                               
+c  loop over nmx azimuthal directions                                           
+c   first compute the radial profiles of tangential wind for the                
+c   nmx  azimuthal angles                                                       
+c                                                                               
+        dxc=xold -xcorn                                                         
+        dyc=yold -ycorn    
+c-----------------------------------------------------------
+c   save 850 mb vortex representation
+c
+	if(ilevel .gt. 1) go to 111  
+c
+c-------------------------------------------------------------                                                   
+        print*,'berore calct',dxc,dyc,ycp                                       
+c                                                                               
+c                                                                               
+c    calculate the radial profile of tangential wind for 24 axumuthal           
+c    angels                                                                     
+c                                                                               
+        call calct(dr,dxc,dyc,ycp,tanp,rmxlim)                                  
+c                                                                               
+        print *,'**** checking for r0 ****'                                     
+c                                                                               
+        do 10 iang=1,nmx                                                        
+        x1 = 0.0                                                                
+        rtan1 = 100000.                                                         
+        r = 1.0                                                                 
+        dist=disti(iang)                                                        
+        print *,'iang = ',iang,' dist = ',dist                                  
+c                                                                               
+c  only return to 666 if rtan > 6m/s                                            
+c                                                                               
+666     continue                                                                
+        rtan1=100000.                                                           
+c                                                                               
+c  return to 777 if dist or grad condition not met                              
+c                                                                               
+777     continue                                                                
+c                                                                               
+c       call calcra(r,rtan,iang)                                                
+         irdex=int(r/dr)                                                        
+        rtan = rtani(irdex,iang)                                                
+c       print *,'iang = ',iang,' r,dr = ',r,dr,' rtan = ',rtan                  
+        r = r + dr                                                              
+c       write(56,*)r,rtan                                                       
+c        print *,'before speed check, r = ',r,' rtan = ',rtan                    
+        rtan2 = rtan                                                            
+        if(rtan.gt.3.)go to 666                                                 
+        print*,'a-rtan1=',rtan1,' rtan=',rtan,' dist=',dist,' x1=',x1           
+        if(rtan2.ge.rtan1.and.r.gt.dist.and.x1.gt..5)go to 999                  
+        if(rtan2.ge.rtan1.and.r.gt.dist)then                                    
+        x1 = 1.0                                                                
+        endif                                                                   
+c                                                                               
+        if(rtan.lt.3..and.r.gt.dist)go to 999                                   
+c       write(56,*)r,rtan                                                       
+        rtan1 = rtan -4.0                                                       
+        print *,'reduced rtan1 to ',rtan1,' r=',r                               
+        if(r.lt.10.8)go to 777                                                  
+999     continue                                                                
+c       print*                                                                  
+c                                                                               
+c                                                                               
+        if(x1.eq.1.0)then                                                       
+        rnot(iang) = (r-.1)/.8                                                  
+        else                                                                    
+        rnot(iang) =  r/.8                                                      
+        endif                                                                   
+c                                                                               
+c       rzr = r                                                                 
+        rzr=dist                                                                
+1999    continue                                                                
+        rzr = rzr + dr                                                          
+c       call calcra(rzr,rtan,iang)                                              
+         irdex=int(rzr/dr)                                                      
+        rtan = rtani(irdex,iang)                                                
+        if(rtan.gt.0.0)go to 1999                                               
+c                                                                               
+        rzrn = rzr                                                              
+        rzr = rzr*111.19493                                                     
+c                                                                               
+c       print*,'ro will be rtan times some constant'                            
+c                                                                               
+c                                                                               
+c                                                                               
+        rrdd = rnot(iang)*111.19493                                             
+c                                                                               
+        if(rrdd.gt.rzr)then                                                     
+        print*                                                                  
+        print*,'rnot has a negative tangential component'                       
+        print*,'rnot was defined as:  ',rrdd                                    
+        print*,'rnot will be modified'                                          
+          rrdd = rzr                                                            
+          rnot(iang) = rzrn                                                     
+        endif                                                                   
+c                                                                               
+        print*,'this is ro in km:  ',rrdd                                       
+        print *,'iang = ',iang,' rnot(iang) = ',rnot(iang)                      
+c                                                                               
+10      continue                                                                
+c       stop                                                                    
+c                                                                               
+c                                                                               
+c                                                                               
+ 111   continue                                                                             
+c################################################################               
+c                                                                               
+c                                                                               
+c      do the optimum interpolation......>>>>>                                  
+c                                                                               
+       call rodist                                                              
+c                                                                               
+c                                                                               
+c     create matrix  [a]  containing the distance-related correlations          
+c     between the 24 boundary points just outside of the filter domain          
+c     rnot......                                                                
+c                                                                               
+c                                                                               
+       call amatrix                                                             
+        call findmx2(a,rmax,rmin,nmx,nmx,maxi,maxj,mini,minj)                   
+        print *,'max a ',rmax,' at ',maxi,maxj                                  
+        print *,'min a ',rmin,' at ',mini,minj                                  
+c                                                                               
+c                                                                               
+c     seperate the disturbance into the hurricnae and non-hurricnae             
+c     components                                                                
+c                                                                               
+c                                                                               
+         do 880 j = 1 , jmx                                                     
+         do 880 i = 1 , imx                                                     
+         xxd(i,j) = ufil(i,j) - ufils(i,j)                                      
+880      continue                                                               
+         call separ(xxd,xhu,xzerou)                                             
+         do 890 j = 1 , jmx                                                     
+         do 890 i = 1 , imx                                                     
+         ufil(i,j)  =  ufils(i,j) +  xxd(i,j)                                   
+         xxdu(i,j) = xxd(i,j)                                                   
+890      continue                                                               
+        call findmx2(ufil,rmax,rmin,imx,jmx,maxi,maxj,mini,minj)                
+        print *,'max ufil ',rmax,' at ',maxi,maxj                               
+        print *,'min ufil ',rmin,' at ',mini,minj                               
+         do 980 j = 1 , jmx                                                     
+         do 980 i = 1 , imx                                                     
+         xxd(i,j) = vfil(i,j) - vfils(i,j)                                      
+980      continue                                                               
+         call separ(xxd,xhv,xzerov)                                             
+         do 990 j = 1 , jmx                                                     
+         do 990 i = 1 , imx                                                     
+         vfil(i,j)  =  vfils(i,j) +  xxd(i,j)                                   
+990      continue                                                               
+        call findmx2(vfil,rmax,rmin,imx,jmx,maxi,maxj,mini,minj)                
+        print *,'max vfil ',rmax,' at ',maxi,maxj                               
+        print *,'min vfil ',rmin,' at ',mini,minj   
+c	print *,'writing xxdu,xxd, level = ',ilevel 
+	if( ilevel .eq. 1 ) then                           
+c        write (13) xxdu,xxd                                                     
+c		print *,'writing ufil,vfil level = ',ilevel                            
+c        	write (13) ufil,vfil                                                    
+c		print *,'writing xhu,xhv level = ',ilevel                            
+c        	write (13) xhu,xhv                                                      
+c 		print *,'writing xzerou,xzerov level = ',ilevel                            
+c       	write (13) xzerou,xzerov                                                
+	else
+        	write (13) xxdu,xxd                                                     
+		print *,'writing ',parm,' level = ',ilevel                            
+c        	write (14) ufil                                                    
+         	write (13) ufil                                                    
+		print *,'***  writing to *.bin - ',parm,ilevel
+		write (20,'(''writing '',a4,'' at level '',i5)') 
+     *			parm,ilevel                          
+        	write (13) xhu                                                      
+ 		print *,'writing ',parm,'-xzerou,xzerov level = ',ilevel                            
+       		write (13) xzerou                                                
+	endif
+91918   continue
+91919   continue                                                                
+c                                                                               
+c                                                                               
+c      put the environmental winds into the gfdl histroy tape                   
+c                                                                               
+c      read (10)nstep,nnest,iblock                                              
+c      write(46)nstep,nnest,iblock                                              
+c                                                                               
+c      read(10)ngd,ngr,ntr,dt,js,jn,ie,iw,iimax,imax,jjmax,jmax,                
+c    *         nstflg,ickx,icky,ihx,ihy,dftx,dfty                               
+c      write(46)ngd,ngr,ntr,dt,js,jn,ie,iw,iimax,imax,jjmax,jmax,               
+c    *         nstflg,ickx,icky,ihx,ihy,dftx,dfty                               
+c                                                                               
+c                                                                               
+c                                                                               
+c      do 2408  j = 1 , jmx                                                     
+c                                                                               
+c     read(10)(diag(i) ,  i = 1 , jblkmx)                                       
+c     read(10)(filc(i),   i = 1 , iblkmx)                                       
+c                                                                               
+c      do 2407  i = 1 , imx                                                     
+cc     typ2c(kfil,i,1) = ufil(i,j)                                              
+cc     typ2c(kfil,i,2) = vfil(i,j)                                              
+2407   continue                                                                 
+c                                                                               
+c                                                                               
+c       add the filter winds back to the history tape:                          
+c                                                                               
+c                                                                               
+c     write(46)(diag(i) ,  i = 1 , jblkmx)                                      
+c     write(46)(filc(i),   i = 1 , iblkmx)                                      
+c                                                                               
+2408   continue                                                                 
+c                                                                               
+c                                                                               
+       stop                                                                     
+       end                                                                      

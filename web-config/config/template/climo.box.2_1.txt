@@ -1,0 +1,118 @@
+<!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB  2.1 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
+<!-- B1 1.1 -->
+<td width=125 valign=center align=right height=80>
+<img src="icon/tropaor.area.button.gif" width=115 height=90>
+</td>
+
+<!-- B1 2.1 -->
+<td valign=middle width=325>
+<table class="button">
+
+<!-- B1 2.1.1 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+<td>
+<input type='button' class='btntop'
+onMouseOver="className='btntopover';" onMouseOut="className='btntop';"
+value='Current Climo' name="tctrk"  
+onClick="htype='cur.clm',swaphtm();">
+</td>
+
+<td >
+<input type='button' class='btntop'
+value='Monthly Climo' name="tctrk"  
+onMouseOver="className='btntopover';" onMouseOut="className='btntop';"
+onClick="htype='mo.clm',swaphtm();">
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+<input type='button' class='btnrscbig1'
+value='CPC MJO Anim' name="tctrk"  
+onMouseOver="className='btnrscbig1over';" onMouseOut="className='btnrscbig1';"
+onClick="htype='cpc.mjo.anim';opentype='window',swaphtm();">
+</td>
+
+<td>
+<input type='button' class='btnrscbig1'
+value='CPC MJO Disc' name="tctrk"  
+onMouseOver="className='btnrscbig1over';" onMouseOut="className='btnrscbig1';"
+onClick="htype='cpc.mjo.disc';opentype='window',swaphtm();">
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+<input type='button' class='btnrscbig1'
+value='CPC MJO FCST' name="tctrk"  
+onMouseOver="className='btnrscbig1over';" onMouseOut="className='btnrscbig1';"
+onClick="htype='cpc.mjo.fcst';opentype='window',swaphtm();">
+</td>
+
+</tr>
+
+</table>
+</td>
+</tr>
+
+<!-- B1 2.1.2 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B1 2.1.3 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B1 2.1.4 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- B1 2.1.4 -->
+<tr>
+<td>
+<table class="button">
+<tr>
+
+
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+
+
+<!-- EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE  2.1 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
+

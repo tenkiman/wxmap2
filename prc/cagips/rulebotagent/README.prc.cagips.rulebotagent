@@ -1,0 +1,34 @@
+Running the RulebotAgent:
+
+Java Runtime Enviroment 1.5+ is required to run the agent.
+
+Two version of RulebotAgent.zip is distributed: with and without JRE. 
+For the version without JRE included (RuletbotAgent.zip) , you must install a JRE of 1.5+.
+The version distributed with the JRE (RulebotAgent_w_jre.zip) does not require external JRE.
+
+Unzip the zip file to your chosen directory. 
+
+The agent can be run with a UI or if running on a server, from the command
+line with out a UI.
+
+WINDOWS USERS:
+Simply double click on the RulebotAgent.jar file to launch the agent. 
+
+UNIX USERS:
+Set the execute the permissions on the agent.sh script. Then run the agent 
+by calling >./agent.sh
+
+BOTH:
+Once the agent is running, you will need to properly configure the agent,
+specifying you user name/password/domain and the RulebotServer you wish to
+connect to. 
+
+NOTE: if running the agent without the UI, configure the agent.properties file,
+leaving the password field blank. This can be passed in from the command line
+(see below).
+
+When running the agent from the command line, a few parameters can be passed in:
+-hidden (run without the UI)
+-password (to specify the password)
+
+

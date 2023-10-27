@@ -1,0 +1,37 @@
+#------------------------------------------------------
+#
+#       tcops.fsl.noaa.gov crontab
+#
+#------------------------------------------------------
+#
+
+runcmd='/data/amb/users/fiorino/w21/run.cron.tcsh'
+w2pdir='/data/amb/users/fiorino/w21/prc'
+w2prjdir='/data/amb/users/fiorino/w21/prj'
+
+#ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt - TCs
+
+03   2      * * * $runcmd  "$w2pdir/tcdat/w2.tc.dss.md2.py -b w,e,l -Y -Z -y cur"                               >> /ptmp/log.w2.tc.dss.md2.py.MD29XUPDATE 2>&1
+
+#iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii -- inventory l2/du/mss
+
+# -- load averages using uptime
+*/5                              *                * * * $runcmd "$w2pdir/flddat/w2.load.py"                      >> /ptmp/log.load.py.LOAD 2>&1
+
+#ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg - gfs goes
+
+#ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo - ocean
+
+#ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp - precip
+
+#mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm - model 
+
+#fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff rtfim
+
+#ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss special
+
+#jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj jtwc cagips
+
+#ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc - cleanup
+
+#mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm data management

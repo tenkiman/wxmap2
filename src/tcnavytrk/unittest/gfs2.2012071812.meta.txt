@@ -1,0 +1,37 @@
+filename: gfs2.2012071812     
+grid  ni: 681  nj: 161
+lonW:  20.00  lonE: 360.00
+latS: -10.00  latN:  70.00
+dlon:  0.500  dlat:  0.500
+nk:   0
+nt:  25 (taus)
+  0 gfs2.2012071812.f000.dat
+  6 gfs2.2012071812.f006.dat
+ 12 gfs2.2012071812.f012.dat
+ 18 gfs2.2012071812.f018.dat
+ 24 gfs2.2012071812.f024.dat
+ 30 gfs2.2012071812.f030.dat
+ 36 gfs2.2012071812.f036.dat
+ 42 gfs2.2012071812.f042.dat
+ 48 gfs2.2012071812.f048.dat
+ 54 gfs2.2012071812.f054.dat
+ 60 gfs2.2012071812.f060.dat
+ 66 gfs2.2012071812.f066.dat
+ 72 gfs2.2012071812.f072.dat
+ 78 gfs2.2012071812.f078.dat
+ 84 gfs2.2012071812.f084.dat
+ 90 gfs2.2012071812.f090.dat
+ 96 gfs2.2012071812.f096.dat
+102 gfs2.2012071812.f102.dat
+108 gfs2.2012071812.f108.dat
+114 gfs2.2012071812.f114.dat
+120 gfs2.2012071812.f120.dat
+126 gfs2.2012071812.f126.dat
+132 gfs2.2012071812.f132.dat
+138 gfs2.2012071812.f138.dat
+144 gfs2.2012071812.f144.dat
+nvarsSfc:   4  nvarsUA:   0
+uas        0          uas [m/s]                     
+vas        0          vas [m/s]                     
+vrt850     850        rel vort 850 [*1e5 /s]        
+psl        0          psl [mb]                      

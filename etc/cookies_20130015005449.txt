@@ -1,0 +1,132 @@
+Host:                 .ecmwf.int
+Name:                 WebAuth
+Path:                 /
+Content:              uid%3Awmo_us%20ticket%3AfNBC4BbwfRKzvAiiFUNIix1PsbJ/uxi5nf1iNPRBEfxN2ugZwgWxNQ%3d%3d%20levels%3A2
+Content raw:          uid%3Awmo_us%20ticket%3AfNBC4BbwfRKzvAiiFUNIix1PsbJ/uxi5nf1iNPRBEfxN2ugZwgWxNQ%3d%3d%20levels%3A2
+Expires:              Fri 10 Jan 2014 12:46:26 AM UTC
+Expires raw:          1389314786
+Send for:             Any type of connection
+Send for raw:         false
+Created:              Tue 15 Jan 2013 12:46:16 AM UTC
+Created raw:          1358210775676169
+Last accessed:        Tue 15 Jan 2013 12:51:20 AM UTC
+Last accessed raw:    1358211079687829
+HTTP only:            No
+HTTP only raw:        false
+This domain only:     Yes
+This domain only raw: true
+Policy:               no information available
+Policy raw:           0
+Status:               no information available
+Status raw:           0
+---
+Host:                 .ecmwf.int
+Name:                 __utmz
+Path:                 /
+Content:              267635482.1358210732.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
+Content raw:          267635482.1358210732.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
+Expires:              Tue 16 Jul 2013 12:51:20 PM UTC
+Expires raw:          1373979080
+Send for:             Any type of connection
+Send for raw:         false
+Created:              Tue 15 Jan 2013 12:45:32 AM UTC
+Created raw:          1358210732024060
+Last accessed:        Tue 15 Jan 2013 12:51:20 AM UTC
+Last accessed raw:    1358211080464012
+HTTP only:            No
+HTTP only raw:        false
+This domain only:     Yes
+This domain only raw: true
+Policy:               no information available
+Policy raw:           0
+Status:               no information available
+Status raw:           0
+---
+Host:                 .ecmwf.int
+Name:                 __utmc
+Path:                 /
+Content:              267635482
+Content raw:          267635482
+Expires:              At end of session
+Expires raw:          0
+Send for:             Any type of connection
+Send for raw:         false
+Created:              Tue 15 Jan 2013 12:51:19 AM UTC
+Created raw:          1358211079249273
+Last accessed:        Tue 15 Jan 2013 12:51:20 AM UTC
+Last accessed raw:    1358211080463646
+HTTP only:            No
+HTTP only raw:        false
+This domain only:     Yes
+This domain only raw: true
+Policy:               no information available
+Policy raw:           0
+Status:               no information available
+Status raw:           0
+---
+Host:                 .ecmwf.int
+Name:                 __utmb
+Path:                 /
+Content:              267635482.4.10.1358210732
+Content raw:          267635482.4.10.1358210732
+Expires:              Tue 15 Jan 2013 01:21:20 AM UTC
+Expires raw:          1358212880
+Send for:             Any type of connection
+Send for raw:         false
+Created:              Tue 15 Jan 2013 12:45:32 AM UTC
+Created raw:          1358210732023139
+Last accessed:        Tue 15 Jan 2013 12:51:20 AM UTC
+Last accessed raw:    1358211080463435
+HTTP only:            No
+HTTP only raw:        false
+This domain only:     Yes
+This domain only raw: true
+Policy:               no information available
+Policy raw:           0
+Status:               no information available
+Status raw:           0
+---
+Host:                 .ecmwf.int
+Name:                 __utma
+Path:                 /
+Content:              267635482.1705714103.1358210732.1358210732.1358210732.1
+Content raw:          267635482.1705714103.1358210732.1358210732.1358210732.1
+Expires:              Thu 15 Jan 2015 12:51:20 AM UTC
+Expires raw:          1421283080
+Send for:             Any type of connection
+Send for raw:         false
+Created:              Tue 15 Jan 2013 12:45:32 AM UTC
+Created raw:          1358210732022650
+Last accessed:        Tue 15 Jan 2013 12:51:20 AM UTC
+Last accessed raw:    1358211080463143
+HTTP only:            No
+HTTP only raw:        false
+This domain only:     Yes
+This domain only raw: true
+Policy:               no information available
+Policy raw:           0
+Status:               no information available
+Status raw:           0
+---
+Host:                 ecmwf.int
+Name:                 JSESSIONID
+Path:                 /
+Content:              80939B970817F620E3876859647DB7E0
+Content raw:          80939B970817F620E3876859647DB7E0
+Expires:              At end of session
+Expires raw:          0
+Send for:             Any type of connection
+Send for raw:         false
+Created:              Tue 15 Jan 2013 12:51:19 AM UTC
+Created raw:          1358211079248758
+Last accessed:        Tue 15 Jan 2013 12:51:19 AM UTC
+Last accessed raw:    1358211079249282
+HTTP only:            No
+HTTP only raw:        false
+This domain only:     No
+This domain only raw: false
+Policy:               no information available
+Policy raw:           0
+Status:               no information available
+Status raw:           0
+---

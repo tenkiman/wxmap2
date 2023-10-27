@@ -1,0 +1,33 @@
+function lgndstat
+x0=0.100000
+y0=0.020000
+dx=1.550000
+dy=0.400000
+lcol=81
+bcolact=21
+bcolinact=31
+'set line 1 0 4'
+'set string 4 ' l ' 4'
+'set strsiz 0.08'
+'draw string 0.200000 0.545000 `072-h FE [nm] + (N cases) + % Improve over Cliper [MeanAbs Intensity Error (kt), Bias (F-O) kt)]`0'
+_title.1.1='Model (N bt)'    ;    _title.2.1='FE (N fc)'   ;   _title.2.2='%clp[IE,IB]'
+rc=prntstat(x0,y0,dx,dy,lcol)
+_title.1.1='OFC (9) ' ; _title.2.1='`4176`0 (9)' ; _title.2.2='57[44,-21]'
+x0=x0+dx
+rc=prntstat(x0,y0,dx,dy,bcolinact)
+_title.1.1='CLP (9) ' ; _title.2.1='`4413`0 (9)' ; _title.2.2='0[0,0]'
+x0=x0+dx
+rc=prntstat(x0,y0,dx,dy,bcolinact)
+_title.1.1='AVN (9) ' ; _title.2.1='`4144`0 (9)' ; _title.2.2='65[39,-21]'
+x0=x0+dx
+rc=prntstat(x0,y0,dx,dy,bcolact)
+_title.1.1='NGP (9) ' ; _title.2.1='`4151`0 (8)' ; _title.2.2='64[41,-31]'
+x0=x0+dx
+rc=prntstat(x0,y0,dx,dy,bcolinact)
+_title.1.1='UKM (9) ' ; _title.2.1='`4135`0 (9)' ; _title.2.2='67[49,-9]'
+x0=x0+dx
+rc=prntstat(x0,y0,dx,dy,bcolinact)
+_title.1.1='ECMWF(ops) (9) ' ; _title.2.1='`4150`0 (6)' ; _title.2.2='64[38,-21]'
+x0=x0+dx
+rc=prntstat(x0,y0,dx,dy,bcolinact)
+return

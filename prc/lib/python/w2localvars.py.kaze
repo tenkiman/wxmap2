@@ -1,0 +1,117 @@
+from w2globalvars import *
+
+# -- geqfqdn returns fully qualified domain name -- if available, otherwise gethostname which is the single name
+#
+onTacc=0
+onKishou=0
+onKaze=1	
+onWjet=0
+onZeus=0
+pan2Jet=0
+onTenki=0
+onTaifuu=0
+
+curuSer=os.getenv('USER')
+
+
+# -- OS details
+#
+W2OsName=os.name
+(W2OsuName,W2uNameHost,W2uNameVersion,W2uNameDate,W2uNameType)=os.uname()
+
+W2plotXsize=900
+W2plotAspect=3.0/4.0
+
+W2adminuSer='fiorino'
+W2adminuSers=['fiorino','jeffrey.a.hamilton']
+
+HfipWebBdir='/data/hfip/fiorino/products/hfip'
+W2LocalBaseDir='/data/amb/users/fiorino'
+W21LocalBaseDir="%s/w21"%(W2LocalBaseDir)
+
+DATLocalBaseDir='/data/hfip/fiorino'
+DATKazeBaseDir='/data/hfip/fiorino'
+DATW21LocalBaseDir="%s/w21"%(DATLocalBaseDir)
+
+LocalBaseDirDat="%s/dat"%(DATW21LocalBaseDir)
+LocalBaseDirPrc="%s/prc"%(W21LocalBaseDir)
+LocalBaseDirLog="%s/log"%(DATW21LocalBaseDir)
+
+LocalBaseDirEtc="%s/w21/etc"%(W2LocalBaseDir)
+
+###Nwp2ModelsAll=['gfs2','fim8','ecm2','ukm2','ngp2','ecmn','cmc2','ngpc','gfsk','ohc','ocn','ww3']
+## -- no more gfsk after hfip.2011 season
+## -- pre navgem: Nwp2ModelsAll=   ['gfs2','fim8','ecm2','ukm2','ngp2','cmc2','ngpc','navg','ohc','ocn','ww3','gfsc','ukmc','jmac','ngpj','goes','gfsr','gfr1','ecmn','ecmg']
+###Nwp2ModelsAll=['gfs2','fim8','ecm2','ukm2','ngp2','ecmn','cmc2','ngpc','ohc','ocn','ww3']
+## -- remove new ecm
+###Nwp2ModelsActive=['gfs2','fim8','ecm2','ukm2','ngp2','cmc2','ngpc','ohc','ocn','ww3','gfsc','ukmc','jmac','ngpj','goes','ecmg']
+
+# -- 20161213
+Nwp2ModelsNwp=   ['gfs2','fim8','ecm2','ukm2','ngp2','cmc2',
+                  'ngpc','navg','ohc','ocn','ww3','gfsc','ukmc','jmac','ngpj']
+
+Nwp2ModelsAll=   ['gfs2','fim8','ecm2','ukm2','ngp2','cmc2',
+                  'fv3e','fv3g','fv7e','fv7g',
+                  'navg','ohc','ocn','ww3','gfsc','ukmc','jmac','ngpj','goes',
+                  'gfsr','gfr1','ecmn','ecmg','ecmt','ecm4']
+
+Nwp2ModelsActive=['gfs2','fim8','ecm2','ecmn','ukm2','cmc2','navg','fv3e','fv3g',
+                  'ohc','ocn','ww3','gfsc','ukmc','jmac','ngpj','goes','ecm4'] # -- 20160808 -- remove because not coming to jet from wcoss push via Curtis
+
+Nwp2ModelsActive=['gfs2','ecm2','ukm2','cmc2','navg','fv3e','fv3g',
+                  'ohc','ocn','ww3','gfsc','ukmc','jmac','ngpj','goes','ecm4'] # -- 20180120 -- deprecate fim and nws ecmwf
+
+Nwp2ModelsActive=['gfs2','ecm2','ukm2','cmc2','navg','goes','ecm4'] # -- 20200122 -- deprecate fim and nws ecmwf
+Nwp2ModelsActive0618=[
+    'gfs2','navg','ukm2',
+    ] 
+
+Nwp2ModelsActiveAll=copy.deepcopy(Nwp2ModelsActive)
+Nwp2ModelsActiveAll.remove('goes')
+Nwp2ModelsActiveW2flds=Nwp2ModelsActiveAll
+
+Nwp2ModelsActW20012=Nwp2ModelsActiveAll
+Nwp2ModelsActW20618=Nwp2ModelsActive0618
+
+
+CagipsPrcDir="%s/cagips/rulebotagent"%(LocalBaseDirPrc)
+CagipsPrcDirBeta="%s/cagips/rulebotagent-beta"%(LocalBaseDirPrc)
+
+if(onKishou):
+    CagipsDatBdir='/dat2/dat/cagips/'
+else:
+    CagipsDatBdir="%s/dat/cagips"%(DATW21LocalBaseDir)
+
+CagipsSdirNavg="%s/NAVGEM"%(CagipsDatBdir)
+CagipsSdirNgpc="%s/HDN"%(CagipsDatBdir)
+CagipsSdirGfsc="%s/WXMAP_GFS"%(CagipsDatBdir)
+CagipsSdirNgpj="%s/WXMAP_AOI"%(CagipsDatBdir)
+CagipsSdiruKmc="%s/WXMAP_UKM"%(CagipsDatBdir)
+CagipsSdirJmac="%s/WXMAP_JMA"%(CagipsDatBdir)
+CagipsSdirOcn="%s/OCEAN_GLOBAL"%(CagipsDatBdir)
+CagipsSdirOhc="%s/OCEAN_OHC"%(CagipsDatBdir)
+CagipsSdirWw3="%s/WW3_GLOBAL"%(CagipsDatBdir)
+
+# -- set to 1 to avoid multiple runs
+nMaxPidInCron=1
+dochkifrunning=1
+
+
+# -- nwp awips ecmwf feed
+#
+W2rawECHiRes='/scratch/staging/amb/ldm/data/rawECHiRes/'
+# -- 20151123 -- need to move to /data/amb/hfip
+#
+W2rawECHiRes='/data/amb/hfip/ldm/data/rawECHiRes/'
+# -- 20151201 -- gary moved today...
+W2rawECHiRes='/data/hfip/ldm/data/rawECHiRes/'
+
+# -- ccs data feed
+#
+EcNogapsCssFeed='/lfs0/projects/fim/whitaker/ecnogaps'
+EcNogapsCssFeed='/lfs1/projects/fim/fiorino/w21/dat/ecnogaps'
+EcNogapsCssFeed='/lfs1/projects/wrfruc/alexander/tropical/ecnogaps'
+EcNogapsCssFeed='/pan2/projects/nrtrr/alexander/tropical/ecnogaps'
+
+
+

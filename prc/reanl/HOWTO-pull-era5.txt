@@ -1,0 +1,20 @@
+			  How to Pull ERA5 fc
+				20210307
+
+
+1) on ecgate for making 202012 fc:
+
+c.w2.era5 
+p.era5.py 202012.12 -O
+
+2) on wxmap2 to do the inventory:
+
+c.w2.wx2
+p-inv-era5-wxmap2.py  -V
+
+3) on tenki7 to pull:
+
+c.w2.r
+p-rsync-era5-tenki7.py -X
+
+

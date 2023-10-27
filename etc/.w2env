@@ -1,0 +1,6 @@
+setenv HOSTNAMESHORT `hostname|awk -F. '{ print toupper($1) }'`
+setenv HOSTOSLOWER `uname|awk '{ print tolower($1) }'`
+setenv HOSTOSUPPER `uname|awk '{ print toupper($1) }'`
+setenv W2 `pwd`
+setenv W2_VERSION 21
+

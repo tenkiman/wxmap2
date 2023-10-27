@@ -1,0 +1,151 @@
+
+
+
+*
+*-------------------------- gpu700 ------------------
+*
+function gpu700(k)
+t1='700mb  Flow / barbs (kt) / v comp'
+rc=dtitle(t1)
+pstat=1
+_shades=0
+
+'set lev 700'
+
+'ulev=ua'
+'vlev=va'
+
+v7skip=_vskip3
+
+if(_ukfill=1)
+  rc=lonfill('ulev')
+  rc=lonfill('vlev')
+endif
+
+rcu=datachk(ulev)
+rcv=datachk(vlev)
+if(rcu=0 & rcv=0)
+
+'u7=ulev*'_ms2kt
+'v7=vlev*'_ms2kt
+'s7=mag(u7,v7)'
+
+
+if(_regridua = 1)
+  'u7=re(u7,0.75)'
+  'v7=re(v7,0.75)'
+  's7=re(s7,0.75)'
+  'lat=re(lat,0.75)'
+   v7skip=6
+endif
+
+
+pstat=0
+'set gxout shaded'
+'set cterp on'
+'set csmooth on'
+rc=jaecol()
+
+pcol.2='49 48 47 46 45 44 43 42 41 21 22 23 24 25 26 27 28 29'
+pcol.2='49 48 47 46 45 44 43 42 41 31 32 33 34 35 36 37 38 39'
+pcol.1='69 68 67 66 65 63 61 61 53 55 56 57 58 59'
+pcol.1='59 58 57 55 55 53 52 51 61 62 63 64 65 66 67 68 69'
+pcol.1='59 58 57 55 55 53 52 62 63 64 65 66 67 68 69'
+*pcol.1='49 48 47 45 44 43 42 62 63 64 65 66 67 68 69'
+pcol.1='54 53 52 61 42 43 44 45 47 48 49 69 68 67 66 65 64 63 21 22 23 24 25 26'
+
+
+'set xlint '_xlint
+'set ylint '_ylint
+
+'set rgb 23 255 192  60'
+'set rgb 27 160  40  10'
+'set rgb 29 100  10  10'
+
+'set rgb 47  10 80 160'
+'set rgb 49  00 50 100'
+'set clevs -20 -15 -10 -5  5  10  15 20'
+'set ccols 43 45  47  49  0 29  27 25  23'
+'d maskout(v7,30-abs(lat))'
+'q shades'
+_shades=result
+
+vrtcnt=1
+if(vrtcnt)
+'set gxout contour'
+'set cint 4'
+'set ccolor 0'
+'set clab off'
+'set clevs -20 -15 -10 -5  5  10  15 20'
+'set grads off'
+'d maskout(v7,30-abs(lat))'
+endif
+
+'set gxout stream'
+'set strmden '_strmdenua
+'set cthick 10'
+'set ccolor 0'
+'d u7;v7'
+'set cthick 4'
+'set ccolor 34'
+'d u7;v7'
+
+'set gxout barb'
+*'set cthick 20'
+*'set ccolor 0'
+*'set digsiz 0.05'
+*'d skip(u7,5);v7'
+
+*
+*	winds greater than 8 kts
+*
+'set ccolor 0'
+'set cthick 10'
+'d skip(u7,'v7skip');maskout(v7,s7-14.0))'
+
+'set cthick 4'
+'set ccolor 1'
+'d skip(u7,'v7skip');maskout(v7,s7-14.0))'
+
+*
+*	plot winds greater than 25 kts in yellow
+*
+'set ccolor 0'
+'set cthick 10'
+'d skip(u7,'v7skip');maskout(v7,s7-24.0))'
+
+'set cthick 4'
+'set ccolor 12'
+'d skip(u7,'v7skip');maskout(v7,s7-24.0))'
+*
+*	plot winds greater than 35 kts in orange
+*
+'set ccolor 0'
+'set cthick 10'
+'d skip(u7,'v7skip');maskout(v7,s7-34.0))'
+
+'set cthick 4'
+'set ccolor 8'
+'d skip(u7,'v7skip');maskout(v7,s7-34.0))'
+*
+*	plot winds greater than 50 kts in red
+*
+'set ccolor 0'
+'set cthick 10'
+'d skip(u7,'v7skip');maskout(v7,s7-49.0))'
+
+'set cthick 4'
+'set ccolor 2'
+'d skip(u7,5);maskout(v7,s7-49.0))'
+
+if(_dobasemap != 1)
+  rc=drawmap()
+endif
+
+
+endif
+
+rc=dtitle(t1)
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+return(pstat)
+

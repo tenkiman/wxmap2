@@ -1,0 +1,77 @@
+		     runnning the lsdiag unit test
+			      mike fiorino
+				20130319
+				20131126
+
+wxmap2.linux:
+
+WXMAP2(linux)[W2:ESRL]: /data/amb/users/fiorino/w21-new/src/tcdiag/unittest 256 > p.unittest.sh 
+ model,dtg,stm4id,stmNameTC:TRTF   2012102400 AL18 SANDY    
+TTTT: itau:   1 tausTC(itau):   0   SSSS: lat/lon/dir/spd:    14.8  282.7   20.0    8.5   fldpath: ./rtfim9.2012102400.nhem.f000.dat                                                                                               
+TTTT: itau:   2 tausTC(itau):   6   SSSS: lat/lon/dir/spd:    15.6  283.0   11.0   10.2   fldpath: ./rtfim9.2012102400.nhem.f006.dat                                                                                               
+TTTT: itau:   3 tausTC(itau):  12   SSSS: lat/lon/dir/spd:    16.6  283.2    4.0   13.0   fldpath: ./rtfim9.2012102400.nhem.f012.dat                                                                                               
+TTTT: itau:   4 tausTC(itau):  18   SSSS: lat/lon/dir/spd:    17.9  283.3    5.0   10.0   fldpath: ./rtfim9.2012102400.nhem.f018.dat                                                                                               
+TTTT: itau:   5 tausTC(itau):  24   SSSS: lat/lon/dir/spd:    18.9  283.4    7.0   15.1   fldpath: ./rtfim9.2012102400.nhem.f024.dat                                                                                               
+TTTT: itau:   6 tausTC(itau):  30   SSSS: lat/lon/dir/spd:    20.4  283.6  353.0   15.1   fldpath: ./rtfim9.2012102400.nhem.f030.dat                                                                                               
+TTTT: itau:   7 tausTC(itau):  36   SSSS: lat/lon/dir/spd:    21.9  283.4  340.0   10.7   fldpath: ./rtfim9.2012102400.nhem.f036.dat                                                                                               
+TTTT: itau:   8 tausTC(itau):  42   SSSS: lat/lon/dir/spd:    22.9  283.0    6.0    9.0   fldpath: ./rtfim9.2012102400.nhem.f042.dat                                                                                               
+TTTT: itau:   9 tausTC(itau):  48   SSSS: lat/lon/dir/spd:    23.8  283.1  345.0    8.8   fldpath: ./rtfim9.2012102400.nhem.f048.dat                                                                                               
+TTTT: itau:  10 tausTC(itau):  60   SSSS: lat/lon/dir/spd:    25.5  282.6   29.0    4.6   fldpath: ./rtfim9.2012102400.nhem.f060.dat                                                                                               
+TTTT: itau:  11 tausTC(itau):  72   SSSS: lat/lon/dir/spd:    26.3  283.1   31.0    8.7   fldpath: ./rtfim9.2012102400.nhem.f072.dat                                                                                               
+TTTT: itau:  12 tausTC(itau):  84   SSSS: lat/lon/dir/spd:    27.8  284.1   39.0   10.4   fldpath: ./rtfim9.2012102400.nhem.f084.dat                                                                                               
+TTTT: itau:  13 tausTC(itau):  96   SSSS: lat/lon/dir/spd:    29.4  285.6   73.0   10.4   fldpath: ./rtfim9.2012102400.nhem.f096.dat                                                                                               
+TTTT: itau:  14 tausTC(itau): 108   SSSS: lat/lon/dir/spd:    30.0  287.9   54.0   14.4   fldpath: ./rtfim9.2012102400.nhem.f108.dat                                                                                               
+TTTT: itau:  15 tausTC(itau): 120   SSSS: lat/lon/dir/spd:    31.7  290.6   69.0   10.0   fldpath: ./rtfim9.2012102400.nhem.f120.dat                                                                                               
+TTTT: itau:  16 tausTC(itau): 132   SSSS: lat/lon/dir/spd:    32.4  292.8   55.0   12.2   fldpath: ./rtfim9.2012102400.nhem.f132.dat                                                                                               
+TTTT: itau:  17 tausTC(itau): 144   SSSS: lat/lon/dir/spd:    33.8  295.2   59.0   10.6   fldpath: ./rtfim9.2012102400.nhem.f144.dat                                                                                               
+TTTT: itau:  18 tausTC(itau): 156   SSSS: lat/lon/dir/spd:    34.9  297.4   42.0   14.0   fldpath: ./rtfim9.2012102400.nhem.f156.dat                                                                                               
+TTTT: itau:  19 tausTC(itau): 168   SSSS: lat/lon/dir/spd:    37.0  299.7   42.0   14.0   fldpath: ./rtfim9.2012102400.nhem.f168.dat                                                                                               
+1.06user 1.54system 0:30.46elapsed 8%CPU (0avgtext+0avgdata 158896maxresident)k
+1258896inputs+40outputs (0major+12140minor)pagefaults 0swaps
+diff tcdiag.rtfim9.2012102400.18l.2012.fim9-tmtrkN.txt tcdiag.rtfim9.2012102400.18l.2012.fim9-tmtrkN.txt-UNITTEST
+
+
+
+kishou.macos
+============
+
+
+Kishou(DARWIN)[W2:ESRL]: /w21/src/tcdiag/unittest 18 > time ../lsdiag.x ecmt.2012071712.nhem.meta.txt tcmeta.08w.2012.ecmt.2012071712.txt oisst.2012071712.nhem.dat tcdiag.ecmt.2012071712.08w.2012.ecmt-tmtrkN.txt
+ model,dtg,stm4id,stmNameTC:TECM   2012071712 WP08 KHANUN   
+TTTT: itau:   1 tausTC(itau):   0   SSSS: lat/lon/dir/spd:    27.8  128.3  327.0   14.4   fldpath: ecmt.2012071712.nhem.f000.dat                                                                                                   
+TTTT: itau:   2 tausTC(itau):   6   SSSS: lat/lon/dir/spd:    29.0  127.4  335.0   14.4   fldpath: ecmt.2012071712.nhem.f006.dat                                                                                                   
+TTTT: itau:   3 tausTC(itau):  12   SSSS: lat/lon/dir/spd:    30.3  126.7  347.0   15.4   fldpath: ecmt.2012071712.nhem.f012.dat                                                                                                   
+TTTT: itau:   4 tausTC(itau):  18   SSSS: lat/lon/dir/spd:    31.8  126.3  352.0   19.2   fldpath: ecmt.2012071712.nhem.f018.dat                                                                                                   
+TTTT: itau:   5 tausTC(itau):  24   SSSS: lat/lon/dir/spd:    33.7  126.0    0.0   19.0   fldpath: ecmt.2012071712.nhem.f024.dat                                                                                                   
+TTTT: itau:   6 tausTC(itau):  30   SSSS: lat/lon/dir/spd:    35.6  126.0   19.0   20.1   fldpath: ecmt.2012071712.nhem.f030.dat                                                                                                   
+TTTT: itau:   7 tausTC(itau):  36   SSSS: lat/lon/dir/spd:    37.5  126.8   19.0   16.9   fldpath: ecmt.2012071712.nhem.f036.dat                                                                                                   
+TTTT: itau:   8 tausTC(itau):  42   SSSS: lat/lon/dir/spd:    39.1  127.5   17.0   10.5   fldpath: ecmt.2012071712.nhem.f042.dat                                                                                                   
+TTTT: itau:   9 tausTC(itau):  48   SSSS: lat/lon/dir/spd:    40.1  127.9    2.0    9.0   fldpath: ecmt.2012071712.nhem.f048.dat                                                                                                   
+TTTT: itau:  10 tausTC(itau):  60   SSSS: lat/lon/dir/spd:    41.9  128.0   24.0    5.5   fldpath: ecmt.2012071712.nhem.f060.dat                                                                                                   
+TTTT: itau:  11 tausTC(itau):  72   SSSS: lat/lon/dir/spd:    42.9  128.6   24.0    5.5   fldpath: ecmt.2012071712.nhem.f072.dat                                                                                                   
+0.329u 0.129s 0:03.37 13.0%	0+0k 9+8io 62pf+0w
+
+
+kishou.linux
+============
+
+Kishou(LINUX)[W2:ESRL]: /w21/src/tcdiag/unittest 638 > time ../lsdiag.x ecmt.2012071712.nhem.meta.txt tcmeta.08w.2012.ecmt.2012071712.txt oisst.2012071712.nhem.dat tcdiag.ecmt.2012071712.08w.2012.ecmt-tmtrkN.txt
+ model,dtg,stm4id,stmNameTC:TECM   2012071712 WP08 KHANUN   
+TTTT: itau:   1 tausTC(itau):   0   SSSS: lat/lon/dir/spd:    27.8  128.3  327.0   14.4   fldpath: ecmt.2012071712.nhem.f000.dat                                                                                                   
+TTTT: itau:   2 tausTC(itau):   6   SSSS: lat/lon/dir/spd:    29.0  127.4  335.0   14.4   fldpath: ecmt.2012071712.nhem.f006.dat                                                                                                   
+TTTT: itau:   3 tausTC(itau):  12   SSSS: lat/lon/dir/spd:    30.3  126.7  347.0   15.4   fldpath: ecmt.2012071712.nhem.f012.dat                                                                                                   
+TTTT: itau:   4 tausTC(itau):  18   SSSS: lat/lon/dir/spd:    31.8  126.3  352.0   19.2   fldpath: ecmt.2012071712.nhem.f018.dat                                                                                                   
+TTTT: itau:   5 tausTC(itau):  24   SSSS: lat/lon/dir/spd:    33.7  126.0    0.0   19.0   fldpath: ecmt.2012071712.nhem.f024.dat                                                                                                   
+TTTT: itau:   6 tausTC(itau):  30   SSSS: lat/lon/dir/spd:    35.6  126.0   19.0   20.1   fldpath: ecmt.2012071712.nhem.f030.dat                                                                                                   
+TTTT: itau:   7 tausTC(itau):  36   SSSS: lat/lon/dir/spd:    37.5  126.8   19.0   16.9   fldpath: ecmt.2012071712.nhem.f036.dat                                                                                                   
+TTTT: itau:   8 tausTC(itau):  42   SSSS: lat/lon/dir/spd:    39.1  127.5   17.0   10.5   fldpath: ecmt.2012071712.nhem.f042.dat                                                                                                   
+TTTT: itau:   9 tausTC(itau):  48   SSSS: lat/lon/dir/spd:    40.1  127.9    2.0    9.0   fldpath: ecmt.2012071712.nhem.f048.dat                                                                                                   
+TTTT: itau:  10 tausTC(itau):  60   SSSS: lat/lon/dir/spd:    41.9  128.0   24.0    5.5   fldpath: ecmt.2012071712.nhem.f060.dat                                                                                                   
+TTTT: itau:  11 tausTC(itau):  72   SSSS: lat/lon/dir/spd:    42.9  128.6   24.0    5.5   fldpath: ecmt.2012071712.nhem.f072.dat                                                                                                   
+0.258u 0.533s 0:00.86 90.6%     0+0k 0+0io 0pf+0w
+
+came out identical on both sides
+
+
+
+

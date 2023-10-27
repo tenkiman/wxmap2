@@ -1,0 +1,14 @@
+20011011 -- 
+
+lant.clip.f -- self contained lant/epac clipper
+
+ocliper
+
+C  DESCRIPTION:  USING INPUT FROM THE CARQ MESSAGE (TAPE20) GENERATE
+C                CLIPER FORECAST (TAPE40) FOR ALL BUT WESTERN NORTH PAC
+C                   NORTH INDIAN OCEAN     (NSIND =  1),
+C                   CENTRAL NORTH PACIFIC  (NSIND =  3),
+C                   EASTERN NORTH PACIFIC  (NSIND =  4),
+C                   SOUTHWEST INDIAN OCEAN (NSIND = -1),
+C                   SOUTHEAST INDIAN OCEAN (NSIND = -2), OR
+C                   SOUTH PACIFIC OCEAN    (NSIND = -3)

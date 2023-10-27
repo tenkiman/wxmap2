@@ -1,0 +1,6 @@
+20090203
+
+p.comp.w2py.py
+
+does diff of all files in prc and if docp=1 then copies over from the
+source of the svn wxmap2 repository in: file:///wxmap2/svn/trunk

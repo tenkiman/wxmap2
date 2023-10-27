@@ -1,0 +1,226 @@
+function gpn850(k)
+#
+# 20070915 - mod 200 stream cols, added 200 barbs, decreased cint in tropics for z500
+#
+
+rc=jaecol()
+#
+# basic setup
+#
+
+'set grads off'
+'set xlint '_xlint
+'set ylint '_ylint
+
+plev1=850
+plev2=200
+if(_model = 'ecmn') ; plev2=250 ; endif
+
+t1=plev1'mb RelVort (Shd) / 15-34(G), >35(R) (Shear)/ 'plev2' Strm'
+
+pstat=0
+_shades=0
+
+if(_model = 'era5' | _model = 'ecm5')
+  'z5=zg(lev=500)/'_gravity
+else
+  'z5=zg(lev=500)'
+endif
+
+'u8=ua(lev='plev1')'
+'v8=va(lev='plev1')'
+
+'u2=ua(lev='plev2')*'_ms2kt
+'v2=va(lev='plev2')*'_ms2kt
+
+rcz5=datachk(z5)
+rcu8=datachk(u8)
+rcv8=datachk(v8)
+rcu2=datachk(u2)
+rcv2=datachk(v2)
+
+if(_area = 'tropenso')
+  wb8skp=15
+  ds8=0.03
+else
+  wb8skp=_vskip2
+  ds8=0.03
+endif
+
+
+if(rcu8 !=0 | rcv8 != 0) ; return(rcu8) ; endif
+
+#print '000N850 '_model
+'cf=lat/abs(lat)'
+'cf=const(cf,1,-u)'
+#print '000N850 '_model' aaaaaaaaaaaaa'
+
+'rvrt8=hcurl(u8,v8)*1e5'
+
+'rvrt8=rvrt8*cf'
+
+'u8=ua(lev='plev1')*'_ms2kt
+'v8=va(lev='plev1')*'_ms2kt
+
+if(_ukfill)
+  rc=lonfill('u8')
+  rc=lonfill('v8')
+  rc=lonfill('rvrt8')
+endif
+
+'u8=u8*'_ms2kt
+'v8=v8*'_ms2kt
+
+'w8=mag(u8,v8)'
+'w2=mag(u2,v2)'
+
+'set gxout shaded'
+'set csmooth on'
+'set clevs   4   6    8    10    12    14   16  18    20'
+'set ccols 0   39  37   35    22   24    26   27   28   6'
+
+'d rvrt8'
+'q shades'
+shadesv=result
+
+
+'set gxout contour'
+'set cint 60'
+'set ccolor 1'
+'set cthick '_cthk
+'set cstyle 3'
+'set clab off'
+'d z5'
+
+dotropz=1
+if(dotropz)
+'set gxout contour'
+'set cint 30'
+'set ccolor 1'
+'set cthick '_cthk
+'set cstyle 3'
+'set clab off'
+'d maskout(z5,abs(30)-lat))'
+endif
+#
+# 850 barbs
+#
+
+#print 'VVVVN850 '_vskip2' '_model' '_area
+'u8trop=maskout(u8,30.0-abs(lat))'
+v8e1='maskout(maskout(u8trop,w8-15),34.0-w8);skip(v8,'wb8skp')'
+v8e2='maskout(u8trop,w8-35.0);skip(v8,'wb8skp')'
+
+#print '1111N850 '_model
+# -- black doesn't render in printim for v2.1?
+'set rgb 99 1 1 1'
+bcol=0
+bcol=99 
+
+'set gxout barb'
+'set cthick '_cthkb
+'set ccolor 'bcol
+'set digsiz 'ds8
+'d 'v8e1
+
+'set cthick '_cthk
+'set ccolor 3'
+'set digsiz 'ds8
+'d 'v8e1
+
+
+ds8=ds8*1.10
+'set gxout barb'
+'set cthick '_cthkb
+'set ccolor 'bcol
+'set digsiz 'ds8
+'d 'v8e2
+
+'set cthick '_cthk
+'set ccolor 2'
+'set digsiz 'ds8
+'d 'v8e2
+
+#
+# 200 barbs
+#
+
+do200b=0
+if(do200b) 
+ds2=0.05
+'u2trop=maskout(u2,30.0-abs(lat))'
+v2e1='maskout(maskout(u2trop,w2-10),20-w2);skip(v2,2)'
+v2e2='maskout(maskout(u2trop,w2-40),100-w2);skip(v2,2)'
+
+'set gxout barb'
+'set cthick '_cthkb
+'set ccolor 'bcol
+'set digsiz 'ds2
+#'d 'v2e1
+
+'set cthick '_cthk
+'set ccolor 22'
+#'set ccolor 2'
+'set digsiz 'ds2
+#'d 'v2e1
+
+
+ds2=0.04
+'set gxout barb'
+'set cthick '_cthkb
+'set ccolor 'bcol
+'set digsiz 'ds2
+'d 'v2e2
+
+'set cthick '_cthk
+'set ccolor 1'
+'set digsiz 'ds2
+'d 'v2e2
+endif
+
+
+if(_ukfill)
+  rc=lonfill('u2')
+  rc=lonfill('v2')
+endif
+
+if(_regridshr = 1)
+  'u2=re(u2,0.75)'
+  'v2=re(v2,0.75)'
+  'w2=re(w2,0.75)'
+endif
+
+'set gxout stream'
+'set strmden '_strmdenua' '_strmspace
+
+'set cthick '_cthk
+'set clevs   10  15  30  50  75  100 '
+'set ccols 21  23  24  25  27  29  21'
+'set ccols 49  46  43  31  25  27  29'
+
+'d u2;v2;w2'
+'q shades'
+_shades=shadesv
+rc=cbarc()
+
+rc=dtitle(t1,k)
+
+#
+# mf 20050803 -- bug check; bad rh data?
+#
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+
+_shades=shades2
+rc=plotdims()
+
+xm=_xrplot-1.75
+ym=(_ybplot+_ytplot)*0.5
+ym=_ybplot-0.55
+
+'cbarn 0.45 0 'xm' 'ym
+_btszscl=-0.20
+_btcol=1
+
+#'undefine rvrt8'
+
+return(pstat)

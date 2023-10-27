@@ -1,0 +1,235 @@
+function gpprecip(k)
+
+t1='SLP [hPa] / 540 Line / Prev 6-h Prcp Rate [mm/day]'
+
+#print 'pppppppppppppppppppp '_prvar
+#print 'pppppppppppppppppppp '_pslvar
+#print 'ssssssssssssssssssss '_pslsmth
+
+'set dfile '_fnf
+
+'prd='_prvar
+'p='_pslvar
+
+if(_ukfill=1)
+  rc=lonfill('prd')
+endif
+
+if(_tau = 0)
+
+  if(_fnfp != 0)
+    'set dfile '_fnfp
+    'prd='_prvar
+    'set dfile '_fnf
+  else
+    'set t 2'
+    'prd='_prvar
+    'set t 1'
+  endif
+
+endif
+
+#
+# trop pressure mask
+#
+
+'pm=const(maskout(const(lat,-1),abs(lat)-20),0,-u)'
+rcpm=datachk(pm)
+
+#
+# smooth pressure
+#
+if(_pslsmth = 1)
+  'p=smth9(p)'
+endif
+
+# land mask for overland smoothing
+#
+dolandsmth=1
+if(dolandsmth)
+  'lm=sftlf.'_fm'(t=1)*0.01'
+  'p=smth9(smth9(smth9(smth9(smth9(p)))))'
+  'p2=re(p,2)'
+  'pl=maskout(lterp(p2,p),lterp(lm-0.5,p))'
+  'pl=smth9(smth9(smth9(pl)))'
+  'plm=const(const(pl,-1),1,-u)'
+  'po=maskout(p,plm)'
+  'pa=const(po,0,-u)+const(pl,0,-u)'
+  'p=pa'
+endif
+
+if(_ukfill=1)
+  rc=lonfill('p')
+endif
+
+'set lev 1000'
+'z1000=zg'
+if(_ukfill=1)
+  rc=lonfill('z1000')
+endif
+
+'set lev 500'
+'z500=zg'
+if(_ukfill=1) ; rc=lonfill('z500') ; endif
+'zthk=(z500-z1000)/10'
+
+plotpr=1
+
+
+if(_regridpr = 1)
+  'p=re(p,0.75)'
+  'prd=re(prd,0.75)'
+  'zthk=re(zthk,0.75)'
+  'z1000=re(z1000,0.75)'
+  'z500=re(z500,0.75)'
+endif
+
+
+_shades=0
+if(_tau < 0) ; return ; endif
+
+rcpr=datachk(prd)
+if(rcpr != 0); return(rcpr) ; endif
+
+if(rcpr = -999); plotpr=0; endif
+
+
+if(_tau >= 0 & plotpr=1) 
+
+  if (rcpr != 0) ; return(rcpr) ; endif 
+*
+*  971208 - require psl before plotting
+*
+  rcpsl=datachk(p)
+  if (rcpsl != 0) ; return(rcpsl) ; endif 
+
+  'set xlint '_xlint
+  'set ylint '_ylint
+  'set clevs   1  2  4  8  16  32 64 128'
+  'set gxout shaded'
+  'set csmooth on'
+  'set cterp on'
+  'set ccols 0 32 33 35 36 37 39'
+#
+# 20000614 - change rec by dan reinhart
+#
+  'set rgb 98 185 255 00 50'
+  'set ccols 0 39 37 36 98 22 24 26 61'
+#'set ccols 0 39 37 36 34 22 24 26'
+  'set csmooth on'
+  'set cterp on'
+  'set grads off'
+  'd prd'
+
+  'set gxout contour'
+  'set ccolor 39'
+  'set cthick 2'
+  'set clevs 8 16' 
+  'set clab off'
+  'd prd'
+
+  'q shades'
+  if(sublin(result,1) != 'None') 
+    _shades=result
+  else
+   _shades=0 
+  endif
+
+endif
+
+*
+*  plot slp
+*
+
+
+'set gxout contour'
+'set ccolor 0'
+'set ccolor 76'
+'set cthick 10'
+'set cint 2'
+'set clab off'
+'d p'
+
+if(_interact = 1) ; 'q pos' ; endif
+
+'set ccolor rainbow'
+'set rbrange 980 1032'
+'set cthick 2'
+'set cint 2'
+'set clab off'
+'d p'
+
+'set ccolor rainbow'
+'set rbrange 980 1032'
+'set clab on'
+'set cthick 2'
+'set cint 4'
+'d p'
+
+'set ccolor 0'
+'set clab on'
+'set clskip 2'
+'set cthick 7'
+'set cint 1'
+if(_regridpr = 1)
+  'pm=re(pm,0.75)'
+endif
+
+if(rcpm > 0)
+  'set clab on'
+  'set clskip 2'
+  'set ccolor rainbow'
+  'set rbrange 980 1032'
+  'set cthick 2'
+  'set cint 1'
+  'd maskout(p,pm)'
+endif
+
+if(_interact = 1) ; 'q pos' ; endif
+
+plot500=0
+if(plot500)
+  'set gxout contour'
+  'set ccolor 0'
+  'set cthick 12'
+  'set cint 60'
+  'd z500'
+
+  'set ccolor 1'
+  'set cthick 5'
+  'set cint 60'
+  'set clab on'
+  'd z500'
+endif
+
+rczthk=datachk(zthk)
+
+if(rczthk=0)
+'set gxout contour'
+
+*
+*	plot 540 thickness line
+*
+'set clevs 540'
+'set ccolor 1'
+'set cthick 20'
+'set cstyle 1'
+'set grads off'
+'d zthk'
+
+'set clevs 540'
+'set ccolor 4'
+'set cthick 10'
+'set cstyle 1'
+'set grads off'
+'d zthk'
+endif
+
+if(_dobasemap != 1)
+  rc=drawmap()
+endif
+
+rc=dtitle(t1)
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+
+return(0)

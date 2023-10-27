@@ -1,0 +1,20 @@
+function tctrkp()
+_plttaus='  0 12 24 36 48 72 96 120'
+_mtitle1=' `4ecm`0 ::  ECMWF IFS (ops) CY30r1 (1deg,NCEP) FC `409W.2008 `0TY `2FUNG-WONG'
+_mtitle2='NO PostPrc -- period 2008072212 to 2008072212'
+_lnmn=105.0
+_lnmx=150.0
+_ltmn=10.0 
+_ltmx=40.0 
+_lnint=10.0 
+_ltint=10.0 
+_lnmnall=105.0
+_lnmxall=150.0
+_ltmnall=10.0 
+_ltmxall=40.0 
+_lnintall=10.0 
+_ltintall=10.0 
+_interact=1
+_ruleflg='NHC'
+_docfc='0'
+return

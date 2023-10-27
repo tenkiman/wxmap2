@@ -1,0 +1,33 @@
+fim8-2012phys-AT1    gfs2 2014050918       nhem 000         zg  500    1.000    4.178    4.101
+fim8-2012phys-AT1    gfs2 2014050918    tropics 000        uva  850    0.999    0.998    0.249    0.007
+fim8-2012phys-AT1    gfs2 2014050918    tropics 000        uva  200    0.992    0.985    1.947    0.139
+fim8-2012phys-AT1    gfs2 2014051018       nhem 024         zg  500    0.996   10.076    6.707
+fim8-2012phys-AT1    gfs2 2014051018    tropics 024        uva  850    0.948    0.911    1.619    0.209
+fim8-2012phys-AT1    gfs2 2014051018    tropics 024        uva  200    0.960    0.919    4.366    0.258
+fim8-2012phys-AT1    gfs2 2014051118       nhem 048         zg  500    0.984   17.857    9.360
+fim8-2012phys-AT1    gfs2 2014051118    tropics 048        uva  850    0.903    0.841    2.174    0.033
+fim8-2012phys-AT1    gfs2 2014051118    tropics 048        uva  200    0.937    0.860    5.768    0.106
+fim8-2012phys-AT1    gfs2 2014051218       nhem 072         zg  500    0.964   25.649   10.983
+fim8-2012phys-AT1    gfs2 2014051218    tropics 072        uva  850    0.866    0.789    2.376    0.094
+fim8-2012phys-AT1    gfs2 2014051218    tropics 072        uva  200    0.904    0.769    7.030    0.213
+fim8-2012phys-AT1    gfs2 2014051318       nhem 096         zg  500    0.934   34.557   12.520
+fim8-2012phys-AT1    gfs2 2014051318    tropics 096        uva  850    0.841    0.743    2.746    0.205
+fim8-2012phys-AT1    gfs2 2014051318    tropics 096        uva  200    0.874    0.658    7.778    0.127
+fim8-2012phys-AT1    gfs2 2014051418       nhem 120         zg  500    0.874   48.131   13.594
+fim8-2012phys-AT1    gfs2 2014051418    tropics 120        uva  850    0.836    0.683    2.843    0.172
+fim8-2012phys-AT1    gfs2 2014051418    tropics 120        uva  200    0.837    0.524    8.578    0.597
+fim8-2012phys-AT1    gfs2 2014051518       nhem 144         zg  500    0.817   59.899   13.059
+fim8-2012phys-AT1    gfs2 2014051518    tropics 144        uva  850    0.795    0.588    3.338    0.341
+fim8-2012phys-AT1    gfs2 2014051518    tropics 144        uva  200    0.841    0.569    8.606    0.528
+fim8-2012phys-AT1    gfs2 2014051618       nhem 168         zg  500    0.733   71.656   11.797
+fim8-2012phys-AT1    gfs2 2014051618    tropics 168        uva  850    0.737    0.519    3.826    0.432
+fim8-2012phys-AT1    gfs2 2014051618    tropics 168        uva  200    0.831    0.604    8.948    0.264
+fim8-2012phys-AT1    gfs2 2014051718       nhem 192         zg  500    0.602   83.553   12.048
+fim8-2012phys-AT1    gfs2 2014051718    tropics 192        uva  850    0.688    0.455    4.208    0.577
+fim8-2012phys-AT1    gfs2 2014051718    tropics 192        uva  200    0.796    0.568   10.057    0.168
+fim8-2012phys-AT1    gfs2 2014051818       nhem 216         zg  500    0.395   99.912   12.673
+fim8-2012phys-AT1    gfs2 2014051818    tropics 216        uva  850    0.648    0.408    4.388    0.700
+fim8-2012phys-AT1    gfs2 2014051818    tropics 216        uva  200    0.741    0.436   11.384    0.457
+fim8-2012phys-AT1    gfs2 2014051918       nhem 240         zg  500    0.306  106.398   17.003
+fim8-2012phys-AT1    gfs2 2014051918    tropics 240        uva  850    0.650    0.421    4.230    0.723
+fim8-2012phys-AT1    gfs2 2014051918    tropics 240        uva  200    0.654    0.170   12.875    0.969

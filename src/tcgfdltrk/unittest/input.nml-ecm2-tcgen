@@ -1,0 +1,81 @@
+&datein
+  inp%bcc=20,
+  inp%byy=10,
+  inp%bmm=05,
+  inp%bdd=17,
+  inp%bhh=12,
+  inp%model=17,
+  inp%modtyp='global',
+  inp%lt_units='hours'
+  inp%file_seq='onebig',
+  inp%nesttyp='',
+/
+
+&atcfinfo
+  atcfnum=83,
+  atcfname='ECM2',
+  atcfymdh=2010051712
+/
+
+&trackerinfo
+  trkrinfo%southbd=  0.0,
+  trkrinfo%northbd= 30.0,
+  trkrinfo%westbd=260.0,
+  trkrinfo%eastbd=359.0,
+  trkrinfo%type = "tcgen",
+  trkrinfo%mslpthresh = 0.0015,
+  trkrinfo%use_backup_mslp_grad_check = "y",
+  trkrinfo%v850thresh = 1.5,
+  trkrinfo%use_backup_850_vt_check = "y",
+  trkrinfo%enable_timing = 1,
+  trkrinfo%gridtype='global',
+  trkrinfo%contint = 100.0,
+  trkrinfo%want_oci = T,
+  trkrinfo%out_vit = "y",
+  trkrinfo%use_land_mask = "n",
+  trkrinfo%inp_data_type = "grib",
+  trkrinfo%gribver = 1,
+  trkrinfo%g2_jpdtn = 0,
+  trkrinfo%g2_mslp_parm_id = 192,
+  trkrinfo%g1_mslp_parm_id = 2,
+  trkrinfo%g1_sfcwind_lev_typ = 105,
+  trkrinfo%g1_sfcwind_lev_val = 10,
+/
+
+&phaseinfo
+  phaseflag = "y",
+  phasescheme = "both",
+  wcore_depth = 1.0,
+/
+
+&structinfo
+  structflag = "n",
+  ikeflag = "n",
+/
+
+&fnameinfo
+  gmodname='gfso',
+  rundescr='xxxx',
+  atcfdescr='xxxx'
+/
+
+&parmpreflist
+  user_wants_to_track_zeta700 = "y",
+  user_wants_to_track_wcirc850 = "y",
+  user_wants_to_track_wcirc700 = "y",
+  user_wants_to_track_gph850 = "y",
+  user_wants_to_track_gph700 = "y",
+  user_wants_to_track_mslp = "y",
+  user_wants_to_track_wcircsfc = "y",
+  user_wants_to_track_zetasfc = "y",
+  user_wants_to_track_thick500850 = "y",
+  user_wants_to_track_thick200500 = "y",
+  user_wants_to_track_thick200850 = "y",
+  user_wants_to_track_zeta850 = "y",
+/
+
+&verbose
+  verb = 1,
+  verb_g2 = 0,
+/
+

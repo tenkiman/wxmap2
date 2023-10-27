@@ -1,0 +1,32 @@
+		   unittest for MF tracker (ngtrkN.x)
+				20130327
+				20130402
+
+cleaned up code on kishou.macos:
+
+Kishou(DARWIN)[W2:ESRL]: /w21/src/tcnavytrk/unittest 93 > test.sh
+time ../ngtrkN.x ngtrk.nl ngtrk.ngtrp.txt gfs2.2012071812.meta.txt ngtrk.out.txt ngtrk.diag.txt ngtrk.mfdiag.txt
+        0.65 real         0.43 user         0.03 sys
+diff kishou.macosx.gfortran.ngtrk.gfs2.track.txt ngtrk.gfs2.track.txt
+
+kaze.linux:
+
+Kaze(LINUX)[W2:ESRL]: /data/amb/users/fiorino/w21/src/tcnavytrk/unittest 368 > test.sh
+time ../ngtrkN.x ngtrk.nl ngtrk.ngtrp.txt gfs2.2012071812.meta.txt ngtrk.out.txt ngtrk.diag.txt ngtrk.mfdiag.txt
+0.83user 0.12system 0:03.87elapsed 24%CPU (0avgtext+0avgdata 13952maxresident)k
+0inputs+0outputs (8major+901minor)pagefaults 0swaps
+diff kishou.macosx.gfortran.ngtrk.gfs2.track.txt ngtrk.gfs2.track.txt
+
+20130402 -- major upgrades
+
+kishou.linux
+
+Kishou(LINUX)[W2:ESRL]: /w21/src/tcnavytrk/unittest 807 > test.sh
+time ../ngtrkN.x ngtrk.nl ngtrk.ngtrp.txt gfs2.2012071812.meta.txt ngtrk.out.txt ngtrk.diag.txt ngtrk.mfdiag.txt
+0.23user 0.06system 0:00.30elapsed 96%CPU (0avgtext+0avgdata 13568maxresident)k
+0inputs+0outputs (0major+884minor)pagefaults 0swaps
+
+kishou.macos
+Kishou(DARWIN)[W2:ESRL]: /w21/src/tcnavytrk/unittest 253 > test.sh
+time ../ngtrkN.x ngtrk.nl ngtrk.ngtrp.txt gfs2.2012071812.meta.txt ngtrk.out.txt ngtrk.diag.txt ngtrk.mfdiag.txt
+        0.24 real         0.23 user         0.01 sys

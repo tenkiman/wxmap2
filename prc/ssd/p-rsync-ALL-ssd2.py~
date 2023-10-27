@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+from WxMAP2 import *
+
+ropt='norun'
+ropt=''
+
+cmd='p-inv-tc-dat-ops.py'
+mf.runcmd(cmd,ropt)
+
+cmd='p-rsync-nwp2-pr-ocean.py'
+mf.runcmd(cmd,ropt)
+

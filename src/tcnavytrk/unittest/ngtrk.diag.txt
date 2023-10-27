@@ -1,0 +1,1794 @@
+ 006   12071812
+ 91L 406N 0552W  3492 020
+ 05E 150N 1574W  2748 179
+ 06E 253N 1208W  3550 090
+ 99E 087N 1143W  2842 041
+ 08W 339N 1262E  3500 170
+ 09W 160N 1298E  2750 080
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE          565  to          576  fm           97  to          108
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE          361  to          372  fm           46  to           57
+ CHKFCIR data check
+           1   438.50000       70.500000       4.0000000    
+           2   439.00000       72.000000       3.0000000    
+ CHKFCIR found            2  possible cyclonic centers
+  verify, processing            2  areas for mxptc:           27
+ Verify, checking            1  at    438.50000          70.500000              27
+  cirloc, x-box, fm            2  to            5  y-box, fm            2  to            5  for cntr near    438.50000         70.500000    
+  isocnt, k            1  iter            1  rh    10.000000    
+ contouring all contours of value  10.000    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  T
+  last for iter            1  n1           43  n2            0
+  isocnt, k            2  iter            2  rh    100.00000    
+ contouring all contours of value  100.00    
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  calint, nxy1           43  rh1    10.000000      nxy2           44  rh2    100.00000    
+ calint,            1             1  intersection at    3.4997509         3.9701681      for    10.000000         100.00000    
+ CALINT, system            1  intersections            1
+  last for iter            2  n1           43  n2           44
+  isocnt, k            3  iter            1  rh    20.000000    
+ contouring all contours of value  20.000    
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  T
+  last for iter            1  n1           46  n2            0
+  isocnt, k            4  iter            2  rh    110.00000    
+ contouring all contours of value  110.00    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  calint, nxy1           46  rh1    20.000000      nxy2           47  rh2    110.00000    
+ calint,            1             2  intersection at    3.4997504         3.9701681      for    20.000000         110.00000    
+ CALINT, system            1  intersections            2
+  last for iter            2  n1           46  n2           47
+  isocnt, k            5  iter            1  rh    30.000000    
+ contouring all contours of value  30.000    
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  T
+  last for iter            1  n1           42  n2            0
+  isocnt, k            6  iter            2  rh    120.00000    
+ contouring all contours of value  120.00    
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            7  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  T
+  calint, nxy1           42  rh1    30.000000      nxy2           53  rh2    120.00000    
+ calint,            1             3  intersection at    3.4997504         3.9701688      for    30.000000         120.00000    
+ CALINT, system            1  intersections            3
+  last for iter            2  n1           42  n2           53
+  isocnt, k            7  iter            1  rh    40.000000    
+ contouring all contours of value  40.000    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           45  n2            0
+  isocnt, k            8  iter            2  rh    130.00000    
+ contouring all contours of value  130.00    
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval            1  ncnt           51  last  F
+ isotrc, nval           16  ncnt           51  last  T
+  calint, nxy1           45  rh1    40.000000      nxy2           56  rh2    130.00000    
+ calint,            1             4  intersection at    3.4997509         3.9701695      for    40.000000         130.00000    
+ CALINT, system            1  intersections            4
+  last for iter            2  n1           45  n2           56
+  isocnt, k            9  iter            1  rh    50.000000    
+ contouring all contours of value  50.000    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  T
+  last for iter            1  n1           45  n2            0
+  isocnt, k           10  iter            2  rh    140.00000    
+ contouring all contours of value  140.00    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            7  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  T
+  calint, nxy1           45  rh1    50.000000      nxy2           54  rh2    140.00000    
+ calint,            1             5  intersection at    3.4997506         3.9701686      for    50.000000         140.00000    
+ CALINT, system            1  intersections            5
+  last for iter            2  n1           45  n2           54
+  isocnt, k           11  iter            1  rh    60.000000    
+ contouring all contours of value  60.000    
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            6  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           44  n2            0
+  isocnt, k           12  iter            2  rh    150.00000    
+ contouring all contours of value  150.00    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval            7  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            1  ncnt           51  last  T
+  calint, nxy1           44  rh1    60.000000      nxy2           45  rh2    150.00000    
+ calint,            1             6  intersection at    3.4997506         3.9701693      for    60.000000         150.00000    
+ CALINT, system            1  intersections            6
+  last for iter            2  n1           44  n2           45
+  isocnt, k           13  iter            1  rh    70.000000    
+ contouring all contours of value  70.000    
+ isotrc, nval           16  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           44  n2            0
+  isocnt, k           14  iter            2  rh    160.00000    
+ contouring all contours of value  160.00    
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval            6  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  calint, nxy1           44  rh1    70.000000      nxy2           38  rh2    160.00000    
+ calint,            1             7  intersection at    3.4997504         3.9701693      for    70.000000         160.00000    
+ CALINT, system            1  intersections            7
+  last for iter            2  n1           44  n2           38
+  isocnt, k           15  iter            1  rh    80.000000    
+ contouring all contours of value  80.000    
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval            5  ncnt           51  last  T
+  last for iter            1  n1           46  n2            0
+  isocnt, k           16  iter            2  rh    170.00000    
+ contouring all contours of value  170.00    
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  calint, nxy1           46  rh1    80.000000      nxy2           34  rh2    170.00000    
+ calint,            1             8  intersection at    3.4997506         3.9701669      for    80.000000         170.00000    
+ CALINT, system            1  intersections            8
+  last for iter            2  n1           46  n2           34
+  isocnt, k           17  iter            1  rh    90.000000    
+ contouring all contours of value  90.000    
+ isotrc, nval            7  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           44  n2            0
+  isocnt, k           18  iter            2  rh    180.00000    
+ contouring all contours of value  180.00    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            7  ncnt           51  last  F
+ isotrc, nval            6  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  calint, nxy1           44  rh1    90.000000      nxy2           37  rh2    180.00000    
+ calint,            1             9  intersection at    3.4997509         3.9701684      for    90.000000         180.00000    
+ CALINT, system            1  intersections            9
+  last for iter            2  n1           44  n2           37
+ found about  18 different valued contours
+  calcntr, running avg xc    3.4997504      yc    3.9701686      with            9  intersections
+  calcntr, with            1  iterations: x=    3.4997504      y=    3.9701686      with            8  intersections
+ cirloc, intersection at    3.4997504         3.9701686    
+ cirloc, found circulation, type            4
+ cirloc,            1  qds            4  int            8
+  isofnd found            1  cyclones for area            1
+ cyclone            1  is at    438.49976          70.970169    
+ Verify, checking            2  at    439.00000          72.000000              27
+  cirloc, x-box, fm            2  to            5  y-box, fm            2  to            5  for cntr near    439.00000         72.000000    
+  isocnt, k            1  iter            1  rh    10.000000    
+ contouring all contours of value  10.000    
+ isotrc, nval           10  ncnt           51  last  T
+  last for iter            1  n1           10  n2            0
+ isocnt, starting open backwards
+  isocnt, k            2  iter            2  rh    100.00000    
+ contouring all contours of value  100.00    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  calint, nxy1           10  rh1    10.000000      nxy2           43  rh2    100.00000    
+  calint, no calculations
+  last for iter            2  n1           10  n2           43
+  isocnt, k            3  iter            1  rh    20.000000    
+ contouring all contours of value  20.000    
+ isotrc, nval           13  ncnt           51  last  T
+  last for iter            1  n1           13  n2            0
+  isocnt, k            4  iter            2  rh    110.00000    
+ contouring all contours of value  110.00    
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  calint, nxy1           13  rh1    20.000000      nxy2           41  rh2    110.00000    
+  calint, no calculations
+  calint, no calculations
+  last for iter            2  n1           13  n2           41
+  isocnt, k            5  iter            1  rh    30.000000    
+ contouring all contours of value  30.000    
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  T
+  last for iter            1  n1           17  n2            0
+  isocnt, k            6  iter            2  rh    120.00000    
+ contouring all contours of value  120.00    
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            1  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  calint, nxy1           17  rh1    30.000000      nxy2           39  rh2    120.00000    
+  calint, no calculations
+  last for iter            2  n1           17  n2           39
+  isocnt, k            7  iter            1  rh    40.000000    
+ contouring all contours of value  40.000    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           24  n2            0
+  isocnt, k            8  iter            2  rh    130.00000    
+ contouring all contours of value  130.00    
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  T
+  calint, nxy1           24  rh1    40.000000      nxy2           36  rh2    130.00000    
+  calint, no calculations
+  last for iter            2  n1           24  n2           36
+  isocnt, k            9  iter            1  rh    50.000000    
+ contouring all contours of value  50.000    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           34  n2            0
+  isocnt, k           10  iter            2  rh    140.00000    
+ contouring all contours of value  140.00    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  T
+  calint, nxy1           34  rh1    50.000000      nxy2           33  rh2    140.00000    
+  calint, no calculations
+  calint, no calculations
+  last for iter            2  n1           34  n2           33
+  isocnt, k           11  iter            1  rh    60.000000    
+ contouring all contours of value  60.000    
+ isotrc, nval            7  ncnt           51  last  F
+ isotrc, nval            7  ncnt           51  last  F
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  T
+  last for iter            1  n1           41  n2            0
+  isocnt, k           12  iter            2  rh    150.00000    
+ contouring all contours of value  150.00    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval            7  ncnt           51  last  T
+  calint, nxy1           41  rh1    60.000000      nxy2           30  rh2    150.00000    
+  calint, no calculations
+  calint, no calculations
+  last for iter            2  n1           41  n2           30
+  isocnt, k           13  iter            1  rh    70.000000    
+ contouring all contours of value  70.000    
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval            1  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  T
+  last for iter            1  n1           48  n2            0
+  isocnt, k           14  iter            2  rh    160.00000    
+ contouring all contours of value  160.00    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval            6  ncnt           51  last  T
+  calint, nxy1           48  rh1    70.000000      nxy2           28  rh2    160.00000    
+  calint, no calculations
+  calint, no calculations
+  last for iter            2  n1           48  n2           28
+  isocnt, k           15  iter            1  rh    80.000000    
+ contouring all contours of value  80.000    
+ isotrc, nval           17  ncnt           51  last  F
+ isotrc, nval            1  ncnt           51  last  F
+ isotrc, nval           17  ncnt           51  last  F
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  T
+  last for iter            1  n1           53  n2            0
+  isocnt, k           16  iter            2  rh    170.00000    
+ contouring all contours of value  170.00    
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  T
+  calint, nxy1           53  rh1    80.000000      nxy2            7  rh2    170.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           53  n2            7
+ isocnt, starting open backwards
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  T
+  calint, nxy1           53  rh1    80.000000      nxy2            7  rh2    170.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           53  n2            7
+  isocnt, k           17  iter            1  rh    90.000000    
+ contouring all contours of value  90.000    
+ isotrc, nval            6  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            6  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  last for iter            1  n1           47  n2            0
+  isocnt, k           18  iter            2  rh    180.00000    
+ contouring all contours of value  180.00    
+ isotrc, nval            7  ncnt           51  last  T
+  calint, nxy1           47  rh1    90.000000      nxy2            7  rh2    180.00000    
+  calint, no calculations
+  last for iter            2  n1           47  n2            7
+ isocnt, starting open backwards
+ isotrc, nval            7  ncnt           51  last  T
+  calint, nxy1           47  rh1    90.000000      nxy2            7  rh2    180.00000    
+  calint, no calculations
+  calint, no calculations
+  last for iter            2  n1           47  n2            7
+ found about  18 different valued contours
+ cirloc, no intersection found near    439.00000         72.000000    
+  $ $ $ ISOFND, CYCLONE NOT FOUND $ $ $
+ Verify, retained            1  cyclones
+VERIFY  found   1  valid centers
+ TRACKEM, center found at    438.49976          70.970169    
+ CHKFCIR data check
+           1   451.50000       41.500000       4.0000000    
+           2   454.00000       41.000000       3.0000000    
+           3   456.00000       42.000000       3.0000000    
+ CHKFCIR found            3  possible cyclonic centers
+  verify, processing            3  areas for mxptc:           27
+ Verify, checking            1  at    451.50000          41.500000              27
+  cirloc, x-box, fm            2  to            5  y-box, fm            2  to            5  for cntr near    451.50000         41.500000    
+  isocnt, k            1  iter            1  rh    10.000000    
+ contouring all contours of value  10.000    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval            4  ncnt           51  last  T
+  last for iter            1  n1           37  n2            0
+  isocnt, k            2  iter            2  rh    100.00000    
+ contouring all contours of value  100.00    
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  calint, nxy1           37  rh1    10.000000      nxy2           37  rh2    100.00000    
+ calint,            1             1  intersection at    3.5380943         3.2537930      for    10.000000         100.00000    
+ CALINT, system            1  intersections            1
+  last for iter            2  n1           37  n2           37
+  isocnt, k            3  iter            1  rh    20.000000    
+ contouring all contours of value  20.000    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  last for iter            1  n1           40  n2            0
+  isocnt, k            4  iter            2  rh    110.00000    
+ contouring all contours of value  110.00    
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  calint, nxy1           40  rh1    20.000000      nxy2           37  rh2    110.00000    
+ calint,            1             2  intersection at    3.5558622         3.2229922      for    20.000000         110.00000    
+ CALINT, system            1  intersections            2
+  last for iter            2  n1           40  n2           37
+  isocnt, k            5  iter            1  rh    30.000000    
+ contouring all contours of value  30.000    
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval            6  ncnt           51  last  F
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval           17  ncnt           51  last  T
+  last for iter            1  n1           48  n2            0
+  isocnt, k            6  iter            2  rh    120.00000    
+ contouring all contours of value  120.00    
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  calint, nxy1           48  rh1    30.000000      nxy2           36  rh2    120.00000    
+ calint,            1             3  intersection at    3.5727532         3.2189360      for    30.000000         120.00000    
+ CALINT, system            1  intersections            3
+  last for iter            2  n1           48  n2           36
+  isocnt, k            7  iter            1  rh    40.000000    
+ contouring all contours of value  40.000    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  last for iter            1  n1           48  n2            0
+  isocnt, k            8  iter            2  rh    130.00000    
+ contouring all contours of value  130.00    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  calint, nxy1           48  rh1    40.000000      nxy2           35  rh2    130.00000    
+ calint,            1             4  intersection at    3.5726278         3.2184770      for    40.000000         130.00000    
+ CALINT, system            1  intersections            4
+  last for iter            2  n1           48  n2           35
+  isocnt, k            9  iter            1  rh    50.000000    
+ contouring all contours of value  50.000    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           17  ncnt           51  last  F
+ isotrc, nval           16  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           56  n2            0
+  isocnt, k           10  iter            2  rh    140.00000    
+ contouring all contours of value  140.00    
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  calint, nxy1           56  rh1    50.000000      nxy2           34  rh2    140.00000    
+ calint,            1             5  intersection at    3.5710850         3.2159076      for    50.000000         140.00000    
+ CALINT, system            1  intersections            5
+  last for iter            2  n1           56  n2           34
+  isocnt, k           11  iter            1  rh    60.000000    
+ contouring all contours of value  60.000    
+ isotrc, nval           16  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           46  n2            0
+  isocnt, k           12  iter            2  rh    150.00000    
+ contouring all contours of value  150.00    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  calint, nxy1           46  rh1    60.000000      nxy2           33  rh2    150.00000    
+ calint,            1             6  intersection at    3.5709767         3.2157884      for    60.000000         150.00000    
+ CALINT, system            1  intersections            6
+  last for iter            2  n1           46  n2           33
+  isocnt, k           13  iter            1  rh    70.000000    
+ contouring all contours of value  70.000    
+ isotrc, nval           18  ncnt           51  last  F
+ isotrc, nval            1  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  last for iter            1  n1           45  n2            0
+  isocnt, k           14  iter            2  rh    160.00000    
+ contouring all contours of value  160.00    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  calint, nxy1           45  rh1    70.000000      nxy2           32  rh2    160.00000    
+ calint,            1             7  intersection at    3.5710340         3.2159073      for    70.000000         160.00000    
+ CALINT, system            1  intersections            7
+  last for iter            2  n1           45  n2           32
+  isocnt, k           15  iter            1  rh    80.000000    
+ contouring all contours of value  80.000    
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  last for iter            1  n1           41  n2            0
+  isocnt, k           16  iter            2  rh    170.00000    
+ contouring all contours of value  170.00    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  calint, nxy1           41  rh1    80.000000      nxy2           33  rh2    170.00000    
+ calint,            1             8  intersection at    3.5711277         3.2229514      for    80.000000         170.00000    
+ CALINT, system            1  intersections            8
+  last for iter            2  n1           41  n2           33
+  isocnt, k           17  iter            1  rh    90.000000    
+ contouring all contours of value  90.000    
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  last for iter            1  n1           39  n2            0
+  isocnt, k           18  iter            2  rh    180.00000    
+ contouring all contours of value  180.00    
+ isotrc, nval           16  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  calint, nxy1           39  rh1    90.000000      nxy2           35  rh2    180.00000    
+ calint,            1             9  intersection at    3.5710871         3.2226233      for    90.000000         180.00000    
+ CALINT, system            1  intersections            9
+  last for iter            2  n1           39  n2           35
+ found about  18 different valued contours
+  calcntr, running avg xc    3.5660717      yc    3.2230420      with            9  intersections
+  calcntr, with            3  iterations: x=    3.5715940      y=    3.2179401      with            6  intersections
+ cirloc, intersection at    3.5715940         3.2179401    
+ cirloc, found circulation, type            4
+ cirloc,            1  qds            4  int            6
+  isofnd found            1  cyclones for area            1
+ cyclone            1  is at    451.57159          41.217941    
+ Verify, checking            2  at    454.00000          41.000000              27
+  cirloc, x-box, fm            2  to            5  y-box, fm            2  to            5  for cntr near    454.00000         41.000000    
+  isocnt, k            1  iter            1  rh    10.000000    
+ contouring all contours of value  10.000    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           17  ncnt           51  last  F
+ isotrc, nval            1  ncnt           51  last  T
+  last for iter            1  n1           45  n2            0
+  isocnt, k            2  iter            2  rh    100.00000    
+ contouring all contours of value  100.00    
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  calint, nxy1           45  rh1    10.000000      nxy2           38  rh2    100.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           45  n2           38
+  isocnt, k            3  iter            1  rh    20.000000    
+ contouring all contours of value  20.000    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval           17  ncnt           51  last  T
+  last for iter            1  n1           45  n2            0
+  isocnt, k            4  iter            2  rh    110.00000    
+ contouring all contours of value  110.00    
+ isotrc, nval           16  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval            1  ncnt           51  last  T
+  calint, nxy1           45  rh1    20.000000      nxy2           41  rh2    110.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           45  n2           41
+  isocnt, k            5  iter            1  rh    30.000000    
+ contouring all contours of value  30.000    
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           17  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  T
+  last for iter            1  n1           41  n2            0
+  isocnt, k            6  iter            2  rh    120.00000    
+ contouring all contours of value  120.00    
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  calint, nxy1           41  rh1    30.000000      nxy2           40  rh2    120.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           41  n2           40
+  isocnt, k            7  iter            1  rh    40.000000    
+ contouring all contours of value  40.000    
+ isotrc, nval            2  ncnt           51  last  F
+ isotrc, nval           18  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  T
+  last for iter            1  n1           23  n2            0
+  isocnt, k            8  iter            2  rh    130.00000    
+ contouring all contours of value  130.00    
+ isotrc, nval           16  ncnt           51  last  F
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  calint, nxy1           23  rh1    40.000000      nxy2           41  rh2    130.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           23  n2           41
+  isocnt, k            9  iter            1  rh    50.000000    
+ contouring all contours of value  50.000    
+ isocnt, starting open backwards
+  isocnt, k           11  iter            1  rh    60.000000    
+ contouring all contours of value  60.000    
+ isotrc, nval            2  ncnt           51  last  T
+  last for iter            1  n1            2  n2            0
+ isocnt, starting open backwards
+  isocnt, k           13  iter            1  rh    70.000000    
+ contouring all contours of value  70.000    
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           21  n2            0
+  isocnt, k           14  iter            2  rh    160.00000    
+ contouring all contours of value  160.00    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval            7  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  calint, nxy1           21  rh1    70.000000      nxy2           42  rh2    160.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           21  n2           42
+  isocnt, k           15  iter            1  rh    80.000000    
+ contouring all contours of value  80.000    
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           28  n2            0
+  isocnt, k           16  iter            2  rh    170.00000    
+ contouring all contours of value  170.00    
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  calint, nxy1           28  rh1    80.000000      nxy2           44  rh2    170.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           28  n2           44
+  isocnt, k           17  iter            1  rh    90.000000    
+ contouring all contours of value  90.000    
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           33  n2            0
+  isocnt, k           18  iter            2  rh    180.00000    
+ contouring all contours of value  180.00    
+ isotrc, nval            6  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  calint, nxy1           33  rh1    90.000000      nxy2           43  rh2    180.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           33  n2           43
+ found about  15 different valued contours
+ cirloc, no intersection found near    454.00000         41.000000    
+  $ $ $ ISOFND, CYCLONE NOT FOUND $ $ $
+ Verify, checking            3  at    456.00000          42.000000              27
+  cirloc, x-box, fm            2  to            5  y-box, fm            2  to            5  for cntr near    456.00000         42.000000    
+  isocnt, k            1  iter            1  rh    10.000000    
+ contouring all contours of value  10.000    
+ isotrc, nval           18  ncnt           51  last  F
+ isotrc, nval            1  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           16  ncnt           51  last  F
+ isotrc, nval            1  ncnt           51  last  T
+  last for iter            1  n1           49  n2            0
+  isocnt, k            2  iter            2  rh    100.00000    
+ contouring all contours of value  100.00    
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval           17  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  T
+  calint, nxy1           49  rh1    10.000000      nxy2           38  rh2    100.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           49  n2           38
+  isocnt, k            3  iter            1  rh    20.000000    
+ contouring all contours of value  20.000    
+ isotrc, nval           18  ncnt           51  last  F
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  T
+  last for iter            1  n1           46  n2            0
+  isocnt, k            4  iter            2  rh    110.00000    
+ contouring all contours of value  110.00    
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval            2  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  T
+  calint, nxy1           46  rh1    20.000000      nxy2           42  rh2    110.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           46  n2           42
+  isocnt, k            5  iter            1  rh    30.000000    
+ contouring all contours of value  30.000    
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  T
+  last for iter            1  n1           41  n2            0
+  isocnt, k            6  iter            2  rh    120.00000    
+ contouring all contours of value  120.00    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval            6  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  T
+  calint, nxy1           41  rh1    30.000000      nxy2           45  rh2    120.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           41  n2           45
+  isocnt, k            7  iter            1  rh    40.000000    
+ contouring all contours of value  40.000    
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  T
+  last for iter            1  n1           29  n2            0
+  isocnt, k            8  iter            2  rh    130.00000    
+ contouring all contours of value  130.00    
+ isotrc, nval           16  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  T
+  calint, nxy1           29  rh1    40.000000      nxy2           49  rh2    130.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           29  n2           49
+  isocnt, k            9  iter            1  rh    50.000000    
+ contouring all contours of value  50.000    
+ isocnt, starting open backwards
+  isocnt, k           11  iter            1  rh    60.000000    
+ contouring all contours of value  60.000    
+ isotrc, nval            9  ncnt           51  last  T
+  last for iter            1  n1            9  n2            0
+ isocnt, starting open backwards
+  isocnt, k           12  iter            2  rh    150.00000    
+ contouring all contours of value  150.00    
+ isotrc, nval           16  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval            4  ncnt           51  last  T
+  calint, nxy1            9  rh1    60.000000      nxy2           49  rh2    150.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1            9  n2           49
+  isocnt, k           13  iter            1  rh    70.000000    
+ contouring all contours of value  70.000    
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval           17  ncnt           51  last  T
+  last for iter            1  n1           21  n2            0
+  isocnt, k           14  iter            2  rh    160.00000    
+ contouring all contours of value  160.00    
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval            2  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval            7  ncnt           51  last  T
+  calint, nxy1           21  rh1    70.000000      nxy2           50  rh2    160.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           21  n2           50
+  isocnt, k           15  iter            1  rh    80.000000    
+ contouring all contours of value  80.000    
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            4  ncnt           51  last  T
+  last for iter            1  n1           28  n2            0
+  isocnt, k           16  iter            2  rh    170.00000    
+ contouring all contours of value  170.00    
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval            6  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  calint, nxy1           28  rh1    80.000000      nxy2           49  rh2    170.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           28  n2           49
+  isocnt, k           17  iter            1  rh    90.000000    
+ contouring all contours of value  90.000    
+ isotrc, nval           17  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  T
+  last for iter            1  n1           33  n2            0
+  isocnt, k           18  iter            2  rh    180.00000    
+ contouring all contours of value  180.00    
+ isotrc, nval            7  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  T
+  calint, nxy1           33  rh1    90.000000      nxy2           49  rh2    180.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           33  n2           49
+ found about  16 different valued contours
+ cirloc, no intersection found near    456.00000         42.000000    
+  $ $ $ ISOFND, CYCLONE NOT FOUND $ $ $
+ Verify, retained            1  cyclones
+VERIFY  found   1  valid centers
+ TRACKEM, center found at    451.57159          41.217941    
+ CHKFCIR found            1  possible cyclonic centers
+  verify, processing            1  areas for mxptc:           27
+ Verify, checking            1  at    213.50000          88.500000              27
+  cirloc, x-box, fm            2  to            5  y-box, fm            2  to            5  for cntr near    213.50000         88.500000    
+  isocnt, k            1  iter            1  rh    10.000000    
+ contouring all contours of value  10.000    
+ isotrc, nval            7  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  T
+  last for iter            1  n1           46  n2            0
+  isocnt, k            2  iter            2  rh    100.00000    
+ contouring all contours of value  100.00    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  calint, nxy1           46  rh1    10.000000      nxy2           54  rh2    100.00000    
+ calint,            1             1  intersection at    3.2967207         3.5430224      for    10.000000         100.00000    
+ CALINT, system            1  intersections            1
+  last for iter            2  n1           46  n2           54
+  isocnt, k            3  iter            1  rh    20.000000    
+ contouring all contours of value  20.000    
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  T
+  last for iter            1  n1           58  n2            0
+  isocnt, k            4  iter            2  rh    110.00000    
+ contouring all contours of value  110.00    
+ isotrc, nval           16  ncnt           51  last  F
+ isotrc, nval            6  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  T
+  calint, nxy1           58  rh1    20.000000      nxy2           54  rh2    110.00000    
+ calint,            1             2  intersection at    3.2968123         3.5430803      for    20.000000         110.00000    
+ CALINT, system            1  intersections            2
+  last for iter            2  n1           58  n2           54
+  isocnt, k            5  iter            1  rh    30.000000    
+ contouring all contours of value  30.000    
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval           17  ncnt           51  last  F
+ isotrc, nval            1  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  T
+  last for iter            1  n1           51  n2            0
+  isocnt, k            6  iter            2  rh    120.00000    
+ contouring all contours of value  120.00    
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval            5  ncnt           51  last  T
+  calint, nxy1           51  rh1    30.000000      nxy2           49  rh2    120.00000    
+ calint,            1             3  intersection at    3.2967875         3.5430584      for    30.000000         120.00000    
+ CALINT, system            1  intersections            3
+  last for iter            2  n1           51  n2           49
+  isocnt, k            7  iter            1  rh    40.000000    
+ contouring all contours of value  40.000    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            1  ncnt           51  last  F
+ isotrc, nval           17  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           42  n2            0
+  isocnt, k            8  iter            2  rh    130.00000    
+ contouring all contours of value  130.00    
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            1  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            1  ncnt           51  last  T
+  calint, nxy1           42  rh1    40.000000      nxy2           45  rh2    130.00000    
+ calint,            1             4  intersection at    3.2968426         3.5430555      for    40.000000         130.00000    
+ CALINT, system            1  intersections            4
+  last for iter            2  n1           42  n2           45
+  isocnt, k            9  iter            1  rh    50.000000    
+ contouring all contours of value  50.000    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  last for iter            1  n1           38  n2            0
+  isocnt, k           10  iter            2  rh    140.00000    
+ contouring all contours of value  140.00    
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  T
+  calint, nxy1           38  rh1    50.000000      nxy2           40  rh2    140.00000    
+ calint,            1             5  intersection at    3.2968860         3.5430458      for    50.000000         140.00000    
+ CALINT, system            1  intersections            5
+  last for iter            2  n1           38  n2           40
+  isocnt, k           11  iter            1  rh    60.000000    
+ contouring all contours of value  60.000    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  T
+  last for iter            1  n1           38  n2            0
+  isocnt, k           12  iter            2  rh    150.00000    
+ contouring all contours of value  150.00    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  calint, nxy1           38  rh1    60.000000      nxy2           36  rh2    150.00000    
+ calint,            1             6  intersection at    3.2969341         3.5430324      for    60.000000         150.00000    
+ CALINT, system            1  intersections            6
+  last for iter            2  n1           38  n2           36
+  isocnt, k           13  iter            1  rh    70.000000    
+ contouring all contours of value  70.000    
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  T
+  last for iter            1  n1           44  n2            0
+  isocnt, k           14  iter            2  rh    160.00000    
+ contouring all contours of value  160.00    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  calint, nxy1           44  rh1    70.000000      nxy2           32  rh2    160.00000    
+ calint,            1             7  intersection at    3.2967277         3.5430005      for    70.000000         160.00000    
+ CALINT, system            1  intersections            7
+  last for iter            2  n1           44  n2           32
+  isocnt, k           15  iter            1  rh    80.000000    
+ contouring all contours of value  80.000    
+ isotrc, nval           16  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval           18  ncnt           51  last  T
+  last for iter            1  n1           50  n2            0
+  isocnt, k           16  iter            2  rh    170.00000    
+ contouring all contours of value  170.00    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  calint, nxy1           50  rh1    80.000000      nxy2           33  rh2    170.00000    
+ calint,            1             8  intersection at    3.2967181         3.5430024      for    80.000000         170.00000    
+ CALINT, system            1  intersections            8
+  last for iter            2  n1           50  n2           33
+  isocnt, k           17  iter            1  rh    90.000000    
+ contouring all contours of value  90.000    
+ isotrc, nval            7  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  T
+  last for iter            1  n1           52  n2            0
+  isocnt, k           18  iter            2  rh    180.00000    
+ contouring all contours of value  180.00    
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  T
+  calint, nxy1           52  rh1    90.000000      nxy2           39  rh2    180.00000    
+ calint,            1             9  intersection at    3.2967138         3.5430093      for    90.000000         180.00000    
+ CALINT, system            1  intersections            9
+  last for iter            2  n1           52  n2           39
+ found about  18 different valued contours
+  calcntr, running avg xc    3.2967937      yc    3.5430341      with            9  intersections
+  calcntr, with            1  iterations: x=    3.2967763      y=    3.5430343      with            8  intersections
+ cirloc, intersection at    3.2967763         3.5430343    
+ cirloc, found circulation, type            4
+ cirloc,            1  qds            4  int            8
+  isofnd found            1  cyclones for area            1
+ cyclone            1  is at    213.29678          88.543037    
+ Verify, retained            1  cyclones
+VERIFY  found   1  valid centers
+ TRACKEM, center found at    213.29678          88.543037    
+ CHKFCIR data check
+           1   222.50000       54.500000       4.0000000    
+           2   216.00000       55.000000       3.0000000    
+           3   222.00000       56.000000       3.0000000    
+           4   222.00000       58.000000       3.0000000    
+ CHKFCIR found            4  possible cyclonic centers
+  verify, processing            4  areas for mxptc:           27
+ Verify, checking            1  at    222.50000          54.500000              27
+  cirloc, x-box, fm            2  to            5  y-box, fm            2  to            5  for cntr near    222.50000         54.500000    
+  isocnt, k            1  iter            1  rh    10.000000    
+ contouring all contours of value  10.000    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  last for iter            1  n1           39  n2            0
+  isocnt, k            2  iter            2  rh    100.00000    
+ contouring all contours of value  100.00    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  calint, nxy1           39  rh1    10.000000      nxy2           34  rh2    100.00000    
+ calint,            1             1  intersection at    3.0987484         3.4887054      for    10.000000         100.00000    
+ CALINT, system            1  intersections            1
+  last for iter            2  n1           39  n2           34
+  isocnt, k            3  iter            1  rh    20.000000    
+ contouring all contours of value  20.000    
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           45  n2            0
+  isocnt, k            4  iter            2  rh    110.00000    
+ contouring all contours of value  110.00    
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval            2  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  calint, nxy1           45  rh1    20.000000      nxy2           37  rh2    110.00000    
+ calint,            1             2  intersection at    3.0988503         3.4886518      for    20.000000         110.00000    
+ CALINT, system            1  intersections            2
+  last for iter            2  n1           45  n2           37
+  isocnt, k            5  iter            1  rh    30.000000    
+ contouring all contours of value  30.000    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            6  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  last for iter            1  n1           55  n2            0
+  isocnt, k            6  iter            2  rh    120.00000    
+ contouring all contours of value  120.00    
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval            6  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  calint, nxy1           55  rh1    30.000000      nxy2           41  rh2    120.00000    
+ calint,            1             3  intersection at    3.0988345         3.4886487      for    30.000000         120.00000    
+ CALINT, system            1  intersections            3
+  last for iter            2  n1           55  n2           41
+  isocnt, k            7  iter            1  rh    40.000000    
+ contouring all contours of value  40.000    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           56  n2            0
+  isocnt, k            8  iter            2  rh    130.00000    
+ contouring all contours of value  130.00    
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  calint, nxy1           56  rh1    40.000000      nxy2           50  rh2    130.00000    
+ calint,            1             4  intersection at    3.0988140         3.4886479      for    40.000000         130.00000    
+ CALINT, system            1  intersections            4
+  last for iter            2  n1           56  n2           50
+  isocnt, k            9  iter            1  rh    50.000000    
+ contouring all contours of value  50.000    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  T
+  last for iter            1  n1           58  n2            0
+  isocnt, k           10  iter            2  rh    140.00000    
+ contouring all contours of value  140.00    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            6  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  calint, nxy1           58  rh1    50.000000      nxy2           52  rh2    140.00000    
+ calint,            1             5  intersection at    3.0987928         3.4886508      for    50.000000         140.00000    
+ CALINT, system            1  intersections            5
+  last for iter            2  n1           58  n2           52
+  isocnt, k           11  iter            1  rh    60.000000    
+ contouring all contours of value  60.000    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  T
+  last for iter            1  n1           60  n2            0
+  isocnt, k           12  iter            2  rh    150.00000    
+ contouring all contours of value  150.00    
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval            1  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  calint, nxy1           60  rh1    60.000000      nxy2           50  rh2    150.00000    
+ calint,            1             6  intersection at    3.0987728         3.4886565      for    60.000000         150.00000    
+ CALINT, system            1  intersections            6
+  last for iter            2  n1           60  n2           50
+  isocnt, k           13  iter            1  rh    70.000000    
+ contouring all contours of value  70.000    
+ isotrc, nval           10  ncnt           51  last  T
+  last for iter            1  n1           10  n2            0
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  T
+  last for iter            1  n1           42  n2            0
+  isocnt, k           14  iter            2  rh    160.00000    
+ contouring all contours of value  160.00    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  calint, nxy1           42  rh1    70.000000      nxy2           50  rh2    160.00000    
+ calint,            1             7  intersection at    3.0987482         3.4886708      for    70.000000         160.00000    
+ CALINT, system            1  intersections            7
+  last for iter            2  n1           42  n2           50
+  isocnt, k           15  iter            1  rh    80.000000    
+ contouring all contours of value  80.000    
+ isotrc, nval            4  ncnt           51  last  T
+  last for iter            1  n1            4  n2            0
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval            7  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  last for iter            1  n1           40  n2            0
+  isocnt, k           16  iter            2  rh    170.00000    
+ contouring all contours of value  170.00    
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  T
+  calint, nxy1           40  rh1    80.000000      nxy2           39  rh2    170.00000    
+ calint,            1             8  intersection at    3.0987496         3.4886711      for    80.000000         170.00000    
+ CALINT, system            1  intersections            8
+  last for iter            2  n1           40  n2           39
+  isocnt, k           17  iter            1  rh    90.000000    
+ contouring all contours of value  90.000    
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval            9  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           38  n2            0
+  isocnt, k           18  iter            2  rh    180.00000    
+ contouring all contours of value  180.00    
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  calint, nxy1           38  rh1    90.000000      nxy2           36  rh2    180.00000    
+ calint,            1             9  intersection at    3.0987499         3.4886701      for    90.000000         180.00000    
+ CALINT, system            1  intersections            9
+  last for iter            2  n1           38  n2           36
+ found about  18 different valued contours
+  calcntr, running avg xc    3.0987842      yc    3.4886637      with            9  intersections
+  calcntr, with            1  iterations: x=    3.0987766      y=    3.4886651      with            8  intersections
+ cirloc, intersection at    3.0987766         3.4886651    
+ cirloc, found circulation, type            4
+ cirloc,            1  qds            4  int            8
+  isofnd found            1  cyclones for area            1
+ cyclone            1  is at    222.09877          54.488667    
+ Verify, checking            2  at    216.00000          55.000000              27
+  cirloc, x-box, fm            2  to            5  y-box, fm            2  to            5  for cntr near    216.00000         55.000000    
+  isocnt, k            1  iter            1  rh    10.000000    
+ contouring all contours of value  10.000    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            6  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  last for iter            1  n1           41  n2            0
+  isocnt, k            2  iter            2  rh    100.00000    
+ contouring all contours of value  100.00    
+ isotrc, nval            8  ncnt           51  last  T
+  calint, nxy1           41  rh1    10.000000      nxy2            8  rh2    100.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           41  n2            8
+ isocnt, starting open backwards
+ isotrc, nval            8  ncnt           51  last  T
+  calint, nxy1           41  rh1    10.000000      nxy2            8  rh2    100.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           41  n2            8
+  isocnt, k            3  iter            1  rh    20.000000    
+ contouring all contours of value  20.000    
+ isotrc, nval           16  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  last for iter            1  n1           42  n2            0
+  isocnt, k            4  iter            2  rh    110.00000    
+ contouring all contours of value  110.00    
+ isotrc, nval           12  ncnt           51  last  T
+  calint, nxy1           42  rh1    20.000000      nxy2           12  rh2    110.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           42  n2           12
+  isocnt, k            5  iter            1  rh    30.000000    
+ contouring all contours of value  30.000    
+ isotrc, nval           18  ncnt           51  last  F
+ isotrc, nval            2  ncnt           51  last  F
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval            6  ncnt           51  last  F
+ isotrc, nval           14  ncnt           51  last  T
+  last for iter            1  n1           45  n2            0
+  isocnt, k            6  iter            2  rh    120.00000    
+ contouring all contours of value  120.00    
+ isotrc, nval           15  ncnt           51  last  T
+  calint, nxy1           45  rh1    30.000000      nxy2           15  rh2    120.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           45  n2           15
+  isocnt, k            7  iter            1  rh    40.000000    
+ contouring all contours of value  40.000    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval            1  ncnt           51  last  F
+ isotrc, nval           18  ncnt           51  last  T
+  last for iter            1  n1           42  n2            0
+  isocnt, k            8  iter            2  rh    130.00000    
+ contouring all contours of value  130.00    
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  T
+  calint, nxy1           42  rh1    40.000000      nxy2           19  rh2    130.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           42  n2           19
+  isocnt, k            9  iter            1  rh    50.000000    
+ contouring all contours of value  50.000    
+ isotrc, nval           18  ncnt           51  last  T
+  last for iter            1  n1           18  n2            0
+  isocnt, k           10  iter            2  rh    140.00000    
+ contouring all contours of value  140.00    
+ isotrc, nval            7  ncnt           51  last  F
+ isotrc, nval           16  ncnt           51  last  T
+  calint, nxy1           18  rh1    50.000000      nxy2           23  rh2    140.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           18  n2           23
+  isocnt, k           11  iter            1  rh    60.000000    
+ contouring all contours of value  60.000    
+ isocnt, starting open backwards
+  isocnt, k           13  iter            1  rh    70.000000    
+ contouring all contours of value  70.000    
+ isocnt, starting open backwards
+  isocnt, k           15  iter            1  rh    80.000000    
+ contouring all contours of value  80.000    
+ isocnt, starting open backwards
+  isocnt, k           17  iter            1  rh    90.000000    
+ contouring all contours of value  90.000    
+ isotrc, nval            3  ncnt           51  last  T
+  last for iter            1  n1            3  n2            0
+ isocnt, starting open backwards
+ isotrc, nval            3  ncnt           51  last  T
+  last for iter            1  n1            3  n2            0
+ found about  11 different valued contours
+ cirloc, no intersection found near    216.00000         55.000000    
+  $ $ $ ISOFND, CYCLONE NOT FOUND $ $ $
+ Verify, checking            3  at    222.00000          56.000000              27
+  cirloc, x-box, fm            2  to            5  y-box, fm            2  to            5  for cntr near    222.00000         56.000000    
+  isocnt, k            1  iter            1  rh    10.000000    
+ contouring all contours of value  10.000    
+ isocnt, starting open backwards
+  isocnt, k            3  iter            1  rh    20.000000    
+ contouring all contours of value  20.000    
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  T
+  last for iter            1  n1           19  n2            0
+  isocnt, k            4  iter            2  rh    110.00000    
+ contouring all contours of value  110.00    
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  T
+  calint, nxy1           19  rh1    20.000000      nxy2           42  rh2    110.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           19  n2           42
+  isocnt, k            5  iter            1  rh    30.000000    
+ contouring all contours of value  30.000    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           34  n2            0
+  isocnt, k            6  iter            2  rh    120.00000    
+ contouring all contours of value  120.00    
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval            7  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  T
+  calint, nxy1           34  rh1    30.000000      nxy2           43  rh2    120.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           34  n2           43
+  isocnt, k            7  iter            1  rh    40.000000    
+ contouring all contours of value  40.000    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  last for iter            1  n1           34  n2            0
+  isocnt, k            8  iter            2  rh    130.00000    
+ contouring all contours of value  130.00    
+ isotrc, nval            7  ncnt           51  last  F
+ isotrc, nval            7  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  calint, nxy1           34  rh1    40.000000      nxy2           26  rh2    130.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           34  n2           26
+  isocnt, k            9  iter            1  rh    50.000000    
+ contouring all contours of value  50.000    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  last for iter            1  n1           34  n2            0
+  isocnt, k           10  iter            2  rh    140.00000    
+ contouring all contours of value  140.00    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval            6  ncnt           51  last  T
+  calint, nxy1           34  rh1    50.000000      nxy2           19  rh2    140.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           34  n2           19
+  isocnt, k           11  iter            1  rh    60.000000    
+ contouring all contours of value  60.000    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  last for iter            1  n1           34  n2            0
+  isocnt, k           12  iter            2  rh    150.00000    
+ contouring all contours of value  150.00    
+ isocnt, starting open backwards
+  isocnt, k           13  iter            1  rh    70.000000    
+ contouring all contours of value  70.000    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  last for iter            1  n1           32  n2            0
+  isocnt, k           14  iter            2  rh    160.00000    
+ contouring all contours of value  160.00    
+ isocnt, starting open backwards
+  isocnt, k           15  iter            1  rh    80.000000    
+ contouring all contours of value  80.000    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           35  n2            0
+  isocnt, k           16  iter            2  rh    170.00000    
+ contouring all contours of value  170.00    
+ isocnt, starting open backwards
+  isocnt, k           17  iter            1  rh    90.000000    
+ contouring all contours of value  90.000    
+ isotrc, nval           14  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval           10  ncnt           51  last  T
+  last for iter            1  n1           38  n2            0
+  isocnt, k           18  iter            2  rh    180.00000    
+ contouring all contours of value  180.00    
+ isocnt, starting open backwards
+ found about  12 different valued contours
+ cirloc, no intersection found near    222.00000         56.000000    
+  $ $ $ ISOFND, CYCLONE NOT FOUND $ $ $
+ Verify, checking            4  at    222.00000          58.000000              27
+  cirloc, x-box, fm            2  to            5  y-box, fm            2  to            5  for cntr near    222.00000         58.000000    
+  isocnt, k            1  iter            1  rh    10.000000    
+ contouring all contours of value  10.000    
+ isocnt, starting open backwards
+  isocnt, k            3  iter            1  rh    20.000000    
+ contouring all contours of value  20.000    
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           11  n2            0
+ isocnt, starting open backwards
+  isocnt, k            4  iter            2  rh    110.00000    
+ contouring all contours of value  110.00    
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval           18  ncnt           51  last  F
+ isotrc, nval            2  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  T
+  calint, nxy1           11  rh1    20.000000      nxy2           39  rh2    110.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           11  n2           39
+  isocnt, k            5  iter            1  rh    30.000000    
+ contouring all contours of value  30.000    
+ isotrc, nval            4  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           15  n2            0
+  isocnt, k            6  iter            2  rh    120.00000    
+ contouring all contours of value  120.00    
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  F
+ isotrc, nval            5  ncnt           51  last  F
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval            3  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  calint, nxy1           15  rh1    30.000000      nxy2           50  rh2    120.00000    
+ calint, NO PROSPECTIVE intersections
+  last for iter            2  n1           15  n2           50
+  isocnt, k            7  iter            1  rh    40.000000    
+ contouring all contours of value  40.000    
+ isotrc, nval            6  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           17  n2            0
+  isocnt, k            8  iter            2  rh    130.00000    
+ contouring all contours of value  130.00    
+ isocnt, starting open backwards
+  isocnt, k            9  iter            1  rh    50.000000    
+ contouring all contours of value  50.000    
+ isotrc, nval            8  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           19  n2            0
+  isocnt, k           10  iter            2  rh    140.00000    
+ contouring all contours of value  140.00    
+ isocnt, starting open backwards
+  isocnt, k           11  iter            1  rh    60.000000    
+ contouring all contours of value  60.000    
+ isotrc, nval           10  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           21  n2            0
+  isocnt, k           12  iter            2  rh    150.00000    
+ contouring all contours of value  150.00    
+ isocnt, starting open backwards
+  isocnt, k           13  iter            1  rh    70.000000    
+ contouring all contours of value  70.000    
+ isotrc, nval           12  ncnt           51  last  F
+ isotrc, nval           11  ncnt           51  last  T
+  last for iter            1  n1           23  n2            0
+  isocnt, k           14  iter            2  rh    160.00000    
+ contouring all contours of value  160.00    
+ isocnt, starting open backwards
+  isocnt, k           15  iter            1  rh    80.000000    
+ contouring all contours of value  80.000    
+ isotrc, nval           13  ncnt           51  last  F
+ isotrc, nval           12  ncnt           51  last  T
+  last for iter            1  n1           25  n2            0
+  isocnt, k           16  iter            2  rh    170.00000    
+ contouring all contours of value  170.00    
+ isocnt, starting open backwards
+  isocnt, k           17  iter            1  rh    90.000000    
+ contouring all contours of value  90.000    
+ isotrc, nval           15  ncnt           51  last  F
+ isotrc, nval           13  ncnt           51  last  T
+  last for iter            1  n1           28  n2            0
+  isocnt, k           18  iter            2  rh    180.00000    
+ contouring all contours of value  180.00    
+ isocnt, starting open backwards
+ found about  10 different valued contours
+ cirloc, no intersection found near    222.00000         58.000000    
+  $ $ $ ISOFND, CYCLONE NOT FOUND $ $ $
+ Verify, retained            1  cyclones
+VERIFY  found   1  valid centers
+ TRACKEM, center found at    222.09877          54.488667    
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          372  fm            1  to           62
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          448  fm            1  to           82
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          460  fm            1  to           49
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          222  fm            1  to          102
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          232  fm            1  to           63
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          368  fm            1  to           62
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          450  fm            1  to           84
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          460  fm            1  to           49
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          222  fm            1  to          107
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          236  fm            1  to           65
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          364  fm            1  to           65
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          452  fm            1  to           84
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          452  fm            1  to           44
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          224  fm            1  to          109
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          231  fm            1  to           71
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          360  fm            1  to           64
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          453  fm            1  to           85
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          455  fm            1  to           48
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          228  fm            1  to          111
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          223  fm            1  to           67
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          358  fm            1  to           63
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          451  fm            1  to           87
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          460  fm            1  to           50
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          230  fm            1  to          110
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          354  fm            1  to           64
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          452  fm            1  to           87
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          455  fm            1  to           57
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          233  fm            1  to          111
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          349  fm            1  to           65
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          453  fm            1  to           88
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          453  fm            1  to           52
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          232  fm            1  to          112
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          346  fm            1  to           65
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          452  fm            1  to           88
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          452  fm            1  to           52
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          232  fm            1  to          115
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          341  fm            1  to           65
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          451  fm            1  to           54
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          233  fm            1  to          114
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          339  fm            1  to           66
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          448  fm            1  to           52
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          335  fm            1  to           67
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          447  fm            1  to           52
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          332  fm            1  to           68
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          444  fm            1  to           52
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          329  fm            1  to           69
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          443  fm            1  to           52
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          327  fm            1  to           70
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          441  fm            1  to           53
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          323  fm            1  to           71
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          435  fm            1  to           54
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          322  fm            1  to           71
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          434  fm            1  to           49
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          318  fm            1  to           72
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          437  fm            1  to           52
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          318  fm            1  to           72
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          316  fm            1  to           73
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          312  fm            1  to           72
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          312  fm            1  to           74
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          308  fm            1  to           73
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          306  fm            1  to           76
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ CHKFCIR found            0  possible cyclonic centers
+  verify, processing            0  areas for mxptc:           27
+ Verify, retained            0  cyclones
+VERIFY  found   0  valid centers
+ NO CYCLONE           -9  to          304  fm            1  to           74
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0
+ NO CYCLONE           -1  to            0  fm           -1  to            0

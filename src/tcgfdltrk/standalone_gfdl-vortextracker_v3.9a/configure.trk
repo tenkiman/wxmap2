@@ -1,0 +1,256 @@
+#
+#  gnu build : created by Glenn.Carver@ecmwf.int
+#
+#  load modules to set correct environment first!
+
+# A word about typing in this code.....
+
+# Setting default-real-8 gives:
+#           CALL GBLEVN11(IMAX,JMAX,GRDS(1,1,NS))                              1
+#  Warning: Type mismatch in argument ‘grid’ at (1); passed REAL(4) to REAL(8)
+#
+#  Because in gdlevents.f, we have code like this:
+#      ALLOCATE (GRDS(imax,jmax,KMAXS), GRDV(imax,jmax,KMAX,2))
+#      CALL GBLEVN11(IMAX,JMAX,GRDS(1,1,NS))
+#      subroutine gblevn11(imax,jmax,grid) ! formerly subroutine n_s_swap
+#      implicit none 
+#      integer imax, jmax 
+#      real grid(imax,jmax)
+#
+# The allocate is creating real*4 arrays but the auto-promotion creates a real*8 array in gblevn11.
+# n.b. as GRDS is not declared anywhere, implicit typing is used.
+#
+
+# -fno-range-check removes errors about integer overflow but this looks like the code should be using -i8 not -i4?
+#   gfortran -O -c w3ai39.f 
+#   w3ai39.f:65:26:
+#           & X'F0F1F2F3F4F5F6F7',X'F8F90000007E00C0',
+#  and in:
+#  gfortran -O -DLINUX   -I../../mods/sigio -DLINUX -c mersenne_twister.f 
+#  mersenne_twister.f:176:45:
+#
+#         integer,parameter:: umask=-2147483648 ! most significant w-r bits 
+#                                             1    
+#  Error: Integer too big for its kind at (1). This check can be disabled with the option -fno-range-check
+# 
+#  and:
+#  gfortran -O -DLINUX   -I../../mods/sigio -DLINUX -c w3fi32.f
+#  w3fi32.f:80:39:
+# 
+#         DATA  MASK16/X'FFFFFFFFFFFF0000'/
+#                                        1
+# Error: Arithmetic overflow converting INTEGER(16) to INTEGER(8) at (1). This check can be disabled with the option ‘-fno-range-check’
+
+#  Mismatch types (looks like a bug):
+#  orders.f
+#  99       SUBROUTINE ORDERS(IN,ISORT,IDATA,INDEX,N,M,I1,I2)
+# 102       INTEGER(8)  IDATA(M,N),ICHEK,IBYT
+# 125          if(itype/=0) CALL ORDER4(IN,ISORT,IDATA,INDEX,N,M,I1,I2)
+# 202       SUBROUTINE ORDER4(IN,ISORT,IDATA,INDEX,N,M,I1,I2)
+# 203 
+# 204       DIMENSION   ISORT(N),INDEX(N)
+# 205       INTEGER(4)  IDATA(M,N),ICHEK,IBYT
+#   could fail if called.
+#  gfortran prints a warning.
+
+# gfortran -O -DLINUX   -I../../mods/sigio -DLINUX -c w3fp05.f
+# w3fp05.f:105:26:
+# 
+#         DATA  CRMX  /10.E70/
+#                          1
+# Error: Real constant overflows its kind at (1)
+# gfortran -O -DLINUX   -I../../mods/sigio -DLINUX -c w3fp10.f
+# w3fp10.f:118:26:
+# 
+#         DATA  CRMX  /10.E70/
+#                           1
+# Error: Real constant overflows its kind at (1)
+
+# gfortran -O -DLINUX   -I../../mods/sigio -DLINUX -c w3miscan.f
+# w3miscan.f:1175:34:
+#
+#          SWNN = RISC02(BTAA,TPWNN,LQWNN,SSTNN,JERR)
+#                                  1
+# Warning: Type mismatch in argument ‘l’ at (1); passed INTEGER(4) to REAL(4)
+
+# gfortran -O -fno-range-check  -c iw3unp29.f
+# iw3unp29.f:389:25:
+#
+#          IF(I03O29(LUNIT,OBS,IER).EQ.1) THEN
+#                         1
+# Warning: Type mismatch in argument ‘obs’ at (1); passed REAL(4) to INTEGER(4)
+
+#  This could be more serious and needs checking:
+# iw3unp29.f:301:20:
+# 
+#        COMMON/IO29CC/SUBSET,IDAT10
+# Warning: Named COMMON block ‘io29cc’ at (1) shall be of the same size as elsewhere (8 vs 12 bytes)
+
+############### Source code changes required #############################
+#
+#  trk_src/gettrk/gettrk_main.f
+#   1. Delete line 3144; which just has 'dddd' at the start of the line?!
+#
+#   2. gettrk_main.f:3521:45:
+#
+#    81   format (1x,'tpm gopen_g_file= ...',a<nlen1>
+#                                             1
+# Error: Unexpected element ‘<’ in format string at (1)
+#   --> just remove the <nlen1> & <nlen2> here.
+#
+#   3. gettrk_main.f:10871:16:
+#
+#       in_grid = 'n'
+#                1
+# Error: Can't convert CHARACTER(1) to INTEGER(4) at (1)
+#
+# gettrk_main.f:10872:20:
+#
+#       extrap_flag = 'y'
+#                    1
+# Error: Can't convert CHARACTER(1) to REAL(4) at (1)
+#
+#  Missing declarations of in_grid & extra_flag in subroutine advect_tcvitals_from_hour0
+#  add: character*1 :: in_grid, extrap_flag
+
+# trk_src/grb2index/grb2index.f
+#   /var/tmp/tmpdir/nagc/jtmp.1621/cczhmBeL.o: In function `wrgi1h_':
+#   grb2index.f:(.text+0x364): undefined reference to `hostnam_'
+#
+#  replace this line:
+#  200       CHEAD(1)(56:70)=HOSTNAM(HOSTNAME)
+#  with:
+#            character*15  chostname
+#            ....
+#            call hostnm(chostname)           ! gfortran extension
+#            CHEAD(1)(56:70)=chostname(1:15)
+#
+#  would be better to wrap this function call.
+
+#  Makefile changes:
+#  remove -lpnetcdf in gettrk/Makefile. Code doesn't seem to need it and I don't have it.
+
+SHELL           	=       /bin/sh
+
+# Listing of options that are usually independent of machine type.
+# When necessary, these are over-ridden by each architecture.
+
+#ARFLAGS			=
+
+# Variables set by arch/Config.pl:
+
+LIB_Z_PATH      =   /usr/lib64
+LIB_PNG_PATH    =   /usr/lib64
+LIB_JASPER_PATH =   /usr/lib64
+
+# -------------------- wxmap2 using build of wgrib2 libraries
+LIB_Z_PATH      =   /data/amb/users/fiorino/w21-git/app/src/ncep/grib2/lib
+LIB_PNG_PATH    =   /data/amb/users/fiorino/w21-git/app/src/ncep/grib2/lib
+LIB_JASPER_PATH =   /data/amb/users/fiorino/w21-git/app/src/ncep/grib2/lib
+
+
+# Extra flags needed for including or linking to GRIB2 library:
+GRIB2_FFLAGS    =   -I../../libs/mods/g2
+GRIB2_LIBS      =   -L/usr/lib64 -lpng -ljasper -lz
+CFLAGS_GRIB2    =   -I/usr/lib64/../include 
+
+# ------------------- wxmap2  Extra flags needed for including or linking to GRIB2 library:
+GRIB2_FFLAGS    =   -I../../libs/mods/g2
+GRIB2_LIBS      =   -L/data/amb/users/fiorino/w21-git/app/src/ncep/grib2/lib -lpng -ljasper -lz
+CFLAGS_GRIB2    =   -I/data/amb/users/fiorino/w21-git/app/src/ncep/grib2/include
+#### Architecture specific settings ####
+
+#### GC: additional env vars
+#### these are used in trk_src/gettrk/Makefile but not set by configure (or mentioned in the user guide)
+#### by luck, these are set on our Cray, but not on the desktops.
+#### Without them, library paths and include paths for netcdf, HDF5 are not set, generating errors about netcdf.inc not found
+#### (assumes: module load netcdf4 hdf5)
+NETCDF=/usr/local/apps/netcdf4/4.3.2/GNU/5.3.0
+PNETCDF=                                                  # no pnetcdf on linux desktop
+HDF5=/usr/local/apps/hdf5/1.8.13/GNU/5.3.0
+
+# ------------------ wxmap2 using wgrib2 build
+NETCDF=/usr/lib64
+PNETCDF=                                                  # no pnetcdf on linux desktop
+HDF5=/usr/lib64
+############ end of additions #####################
+
+# Settings for Linux x86_64, Gnu compiler	 (serial)#
+LDFLAGS        =                             # -Wl,-noinhibit-exec
+
+### options used:
+### -fno-range-check disables the warnings about constant overflows. This also means the values will "wrap round" and the code _may_ not behave as expected.
+### -std=legacy will disable warnings about deleted fortran features; these come from assigned goto statements.
+
+BYTE_ORDER     =   LITTLE_ENDIAN
+SFC            =   gfortran -fno-range-check
+SF90           =   gfortran -fno-range-check -ffree-form
+SCC            =   gcc
+DEBUG_FLAGS    =   -g -fbacktrace
+
+FFLAGS_SINGLE  =       #  default is i4/r4 so no flags needs
+FFLAGS_DOUBLE  =       #-fdefault-real-8 -fdefault-double-8  # not recommended because of typing issues (see above)
+
+FFLAGS         =   -O $(FFLAGS_DOUBLE)
+CFLAGS         =   -O0 -DLINUX -DUNDERSCORE -Dfunder -DFortranByte=char -DFortranInt=int -DFortranLlong='long long'
+FFLAGS_BACIO   =   -O -DLINUX $(FFLAGS_SINGLE)
+CFLAGS_BACIO   =   -O -DLINUX -DUNDERSCORE -Dfunder -DFortranByte=char -DFortranInt=int -DFortranLlong='long long'
+FFLAGS_G2      =   -O -DLINUX
+CFLAGS_G2      =   -O -DUNDERSCORE $(CFLAGS_GRIB2)
+FFLAGS_SIGIO   =   -O -DLINUX  
+FFLAGS_W3      =   -O -DLINUX $(FFLAGS_DOUBLE)
+CFLAGS_W3      =   -O -DLINUX -DUNDERSCORE -Dfunder -DFortranByte=char -DFortranInt=int -DFortranLlong='long long'
+FFLAGS_W3I4R4  =   -O -DLINUX $(FFLAGS_SINGLE)
+CFLAGS_W3I4R4  =   -O -DLINUX -DUNDERSCORE -Dfunder -DFortranByte=char -DFortranInt=int -DFortranLlong='long long'
+CPP            =   /lib/cpp 
+CPPFLAGS       =   -P -traditional-cpp -D$(BYTE_ORDER) -DWRF -DLINUX
+ARFLAGS        =  -ruv
+
+DM_FC          =   mpif90 -fc=$(SFC)
+DM_F90         =   mpif90 -fc=$(SFC) -free
+DM_CC          =   mpicc
+
+FC             =   $(SFC)
+F90            =   $(SF90)
+CC             =   $(SCC)
+
+###########################################################
+#
+#	Macros, these should be generic for all machines
+
+LN		=	ln -sf
+MAKE	=	make -i -r
+RM		= 	/bin/rm -f
+CP		= 	/bin/cp
+AR		=	ar 
+MKDIR           =       /bin/mkdir -p
+
+
+.IGNORE:
+.SUFFIXES: .c .f .F .F90 .f90 .o
+
+#	There is probably no reason to modify these rules
+
+.c.o:
+	$(RM) $@
+	$(CC) $(CFLAGS) -c $<	
+
+.f.o:
+	$(RM) $@ $*.mod
+	$(FC) $(FFLAGS) -c $< 
+
+.F.o:
+	$(RM) $@ $*.mod
+	$(CPP) $(CPPFLAGS) $(FDEFS)  $< > $*.f90
+	$(F90) $(FFLAGS) -c $*.f90 
+	$(RM) $*.f90
+
+.F90.o:
+	$(RM) $@ $*.mod
+	$(CPP) $(CPPFLAGS) $(FDEFS)  $< > $*.f90
+	$(F90) $(FFLAGS) -c $*.f90 
+	$(RM) $*.f90
+
+.f90.o:
+	$(RM) $@ $*.mod
+	$(F90) $(FFLAGS) -c $< 

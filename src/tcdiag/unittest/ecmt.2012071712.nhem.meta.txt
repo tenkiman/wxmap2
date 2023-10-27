@@ -1,0 +1,63 @@
+filename: ecmt.2012071712.nhem
+grid  ni: 720  nj: 161
+lonW:   0.00  lonE: 360.00
+latS:   0.00  latN:  80.00
+dlon:  0.500  dlat:  0.500
+nk:   8
+ 1000.0
+  850.0
+  700.0
+  500.0
+  400.0
+  300.0
+  250.0
+  200.0
+nt:  19 (taus)
+  0 ecmt.2012071712.nhem.f000.dat
+  6 ecmt.2012071712.nhem.f006.dat
+ 12 ecmt.2012071712.nhem.f012.dat
+ 18 ecmt.2012071712.nhem.f018.dat
+ 24 ecmt.2012071712.nhem.f024.dat
+ 30 ecmt.2012071712.nhem.f030.dat
+ 36 ecmt.2012071712.nhem.f036.dat
+ 42 ecmt.2012071712.nhem.f042.dat
+ 48 ecmt.2012071712.nhem.f048.dat
+ 60 ecmt.2012071712.nhem.f060.dat
+ 72 ecmt.2012071712.nhem.f072.dat
+ 84 ecmt.2012071712.nhem.f084.dat
+ 96 ecmt.2012071712.nhem.f096.dat
+108 ecmt.2012071712.nhem.f108.dat
+120 ecmt.2012071712.nhem.f120.dat
+132 ecmt.2012071712.nhem.f132.dat
+144 ecmt.2012071712.nhem.f144.dat
+156 ecmt.2012071712.nhem.f156.dat
+168 ecmt.2012071712.nhem.f168.dat
+nvarsSfc:  23  nvarsUA:   5
+uas        0          uas [m/s]                     
+vas        0          vas [m/s]                     
+psl        0          psl [mb]                      
+prw        0          psl [mb]                      
+pr         0          pr 6-h rate [mm/day]          
+vrt925     925        rel vort 925 [*1e5 /s]        
+vrt850     850        rel vort 850 [*1e5 /s]        
+vrt700     700        rel vort 700 [*1e5 /s]        
+zthklo     0          600-900 thick [m]             
+zthkup     0          300-600 thick [m]             
+z900       0          900 [m]                       
+z850       0          850 [m]                       
+z800       0          800 [m]                       
+z750       0          750 [m]                       
+z700       0          700 [m]                       
+z650       0          650 [m]                       
+z600       0          600 [m]                       
+z550       0          550 [m]                       
+z500       0          500 [m]                       
+z450       0          450 [m]                       
+z400       0          400 [m]                       
+z350       0          350 [m]                       
+z300       0          300 [m]                       
+ua         plevs      ua [m/s]                      
+va         plevs      va [m/s]                      
+hur        plevs      hur [%]                       
+ta         plevs      ta [K]                        
+zg         plevs      zg [m]                        

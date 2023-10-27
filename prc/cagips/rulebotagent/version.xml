@@ -1,0 +1,13 @@
+<jnlp-versions>
+      <resource>
+         <pattern>
+           <name>RulebotAgent.jar</name>
+            <version-id>2.09</version-id>
+         </pattern>
+         <file>RulebotAgent.jar</file>
+             
+      </resource>
+      
+      
+      
+   </jnlp-versions>

@@ -1,0 +1,33 @@
+fim8-trunk-AT0       gfs2 2014050918       nhem 000         zg  500    1.000    4.178    4.101
+fim8-trunk-AT0       gfs2 2014050918    tropics 000        uva  850    0.999    0.998    0.248    0.006
+fim8-trunk-AT0       gfs2 2014050918    tropics 000        uva  200    0.992    0.985    1.947    0.139
+fim8-trunk-AT0       gfs2 2014051018       nhem 024         zg  500    0.997    9.014    5.724
+fim8-trunk-AT0       gfs2 2014051018    tropics 024        uva  850    0.951    0.915    1.583    0.248
+fim8-trunk-AT0       gfs2 2014051018    tropics 024        uva  200    0.960    0.919    4.364    0.260
+fim8-trunk-AT0       gfs2 2014051118       nhem 048         zg  500    0.985   16.641    7.759
+fim8-trunk-AT0       gfs2 2014051118    tropics 048        uva  850    0.905    0.846    2.142    0.073
+fim8-trunk-AT0       gfs2 2014051118    tropics 048        uva  200    0.937    0.860    5.763    0.098
+fim8-trunk-AT0       gfs2 2014051218       nhem 072         zg  500    0.966   24.338    9.103
+fim8-trunk-AT0       gfs2 2014051218    tropics 072        uva  850    0.864    0.787    2.388    0.036
+fim8-trunk-AT0       gfs2 2014051218    tropics 072        uva  200    0.904    0.769    7.024    0.189
+fim8-trunk-AT0       gfs2 2014051318       nhem 096         zg  500    0.936   33.676   10.190
+fim8-trunk-AT0       gfs2 2014051318    tropics 096        uva  850    0.844    0.750    2.711    0.098
+fim8-trunk-AT0       gfs2 2014051318    tropics 096        uva  200    0.870    0.649    7.880    0.117
+fim8-trunk-AT0       gfs2 2014051418       nhem 120         zg  500    0.882   46.248   10.449
+fim8-trunk-AT0       gfs2 2014051418    tropics 120        uva  850    0.834    0.685    2.836    0.072
+fim8-trunk-AT0       gfs2 2014051418    tropics 120        uva  200    0.834    0.519    8.648    0.525
+fim8-trunk-AT0       gfs2 2014051518       nhem 144         zg  500    0.823   58.644   10.338
+fim8-trunk-AT0       gfs2 2014051518    tropics 144        uva  850    0.786    0.574    3.380    0.195
+fim8-trunk-AT0       gfs2 2014051518    tropics 144        uva  200    0.833    0.550    8.811    0.400
+fim8-trunk-AT0       gfs2 2014051618       nhem 168         zg  500    0.748   69.748    8.906
+fim8-trunk-AT0       gfs2 2014051618    tropics 168        uva  850    0.729    0.504    3.886    0.253
+fim8-trunk-AT0       gfs2 2014051618    tropics 168        uva  200    0.823    0.586    9.148    0.246
+fim8-trunk-AT0       gfs2 2014051718       nhem 192         zg  500    0.626   81.556    7.588
+fim8-trunk-AT0       gfs2 2014051718    tropics 192        uva  850    0.699    0.482    4.111    0.327
+fim8-trunk-AT0       gfs2 2014051718    tropics 192        uva  200    0.790    0.556   10.223    0.092
+fim8-trunk-AT0       gfs2 2014051818       nhem 216         zg  500    0.377  102.579    7.763
+fim8-trunk-AT0       gfs2 2014051818    tropics 216        uva  850    0.664    0.453    4.210    0.442
+fim8-trunk-AT0       gfs2 2014051818    tropics 216        uva  200    0.743    0.451   11.452    0.433
+fim8-trunk-AT0       gfs2 2014051918       nhem 240         zg  500    0.229  114.831   12.252
+fim8-trunk-AT0       gfs2 2014051918    tropics 240        uva  850    0.650    0.432    4.177    0.454
+fim8-trunk-AT0       gfs2 2014051918    tropics 240        uva  200    0.657    0.206   13.027    0.826

@@ -1,0 +1,196 @@
+/*
+   dtgops:  return current dtg value or CRDATE value if it is set
+            in shell environment.
+
+   options: 
+       -grads:   Print dtg value in GrADS format, for example
+                 1996031512 is printed as 12Z15MAR1996.
+       -|+value: Offset the current dtg value by +|-value
+                 dtgops -12 : return current dtg - 12 hrs.
+*/
+#include <iostream.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+#include "cxclock.h"
+
+// Function to convert DTG string to GrADS Time format
+
+char* dtg2grads_time(char *dtg) ;
+int is_signed_integer(char *str) ;
+
+int main(int argc , char* argv[])
+{
+   static int offset = 0  ;
+   static char tzone[]="TZ=GMT" ;
+   static int USE_GRADS_FORMAT = 0, USE_PHR=0;
+
+   int i ;
+// =======================================================
+// Process command line arguments
+   i=1 ;
+   while ( argv[i] != NULL )
+   {
+      if ( strcmp(argv[i],"-grads") == 0 )
+      {
+	  USE_GRADS_FORMAT = 1 ;
+	  i++ ;
+	  continue ;
+      } else  if ( strcmp(argv[i],"-h") == 0 ) {
+	  USE_PHR = 1 ;
+	  i++ ;
+	  continue ;
+      }
+
+      // Any valid integer value is taken as 
+      // an offset to current DTG value
+      if ( is_signed_integer(argv[i]) == 1 )
+      {    
+         offset=atoi(argv[i]) ;
+         i++ ;
+         continue ;
+      }
+// Everything else is ignored
+      i++ ;
+   }
+// =======================================================
+// For Operational DTG, we always use GMT time
+// Set TZ to GMT before instantiate cxclock object
+// 
+   putenv(tzone) ; 
+   cxclock curdtg ;    
+// ======================================================== 
+// Use the CRDATE variable if it is set
+   char dtgstr[32] , dtgstrhr[32] , *ptr ;
+   ptr=getenv("CRDATE") ;
+   if ( ptr != NULL  ) {
+      strncpy(dtgstr,ptr,10) ;
+      dtgstr[10]='\0' ;
+      cerr << "There is a CRDATE environmental parameter. Its contents = "
+           << dtgstr << '\n' ;
+   } else {
+      int hr = curdtg.hr() ;
+      float phr;
+      phr=0.0;
+      if ( (hr >= 0) && (hr < 6) ) {
+	  hr=0; 
+
+      } else if ( (hr >= 6) && (hr < 12) ) {
+	  hr=6 ;
+
+      } else if ( (hr >= 12) && (hr < 18) ) {
+	  hr=12 ;
+
+      } else if ( (hr >= 18) && (hr < 24) ) {
+	  hr=18 ;
+
+      }
+      
+      phr=((float)curdtg.hr() + (float)curdtg.min()/60.0) - (float)hr;
+
+      sprintf(dtgstr,"%04d%02d%02d%02d\0",
+              curdtg.yr(),curdtg.mon(),curdtg.dd(),hr) ;
+      sprintf(dtgstrhr,"%04d%02d%02d%02d %+4.1f \0",curdtg.yr(),curdtg.mon(),curdtg.dd(),hr,phr) ;
+   }
+//=======================================================
+// Set the gmt time to the current clock value to
+// CRDATE or current DTG TIME.
+  curdtg.reset(dtgstr) ;   
+
+// Adjust the value if we have any offset
+   if ( offset != 0 ) 
+   {
+//
+// Adjust the clock value by the offset value
+//
+      curdtg.advance(offset) ;
+      sprintf(dtgstr,"%04d%02d%02d%02d\0",
+              curdtg.yr(),curdtg.mon(),curdtg.dd(),curdtg.hr()) ;
+      cerr << "The DTG is offset by " << offset << " hours\n" ; 
+   }
+// ====================================================
+// Print out in GrADS Time Format if flag is true
+if (  USE_GRADS_FORMAT == 1 ) {
+      cout << dtg2grads_time(dtgstr) << '\n' ;
+  } else if(USE_PHR == 1) {
+      cout <<  dtgstrhr << '\n' ;
+  } else {
+      cout <<  dtgstr << '\n' ;
+
+  }
+    
+return 0 ;
+
+}
+
+/* 
+   Function: char* dtg2grads_time(char *dtg) 
+   Description: Convert a dtg value (1996081211) to GrADS 
+   time string (11Z12aug1996).
+*/
+char* dtg2grads_time(char *dtg) 
+{
+   static char grads_time_str[16] ;
+   char month[3] ;
+   if (strlen(dtg) != 10 ) return NULL ;
+/* Get the  Hour */
+  grads_time_str[0]=dtg[8] ; 
+  grads_time_str[1]=dtg[9] ; 
+  grads_time_str[2]='Z' ;
+/* Get the  Date */    
+  grads_time_str[3]=dtg[6] ; 
+  grads_time_str[4]=dtg[7] ; 
+/* Get the  Month */
+  grads_time_str[5]='\0' ;
+  month[0]=dtg[4] ;
+  month[1]=dtg[5] ;
+  month[2]='\0' ;
+  if ( strcasecmp(month,"01") == 0 )  strcat(grads_time_str,"JAN")  ; 
+  if ( strcasecmp(month,"02") == 0 )  strcat(grads_time_str,"FEB") ; 
+  if ( strcasecmp(month,"03") == 0 )  strcat(grads_time_str,"MAR") ; 
+  if ( strcasecmp(month,"04") == 0 )  strcat(grads_time_str,"APR") ; 
+  if ( strcasecmp(month,"05") == 0 )  strcat(grads_time_str,"MAY") ; 
+  if ( strcasecmp(month,"06") == 0 )  strcat(grads_time_str,"JUN") ; 
+  if ( strcasecmp(month,"07") == 0 )  strcat(grads_time_str,"JUL") ; 
+  if ( strcasecmp(month,"08") == 0 )  strcat(grads_time_str,"AUG") ; 
+  if ( strcasecmp(month,"09") == 0 )  strcat(grads_time_str,"SEP") ; 
+  if ( strcasecmp(month,"10") == 0 )  strcat(grads_time_str,"OCT") ; 
+  if ( strcasecmp(month,"11") == 0 )  strcat(grads_time_str,"NOV") ;
+  if ( strcasecmp(month,"12") == 0 )  strcat(grads_time_str,"DEC") ;
+/* Get the Year */ 
+  grads_time_str[8]=dtg[0] ; 
+  grads_time_str[9]=dtg[1] ; 
+  grads_time_str[10]=dtg[2] ; 
+  grads_time_str[11]=dtg[3] ; 
+  grads_time_str[12]='\0' ;
+
+  return grads_time_str ;
+}
+
+// This function return 0 or 1 depends on if the str is a
+// valid integer value
+int is_signed_integer(char *str)
+{
+   int nlen, i  ; 
+   int beg ;
+   if ( str==NULL ) return 0 ;
+
+   nlen=strlen(str) ;
+
+   // Check the first character of str (look for - or + sign)
+   if ( str[0] == '-' || str[0] == '+' ) 
+       beg = 1 ;
+   else 
+       beg = 0 ;
+
+   for ( i = beg ; i < nlen ; i++ )
+   {
+      if ( ! isdigit(str[i]) ) return 0 ;
+   }
+
+   return 1 ;
+}
+
+

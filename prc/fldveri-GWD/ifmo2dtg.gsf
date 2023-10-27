@@ -1,0 +1,95 @@
+# 20030106 -- ifmo2dtg -- interpolation factors monthly to dtg (hr)
+# return is month and weight
+#
+
+function ifmo2dtg(dtg)
+
+yr=substr(dtg,1,4)*1.0
+mo=substr(dtg,5,2)*1.0
+hr=substr(dtg,9,2)/24.0
+da=substr(dtg,7,2)*1.0+hr
+
+# 20030106 -- da starts at 0.0
+da=da-1.0
+
+# 20030106 -- handle leap year
+if(math_mod(yr,4)=1 & mo=2 & da >= 29.0)
+  print 'EEEEEEEEEEE invalid dtg (leap year): 'dtg
+  return('error')
+endif
+
+imo=substr(dtg,5,2)
+if(substr(imo,1,1) = '0') ; imo=substr(imo,2,1) ; endif
+
+# 20030106 -- handle leap year
+if(math_mod(yr,4)=0 & mo=2)
+  mda=(_ndymon.imo+1)*0.5
+else
+  mda=_ndymon.imo*0.5
+endif
+
+if(math_mod(yr,4)=0 & mo=2)
+  nda1=(_ndymon.imo+1)
+else
+  nda1=_ndymon.imo
+endif
+
+if(da<=mda) 
+
+  mda1=nda1*0.5
+  imo=imo-1
+  if(imo = 0) ; imo=12 ; endif
+
+# 20030106 -- handle leap year
+  if(math_mod(yr,4)=0 & imo=2)
+    nda2=_ndymon.imo+1
+  else
+    nda2=_ndymon.imo
+  endif
+
+  mda2=nda2*0.5
+  ndai=nda1-mda1+mda2
+  da=ndai - (mda-da)
+  mo=mo-1
+  w1=1-(da/ndai)
+  w2=1-w1
+  imo1=imo
+  imo2=imo+1
+  if(imo2 > 12) ; imo2 = 1 ; endif
+  return(imo1' 'w1' 'imo2' 'w2)
+endif
+
+if(da>mda)
+  mda1=nda1*0.5
+  imo1=imo
+  imo=imo+1
+  if(imo > 12) ;  imo=1 ; endif 
+  if(imo = 0) ; imo = 12 ; endif
+
+# 20030106 -- handle leap year
+  if(math_mod(yr,4)=0 & imo=2)
+    nda2=_ndymon.imo+1
+  else
+    nda2=_ndymon.imo
+  endif
+
+  mda2=nda2*0.5
+  ndai=nda1-mda1+mda2
+  da=da-mda
+  w1=1-(da/ndai)
+  w2=1-w1
+  imo2=imo
+  if(imo2 > 12) ; imo2 = 1 ; endif
+  if(imo2 = 0) ; imo2 = 12 ; endif
+  return(imo1' 'w1' 'imo2' 'w2)
+endif
+
+if(da=mda)
+  imo1=imo
+  imo2=imo
+  w1=1.0
+  w2=0.0  
+  return(imo1' 'w1' 'imo2' 'w2)
+endif
+
+return('error')

@@ -1,0 +1,28 @@
+function prwbasemap(tau,doocn)
+
+ocol=91
+'set rgb 90 100  50  25'
+'set rgb 92 245 222 179'
+'set rgb 91  10  20  85'
+'set rgb 90 112 128 144'
+'set rgb 90 119 136 153'
+
+lcol=90
+if(tau  > 0 & tau < 12) ; lcol=71 ; endif
+if(tau >= 12 & tau < 24) ; lcol=72 ; endif
+if(tau >= 24 & tau < 36) ; lcol=73 ; endif
+if(tau >= 36 & tau < 48) ; lcol=74 ; endif
+if(tau >= 48 & tau < 60) ; lcol=75 ; endif
+if(tau >= 60 & tau < 72) ; lcol=76 ; endif
+if(tau >= 72 & tau < 84) ; lcol=77 ; endif
+
+#print 'lllllllllllllll 'lcol
+'basemap.2 L 'lcol' 1'
+if(doocn)
+  'basemap.2 O 'ocol' 1'
+endif
+'set mpdset mres'
+'set map 0 0 4'
+'draw map'
+
+return

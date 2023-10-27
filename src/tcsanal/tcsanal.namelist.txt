@@ -1,0 +1,12 @@
+$parameters
+  spdcrit=15.0,
+  vcrit=7.5
+$end
+$paths
+  tcapath='/dat/nwp/dat/tc/tcstruct/2002082900/wxmap.ngp.2002082900.21w.txt',
+  tcspath='/dat/nwp/dat/tc/tcstruct/2002082900/carq.21w.2002082900.txt',
+  tcfpath='/dat/nwp/dat/tc/tcstruct/2002082900/fld.tcstruct.ngp.2002082900.dat',
+  tcopath='/dat/nwp/dat/tc/tcstruct/2002082900/tcstruct.ngp.21w.2002082900.obs',
+  tcdpath='/dat/nwp/dat/tc/tcstruct/2002082900/parms.tcstruct.ngp.21w.2002082900.txt',
+  tcppath='/dat/nwp/dat/tc/tcstruct/2002082900/profiles.tcstruct.ngp.21w.2002082900.dat',
+$end

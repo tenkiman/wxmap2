@@ -1,0 +1,56 @@
+                    *   ATLANTIC SHIPS INTENSITY FORECAST       *
+                    *      GOES DATA MISSING, PROXY USED        *
+                    *      OHC  DATA MISSING, PROXY USED        *
+                    *  TONY        AL192012  10/24/12  00 UTC   *
+
+TIME (HR)          0     6    12    18    24    36    48    60    72    84    96   108   120
+V (KT) NO LAND    35    39    43    46    48    49    44    39    38    35    31    27    23
+V (KT) LAND       35    39    43    46    48    49    44    39    38    35    31    27    23
+V (KT) LGE mod    35    37    39    40    41    39    35    32   DIS   DIS   DIS   DIS   DIS
+V (KT) TRTF       29    33    37    37    36    35    32    23     0     0     0     0     0
+
+SHEAR (KT)        17    21    26    30    34    37    50    57   N/A   N/A   N/A   N/A   N/A
+SHEAR ADJ (KT)     4     0     0     3     6     6     0   -10   N/A   N/A   N/A   N/A   N/A
+SHEAR DIR         50    45    35    35    42    50    60    76   N/A   N/A   N/A   N/A   N/A
+SST (C)         27.0  26.7  26.3  25.8  25.4  24.6  24.0  22.6   N/A   N/A   N/A   N/A   N/A
+POT. INT. (KT)   125   123   119   114   109   104   101    93   N/A   N/A   N/A   N/A   N/A
+ADJ. POT. INT.   114   112   109   103    97    93    93    86   N/A   N/A   N/A   N/A   N/A
+200 MB T (C)   -56.0 -56.0 -56.0 -55.5 -55.4 -55.9 -55.9 -58.0   N/A   N/A   N/A   N/A   N/A
+TH_E DEV (C)       8     7     7     7     7     6     6     6   N/A   N/A   N/A   N/A   N/A
+700-500 MB RH     40    36    33    30    28    31    34    46   N/A   N/A   N/A   N/A   N/A
+GFS VTEX (KT)     13    15    16    17    17    16    13     9  LOST  LOST  LOST  LOST  LOST
+850 MB ENV VOR   -16   -21   -10   -14   -30   -29   -33    12   N/A   N/A   N/A   N/A   N/A
+200 MB DIV        18    36    35    56    71    67    52    79   N/A   N/A   N/A   N/A   N/A
+LAND (KM)       1856  2008  2135  2103  2094  2123  2189  2012   N/A   N/A   N/A   N/A   N/A
+LAT (DEG N)     26.4  27.3  28.1  28.8  29.3  30.2  30.9  33.6   N/A   N/A   N/A   N/A   N/A
+LONG(DEG W)     49.8  48.7  47.0  45.2  43.8  40.7  38.0  33.3   N/A   N/A   N/A   N/A   N/A
+STM SPEED (KT)    13    15    17    15    13    15    20    21   N/A   N/A   N/A   N/A   N/A
+HEAT CONTENT      45  9999  9999  9999  9999  9999  9999  9999  9999  9999  9999  9999  9999
+
+  FORECAST TRACK FROM TRTF      INITIAL HEADING/SPEED (DEG/KT): 49/  8      CX,CY:   6/  5
+  T-12 MAX WIND:  30            PRESSURE OF STEERING LEVEL (MB):  457  (MEAN=624)
+  GOES IR BRIGHTNESS TEMP. STD DEV.  50-200 KM RAD:  14.5 (MEAN=14.5)
+  % GOES IR PIXELS WITH T < -20 C    50-200 KM RAD:  65.0 (MEAN=65.0)
+
+                        INDIVIDUAL CONTRIBUTIONS TO INTENSITY CHANGE
+                         6   12   18   24   36   48   60   72   84   96  108  120
+                        ----------------------------------------------------------
+  SAMPLE MEAN CHANGE     1.   2.   3.   4.   6.   8.   9.  11.  11.  12.  13.  13.
+  SST POTENTIAL          0.   1.   1.   1.   1.   2.   3.   5.   7.   8.   8.   9.
+  VERTICAL SHEAR MAG     1.   2.   3.   4.   3.  -1.  -9. -14. -19. -21. -23. -27.
+  VERTICAL SHEAR ADJ    -0.  -0.  -0.  -1.  -1.  -2.  -1.  -1.  -1.  -1.  -1.  -1.
+  VERTICAL SHEAR DIR    -0.  -0.  -0.  -0.  -1.  -2.  -3.  -4.  -5.  -6.  -7.  -7.
+  PERSISTENCE            1.   1.   2.   2.   2.   2.   2.   1.   1.   1.   0.  -0.
+  200/250 MB TEMP.       1.   2.   2.   3.   5.   8.  12.  16.  18.  20.  22.  23.
+  THETA_E EXCESS        -0.  -1.  -1.  -1.  -2.  -3.  -4.  -6.  -8. -10. -12. -13.
+  700-500 MB RH          0.   0.   0.   0.   1.   1.   1.   1.   1.   1.   1.   1.
+  GFS VORTEX TENDENCY    0.   1.   1.   1.   1.  -1.  -4.  -4.  -4.  -5.  -5.  -5.
+  850 MB ENV VORTICITY  -0.  -1.  -1.  -1.  -2.  -3.  -3.  -3.  -3.  -4.  -4.  -4.
+  200 MB DIVERGENCE      0.   0.   0.   1.   2.   2.   4.   5.   5.   5.   5.   5.
+  ZONAL STORM MOTION    -0.  -0.  -1.  -1.  -2.  -2.  -3.  -4.  -5.  -6.  -7.  -7.
+  STEERING LEVEL PRES    0.   0.   0.   1.   1.   2.   1.   2.   3.   2.   2.   1.
+  DAYS FROM CLIM. PEAK  -0.   0.   0.  -0.  -0.  -1.  -1.  -1.  -1.  -0.  -0.  -1.
+  GOES PREDICTORS        0.   0.   1.   1.   0.   0.  -1.  -1.  -1.  -1.  -1.  -1.
+  OCEAN HEAT CONTENT    -0.  -0.  -0.  -0.  -0.  -0.   0.   0.   0.   0.  -0.  -0.
+                        ----------------------------------------------------------
+  TOTAL CHANGE           4.   8.  11.  13.  14.   9.   4.   3.  -0.  -4.  -8. -12.

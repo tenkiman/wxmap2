@@ -1,0 +1,13 @@
+function tcftof()
+
+_ntcbt=0
+
+etau=120
+dtau=12
+tau=0
+while(tau<=etau)
+  _ntcof.tau=0
+  tau=tau+dtau
+endwhile
+
+return

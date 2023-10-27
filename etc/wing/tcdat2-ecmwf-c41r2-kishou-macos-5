@@ -1,0 +1,29 @@
+#!wing
+#!version=5.0
+##################################################################
+# Wing IDE project file                                          #
+##################################################################
+[project attributes]
+proj.directory-list = [{'dirloc': loc('../../prc/lib/python'),
+                        'excludes': (),
+                        'filter': u'All Source Files',
+                        'include_hidden': False,
+                        'recursive': False,
+                        'watch_for_changes': True},
+                       {'dirloc': loc('../../prc/tcdat'),
+                        'excludes': (),
+                        'filter': u'All Source Files',
+                        'include_hidden': False,
+                        'recursive': False,
+                        'watch_for_changes': True},
+                       {'dirloc': loc('../../../w21-git/prj/tc/20160406_ecmwf_c41r2-2016030812_trackers'),
+                        'excludes': [u'orig',
+                                     u'DSs',
+                                     u'ops',
+                                     u'c41r2',
+                                     u'adeck'],
+                        'filter': u'All Source Files',
+                        'include_hidden': False,
+                        'recursive': True,
+                        'watch_for_changes': True}]
+proj.file-type = 'shared'

@@ -1,0 +1,23 @@
+AuthUserFile /home/amb/fiorino/.htpasswd
+AuthGroupFile /home/amb/fiorino/.htgroup
+AuthName WxMAP2
+AuthType Basic
+
+
+<Limit GET POST PUT>
+order deny,allow
+deny from all
+#allow from fsl.noaa.gov
+allow from .fsu.edu
+allow from .noaa.gov
+allow from .navy.mil
+allow from .af.mil
+allow from .gsfc.nasa.gov
+#allow from 169.154.204.2
+#allow from 160.39.218.*
+
+require group wxmap2_users
+
+satisfy any
+
+</Limit> 

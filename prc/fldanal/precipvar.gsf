@@ -1,0 +1,240 @@
+function precipvar()
+
+#pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
+#
+#	define precipitation
+#
+#pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
+
+_dtgukm='2017042512'
+_dtggfsfv3='2019061212'
+
+if(_model = 'ecm')
+  _prvar='( const(pr(t+0),0,-u)-const(pr(t-1),0,-u) ))*2*1000'
+endif
+
+if(_model = 'ecmn')
+  if(_tau <= 48) 
+    _prvar='( const(pr(t+0),0,-u)-const(pr(t-1),0,-u) ))*4*1000'
+  else
+    _prvar='( const(pr(t+0),0,-u)-const(pr(t-1),0,-u) ))*2*1000'
+  endif
+endif
+
+if(_model = 'ecmg')
+  _prvar=''
+endif
+
+#
+# dump bucket every 12-h for 12-h data.
+#
+if(_model = 'cmc' | _model = 'cgd2')
+
+  if(_tau <= 6)
+    _prvar='( const(pr(t+1),0,-u)-const(pr(t-0),0,-u) ))*4'
+  endif
+  
+  if(_tau > 6 & _tau <= 144)
+    _prvar='(( const(pr(t+0),0,-u)-const(pr(t-1),0,-u) )*4)'
+  endif
+  
+  if(_tau > 144)
+    _prvar='(( const(pr(t+0),0,-u)-const(pr(t-2),0,-u) )*2)'
+  endif
+  
+endif
+
+if(_model = 'ngp' | _model = 'ngp2'  | _model = 'ngpc'  | _model = 'ngpj') 
+  _prvar='2*pr'
+  _prvar='4*pr'
+endif
+
+if(_model = 'navg')
+
+  if(_tau = 0)
+    _prvar='pr(t+1)*4'
+  else
+    _prvar='pr*4'  
+  endif
+  
+  
+endif
+
+if(_model = 'ukm')
+  _prvar='pr(t+0)*24*3600'
+endif
+
+if(_model = 'ukm2' | _model = 'ukmc')
+
+  _prvar='pr(t+0)*2'
+
+  if(_tau = 0)
+    _prvar='((pr(t-1)+pr(t+1))*0.5)*2'
+  endif
+
+  if(_tau = 6)
+    _prvar='((pr(t-1)+pr(t+1))*0.5)*2'
+  endif
+
+  _prvar='pr(t+0)*2'
+
+  if(_tau = 0)
+    _prvar='((pr(t-0)+pr(t+1)))*2'
+  endif
+
+# -- new precip in native format
+#
+  dtgdd=dtgdiff(_dtgukm,_bdtg)
+  if(dtgdd >= 0)
+
+    if(_tau = 0)
+      _prvar='(pr(t+1)-pr(t-0))*4'
+      _prvar='pr(t-0)*4'
+    endif
+  
+    if(_tau >= 6 & _tau <= 66)
+      _prvar='((pr(t-0)-pr(t-1)))*4'
+    endif
+
+    if(_tau >= 72 & _tau <= 168)
+      _prvar='((pr(t-0)-pr(t-2)))*2'
+    endif
+    
+  endif
+
+endif
+
+if(_model = 'gfs')
+  _prvar='pr*24*3600'
+endif
+
+# -- accumulated pr
+#
+if(_model = 'jmac')
+
+  if(_tau >= 0 & _tau <= 72)
+    _prvar='(const(pr(t+0),0,-u) - const(pr(t-1),0,-u) )*4'
+  endif
+
+  if(_tau = 78 | _tau = 90 | _tau = 102 | _tau = 114 | _tau = 126)
+      _prvar='(const(pr(t+1),0,-u) - const(pr(t-1),0,-u) )*2'
+  endif
+  
+  if(_tau = 84 | _tau = 96 | _tau = 108 | _tau = 120 | _tau = 132  | _tau = 144  | _tau = 156  | _tau = 168  )
+      _prvar='(const(pr(t+0),0,-u) - const(pr(t-2),0,-u) )*2'
+  endif
+ 
+endif
+
+
+# -- GGGGGGGGGFFFFFFFFFSSSSSSSSS222222222
+# -- 2019061212 start of gfs-fv3
+#
+if(_model = 'gfs2' |  _model = 'gfsc')
+  _prvar='pr*4'
+  
+  dtgdd=dtgdiff(_dtggfsfv3,_bdtg)
+  
+  if(dtgdd >= 0)
+  
+    if(_tau = 0 | _tau = 6)
+      _prvar='pr(t+1)*4'
+    endif
+  
+    if(_tau >= 12 & _tau <= 66)
+      _prvar='((pr(t-0)-pr(t-1)))*4'
+    endif
+
+    if(_tau >= 72 & _tau <= 196)
+      _prvar='((pr(t-0)-pr(t-2)))*4'
+    endif
+    
+  endif
+
+endif
+
+# -- use tota accum for latest UPP for fv3
+
+if(_model = 'fv3e' | _model = 'fv3g')
+  _prvar='pr*4'
+  _prvar='( const(pr(t+0),0,-u)-const(pr(t-1),0,-u) ))*4'
+endif
+
+if(_model = 'fim8' | _model = 'fimx' )
+  _prvar='(const(pr(t+0),0,-u) - const(pr(t-1),0,-u) )*4'
+#
+# now dump bucket every 3 h (?) -- 61,1,1 is being written twice!
+# nope just like gfs
+#
+  _prvar='pr*4'
+endif
+
+#
+# precip is not 6-h
+#
+if(_model = 'ecm2')
+  _prvar='( const(pr(t+0),0,-u)-const(pr(t-1),0,-u) ))*4*1000'
+endif
+
+if(_model = 'ecm4')
+  _prvar='( const(pr(t+0),0,-u)-const(pr(t-1),0,-u) ))*4*1000'
+endif
+
+if(_model = 'ecmt')
+  _prvar='( const(pr(t+0),0,-u)-const(pr(t-1),0,-u) ))*4'
+endif
+
+if(_model = 'jgsm')
+
+  if(_tau = 0)
+    _prvar='(( const(pr(t+1),0,-u)-const(pr(t-0),0,-u) )*4)'
+  endif
+  
+  if(_tau >= 6 & _tau <= 132)
+    _prvar='(( const(pr(t+0),0,-u)-const(pr(t-1),0,-u) )*4)'
+  endif
+   
+endif
+
+
+if(_model = 'ecm5' | _model = 'era5')
+
+  if(_tau = 0)
+    _prvar='(( const(pr(t+1),0,-u)-const(pr(t-0),0,-u) )*4)'
+  endif
+  
+  if(_tau >= 6 & _tau <= 120)
+    _prvar='(( const(pr(t+0),0,-u)-const(pr(t-1),0,-u) )*4)'
+  endif
+   
+  if(_tau > 120 & _tau <= 196)
+    _prvar='(( const(pr(t+0),0,-u)-const(pr(t-2),0,-u) )*2)'
+  endif
+
+endif
+
+#
+# dump bucket every 12 h  for 6-h data
+#
+if(_model = 'cmc2')
+  _prvar='( const(pr(t+2),0,-u)-const(pr(t-0),0,-u) ))*2'
+endif
+
+#
+# misc models
+#
+
+if(_model = 'gsm') 
+  _prvar='( const(pr(t+),0,-u)-const(pr(t-1),0,-u) ))*2'
+endif
+
+if(_model = 'ifs') 
+  _prvar='( const(prc(t+0),0,-u)-const(prc(t-1),0,-u) ) + (const(prl(t+0),0,-u)-const(prl(t-1),0,-u) ) ) *2*1000'
+endif
+
+
+
+
+return
+
+

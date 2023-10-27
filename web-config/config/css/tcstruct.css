@@ -1,0 +1,81 @@
+body  {
+	background-image : url("/wxmap2/icon/wxmap.bkg.2.gif");
+}
+div  {
+	border: medium ridge;
+	background-color : White;
+	text-align :center;
+	width: 100%;
+	margin : 4px 4px 4px 4px;
+	border-left-color: #5F3729;
+	border-bottom-color: #5F3729;
+	border-top-color: #5F3729;
+	border-right-color: #5F3729;
+}
+table  { 
+     background-color: White;
+	 border: medium ridge;
+	 border-bottom-color: #5F3729;
+	 border-left-color: #5f3729;
+	 border-right-color: #5f3729;
+	 border-top-color: #5f3729;
+	 }
+table.clear  { 
+         background-color: transparent;
+	 border: none;
+	 }
+table.tform  { 
+     border-style: none;
+	 }
+ td  {
+      font-size: 14pt;
+	  font-weight: bold;
+	  padding: 4px 0px 4px 0px;
+	  }
+td.form  {
+	  padding: 0px 0px 0px 0px;
+	  font-size: 08pt;
+	  }
+td.tddtg  {
+	  padding: 1px 1px 1px 1px;
+	  font-size: 14pt;
+	  }
+td.big  {
+	  padding: 0px 25px 0px 25px;
+	  font-size: 12pt;
+	  }
+td.med  {
+	  padding: 0px 10px 0px 10px;
+	  font-size: 11pt;
+	  }
+td.sml  {
+	  padding: 0px 30px 0px 30px;
+	  font-size: 10pt;
+	  }
+li  {
+	list-style-image: url("/wxmap2/icons/bluedot.gif");
+	text-indent : 5px;
+}
+.active  {
+	list-style-image: url("icons/reddot.gif");
+	text-indent : 5px;
+}
+.title  {
+	border: none;
+	text-align: center;
+	font-size: 16pt;
+	color: Navy;
+	font-family:verdana,arial,helvetica,san-serif;
+	font-weight: bolder;
+	font-style: italic;
+}
+
+.plttitle  {
+	border: none;
+	text-align: center;
+	font-size: 12pt;
+	color: Navy;
+	font-family:verdana,arial,helvetica,san-serif;
+	font-weight: bolder;
+}
+

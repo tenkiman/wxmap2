@@ -1,0 +1,217 @@
+
+#
+#-------------------------- gpw200 ------------------
+#
+function gpw200(k)
+
+reres=0.75
+plev=200
+
+if(_model = 'ecmn') ; plev=250 ; endif
+
+t1=plev'mb  Streamlines and Isotachs [kt]'
+rc=dtitle(t1)
+pstat=1
+_shades=0
+
+dsiz0=0.04
+if(_area = 'nhem' | _area = 'conus') ;  dsiz0=0.04 ; endif
+if(_area = 'tropenso') ;  dsiz0=0.04 ; endif
+
+
+if(_model='era15')
+  fn=ofile(_pcmdiobs'/uva/rnl_ecm/ac/uva.rnl_ecm.ac.7901.9402.ctl')
+say 'EEEEEE fn = 'fn
+  if(fn=0) ; return(pstat) ; endif
+  yrb=tyear(_bdtg)
+  m1=subwrd(yrb,1)
+  w1=subwrd(yrb,2)
+  m2=subwrd(yrb,3)
+  w2=subwrd(yrb,4)
+  say 'yyy era15 '_bdtg' 'm1' 'w1' 'm2' 'w2
+  'set lev 'plev
+  'u2=(ua.'fn'(t='m1')*'w1' + ua.'fn'(t='m2')*'w2')'
+  'v2=(va.'fn'(t='m1')*'w1' + va.'fn'(t='m2')*'w2')'
+  'u2=u2*'_ms2kt
+  'v2=v2*'_ms2kt
+else
+  'set lev 'plev
+  'u2=ua(lev='plev')*'_ms2kt
+  'v2=va(lev='plev')*'_ms2kt
+endif
+
+doregridua=_regridua
+doregridshr=_regridshr
+barbskip=_bskip
+
+if(_area = 'nhem'); doregridua=1 ; doregridshr=1 ; barbskip=10 ; endif
+if(_area = 'tropenso'); doregridua=1 ; doregridshr=1 ; barbskip=8 ; endif
+
+if(_ukfill=1)
+  rc=lonfill('u2')
+  rc=lonfill('v2')
+endif
+
+'m2=mag(u2,v2)'
+
+if(doregridua = 1)
+  'u2=re(u2,'reres')'
+  'v2=re(v2,'reres')'
+endif
+
+'m2s=mag(u2,v2)'
+
+'u2s=u2'
+'v2s=v2'
+
+# -- why??? 20170713
+#if(doregridshr = 1)
+#  'u2s=re(u2,1)'
+#  'v2s=re(v2,1)'
+#  'm2s=re(m2,1)'
+#endif
+
+rcu=datachk(u2)
+rcv=datachk(v2)
+
+if(rcu=0 & rcv=0)
+
+'set grads off'
+pstat=0
+
+'set xlint '_xlint
+'set ylint '_ylint
+
+colscheme=jae
+
+if(colscheme=jae)
+  rc=jaecol()
+endif
+
+if(colscheme=efs)
+  rc=efscol(efs_2)
+  i=subwrd(rc,1)
+  ie=subwrd(rc,2)
+  card='set rbcols '
+  while(i<=ie)
+    card=card' 'i
+    i=i+1
+  endwhile
+  card
+endif
+
+
+'set gxout shaded'
+'set csmooth on'
+
+'set clevs 20 30 40 50 60 70 80 100 110 120 130 140 150'
+'set rgb 21 255 250 170'
+'set rgb 22 255 232 120'
+'set rgb 23 255 192  60'
+'set rgb 24 255 160   0'
+'set rgb 25 255  96   0'
+'set rgb 26 255  50   0'
+'set rgb 27 225  20   0'
+'set rgb 28 192   0   0'
+'set rgb 29 165   0   0'
+
+*light blue to dark blue
+'set rgb 41 200 255 255'
+'set rgb 42 175 240 255'
+
+'set rgb 43 130 210 255'
+'set rgb 43 100 190 255'
+
+'set rgb 44  95 190 250'
+
+'set rgb 45  75 180 240'
+'set rgb 45  40 160 225'
+
+'set rgb 46  60 170 230'
+
+'set rgb 47  40 150 210'
+'set rgb 47  10 80 160'
+
+'set rgb 48  00 65 140'
+
+'set rgb 49  00 50 100'
+
+'set ccols 0 49 48 47 45 43 21 22 23 24 25 26 27 29'
+
+# green = 91
+# yellow = 92
+# orange = 93
+# blue = 94
+# red = 95
+# brown = 96
+
+dosafa=0
+if(dosafa)
+'set rgb 91 152 251 152'
+'set rgb 92 255 255   0'
+'set rgb 93 255 165   0'
+'set rgb 94 173 215 230'
+'set rgb 95 255   0   0'
+'set rgb 96 165  42  42'
+
+
+'set ccols  0  91   94   93   95  96'
+'set clevs   20   30  40   60   80'
+
+endif
+# -- black doesn't render in printim for v2.1?
+'set rgb 99 1 1 1'
+bcol=0
+bcol=99 
+
+'d m2'
+'q shades'
+_shades=result
+
+vrtcnt=0
+if(vrtcnt)
+'set gxout contour'
+'set cint 20'
+'set ccolor 'bcol
+'set clab off'
+'set black 0 20'
+'set grads off'
+'d m2'
+endif
+
+'set gxout stream'
+'set strmden '_strmdenua2' '_strmspace
+
+'set cthick '_cthkbp
+'set ccolor 'bcol
+'d u2s;v2s'
+'set cthick '_cthkp
+'set ccolor 34'
+'d u2s;v2s'
+
+'set gxout barb'
+'set cthick '_cthkb
+'set ccolor 'bcol
+
+'set digsiz 'dsiz0
+
+'d skip(maskout(u2s,m2s-65),'barbskip');maskout(v2s,m2s-65)'
+
+'set cthick '_cthk
+#'set cthick 3'
+'set ccolor 2'
+'d skip(maskout(u2s,m2s-65),'barbskip');maskout(v2s,m2s-65)'
+
+'set ccolor 'bcol
+'d skip(maskout(u2s,m2s-100),'barbskip');maskout(v2s,m2s-100)'
+
+if(_dobasemap != 1)
+  rc=drawmap()
+endif
+
+endif
+
+rc=dtitle(t1)
+if(_shades != 0 & subwrd(_shades,1) != 'None') ; rc=cbarc() ; endif
+
+return(pstat)

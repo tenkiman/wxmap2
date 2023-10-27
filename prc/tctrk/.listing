@@ -1,0 +1,8 @@
+drwxr-xr-x    2 ftp      ftp          4096 Apr 01 12:31 .
+drwxr-xr-x   23 ftp      ftp         16384 Apr 01 05:06 ..
+-rw-r--r--    1 ftp      ftp       1354815 Apr 01 07:02 kwbc_20200401000000_CENS_glob_prod_esttr_glo.xml
+-rw-r--r--    1 ftp      ftp         66189 Apr 01 07:00 kwbc_20200401000000_CMC_glob_prod_sttr_glo.xml
+-rw-r--r--    1 ftp      ftp       1413868 Apr 01 06:32 kwbc_20200401000000_GEFS_glob_prod_esttr_glo.xml
+-rw-r--r--    1 ftp      ftp         71641 Apr 01 05:06 kwbc_20200401000000_GFS_glob_prod_sttr_glo.xml
+-rw-r--r--    1 ftp      ftp       1377484 Apr 01 12:31 kwbc_20200401060000_GEFS_glob_prod_esttr_glo.xml
+-rw-r--r--    1 ftp      ftp         68918 Apr 01 11:06 kwbc_20200401060000_GFS_glob_prod_sttr_glo.xml
