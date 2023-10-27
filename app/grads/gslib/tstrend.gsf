@@ -1,0 +1,42 @@
+function tstrend(v,bt,et)
+
+'set t 'bt
+nt=et-bt+1
+
+print 'nnnnnnnnn 'nt
+
+#
+# remove time mean to improve numerical precision
+#
+
+'x2b=ave('v',t='bt',t='et')'
+
+'sum12=const('v',0,-a)'
+'sum1=const('v',0,-a)'
+'sum2=const('v',0,-a)'
+'sum1s=const('v',0,-a)'
+'sum2s=const('v',0,-a)'
+
+i=bt
+
+n=1
+while(i<=et)
+
+  'set t 'i
+
+  'x2='v'-x2b'
+  'x1=const(x2b,'n',-a)'
+  'sum1=sum1+x1'
+  'sum1s=sum1s+x1*x1'
+  'sum12=sum12+x1*x2'
+  'sum2=sum2+x2'
+
+  i=i+1
+  n=n+1
+endwhile
+
+'set t 'bt
+'b=('nt'*sum12 - sum1*sum2)/('nt'*sum1s - sum1*sum1)'
+
+
+return

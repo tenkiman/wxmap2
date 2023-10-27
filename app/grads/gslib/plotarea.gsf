@@ -1,0 +1,56 @@
+function plotarea(np,pp,laydir,pytoff,pyboff)
+*
+*	switch the sense of the layout direction if portrait
+*
+if(_orient='port')
+  if(laydir=1)
+    laydir=0 
+  else
+    laydir=1
+  endif
+endif
+
+dpagex=_pagex
+dpagey=_pagey-(pytoff+pyboff)
+
+nbl1="1 2 3 2 2 2 2 2 2 2 3 3"
+nbl0="1 1 1 2 3 3 4 4 5 5 4 4"
+
+npx=subwrd(nbl1,np)
+npy=subwrd(nbl0,np)
+
+if(laydir=0)
+  npx=subwrd(nbl0,np)
+  npy=subwrd(nbl1,np)
+endif
+
+dpx=dpagex/npx
+dpy=dpagey/npy
+dxb=(1.0-pp)*dpx*0.5
+dyb=(1.0-pp)*dpy*0.5
+### print 'qqq kk = 'np' 'npx' 'npy' 'dpx' 'dpy' 'dxb' 'dyb
+
+l=1
+j=npy
+while(j>=1)
+
+  y0=pyboff+(j-1)*dpy
+  y1=pyboff+j*dpy
+
+  i=1
+  while(i<=npx & l<=np)
+    x0=(i-1)*dpx
+    x1=i*dpx
+
+    _xpl.l=x0+dxb
+    _xpr.l=x1-dxb
+    _ypt.l=y1-dyb
+    _ypb.l=y0+dyb
+
+    i=i+1
+    l=l+1
+  endwhile
+  j=j-1
+endwhile
+
+return

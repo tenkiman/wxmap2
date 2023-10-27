@@ -1,0 +1,76 @@
+**************************************************
+*
+*  metadata
+*
+**************************************************
+
+function metadata(j,varo,verb)
+
+if(verb = '' | verb='verb'); verb=0 ; endif
+'set dfile 'j
+'q file'
+
+card=sublin(result,5)
+_nx.j=subwrd(card,3)
+_ny.j=subwrd(card,6)
+_nz.j=subwrd(card,9)
+_nt.j=subwrd(card,12)
+card=sublin(result,6)
+_nv.j=subwrd(card,5)
+
+if(verb); print 'nx '_nx.j' ny '_ny.j' nx '_nz.j' nt '_nt.j' nv '_nv.j ; endif
+
+if(varo='y') 
+  i=1
+  while(i<=_nv.j)
+    ii=6+i
+    card=sublin(result,ii)
+    _vr.i.j=subwrd(card,1)
+    _nl.i.j=subwrd(card,2)
+    _un.i.j=subwrd(card,3)
+    bd=wrdpos(card,4)
+    _ds.i.j=substr(card,bd,120)
+    if(verb); print 'var 'i' vr '_vr.i.j' nl '_nl.i.j' un '_un.i.j' ds '_ds.i.j ; endif
+    i=i+1
+  endwhile
+endif
+'q ctlinfo'
+
+_dx.j=-999.
+_dy.j=-999.
+
+card4=sublin(result,4)
+card5=sublin(result,5)
+card6=sublin(result,6)
+
+plevs='---'
+if(subwrd(card6,3) = 'levels')
+  plevs=''
+  i=1
+  while(i <= _nz.j)
+    ii=i+3
+    pl=subwrd(card6,ii)
+    plevs=plevs' 'pl
+    i=i+1
+  endwhile
+endif
+
+if(verb) ; print 'levs 'plevs ; endif
+_plevs.j=plevs
+
+if(subwrd(card4,3) = 'linear')
+  _x0.j=subwrd(card4,4)
+  _dx.j=subwrd(card4,5)
+endif
+
+if(subwrd(card5,3) = 'linear')
+  _y0.j=subwrd(card5,4)
+  _dy.j=subwrd(card5,5)
+endif
+
+if(verb)
+  print 'xxx '_x0.j' dx '_dx.j
+  print 'yyy '_y0.j' dy '_dy.j
+endif
+
+return

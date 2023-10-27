@@ -1,0 +1,61 @@
+function pltradii(lon,lat,drs)
+
+'set rgb 98 254 254 254'
+'set rgb 99 200 200 200'
+
+nr=1
+dr.nr=subwrd(drs,nr)
+while(dr.nr != '' & nr<5)
+  nr=nr+1
+  dr.nr=subwrd(drs,nr)
+endwhile
+
+nr=nr-1
+
+rc=ll2xy(lon,lat)
+xc=subwrd(rc,1)
+yc=subwrd(rc,2)
+sizc=0.1
+
+'set line 98 1 6'
+'draw mark 3 'xc' 'yc' 'sizc
+
+n=1
+while(n<=nr)
+
+  dlat=dr.n/60.0
+
+  latn=lat+dlat
+  lats=lat-dlat
+
+  rc=ll2xy(lon,latn)
+  xn.n=subwrd(rc,1)
+  yn.n=subwrd(rc,2)
+
+  rc=ll2xy(lon,lats)
+  xs.n=subwrd(rc,1)
+  ys.n=subwrd(rc,2)
+
+  dy.n=yn.n-ys.n
+
+  'set line 99 1 6'
+  'draw mark 2 'xc' 'yc' 'dy.n
+
+  lsiz=0.125
+  lcol=98
+  lthk=10
+  'set strsiz 'lsiz
+  'set string 'lcol' bc 'lthk
+  'draw string 'xn.n' 'yn.n' 'dr.n
+
+  lcol=2
+  lthk=5
+  'set strsiz 'lsiz
+  'set string 'lcol' bc 'lthk
+  'draw string 'xn.n' 'yn.n' 'dr.n
+
+  n=n+1
+
+endwhile
+
+return

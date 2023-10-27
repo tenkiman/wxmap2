@@ -1,0 +1,4 @@
+function ndayyear(yr)
+nday=365
+if(mod(yr,4) = 0) ; nday=366 ; endif
+return(nday)

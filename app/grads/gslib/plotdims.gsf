@@ -1,0 +1,22 @@
+function plotdims()
+*
+*	get the dimensions of the plot
+*
+*	do a dummy plot go the dimension
+*
+  'q gxinfo'
+  card=sublin(result,2)
+  _pagex=subwrd(card,4)
+  _pagey=subwrd(card,6)
+  if(_pagex>_pagey) ; _orient='land' ; endif
+  if(_pagey>_pagex) ; _orient='port' ; endif
+
+  card=sublin(result,3)
+  _xlplot=subwrd(card,4)
+  _xrplot=subwrd(card,6)
+
+  card=sublin(result,4)
+  _ybplot=subwrd(card,4)
+  _ytplot=subwrd(card,6)
+
+return

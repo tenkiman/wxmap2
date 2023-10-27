@@ -1,0 +1,53 @@
+function darrow(x,y,len,dir,acol,asty,athk,lab,labopt)
+
+ss=0.10
+'set strsiz 'ss
+
+arrang=30
+arrscl=0.20
+arrlen=len*arrscl
+dd=dir*_d2r
+xl=math_sin(dd)*len
+yl=math_cos(dd)*len
+
+xls=math_sin(dd)*len*1.05
+yls=math_cos(dd)*len*1.05
+
+da1=(dir+arrang)*_d2r
+da2=(dir-arrang)*_d2r
+xa1=math_sin(da1)*arrlen
+ya1=math_cos(da1)*arrlen
+
+xa2=math_sin(da2)*arrlen
+ya2=math_cos(da2)*arrlen
+
+xa1=x+xl-xa1
+ya1=y+yl-ya1
+
+xa2=x+xl-xa2
+ya2=y+yl-ya2
+
+
+x1=x+xl
+y1=y+yl
+
+#print 'AAAA set line 'acol' 'asty' 'athk
+
+
+'set line 'acol' 'asty' 'athk
+
+'draw line 'x1' 'y1' 'xa1' 'ya1
+'draw line 'x1' 'y1' 'xa2' 'ya2
+'draw line 'x' 'y' 'x1' 'y1
+
+if(lab = '' | lab ='lab') ; return ;endif
+
+ddd=90-dir
+jj='l'
+
+if(ddd < -90)
+jj='r'
+ddd=ddd+180
+endif
+
+

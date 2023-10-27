@@ -1,0 +1,41 @@
+function barlgnd(ltitle)
+
+'set line 'lcol' 'lsty' 'lthk
+
+dx=0.75
+dxs=0.20
+xb=_llx
+xe=_llx+dx
+
+yb=_lly
+ye=yb
+
+yeb=yb+_ldy*0.35
+ybb=yb-_ldy*0.35
+
+xb1=xb
+xe1=xb+dx*0.5
+
+xb2=xe1
+xe2=xe
+
+lsiz=0.075
+xs=xe+dxs
+
+if(_bbse != ''  & _bbse != '_bbse')
+  'set line '_bcol
+  'draw recf 'xb' 'ybb' 'xe' 'yeb
+else
+  'set line '_bcola
+  'draw recf 'xb1' 'ybb' 'xe1' 'yeb
+  'set line '_bcolb
+  'draw recf 'xb2' 'ybb' 'xe2' 'yeb
+endif
+
+'set string 1 l 5'
+'set strsiz 'lsiz
+'draw string  'xs' 'ye' 'ltitle
+
+_lly=_lly+_ldy
+
+return

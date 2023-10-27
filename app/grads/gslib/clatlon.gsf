@@ -1,0 +1,23 @@
+function clatlon(rlat,rlon)
+
+r1=math_abs(rlat)
+r2=math_format('%04.1f',r1)
+
+clat=r2'N'
+if(rlat<0) ; clat=r2'S' ; endif
+
+r1=math_abs(rlon)
+r2=math_format('%05.1f',r1)
+
+clon=r2'E'
+if(rlon<0) ; clon=r2'W' ; endif
+if(rlon>180.0)
+  rlon=360.0-rlon
+  r1=math_abs(rlon)
+  r2=math_format('%05.1f',r1)
+  clon=r2'W'
+endif
+
+return(clat' 'clon)
+
+

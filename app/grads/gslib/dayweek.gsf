@@ -1,0 +1,22 @@
+function dayweekinc(cdayweek,inc)
+
+i=1
+while(i<=7)
+  if(cdayweek = subwrd(_dayweek,i))
+    idayweek=i
+  endif
+  i=i+1
+endwhile
+
+idayweek=idayweek-inc
+
+if(idayweek<1)
+  idayweek=7+idayweek
+endif
+
+ndayweek=subwrd(_dayweek,idayweek)
+return(ndayweek)
+
+
+
+

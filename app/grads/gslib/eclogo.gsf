@@ -1,0 +1,54 @@
+
+function eclogo(xb1,yb1,csiz)
+
+x1=xb1-csiz*0.6
+y1=yb1-csiz*0.6
+x2=x1+csiz*1.5
+y2=y1+csiz*1.0
+
+'set line 0 0 0'
+'draw recf 'x1' 'y1' 'x2' 'y2
+
+cthk=0.55
+cthk=csiz*cthk
+
+xb2=xb1+csiz*0.5
+yb2=yb1
+'set line 1 0 0'
+'draw mark 3 'xb1' 'yb1' 'csiz
+'set line 0 0 0'
+'draw mark 3 'xb1' 'yb1' 'cthk
+'set line 1 0 0'
+'draw mark 3 'xb2' 'yb2' 'csiz
+'set line 0 0 0'
+'draw mark 3 'xb2' 'yb2' 'cthk
+'set line 0 0 0'
+'draw mark 3 'xb1' 'yb2' 'cthk
+
+blen=cthk
+bhgt=0.5*blen
+
+x1=xb2-blen*0.5+csiz*0.5
+y1=yb2-bhgt*0.5
+x2=xb2+blen*0.5+csiz*0.5
+y2=yb2+bhgt*0.5
+'set line 0 0 0'
+'draw recf 'x1' 'y1' 'x2' 'y2
+
+x1=xb1-blen*0.5-csiz*0.5
+y1=yb1-bhgt*0.4
+x2=xb1+blen*0.5-csiz*0.5
+y2=yb1+bhgt*0.4
+
+'set line 0 0 0'
+'draw recf 'x1' 'y1' 'x2' 'y2
+
+x1=xb1-csiz*0.5
+y1=yb1-bhgt*0.25
+x2=x1+cthk*0.8
+y2=yb1+bhgt*0.25
+
+'set line 1 0 0'
+'draw recf 'x1' 'y1' 'x2' 'y2
+return(0)
+

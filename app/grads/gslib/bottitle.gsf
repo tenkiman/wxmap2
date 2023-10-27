@@ -1,0 +1,50 @@
+**************************************************
+*
+*-------------------------- bottitle ------------------
+*
+**************************************************
+
+function bottitle(t1,t2,scale,t1col,t2col,sopt)
+
+if(scale < 0)
+  scale=scale*-1.0
+endif
+
+  'q gxinfo'
+  card=sublin(result,2)
+
+  pagex=subwrd(card,4)
+  pagey=subwrd(card,6)
+
+  xr=pagex
+  xl=0
+  y1=0.22
+  y2=0.08
+
+if(sopt = 'left') 
+  xs=0.2
+else
+  xs=xl+(xr-xl)*0.5
+endif
+
+  tsiz=0.09
+  if(scale != 'scale') ; tsiz = tsiz * scale ; endif
+
+  'set strsiz 'tsiz
+if(sopt = 'left')
+  'set string 't1col' l 5'
+else
+  'set string 't1col' c 5'
+endif
+  'draw string 'xs' 'y1' 't1
+
+  if(t2 != '')
+if(sopt = 'left')
+  'set string 't2col' l 5'
+else
+  'set string 't2col' c 5'
+endif
+    'draw string 'xs' 'y2' 't2
+endif
+
+return

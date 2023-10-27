@@ -1,0 +1,12 @@
+function dtg2mo(dtgh)
+*
+*  convert FNMOC DTG (full) to GrADS time
+*
+  iyr=substr(dtgh,1,4)*1
+  imo=substr(dtgh,5,2)*1
+  ida=substr(dtgh,7,2)*1
+  ihr=substr(dtgh,9,2)*1
+  nmo=subwrd(_monamel,imo)
+  umo=subwrd(_monameu,imo)
+  imo=i
+return (umo' 'nmo)

@@ -1,0 +1,82 @@
+This directory contains the 1:2,000,000-scale Digital Line Graphs (DLG).
+
+*** NOTE: Make sure to set the file transfer mode to BINARY.            *** 
+*** If you are using MOSAIC turn on the "load to local disk" option     *** 
+    (located under the OPTIONS menu) before downloading files. 
+*** The data files are stored on a robotic mass-storage device so there ***
+    may be a short (~10 seconds) delay while the media is retrieved.
+*** If you have any questions or suggestions, please contact Customer   ***
+    Services at custserv@edcserver1.cr.usgs.gov
+    
+DIRECTORY STRUCTURE
+The directory is organized by 1:2,000,000-scale DLG sections (15 sections for
+the conterminous U.S., 5 for Alaska, and 1 section for Hawaii).  Under each of 
+the "section" directories are subdirectories for each data layer; the data 
+files are located under the layers subdirectories.  For example, administrative
+and political boundary files for the Middle Atlantic States can be located 
+under the following directory:
+      middle_atlantic_states/boundaries    
+
+
+RECORD DELIMITERS:
+The DLG files in optional and standard format do NOT contain record delimiters.
+You can add delimiters by using the following UNIX command:
+
+Optional Format:
+dd if=inputfilename of=outputfilename ibs=8000 cbs=80 conv=unblock 
+
+Standard Format:
+dd if=inputfilename of=outputfilename ibs=8064 cbs=144 conv=unblock
+
+	 
+DATA FORMAT
+For a complete explanation of the 1:2,000,000-scale DLG format see the USGS 
+National Mapping Program, Technical Instructions, Data Users Guide 3, "Digital
+Line Graphs from 1:2,000,000-Scale Maps".  This booklet can be ordered, for a 
+small fee, from the Earth Science Information Center at the following address:
+
+Earth Science Information Center
+U.S. Geological Survey
+507 National Center
+Reston, VA  22092
+Tel:  783-648-6045 or 800-USA-MAPS
+Fax:  783-648-5548
+ 
+Information about this data set can also be found through the World Wide 
+Webb (WWW) at the following URL address: 
+http://edcwww.cr.usgs.gov/glis/hyper/guide/2mil 
+
+The Global Land Information System (GLIS) also provides on-line data set
+documentation.
+
+BACKGROUND INFORMATION
+The U.S. Geological Survey produces and distributes digital cartographic
+data files.  DLG data files include information of planimetric base
+categories, such as transportation, hydrography, and boundaries.  The term DLG
+is employed by the USGS to describe map data sets in vector form.
+
+The DLG data files were manually digitized using equipment with a resolution
+of 0.001 inch and an absolute accuracy of from 0.003 to 0.005 inch. Data
+were digitized from 1:2,000,000-scale maps of the 1970 National Atlas of the
+United States of America.  The following categories and subcategories are
+included in current 1:2,000,000-scale DLG files:
+
+                Category                     Subcategories
+                --------                     -------------
+
+                Boundaries                   Political Boundaries
+                                             Administrative Boundaries
+
+                Hydrography                  Streams
+                                             Water Bodies
+                                             Hypsography
+
+                Transportation               Roads and Trails
+                                             Railroads
+                                             Cultural Features
+
+Data are organized in multistate sections of the United States.  There are
+21 total sections:  15 sections for the 48 conterminous states, 5 sections
+for Alaska, and 1 section for Hawaii.  Major category layers are available
+for each of the 21 sections.  The complete set of DLG files are also available
+on a single CD-ROM disk.

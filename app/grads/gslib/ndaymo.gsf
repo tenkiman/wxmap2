@@ -1,0 +1,4 @@
+function ndaymo(yr,mo)
+nday=subwrd(_monday,mo)
+if(mod(yr,4) = 0 & mo = 2) ; nday=29 ; endif
+return(nday)

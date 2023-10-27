@@ -1,0 +1,42 @@
+
+**************************************************
+*
+*  toptitle3
+*
+**************************************************
+
+function toptle3(t1,t2,t3,scale,t1col,t2col,t3col)
+
+  rc=plotdims()
+
+  xr=_pagex
+  xl=0
+  y1=_pagey-0.15
+  xs=(xr-xl)*0.5
+  tsiz=0.15
+  if(scale != 'scale') ; tsiz = tsiz * scale ; endif
+  if(t1col='' | t1col='t1col') ; t1col=1 ; endif
+  if(t2col='' | t2col='t2col') ; t2col=1 ; endif
+  if(t3col='' | t3col='t3col') ; t3col=1 ; endif
+  t2siz=tsiz*0.80
+  t3siz=t2siz*0.80
+  y2=y1-tsiz*1.5
+  y3=y2-tsiz*1.5
+
+  'set strsiz 'tsiz
+  'set string 't1col' c 6'
+  'draw string 'xs' 'y1' 't1
+
+  if(t2 != '')
+    'set string 't2col' c 5'
+    'set strsiz 't2siz
+    'draw string 'xs' 'y2' 't2'`0'
+  endif
+
+  if(t3 != '')
+    'set string 't3col' c 5'
+    'set strsiz 't2siz
+    'draw string 'xs' 'y3' 't3'`0'
+  endif
+
+return

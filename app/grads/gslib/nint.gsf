@@ -1,0 +1,12 @@
+function nint(i0)
+  i0=i0+0.5
+  i=0
+  while(i<12)
+    i=i+1
+    if(substr(i0,i,1)='.')
+      i0=substr(i0,1,i-1)
+      break
+    endif
+  endwhile
+return(i0)
+

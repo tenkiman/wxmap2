@@ -1,0 +1,26 @@
+function linelgnd(lcol,lsty,lthk,lmrk,ltitle)
+
+'set line 'lcol' 'lsty' 'lthk
+
+dx=0.75
+dxs=0.10
+xb=_llx
+yb=_lly
+xe=_llx+_lxsz
+_llx=_llx+_ldx
+ye=yb
+
+lsiz=0.075
+
+xs=xe+dxs
+'draw line 'xb' 'yb' 'xe' 'ye
+'draw mark 'lmrk' 'xb' 'yb' 'lsiz
+'draw mark 'lmrk' 'xe' 'ye' 'lsiz
+
+'set string 1 l 5'
+'set strsiz 'lsiz
+'draw string  'xs' 'ye' 'ltitle
+
+_lly=_lly+_ldy
+
+return

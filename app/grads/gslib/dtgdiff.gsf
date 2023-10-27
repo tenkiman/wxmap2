@@ -1,0 +1,57 @@
+function dtgdiff(dtg1,dtg2)
+
+iyr1=substr(dtg1,1,4)
+imo1=substr(dtg1,5,2)
+idy1=substr(dtg1,7,2)
+ihr1=substr(dtg1,9,2)
+
+iyr2=substr(dtg2,1,4)
+imo2=substr(dtg2,5,2)
+idy2=substr(dtg2,7,2)
+ihr2=substr(dtg2,9,2)
+
+
+jdy1=moda2jul(iyr1,imo1,idy1)
+jdy2=moda2jul(iyr2,imo2,idy2)
+
+
+if(iyr2 > iyr1)
+  jdiff=(ndayyear(iyr1)-jdy1)+jdy2
+endif
+
+if(iyr2 < iyr1) 
+  jdiff=(ndayyear(iyr2)-jdy2)+jdy1
+endif
+
+if(iyr2 = iyr1)
+  jdiff=jdy2-jdy1
+endif
+
+ddiff=jdiff*24 + (ihr2-ihr1)
+return(ddiff)
+
+function ndayyear(yr)
+nday=365
+if(mod(yr,4) = 0) ; nday=366 ; endif
+return(nday)
+
+function moda2jul(yr,mo,da)
+
+mom1=mo-1
+nn=0
+if(mom1 = 0)
+   jul=da
+else
+  i=1
+  while(i<=mom1)
+    nn=nn+ndaymo(yr,i)
+    i=i+1
+  endwhile
+  jul=nn+da
+endif
+return(jul)
+
+function ndaymo(yr,mo)
+nday=subwrd(_monday,mo)
+if(mod(yr,4) = 0 & mo = 2) ; nday=29 ; endif
+return(nday)

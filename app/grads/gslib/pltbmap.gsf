@@ -1,0 +1,31 @@
+function pltbmap(expr,xsiz,ysiz)
+
+'c'
+
+
+'set grads off'
+lcol=90
+ocol=91
+'set rgb 90 100 50 25'
+'set rgb 91 10 20 85'
+
+'set xlint '_xlint
+'set cmin 100000'
+'d 'expr
+
+'basemap.2 L 'lcol' 1'
+'basemap.2 O 'ocol' 1'
+
+'set map 0 0 10'
+'draw map'
+
+'set cmin 100000'
+'d 'expr
+
+'set map 1 0 3'
+'draw map'
+
+'printim bmap.png x'xsiz' y'ysiz
+
+
+return(0)

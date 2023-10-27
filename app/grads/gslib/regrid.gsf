@@ -1,0 +1,39 @@
+*
+* This gsUDF implements a wrapper for re() that makes it behave 
+* more like the classic regrid2().
+*
+
+function regrid ( expr, dlon, dlat, opt )
+
+* OK, let's re() handle the missing arguments
+* -------------------------------------------
+  if ( dlon='dlon' );  return 're('expr')'; endif
+
+* Defaults
+* --------
+  if ( dlat='dlat' ); dlat = dlon; endif
+  if ( opt='opt'   ); opt = 'ba' ; endif
+  lon0 = '0.0'
+  lat0 = '-90.'
+
+* Compute the long-hand parameters
+* --------------------------------
+  if ( dlon <= 0 )
+       say 'regrid: invalid dlon=' dlon
+       return
+  else
+       nlon = math_nint(360. / dlon)
+  endif
+  if ( dlat <= 0 )
+       say 'regrid: invalid dlat=' dlat
+       return
+  else
+       nlat = 1 + math_nint(180./dlat)
+  endif
+
+  f = 're('expr','nlon',LINEAR,'lon0','dlon','nlat',LINEAR,'lat0','dlat','opt')'
+  return f
+
+
+
+  

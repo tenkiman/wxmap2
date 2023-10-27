@@ -1,0 +1,136 @@
+function fixprecip
+
+'set lon '_xdim
+'set lat '_ydim
+'set z 1'
+
+# oooooooooooooooooooooooo original code
+#
+#  mf it doesn't matter how far we go because undef will get into tmp
+#  4 is the number of time steps before the bucket is emptied
+
+## while (index <= _tsize)  ;* 26 is 3 timesteps (or 9 hours) before the final time 
+##   'set t 'index
+##   'd ptot'; 'd pconv'
+##   'set t 'index+1
+##   'define tmp = ptot-ptot(t-1)  '; 'd tmp'
+##   'define tmp = pconv-pconv(t-1)'; 'd tmp'
+##   'set t 'index+2
+##   'define tmp = ptot-ptot(t-1)  '; 'd tmp'
+##   'define tmp = pconv-pconv(t-1)'; 'd tmp'
+##   'set t 'index+3
+##   'define tmp = ptot-ptot(t-1)  '; 'd tmp'
+##   'define tmp = pconv-pconv(t-1)'; 'd tmp'
+##   index = index + 4
+## endwhile
+
+ntip=_tbucket/_dhr
+
+dodiag=0
+
+if(dodiag=1)
+  print 'QQQQQQQQ fixprecip _tbucket: '_tbucket' ntip: 'ntip' _dhr: '_dhr' _tsize: '_tsize
+  'set gxout contour'
+
+  'set t '_t1
+  tau=(_t1-1)*_dhr
+  print 'cccc 0000 ct: 'ct' j: 'j'  tau: 'tau
+  'd ptot'
+  print 'ptot final: 'subwrd(result,4) ; 
+
+  ct=2
+  while (ct <= _tsize)
+
+    'set t 'ct
+    j=1
+    tau=(ct-1)*_dhr
+    print 'cccc BBBB ct: 'ct' j: 'j'  tau: 'tau
+    'd ptot'
+    print 'ptot final: 'subwrd(result,4) ; 
+
+    while(j<ntip)
+
+      ct=ct+1
+      tau=(ct-1)*_dhr
+      'set t 'ct
+      'tmp = ptot-ptot(t-1)  '
+      print 'cccc LLLL ct: 'ct' j: 'j'  tau: 'tau
+      'd ptot'
+      print 'ptot      'subwrd(result,4) ; 
+      'd ptot(t-1)'
+      print 'ptot(t-1) 'subwrd(result,4);
+      'd tmp'
+      print 'ptot final: 'subwrd(result,4)
+      j=j+1
+
+    endwhile
+    ct=ct+1
+  endwhile
+
+endif
+
+#
+# Write the precip variables to a file
+#
+
+'set fwrite dummy.dat'
+'set gxout fwrite'
+'set t '_t1
+'d ptot'; 'd pconv'
+
+ct=2
+while (ct <= _tsize)  ;* 26 is 3 timesteps (or 9 hours) before the final time 
+  'set t 'ct
+  'd ptot'; 'd pconv'
+  j=1
+  while(j<ntip)
+    ct=ct+1
+    'set t 'ct
+
+doadjust=1
+if(doadjust=1)
+    'define tmp = ptot-ptot(t-1)  '; 'd tmp'
+    'define tmp = pconv-pconv(t-1)'; 'd tmp'
+else
+    'define tmp = ptot  '; 'd tmp'
+    'define tmp = pconv '; 'd tmp'
+endif
+
+     j=j+1
+  endwhile
+   ct=ct+1
+endwhile
+
+
+'disable fwrite'
+
+* Write a descriptor file 
+rc = write(dummy.ctl,'dset ^dummy.dat')
+rc = write(dummy.ctl,_undef,append)
+rc = write(dummy.ctl,'xdef 1 linear 1 1',append)
+rc = write(dummy.ctl,'ydef 1 linear 1 1',append)
+rc = write(dummy.ctl,'zdef 1 linear 1 1',append)
+rc = write(dummy.ctl,_tdef,append)
+rc = write(dummy.ctl,'vars 2',append)
+rc = write(dummy.ctl,'dummy1 0 -999 dummy',append)
+rc = write(dummy.ctl,'dummy2 0 -999 dummy',append)
+rc = write(dummy.ctl,'endvars',append)
+rc = close(dummy.ctl)
+
+* Open the dummy file, define variable, close dummy file
+'open dummy.ctl'
+line = sublin(result,2)
+dummyfile = subwrd(line,8)
+'set dfile 'dummyfile
+'set lon 1'
+'set lat 1'
+'set z 1'
+'set time '_time1' '_time2
+'define 'total' = dummy1.'dummyfile
+'define 'conv'  = dummy2.'dummyfile
+'close 'dummyfile
+'set dfile 1'
+'set gxout contour'
+
+return
+

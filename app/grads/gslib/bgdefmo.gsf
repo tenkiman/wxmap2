@@ -1,0 +1,89 @@
+
+#
+# function to define a background given a variable, level and time from 
+# mo mean reanalysis (ERA-40) in file handle fn
+#
+function bgdefmo(var,p,dtg,fn)
+
+verb=0
+
+if(verb)
+  print 'var: 'var
+  print 'p:   'p
+  print 'dtg: 'dtg
+  print 'fn   'fn
+endif
+
+#
+# time factors (independent of fn)
+#
+rc=ifmo2dtg(dtg)
+
+t1=subwrd(rc,1)
+wt1=subwrd(rc,2)
+t2=subwrd(rc,3)
+wt2=subwrd(rc,4)
+
+#
+# plev (dependent on fn and assumes plevs stored in _plev array has size _nz
+# and was loaded from metadata1
+
+
+if(p = 'sfc')
+print 'WWWWWWWWW sfc variable set z = 0 and wz1 = 1'
+  z1=0
+  wz1=1.0
+  z2=0
+  wz2=0.0
+else
+  rc=ifplev(p)
+  z1=subwrd(rc,1)
+  wz1=subwrd(rc,2)
+  z2=subwrd(rc,3)
+  wz2=subwrd(rc,4)
+endif
+
+expf1=var'.'fn'(t='t1',z='z1')'
+expf2=var'.'fn'(t='t1',z='z2')'
+expf3=var'.'fn'(t='t2',z='z1')'
+expf4=var'.'fn'(t='t2',z='z2')'
+
+#
+#  expressions for each time and pressure point in the interp
+#
+
+'ffff1='expf1
+'ffff2='expf2
+'ffff3='expf3
+'ffff4='expf4
+
+#
+# interp pressure points in time
+#
+
+expftp1='ffff1*'wt1' + ffff3*'wt2
+expftp2='ffff2*'wt1' + ffff4*'wt2
+
+'ffffp1='expftp1
+'ffffp2='expftp2
+
+#
+# now interp in pressure
+#
+
+expfinal='ffffp1*'wz1' + ffffp2*'wz2
+
+'ffff='expfinal
+
+if(verb=1) 
+  print 'WWWW time 't1' 'wt1' 't2' 'wt2
+  print 'WWWW plev 'z1' 'wz1' 'z2' 'wz2' :: p p1,2 'p' '_plev.z1', '_plev.z2
+  print 'EEEE1234  'expf1' 'expf2' 'expf3' 'expf4
+  print 'EEEEtp12  'expftp1' 'expftp2
+  print 'EEEEfinal 'expfinal
+endif
+
+return
+
+
+

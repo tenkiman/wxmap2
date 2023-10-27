@@ -1,0 +1,81 @@
+
+function getdimenv()
+
+# puts to global var _qdim
+#Default file number is: 1 
+#X is varying   Lon = 0.125 to 359.875   X = 1 to 1440
+#Y is varying   Lat = -59.875 to 59.875   Y = 1 to 480
+#Z is fixed     Lev = 1013  Z = 1
+#T is fixed     Time = 00Z18JUN2008  T = 4573
+
+pdim=0
+
+'q dim'
+card=sublin(result,1)
+_qdim.dfile=subwrd(card,5)
+card=sublin(result,2)
+_qdim.xdimvar=subwrd(card,3)
+if(_qdim.xdimvar = 'varying')
+  pdim=pdim+1
+  _qdim.lonb=subwrd(card,6)
+  _qdim.lone=subwrd(card,8)
+  _qdim.xb=subwrd(card,11)
+  _qdim.xe=subwrd(card,13)
+else
+  _qdim.lonb=subwrd(card,6)
+  _qdim.lone=subwrd(card,6)
+  _qdim.xb=subwrd(card,9)
+  _qdim.xe=subwrd(card,9)
+endif
+
+card=sublin(result,3)
+_qdim.ydimvar=subwrd(card,3)
+if(_qdim.ydimvar = 'varying')
+  pdim=pdim+1
+  _qdim.latb=subwrd(card,6)
+  _qdim.late=subwrd(card,8)
+  _qdim.yb=subwrd(card,11)
+  _qdim.ye=subwrd(card,13)
+else
+  _qdim.latb=subwrd(card,6)
+  _qdim.late=subwrd(card,6)
+  _qdim.yb=subwrd(card,9)
+  _qdim.ye=subwrd(card,9)
+endif
+
+card=sublin(result,4)
+_qdim.zdimvar=subwrd(card,3)
+if(_qdim.zdimvar = 'varying')
+  pdim=pdim+1
+  _qdim.levb=subwrd(card,6)
+  _qdim.leve=subwrd(card,8)
+  _qdim.zb=subwrd(card,11)
+  _qdim.ze=subwrd(card,13)
+else
+  _qdim.levb=subwrd(card,6)
+  _qdim.leve=subwrd(card,6)
+  _qdim.zb=subwrd(card,9)
+  _qdim.ze=subwrd(card,9)
+endif
+
+
+card=sublin(result,5)
+_qdim.tdimvar=subwrd(card,3)
+if(_qdim.tdimvar = 'varying')
+  pdim=pdim+1
+  _qdim.timeb=subwrd(card,6)
+  _qdim.timee=subwrd(card,8)
+  _qdim.tb=subwrd(card,11)
+  _qdim.te=subwrd(card,13)
+else
+  _qdim.timeb=subwrd(card,6)
+  _qdim.timee=subwrd(card,6)
+  _qdim.tb=subwrd(card,9)
+  _qdim.te=subwrd(card,9)
+endif
+
+_qdim.npdim=pdim
+
+
+return
+

@@ -1,0 +1,54 @@
+function barplot(var,ltle,bcol,bbse,bgap,bcola,bcolb)
+
+
+_bcol=bcol
+_bcola=bcola
+_bcolb=bcolb
+
+if(bcol = 'bcol' | bcol = '') ; _bcol=4 ; endif
+
+if(bcola = 'bcola' | bcola = '') ; _bcola=3 ; endif
+if(bcolb = 'bcolb' | bcolb = '') ; _bcolb=2 ; endif
+
+'set gxout bar'
+
+
+if(bgap != '' & bgap != 'bgap') ; _bgap=bgap ; 'set bargap 'bgap  ; endif
+
+if(bbse != '' & bbse != 'bbse') ;
+
+  _bbse=_bbse
+  'set barbase 'bbse
+  aexpr='maskout('var','var'-'bbse')'
+  bexpr='maskout('var','bbse'-'var')'
+
+  if(_bcola = _bcolb)
+    'set ccolor '_bcola
+    'd 'var
+  else
+    'set ccolor '_bcola
+    'd 'aexpr
+    'set ccolor '_bcolb
+    'd 'bexpr
+  endif
+else
+print 'qqqqqqqqqqqqqqqqqqqqqqq '_bcol
+  'set ccolor '_bcol
+  'd 'var
+endif
+
+
+_ldy=0.125
+
+rc=plotdims()
+
+if(_nplot = 0)
+_llx=_xlplot+_ldy
+_lly=_ybplot+_ldy
+endif
+
+_nplot=_nplot+1
+
+rc=barlgnd(ltle)
+
+return

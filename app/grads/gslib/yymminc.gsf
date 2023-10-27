@@ -1,0 +1,39 @@
+function yymminc(yymm,inc)
+
+verb=0
+ngym=7
+
+yy=substr(yymm,1,4)*1
+mm=substr(yymm,5,2)*1
+
+if(verb=1) ; print 'yymm inc 'yy' 'mm' 'inc ; endif
+
+nyy=yy
+nmm=mm+inc
+while(nmm > 12)
+if(verb=1) ; print 'nnnnbbb 'nyy' 'nmm ; endif
+  nyy=nyy+1
+  nmm=nmm-12
+endwhile
+
+while(nmm <= 0)
+  nyy=nyy-1
+  nmm=nmm+12
+endwhile
+
+if(nmm<10) ; nmm='0'nmm ; endif
+nyymm=nyy%nmm
+if(verb=1) ; print 'nnnnaaa 'nyy' 'nmm ; endif
+
+
+gyymm=dtg2gtime(nyymm'0100')
+ng=math_strlen(gyymm)
+bg=ng-ngym+1
+#print ng' 'bg
+gyymm=substr(gyymm,bg,ngym)
+#print 'gyymm 'gyymm' 'ng
+
+
+return (nyymm' 'gyymm)
+
+

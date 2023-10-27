@@ -1,0 +1,52 @@
+function tcadeck(adeck)
+
+verb=1
+nad=0
+ncard=0
+iok=0
+
+while(iok=0)
+
+  result=read(adeck)
+  iok=sublin(result,1)
+  card=sublin(result,2)
+
+#---------1---------2---------3---------4---------5
+#SH, 21, 2003030412, 72, JAVN,   0, 150S, 1135E,  19
+
+  if(iok=0)
+
+    basin=substr(card,1,2)  
+    bdtg=substr(card,9,8)
+    aid=substr(card,25,4)
+
+    tau=substr(card,31,3)
+    tau=subwrd(tau,1)
+    tau=tau*1.0
+
+    lat=substr(card,36,3)
+    lat=subwrd(lat,1)
+    lat=lat*0.1
+    if(basin = 'SH')
+      lat=-lat
+    endif
+
+
+    lon=substr(card,42,4)
+    lon=subwrd(lon,1)
+    lon=lon*0.1
+    hemew=substr(card,46,1)
+    if(hemew = 'W')
+      lon=360.0-lon
+    endif
+
+##    vdtg=substr(bdtg,5,6)
+
+    _tca.aid.tau=lat' 'lon
+
+  endif
+
+endwhile
+
+return
+

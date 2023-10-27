@@ -1,0 +1,32 @@
+function cbarnelsie(args)
+
+# for rh 16-26
+
+  'set rgb 16 60 29 0'
+  'set rgb 17 107 73 9'
+  'set rgb 18 143 97 12'
+  'set rgb 19 172 117 14'
+  'set rgb 20 206 140 17'
+  'set rgb 21 255 213 0'
+  'set rgb 22 30 201 213'
+  'set rgb 23 27 180 191'
+  'set rgb 24 24 157 167'
+  'set rgb 25 21 138 146'
+  'set rgb 26 15 102 108'
+
+# for wind wind magnitude
+
+  'set rgb 17 255 255 255'
+  'set rgb 18 87 196 251'
+  'set rgb 19 14 171 250'
+  'set rgb 20 4 129 192'
+  'set rgb 21 3 102 151'
+  'set rgb 22 33 113 243'
+  'set rgb 23 12 89 214'
+  'set rgb 24 9 71 171'
+  'set rgb 25 7 56 135'
+  'set rgb 26 6 44 106'
+  'set rgb 27 4 28 68'
+
+
+return

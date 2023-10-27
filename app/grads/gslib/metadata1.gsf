@@ -1,0 +1,60 @@
+**************************************************
+*
+*  metadata
+*
+**************************************************
+
+function metadata1(varo)
+
+verb=0
+
+'q file'
+
+card=sublin(result,5)
+_nx=subwrd(card,3)
+_ny=subwrd(card,6)
+_nz=subwrd(card,9)
+_nt=subwrd(card,12)
+card=sublin(result,6)
+_nv=subwrd(card,5)
+
+if(varo='y') 
+  i=1
+  while(i<=_nv)
+    ii=6+i
+    card=sublin(result,ii)
+    _vr.i=subwrd(card,1)
+    _nl.i=subwrd(card,2)
+    _un.i=subwrd(card,3)
+    bd=wrdpos(card,4)
+say 'bd = 'bd' 'card
+    _ds.i=substr(card,bd,120)
+    i=i+1
+  endwhile
+endif
+
+#
+#  get vertical dimension
+#
+
+'set x 1'
+'set y 1'
+'set z 1'
+kb=1
+ke=_nz
+k=kb
+while(k<=ke)
+  'set z 'k
+  card=sublin(result,1)
+  _plev.k=subwrd(card,5)
+
+  if(verb=1) 
+    print 'k = 'k' _plev.k '_plev.k
+  endif
+  
+  k=k+1
+endwhile
+
+'reset'
+
+return

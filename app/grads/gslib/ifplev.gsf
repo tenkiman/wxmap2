@@ -1,0 +1,82 @@
+# 20030106 -- get ln p interp factors for vert interp
+# assumes new metadata1 called that returns _plev arrary
+#
+
+function ifplev(p)
+
+verb=0
+
+k=1
+ke=_nz
+
+while( p <_plev.k & k<=ke)
+  k=k+1
+endwhile
+
+#
+# too high (k>ke) use highest
+#
+
+if(k>ke)
+  p1=_plev.ke
+  k1=ke
+  k2=ke
+  w1=1.0
+  w2=0.0
+  rc=k1' 'w1' 'k2' 'w2
+  print 'WWWWWWWWWWWWWW plev in ifplev too low use lowest p (k=1) 'k' 'p1
+  return(rc)
+endif
+
+k2=k
+k1=k-1
+if(k1<1) ; k1=1 ; endif
+if(k2<1) ; k2=1 ; endif
+
+#
+#  if k1=k2(=1) then we are at bottom pressure stack use lowest value
+#
+
+if(k1 = k2) 
+  p1=_plev.1
+  k1=1
+  k2=1
+  w1=1.0
+  p2=p1
+  w2=0.0
+  rc=k1' 'w1' 'k2' 'w2
+  print 'WWWWWWWWWWWWWW plev in ifplev too low use lowest p (k=1) 'k' 'p1
+  return(rc)
+endif
+
+p1=_plev.k1
+p2=_plev.k2
+
+lnp1=math_log(p1)
+lnp2=math_log(p2)
+lnp=math_log(p)
+
+dlnp2=lnp1-lnp
+dlnp1=lnp-lnp2
+dlnt=dlnp1+dlnp2
+
+dp1=p-p2
+dp2=p1-p
+dpt=dp1+dp2
+
+w1=dlnp1/dlnt
+w2=dlnp2/dlnt
+
+w1p=dp1/dpt
+w2p=dp2/dpt
+
+if(verb=1) 
+  print 'kkk 'k1' 'k2' '_plev.k1' '_plev.k2' 'lnp1' 'lnp2' 'lnp
+  print 'ddd 'dlnp1' 'dlnp2' 'w1' 'w2' 'w1p' 'w2p
+endif
+
+#rc=p1' 'w1' 'p2' 'w2
+#print 'TTTTT 'rc
+rc=k1' 'w1' 'k2' 'w2
+
+return(rc)

@@ -1,0 +1,38 @@
+function toptitle(t1,t2,scale,t1col,t2col,t1thk,t2thk)
+
+if(t1thk = '' | t1thk = 't1thk') ; t1thk=6 ; endif
+if(t2thk = '' | t2thk = 't2thk') ; t2thk=8 ; endif
+#
+# if scale < 0.0 then make size of t2 = t1
+#
+if(scale < 0.0)
+  scale=scale*-1.0
+  t2scale=1.05
+else
+  t2scale=0.80
+endif
+
+  rc=plotdims()
+
+  xr=_pagex
+  xl=0
+  y1=_pagey-0.15
+  xs=(xr-xl)*0.5
+  tsiz=0.15
+  if(scale != 'scale') ; tsiz = tsiz * scale ; endif
+  if(t1col='t1col') ; t1col=1 ; endif
+  if(t2col='t2col') ; t2col=1 ; endif
+  t2siz=tsiz*t2scale
+  y2=_pagey-0.15-tsiz*1.5
+
+  'set strsiz 'tsiz
+  'set string 't1col' c 't1thk' 0'
+  'draw string 'xs' 'y1' 't1
+
+  if(t2 != '')
+    'set string 't2col' c 't2thk' 0'
+    'set strsiz 't2siz
+    'draw string 'xs' 'y2' `0't2'`0'
+  endif
+
+return

@@ -1,0 +1,144 @@
+function uvclimos(f1,f2,f1s,f2s,var1,var2,var1s,var2s,nday,levs,nl,bdtg,edtg,opath)
+
+doregrid=0
+verb=0
+
+dtau=0.5
+
+rc=metadata1(f1)
+
+if(verb=1)  
+  print 'nnn '_nx' '_ny
+endif
+
+btime=dtg2gtime(bdtg)
+etime=dtg2gtime(edtg)
+
+'set time 'btime' 'etime
+'q dims'
+card=sublin(result,5)
+t1=subwrd(card,11)
+t2=subwrd(card,13)
+it1=math_int(t1)
+it2=math_int(t2)+1
+
+'set t 'it1' 'it2
+
+if(verb=1)
+  'q dims'
+  card=sublin(result,5)
+  print 'CCCCC 'card
+endif
+
+l=1
+while(l<=nl)
+  lev=subwrd(levs,l)
+  'set x 1 '_nx
+  'set y 1 '_ny
+  'set lev 'lev
+  'varc1'lev'=ave('var1'.'f1',t-'nday',t+'nday')'
+  'varc2'lev'=ave('var2'.'f2',t-'nday',t+'nday')'
+  l=l+1
+endwhile
+
+'varc1s=ave('var1s'.'f1s',t-'nday',t+'nday')'
+'varc2s=ave('var2s'.'f2s',t-'nday',t+'nday')'
+
+'set gxout fwrite'
+'set fwrite -be 'opath
+
+tau=t1
+ntau=1
+while(tau<=t2)
+
+  i1=math_int(tau)
+  i2=i1+1
+  a=i2-tau
+  b=tau-i1
+  'set t 'i1
+
+  l=1
+  while(l<=nl)
+    lev=subwrd(levs,l)
+    'set x 1 '_nx
+    'set y 1 '_ny
+    'set lev 'lev
+
+    if(verb=1) 
+      print 'cccc 'ntau' 'tau' i1,i2: 'i1' 'i2' a,b: 'a' 'b
+    endif
+
+    if(doregrid=1)
+      expr1='varo1=regrid2(('a'*varc1'lev' + 'b'*varc1'lev'(t+1)),1.0,1.0,bs)'
+    else
+      expr1='varo1=('a'*varc1'lev' + 'b'*varc1'lev'(t+1))'
+    endif
+
+    if(verb=1) ; print expr1 ; endif
+
+    expr1
+    'd varo1'
+    l=l+1
+  endwhile
+
+  l=1
+  while(l<=nl)
+    lev=subwrd(levs,l)
+    'set x 1 '_nx
+    'set y 1 '_ny
+    'set lev 'lev
+
+    if(doregrid=1)
+       expr2='varo2=regrid2(('a'*varc2'lev' + 'b'*varc2'lev'(t+1)),1.0,1.0,bs)'
+    else
+      expr2='varo2=('a'*varc2'lev' + 'b'*varc2'lev'(t+1))'
+    endif
+
+    if(verb=1) ; print expr2 ; endif
+
+    expr2
+    'd varo2'
+    l=l+1
+  endwhile
+
+  'set x 1 '_nx
+  'set y 1 '_ny
+
+  if(verb=1) 
+     print 'cccc 'ntau' 'tau' i1,i2: 'i1' 'i2' a,b: 'a' 'b
+  endif
+
+  if(doregrid=1)
+    expr1='varo1s=regrid2(('a'*varc1s + 'b'*varc1s(t+1)),1.0,1.0,bs)'
+  else
+    expr1='varo1s=('a'*varc1s + 'b'*varc1s(t+1))'
+  endif
+
+  if(verb=1) ; print expr1 ; endif
+
+  expr1
+  'd varo1s'
+
+  'set x 1 '_nx
+  'set y 1 '_ny
+
+  if(doregrid=1)
+    expr2='varo2s=regrid2(('a'*varc2s + 'b'*varc2s(t+1)),1.0,1.0,bs)'
+  else
+    expr2='varo2s=('a'*varc2s + 'b'*varc2s(t+1))'
+  endif
+
+  if(verb=1) ; print expr2 ; endif
+
+  expr2
+  'd varo2s'
+
+  tau=tau+dtau
+  ntau=ntau+1
+
+endwhile
+
+'disable fwrite'
+
+return
+

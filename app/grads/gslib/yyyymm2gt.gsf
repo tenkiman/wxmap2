@@ -1,0 +1,11 @@
+function yyyymm2gt(yyyymm)
+*
+*  convert FNMOC DTG (full) to GrADS time
+*
+  iyr=substr(yyyymm,1,4)*1
+  imo=substr(yyyymm,5,2)*1
+  nmo=subwrd(_monamel,imo)
+  imo=i
+return (nmo%iyr)
+
+

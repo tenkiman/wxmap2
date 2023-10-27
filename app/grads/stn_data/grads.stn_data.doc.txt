@@ -1,0 +1,77 @@
+	       Working With Station Data In GrADS
+
+			  Mike Fiorino
+
+     Program for Climate Model Diagnosis and Intercomparison
+	     Lawrence Livermore National Laboratory
+			  Livermore, CA
+
+		    fiorino@typhoon.llnl.gov
+
+			 19 October 1995
+
+			 while visiting
+		Meteorological Research Institute
+			 Tsukuba, Japan
+
+
+1.	Introduction
+
+The direct access format (straight binary) of station data in
+GrADS has inhibited some fortran programmers from converting
+their data for use in GrADS.  The new version of GrADS (1.5.1.17)
+I developed while visiting MRI now supports the "sequential"
+option.  That is, GrADS now works with "f77" binary station data
+in the same way as gridded data.
+
+The original direct access (C code) format is still supported and
+is recommended for two reasons: 1) there is no true standard for
+unformatted binary output in f77; and 2) the data files will be
+larger.  However, on most unix platforms, station data written in
+fortran should work and the hardware options (i.e., big_endian
+and little_endian) can also be specified so that, for example,
+station data created on a little endian machine (e.g., linux) and
+be displayed on big endian machine (e.g., sgi).
+
+2.	Sample Data and fortran code.
+
+There are three basic converion problems: 1) single level data
+(i.e., "surface" obs); 2) upper air data WITHOUT sfc obs (e.g., a
+rawindsonde sounding); and 3) upper air data WITH associated sfc
+obs (e.g., a rawindsonde sounding with observations at the sfc).
+
+The files have the naming convention:
+
+*.txt	-	the original data in ascii
+*.ctl	-	the GrADS .ctl
+*2g.f	-	the f77 code to do the conversion
+*.smp	-	the GrADS station map file created by the stnmap utility
+*.obs	-	the binary data file
+
+* 	= 	s 	sfc obs
+  	=	ua 	upper air only
+	=	uas 	upper air + sfc obs
+
+The f77 code and .ctl files contains documentation on the data
+and code.  The only thing I did not add to the .ctl which I
+STRONGLY RECCOMEND YOU ADD is the type of the hardware the data
+were created on in the options card.  For example, if you ran the
+code on a dec machine change
+
+options sequential
+
+to,
+
+options sequential little_endian
+
+and you'll be able to work with the data on any platform except
+the cray.
+
+3.	Bugs --- the final  bug is always the penultimate one
+
+I have only tested the GrADS code and converion code only on the
+dec alpha so I'm not sure how it will work on the other
+platforms.  While I expect no real trouble, please send me email
+WITH the .ctl, code and sample data should you have problems.
+
+

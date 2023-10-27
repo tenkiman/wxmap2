@@ -1,0 +1,16 @@
+function moda2jul(yr,mo,da)
+
+mom1=mo-1
+nn=0
+if(mom1 = 0)
+   jul=da
+else
+  i=1
+  while(i<=mom1)
+    nn=nn+ndaymo(yr,i)
+    i=i+1
+  endwhile
+  jul=nn+da
+endif
+return(jul)
+

@@ -1,0 +1,89 @@
+		    Mike's GrADS script library
+
+			  Mike Fiorino
+
+		      mike.fiorino@virgin.net
+		      fiorino@tenkimap.com
+
+			   9 Feb, 2001
+
+
+Introduction
+------------
+
+This directory contains many of the "basic" scripts I have
+written since the mid 1990's and collections from other people.
+They are not very well documented and some are likely broken.
+
+The best basic script is:
+
+stdlib.gs
+
+this contains many of the basic functions I use all the time, e.g.,
+
+* time handling in the both grads and the "DTG" format (YYYYMMDDHH)
+* meta data and plot dimension
+* titling
+* script math
+* constants
+
+
+Distribution and Use
+--------------------
+
+You have full permission to use and redistribute any of these
+scripts.  An acknowledgment would be appreciated and any
+feedback welcome.
+
+
+File Naming Conventions
+-----------------------
+
+All my script end in .gs since this is the default extension in
+I add to grads, e.g.,
+
+'run myscript.gs'
+
+can be run as
+
+'myscript'
+
+if the GASCRP environment variable is set to the directory where
+myscript.gs is located
+
+
+Directory Structure
+-------------------
+
+functions	- an attempt at putting each function in it's own file
+colors		- color maps from Karin at MPI.de
+colors/apps
+colors/giffiles
+colors/psfiles
+swadley		- scripts and color maps from Steve Swadley, NRL, Monterey
+
+
+Links
+-----
+
+See:
+
+http://wesley.wwb.noaa.gov/links_grads.html
+
+for basic links
+
+and
+
+http://dao.gsfc.nasa.gov/software/grads/win32/latest/pc-dist/win32/Getting_Started.html
+
+for a good set of links and tutorial
+
+the official home page:
+
+http://grads.iges.org/grads
+
+Good Luck!
+
+Mike
+
+

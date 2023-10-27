@@ -1,0 +1,14 @@
+function cltln(rlat,rlon)
+
+clat=rlat'N'
+if(rlat<0) ; clat=math_abs(rlat)'S' ; endif
+clon=rlat'E'
+if(rlon<0) ; clon=math_abs(rlat)'W' ; endif
+if(rlon>180.0)
+  rlon=360.0-rlon
+  clon=rlon'W'
+endif
+
+return(clat' 'clon)
+
+

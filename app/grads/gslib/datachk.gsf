@@ -1,0 +1,61 @@
+function datachk(var)
+rc=gsfallow('on')
+rc=getdimenv()
+npdim=_qdim.npdim
+'q gxout'
+card=sublin(result,1)
+curgxout=subwrd(card,3)
+if(npdim = 1) ;  card=sublin(result,2) ; curgxout=subwrd(card,6) ; endif
+if(npdim = 2) ;  card=sublin(result,4) ; curgxout=subwrd(card,6) ; endif
+
+# -- bug in grads2.1?
+if(curgxout = 16); curgxout='shaded' ; endif
+'set gxout stat'
+'d 'var
+
+if(rc = 1)
+  'set gxout 'curgxout
+  return(-999)
+endif
+
+i=1
+while(i<100)
+  card=sublin(result,i)
+  if(card = '') ; break ; endif
+  test=subwrd(card,1)%subwrd(card,2)
+  test1=subwrd(card,1)
+#### print 'TTT'test1'11111'
+  if(test=Undefcount) 
+    undef=subwrd(card,4)
+    valcnt=subwrd(card,8)
+  endif
+
+  if(test1 = 'Stats[(sum,sumsqr,root(sumsqr))/n]:')
+     fldbar=subwrd(card,2)
+  endif
+
+#
+#  const field
+#
+  if(fldbar = 0)
+     undef=-999
+     return(undef)
+  endif
+  
+  if(test='DISPLAYerror:')
+
+    undef=-999999
+    valcnt=0 
+
+    break
+  endif
+
+  i=i+1
+endwhile
+
+if(valcnt != 0) ; undef=0 ; endif
+
+'set gxout 'curgxout
+
+return(undef)
+

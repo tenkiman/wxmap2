@@ -1,0 +1,90 @@
+					  python interface to gbland.f
+		  calculates distance fro a lat/lon point to the coast
+			  values => land/inside + values => ocean side
+
+							  Mike Fiorino
+								20141022
+
+
+0.0 INTRO
+=========
+
+SHIPS/LGEM has a convenient function that calculates the distance of a
+lat/lon point to a 'significant' coast -- bypass small islands that a TC
+might not 'feel' but the coastline data set does have HI.
+
+the original output is in km, but I changed to output nmi...
+
+1.0 BUILDING
+============
+
+on kishou a mac: OS X 10.9.5
+
+I had to use gfortran from http://hpc.sourceforge.net/
+
+got gfortran-4.9.tar.gz
+
+and then
+
+sudo tar -xzvf gfortran-4.9.tar.gz -C /
+
+to put in /usr/local/bin/gfortran
+
+on wxmap2/tcops linux it worked straight away...
+
+1.1 source
+==========
+
+gblandF2PY.f90 -- module very close to gbland.f
+gblanddriver.f90 -- driver subrouine
+
+
+1.2 coast data files
+====================
+
+the location of the data files is hardwired in gblandF2PY.f90:
+
+      module dist2Coast
+
+      character(len=120), parameter :: 
+     $     include_path=
+     $     '/data/amb/users/fiorino/w21/dat/geog/coastlines'
+cc     $     '/mnt/hgfs/dat1/w21/dat/geog/coastlines'
+      
+
+note the f77 limitations -- 72 char / line.  I haven't figured out how
+to pass compiler directives to the f2py process...
+
+
+1.3 f2py
+=======
+
+here is the f2py magic the makes the module:
+
+f2py -m gbland -h gbland.pyf gblandF2PY.f90 gblanddriver.f90 --overwrite-signature
+f2py -c --fcompiler=gfortran gbland.pyf gblandF2PY.f90 gblanddriver.f90
+
+out the gbland.so where your modules are...for wxmap2
+
+...w21/prc/lib/python
+
+1.4 testing
+===========
+
+t.py is a test, but try this at the command line
+
+python
+import gbland as gb
+
+gb.latlon2(40,-105)  # get the distance from the coast of boulder
+
+and you should see:
+
+-661.1301879882812
+
+i.e., boulder is 661 nmi (~11 deg of lat) from the nearest coastal point (in CA)
+
+
+
+
+

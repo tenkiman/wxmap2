@@ -1,0 +1,55 @@
+*
+*-------------------------- ofile ------------------
+*
+function ofile (fname,ftype)
+'query files'
+i = 0
+while (1)  
+  if (subwrd(result,1)='No')       
+    ret = 0
+    break;
+  endif
+  rec = sublin(result,i*3+2)
+  if (rec='') 
+    ret = 0;
+    break; 
+  endif
+  if (subwrd(rec,2)=fname)
+    rec = sublin(result,i*3+1)
+    ret = subwrd(rec,2)
+    break;
+  endif
+  i = i + 1
+endwhile
+if (ret=0) 
+  if(ftype='xdf')
+    'xdfopen 'fname
+  endif
+  if(ftype='sdf')
+    'sdfopen 'fname
+  endif
+
+  if(ftype != 'xdf' & ftype !='sdf')
+    'open 'fname
+  endif
+
+#
+#  handle sdf files
+#
+  card=sublin(result,1)
+  dtype=subwrd(card,2)
+
+  if(dtype = 'self-describing' | ftype = 'xdf')
+    card=sublin(result,2)
+    nvar=subwrd(card,2)
+   datacard=sublin(result,3+nvar)
+  else
+    datacard=sublin(result,2)
+  endif
+  if (rc>0) 
+    say "Error opening "fname
+    return (0)
+  endif
+  ret = subwrd(datacard,8)
+endif
+return (ret)

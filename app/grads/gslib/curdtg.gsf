@@ -1,0 +1,15 @@
+function curdtg()
+
+rc=gsfallow('on')
+rc=const()
+#print 'rc = 'rc
+'q time'
+ctime1=subwrd(result,3)
+ctime2=subwrd(result,5)
+
+#print 'ctime 'ctime1' 'ctime2
+
+dtg1=gtime2dtg(ctime1)
+dtg2=gtime2dtg(ctime2)
+
+return (dtg1)

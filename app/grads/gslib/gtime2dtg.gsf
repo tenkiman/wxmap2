@@ -1,0 +1,33 @@
+*
+*-------------------------- curdtgh ------------------
+*
+function gtime2dtg(gtime)
+*
+*  convert current time to dtg 
+*
+  ss=math_strlen(gtime)
+
+if(ss = 15)
+  iyr=substr(gtime,ss-3,4)
+  nmo=substr(gtime,ss-6,3)
+  ida=substr(gtime,ss-8,2)
+  ihr=substr(gtime,1,2)*1.0
+  imn=substr(gtime,4,2)*1.0
+###print iyr' 'nmo' 'ida' 'ihr' 'imn
+else
+  iyr=substr(gtime,9,4)
+  nmo=substr(gtime,6,3)
+  ida=substr(gtime,4,2)
+  ihr=substr(gtime,1,2)*1.0
+endif
+
+  i=1
+  while (nmo!=subwrd(_monameu,i) & nmo!=subwrd(_monamel,i) );i=i+1;endwhile
+  imo=i
+  if(imo < 10); imo='0'imo; endif
+  if(ihr = 0); ihr='00';endif
+  if(ihr < 10 & ihr != '00'); ihr='0'ihr; endif
+
+  dtg=iyr%imo%ida%ihr
+
+return (dtg)

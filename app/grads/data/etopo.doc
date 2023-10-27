@@ -1,0 +1,31 @@
+Sources of Data for the
+ETOPO-5 Elevation and Depth Data Set
+
+
+Ocean Bathymetry -
+Comes from the DBDB5 Bathymetry set at NGDC.
+The DBDB5 set was derived from various ocean
+depth charts and soundings.
+
+
+Terrestrial Topography Set -
+
+US (excluding Alaska), Europe, and Japan come
+from the Defense Mapping Agency (DMA).
+
+Australia and New Zealand data comes directly
+from good sources within the countries.
+
+All other data is based on the Fleet Numerical
+Oceanographic Center (FNOC) 10 minute elevation
+data set.
+
+
+Comments -
+
+Peter Sloss at NGDC compiled this set.
+
+Higher Resolution sets are available for some
+areas and improved sets may become available in
+the future through DMA or USGS.
+

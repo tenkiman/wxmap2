@@ -1,0 +1,88 @@
+function corru(x1,x2)
+*
+*	use the new version of gxout stat to get the # of valid points 
+*	(for info purposes only)
+*	and the biased (/N) vice the unbiased (/(N-1)) averages
+*
+*	ASSUMES THE GRIDS HAVE THE SAME NUMBER OF DEFINED POINTS!!!!
+*
+*	imax is the number of lines produced by gxout stat so the loop
+*	doesn't go forever...
+*
+*	based on formula on p.92 of Panofsky and Brier, 1968 "Some applications of
+*	statistics to meteorology." Penn State Press
+*
+verb=0
+imax=12
+'set gxout stat'
+'d 'x1
+result1=result
+'d 'x2
+result2=result
+'d 'x1'*'x2
+result3=result
+
+if(verb = 1)
+print '1111 'result1
+print '2222 'result2
+print '3333 'result3
+endif
+*
+*	parse the strings for the info
+*
+i=1
+while(i<=imax)
+
+  card1=sublin(result1,i)
+  card2=sublin(result2,i)
+  card3=sublin(result3,i)
+
+*
+*	get number of defined points
+*
+
+  if(subwrd(card1,2)='count')
+    npt=subwrd(card1,8)
+  endif
+*
+*	the sum and sumsqr / n 
+*
+if(verb=1) ; print 'qqqqqqqqqq 'card1 ; endif
+  if(subwrd(card1,1)='Stats[(sum,sumsqr,root(sumsqr))/n]:')
+
+    ave1b=subwrd(card1,2)
+    avesq1b=subwrd(card1,3)
+
+    ave2b=subwrd(card2,2)
+    avesq2b=subwrd(card2,3)
+
+    ave12b=subwrd(card3,2)
+    avesq12b=subwrd(card3,3)
+*
+*	break the loop now that we have what we need
+*
+    break
+  endif
+  i=i+1
+endwhile
+*
+*	turn off stat output and do the calculation using display
+*
+*	the result goes to the script variable result
+*
+'set gxout contour'
+'d 'ave12b'-'ave1b'*'ave2b
+num=subwrd(result,4)
+'d sqrt('avesq1b'-'ave1b'*'ave1b')'
+den1=subwrd(result,4)
+'d sqrt('avesq2b'-'ave2b'*'ave2b')'
+den2=subwrd(result,4)
+
+'d 'num'/('den1'*'den2')'
+corr=subwrd(result,4)
+
+if(verb=1) ; say ' The UNWEIGHTED correlation = 'corr ; endif
+*
+*	return to main program
+*
+return(corr)

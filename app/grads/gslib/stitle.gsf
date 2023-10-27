@@ -1,0 +1,45 @@
+function stitle(t1,scale,dorecf)
+
+if(dorecf = ''); dorecf=1; endif
+
+  rc=plotdims()
+
+  tsiz=0.15
+  xoff=0.75
+  yoff=0.10
+
+  xs=_xlplot-xoff-tsiz/2
+  xm=(_xlplot+_xrplot)/2
+  ys=(_ybplot+_ytplot)/2
+
+  if(scale != 'scale')
+    tsiz = tsiz * scale
+    xs=_xlplot-xoff-tsiz/2
+  endif
+
+  angle=90
+  tt=tsiz+yoff
+
+  if(tt < dyt) 
+    xs=xm
+    ys=_ytplot+yoff+tsiz/2 
+    angle=0
+  endif
+  
+  'set line 0 '
+  x1b=_xlplot
+  x2b=_xrplot
+  y1b=_ytplot+yoff+tsiz*0.1
+  y2b=y1b+tsiz-tsiz*0.6
+
+
+if(dorecf=1)
+  'draw recf 'x1b' 'y1b' 'x2b' 'y2b
+endif
+
+  'set strsiz 'tsiz
+  'set string 1 c 5 'angle
+  'draw string 'xs' 'ys' 't1
+  'set string 1 c 5 0'
+
+return

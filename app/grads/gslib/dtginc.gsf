@@ -1,0 +1,83 @@
+function dtginc(dtgh,inc)
+*
+*  increment a dtg by inc hours
+*  RESTRICTIONS!!  
+*  (1)  inc > 0
+*  (2)  inc < 24
+*
+
+  ict=substr(dtgh,1,2)*1
+  iyr=substr(dtgh,3,2)*1
+  imo=substr(dtgh,5,2)*1
+  ida=substr(dtgh,7,2)*1
+  ihr=substr(dtgh,9,2)*1
+*   say 'qqq 'dtgh' 'inc
+  if(math_mod(iyr,4)=0) 
+    _ndymon.2=29
+  endif
+
+  ihr=ihr+inc
+*say 'ihr = 'ihr' ida = 'ida' inc: 'inc
+
+  while(ihr>=24)
+    ihr=ihr-24
+    ida=ida+1
+  endwhile
+
+  while(ihr<0)
+    ihr=ihr+24
+    ida=ida-1
+  endwhile
+
+#say 'new ihr = 'ihr' new ida = 'ida' imo = 'imo
+
+  if(ida > _ndymon.imo)
+    ida=ida-_ndymon.imo
+#say 'inside check ida = 'ida' _ndymon = '_ndymon.imo
+    imo=imo+1
+  endif
+
+  while(ida < 0)
+    imo=imo-1
+  if(imo<=0)
+    imo=imo+12
+    iyr=iyr-1
+    if(math_mod(iyr,4)=0) ; _ndymon.2=29 ; endif
+  endif
+    ida=_ndymon.imo+ida
+  endwhile
+
+  if(ida = 0)
+    imo=imo-1
+    if(imo<=0)
+      imo=imo+12
+      iyr=iyr-1
+      if(math_mod(iyr,4)=0) ; _ndymon.2=29 ; endif
+    endif
+    ida=_ndymon.imo
+  endif
+
+  if(imo<=0)
+    imo=imo+12
+    iyr=iyr-1
+    if(math_mod(iyr,4)=0) ; _ndymon.2=29 ; endif
+  endif
+
+  if(imo>=13)
+    imo=imo-12
+    iyr=iyr+1
+  endif
+
+if(iyr >= 100)
+ict=ict+1
+iyr=iyr-100
+endif
+
+if(ict<10);ict='0'ict;endif
+if(iyr<10);iyr='0'iyr;endif
+if(imo<10);imo='0'imo;endif
+if(ida<10);ida='0'ida;endif
+if(ihr<10);ihr='0'ihr;endif
+
+return (ict%iyr%imo%ida%ihr)
+

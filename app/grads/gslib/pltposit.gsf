@@ -1,0 +1,39 @@
+function pltposit(pfile)
+
+verb=0
+rc=0
+ncard=0
+while(rc = 0)
+
+  res=read(pfile)
+  rc=sublin(res,1)
+  if(rc>0)
+    if(verb=1); print 'rc = 'rc' ncard = 'ncard  ; endif
+    return
+  endif
+
+  ncard=ncard+1
+  card=sublin(res,2)
+  stmid=subwrd(card,1)
+  rlat=subwrd(card,2)
+  rlon=subwrd(card,3)
+
+  'q w2xy 'rlon' 'rlat
+  x1=subwrd(result,3)
+  y1=subwrd(result,6)
+
+  ssym=41
+  ssiz=0.4
+  scol=1
+  sthk=5
+  _dcmd.ncard='draw wxsym 'ssym' 'x1' 'y1' 'ssiz' 'scol' 'sthk
+  _dlnlt.ncard=rlon' 'rlat
+  _ncmd=ncard
+
+endwhile
+
+
+rc=close(pfile)
+
+return
+

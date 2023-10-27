@@ -1,0 +1,114 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module gbland ! in 
+    interface  ! in :gbland
+        module dist2coast ! in :gbland:gblandF2PY.f90
+            character(len=120), parameter,optional :: include_path='/data/amb/users/fiorino/w21/dat/geog/coastlines'
+            subroutine gbland(glon,glat,dtl) ! in :gbland:gblandF2PY.f90:dist2coast
+                real intent(in) :: glon
+                real intent(in) :: glat
+                real intent(out) :: dtl
+            end subroutine gbland
+            subroutine aland(clon,clat,dist) ! in :gbland:gblandF2PY.f90:dist2coast
+                real intent(in) :: clon
+                real intent(in) :: clat
+                real intent(out) :: dist
+            end subroutine aland
+            subroutine lsub1(dx,dy,dxc,dyc,al0,al,ac,a,dra,d) ! in :gbland:gblandF2PY.f90:dist2coast
+                real :: dx
+                real :: dy
+                real :: dxc
+                real :: dyc
+                real :: al0
+                real :: al
+                real :: ac
+                real :: a
+                real :: dra
+                real :: d
+            end subroutine lsub1
+            subroutine lsub2(x2,x1,y2,y1,dx,dy,a) ! in :gbland:gblandF2PY.f90:dist2coast
+                real :: x2
+                real :: x1
+                real :: y2
+                real :: y1
+                real :: dx
+                real :: dy
+                real :: a
+            end subroutine lsub2
+            function angl(a) ! in :gbland:gblandF2PY.f90:dist2coast
+                real intent(in) :: a
+                real :: angl
+            end function angl
+            subroutine wland(clon,clat,dist) ! in :gbland:gblandF2PY.f90:dist2coast
+                real intent(in) :: clon
+                real intent(in) :: clat
+                real intent(out) :: dist
+            end subroutine wland
+            subroutine lsubw1(dx,dy,dxc,dyc,al0,al,ac,a,dra,d) ! in :gbland:gblandF2PY.f90:dist2coast
+                real :: dx
+                real :: dy
+                real :: dxc
+                real :: dyc
+                real :: al0
+                real :: al
+                real :: ac
+                real :: a
+                real :: dra
+                real :: d
+            end subroutine lsubw1
+            subroutine lsubw2(x2,x1,y2,y1,dx,dy,a) ! in :gbland:gblandF2PY.f90:dist2coast
+                real :: x2
+                real :: x1
+                real :: y2
+                real :: y1
+                real :: dx
+                real :: dy
+                real :: a
+            end subroutine lsubw2
+            function anglw(a) ! in :gbland:gblandF2PY.f90:dist2coast
+                real intent(in) :: a
+                real :: anglw
+            end function anglw
+            subroutine shland(clon,clat,dist) ! in :gbland:gblandF2PY.f90:dist2coast
+                real intent(in) :: clon
+                real intent(in) :: clat
+                real intent(out) :: dist
+            end subroutine shland
+            subroutine lsubw1sh(dx,dy,dxc,dyc,al0,al,ac,a,dra,d) ! in :gbland:gblandF2PY.f90:dist2coast
+                real :: dx
+                real :: dy
+                real :: dxc
+                real :: dyc
+                real :: al0
+                real :: al
+                real :: ac
+                real :: a
+                real :: dra
+                real :: d
+            end subroutine lsubw1sh
+            subroutine lsubw2sh(x2,x1,y2,y1,dx,dy,a) ! in :gbland:gblandF2PY.f90:dist2coast
+                real :: x2
+                real :: x1
+                real :: y2
+                real :: y1
+                real :: dx
+                real :: dy
+                real :: a
+            end subroutine lsubw2sh
+            function anglsh(a) ! in :gbland:gblandF2PY.f90:dist2coast
+                real intent(in) :: a
+                real :: anglsh
+            end function anglsh
+        end module dist2coast
+        subroutine latlon2land(glat,glon,dtl) ! in :gbland:gblanddriver.f90
+            use dist2coast
+            real intent(in) :: glat
+            real intent(in) :: glon
+            real intent(out) :: dtl
+        end subroutine latlon2land
+    end interface 
+end python module gbland
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/

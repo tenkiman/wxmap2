@@ -1,0 +1,19 @@
+function linelgd(nm,dxoff,xlsft,xlsz,yln,ylg,dyl)
+xlen=_pagex-2*dxoff
+ylg=yln+dyl
+dx=xlen/nm
+xloff=(dx-xlsz*dx)*0.5-xlsft
+j=1
+while(j<=nm)
+  xb=dxoff+(j-1)*dx+xloff
+  xe=xb+xlsz*dx
+  xm=(xb+xe)*0.5
+
+  'set line '_lc.j' '_ls.j' '_lt.j
+  'draw line 'xb' 'yln' 'xe' 'yln
+
+  'set string 1 bc 6'
+  'set strsiz 0.09'
+  'draw string  'xm' 'ylg' '_s.j
+  j=j+1
+endwhile

@@ -1,0 +1,269 @@
+function cmap2 (sf,vert,xmid,ymid,cint)
+
+* Check orientation of color map specified by user; if none is
+* specified, default to horizontal color map
+
+if(sf=''); sf=1.0; endif
+
+* Begin: Check shading information for colors specified by user
+
+* Get shading information for plotted variable
+
+'q shades'
+shdinfo = result
+
+* Check if color map can be created; if not, print message to user and
+* exit
+
+if(subwrd(shdinfo,1)='None')
+  say 'Cannot plot color bar: No shading information provided.'
+  return
+endif
+
+* End: Check shading information for colors specified by user
+
+* Begin: Define plot size information and define parameters for color
+* map creation
+
+* Get plot size information
+
+'q gxinfo'
+rec2 = sublin(result,2)
+rec3 = sublin(result,3)
+rec4 = sublin(result,4)
+
+* Define dimensions of plot
+
+xsiz = subwrd(rec2,4)
+ysiz = subwrd(rec2,6)
+ylo = subwrd(rec4,4)
+xhi = subwrd(rec3,6)
+xd = xsiz - xhi
+
+* Define color map specifications
+
+ylolim=0.6*sf
+xdlim1=1.0*sf
+xdlim2=1.5*sf
+barsf=0.8*sf
+yoffset=0.2*sf
+stroff=0.05*sf
+strxsiz=1.5*0.08*sf
+strysiz=1.5*0.10*sf
+
+* End: Define plot size information and define parameters for color
+* map creation
+
+* Begin: Define orientation of color map; if not enough room exists
+* for color map to be plotted, print message to user and exit script
+
+* Check if color map can be plotted on figure
+
+if(ylo<ylolim & xd<xdlim1)
+  say 'Not enough room in plot for a colorbar.'
+  return
+endif
+
+* Define number of contour levels in color map
+
+cnum = subwrd(shdinfo,5)
+
+* Define color map orientation logic specified by user arguments
+
+if(ylo<ylolim | xd>xdlim1)
+  vchk = 1
+  if(vert = 0) ; vchk = 0 ; endif
+  else
+  vchk = 0
+  if(vert = 1) ; vchk = 1 ; endif
+endif
+
+* End: Define orientation of color map; if not enough room exists for
+* color map to be plotted, print message to user and exit script
+
+* Begin: Define color map orientation according to specifications
+* defined by user arguments
+
+* Vertical color map
+
+if(vchk = 1 )
+  
+  if(xmid = '') ; xmid = xhi+xd/2 ; endif
+  xwid = 0.2*sf
+  ywid = 0.5*sf
+
+  xl = xmid-xwid/2
+  xr = xl + xwid
+  if(ywid*cnum > ysiz*barsf)
+    ywid = ysiz*barsf/cnum
+  endif
+  if(ymid = '') ; ymid = ysiz/2 ; endif
+  yb = ymid - ywid*cnum/2
+  'set string 1 l 1'
+  vert = 1
+
+else
+
+* Horizontal color map
+
+  ywid = 0.4
+  xwid = 0.8
+
+  if(ymid = '') ; ymid = ylo/2-ywid/2 ; endif
+  yt = ymid + yoffset
+  yb = ymid
+  if(xmid = '') ; xmid = xsiz/2 ; endif
+  if(xwid*cnum > xsiz*barsf)
+    xwid = xsiz*barsf/cnum
+  endif
+  xl = xmid - xwid*cnum/2
+  'set string 1 tc 1'
+  vert = 0
+
+endif
+
+* End: Define color map orientation according to specifications
+* defined by user arguments
+
+* Begin: Plot color map using specifications defined by user
+
+* Define string size
+
+'set strsiz ' strxsiz ' ' strysiz
+
+* Define interval at which to label variable values
+
+clnum = math_nint(cnum/cint)
+
+* Initialize counting variables
+
+num = 0
+lnum = 0
+
+* Begin: Loop through all color levels specified by user
+
+while(num < cnum)
+
+* Define color and value for color map
+
+  rec = sublin(shdinfo,num+2)
+  col = subwrd(rec,1)
+  hi  = subwrd(rec,3)
+
+* Define corners of polygon to contain color shading based on
+* orientation of color map
+
+  if(vert)
+    yt = yb + ywid
+  else
+    xr = xl + xwid
+  endif
+
+* Draw shaded polygon within interior of color map
+
+  if(num != 0 & num != cnum-1)
+    'set line 1 1 10'
+    'draw rec 'xl' 'yb' 'xr' 'yt
+    'set line ' col
+    'draw recf ' xl ' ' yb ' ' xr ' ' yt
+  endif
+
+* Draw boxes dividing color map shadings according to color map
+* orientation
+
+  if(num = 0)
+    if(vert = 1)
+      xm=(xl+xr)*0.5
+      'set line 1 1 10'
+      'draw line 'xl' 'yt' 'xm' 'yb
+      'draw line 'xm' 'yb' 'xr' 'yt
+      'draw line 'xr' 'yt' 'xl' 'yt
+      'set line 'col
+      'draw polyf 'xl' 'yt' 'xm' 'yb' 'xr' 'yt' 'xl' 'yt
+
+    else
+
+      ym=(yb+yt)*0.5
+      'set line 1 1 10'
+      'draw line 'xl' 'ym' 'xr' 'yb
+      'draw line 'xr' 'yb' 'xr' 'yt
+      'draw line 'xr' 'yt' 'xl' 'ym
+      'set line 'col
+      'draw polyf 'xl' 'ym' 'xr' 'yb' 'xr' 'yt' 'xl' 'ym
+
+    endif
+
+  endif
+
+  if(num = cnum-1)
+    if(vert = 1)
+      'set line 1 1 10'
+      'draw line 'xl' 'yb' 'xm' 'yt
+      'draw line 'xm' 'yt' 'xr' 'yb
+      'draw line 'xr' 'yb' 'xl' 'yb
+      'set line 'col
+      'draw polyf 'xl' 'yb' 'xm' 'yt' 'xr' 'yb' 'xl' 'yb
+      
+    else
+
+      'set line 1 1 10'
+      'draw line 'xr' 'ym' 'xl' 'yb
+      'draw line 'xl' 'yb' 'xl' 'yt
+      'draw line 'xl' 'yt' 'xr' 'ym
+      'set line 'col
+      'draw polyf 'xr' 'ym' 'xl' 'yb' 'xl' 'yt' 'xr' 'ym
+
+    endif
+
+  endif
+
+* Begin: string denoting value of plotted variable according to
+* interval specified by user and reset counting variable
+
+* Draw strings at color map endpoints
+
+  if(num = 0 | num = cnum)
+    if(vert)
+      xp=xr+stroff
+      'draw string 'xp' 'yt' 'hi
+    else
+      yp=yb-stroff
+      'draw string 'xr' 'yp' 'hi
+    endif
+  endif
+
+* Draw strings within color map
+
+  if(lnum = clnum)
+    if(num<cnum-1)
+      if(vert)
+        xp=xr+stroff
+        'draw string 'xp' 'yt' 'hi
+      else
+        yp=yb-stroff
+        'draw string 'xr' 'yp' 'hi
+      endif
+    endif
+    lnum = 0
+  endif
+
+* End: string denoting value of plotted variable according to interval
+* specified by user and reset counting variable
+
+* Update counting variables
+
+  num = num + 1
+  lnum = lnum + 1
+
+* Update position variables for color map and variable values
+
+  if (vert); yb = yt;
+  else; xl = xr; endif;
+
+endwhile
+
+* End: Loop through all color levels specified by user
+
+return
+
+

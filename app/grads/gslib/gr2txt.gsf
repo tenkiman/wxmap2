@@ -1,0 +1,71 @@
+#nx=12
+#nt=61
+#rc=const()
+#rc=metadata1('y')
+#print ' _pi: '_pi
+#print ' nx,ny,nz '_nx' '_ny' '_nz' '_nt
+#var='ml'
+#fpath='/tmp/o.ml.1.txt'
+#rc=gr2txt(var,fpath)
+#'quit'
+
+function gr2txt(var,fpath,dometa)
+
+fmt='%03d'
+varx=_nx
+vary=_nt
+
+if(dometa=1)
+  nx=math_format(fmt,varx)
+  nt=math_format(fmt,vary)
+
+  card='nx= '_nx' ny= '_nt
+
+  rc=write(fpath,card)
+
+  i=1
+  while(i<=_nx)
+    card=i' : '_xdesc.i
+    rc=write(fpath,card)
+    i=i+1
+  endwhile
+
+endif
+
+'set x 1'
+'set y 1'
+'set z 1'
+'set t 1'
+
+fmt='%10.4g'
+
+l=1
+while(l<=_nt)
+'set t 'l
+'q time'
+gtime=subwrd(result,3)
+dtg=gtime2dtg(gtime)
+
+print 'TTTTTTTTTTT 'gtime' 'dtg
+
+xcard=dtg
+i=1
+while(i<=_nx)
+  'set x 'i
+  'd 'var
+  val=subwrd(result,4)
+  rc=math_format(fmt,val)
+
+  xcard=xcard' 'rc
+  
+  i=i+1
+endwhile
+
+print xcard
+rc=write(fpath,xcard,'a')
+
+l=l+1
+endwhile
+
+return
+

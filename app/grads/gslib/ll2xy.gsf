@@ -1,0 +1,5 @@
+function ll2xy(lon,lat)
+'q w2xy 'lon' 'lat
+x0=subwrd(result,3)
+y0=subwrd(result,6)
+return(x0' 'y0)

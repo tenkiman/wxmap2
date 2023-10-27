@@ -1,0 +1,70 @@
+function corrw(x1,x2)
+*
+*	calc correlation coefficient for 2-D horizontal fields using aave
+*
+*	for non horizontal fields use ave(ave...)
+*
+*	ASSUMES THE GRIDS HAVE THE SAME NUMBER OF DEFINED POINTS!!!!
+*
+*	based on formula on p.92 of Panofsky and Brier, 1968 "Some applications of
+*	statistics to meteorology." Penn State Press
+*
+*
+*	set dimension environment to 0-D (a point), as a consequence
+*	all calcs are written to the string variable result
+*
+*'set x 1'
+*'set y 1'
+*
+*	display (calc) the ave of field #1
+*
+
+'d aave('x1',lon='_lon1',lon='_lon2',lat='_lat1',lat='_lat2')'
+ave1=subwrd(result,4)
+*
+*	field #2
+*
+'d aave('x2',lon='_lon1',lon='_lon2',lat='_lat1',lat='_lat2')'
+ave2=subwrd(result,4)
+*
+*	cross product #1 * #2
+*
+'d aave('x1'*'x2',lon='_lon1',lon='_lon2',lat='_lat1',lat='_lat2')'
+ave12=subwrd(result,4)
+*
+*	ave of the sqr  #1
+*
+'d aave('x1'*'x1',lon='_lon1',lon='_lon2',lat='_lat1',lat='_lat2')'
+ave1s=subwrd(result,4)
+*
+*	ave of sqr of #2
+'d aave('x2'*'x2',lon='_lon1',lon='_lon2',lat='_lat1',lat='_lat2')'
+ave2s=subwrd(result,4)
+*
+*	the first part of the denominator
+*
+'d sqrt('ave1s'-'ave1'*'ave1')'
+den1=subwrd(result,4)
+*
+*	the second part
+*
+'d sqrt('ave2s'-'ave2'*'ave2')'
+den2=subwrd(result,4)
+*
+*	the numerator
+*
+'d 'ave12'-'ave1'*'ave2
+num=subwrd(result,4)
+*
+*	the coefficient
+*
+'d 'num'/('den1'*'den2')'
+corr=subwrd(result,4)
+*
+*	output to the terminal
+*
+say ' The area weighted correlation = 'corr
+*
+*	return the string to the main program
+*
+return(corr)

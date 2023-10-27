@@ -1,0 +1,26 @@
+function lineplot(var,lcol,lsty,lthk,lmrk,ltle)
+
+'set ccolor 'lcol
+'set cstyle 'lsty
+'set cthick 'lthk
+'set cmark 'lmrk
+#'set line 'lcol' 'lsty' 'lthk
+
+'set gxout line'
+
+'d 'var
+
+_ldy=0.125
+
+rc=plotdims()
+
+if(_nplot = 0)
+_llx=_xlplot+_ldy
+_lly=_ybplot+_ldy
+endif
+
+_nplot=_nplot+1
+
+rc=linelgnd(lcol,lsty,lthk,lmrk,ltle)
+
+return

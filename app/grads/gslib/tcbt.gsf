@@ -1,0 +1,78 @@
+function tcbt()
+
+_ntc=4
+
+btpath.1='/dat/nwp/dat/tc/bt_neumann/1983/bt.neumann.wpc.1983.05W.txt'
+btpath.2='/dat/nwp/dat/tc/bt_neumann/1983/bt.neumann.wpc.1983.06W.txt'
+btpath.3='/dat/nwp/dat/tc/bt_neumann/1983/bt.neumann.wpc.1983.07W.txt'
+btpath.4='/dat/nwp/dat/tc/bt_neumann/1983/bt.neumann.wpc.1983.08W.txt'
+
+nn=1
+
+verb=0
+
+while(nn<=_ntc)
+
+nbt=0
+ncard=0
+iok=0
+
+while(iok=0)
+
+  result=read(btpath.nn)
+  iok=sublin(result,1)
+  card=sublin(result,2)
+
+  ncard=ncard+1
+  if(verb=1) ; print 'nbt 'nbt' 'iok' 'card ; endif
+
+  if(ncard>=2)
+    nbt=nbt+1
+
+     dtg=subwrd(card,1)
+     dtg=substr(dtg,5,6)
+     stmid=subwrd(card,2)
+     vmx=subwrd(card,3)
+     lat=subwrd(card,5)
+     lon=subwrd(card,6)
+#    _tcdtg.nn.nbt=subwrd(card,1)
+#    _tcvmax.nn.nbt=subwrd(card,3)
+#    _tclat.nn.nbt=subwrd(card,5)
+#    _tclon.nn.nbt=subwrd(card,6) 
+
+    _tcdtg.nn.nbt=dtg
+
+    'q w2xy 'lon' 'lat
+
+###print 'qqqq 'nn' 'dtg' 'vmx' 'stmid
+    _tcx.nn.dtg=subwrd(result,3)
+    _tcy.nn.dtg=subwrd(result,6)
+    _tcvmx.nn.dtg=vmx
+    _tcsid.nn.dtg=stmid
+    _tclon.nn.dtg=lon
+    _tclat.nn.dtg=lat
+
+  endif
+
+endwhile
+
+nbt=nbt-1
+
+_tcnbt.nn=nbt
+
+if(verb=1) ; print 'nnnnnnnnnn 'nbt ; endif
+
+
+nn=nn+1
+
+endwhile
+
+_tcsz=0.35
+_tccol1=0
+_tccol2=2
+_tcthk1=12
+_tcthk2=4
+_tcmrk=41
+
+return
+

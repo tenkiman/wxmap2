@@ -1,0 +1,36 @@
+USGS lat-lon vector info converted to GrADS format.
+Each r*.dat file contains an individual region of the US.
+
+The maps do not abut properly; there seems to be a slight 
+error in the original lat-lon data.  You will need to 
+be responsible for determining if the data is accurate enough
+for your needs.
+
+The map data sets contain county lines, rivers, roads, etc.
+
+An example of plotting county lines for Virginia:
+
+     set lon -82 -76
+     set lat 36.5 39
+     set mpdset r2.dat
+     set mpt * off
+     set mpt 5 1
+     draw map
+
+List of usgs background data sets in grads format:
+
+   r1.dat  - New England, New York
+   r2.dat  - OH, PA, NJ, MD, DE, WV, VA
+   r3.dat  - NC, SC, GA
+   r4.dat  - FL
+   r5.dat  - AR, TN, LA, MS, AL
+   r6.dat  - IA, MO, IL, IN, KY
+   r7.dat  - MN, WI, MI
+   r8.dat  - s. TX
+   r9.dat  - n. TX, OK
+   r10.dat - CO, KS, NE
+   r11.dat - e. MT, WY, ND, SD
+   r12.dat - AZ, NM
+   r13.dat - s. CA
+   r14.dat - n. CA, NV, UT
+   r15.dat - w. MT, ID, WA, OR
