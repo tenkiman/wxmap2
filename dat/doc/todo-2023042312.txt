@@ -1,0 +1,69 @@
+# dat2 --> dat82   202108.202112.6 gfs2 -M dat2-dat82
+
+# aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa current active
+# dat11 --> dat82  202201.202212.6 gfs2 -M dat11-dat82 
+# TTT--gfs2:  208  2022010100-2022022118
+# FFF--gfs2:    1  2022022200
+# TTT--gfs2:    2  2022022206-2022022212
+# FFF--gfs2:   61  2022022218-2022030918
+# TTT--gfs2:  135  2022031000-2022041212
+# FFF--gfs2:    1  2022041218
+# TTT--gfs2:   25  2022041300-2022041900
+# FFF--gfs2:    6  2022041906-2022042012
+# TTT--gfs2:  165  2022042018-2022053118
+# FFF--gfs2:   96  2022060100-2022062418
+# TTT--gfs2:   24  2022062500-2022063018
+# AAA--Model: gfs2  2022010100-2022063018  nGood:  559 nBad:  165  total:    991 GB
+
+dat2 --> dat82 
+
+202206.202212.6  navg -M dat2-dat82
+202211.202212.12 cgd2 -M dat2-dat82
+202211.202212.12 ecmt -M dat2-dat82
+202211.202212.12 ecm5 -M dat2-dat82
+202206.202212.6  jgsm -M dat2-dat82
+202207.202212.6  goes -M dat16-dat82
+
+
+# aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa current active
+# dat2 --> dat82   202206.202212.6 gfs2 -M dat2-dat82
+#
+# FFF--gfs2:  604  2022010100-2022053118
+# TTT--gfs2:   96  2022060100-2022062418
+# FFF--gfs2:  516  2022062500-2022103118
+# TTT--gfs2:  301  2022110100-2023011500
+#
+# aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa current active
+# dat11 --> dat82  
+#
+#2021121712.2022063012.12 cgd2 -M dat11-dat82
+
+
+ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+dat11 --> dat82 
+
+# 2022010100.2022063018.6 navg -M dat11-dat82
+# 2022050100.2022063012.12 ecmt -M dat11-dat82
+# 2022050100.2022063012.12 ecm5 -M dat11-dat82
+# 2022010100.2022063018.6 jgsm -M dat11-dat82
+
+dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+dat12 --> dat82:  
+
+# 2022070100-2022103118 gfs2 -M dat12-dat82
+# 2022070100.2022103112.12 cgd2 -M dat12-dat82 
+# 2022070100.2022103118.6 navg -M dat12-dat82
+# 2022070100.2022103118.6 jgsm -M dat12-dat82
+# 2022070100.2022093012.12 ecmt -M dat12-dat82
+
+dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+dat12 --> dat81:
+
+# 2020110612.2021063012.12 ecmt -M dat12-dat81
+# 2021010200.2021123112.12 ecmt -M dat12-dat81
+
+dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+dat12 --> dat80:
+
+# 2020010200.2020123112.12 ecmt -M dat12-dat80
+

@@ -1,0 +1,103 @@
+		 on mike3 to clean up products on dat2
+				2021120
+
+/run/media/fiorino/USB3Ext4-02/data/hfip/fiorino/products/hfip........
+----------------------------------------------------------------------
+./jtdiagDAT                                        ::       69,348,792
+./tcactDAT                                         ::        8,356,220
+./tcdiagDAT                                        ::       86,941,052
+./tcepsDAT                                         ::       53,025,620
+./tcgenDAT                                         ::      185,700,972
+----------------------------------------------------------------------
+Total..................                            ::      403,372,660
+
+
+for jtdiag 2018/2019 failed because ln -s to wrong spot...
+
+   732  20:51   time zip -T -r -q -m jtdiagDAT-2018.zip 2018/
+   735  20:51   time zip -T -r -q -m jtdiagDAT-2020.zip 2020/
+   916  13:00   time zip -T -r -q -m jtdiagDAT-2019.zip 2019/
+   929  13:23   time zip -T -r -u -m jtdiagDAT-2019.zip 2019/
+   938  13:33   del jtdiagDAT-2019.zip
+   
+   754  3:42    time zip -T -r -q -m tcepsDAT-2020.zip 2020/
+   756  3:42    time zip -T -r -q -m tcepsDAT-2019.zip 2019/
+   759  3:42    time zip -T -r -q -m tcepsDAT-2018.zip 2018/
+
+   771  13:33   time zip -T -r -q -m tcgenDAT-2018.zip 2018/
+   773  13:33   time zip -T -r -q -m tcgenDAT-2019.zip 2019/
+   776  13:33   time zip -T -r -q -m tcgenDAT-2020.zip 2020/
+
+   876  12:54   time zip -T -r -q -m tcactDAT-2019-shem.zip 2019.shem/
+   878  12:54   time zip -T -r -q -m tcactDAT-2019-nhem.zip 2019.nhem/
+   882  12:54   time zip -T -r -q -m tcactDAT-2018-nhem.zip 2018.nhem/
+
+   685  14:13   zip -r -q -m tcdiagDAT-2018.zip 2018/
+   701  14:15   zip -T -r -q -m tcdiagDAT-2019.zip 2019/
+   725  14:54   time zip -T -r -q -m tcdiagDAT-2020.zip 2020/
+
+
+				20220614
+				========
+
+/ssd1
+
+IKE3-wxmap2 00:52 fiorino@tenki7-m3 /ssd1 1024 > ud .
+/mnt/SSD3Ext4-03......................................................
+----------------------------------------------------------------------
+du: cannot read directory ‘./lost+found’: Permission denied
+./dat1                                             ::      593,797,324
+./data                                             ::       43,733,512
+./home                                             ::        1,350,432
+./lost+found                                       ::               16
+./ptmp                                             ::        3,941,016
+----------------------------------------------------------------------
+Total..................                            ::      642,822,312
+TTTTTTTTTTTTTTTTTTTTTTT-------------------timer: all                                                                     : 618.411      at: 2022061500 01:02:57
+
+/mnt/SSD3Ext4-03/dat1.................................................
+----------------------------------------------------------------------
+./data                                             ::      388,027,376
+./ocean                                            ::       22,579,532
+./tc                                               ::      174,087,736
+./w21-git                                          ::        9,103,104
+----------------------------------------------------------------------
+Total..................                            ::      593,797,752
+TTTTTTTTTTTTTTTTTTTTTTT-------------------timer: all                                                                     : 410.644      at: 2022061500 01:19:12
+
+
+
+/mnt/USB3Ext4-16/data/hfip/fiorino/products/hfip......................
+----------------------------------------------------------------------
+./jtdiagDAT                                        ::       81,693,232
+./tcactDAT                                         ::        8,356,216
+./tcdiagDAT                                        ::       86,941,052
+./tcepsDAT                                         ::       53,025,616
+./tcgenDAT                                         ::      185,700,960
+----------------------------------------------------------------------
+Total..................                            ::      415,717,080
+
+jtdiag
+------
+
+zip -r -m -u -v /dat2/data/hfip/fiorino/products/hfip/jtdiagDAT/jtdiagDAT-2021.zip 2021/
+
+tcact
+-----
+
+latest tcact in in tcact/ vice tcactDAT/
+mv tcact/2021.?hem to tcactDAT/
+
+ 1004  la /dat2/data/hfip/fiorino/products/hfip/tcactDAT/
+
+ 1005  zip -u -r -m -v /dat2/data/hfip/fiorino/products/hfip/tcactDAT/tcactDAT-2018-nhem.zip 2018.nhem/
+ 1006  zip -u -r -m -v /dat2/data/hfip/fiorino/products/hfip/tcactDAT/tcactDAT-2018-shem.zip 2018.shem/
+ 1007  zip -u -r -m -v /dat2/data/hfip/fiorino/products/hfip/tcactDAT/tcactDAT-2019-nhem.zip 2019.nhem/
+ 1009  zip -u -r -m -v /dat2/data/hfip/fiorino/products/hfip/tcactDAT/tcactDAT-2019-shem.zip 2019.shem/
+ 1010  zip -u -r -m -v /dat2/data/hfip/fiorino/products/hfip/tcactDAT/tcactDAT-2020-shem.zip 2020.shem/
+ 1011  zip -u -r -m -v /dat2/data/hfip/fiorino/products/hfip/tcactDAT/tcactDAT-2020-nhem.zip 2020.nhem/
+
+tcdiag
+------
+
+time zip -r -m -u -v  /dat2/data/hfip/fiorino/products/hfip/tcdiagDAT/tcdiagDAT-2021.zip 2021/

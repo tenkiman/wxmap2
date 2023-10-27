@@ -1,0 +1,150 @@
+USB3Ext4-02 /dat2-orig clean up
+------------------------------
+
+rm -f -r dat/ocean ; dat/pr/ ; dat/pr-year ; dat/tc/
+
+now achive storage for 
+
+nwp2/w2flds/
+nwp2/ncep/gfs/  (goes)
+
+filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd1       4.6T  3.7T  647G  86% /run/media/fiorino/USB3Ext4-02
+
+mv nwp2/w2flds/dat/ecmt => /dat13/dat/nwp2/w2flds/dat/ecmt
+
+rm -f -r nwp2/w2flds/dat/ecmt
+
+filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd1       4.6T  3.5T  900G  80% /run/media/fiorino/USB3Ext4-02
+
+
+USB3Ext4-02 archive of hfip/products
+------------------------------------
+
+/run/media/fiorino/USB3Ext4-02/data/hfip/fiorino/products/hfip........
+----------------------------------------------------------------------
+./jtdiagDAT                                        ::       69,348,792	2019 2020
+./tcactDAT                                         ::        8,356,220	2018 2020
+./tcdiagDAT                                        ::       86,941,052	2018 2020
+./tcepsDAT                                         ::       53,025,620	2018 2020
+./tcgenDAT                                         ::      185,700,972	2018 2020
+----------------------------------------------------------------------
+Total..................                            ::      403,372,660
+Dirs...................                            ::      403,372,656
+TTTTTTTTTTTTTTTTTTTTTTT-------------------timer: all                                                                     :  0.138      at: 2021111818 05:01:18
+
+USB3Ext4-02 archive of w2flds and ncep/gfs2 (goes)
+--------------------------------------------------
+
+/run/media/fiorino/USB3Ext4-02/dat/nwp2/w2flds/dat....................
+----------------------------------------------------------------------
+./cgd2                                             ::      583,619,232
+./ecm5                                             ::      361,711,228
+./gfs2                                             ::    1,428,549,192
+./jgsm                                             ::      121,908,980
+./navg                                             ::      562,998,220
+----------------------------------------------------------------------
+Total..................                            ::    3,058,786,856
+Files..................                            ::                4
+Dirs...................                            ::    3,058,786,852
+TTTTTTTTTTTTTTTTTTTTTTT-------------------timer: all                                                                     : 20.217      at: 2021111818 05:05:54
+
+cgd2: 2021040100-103112
+-----------------------
+missing:
+cgd2   Z-2021092800  999    999.90     0 <--- NO/ZERO DATA localdir: /dat2-orig/dat/nwp2/w2flds/dat/cgd2/2021092800
+cgd2   Z-2021100300  999    999.90     0 <--- NO/ZERO DATA localdir: /dat2-orig/dat/nwp2/w2flds/dat/cgd2/2021100300
+cgd2   L-2021100400  114    901.59     1 /dat2-orig/dat/nwp2/w2flds/dat/cgd2/2021100400 <--- low data count nfields: 36
+cgd2   Z-2021100412  999    999.90     0 <--- NO/ZERO DATA localdir: /dat2-orig/dat/nwp2/w2flds/dat/cgd2/2021100412
+
+
+ecm5: 2021040100-103112
+-----------------------
+missing: none
+
+
+gfs2: 2021040100-103118
+-----------------------
+missing: none
+
+jgsm: 2021040100-103112
+-----------------------
+missing: none
+
+navg: 2021040100-103118
+-----------------------
+missing: 
+
+navg   N-2021052518  999    999.90     0 <--- NO DATA localdir: /dat2-orig/dat/nwp2/w2flds/dat/navg/2021052518
+navg   N-2021052600  999    999.90     0 <--- NO DATA localdir: /dat2-orig/dat/nwp2/w2flds/dat/navg/2021052600
+
+navg   N-2021060518  999    999.90     0 <--- NO DATA localdir: /dat2-orig/dat/nwp2/w2flds/dat/navg/2021060518
+
+navg   N-2021070806  999    999.90     0 <--- NO DATA localdir: /dat2-orig/dat/nwp2/w2flds/dat/navg/2021070806
+
+navg   N-2021081018  999    999.90     0 <--- NO DATA localdir: /dat2-orig/dat/nwp2/w2flds/dat/navg/2021081018
+navg   N-2021081406  999    999.90     0 <--- NO DATA localdir: /dat2-orig/dat/nwp2/w2flds/dat/navg/2021081406
+navg   N-2021082006  999    999.90     0 <--- NO DATA localdir: /dat2-orig/dat/nwp2/w2flds/dat/navg/2021082006
+navg   N-2021082118  999    999.90     0 <--- NO DATA localdir: /dat2-orig/dat/nwp2/w2flds/dat/navg/2021082118
+
+navg   N-2021100212  999    999.90     0 <--- NO DATA localdir: /dat2-orig/dat/nwp2/w2flds/dat/navg/2021100212
+navg   N-2021100218  999    999.90     0 <--- NO DATA localdir: /dat2-orig/dat/nwp2/w2flds/dat/navg/2021100218
+navg   N-2021101118  999    999.90     0 <--- NO DATA localdir: /dat2-orig/dat/nwp2/w2flds/dat/navg/2021101118
+
+
+
+
+USB3Ext-13 /dat13 new archive of final ecmt
+-------------------------------------------
+
+rsync -alv /dat2/dat/nwp2/w2flds/dat/ecmt/ nwp2-dat13/w2flds/dat/ecmt/
+
+cd /dat2/dat/nwp2/w2flds/dat/ecmt/
+rm -f 20??????
+
+
+USB3Ext4-16 --> /dat2 the new realtime drive
+---------------------------------------------
+
+ocean:
+======
+
+/dat13 now has full ocean data set
+/dat2 has full + real-time
+
+pr:
+===
+
+/dat13 has full
+/dat2 real-time only
+
+rsync dat2 => dat13
+
+tc:
+===
+
+/dat13 is full and backup
+/dat2 has full + realtime
+
+rsync dat2 => dat13
+cleaned up dirs not in .zip for adeck/tmtrkN/2021 ; adeck/mftrkN/2021 ; adeck/tmtrkN/2021
+
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sde2       4.6T  1.9T  2.5T  43% /run/media/fiorino/USB3Ext4-16
+
+
+current dfth:
+
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/centos-root  120G   74G   47G  62% /
+vmhgfs-fuse              460G  261G  199G  57% /mnt/hgfs
+/dev/sdc1               1014M  402M  613M  40% /boot
+/dev/mapper/centos-home  4.0G  1.8G  2.2G  46% /home
+/dev/sdd1                4.6T  3.5T  900G  80% /run/media/fiorino/USB3Ext4-02
+/dev/sda2                4.6T  4.3T   57G  99% /run/media/fiorino/USB3Ext4-15
+/dev/sdb1                4.5T  3.7T  607G  87% /run/media/fiorino/USB3Ext4-13
+/dev/sde2                4.6T  1.9T  2.5T  43% /run/media/fiorino/USB3Ext4-16
+/dev/sdf1                916G  586G  284G  68% /run/media/fiorino/SSD3Ext4-03
+
+

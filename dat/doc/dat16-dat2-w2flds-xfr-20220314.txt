@@ -1,0 +1,29 @@
+mv 202111/12 to dat2(dat16-new dat2) to dat2-orig(original dat2 now used to archive)
+
+ecm5,cgd2,navg,gfs2,jgsm 202111
+ecm5,     navg,gfs2,jgsm 202112
+
+
+  747  w2-nwp2-w2flds-rsync2local.py 2021110100 ecm5 -M dat16-dat2 
+  748  w2-nwp2-w2flds-rsync2local.py 20211101.12 ecm5 -M dat16-dat2 
+  749  w2-nwp2-w2flds-rsync2local.py 202111.12 ecm5 -M dat16-dat2 
+
+  786  w2-nwp2-w2flds-rsync2local.py 2021120100 ecm5 -M dat16-dat2 
+  788  w2-nwp2-w2flds-rsync2local.py 202112.12 ecm5 -M dat16-dat2 
+  790  w2-nwp2-w2flds-rsync2local.py 202201.12 ecm5 -M dat16-dat2 
+  791  w2-nwp2-w2flds-rsync2local.py 202202.12 ecm5 -M dat16-dat2 
+  802  w2-nwp2-w2flds-rsync2local.py 202111.202112.6 gfs2,navg,jgsm -M dat16-dat2 
+
+# -- had to move back
+
+  832  w2-nwp2-w2flds-rsync2local.py 202201.202202.12 ecm5 -M dat2-dat16
+
+
+  841  w2-nwp2-w2flds-rsync2local.py 202111.12 cgd2 -M dat16-dat2 
+
+4.5T  3.8T  489G  89% /run/media/fiorino/USB3Ext4-13
+4.6T  4.3T   82G  99% /run/media/fiorino/USB3Ext4-02
+4.6T  4.3T   57G  99% /run/media/fiorino/USB3Ext4-15
+916G  693G  178G  80% /run/media/fiorino/SSD3Ext4-03
+4.6T  3.5T  872G  81% /mnt/USB3Ext4-16
+

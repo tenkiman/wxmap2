@@ -1,0 +1,18 @@
+960903
+
+got the ilsfil from Tom Rosmond, used swap.c to convert to big endian.
+
+ls.f is a cleaner version of his code which generates land-sea masks..
+
+rosmonds mask has the antarctic ice shelves...
+
+970301
+
+cleaned up sgeo.f to output topo and land
+
+see geo.t62.ctl
+
+the grid is set with the parameter (im= card in the main and topo
+routines.
+
+seems to work real well

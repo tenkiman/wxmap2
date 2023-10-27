@@ -1,0 +1,36 @@
+20220719
+--------
+
+yearly should year be /dat16?
+
+
+
+20220718
+
+ 1078  rsync -alv pr_cmorph/grib/2021/ /dat13/dat/pr/pr_cmorph/grib/2021/
+ 1092  rsync -alv pr_cmorph/grib/2019/ /dat13/dat/pr/pr_cmorph/grib/2019/
+ 1093  rsync -alv pr_cmorph/grib/2020/ /dat13/dat/pr/pr_cmorph/grib/2020/	
+
+ 1079  rsync -alv pr_qmorph/grib/2021/ /dat13/dat/pr/pr_qmorph/grib/2021/
+ 1090  rsync -alv pr_qmorph/grib/2019/ /dat13/dat/pr/pr_qmorph/grib/2019/
+ 1091  rsync -alv pr_qmorph/grib/2020/ /dat13/dat/pr/pr_qmorph/grib/2020/
+
+ 1113  rsync -alv grib/2021/ /dat13/dat/pr/cmorph/30min_025deg/grib/2021/
+ 1114  rsync -alv incoming/2021/ /dat13/dat/pr/cmorph/30min_025deg/incoming/2021/
+ 1119  rsync -alv incoming/2021/ /dat13/dat/pr/qmorph/30min_025deg/incoming/2021/
+
+ 1078  rsync -alv pr_cmorph/grib/2021/ /dat13/dat/pr/pr_cmorph/grib/2021/
+ 1079  rsync -alv pr_qmorph/grib/2021/ /dat13/dat/pr/pr_qmorph/grib/2021/
+ 1090  rsync -alv pr_qmorph/grib/2019/ /dat13/dat/pr/pr_qmorph/grib/2019/
+ 1091  rsync -alv pr_qmorph/grib/2020/ /dat13/dat/pr/pr_qmorph/grib/2020/
+ 1092  rsync -alv pr_cmorph/grib/2019/ /dat13/dat/pr/pr_cmorph/grib/2019/
+ 1093  rsync -alv pr_cmorph/grib/2020/ /dat13/dat/pr/pr_cmorph/grib/2020/
+
+ 1122  rsync -alv 2021/ /dat13/dat/pr/qmorph/30min_025deg/grib/2021/
+
+ 1147  rsync -alv pr/ /ssd4/dat/pr/
+ 1156  rsync -alv pr/ /ssd4/dat/pr/
+ 1160  rsync -alv pr/ /ssd4/dat/pr/
+
+ 1172  rsync -alv ocean/ /ssd4/dat/ocean/
+

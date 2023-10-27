@@ -1,0 +1,226 @@
+top-level inv of drives 20230920
+--------------------------------
+
+MIKE4 -- ssd1 -- 917G  493G  378G  57% /mnt/SSD3Ext4-04
+=======================================================
+cp 2021 mike3 centos7 VM in kishou/
+backup of eM client
+
+MACOS -- ssd2 -- 917G  macos
+========================================================
+
+MACOS -- ssd3 -- 916G  572G  299G  66% /mnt/SSD3Ext4-03
+=================================================
+ssd to run w22 entirely from ssd
+
+MIKE3 -- ssd4 -- real-time tc/pr/ocean/products 917G  490G  381G  57% /mnt/SSD3Ext4-04
+======================================================================================
+-- /ssd4/inv-20221108.txt
+
+* real-time tc/  pr/ ocean/ on mike3
+* real-time tcanal/1979-2022 with diag output from era5, but no .grb
+* tcanal/2022 -> 
+
+MIKE4 -- ssd5 -- aori  -- 916G  770G  101G  89% /mnt/SSD3Ext4-05
+=================================================
+same as ssd4; from Japan
+
+
+FREE  -- dat1 -- free  -- 1.9T
+==============================
+
+
+MIKE3 -- dat2 -- archive w2flds/ncep -- 4.6T  4.3T   36G 100% /mnt/USB3Ext4-02
+==============================================================================
+
+AAA--Drive: dat2 df:   4.6T  4.3T   36G 100% /mnt/USB3Ext4-02
+AAA--Model: gfs2  2023010100-2023062900  nGood:  668 nBad:   49  total:  1,186 GB
+AAA--Model: cgd2  2022110100-2023062900  nGood:  474 nBad:    7  total:  1,119 GB
+AAA--Model: navg  2022122800-2023062900  nGood:  709 nBad:   24  total:    454 GB
+AAA--Model: ecmt  2022100100-2023062900  nGood:  543 nBad:    0  total:    575 GB
+AAA--Model: ecm5  2022070100-2023062900  nGood:  726 nBad:    1  total:    600 GB
+AAA--Model: jgsm  2023010100-2023062900  nGood:  713 nBad:    4  total:     97 GB
+AAA--Model: goes  2022070100-2023063018  nGood: 1449 nBad:   11  total:    311 GB
+
+AAA--Size:                                                               --------
+AAA--Size:                                                               4,342 GB
+
+
+MIKE5 -- dat3  -- ocean/pr/sBT  -- 4.6T  1.9T  2.7T  42% /mnt/USB3BtrFS-03
+==========================================================================
+/mnt/USB3BtrFS-03/dat.................................................
+----------------------------------------------------------------------
+./ocean                                            ::       24,115,424
+./pr                                               ::    1,910,661,220
+./sbt-v03                                          ::    1,399,595,216
+./tcanal-SAV                                       ::        5,449,432
+----------------------------------------------------------------------
+Total..................                            ::    3,339,821,296
+
+
+MIKE5 -- dat4  -- era5 02-19 -- 4.6T  4.3T   56G  99% /mnt/USB3Ext4-04
+======================================================================
+w2flds/era5  2002-2019
+Tot 4,542,914,020
+
+
+FREE  -- dat5 -- free  -- 4.6T  /mnt/USB3Ext4-05
+================================================
+
+
+MIKE5 -- dat6 -- era5 84-01 -- 4.5T  4.3T   23G 100% /mnt/USB3Ext4-06
+=====================================================================
+w2flds/era5  1984-2001  update to 1984 on dat14..
+no the xfr from dat6 -> dat14 failed...huh...
+tot    4,538,379,620
+
+
+MIKE3 -- dat7 -- ecmt 09-13 -- 4.6T  3.9T  717G  85% /mnt/USB3Xfat-07
+=====================================================================
+w2flds/ecmt/
+2009     826,009,856  2009010100 - 2009123112
+2010     826,009,856  2010010100 - 2010123112
+2011     826,197,760  2011010100 - 2011123112
+2012     828,395,520  2012010100 - 2012123112
+2013     826,009,856  2013010100 - 2013123112
+tot    4,132,623,360
+
+
+MIKE5 -- dat8 -- ecmt 14-18 -- 4.6T  3.9T  717G  85% /mnt/USB3Xfat-08
+=====================================================================
+w2flds/ecmt/
+2014     822,616,064  2014010100 - 2014123112
+2015     826,009,856  2015010100 - 2015123112
+2016     828,260,096  2016010100 - 2016123112
+2017     831,205,376  2017010100 - 2017123112		 
+2018     824,068,096  2018010100 - 2018123112
+tot    4,132,160,000
+
+
+MIKE5 -- dat9 -- era5 2014/23  -- 4.6T  2.2T  2.2T  51% /mnt/USB3Ext4-09
+=================================================
+era5 2014010100-2023013112  # came from dat13
+
+
+FREE  -- dat10 -- free -- 4.6T  /mnt/USB3Ext4-10
+================================================
+
+
+FREE  -- dat11 -- free -- 4.6T  /mnt/USB3Ext4-11
+================================================
+
+
+MIKE3 -- dat12 -- archive tc products -- 4.6T  1.1T  3.2T  26% /mnt/USB3Ext4-12
+===============================================================================
+/mnt/USB3Ext4-12/data/hfip/fiorino/products/hfip......................
+----------------------------------------------------------------------
+./jtdiagDAT                                        ::      227,786,736
+./tcactDAT                                         ::        9,233,048
+./tcdiagDAT                                        ::      248,171,604
+./tcepsDAT                                         ::      136,561,468
+./tcgenDAT                                         ::      547,120,728
+----------------------------------------------------------------------
+Total..................                            ::    1,168,873,588
+
+
+MIKE3 -- dat13 -- era5 2014/22; full tc -- 4.5T  3.5T  829G  81% /mnt/USB3Ext4-13
+=================================================================================
+-- /dat13/inv-dat13.txt
+/dat13/dat/tc/ -- the final/only complete tc
+	       
+era5 2014-2022103112
+
+
+MIKE5 -- dat14  -- 4.6T  4.0T  301G  94% /mnt/USB3Ext4-14
+=========================================================
+-- /dat14/inv-dat14.txt
+ERA5 1979-1995
+
+
+MIKE5 -- dat15  -- 4.6T  4.3T   57G  99% /mnt/USB3Ext4-15
+=========================================================
+-- /dat15/inv-dat15.txt
+ERA5 1996-2013
+
+
+MIKE3 -- dat16 -- real-time nwp2   -- 4.6T  2.1T  2.3T  48% /mnt/USB3Ext4-16
+=================================================
+-- /dat16/inv-dat2aka16.txt
+-- /dat16/dat/inv-da16.txt
+-- /dat16/dat/ud-tc-dat16-20230106.txt
+
+#--rm -r dat/tc -- moved /dat13 is now the only full tc data repo
+
+  tcanal-zip:
+          2007-2021
+  tceps-zip:
+    cmc:  2010-2022
+  ecmwf:  2007-2022
+   ncep:  2010-2022
+   ukmo:  2010-2022
+ 
+pr_era5: 200701-202209
+
+AAA--Drive: dat16 df:   4.6T  2.1T  2.3T  48% /mnt/USB3Ext4-16
+AAA--Model: gfs2  2023062906-2023092012  nGood:  333 nBad:    1  total:    545 GB
+AAA--Model: cgd2  2023062912-2023092012  nGood:  167 nBad:    0  total:    385 GB
+AAA--Model: navg  2023062906-2023092012  nGood:  333 nBad:    1  total:    208 GB
+AAA--Model: ecmt  2023062912-2023091800  nGood:  162 nBad:    0  total:    172 GB
+AAA--Model: ecm5  2023062912-2023092012  nGood:  167 nBad:    0  total:    135 GB
+AAA--Model: jgsm  2023062906-2023092018  nGood:  333 nBad:    2  total:     45 GB
+AAA--Model: goes  2023033118-2023092018  nGood:  329 nBad:  364  total:     71 GB
+--Size:                                                               --------
+AAA--Size:                                                               1,562 GB
+
+
+MIKE5 -- dat17 -- tc current/aori -- 4.6T  3.9T  430G  91% /mnt/USB3Ext4-17
+=================================================
+-- /dat17/inv-dat17.txt
+dat/tc -- latest/greatest
+dat/tc/tcanal/ -- latest/greatest WITH *grb2
+tcdiag/ -- products from climateb for era5
+
+MIKE4 -- dat20 -- FREE -- 2.0T
+==============================
+
+MIKE4 -- dat20 -- FREE -- 2.0T
+==============================
+
+
+MIKE3 -- dat80 -- nwp2 archive 2019/20  -- 7.3T  6.7T  218G  97% /mnt/USB3Ext4-80
+=================================================================================
+AAA--Model: gfs2  2018122400-2020073118  nGood: 2335 nBad:    9  total:  3,238 GB
+AAA--Model: cgd2  2020010100-2020073112  nGood:  413 nBad:   13  total:    475 GB
+AAA--Model: navg  2019062400-2020073118  nGood: 1476 nBad:  140  total:    909 GB
+AAA--Model: ecmt  2018122400-2020123112  nGood: 1265 nBad:  213  total:  1,347 GB
+AAA--Model: ecm5  2019030100-2020073112  nGood: 1027 nBad:   11  total:    771 GB
+AAA--Model: jgsm  2020071400-2020073118  nGood:   72 nBad:    0  total:     10 GB
+AAA--Model: goes  2018122300-2020123118  nGood: 2884 nBad:   76  total:     49 GB
+AAA--Size:                                                               --------
+AAA--Size:                                                               6,798 GB
+
+
+MIKE3 -- dat81 -- nwp2 archive 2020/21  -- 7.3T  6.8T  141G  98% /mnt/USB3Ext4-81
+=================================================================================
+AAA--Model: gfs2  2020080100-2021073118  nGood: 1435 nBad:   25  total:  2,133 GB
+AAA--Model: cgd2  2020080100-2021121712  nGood:  986 nBad:   22  total:  1,313 GB
+AAA--Model: navg  2020080100-2021123118  nGood: 2041 nBad:   31  total:  1,293 GB
+AAA--Model: ecmt  2020080100-2021073112  nGood:  589 nBad:  141  total:    626 GB
+AAA--Model: ecm5  2020080100-2021123112  nGood: 1034 nBad:    2  total:    800 GB
+AAA--Model: jgsm  2020080100-2021123118  nGood: 2059 nBad:   13  total:    280 GB
+AAA--Model: goes  2020102612-2022063018  nGood: 2169 nBad:  281  total:    402 GB
+AAA--Size:                                                               --------
+AAA--Size:                                                               6,847 GB
+
+
+MIKE3 -- dat82 -- nwp2 archive 2021/22  -- 7.3T  6.9T   11M 100% /mnt/USB3Ext4-82
+=================================================================================
+AAA--Model: gfs2  2021080100-2022123118  nGood: 1998 nBad:   74  total:  3,312 GB
+AAA--Model: cgd2  2021121712-2022103112  nGood:  620 nBad:   17  total:  1,447 GB
+AAA--Model: navg  2022010100-2022122800  nGood: 1301 nBad:  144  total:    829 GB
+AAA--Model: ecmt  2021080100-2022093012  nGood:  849 nBad:    3  total:    899 GB
+AAA--Model: ecm5  2022010100-2022063012  nGood:  362 nBad:    0  total:    303 GB
+AAA--Model: jgsm  2022010100-2022123118  nGood: 1446 nBad:   14  total:    196 GB
+AAA--Size:                                                               --------
+
+

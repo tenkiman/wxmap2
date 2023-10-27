@@ -1,0 +1,18 @@
+94072800
+
+This is the home of the 10 min Navy terrain and land-sea data
+
+941020
+
+Worked with Tom Rosmond to create a land/sea mask for the 
+288x145 reanal grid.  The prog is ls.f
+
+This is being put in /obs/fiorino/geog/navy
+
+960222
+
+see /homes/cola/dirmeyer/colamod.d/runoff.d/nav*ctl
+
+and 
+
+/data/land/dirmeyer/*dat

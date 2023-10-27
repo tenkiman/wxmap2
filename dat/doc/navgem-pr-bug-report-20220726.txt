@@ -1,0 +1,44 @@
+	  bug report for navgem grib2 coding of precipitation
+			      26 Aug 2022
+			      Mike Fiorino
+			    mfiorino@gmu.edu
+
+
+2022072006 run wgrib2 of tau 72
+-------------------------------
+
+ /data/w22/dat/nwp2/w2flds/dat/navg/2022072006 1117 > wgrib2 -V navgem_2022072006f072.grib2  | head -14
+
+2:164402:vt=2022072306:surface:66-72 hour acc fcst:APCP Total Precipitation [kg/m^2]:
+    ndata=259920:undef=0:mean=0.527248:min=0:max=72.07
+    grid_template=0:winds(N/S):
+        lat-lon grid:(720 x 361) units 1e-06 input WE:SN output WE:SN res 48
+        lat -90.000000 to 90.000000 by 0.500000
+        lon 0.000000 to 359.500000 by 0.500000 #points=259920
+
+the verifying time is 2022072306 and a 66-72 h accumulation
+
+2022072012 run of tau 72
+------------------------
+
+MIKE3-wxmap2 13:05 fiorino@tenki7-m3 /data/w22/dat/nwp2/w2flds/dat/navg/2022072012 1119 > wgrib2 -V navgem_2022072012f072.grib2  | head -14
+
+2:170998:vt=2022072013:surface:66-72 hour acc fcst:APCP Total Precipitation [kg/m^2]:
+    ndata=259920:undef=0:mean=0.54463:min=0:max=58.225
+    grid_template=0:winds(N/S):
+        lat-lon grid:(720 x 361) units 1e-06 input WE:SN output WE:SN res 48
+        lat -90.000000 to 90.000000 by 0.500000
+        lon 0.000000 to 359.500000 by 0.500000 #points=259920
+
+the verifying time is 2022072013  should be 2022072312  still 66-72 h accumulation
+
+
+gribmap
+-------
+
+doing a gribmap for the grads .ctl file for this variable:
+
+2022072006: 2.1: lev1=1,0 var=0,1,8,1 valid at 2022-07-23-06:00 (t=13)  MATCH 
+2022072012: 2.1: lev1=1,0 var=0,1,8,1 valid time 2022072013:00 (t=1.16667) has non-integer grid index
+
+***the problem is coding of the valid time***

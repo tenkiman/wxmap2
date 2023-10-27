@@ -1,0 +1,71 @@
+AAA--Drive: dat2 df:   4.6T  3.9T  472G  90% /mnt/USB3Ext4-02
+AAA--Model: gfs2  2021080100-2023033118  nGood: 1259 nBad: 1173  total:  2,123 GB
+AAA--Model: cgd2  2022110100-2023033112  nGood:  296 nBad:    6  total:    697 GB
+AAA--Model: navg  2022060100-2023033118  nGood:  676 nBad:  540  total:    433 GB
+AAA--Model: ecmt  2022110100-2023033112  nGood:  302 nBad:    0  total:    320 GB
+AAA--Model: ecm5  2022110100-2023033112  nGood:  301 nBad:    1  total:    247 GB
+AAA--Model: jgsm  2022060100-2023033118  nGood:  695 nBad:  521  total:     94 GB
+AAA--Size:                                                               --------
+AAA--Size:                                                               3,914 GB
+
+AAA--Drive: dat11 df:   4.6T  2.6T  1.8T  60% /mnt/USB3Ext4-11
+AAA--Model: gfs2  2022010100-2022063018  nGood:  559 nBad:  165  total:    991 GB
+AAA--Model: cgd2  2021121712-2022063012  nGood:  385 nBad:    6  total:    901 GB
+AAA--Model: navg  2022010100-2022063018  nGood:  606 nBad:  118  total:    387 GB
+AAA--Model: ecmt  2022050100-2022063012  nGood:  122 nBad:    0  total:    129 GB
+AAA--Model: ecm5  2022050100-2022063012  nGood:  122 nBad:    0  total:    105 GB
+AAA--Model: jgsm  2022010100-2022063018  nGood:  619 nBad:  105  total:     84 GB
+AAA--Size:                                                               --------
+AAA--Size:                                                               2,597 GB
+
+AAA--Drive: dat12 df:   4.6T  3.5T  824G  82% /mnt/USB3Ext4-12
+AAA--Model: gfs2  2022070100-2022103118  nGood:  491 nBad:    1  total:    796 GB
+AAA--Model: cgd2  2022070100-2022103112  nGood:  235 nBad:   11  total:    546 GB
+AAA--Model: navg  2022070100-2022103118  nGood:  471 nBad:   21  total:    298 GB
+AAA--Model: ecmt  2020010200-2022093012  nGood:  492 nBad: 1514  total:    523 GB
+AAA--Model: ecm5  2022070100-2022103112  nGood:  246 nBad:    0  total:    202 GB
+AAA--Model: jgsm  2022070100-2022103118  nGood:  489 nBad:    3  total:     66 GB
+AAA--Size:                                                               --------
+AAA--Size:                                                               2,430 GB
+
+AAA--Drive: dat16 df:   4.6T  1.7T  2.7T  39% /mnt/USB3Ext4-16
+AAA--Model: gfs2  2023040100-2023042206  nGood:   86 nBad:    0  total:    142 GB
+AAA--Model: cgd2  2023040100-2023042200  nGood:   43 nBad:    0  total:    103 GB
+AAA--Model: navg  2023040100-2023042206  nGood:   86 nBad:    0  total:     56 GB
+AAA--Model: ecmt  2022100100-2023042000  nGood:  101 nBad:  302  total:    107 GB
+AAA--Model: ecm5  2023040100-2023042200  nGood:   43 nBad:    0  total:     37 GB
+AAA--Model: jgsm  2023040100-2023042206  nGood:   85 nBad:    1  total:     12 GB
+AAA--Model: goes  2022070100-2023042206  nGood: 1172 nBad:   10  total:    251 GB
+AAA--Size:                                                               --------
+AAA--Size:                                                                 707 GB
+
+AAA--Drive: dat80 df:   7.3T  6.6T  336G  96% /mnt/USB3Ext4-80
+AAA--Model: gfs2  2018122400-2020073118  nGood: 2335 nBad:    9  total:  3,238 GB
+AAA--Model: cgd2  2020010100-2020073112  nGood:  413 nBad:   13  total:    475 GB
+AAA--Model: navg  2019062400-2020073118  nGood: 1476 nBad:  140  total:    909 GB
+AAA--Model: ecmt  2018122400-2020073112  nGood: 1154 nBad:   18  total:  1,229 GB
+AAA--Model: ecm5  2019030100-2020073112  nGood: 1027 nBad:   11  total:    771 GB
+AAA--Model: jgsm  2020071400-2020073118  nGood:   72 nBad:    0  total:     10 GB
+AAA--Model: goes  2018122300-2020123118  nGood: 2884 nBad:   76  total:     49 GB
+AAA--Size:                                                               --------
+AAA--Size:                                                               6,681 GB
+
+AAA--Drive: dat81 df:   7.3T  6.6T  335G  96% /mnt/USB3Ext4-81
+AAA--Model: gfs2  2020080100-2021073118  nGood: 1435 nBad:   25  total:  2,133 GB
+AAA--Model: cgd2  2020080100-2021121712  nGood:  986 nBad:   22  total:  1,313 GB
+AAA--Model: navg  2020080100-2021123118  nGood: 2041 nBad:   31  total:  1,293 GB
+AAA--Model: ecmt  2020080100-2021073112  nGood:  408 nBad:  322  total:    432 GB
+AAA--Model: ecm5  2020080100-2021123112  nGood: 1034 nBad:    2  total:    800 GB
+AAA--Model: jgsm  2020080100-2021123118  nGood: 2059 nBad:   13  total:    280 GB
+AAA--Model: goes  2020102612-2022063018  nGood: 2169 nBad:  281  total:    402 GB
+AAA--Size:                                                               --------
+AAA--Size:                                                               6,654 GB
+
+AAA--Drive: dat82 df:   7.3T  785G  6.1T  12% /mnt/USB3Ext4-82
+
+
+
+AAA--Model: ecmt  2021080100-2022043012  nGood:  546 nBad:    0  total:    578 GB
+AAA--Model: ecm5  2022010100-2022043012  nGood:  240 nBad:    0  total:    198 GB
+AAA--Size:                                                               --------
+AAA--Size:                                                                 777 GB

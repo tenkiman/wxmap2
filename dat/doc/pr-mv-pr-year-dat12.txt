@@ -1,0 +1,3 @@
+20220831 -- mv pr-year -> /dat12
+
+rsync -alv /dat16/data/hfip/fiorino/products/hfip/ /dat12/data/hfip/fiorino/products/hfip

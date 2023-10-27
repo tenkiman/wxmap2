@@ -1,0 +1,43 @@
+20230426
+
+1TB SSD (5)
+
+MIKE4 -- ssd1 -- 917G  493G  378G  57% /mnt/SSD3Ext4-04
+MACOS -- ssd2 -- 917G  macos
+MACOS -- ssd3 -- 916G  572G  299G  66% /mnt/SSD3Ext4-03
+MIKE3 -- ssd4 -- real-time tc/pr/ocean/products 917G  490G  381G  57% /mnt/SSD3Ext4-04
+MIKE4 -- ssd5 -- aori  -- 916G  770G  101G  89% /mnt/SSD3Ext4-05
+
+2TB USB3 (3)
+
+MIKE2 -- dat1  -- FREE -- 1.9T
+MIKE4 -- dat20 -- FREE -- 1.9T
+MIKE4 -- dat21 -- FREE -- 1.9T
+
+4TB USB3 (16)
+
+MIKE3 -- dat2 -- archive w2flds/ncep -- 4.6T  2.6T  1.7T  61% /mnt/USB3Ext4-02
+MIKE5 -- dat3  -- ocean/pr/sBT  -- 4.6T  1.9T  2.7T  42% /mnt/USB3BtrFS-03
+MIKE5 -- dat4  -- era5 02-19 -- 4.6T  4.3T   56G  99% /mnt/USB3Ext4-04
+FREE  -- dat5 -- free  -- 4.6T  /mnt/USB3Ext4-05
+MIKE5 -- dat6 -- era5 84-01 -- 4.5T  4.3T   23G 100% /mnt/USB3Ext4-06
+MIKE3 -- dat7 -- ecmt 09-13 -- 4.6T  3.9T  717G  85% /mnt/USB3Xfat-07
+MIKE5 -- dat8 -- ecmt 14-18 -- 4.6T  3.9T  717G  85% /mnt/USB3Xfat-08
+MIKE5 -- dat9 -- era5 2014/23  -- 4.6T  2.2T  2.2T  51% /mnt/USB3Ext4-09
+FREE  -- dat10 -- free -- 4.6T  /mnt/USB3Ext4-10
+FREE  -- dat11 -- free -- 4.6T  /mnt/USB3Ext4-11
+MIKE3 -- dat12 -- archive tc products -- 4.6T  1.1T  3.2T  26% /mnt/USB3Ext4-12
+MIKE3 -- dat13 -- era5 2014/22; full tc -- 4.5T  3.3T 1020G  77% /mnt/USB3Ext4-13 
+MIKE5 -- dat14  -- 4.6T  4.0T  301G  94% /mnt/USB3Ext4-14
+MIKE5 -- dat15  -- 4.6T  4.3T   57G  99% /mnt/USB3Ext4-15
+MIKE3 -- dat16 -- real-time nwp2   -- 4.6T  1.5T  2.9T  34% /mnt/USB3Ext4-16
+MIKE5 -- dat17 -- tc current/aori -- 4.6T  3.9T  430G  91% /mnt/USB3Ext4-17
+
+8TB USB3 (3)
+
+MIKE3 -- dat80 -- nwp2 archive 2019/20  -- 7.3T  6.7T  218G  97% /mnt/USB3Ext4-80
+MIKE3 -- dat81 -- nwp2 archive 2020/21  -- 7.3T  6.8T  141G  98% /mnt/USB3Ext4-81
+MIKE3 -- dat82 -- nwp2 archive 2021/22  -- 7.3T  6.9T   11M 100% /mnt/USB3Ext4-82
+
+
+total 5+6+64+24 = 101 TB!

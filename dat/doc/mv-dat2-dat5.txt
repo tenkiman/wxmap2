@@ -1,0 +1,36 @@
+       moving data off real-time (dat2) to current archive (dat5)
+
+
+w2flds:
+
+w2-nwp2-w2flds-rsync2local.py 202008.202103.12 ecmt -M dat2-dat5
+w2-nwp2-w2flds-rsync2local.py 202101.202103.6 gfs2 -M dat2-dat5
+w2-nwp2-w2flds-rsync2local.py 202101.202103.6 jgsm -M dat2-dat5
+w2-nwp2-w2flds-rsync2local.py 202101.202103.12 ecm5 -M dat2-dat5
+w2-nwp2-w2flds-rsync2local.py 202101.202103.6 navg -M dat2-dat5
+w2-nwp2-w2flds-rsync2local.py 202101.202103.12 cgd2 -M dat2-dat5
+
+
+nwp2 (goes):
+
+w2-nwp2-w2flds-rsync2local.py 202101.202103.6 goes -2 -M dat2-dat5
+
+
+------------------- dat5 filled up -- mv 202103 -> dat11
+
+done:
+
+w2-nwp2-w2flds-rsync2local.py 202103.12 ecm5 -M dat5-dat11
+w2-nwp2-w2flds-rsync2local.py 202103.6 jgsm -M dat5-dat11
+w2-nwp2-w2flds-rsync2local.py 202103.6 goes -2 -M dat2-dat11
+w2-nwp2-w2flds-rsync2local.py 202103.12 cgd2 -M dat5-dat11
+w2-nwp2-w2flds-rsync2local.py 202103.6 gfs2 -M dat5-dat11
+w2-nwp2-w2flds-rsync2local.py 202103.12 ecmt -M dat2-dat11
+w2-nwp2-w2flds-rsync2local.py 202103.12 cgd2 -M dat2-dat11
+w2-nwp2-w2flds-rsync2local.py 202103.6 navg -M dat5-dat11
+w2-nwp2-w2flds-rsync2local.py 202101.202103.6 goes -2 -M dat5-dat11
+w2-nwp2-w2flds-rsync2local.py 202103.6 gfs2 -M dat2-dat11
+
+todo:
+w2-nwp2-w2flds-rsync2local.py 202101.202102.12 ecmt -M dat2-dat5
+

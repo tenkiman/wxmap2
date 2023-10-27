@@ -1,0 +1,122 @@
+20211116
+========
+
+the big rsync did not go well with the cron...caused a bunch of
+zombies...rebooted twice and only when I turned off the cron to do the
+rsync did it finish.
+
+making /dat2 (USB3EXT4-16) the location of TC data
+
+will need to rsync to USB3Ext4-13 (/dat13) to bring it up to real-time
+
+took 14 min to rsync only the index on Mike4
+
+20211115
+========
+
+     backup of full TC dat between main store /dat13 (USB3Ext4-13)
+	       and the new real-time /dat2 (USB3Ext4-16)
+
+Mike4:/data/w22/dat/tc/ ==> /dat13/dat/tc/  :: real-time 
+
+/run/media/fiorino/USB3Ext4-13/dat/tc.................................
+----------------------------------------------------------------------
+./DSs                                              ::       18,603,212
+./DSs-VD2                                          ::        1,688,744
+./adeck                                            ::       89,635,728
+./archive                                          ::        1,661,164
+./bdeck                                            ::          533,016
+./bt                                               ::           72,372
+./carq                                             ::          382,764
+./cimss                                            ::           36,352
+./cira                                             ::      159,446,812
+./climo                                            ::          588,228
+./cmc                                              ::        2,886,908
+./com                                              ::          242,468
+./dis                                              ::           65,604
+./ecmwf                                            ::       10,459,588
+./edeck                                            ::          137,656
+./etc                                              ::               24
+./fdeck                                            ::          149,044
+./jtwc                                             ::              988
+./mdeck                                            ::          235,588
+./names                                            ::           12,872
+./ncep                                             ::        9,165,664
+./nhc                                              ::            1,140
+./ptcanl                                           ::            6,632
+./ptmp                                             ::               16
+./reftrk                                           ::           55,280
+./stext                                            ::          508,672
+./tacnal                                           ::                4
+./tcanal                                           ::       16,342,168
+./tcanal0                                          ::        2,785,440
+./tcdiag                                           ::           59,296
+./tcdiag0                                          ::           48,892
+./tcdiagDAT0                                       ::      162,404,144
+./tceps                                            ::      413,531,456
+./tcgen                                            ::        9,160,624
+./tcvcip                                           ::            2,404
+./tcvitals                                         ::          146,844
+./tdeck                                            ::            2,352
+./tmtrkN                                           ::        4,670,704
+./ukmo                                             ::          807,764
+----------------------------------------------------------------------
+Total..................                            ::      909,113,548
+Files..................                            ::        2,574,920
+Dirs...................                            ::      906,538,628
+TTTTTTTTTTTTTTTTTTTTTTT-------------------timer: all                                                                     : 2700.468      at: 2021111512 01:24:28
+
+Mike4:/dat2 new real-time that takes over from original /dat2-orig/
+
+
+/run/media/fiorino/USB3Ext4-16/dat/tc.................................
+----------------------------------------------------------------------
+./DSs                                              ::       20,147,520
+./DSs-VD2                                          ::          362,732
+./adeck                                            ::       16,077,804
+./bdeck                                            ::          519,524
+./bt                                               ::           53,120
+./carq                                             ::          236,544
+./cira                                             ::       47,474,500
+./climo                                            ::          693,364
+./cmc                                              ::        1,341,892
+./com                                              ::            2,140
+./dis                                              ::            7,604
+./ecmwf                                            ::          717,344
+./edeck                                            ::           42,688
+./etc                                              ::                4
+./fdeck                                            ::           34,060
+./jtwc                                             ::              988
+./mdeck                                            ::           65,468
+./names                                            ::            6,236
+./ncep                                             ::        2,886,352
+./nhc                                              ::            1,132
+./ptmp                                             ::               16
+./reftrk                                           ::           42,296
+./stext                                            ::          354,644
+./tcanal                                           ::        7,175,584
+./tcanal-dat0                                      ::        3,121,992
+./tcanal0                                          ::           58,104
+./tcdiag                                           ::           47,124
+./tcdiag0                                          ::               32
+./tceps                                            ::      106,877,584
+./tcgen                                            ::        8,525,628
+./tcvitals                                         ::          147,264
+./tdeck                                            ::              900
+./tmtrkN                                           ::        5,847,764
+./tmtrkN-dat0                                      ::        4,211,644
+./ukmo                                             ::          366,228
+----------------------------------------------------------------------
+Total..................                            ::      227,447,824
+Files..................                            ::                4
+Dirs...................                            ::      227,447,820
+TTTTTTTTTTTTTTTTTTTTTTT-------------------timer: all                                                                     : 267.942      at: 2021111512 04:32:21
+
+
+processing:
+
+/dat2 -> /run/media/fiorino/USB3Ext4-16/
+/dat2-orig -> /run/media/fiorino/USB3Ext4-02/
+/dat13 -> /run/media/fiorino/USB3Ext4-13/
+
+time rsync -alv /dat13/dat/tc/ /dat2/dat/tc/

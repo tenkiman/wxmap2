@@ -1,0 +1,55 @@
+Mike3
+
+ /					    # local root
+ /ssd1 -> /run/media/fiorino/SSD3Ext4-01/   # SSD
+ /w21 -> /data/w22/			    # local
+ /w21-git -> /dat1/w21-git/		    # local
+ /data	     				    # local
+ /dat1			   	      	    # local
+ /dat2 -> /run/media/fiorino/USB3Ext4-02/   # USB3
+
+
+ /dat1/                               # local
+       data -> /ssd1/dat1/data/	      # SSD
+       ocean -> /ssd1/dat1/ocean/     # SSD
+       tc -> /ssd1/dat1/tc/	      # SSD
+       w21-git			      # local
+
+
+
+
+ /dat2/dat/   			      # USB3
+	   nwp2			      # USB3
+	   ocean		      # USB3
+	   pr			      # USB3
+	   tc
+
+
+ /data/
+       hfip -> /ssd1/data/hfip/	      # SSD
+       w22/			      # local
+
+
+
+ /ptmp/				      # local
+
+
+DATA LAYOUT:
+============
+c.w2.d
+
+ /data/w22/dat/			      # local
+   	   geog/		      # local
+ 	   ln-datX/		      # local -- ln -s
+ 	   nwp2 -> /dat2/dat/nwp2/    # USB3
+ 	   ocean -> /dat1/ocean/      # SSD
+	   pr -> /dat2/dat/pr/	      # USB3
+ 	   tc -> /dat1/tc/	      # SSD
+
+
+WEB LAYOUT:
+===========
+c.w2
+
+ /data/w22/web -> /data/hfip/fiorino/products/wxmap2/ --> /ssd1/data/hfip/fiorino/products/wxmap2/  # SSD
+ /data/w22/web-config -> /ssd1/data/w22/web-config/						    # SSD
