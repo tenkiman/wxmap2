@@ -1,0 +1,36 @@
+#!wing
+#!version=5.0
+##################################################################
+# Wing IDE project file                                          #
+##################################################################
+[project attributes]
+proj.directory-list = [{'dirloc': loc('../..'),
+                        'excludes': [u'bin',
+                                     u'web',
+                                     u'log-all',
+                                     u'etc/wing',
+                                     u'log',
+                                     u'app',
+                                     u'web-config',
+                                     u'prj',
+                                     u'dat',
+                                     u'plt',
+                                     u'evt-all',
+                                     u'evt'],
+                        'filter': '*',
+                        'include_hidden': False,
+                        'recursive': True,
+                        'watch_for_changes': True},
+                       {'dirloc': loc('../../app/grads'),
+                        'excludes': (),
+                        'filter': u'*',
+                        'include_hidden': False,
+                        'recursive': True,
+                        'watch_for_changes': True},
+                       {'dirloc': loc('../../app/src/python'),
+                        'excludes': (),
+                        'filter': u'All Source Files',
+                        'include_hidden': False,
+                        'recursive': True,
+                        'watch_for_changes': True}]
+proj.file-type = 'shared'

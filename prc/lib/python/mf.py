@@ -1154,8 +1154,21 @@ def getCommandOutput2(command):
 
 
 
-def runcmd(command,logpath='straightrun',lsopt='',prefix='',postfix=''):
+def runcmd(command,logpath='straightrun',lsopt='',prefix='',postfix='',
+           doCommandPrompt=0):
 
+    def promptCmd(command):
+        text=raw_input('do you want to run: %s Y|N? '%(command))
+        if(text=='Y' or text == 'y'):
+            os.system(command)
+            return
+        else:
+            print """you really didn't want to run: %s"""%(command)
+            return
+
+        return
+        
+    
     if(logpath == ''):
         logpath='straightrun'
 
@@ -1171,14 +1184,17 @@ def runcmd(command,logpath='straightrun',lsopt='',prefix='',postfix=''):
         occc="CCC"
         if(oprefix != ''): occc="%s(%s)"%(occc,oprefix)
         if(lsopt != 'q'): print "%s: %s %s %s"%(occc,command,curtime,opostfix)
-        if(logpath != 'norun'): os.system(command)
+        if(logpath != 'norun'): 
+            if(doCommandPrompt): rc=promptCmd(command)
+            else:                 os.system(command) ;  return
+            
         return
 
     if(logpath == 'quiet'):
         os.system(command)
         return
 
-    global LF
+    global LFlog
 
     #
     # output to log file (append and add title line)
@@ -1193,24 +1209,24 @@ def runcmd(command,logpath='straightrun',lsopt='',prefix='',postfix=''):
 
         if(not(os.path.exists(logpath))):
             try:
-                LF=open(logpath,'a')
-                LF.writelines(lout)
-                LF.flush()
+                LFlog=open(logpath,'a')
+                LFlog.writelines(lout)
+                LFlog.flush()
             except:
                 print 'EEE(runcmd): unable to open logpath: %s'%(logpath)
                 return
         else:
             try:
-                LF.writelines(lout)
-                LF.flush()
+                LFlog.writelines(lout)
+                LFlog.flush()
             except:
                 try:
-                    LF=open(logpath,'a')
-                    LF.writelines(lout)
-                    LF.flush()
+                    LFlog=open(logpath,'a')
+                    LFlog.writelines(lout)
+                    LFlog.flush()
                 except:
-                    LF.writelines(lout)
-                    LF.flush()
+                    LFlog.writelines(lout)
+                    LFlog.flush()
                     print 'EEE(runcmd): unable to write to logpath: %s'%(logpath)
                     return
 

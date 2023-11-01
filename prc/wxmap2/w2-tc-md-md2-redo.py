@@ -21,9 +21,9 @@ class Adeck2CmdLine(CmdLine):
             }
             
         self.options={
-            'override':            ['O',0,1,"""override"""],
             'doMdeck1':            ['1',0,1,"""do mdeck1"""],
             'doMdeck2':            ['2',0,1,"""do mdeck2"""],
+            'chkNhcJtwcAdeck':     ['J',0,1,'do chk NHC/JTWC a|bdecks in epac'],
             'verb':                ['V',0,1,'verb is verbose'],
             'ropt':                ['N','','norun',' norun is norun'],
             'doIt':                ['X',0,1,'run it norun is norun'],
@@ -90,7 +90,9 @@ for year in years:
         mf.runcmd(cmdMdk,ropt)
 
     if(doMdeck2):
-        cmdM2="%s/w2-tc-dss-md2.py -y %s -Y -K"%(prcdir,year)
+        md2Opt=''
+        if(chkNhcJtwcAdeck): md2Opt='-J'
+        cmdM2="%s/w2-tc-dss-md2.py -y %s %s -Y -K"%(prcdir,year,md2Opt)
         mf.runcmd(cmdM2,ropt)
 
 

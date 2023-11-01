@@ -27,7 +27,7 @@ class Adeck2CmdLine(CmdLine):
             'ropt':                ['N','','norun',' norun is norun'],
             'doIt':                ['X',0,1,'run it norun is norun'],
             'do9Xonly':            ['9',0,1,'just do 9X'],
-            'basinopt':            ['b:',None,'a','set basin'],
+            'basinOpt':            ['b:',None,'a','set basin'],
             }
 
         self.defaults={
@@ -95,12 +95,12 @@ else:
 basins=ad2Basins.keys()
 basins.sort()
 
-if(basinopt != None):
-    if(basinopt == 'all'):
+if(basinOpt != None):
+    if(basinOpt == 'all'):
         basins=['i','w','e','c','l','h']
         
     else:
-        basins=basinopt.split(',')
+        basins=basinOpt.split(',')
     
 bopt='-S '
 do9X=0
@@ -137,18 +137,24 @@ bopt=bopt[0:-1]
 
 # -- if previously removed...just nhem & shem
 #
-if(bopt == '-S'):
-    bopt='-S i.%s w.%s c.%s e.%s l.%s h.%s'%(year,year,year,year,year)
+if(bopt == '-S' or basinOpt == 'all'):
+    bopt='-S i.%s,w.%s,c.%s,e.%s,l.%s,h.%s'%(year,year,year,year,year,year)
+
+MF.sTimer('ad2-redo-ALL')
 
 MF.sTimer('ad2-redo-%s'%(bopt))
 ad2src='all'
-cmd="%s/w2-tc-dss-ad2.py %s %s %s -O1"%(prcdir,ad2src,bopt,ad2Opt)
+cmd="time %s/w2-tc-dss-ad2.py %s %s %s -O1"%(prcdir,ad2src,bopt,ad2Opt)
 mf.runcmd(cmd,ropt)    
 MF.dTimer('ad2-redo-%s'%(bopt))
 
 if(do9X):
     MF.sTimer('ad2-redo-9X-%s'%(bopt))
     ad2src='all'
-    cmd="%s/w2-tc-dss-ad2.py %s %s %s -9 -O1"%(prcdir,ad2src,bopt,ad2Opt)
+    if(mf.find(ad2Opt,'-9')):
+        ad2Opt=''
+    cmd="time %s/w2-tc-dss-ad2.py %s %s %s -9 -O1"%(prcdir,ad2src,bopt,ad2Opt)
     mf.runcmd(cmd,ropt)    
     MF.dTimer('ad2-redo-9X-%s'%(bopt))
+
+MF.dTimer('ad2-redo-ALL')

@@ -127,17 +127,13 @@ logsTenki={
 'g-w2':'log-w2-w2flds-rsync-gm',
 'g-we':'log-w2-w2flds-rsync-gm',
 
-# -- gmu push from mike3
+# -- gmu push from mike4
 #
 'gmu-w2':'log-w2-w2flds-rsync-gmu.py.W2FLD-GMU',
 'gmu-tc':'log-w2-tc-rsync-gmu.py.TCDAT2GMU',
 'gmu-pr':'log-w2-pr-rsync-gmu.py.PR-GMU',
 'gmu-o':'log-w2-ocean-oisst-gmu.py.OISST-GMU',
 'gmu-p':'log-w2-products-sync-gmu.py.PRODUCTS-GMU',
-
-# -- gmu touch on hopper
-#
-'gmu-t':'log-w2-touch-gmu.py.tenki.GMU-TOUCH',
 
 }
 

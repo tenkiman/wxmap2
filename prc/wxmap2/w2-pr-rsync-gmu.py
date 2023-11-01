@@ -42,7 +42,7 @@ rsyncOpt='-aluv --timeout=120 --include="*%s*" '%(curyear)
 rsyncOpt='-aluv --timeout=120'
 if(ropt == 'norun'): rsyncOpt=rsyncOpt.replace('aluv','aluvn')
 
-sdir='/data/w22/dat/pr'
+sdir='/w21/dat/pr'
 tdir='mfiorino@argo.orc.gmu.edu:/scratch/mfiorino/dat/pr'
 tdir='mfiorino@hopper1.orc.gmu.edu:/scratch/mfiorino/dat/pr'
 
