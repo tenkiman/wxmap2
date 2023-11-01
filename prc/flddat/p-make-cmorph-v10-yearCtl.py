@@ -34,7 +34,7 @@ eyear=2019
 
 years=range(byear,eyear+1)
 
-tbdir='/data/w22/dat/pr/cmorph-v10'
+tbdir='/w21/dat/pr/cmorph-v10'
 MF.ChangeDir(tbdir,verb=1)
 
 ropt='norun'

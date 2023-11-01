@@ -94,7 +94,7 @@ for dtg in dtgs:
             sdir=fd.dbasedir
         
     
-        tdir=sdir.replace('/data/w22','/scratch/mfiorino')
+        tdir=sdir.replace('/w21','/scratch/mfiorino')
         #tdir="mfiorino@argo.orc.gmu.edu:%s"%(tdir)
         tdir="mfiorino@hopper1.orc.gmu.edu:%s"%(tdir)
     

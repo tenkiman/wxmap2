@@ -170,7 +170,7 @@ sbdir='/dat1'
 tbdir='/usb2/dat'
 if(doMike3):
     if(doWx2Reverse):
-        sbdir='/data/w22/dat'
+        sbdir='/w21/dat'
         sbdir='/mnt/USB3Ext4-13/dat'
         sbdir='/w21/dat'
         tbdir='/w21/dat'

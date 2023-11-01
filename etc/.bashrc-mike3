@@ -13,7 +13,9 @@ export HOSTOSUPPER=`uname|awk '{ print toupper($1) }'`
 
 # -- hardwire local dirs
 #
-export W2='/data/w22'
+#export W2='/data/w22'
+# -- switch to github
+export W2='/ssd4/wxmap2'
 export PTMP='/ptmp'
 #export W2_BDIRWEB="/data/hfip/fiorino/products/wxmap2/"
 #export W2_BDIRWEBCONFIG="/ssd1/data/w22/web-config/"

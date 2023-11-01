@@ -41,7 +41,7 @@ if(verb): print CL.estr
 rsyncOpt='-aluv --timeout=120'
 if(ropt == 'norun'): rsyncOpt='-aluvn'
 
-sdir='/data/w22/dat/ocean'
+sdir='/w21/dat/ocean'
 tdir='mfiorino@argo.orc.gmu.edu:/scratch/mfiorino/dat/ocean/oisst'
 tdir='mfiorino@hopper1.orc.gmu.edu:/scratch/mfiorino/dat/ocean'
 
