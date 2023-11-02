@@ -138,6 +138,7 @@ for dtg in dtgs:
     returnAd2=1
     tcA=TcAidTrkAd2Bd2(dtgopt=dtg,verb=verb,quiet=1)
     rcA=tcA.getStatus(modelChk=None, doPrint=0,returnAd2=returnAd2)
+    
     if(verb):
         if(returnAd2):
             print ' rcT: ',rcA[0]
@@ -198,7 +199,7 @@ for dtg in dtgs:
     else:
 
         modtcd={}
-        if(len(rcT) == 0):
+        if(rcT == -1 or len(rcT) == 0):
             doTCD=0
             for model in tcdModels:
                 tCTstatus[model]=-1
@@ -255,12 +256,14 @@ for dtg in dtgs:
                         
         # -- tcgen
         #
-        for r in rcG:
-            tt=r[0]
-            stms=r[1]
-            rmodel=tt.split()[0]
-            rnstms=len(stms)
-            tCGstatus[rmodel]=1
+        if(rcG != None):
+            
+            for r in rcG:
+                tt=r[0]
+                stms=r[1]
+                rmodel=tt.split()[0]
+                rnstms=len(stms)
+                tCGstatus[rmodel]=1
             
         
         # -- scan tcdiag output -- even if no tmtrkN, could use mftrkN
