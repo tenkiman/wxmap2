@@ -1,5 +1,5 @@
-GFORTRAN module version '0' created from mf.modules.f on Mon Dec 31 03:09:07 2018
-MD5:7e59d5471f5dfd9fc58e0c624e9ae3e5 -- If you edit this, you'll get what you deserve.
+GFORTRAN module version '10' created from mf.modules.f
+MD5:f3a1067553fd0c0a4eb833181b8207bd -- If you edit this, you'll get what you deserve.
 
 (() () () () () () () () () () () () () () () () () () () () () () () ()
 () () ())
@@ -12,28 +12,31 @@ MD5:7e59d5471f5dfd9fc58e0c624e9ae3e5 -- If you edit this, you'll get what you de
 
 ()
 
-(2 'atan' '(intrinsic)' 'atan' 1 ((PROCEDURE UNKNOWN-INTENT UNKNOWN-PROC
-UNKNOWN UNKNOWN FUNCTION) (REAL 4 0 0 REAL ()) 0 0 () () 2 () () () 0 0)
-3 'const' 'const' 'const' 1 ((MODULE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
-UNKNOWN) (UNKNOWN 0 0 0 UNKNOWN ()) 0 0 () () 0 () () () 0 0)
-4 'dtk' 'const' 'dtk' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
-EXPLICIT-SAVE) (REAL 4 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
-5 'dtr' 'const' 'dtr' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
-EXPLICIT-SAVE) (REAL 4 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
-6 'ecircum' 'const' 'ecircum' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
-UNKNOWN EXPLICIT-SAVE) (REAL 4 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
-7 'erad' 'const' 'erad' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
-EXPLICIT-SAVE) (REAL 4 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
-8 'omega' 'const' 'omega' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
-UNKNOWN EXPLICIT-SAVE) (REAL 4 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
-9 'pi' 'const' 'pi' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
-EXPLICIT-SAVE) (REAL 4 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
-10 'rearth' 'const' 'rearth' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
-UNKNOWN EXPLICIT-SAVE) (REAL 4 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
-11 'rkm2nm' 'const' 'rkm2nm' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
-UNKNOWN EXPLICIT-SAVE) (REAL 4 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
-12 'rnm2km' 'const' 'rnm2km' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
-UNKNOWN EXPLICIT-SAVE) (REAL 4 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
+()
+
+(2 'atan' '(intrinsic)' '' 1 ((PROCEDURE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0 FUNCTION) (REAL 4 0 0 0 REAL ()) 0 0 () () 2 () () ()
+0 0)
+3 'const' 'const' '' 1 ((MODULE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+UNKNOWN 0 0) (UNKNOWN 0 0 0 0 UNKNOWN ()) 0 0 () () 0 () () () 0 0)
+4 'dtk' 'const' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+EXPLICIT-SAVE 0 0) (REAL 4 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
+5 'dtr' 'const' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+EXPLICIT-SAVE 0 0) (REAL 4 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
+6 'ecircum' 'const' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+EXPLICIT-SAVE 0 0) (REAL 4 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
+7 'erad' 'const' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+EXPLICIT-SAVE 0 0) (REAL 4 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
+8 'omega' 'const' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+EXPLICIT-SAVE 0 0) (REAL 4 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
+9 'pi' 'const' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+EXPLICIT-SAVE 0 0) (REAL 4 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
+10 'rearth' 'const' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+EXPLICIT-SAVE 0 0) (REAL 4 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
+11 'rkm2nm' 'const' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+EXPLICIT-SAVE 0 0) (REAL 4 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
+12 'rnm2km' 'const' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+EXPLICIT-SAVE 0 0) (REAL 4 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
 )
 
 ('atan' 0 2 'const' 0 3 'dtk' 0 4 'dtr' 0 5 'ecircum' 0 6 'erad' 0 7
