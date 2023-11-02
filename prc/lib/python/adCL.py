@@ -7575,7 +7575,7 @@ class TcAidTrkAd2Bd2(MFbase):
             
             rcbad=1
             if(self.source == 'tmtrkN' and doZipG == 0 and doZipA == 0):
-                print 'WWW -- no atcf adecks to zip or source: ',self.source,' dtg: ',dtg
+                print 'WWW -- no tmtrkN atcf adecks to zip or source: ',self.source,' dtg: ',dtg
                 rcbad=-1
             
             if(doZipG == -1 or doZipA == -1):
@@ -7583,7 +7583,7 @@ class TcAidTrkAd2Bd2(MFbase):
                 rcbad=-2
             
             if(self.source == 'mftrkN' and doZipA == 0):
-                print 'WWW -- no atcf adecks to zip or source: ',self.source,' dtg: ',dtg
+                print 'WWW -- no mftrkN atcf adecks to zip or source: ',self.source,' dtg: ',dtg
                 rcbad=-3
             
             if(rcbad < 0):
