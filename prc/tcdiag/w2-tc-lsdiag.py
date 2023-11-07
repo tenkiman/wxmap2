@@ -585,6 +585,16 @@ for dtg in dtgs:
                 print 'WWW(fd.dslatestCompleteTau): ',fd.dslatestCompleteTau,' is < minTau: ',minTau,' model: ',model,' continue...'
                 #continue
 
+            # -- 20231107
+            # -- make sure the replace of 'hura' with 'hur' is always done before running lsdiag
+            #
+            if(model == 'ecm5'):
+                prcdirUT=w2.PrcDirUtilW2
+                cmdUT="replace.pl"
+                cmd="""%s/%s 'hura' 'hur ' %s"""%(prcdirUT,cmdUT,fm.dpath)
+                mf.runcmd(cmd,ropt)
+                    
+
 
         dobail=0
         if(ropt == 'norun'): dobail=0
@@ -826,6 +836,12 @@ for dtg in dtgs:
                 continue
 
             rc=tG.makeTCmeta(tdir=mfT.tdir,taus=mfT.meteoTausDone)
+            
+            # -- check if no posits in tracker...
+            #
+            if(rc <= 0):
+                print 'WWW-w2-tc-lsdiag.py: no posits for: ',stmid,' press...'
+                continue
 
             # -- set diagfile output path
             #
