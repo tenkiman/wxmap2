@@ -8,14 +8,25 @@ MF=MFutils()
 
 
 def getStillOnDtgs(sdir,invpathwx2Local,gsizMin=770.,verb=0):
-
+    
+    """ failed on 2023110500 because mike3 inv only found sfc.grb vice ua&sfc.grb
+    and that was because the rsync from wxmap2.com
+"""
     dpaths=glob.glob('%s/????/??????????'%(sdir))
     dtgsDoneT7={}
 
     for dpath in dpaths:
         grbs=glob.glob("%s/*sfc.grb2"%(dpath)) + glob.glob("%s/*ua.grb2"%(dpath))
-        gsiz1=MF.GetPathSiz(grbs[0])
-        gsiz2=MF.GetPathSiz(grbs[1])
+        
+        if(len(grbs) == 2):
+            gsiz1=MF.GetPathSiz(grbs[0])
+            gsiz2=MF.GetPathSiz(grbs[1])
+        elif(len(grbs) == 1):
+            gsiz1=MF.GetPathSiz(grbs[0])
+            gsiz2=0
+        else:
+            gsiz1=gsiz2=0
+            
         gsizAll=gsiz1+gsiz2
         gsizAll=gsizAll/(1024*1024)
         gsizAll=int(gsizAll)*1.0

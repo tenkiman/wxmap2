@@ -2191,7 +2191,13 @@ class TcDiag(MFbase):
             ttaus=taus
 
         for tau in self.aidtaus:
-            if(not(tau in ttaus) or len(self.aidtrk[tau]) == 0): continue
+            print 'qqq',tau,self.aidtrk[tau]
+            if(not(tau in ttaus) or len(self.aidtrk[tau]) == 0): 
+                if(len(self.aidtrk[tau] == 0)):
+                    print 'WWW-TcDiag.metaTCmeta no posits for tau: ',tau,' press...'
+                    rc=-1
+                continue
+            
             otaus.append(tau)
             lat=self.aidtrk[tau][0]
             lon=self.aidtrk[tau][1]
@@ -2216,6 +2222,11 @@ nt: %3d (taus)"""%(diagfileAid.upper(),self.dtg,stmid.upper(),stm2id.upper(),stm
                    len(otaus)
                    )
 
+        # -- set return code to signal if no trackers
+        #
+        if(len(otaus) > 0): rc=1
+        else:               rc=-1
+        
         for otau in otaus:
             meta="""%s
 %s"""%(meta,metas[otau])
@@ -2232,6 +2243,7 @@ nt: %3d (taus)"""%(diagfileAid.upper(),self.dtg,stmid.upper(),stm2id.upper(),stm
 
         self.oadeck=acards
         self.aidcards=acards
+        return(rc)
 
 
     def setTCtracker(self,stmid,aidSource=None,aidnameOverride=None,maxtau=168,quiet=0,verb=0):

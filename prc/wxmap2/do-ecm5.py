@@ -157,7 +157,7 @@ for dtg in dtgs:
             
     # -- because we mislabelled hur as hura at ecmwf...replace var name
     #
-    cmd="""%s/%s 'hura ' 'hur  ' %s"""%(prcdirUT,cmdUT,fm.dpath)
+    cmd="""%s/%s 'hura' 'hur ' %s"""%(prcdirUT,cmdUT,fm.dpath)
     mf.runcmd(cmd,ropt)
                 
 
