@@ -2191,9 +2191,9 @@ class TcDiag(MFbase):
             ttaus=taus
 
         for tau in self.aidtaus:
-            print 'qqq',tau,self.aidtrk[tau]
+            if(verb): print 'makeTCmeta-tau: ',tau,'aidtrk: ',self.aidtrk[tau]
             if(not(tau in ttaus) or len(self.aidtrk[tau]) == 0): 
-                if(len(self.aidtrk[tau] == 0)):
+                if(len(self.aidtrk[tau]) == 0):
                     print 'WWW-TcDiag.metaTCmeta no posits for tau: ',tau,' press...'
                     rc=-1
                 continue
