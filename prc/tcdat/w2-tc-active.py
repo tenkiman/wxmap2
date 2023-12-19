@@ -216,7 +216,7 @@ if(doArgo):
 
 if(doGmu):
     sbdir='/w21/dat'
-    tbdir='mfiorino@hopper1.orc.gmu.edu:/scratch/mfiorino/dat'
+    tbdir='%s:/scratch/mfiorino/dat'%(w2.HopperGmUrl)
     rsyncOpt='-alv --timeout=120'
 
 if(doit == 0 or doud == 0): ropt='norun'

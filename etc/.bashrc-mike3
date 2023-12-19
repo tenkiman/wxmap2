@@ -162,13 +162,14 @@ alias ud='usage.py'
 alias chmoda="chmod a+x *.*sh *.pl *.py"
 
 sborg="superbt1@superbt.org"
-sbrsa="-i /home/fiorino/.ssh/id_rsa_superbt"
+sbrsa="-i /home/fiorino/.ssh/id_rsa-SBT"
+wxrsa="-i /home/fiorino/.ssh/id_rsa_mike3"
 wxcom="mfiorino@wxmap2.com"
 
-#alias wx2="ssh -Y -p2222 mfiorino@wxmap2.com"
-alias wx2="ssh -Y -p2222 $wxcom"
-alias sbt="ssh -Y -p2222 $sbrsa $sborg"
-alias scp.2wx='function _scp.2wx(){ scp "$1" mfiorino@wxmap2.com:~/.;};_scp.2wx'
+alias wx2="ssh -p2222 mfiorino@wxmap2.com"
+#alias wx2="ssh -p2222 $wxrsa $wxcom"
+alias sbt="ssh -p2222 $sbrsa $sborg"
+alias scp.2wx='function _scp.2wx(){ scp $wxrsa "$1" mfiorino@wxmap2.com:~/.;};_scp.2wx'
 alias scp.4wx='function _scp.4wx(){ scp  mfiorino@wxmap2.com:~/"$1" . ;};_scp.4wx'
 
 alias scp.2sb='function _scp.2sb(){ scp $sbrsa "$1" $sborg:~/.;};_scp.2sb'

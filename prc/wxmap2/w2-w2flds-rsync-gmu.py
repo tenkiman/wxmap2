@@ -95,8 +95,7 @@ for dtg in dtgs:
         
     
         tdir=sdir.replace('/w21','/scratch/mfiorino')
-        #tdir="mfiorino@argo.orc.gmu.edu:%s"%(tdir)
-        tdir="mfiorino@hopper1.orc.gmu.edu:%s"%(tdir)
+        tdir="%s:%s"%(w2.HopperGmUrl,tdir)
     
         if(reverse and not(ropt == 'norun')):
             MF.sTimer('GMU pull for dtg: %s model: %s'%(dtg,model))

@@ -657,9 +657,17 @@ if(doModels or doTcd):
             if(cstat != None):
                 
                 stat=cstat[0]
-                #if( (stat[0] != 1 and stat[0] != -2) and doCronPrcChk):
                 dtgage=mf.dtgdiff(dtg,curdtg)
-                if( (stat[0] != 1 and (dtgage <= maxDtgAgeW2) ) and doCronPrcChk):
+
+                # -- first check if not done...
+                #
+                if(stat[0] == -2): 
+                    cout="%s <---- NNNNNNN --not done yet"%(stat[1])
+                    mStatW2[model,dtg]=-1
+                    mMissW2[model,dtg]='w2flds: %s %s'%(model,cout)
+                # -- now check non-not-done
+                #
+                elif( (stat[0] != 1 and (dtgage <= maxDtgAgeW2) ) and doCronPrcChk):
                     if(verb):
                         print 'CHK-CHK-CHK'
                         print model,dtg,stat[0]
@@ -670,6 +678,7 @@ if(doModels or doTcd):
                     if(rcp):
                         cout="%s <<<--- pppppp processing"%(stat[1])
                         mStatW2[model,dtg]=1
+
                 
                 elif(stat[0] == 1): 
                     #cout="%s %6s %3s"%(stat[1],stat[2],stat[3])

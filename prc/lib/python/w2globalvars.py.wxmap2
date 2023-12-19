@@ -8,6 +8,7 @@ version='0.1'
 WxmapCenter='NHC'
 WxmapCenter='GSL'
 WxmapCenter='wxmap2.com'
+HopperGmUrl='mfiorino@hopper.orc.gmu.edu'
 
 PzalWxmapBaseDir='/tdocommon/wxmap'
 
@@ -198,6 +199,8 @@ class W2GlobalVars(MFbase):
         self.version=version
 
         self.WxmapCenter=WxmapCenter
+        
+        self.HopperGmUrl=HopperGmUrl
 
         self.PzalWxmapBaseDir=PzalWxmapBaseDir
 

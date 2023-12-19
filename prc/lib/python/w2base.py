@@ -223,6 +223,13 @@ class W2Base(W2env,W2Nwp2,W2GlobalVars):
         else:
             self.W2doRsyncPushGmu=0
             
+        # -- 20231215 -- switch to turn on rsync to wxmap2
+        #
+        if(W2doRsync2Wxmap2 != None): 
+            self.W2doRsync2Wxmap2=W2doRsync2Wxmap2
+        else:
+            self.W2doRsync2Wxmap2=0
+            
         self.W2doM2Tryarch=W2doM2Tryarch
         self.W2Nwp2DataOnly=W2Nwp2DataOnly
         self.W2doTCdiag=W2doTCdiag
@@ -4258,7 +4265,8 @@ def rsync2Wxmap2(localweb='all',stmid=None,ropt='',doBail=1,noRsync=0):
     
     sdir=W2BaseDirWebConfig  # from w2globalvars.py
     lbdir=HfipWebBdir        # from w2localvars.py -- not consistent but...
-    
+    noRsync=not(W2doRsync2Wxmap2)
+
     tdir='''mfiorino@wxmap2.com:/home3/mfiorino'''
     rsyncopt='''rsync -alv --rsh="ssh -p2222" --timeout=300'''
     if(localweb == 'all'):
@@ -4266,8 +4274,8 @@ def rsync2Wxmap2(localweb='all',stmid=None,ropt='',doBail=1,noRsync=0):
     else:
         webs=[localweb]
         
-    if(mf.find(W2Host,'clim') or noRsync):
-        print 'on AORI -- no rsync to wxmap2...'
+    if(noRsync):
+        print 'wxmap2.com down -- no rsync for webs: ',str(webs)
         return
 
     for web in webs:

@@ -8,6 +8,14 @@ maxfphrWeb=9.0                      # in w2.nwp2.py -- max
 # -- switches to control main processing scripts
 #
 W2doRsyncPushGmu=0
+
+# -- 20231215 -- switch to disable rsync to wxmap2
+# -- 20231215 -- fixed rsync to wxmap2...
+#
+W2doRsync2Wxmap2=0
+# -- 20231216 -- wxmap2 broken from mike3/5, not ecmwf
+W2doRsync2Wxmap2=1
+
 #W2doDATAonly=1 on 20200414 used to w2-tc-redo-ALL.py
 W2doDATAonly=0  # -- full processing 20200415
 

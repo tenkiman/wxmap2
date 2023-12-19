@@ -48,28 +48,28 @@ rsyncOpt="%s --update"%(rsyncOpt)
 
 sdir=w2.TcDatDir
 
-tdir='mfiorino@argo.orc.gmu.edu:/scratch/mfiorino/dat/tc'
-tdir='mfiorino@hopper1.orc.gmu.edu:/scratch/mfiorino/dat/tc'
+tdir='%s:/scratch/mfiorino/dat/tc'%(w2.HopperGmUrl)
 
 tcdirs={
     'DSs':'a',
     'adeck':'j',
-    'adeck/atcf-form':'n',
-    'adeck/cmc':'n',
+    'adeck/atcf-form':'j',
+    'adeck/cmc':'j',
     'adeck/ecmwf':'n',
     'adeck/esrl':'n',
     'adeck/jtwc':'j',
     'adeck/mftrkN':'n',
     'adeck/tmtrkN':'n',
     'adeck/ncep':'n',
-    'adeck/nhc':'n',
+    'adeck/nhc':'j',
     'bdeck/jtwc':'j',
     'bdeck/nhc':'n',
-    'bdeck2':'n',
-    'bt':'n',
+    'bdeck2/jtwc':'a',
+    'bdeck2/nhc':'a',
+    'bt':'j',
     'carq':'n',
-    'cira/mtcswa':'n',
-    'cira/mtcswa2':'n',
+    'cira/mtcswa':'j',
+    'cira/mtcswa2':'j',
     'cmc':'n',
     'com/nhc':'n',
     'dis/nhc':'n',
@@ -80,7 +80,7 @@ tcdirs={
     'fdeck/nhc':'n',
     'jtwc':'a',
     'mdeck':'j',
-    'nhc':'n',
+    'nhc':'a',
     'names':'a',
     'ncep/tigge':'n',
     'reftrk':'a',

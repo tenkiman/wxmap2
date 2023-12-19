@@ -59,7 +59,7 @@ webDirs=['web-config','web']
 #webDirs=['web-config']
 sdir=w2.HfipProducts
 #sdir='/data/w22'
-tdir='mfiorino@hopper1.orc.gmu.edu:/scratch/mfiorino'
+tdir='%s:/scratch/mfiorino'%(w2.HopperGmUrl)
 rsyncOpt='-aluv --delete'
 rsyncOptL='-aLuv --delete'
 if(reverse):
@@ -91,7 +91,7 @@ for webdir in webDirs:
 prodDirs=['tctrkveriDAT','jtdiagDAT','tcactDAT','tcdiagDAT','tcepsDAT','tcgenDAT']
 
 sdir=w2.HfipProducts
-tdir='mfiorino@hopper1.orc.gmu.edu:/scratch/mfiorino/hfip/fiorino/products/hfip'
+tdir='%s:/scratch/mfiorino/hfip/fiorino/products/hfip'%(w2.HopperGmUrl)
 
 
 for proddir in prodDirs:

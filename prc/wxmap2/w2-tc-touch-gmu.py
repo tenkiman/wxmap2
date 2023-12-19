@@ -148,8 +148,6 @@ sys.exit()
 
 
 #sdir='/data/w22/dat/tc'
-#tdir='mfiorino@argo.orc.gmu.edu:/scratch/mfiorino/dat/tc'
-#tdir='mfiorino@hopper1.orc.gmu.edu:/scratch/mfiorino/dat/tc'
 
 #tcdirs=['tmtrkN','adeck/tmtrkN']
 #dssdirs={

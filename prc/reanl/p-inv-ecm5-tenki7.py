@@ -46,15 +46,23 @@ if(verb): print CL.estr
 sdirwx2='/home3/mfiorino/dat/nwp2/w2flds/dat/ecm5'
 invfilewx2='inv-ecm5-wxmap2.txt'
 invpathwx2="%s/%s"%(sdirwx2,invfilewx2)
+hsRsa="~/.ssh/id_rsa"
+hsuser="mfiorino@wxmap2.com"
+
+sdirwx2='/home4/superbt1/dat/nwp2/w2flds/dat/ecm5'
+invfilewx2='inv-ecm5-superbt.txt'
+invpathwx2="%s/%s"%(sdirwx2,invfilewx2)
+hsRsa="~/.ssh/id_rsa-SBT"
+hsuser="superbt1@superbt.org"
 
 sdir='/w21/dat/nwp2/w2flds/dat/ecm5'
 invpath="%s/inv-ecm5-tenki7.txt"%(sdir)
 invpathwx2Local="%s/%s"%(sdir,invfilewx2)
 
-# -- get inv from wxmap2
+# -- get inv from wxmap2/superbt1
 #
 if(doIt or verb): ropt=''
-cmd="""rsync -alv --rsh="ssh -p2222"  mfiorino@wxmap2.com:%s %s/"""%(invpathwx2,sdir)
+cmd="""rsync -alv --rsh="ssh -p2222 -i %s"  %s:%s %s/"""%(hsRsa,hsuser,invpathwx2,sdir)
 mf.runcmd(cmd,ropt)
 
 dpaths=glob.glob('%s/????/??????????'%(sdir))
@@ -120,8 +128,7 @@ rc=MF.WriteList2Path(cards,invpath)
 
 # -- sleep before doing push to wxmap2
 #
-sleep(3)
-cmd="""rsync -alv --rsh="ssh -p2222" %s mfiorino@wxmap2.com:%s"""%(invpath,sdirwx2)
+cmd="""rsync -alv --rsh="ssh -p2222 -i %s" %s %s:%s"""%(hsRsa,invpath,hsuser,sdirwx2)
 mf.runcmd(cmd,ropt)
 
 # -- put inv to wxmap2

@@ -42,8 +42,7 @@ rsyncOpt='-aluv --timeout=120'
 if(ropt == 'norun'): rsyncOpt='-aluvn'
 
 sdir='/w21/dat/ocean'
-tdir='mfiorino@argo.orc.gmu.edu:/scratch/mfiorino/dat/ocean/oisst'
-tdir='mfiorino@hopper1.orc.gmu.edu:/scratch/mfiorino/dat/ocean'
+tdir='%s:/scratch/mfiorino/dat/ocean'%(w2.HopperGmUrl)
 
 if(reverse):
     MF.sTimer('GMU oisst pull')

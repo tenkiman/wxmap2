@@ -149,8 +149,16 @@ sdirwx2='/home3/mfiorino/dat/nwp2/w2flds/dat/%s'%(model)
 invfilewx2='inv-%s-wxmap2.txt'%(model)
 invpathwx2="%s/%s"%(sdirwx2,invfilewx2)
 
+# -- superbt
+#
+
+sdirwx2='/home4/superbt1/dat/nwp2/w2flds/dat/%s'%(model)
+invfilewx2='inv-%s-superbt.txt'%(model)
+invpathwx2="%s/%s"%(sdirwx2,invfilewx2)
 bddir=os.getenv('W2_BDIRDAT')
 
+hsRsa="~/.ssh/id_rsa-SBT"
+hsuser="superbt1@superbt.org"
 tdir="%s/nwp2/w2flds/dat/%s"%(bddir,model)
 
 prcdirW2=os.getenv('W2_PRC_DIR')
@@ -169,10 +177,10 @@ if(verb): print 'III---rcI7: ',rcI7
 
 #  get the inventory from wxmap2 -- always
 #
-rsyncOpt=""" -alv --exclude "*ua.grb" --exclude "*.%s*"  --rsh="ssh -p2222" """%(model)
+rsyncOpt=""" -alv --exclude "*ua.grb" --exclude "*.%s*"  --rsh="ssh -p2222 -i %s" """%(model,hsRsa)
 
 if(doWxmap2Inv and not(byPassWxmap2Inv)):
-    cmd="""rsync %s mfiorino@wxmap2.com:%s %s/"""%(rsyncOpt,invpathwx2,tdir)
+    cmd="""rsync %s %s:%s %s/"""%(rsyncOpt,hsuser,invpathwx2,tdir)
     rcIW=MF.loopCmd2(cmd)
     if(verb): print 'III---rcIW: ',rcIW
 
@@ -227,7 +235,7 @@ if(len(dtgsOn) > 0 or byPassWxmap2Inv):
             tdiryy="%s/%s"%(tdir,tyear)
             MF.ChkDir(tdiryy,'mk')
             
-            cmd="""time rsync %s  mfiorino@wxmap2.com:%s/%s/%s/ %s/%s/"""%(rsyncOpt,sdirwx2,tyear,dtg,tdiryy,dtg)
+            cmd="""time rsync %s  %s:%s/%s/%s/ %s/%s/"""%(rsyncOpt,hsuser,sdirwx2,tyear,dtg,tdiryy,dtg)
             if(doIt):
                 rc=MF.loopCmd2(cmd,nLoop=2,sLoop=30,verb=1)
             else:
