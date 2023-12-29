@@ -7603,7 +7603,9 @@ class TcAidTrkAd2Bd2(MFbase):
                 elif(self.source == 'mftrkN'):
                     model=tt[-4]
 
-                if(modelChk != None and model != modelChk): continue
+                if(modelChk != None and model != modelChk): 
+                    #print 'mmmmmmmmmmmmmm------------',modelChk,model,tsiz,st,sc
+                    continue
                 stm3id=tt[-2]
                 ostm3id="%s.%-5d"%(stm3id,tsiz)
                 if(tsiz > 0):

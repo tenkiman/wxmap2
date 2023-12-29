@@ -4261,7 +4261,8 @@ def getTausFromTauopt(tauopt,taui=6):
     return(taus)
 
 
-def rsync2Wxmap2(localweb='all',stmid=None,ropt='',doBail=1,noRsync=0):
+def rsync2Wxmap2(localweb='all',stmid=None,ropt='',doCommand2=0,
+                 doBail=1,noRsync=0):
     
     sdir=W2BaseDirWebConfig  # from w2globalvars.py
     lbdir=HfipWebBdir        # from w2localvars.py -- not consistent but...
@@ -4333,28 +4334,34 @@ def rsync2Wxmap2(localweb='all',stmid=None,ropt='',doBail=1,noRsync=0):
             tweb=web
 
         cmd='''%s %s/%s/ "%s/%s/"'''%(rsyncopt,sdir,web,tdir,tweb)
-        #mf.runcmd(cmd,ropt)
-        # -- 20211122 -- better handling of error from rsync
-        #
-        rc=MF.loopCmd2(cmd,nLoop=0)
-        orc=rc
-        if(len(rc) > 0): orc=rc[0] ; rc=orc
-    
-        if(rc == 0):
-            print '1111-rc: ',rc,"""ropt is 'norun'"""
-        elif(rc == 1):
-            print 'FFF-good to go...press'
-        elif(rc != 1): 
-            print 'eee',doBail
-            print 'EEEE rsync error DATA...' 
-            if(doBail): 
-                print '...BAILing...'
-                sys.exit()
+        
+        if(doCommand2):
+            # -- 20211122 -- better handling of error from rsync
+            #
+            rc=MF.loopCmd2(cmd,nLoop=0)
+            orc=rc
+            if(len(rc) > 0): orc=rc[0] ; rc=orc
+        
+            if(rc == 0):
+                print '1111-rc: ',rc,"""ropt is 'norun'"""
+            elif(rc == 1):
+                print 'FFF-good to go...press'
+            elif(rc != 1): 
+                print 'eee',doBail
+                print 'EEEE rsync error DATA...' 
+                if(doBail): 
+                    print '...BAILing...'
+                    sys.exit()
+            else:
+                print 'EEEEE-rc: ',rc
+                if(doBail): 
+                    print '...BAILing...'
+                    sys.exit()
+        
         else:
-            print 'EEEEE-rc: ',rc
-            if(doBail): 
-                print '...BAILing...'
-                sys.exit()
+            MF.sTimer('RRRSSSYYYNNNCCC-CMD')
+            mf.runcmd(cmd,ropt)
+            MF.dTimer('RRRSSSYYYNNNCCC-CMD')
     
 
 
@@ -4374,9 +4381,15 @@ if (__name__ == "__main__"):
     #web='tceps'
     #rc=rsync2Wxmap2(web,ropt=ropt)
 
-    web='tcdiag'
-    web='tcact'
     web='tctrkveri'
+    web='wxmap2'
+    web='jtdiag'
+    web='tcdiag'
+    web='tcgen'
+    web='tcact'
+    web='tceps'
+    web='tctrkveri'
+    
     rc=rsync2Wxmap2(web,ropt=ropt,doBail=0)
 
     sys.exit()

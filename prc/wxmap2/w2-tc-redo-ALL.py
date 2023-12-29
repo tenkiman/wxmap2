@@ -236,13 +236,18 @@ for dtg in dtgs:
                     
                     else:
                         (modtctGen,modtctTrk,modtctTrkStdout,modtctAllTrk)=rcAm
-                        stmSiz=modtctTrk[model]
-                        rcS=getStmSiz(stmSiz)
-                        tCTstatus[model]=rcS[0]
-                        # -- set the stmids in modtcd to stmid.siz list
-                        #
-                        if(rcS[0] == -2):
-                            modtcd[model]=rcS[1]
+                        if(len(modtctTrk) == 0):
+                            print 'WWW---000siz tctrk file...make a NOOOOOLOAD'
+                            tCTstatus[model]=-2
+                            modtcd[model]=1
+                        else:
+                            stmSiz=modtctTrk[model]
+                            rcS=getStmSiz(stmSiz)
+                            tCTstatus[model]=rcS[0]
+                            # -- set the stmids in modtcd to stmid.siz list
+                            #
+                            if(rcS[0] == -2):
+                                modtcd[model]=rcS[1]
                     
                     
                     #siz=r[1][0].split('.')[-1]
